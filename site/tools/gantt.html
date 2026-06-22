@@ -108,6 +108,57 @@ gantt
         Roadmap</a>, <a href="../pages/delivery/risk-raci.html">Risk Register &amp; RACI</a> and
         <a href="roi-tco.html">ROI / TCO Model</a> (payback starts at M2, not at project close).</div>
 
+      </section>
+
+      <section class="section">
+        <h2>Work-breakdown structure (behind the Gantt)</h2>
+        <p class="lead">The Gantt shows the shape; this is the detail beneath every bar — phase →
+        workstream → task, with duration, the dependency it waits on, and the accountable owner. It is
+        the planning artefact estimates and the resource plan are built from.</p>
+        <table class="tbl">
+          <tr><th>Phase</th><th>Workstream</th><th>Task</th><th>Duration</th><th>Depends on</th><th>Owner</th></tr>
+          <tr><td rowspan="3"><b>P0 · Discovery</b></td><td>Mobilisation</td><td>Kickoff &amp; stakeholder mapping</td><td>5d</td><td>—</td><td>TechNext PM</td></tr>
+          <tr><td>Requirements</td><td>Department discovery workshops</td><td>12d</td><td>Kickoff</td><td>Business analyst</td></tr>
+          <tr><td>Design</td><td>BRD + solution design &amp; app mapping</td><td>14d</td><td>Workshops</td><td>Solution architect</td></tr>
+          <tr><td rowspan="6"><b>P1 · Core</b></td><td>Platform</td><td>Environment &amp; base config</td><td>6d</td><td>Solution design</td><td>Developer</td></tr>
+          <tr><td>Data <span class="tag red">critical</span></td><td>Core master-data cleanup &amp; migration</td><td>14d</td><td>Solution design</td><td>JR-Tech data owner</td></tr>
+          <tr><td>Commercial</td><td>CRM &amp; Sales configuration</td><td>12d</td><td>Base config</td><td>Consultant</td></tr>
+          <tr><td>Supply</td><td>Inventory &amp; Purchase configuration</td><td>12d</td><td>Base config</td><td>Consultant</td></tr>
+          <tr><td>Finance <span class="tag red">critical</span></td><td>Accounting · SST · MyInvois</td><td>14d</td><td>CRM/Sales config</td><td>Finance consultant</td></tr>
+          <tr><td>Quality</td><td>Core UAT &amp; fixes</td><td>10d</td><td>Accounting build + migration</td><td>Super-users</td></tr>
+          <tr><td rowspan="5"><b>P2 · Operations</b></td><td>Make</td><td>Manufacturing (fabrication BoMs)</td><td>14d</td><td>Core UAT</td><td>Consultant</td></tr>
+          <tr><td>Service</td><td>Field Service &amp; Maintenance</td><td>14d</td><td>Core UAT</td><td>Consultant</td></tr>
+          <tr><td>Service</td><td>Repair &amp; Rental</td><td>10d</td><td>Manufacturing</td><td>Consultant</td></tr>
+          <tr><td>Recurring</td><td>Subscriptions (chemical resupply)</td><td>8d</td><td>Field Service</td><td>Consultant</td></tr>
+          <tr><td>Quality</td><td>Operations UAT</td><td>10d</td><td>Repair &amp; Rental</td><td>Super-users</td></tr>
+          <tr><td rowspan="3"><b>P3 · AI &amp; Analytics</b></td><td>Intelligence</td><td>AI-assisted quoting</td><td>10d</td><td>Operations UAT</td><td>Developer</td></tr>
+          <tr><td>Intelligence</td><td>Predictive maintenance &amp; reorder</td><td>10d</td><td>Operations UAT</td><td>Developer</td></tr>
+          <tr><td>Reporting</td><td>Management dashboards &amp; KPIs</td><td>8d</td><td>AI quoting</td><td>BI consultant</td></tr>
+          <tr><td rowspan="4"><b>P4 · Enablement &amp; Hypercare</b></td><td>People</td><td>Role-based training</td><td>12d</td><td>Accounting build</td><td>Trainer</td></tr>
+          <tr><td>Cutover <span class="tag red">critical</span></td><td>Cutover &amp; final migration</td><td>5d</td><td>Operations UAT</td><td>TechNext PM</td></tr>
+          <tr><td>Support</td><td>Hypercare support window</td><td>30d</td><td>Phase 2 go-live</td><td>Support team</td></tr>
+          <tr><td>Close</td><td>Project close &amp; handover</td><td>5d</td><td>Hypercare</td><td>Joint steering</td></tr>
+        </table>
+        <div class="callout warn"><b>Critical path:</b> the engagement's longest dependent chain runs
+        <em>solution design → core data migration → SST/MyInvois accounting build → core UAT →
+        operations UAT → final cutover</em>. These tasks carry the least float — any slip moves
+        go-live one-for-one. They map directly to the red bars in the Gantt and the top entries of the
+        <a href="../pages/delivery/risk-raci.html">Risk Register &amp; RACI</a>. Training runs in
+        parallel off the accounting build, so it does not extend the path.</div>
+      </section>
+
+      <section class="section">
+        <h2>Resource loading by phase</h2>
+        <p class="lead">Effort is not flat across the plan. This shows planned person-days by role
+        across the five phases — the basis of the staffing profile and the resource line in the
+        <a href="roi-tco.html">ROI / TCO model</a>. Build effort peaks in Phase 1–2; super-user load
+        rises into UAT and training.</p>
+        <div class="chartbox"><canvas id="resourceChart" height="260"></canvas></div>
+        <div class="callout tn"><b>So what for the build:</b> the developer/consultant peak in Phases
+        1–2 sets when TechNext capacity must be ring-fenced, while the super-user ramp in Phase 1 UAT
+        and Phase 4 training is the JR-Tech commitment that protects adoption — the leading indicator
+        on the <a href="../pages/delivery/kpis-benefits.html">KPIs &amp; Benefits</a> page.</div>
+
         <div class="pagenav">
           <a href="roi-tco.html">← Prev: ROI / TCO Model</a>
           <span></span>
@@ -119,5 +170,23 @@ gantt
 </div>
 <script src="../assets/js/nav.js"></script>
 <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('resourceChart'), {
+  type: 'bar',
+  data: {
+    labels: ['P0 Discovery','P1 Core','P2 Operations','P3 AI & Analytics','P4 Enablement'],
+    datasets: [
+      { label: 'Consultant (person-days)', data: [10, 48, 56, 8, 6],
+        backgroundColor: '#0B1F3A' },
+      { label: 'Developer (person-days)', data: [4, 24, 14, 28, 10],
+        backgroundColor: '#7FA9DE' },
+      { label: 'Super-user / JR-Tech (person-days)', data: [12, 22, 16, 6, 24],
+        backgroundColor: '#16C098' }
+    ]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'bottom' } },
+    scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: 'Person-days' } } } }
+});
+</script>
 </body>
 </html>

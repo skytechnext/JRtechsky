@@ -58,6 +58,100 @@
       </section>
 
       <section class="section">
+        <h2>KPI dictionary</h2>
+        <p class="lead">The headline five are the board view. This is the working dictionary the
+        delivery team measures against — every KPI defined precisely, with a formula, the exact Odoo
+        report it comes from, a baseline, a target, a single owner, and how often it is read. No KPI
+        ships without all seven columns filled.</p>
+        <table class="tbl">
+          <tr><th>KPI</th><th>Definition</th><th>Formula</th><th>Source Odoo report</th><th>Baseline</th><th>Target</th><th>Owner</th><th>Cadence</th></tr>
+          <tr><td><b>Quote turnaround time</b></td><td>Hours from enquiry to quotation sent</td><td>avg(quote_sent − lead_created)</td><td>CRM · Sales analysis</td><td>~3 days</td><td>&lt;1 day</td><td>Sales lead</td><td>Weekly</td></tr>
+          <tr><td><b>Quote win rate</b></td><td>Share of sent quotes that become orders</td><td>won SO ÷ quotes sent</td><td>CRM pipeline analysis</td><td>~25%</td><td>≥ 35%</td><td>Sales lead</td><td>Monthly</td></tr>
+          <tr><td><b>On-time service completion</b></td><td>FSM jobs closed by promised date</td><td>on-time tasks ÷ closed tasks</td><td>Field Service analysis</td><td>~70%</td><td>≥ 90%</td><td>Service lead</td><td>Weekly</td></tr>
+          <tr><td><b>First-time fix rate</b></td><td>Jobs resolved in one visit</td><td>1-visit jobs ÷ total jobs</td><td>Field Service · worksheets</td><td>~65%</td><td>≥ 85%</td><td>Service lead</td><td>Monthly</td></tr>
+          <tr><td><b>Inventory accuracy</b></td><td>Counted vs system stock agreement</td><td>1 − |variance| ÷ system qty</td><td>Inventory · cycle-count</td><td>~80%</td><td>≥ 98%</td><td>Warehouse lead</td><td>Weekly</td></tr>
+          <tr><td><b>Stock turnover</b></td><td>How fast inventory cycles</td><td>COGS ÷ avg inventory value</td><td>Inventory valuation</td><td>~4×/yr</td><td>≥ 6×/yr</td><td>Ops manager</td><td>Quarterly</td></tr>
+          <tr><td><b>Days sales outstanding (DSO)</b></td><td>Avg days to collect receivables</td><td>(AR ÷ credit sales) × days</td><td>Accounting · aged receivable</td><td>~75 days</td><td>≤ 50 days</td><td>Accountant</td><td>Monthly</td></tr>
+          <tr><td><b>Gross margin %</b></td><td>Margin after direct cost, per job/line</td><td>(revenue − COGS) ÷ revenue</td><td>Accounting · P&amp;L / BI</td><td>Month-end, partial</td><td>Real-time per job</td><td>Director</td><td>Monthly</td></tr>
+          <tr><td><b>MyInvois acceptance rate</b></td><td>e-Invoices validated by LHDN first pass</td><td>accepted ÷ submitted</td><td>Accounting · e-invoice log</td><td>n/a (new)</td><td>≥ 99%</td><td>Finance lead</td><td>Weekly</td></tr>
+          <tr><td><b>Recurring revenue (MRR)</b></td><td>Monthly chemical-subscription billing</td><td>Σ active subscription value/mo</td><td>Subscriptions analysis</td><td>~0 (ad-hoc)</td><td>Growing run-rate</td><td>Sales lead</td><td>Monthly</td></tr>
+          <tr><td><b>Subscription churn</b></td><td>Recurring revenue lost to cancellations</td><td>churned MRR ÷ opening MRR</td><td>Subscriptions analysis</td><td>n/a (new)</td><td>≤ 5%/yr</td><td>Sales lead</td><td>Quarterly</td></tr>
+          <tr><td><b>Helpdesk SLA compliance</b></td><td>Tickets resolved within SLA</td><td>in-SLA ÷ resolved tickets</td><td>Helpdesk analysis</td><td>~60%</td><td>≥ 90%</td><td>Service lead</td><td>Weekly</td></tr>
+          <tr><td><b>System adoption</b></td><td>Transactions raised inside Odoo vs outside</td><td>in-system docs ÷ total docs</td><td>Audit log / activity</td><td>0% (pre-go-live)</td><td>≥ 95%</td><td>Project sponsor</td><td>Weekly</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Benefits-realisation tracking cadence</h2>
+        <p class="lead">Measurement is a rhythm, not a one-off survey. Each KPI is read at the cadence
+        in its dictionary row; the cadences roll up into a fixed governance calendar so benefit is
+        reviewed, not assumed.</p>
+        <table class="tbl">
+          <tr><th>Cadence</th><th>Forum</th><th>What is reviewed</th><th>Decision / output</th><th>Audience</th></tr>
+          <tr><td><b>Weekly</b></td><td>Adoption stand-up</td><td>Leading indicators — adoption, in-system %, ticket ageing, cycle-count variance</td><td>Unblock adoption; coach champions</td><td>Project team + super-users</td></tr>
+          <tr><td><b>Monthly</b></td><td>Benefits review</td><td>Lagging KPIs vs baseline — DSO, win rate, margin, on-time %, MRR</td><td>Confirm benefit booked; adjust forecast curve</td><td>Steering committee</td></tr>
+          <tr><td><b>Quarterly</b></td><td>Value-realisation board</td><td>Stock turnover, churn, ROI vs business case, cumulative-benefit curve</td><td>Re-baseline targets; greenlight next phase</td><td>Director + TechNext lead</td></tr>
+          <tr><td><b>At each go-live</b></td><td>Phase gate</td><td>Did the phase's driver KPIs clear baseline before benefit is claimed</td><td>Book / defer benefit per phase</td><td>Joint steering</td></tr>
+        </table>
+        <div class="callout"><b>Measurement discipline:</b> a benefit is only booked once its KPI has
+        cleared baseline in the live BI dashboard — never on go-live day. This keeps the realisation
+        curve honest and the business case defensible.</div>
+      </section>
+
+      <section class="section">
+        <h2>Value tree — operational KPIs to financial outcome</h2>
+        <p class="lead">This traces every operational metric up to the financial result it feeds. It is
+        the auditable chain behind the business case: improve a leaf KPI and you can name the cash line
+        it moves at the root.</p>
+        <div class="mermaid">
+flowchart LR
+    K1[Quote turnaround ↓] --> M1[Quote win rate ↑]
+    K2[On-time service ↑] --> R1[Retention ↑]
+    K3[First-time fix ↑] --> R1
+    K4[Helpdesk SLA ↑] --> R1
+    K5[Inventory accuracy ↑] --> W1[Working capital freed]
+    K6[Stock turnover ↑] --> W1
+    K7[DSO ↓] --> CF[Cash flow ↑]
+    K8[MyInvois acceptance ↑] --> CF
+    K9[MRR ↑] --> REV[Revenue ↑]
+    M1 --> REV
+    R1 --> REV
+    K10[Gross margin visibility ↑] --> PROF[Profit ↑]
+    REV --> PROF
+    W1 --> CF
+    PROF --> EV((Enterprise value ↑))
+    CF --> EV
+    classDef op fill:#EEF4FC,stroke:#7FA9DE,color:#10294D;
+    classDef mid fill:#EAFBF5,stroke:#16C098,color:#0E8E6E;
+    classDef fin fill:#0B1F3A,color:#fff,stroke:#0B1F3A;
+    class K1,K2,K3,K4,K5,K6,K7,K8,K9,K10 op;
+    class M1,R1,W1 mid;
+    class REV,CF,PROF,EV fin;
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Leading-indicator dashboard (weekly)</h2>
+        <p class="lead">The single screen the project team reads every Monday. It deliberately shows
+        only leading indicators — the metrics that move first and can be acted on this week — each with
+        its live value, the trend, a RAG status and the immediate action a red triggers. This is the
+        spec for the Odoo dashboard tile set.</p>
+        <table class="tbl">
+          <tr><th>Tile</th><th>Metric</th><th>This week</th><th>Trend</th><th>Status</th><th>Trigger action if red</th></tr>
+          <tr><td>Adoption</td><td>Quotes raised in Odoo</td><td>88%</td><td>▲</td><td><span class="tag green">On track</span></td><td>Champion coaching on the lagging team</td></tr>
+          <tr><td>Service</td><td>Jobs scheduled in-system</td><td>91%</td><td>▲</td><td><span class="tag green">On track</span></td><td>Audit off-system dispatch in WhatsApp</td></tr>
+          <tr><td>Stock</td><td>Cycle-count variance</td><td>3.1%</td><td>▼</td><td><span class="tag warn">Watch</span></td><td>Re-count flagged SKUs; check receipts</td></tr>
+          <tr><td>Support</td><td>Tickets open &gt; 5 days</td><td>6</td><td>▼</td><td><span class="tag green">On track</span></td><td>Reassign aged tickets at stand-up</td></tr>
+          <tr><td>Cash</td><td>Invoices unsent &gt; 24h post-delivery</td><td>4</td><td>▲</td><td><span class="tag warn">Watch</span></td><td>Clear billing backlog same day</td></tr>
+          <tr><td>Compliance</td><td>MyInvois rejections this week</td><td>1</td><td>▼</td><td><span class="tag green">On track</span></td><td>Fix master-data (TIN/MSIC) on partner</td></tr>
+          <tr><td>Growth</td><td>AI quote suggestions accepted</td><td>—</td><td>—</td><td><span class="tag">Phase 3</span></td><td>Activates with AI-assisted quoting</td></tr>
+        </table>
+        <div class="callout tn"><b>So what:</b> these tiles are leading by design — a red here is an
+        early warning the monthly lagging numbers (DSO, win rate, on-time %) are about to drift, with
+        days of lead time to correct rather than a month of hindsight.</div>
+      </section>
+
+      <section class="section">
         <h2>Benefit-realisation timeline</h2>
         <div class="grid g2">
           <div class="chartbox"><canvas id="benefitChart" height="250"></canvas></div>

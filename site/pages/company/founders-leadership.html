@@ -101,6 +101,42 @@ flowchart TD
       </section>
 
       <section class="section">
+        <h2>Governance &amp; decision rights</h2>
+        <p>The decision-rights framework that should replace the current single-apex model. Each
+        domain gets a clear owner, an approval threshold, and an escalation path — so the founder
+        retains oversight on what matters and delegates the rest into Odoo workflow.</p>
+        <table class="tbl">
+          <tr><th>Decision domain</th><th>Today</th><th>Target owner</th><th>Approval threshold</th><th>Mechanism</th></tr>
+          <tr><td>Standard quote &amp; pricing</td><td>Director</td><td>Sales Lead</td><td>Within price-list guardrails</td><td>Odoo Sales price lists</td></tr>
+          <tr><td>Discount / margin override</td><td>Director</td><td>Director</td><td>Above set discount %</td><td>Odoo approval workflow</td></tr>
+          <tr><td>Purchase orders</td><td>Director</td><td>Dept Lead</td><td>Tiered by value</td><td>Odoo Purchase approval tiers</td></tr>
+          <tr><td>Service SLA exceptions</td><td>Director</td><td>Service Lead</td><td>Within SLA policy</td><td>Field Service / Helpdesk</td></tr>
+          <tr><td>Credit notes / write-offs</td><td>Director</td><td>Finance Lead</td><td>Above set value</td><td>Accounting approval</td></tr>
+          <tr><td>Capital / hiring</td><td>Director</td><td>Director</td><td>All</td><td>Retained at apex</td></tr>
+        </table>
+        <div class="callout tn"><b>So-what for Odoo:</b> decision rights become configuration —
+        price-list guardrails, tiered PO approvals and credit thresholds turn "ask the Director" into
+        a system rule, freeing the founder from routine sign-off while keeping the audit trail.</div>
+      </section>
+
+      <section class="section">
+        <h2>Founder-dependency mitigation roadmap</h2>
+        <p>A staged programme to move tacit founder knowledge into systems and second-line leaders,
+        ordered from quickest de-risk to deepest structural change.</p>
+        <ol class="steps">
+          <li><b>Months 0–3 — Capture:</b> document pricing logic, quoting rules and supplier terms;
+          load them into Odoo price lists and product configs as the single source of truth.</li>
+          <li><b>Months 3–6 — Delegate:</b> activate approval workflows so standard quotes, POs and
+          SLA decisions route to department leads within guardrails, not to the founder's inbox.</li>
+          <li><b>Months 6–9 — Institutionalise:</b> shift customer history and account context into
+          CRM so relationships are firm-owned, not person-owned; publish role-based dashboards.</li>
+          <li><b>Months 9–12 — Scale leadership:</b> appoint a second-line operations manager and
+          formalise the leadership team build-out so the firm runs a full week without the founder
+          in the loop.</li>
+        </ol>
+      </section>
+
+      <section class="section">
         <h2>Succession &amp; continuity</h2>
         <table class="tbl">
           <tr><th>Risk</th><th>Exposure</th><th>Mitigation (ERP-enabled)</th></tr>
@@ -116,6 +152,54 @@ flowchart TD
           <li>Route approvals (quotes, POs, credits) through workflow, not one inbox.</li>
           <li>Make customer history shared and visible in CRM, not personal.</li>
         </ol>
+      </section>
+
+      <section class="section">
+        <h2>Leadership-team build-out for scaling</h2>
+        <p>The target leadership layer that lets JR-Tech grow beyond founder bandwidth. Each role is
+        a named accountability today held by the Director, sequenced by how much it unblocks scale.</p>
+        <table class="tbl">
+          <tr><th>Role</th><th>Mandate</th><th>Relieves the founder of</th><th>When</th></tr>
+          <tr><td>Sales &amp; Accounts Lead</td><td>Pipeline, quoting, key accounts</td><td>Routine quoting &amp; follow-up</td><td><span class="tag green">Now (formalise)</span></td></tr>
+          <tr><td>Operations Manager (2nd line)</td><td>Cross-function delivery &amp; capacity</td><td>Day-to-day coordination across lines</td><td><span class="tag warn">6–12 mo</span></td></tr>
+          <tr><td>Workshop Manager</td><td>Fabrication throughput &amp; costing</td><td>Job estimating &amp; scheduling</td><td><span class="tag green">Now (formalise)</span></td></tr>
+          <tr><td>Service Operations Lead</td><td>Field SLAs, dispatch, first-time-fix</td><td>Service firefighting</td><td><span class="tag green">Now (formalise)</span></td></tr>
+          <tr><td>Finance Lead</td><td>Compliance, cashflow, reporting</td><td>Invoicing &amp; collections oversight</td><td><span class="tag warn">6–12 mo</span></td></tr>
+          <tr><td>Marketing / Growth owner</td><td>Digital funnel &amp; brand</td><td>Ad-hoc marketing decisions</td><td><span class="tag warn">0–6 mo</span></td></tr>
+        </table>
+        <div class="callout"><b>Principle:</b> most roles already exist as functions — the build-out
+        is about <i>naming accountability and granting system authority</i>, not headcount. The one
+        genuinely new role is the second-line Operations Manager.</div>
+      </section>
+
+      <section class="section">
+        <h2>Values &amp; culture — anchored to the AI/eco brand</h2>
+        <p>The 2024 rebrand — <i>"Experience the Future of Kitchens"</i> — is more than marketing; it
+        is the cultural operating system the leadership build-out should hard-wire, so the brand
+        promise is lived in how the firm works, not just how it sells.</p>
+        <div class="grid g3">
+          <div class="card pad-lg">
+            <span class="tag green">Innovation</span>
+            <h3>AI-enabled by default</h3>
+            <p>The same appetite that drives AI-powered cooking and advanced induction should drive
+            internal adoption — leaders model data-driven decisions in Odoo, not gut feel.</p>
+          </div>
+          <div class="card pad-lg">
+            <span class="tag green">Sustainability</span>
+            <h3>Efficiency as an ethic</h3>
+            <p>Energy efficiency and smokeless, cook-and-chill tech sold outward should mirror inward:
+            eliminate rework, idle field hours and lost leads — waste in any form.</p>
+          </div>
+          <div class="card pad-lg">
+            <span class="tag">Service</span>
+            <h3>One-stop accountability</h3>
+            <p>The "one-stop F&amp;B solutionist" promise demands cross-line ownership — leads who
+            close the loop for the customer rather than handing off, backed by shared CRM context.</p>
+          </div>
+        </div>
+        <div class="callout tn"><b>So-what for Odoo:</b> values become measurable when the system
+        tracks them — first-time-fix rate (service ethic), quote-to-cash cycle (efficiency) and
+        adoption dashboards (innovation) turn brand language into leadership KPIs.</div>
       </section>
 
       <section class="section">

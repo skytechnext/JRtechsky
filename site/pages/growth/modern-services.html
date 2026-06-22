@@ -107,6 +107,118 @@ flowchart LR
       </section>
 
       <section class="section">
+        <h2>Business-model canvas — Equipment-as-a-Service</h2>
+        <p class="lead">The flagship new line. EaaS converts a one-off equipment sale into a monthly
+        subscription bundling the asset, install, servicing and an upgrade path — turning JR-Tech's
+        existing rental and maintenance capabilities into a managed, recurring offer.</p>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Partners</span><h3>Key partners</h3><ul>
+            <li>Equipment OEMs (induction, combi, warewash)</li>
+            <li>Asset-finance / leasing provider</li>
+            <li>IoT sensor &amp; connectivity vendor</li>
+            <li>In-house fabrication team</li></ul></div>
+          <div class="card"><span class="tag">Activities</span><h3>Key activities</h3><ul>
+            <li>Asset deployment &amp; commissioning</li>
+            <li>Preventive &amp; predictive maintenance</li>
+            <li>Subscription billing &amp; contract management</li>
+            <li>Refresh / upgrade cycle management</li></ul></div>
+          <div class="card"><span class="tag green">Value</span><h3>Value proposition</h3><ul>
+            <li>Zero capex — opex access to premium kitchens</li>
+            <li>Guaranteed uptime, always-current equipment</li>
+            <li>One bill: asset + service + chemicals</li>
+            <li>On-brand "Future of Kitchens" energy-efficient gear</li></ul></div>
+          <div class="card"><span class="tag">Relationships</span><h3>Customer relationships</h3><ul>
+            <li>Multi-year subscription, dedicated account</li>
+            <li>SLA-backed service tier</li>
+            <li>Proactive upgrade reviews</li></ul></div>
+          <div class="card"><span class="tag">Resources</span><h3>Key resources</h3><ul>
+            <li>Owned asset pool &amp; balance-sheet capacity</li>
+            <li>Field-service crews &amp; spares</li>
+            <li>Odoo Rental + Subscriptions + Maintenance</li>
+            <li>Install base &amp; customer data</li></ul></div>
+          <div class="card"><span class="tag">Channels</span><h3>Channels</h3><ul>
+            <li>Existing equipment &amp; rental sales team</li>
+            <li>Hotel-group &amp; chain account management</li>
+            <li>Energy-audit lead pull-through</li></ul></div>
+          <div class="card"><span class="tag">Segments</span><h3>Customer segments</h3><ul>
+            <li>Restaurant &amp; café chains (multi-site)</li>
+            <li>Cloud / central kitchens</li>
+            <li>Hotels refreshing tired equipment</li></ul></div>
+          <div class="card"><span class="tag warn">Costs</span><h3>Cost structure</h3><ul>
+            <li>Asset capital &amp; depreciation / financing</li>
+            <li>Field-service labour &amp; spares</li>
+            <li>IoT &amp; platform run-cost</li>
+            <li>Customer acquisition</li></ul></div>
+          <div class="card"><span class="tag green">Revenue</span><h3>Revenue streams</h3><ul>
+            <li>Monthly subscription per asset</li>
+            <li>Usage / overage fees</li>
+            <li>Bundled chemical &amp; consumable resupply</li>
+            <li>Upgrade &amp; end-of-term residual</li></ul></div>
+        </div>
+        <div class="callout tn"><b>So-what:</b> every block already exists somewhere in JR-Tech's four
+        lines — EaaS recombines them as a recurring contract on the same Odoo spine that runs the core
+        business.</div>
+      </section>
+
+      <section class="section">
+        <h2>Recurring-revenue (ARR) build-up — 3 years</h2>
+        <p class="lead">Modelled ARR from the new recurring lines, stacked over three years. This is
+        additive to the ~RM18m core revenue base and consistent with the FY28 ~RM27.8m trajectory —
+        the recurring layer is the highest-quality slice of that growth.</p>
+        <div class="chartbox"><canvas id="arr" height="240"></canvas></div>
+        <p class="lead" style="margin-top:14px">By end of Year 3 the four recurring lines compound to
+        roughly <b>RM2.9m ARR</b> — predictable, high-margin revenue that de-risks the lumpier
+        project and fabrication income and helps fund the larger EaaS/KaaS asset bets.</p>
+      </section>
+
+      <section class="section">
+        <h2>Service-design blueprint — predictive-maintenance subscription</h2>
+        <p class="lead">A service blueprint maps the customer journey against the front-stage,
+        back-stage and supporting systems for the predictive-maintenance subscription — showing where
+        Odoo automates each handoff.</p>
+        <div class="mermaid">
+flowchart TB
+    subgraph CUST[Customer actions]
+      C1[Signs uptime subscription] --> C2[Operates equipment] --> C3[Receives alert + visit] --> C4[Reviews uptime report]
+    end
+    subgraph FRONT[Front-stage / line of interaction]
+      F1[Onboarding & sensor fitting] --> F2[Proactive call before failure] --> F3[Technician on site] --> F4[Monthly uptime review]
+    end
+    subgraph BACK[Back-stage / line of visibility]
+      B1[Asset registered in Maintenance] --> B2[Field Service work order auto-raised] --> B3[Parts picked from stock] --> B4[Auto-invoice + MyInvois]
+    end
+    subgraph SUP[Supporting systems]
+      S1[IoT sensors & telemetry] --> S2[Threshold & fault model] --> S3[Subscriptions billing] --> S4[Analytics: uptime, churn, LTV]
+    end
+    C1 --> F1 --> B1 --> S1
+    C2 --> F2 --> B2 --> S2
+    C3 --> F3 --> B3 --> S3
+    C4 --> F4 --> B4 --> S4
+        </div>
+        <div class="callout"><b>The unlock:</b> the line of visibility is where Odoo earns its keep —
+        the customer sees a proactive call and a clean uptime report; behind it, sensor → fault model
+        → work order → parts → invoice runs as one automated chain.</div>
+      </section>
+
+      <section class="section">
+        <h2>Prioritisation — effort vs. revenue potential</h2>
+        <p class="lead">Scoring all five proposed lines on build effort against 3-year revenue
+        potential and stickiness gives a clear sequencing call: launch the fast, sticky, low-effort
+        wins first and fund the larger asset-heavy bets from the recurring base they create.</p>
+        <table class="tbl">
+          <tr><th>Service line</th><th>Build effort</th><th>3-yr revenue potential</th><th>Stickiness</th><th>Sequence</th></tr>
+          <tr><td>Chemical auto-replenish IoT</td><td class="tag green">Low</td><td>Medium</td><td class="tag green">Very high</td><td class="tag green">Wave 1 — now</td></tr>
+          <tr><td>Energy-efficiency audits</td><td class="tag green">Low</td><td>Low (lead engine)</td><td class="tag warn">Medium</td><td class="tag green">Wave 1 — now</td></tr>
+          <tr><td>Predictive-maintenance subscription</td><td class="tag warn">Medium</td><td>Medium-high</td><td class="tag green">High</td><td class="tag warn">Wave 2 — 6–9 mo</td></tr>
+          <tr><td>Equipment-as-a-Service</td><td class="tag red">High (capital)</td><td class="tag green">High</td><td class="tag green">High</td><td>Wave 3 — 9–18 mo</td></tr>
+          <tr><td>Kitchen-as-a-Service</td><td class="tag red">High</td><td class="tag green">Highest</td><td class="tag green">High</td><td>Wave 3 — 12–24 mo</td></tr>
+        </table>
+        <div class="callout tn"><b>So-what for the engagement:</b> Wave 1 needs only configuration of
+        Subscriptions, Inventory and IoT — modules already in the core build — so the first recurring
+        revenue arrives inside the implementation timeline, not after it.</div>
+      </section>
+
+      <section class="section">
         <h2>What this means for the engagement</h2>
         <div class="callout tn"><b>The platform pays for itself twice.</b> First by fixing today's
         operations (<a href="operations-strategy.html">Operations Strategy</a>); then by enabling
@@ -139,6 +251,18 @@ new Chart(document.getElementById('opp'), {
   options:{ plugins:{ legend:{position:'bottom'} },
     scales:{ x:{ min:0,max:10, title:{display:true,text:'Time to launch (months) →'} },
              y:{ min:0,max:10, title:{display:true,text:'3-year revenue potential →'} } } }
+});
+new Chart(document.getElementById('arr'), {
+  type:'bar',
+  data:{ labels:['Year 1','Year 2','Year 3'],
+    datasets:[
+      { label:'Chemical auto-replenish IoT', data:[180,420,720], backgroundColor:'#16C098' },
+      { label:'Predictive maintenance', data:[90,360,640], backgroundColor:'#7FA9DE' },
+      { label:'Equipment-as-a-Service', data:[60,520,1050], backgroundColor:'#0B1F3A' },
+      { label:'Kitchen-as-a-Service', data:[0,180,490], backgroundColor:'#3F6FB0' }
+    ]},
+  options:{ plugins:{ legend:{position:'bottom'}, title:{display:true,text:'Modelled ARR build-up (RM ’000) — additive to ~RM18m core'} },
+    scales:{ x:{ stacked:true }, y:{ stacked:true, title:{display:true,text:'ARR (RM ’000)'} } } }
 });
 </script>
 </body>

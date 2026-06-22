@@ -79,6 +79,41 @@
       </section>
 
       <section class="section">
+        <h2>Channel plan — CAC &amp; contribution assumptions</h2>
+        <p class="lead">A mixed-channel engine with explicit acquisition economics. Each channel's
+        modelled monthly spend, expected qualified leads, blended cost-per-acquisition and first-deal
+        contribution show where to lean — and feed the closed-loop ROI view inside Odoo.</p>
+        <table class="tbl">
+          <tr><th>Channel</th><th>Monthly spend (RM)</th><th>Qual. leads/mo</th><th>Lead→won</th><th>CAC (RM)</th><th>Avg first-deal contribution (RM)</th><th>Role</th></tr>
+          <tr><td>SEO / inbound content</td><td>6,000</td><td>40</td><td>10%</td><td class="tag green">1,500</td><td>9,500</td><td>Compounding base</td></tr>
+          <tr><td>Paid search (Google)</td><td>8,000</td><td>30</td><td>8%</td><td>3,300</td><td>9,500</td><td>High-intent fill</td></tr>
+          <tr><td>LinkedIn / paid social</td><td>5,000</td><td>15</td><td>7%</td><td>4,800</td><td>14,000</td><td>ABM reach</td></tr>
+          <tr><td>Referral / partner programme</td><td>3,000</td><td>20</td><td class="tag green">22%</td><td class="tag green">680</td><td>16,000</td><td>Highest quality</td></tr>
+          <tr><td>Trade shows (Food&amp;Hotel Malaysia)</td><td>9,000*</td><td>35</td><td>14%</td><td>1,840</td><td>18,000</td><td>Premium positioning</td></tr>
+          <tr><td>Consultant / architect partnerships</td><td>2,500</td><td>12</td><td class="tag green">25%</td><td class="tag green">830</td><td>22,000</td><td>Project flow</td></tr>
+          <tr><td><b>Blended</b></td><td><b>33,500</b></td><td><b>152</b></td><td><b>~12%</b></td><td class="tag green"><b>~1,840</b></td><td><b>~13,500</b></td><td>Recurring lines extend LTV well past first deal</td></tr>
+        </table>
+        <p class="lead" style="margin-top:10px">*Trade-show spend amortised monthly from annual event budget. CAC excludes the recurring chemical/service revenue that lifts true LTV:CAC well above the first-deal ratio.</p>
+      </section>
+
+      <section class="section">
+        <h2>Content calendar</h2>
+        <p class="lead">A repeatable monthly rhythm keeps the hub-and-spoke engine fed — one pillar
+        refresh, intent articles, a proof asset and a lifecycle touch every month, mapped to funnel
+        stage and primary channel.</p>
+        <table class="tbl">
+          <tr><th>Month</th><th>Pillar / theme</th><th>Spoke content</th><th>Funnel stage</th><th>Primary channel</th></tr>
+          <tr><td>Jan</td><td>Compliant kitchen design</td><td>Food-premises reg checklist; layout guide</td><td>Awareness</td><td>SEO</td></tr>
+          <tr><td>Feb</td><td>Energy efficiency</td><td>Energy-savings calculator; induction vs. gas</td><td>Consideration</td><td>SEO + Paid</td></tr>
+          <tr><td>Mar</td><td>Rental vs. buy / EaaS</td><td>Rent-vs-buy guide; EaaS explainer</td><td>Consideration</td><td>LinkedIn</td></tr>
+          <tr><td>Apr</td><td>Warewash &amp; hygiene</td><td>Chemical safety guide; HACCP case study</td><td>Decision</td><td>Referral</td></tr>
+          <tr><td>May</td><td>Trade-show campaign</td><td>Food&amp;Hotel Malaysia demo, AI-induction reel</td><td>Awareness→Decision</td><td>Events</td></tr>
+          <tr><td>Jun</td><td>Predictive maintenance</td><td>Uptime ROI model; sensor explainer</td><td>Consideration</td><td>Email nurture</td></tr>
+          <tr><td>Q3–Q4</td><td>Cook &amp; chill / central kitchens</td><td>KaaS turnkey reference; scale-up playbook; upgrade offers</td><td>Decision + Retention</td><td>SEO + Lifecycle</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
         <h2>Lead funnel</h2>
         <div class="grid g2">
           <div class="chartbox"><canvas id="funnel" height="260"></canvas></div>
@@ -95,6 +130,52 @@
             </ul>
           </div>
         </div>
+      </section>
+
+      <section class="section">
+        <h2>Lead-to-cash funnel — conversion rates</h2>
+        <p class="lead">The funnel made explicit and reconciled to Odoo CRM. Stage-to-stage conversion
+        percentages tie back to the monthly volumes in the chart above and to the ~14 closed-won deals
+        carried in the seed sales data — so the model and the demo database tell the same story.</p>
+        <table class="tbl">
+          <tr><th>Stage</th><th>Monthly volume</th><th>Conversion to next</th><th>Odoo object</th><th>Owner</th></tr>
+          <tr><td>Website visitors</td><td>4,000</td><td>10.5%</td><td>Website analytics</td><td>Marketing</td></tr>
+          <tr><td>Leads (form / tool)</td><td>420</td><td>33%</td><td>CRM lead</td><td>Marketing</td></tr>
+          <tr><td>MQLs (scored)</td><td>140</td><td>34%</td><td>CRM lead (scored)</td><td>Marketing→Sales</td></tr>
+          <tr><td>Opportunities</td><td>48</td><td>29%</td><td>CRM opportunity</td><td>Sales</td></tr>
+          <tr><td>Closed-won</td><td class="tag green">14</td><td>→ onboarded</td><td>Sale order (≈seed data)</td><td>Sales</td></tr>
+          <tr><td>Recurring contract</td><td>~10</td><td>LTV multiplier</td><td>Subscription</td><td>Account mgmt</td></tr>
+        </table>
+        <div class="callout"><b>Reconciliation:</b> 4,000 → 420 → 140 → 48 → 14 is the same chain shown
+        in the funnel chart; ~70% of won deals attach a recurring chemical or service subscription,
+        which is why the demo database seeds both sale orders and subscription lines.</div>
+      </section>
+
+      <section class="section">
+        <h2>Marketing-automation flow in Odoo</h2>
+        <p class="lead">The trigger-based journey that runs natively in Odoo Marketing Automation —
+        from first form fill through scoring, branched nurture, sales handoff and post-sale cross-sell.</p>
+        <div class="mermaid">
+flowchart TB
+    A[Form / gated tool submitted] --> B[Create CRM lead + tag source]
+    B --> C[Lead scoring: ICP fit + behaviour]
+    C --> D{Score >= threshold?}
+    D -- No --> E[Enrol in nurture track<br/>3-touch email series]
+    E --> F{Engaged?}
+    F -- Yes --> C
+    F -- No after 30d --> G[Recycle / suppress]
+    D -- Yes --> H[Auto-assign to sales rep]
+    H --> I[Opportunity created + task]
+    I --> J{Won?}
+    J -- Yes --> K[Trigger onboarding + subscription]
+    K --> L[Cross-sell campaign:<br/>chemicals · service · EaaS]
+    J -- No --> M[Lost-reason nurture<br/>re-engage at next trigger]
+    L --> C
+    M --> C
+        </div>
+        <div class="callout tn"><b>So-what:</b> every branch above is a standard Odoo Marketing
+        Automation activity — no external tooling. The small team only ever touches hot, sales-ready
+        leads; scoring, nurture and recycling run themselves.</div>
       </section>
 
       <section class="section">

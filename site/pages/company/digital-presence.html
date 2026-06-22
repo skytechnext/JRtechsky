@@ -195,6 +195,16 @@ new Chart(document.getElementById('maturityRadar'), {
     ]},
   options: { scales:{ r:{ min:0, max:5, ticks:{ stepSize:1 } } }, plugins:{ legend:{ position:'bottom' } } }
 });
+new Chart(document.getElementById('competitorBench'), {
+  type: 'bar',
+  data: { labels: ['Brand strength','Website conversion','SEO footprint','Social activity','Review volume','Catalog depth'],
+    datasets: [
+      { label: 'JR-Tech', data: [4.2,1.8,1.5,1.8,1.5,2.0], backgroundColor:'#0B1F3A' },
+      { label: 'Competitor benchmark', data: [3.0,3.0,3.2,3.0,3.3,2.8], backgroundColor:'#7FA9DE' }
+    ]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'JR-Tech vs modelled MY competitor (1–5)' } },
+    scales:{ y:{ beginAtZero:true, max:5 } } }
+});
 </script>
 </body>
 </html>
