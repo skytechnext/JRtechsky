@@ -1,0 +1,35 @@
+xml_id,kind,project_or_team,name,partner_xml_id,assigned_emp_xml_id,scheduled_date,stage,linked_product
+task_01,repair,Repair,Preventive maintenance visit — Penang Aged-Care Residence,cust_25,emp_18,2026-05-25,Scheduled,prod_ref_01
+task_02,field_service,JR Field Service,Preventive maintenance visit — Avillion Port Dickson,cust_46,emp_21,2026-05-31,Scheduled,prod_ref_04
+task_03,field_service,JR Field Service,Sanitary piping leak repair — Chung Ling High School Canteen,cust_23,emp_21,2026-03-25,Done,prod_prep_01
+task_04,repair,Repair,On-site dishwasher service — Chung Ling High School Canteen,cust_23,emp_21,2026-05-03,Scheduled,prod_prep_01
+task_05,field_service,JR Field Service,Burner replacement — Intel Penang Staff Canteen,cust_31,emp_18,2026-05-15,Done,prod_ref_06
+task_06,field_service,JR Field Service,Compressor repair — Penang General Hospital (Kitchen),cust_17,emp_20,2026-06-16,Scheduled,prod_cook_06
+task_07,field_service,JR Field Service,Burner replacement — Penang Aged-Care Residence,cust_25,emp_20,2026-06-28,Done,prod_ref_04
+task_08,maintenance,Maintenance,Install & commission — New World Park Food Court,cust_16,emp_18,2026-06-11,In Progress,prod_cook_10
+task_09,repair,Repair,Annual maintenance — full kitchen — Shangri-La Rasa Sayang,cust_06,emp_23,2026-05-10,In Progress,prod_ref_06
+task_10,field_service,JR Field Service,Pool pump service — Gurney Paragon Residences,cust_27,emp_20,2026-06-05,Scheduled,prod_ref_04
+task_11,field_service,JR Field Service,Grease trap pump-out — Loh Guan Lye Specialists,cust_20,emp_22,2026-05-27,New,prod_dish_06
+task_12,repair,Repair,Annual maintenance — full kitchen — Toh Soon Cafe,cust_12,emp_20,2026-04-30,In Progress,prod_ref_02
+task_13,repair,Repair,Induction unit fault — Berjaya Times Square Hotel,cust_39,emp_20,2026-03-24,New,prod_prep_01
+task_14,field_service,JR Field Service,Install & commission — Bayview Beach Resort,cust_05,emp_19,2026-04-25,Done,prod_cook_12
+task_15,repair,Repair,Annual maintenance — full kitchen — Johor Premium Catering,cust_42,emp_18,2026-03-24,Done,prod_prep_09
+task_16,repair,Repair,Pool pump service — KL Central Catering Sdn Bhd,cust_37,emp_20,2026-06-12,New,prod_cook_06
+task_17,maintenance,Maintenance,Compressor repair — Toh Soon Cafe,cust_12,emp_23,2026-06-27,Scheduled,prod_dish_02
+task_18,maintenance,Maintenance,On-site dishwasher service — Kebaya Dining Room,cust_13,emp_23,2026-06-03,In Progress,prod_cook_08
+task_19,repair,Repair,Annual maintenance — full kitchen — Alor Setar Central Kitchen,cust_44,emp_22,2026-04-15,Done,prod_cook_04
+task_20,maintenance,Maintenance,Bio-treatment dosing — Selera Cloud Kitchen KL,cust_38,emp_23,2026-04-02,Done,prod_dish_05
+task_21,maintenance,Maintenance,Compressor repair — Sunway Hotel Seberang Jaya,cust_04,emp_19,2026-05-14,Done,prod_cook_13
+task_22,repair,Repair,Burner replacement — Avillion Port Dickson,cust_46,emp_21,2026-04-16,In Progress,prod_ref_04
+task_23,field_service,JR Field Service,Burner replacement — Penang Aged-Care Residence,cust_25,emp_19,2026-05-22,Done,prod_cook_10
+task_24,repair,Repair,Combi oven calibration — Sunway Resort Hotel,cust_40,emp_21,2026-03-25,Scheduled,prod_ref_02
+task_25,maintenance,Maintenance,Combi oven calibration — Selera Cloud Kitchen KL,cust_38,emp_20,2026-04-17,Done,prod_cook_03
+task_26,maintenance,Maintenance,Annual maintenance — full kitchen — Selera Cloud Kitchen KL,cust_38,emp_22,2026-06-11,New,prod_cook_12
+task_27,repair,Repair,Grease trap pump-out — Selera Cloud Kitchen KL,cust_38,emp_20,2026-05-24,New,prod_cook_10
+task_28,maintenance,Maintenance,Compressor repair — China House Cafe,cust_14,emp_21,2026-06-12,Done,prod_cook_12
+task_29,maintenance,Maintenance,Sanitary piping leak repair — Bosch Penang Cafeteria,cust_32,emp_20,2026-06-29,Done,prod_prep_02
+task_30,repair,Repair,Sanitary piping leak repair — Selera Cloud Kitchen KL,cust_38,emp_21,2026-07-10,In Progress,prod_prep_03
+task_31,maintenance,Maintenance,Grease trap pump-out — B Braun Penang Canteen,cust_34,emp_19,2026-06-20,Done,prod_cook_12
+task_32,repair,Repair,Combi oven calibration — Bayview Beach Resort,cust_05,emp_22,2026-04-10,New,prod_cook_08
+task_33,repair,Repair,Preventive maintenance visit — Johor Premium Catering,cust_42,emp_21,2026-04-09,Done,prod_prep_01
+task_34,field_service,JR Field Service,Pool pump service — Melaka Heritage Hotel,cust_43,emp_23,2026-04-18,Done,prod_cook_01

@@ -1,0 +1,21 @@
+xml_id,name,partner_xml_id,team,priority,stage,assigned_emp_xml_id
+tic_01,Quote request follow-up,cust_17,Technical Support,1,In Progress,emp_05
+tic_02,Combi oven error code E5,cust_14,Sales,1,Solved,emp_18
+tic_03,Burner ignition fault,cust_46,Chemicals,3,In Progress,emp_20
+tic_04,Dishwasher not draining,cust_16,Chemicals,0,In Progress,emp_07
+tic_05,Burner ignition fault,cust_07,Sales,2,Solved,emp_05
+tic_06,Warranty claim,cust_21,Technical Support,2,New,emp_03
+tic_07,Spare part enquiry,cust_26,Technical Support,3,New,emp_06
+tic_08,Spare part enquiry,cust_06,Sales,3,Solved,emp_22
+tic_09,Burner ignition fault,cust_27,Chemicals,0,New,emp_03
+tic_10,Invoice discrepancy,cust_22,Technical Support,0,Solved,emp_20
+tic_11,Quote request follow-up,cust_14,Technical Support,1,Solved,emp_21
+tic_12,Invoice discrepancy,cust_39,Technical Support,2,Solved,emp_20
+tic_13,Chemical delivery delay,cust_43,Chemicals,3,Solved,emp_07
+tic_14,Warranty claim,cust_20,Chemicals,0,In Progress,emp_05
+tic_15,Chiller not cooling,cust_08,Sales,3,Solved,emp_23
+tic_16,Pool dosing too high,cust_18,Sales,0,Solved,emp_21
+tic_17,Warranty claim,cust_25,Chemicals,3,In Progress,emp_20
+tic_18,Chiller not cooling,cust_39,Sales,2,New,emp_07
+tic_19,Pool dosing too high,cust_22,Chemicals,2,In Progress,emp_03
+tic_20,Quote request follow-up,cust_10,Sales,2,Solved,emp_22

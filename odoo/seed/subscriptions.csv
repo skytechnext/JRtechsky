@@ -1,0 +1,17 @@
+xml_id,name,partner_xml_id,plan,date_start,recurring_rule,state,salesperson_xml_id
+sub_01,SUB/3000,cust_17,Monthly,2025-10-03,Monthly,progress,emp_07
+sub_02,SUB/3001,cust_16,Quarterly,2025-12-23,Quarterly,progress,emp_06
+sub_03,SUB/3002,cust_04,Monthly,2025-08-30,Monthly,progress,emp_07
+sub_04,SUB/3003,cust_37,Quarterly,2025-06-28,Quarterly,churn,emp_04
+sub_05,SUB/3004,cust_02,Monthly,2025-07-07,Monthly,progress,emp_07
+sub_06,SUB/3005,cust_42,Monthly,2026-01-25,Monthly,progress,emp_04
+sub_07,SUB/3006,cust_28,Monthly,2025-11-03,Monthly,progress,emp_04
+sub_08,SUB/3007,cust_17,Monthly,2026-02-09,Monthly,progress,emp_04
+sub_09,SUB/3008,cust_10,Quarterly,2025-08-03,Quarterly,progress,emp_05
+sub_10,SUB/3009,cust_02,Quarterly,2025-09-18,Quarterly,churn,emp_05
+sub_11,SUB/3010,cust_05,Monthly,2026-05-02,Monthly,progress,emp_04
+sub_12,SUB/3011,cust_07,Monthly,2025-06-22,Monthly,progress,emp_06
+sub_13,SUB/3012,cust_21,Monthly,2025-07-11,Monthly,churn,emp_06
+sub_14,SUB/3013,cust_12,Monthly,2025-09-07,Monthly,progress,emp_04
+sub_15,SUB/3014,cust_36,Quarterly,2025-11-23,Quarterly,churn,emp_04
+sub_16,SUB/3015,cust_41,Quarterly,2025-07-02,Quarterly,progress,emp_03
