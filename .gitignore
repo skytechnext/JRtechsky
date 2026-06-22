@@ -1,6 +1,2 @@
-# Temporary: the static mirror of jrtech.com.my is still being crawled.
-# The background finisher removes this entry and commits the completed site.
-/jrtech.com.my/
-
-# Never commit crawl logs / scratch
+# crawl / scratch logs
 *.log

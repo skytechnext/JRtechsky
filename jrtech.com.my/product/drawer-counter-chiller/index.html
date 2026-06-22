@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://jrtech.com.my/xmlrpc.php">
+
+	<title>Drawer Counter Chiller &#8211; JR Tech Solution</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel='dns-prefetch' href='https://www.google.com/' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link rel="alternate" type="application/rss+xml" title="JR Tech Solution &raquo; Feed" href="https://jrtech.com.my/feed/" />
+<link rel="alternate" type="application/rss+xml" title="JR Tech Solution &raquo; Comments Feed" href="https://jrtech.com.my/comments/feed/" />
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.1.0\/svg\/","svgExt":".svg","source":{"wpemoji":"https:\/\/jrtech.com.my\/wp-includes\/js\/wp-emoji.js?ver=6.8.1","twemoji":"https:\/\/jrtech.com.my\/wp-includes\/js\/twemoji.js?ver=6.8.1"}};
+/**
+ * @output wp-includes/js/wp-emoji-loader.js
+ */
+
+/**
+ * Emoji Settings as exported in PHP via _print_emoji_detection_script().
+ * @typedef WPEmojiSettings
+ * @type {object}
+ * @property {?object} source
+ * @property {?string} source.concatemoji
+ * @property {?string} source.twemoji
+ * @property {?string} source.wpemoji
+ * @property {?boolean} DOMReady
+ * @property {?Function} readyCallback
+ */
+
+/**
+ * Support tests.
+ * @typedef SupportTests
+ * @type {object}
+ * @property {?boolean} flag
+ * @property {?boolean} emoji
+ */
+
+/**
+ * IIFE to detect emoji support and load Twemoji if needed.
+ *
+ * @param {Window} window
+ * @param {Document} document
+ * @param {WPEmojiSettings} settings
+ */
+( function wpEmojiLoader( window, document, settings ) {
+	if ( typeof Promise === 'undefined' ) {
+		return;
+	}
+
+	var sessionStorageKey = 'wpEmojiSettingsSupports';
+	var tests = [ 'flag', 'emoji' ];
+
+	/**
+	 * Checks whether the browser supports offloading to a Worker.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @returns {boolean}
+	 */
+	function supportsWorkerOffloading() {
+		return (
+			typeof Worker !== 'undefined' &&
+			typeof OffscreenCanvas !== 'undefined' &&
+			typeof URL !== 'undefined' &&
+			URL.createObjectURL &&
+			typeof Blob !== 'undefined'
+		);
+	}
+
+	/**
+	 * @typedef SessionSupportTests
+	 * @type {object}
+	 * @property {number} timestamp
+	 * @property {SupportTests} supportTests
+	 */
+
+	/**
+	 * Get support tests from session.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @returns {?SupportTests} Support tests, or null if not set or older than 1 week.
+	 */
+	function getSessionSupportTests() {
+		try {
+			/** @type {SessionSupportTests} */
+			var item = JSON.parse(
+				sessionStorage.getItem( sessionStorageKey )
+			);
+			if (
+				typeof item === 'object' &&
+				typeof item.timestamp === 'number' &&
+				new Date().valueOf() < item.timestamp + 604800 && // Note: Number is a week in seconds.
+				typeof item.supportTests === 'object'
+			) {
+				return item.supportTests;
+			}
+		} catch ( e ) {}
+		return null;
+	}
+
+	/**
+	 * Persist the supports in session storage.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @param {SupportTests} supportTests Support tests.
+	 */
+	function setSessionSupportTests( supportTests ) {
+		try {
+			/** @type {SessionSupportTests} */
+			var item = {
+				supportTests: supportTests,
+				timestamp: new Date().valueOf()
+			};
+
+			sessionStorage.setItem(
+				sessionStorageKey,
+				JSON.stringify( item )
+			);
+		} catch ( e ) {}
+	}
+
+	/**
+	 * Checks if two sets of Emoji characters render the same visually.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} set1 Set of Emoji to test.
+	 * @param {string} set2 Set of Emoji to test.
+	 *
+	 * @return {boolean} True if the two sets render the same.
+	 */
+	function emojiSetsRenderIdentically( context, set1, set2 ) {
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( set1, 0, 0 );
+		var rendered1 = new Uint32Array(
+			context.getImageData(
+				0,
+				0,
+				context.canvas.width,
+				context.canvas.height
+			).data
+		);
+
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( set2, 0, 0 );
+		var rendered2 = new Uint32Array(
+			context.getImageData(
+				0,
+				0,
+				context.canvas.width,
+				context.canvas.height
+			).data
+		);
+
+		return rendered1.every( function ( rendered2Data, index ) {
+			return rendered2Data === rendered2[ index ];
+		} );
+	}
+
+	/**
+	 * Determines if the browser properly renders Emoji that Twemoji can supplement.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} type Whether to test for support of "flag" or "emoji".
+	 * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+	 *
+	 * @return {boolean} True if the browser can render emoji, false if it cannot.
+	 */
+	function browserSupportsEmoji( context, type, emojiSetsRenderIdentically ) {
+		var isIdentical;
+
+		switch ( type ) {
+			case 'flag':
+				/*
+				 * Test for Transgender flag compatibility. Added in Unicode 13.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (white flag emoji + transgender symbol).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					'\uD83C\uDFF3\uFE0F\u200D\u26A7\uFE0F', // as a zero-width joiner sequence
+					'\uD83C\uDFF3\uFE0F\u200B\u26A7\uFE0F' // separated by a zero-width space
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for UN flag compatibility. This is the least supported of the letter locale flags,
+				 * so gives us an easy test for full support.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly ([U] + [N]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					'\uD83C\uDDFA\uD83C\uDDF3', // as the sequence of two code points
+					'\uD83C\uDDFA\u200B\uD83C\uDDF3' // as the two code points separated by a zero-width space
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for English flag compatibility. England is a country in the United Kingdom, it
+				 * does not have a two letter locale code but rather a five letter sub-division code.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (black flag emoji + [G] + [B] + [E] + [N] + [G]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					// as the flag sequence
+					'\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F',
+					// with each code point separated by a zero-width space
+					'\uD83C\uDFF4\u200B\uDB40\uDC67\u200B\uDB40\uDC62\u200B\uDB40\uDC65\u200B\uDB40\uDC6E\u200B\uDB40\uDC67\u200B\uDB40\uDC7F'
+				);
+
+				return ! isIdentical;
+			case 'emoji':
+				/*
+				 * Rise Like a Phoenix.
+				 *
+				 * To test for Emoji 15.1 support, try to render a new emoji: Phoenix.
+				 *
+				 * A phoenix, a mythical immortal bird with flame-like feathers found in the folklore of many global
+				 * cultures. Often used to symbolize renewal or rebirth.
+				 *
+				 * The Phoenix emoji is a ZWJ sequence combining 🐦 Bird, Zero Width Joiner and 🔥 Fire.
+				 * These display as a single emoji on supported platforms.
+				 *
+				 * 0xD83D 0xDC26 (\uD83D\uDC26) == 🐦 Bird
+				 * 0x200D                       == Zero-Width Joiner (ZWJ) that links the code points for the new emoji or
+				 * 0x200B                       == Zero-Width Space (ZWS) that is rendered for clients not supporting the new emoji.
+				 * 0xD83D 0xDD25 (\uD83D\uDD25) == 🔥 Fire
+				 *
+				 * When updating this test for future Emoji releases, ensure that individual emoji that make up the
+				 * sequence come from older emoji standards.
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					'\uD83D\uDC26\u200D\uD83D\uDD25', // as the zero-width joiner sequence
+					'\uD83D\uDC26\u200B\uD83D\uDD25' // separated by a zero-width space
+				);
+
+				return ! isIdentical;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Checks emoji support tests.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @param {string[]} tests Tests.
+	 * @param {Function} browserSupportsEmoji Reference to browserSupportsEmoji function, needed due to minification.
+	 * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+	 *
+	 * @return {SupportTests} Support tests.
+	 */
+	function testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically ) {
+		var canvas;
+		if (
+			typeof WorkerGlobalScope !== 'undefined' &&
+			self instanceof WorkerGlobalScope
+		) {
+			canvas = new OffscreenCanvas( 300, 150 ); // Dimensions are default for HTMLCanvasElement.
+		} else {
+			canvas = document.createElement( 'canvas' );
+		}
+
+		var context = canvas.getContext( '2d', { willReadFrequently: true } );
+
+		/*
+		 * Chrome on OS X added native emoji rendering in M41. Unfortunately,
+		 * it doesn't work when the font is bolder than 500 weight. So, we
+		 * check for bold rendering support to avoid invisible emoji in Chrome.
+		 */
+		context.textBaseline = 'top';
+		context.font = '600 32px Arial';
+
+		var supports = {};
+		tests.forEach( function ( test ) {
+			supports[ test ] = browserSupportsEmoji( context, test, emojiSetsRenderIdentically );
+		} );
+		return supports;
+	}
+
+	/**
+	 * Adds a script to the head of the document.
+	 *
+	 * @ignore
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param {string} src The url where the script is located.
+	 *
+	 * @return {void}
+	 */
+	function addScript( src ) {
+		var script = document.createElement( 'script' );
+		script.src = src;
+		script.defer = true;
+		document.head.appendChild( script );
+	}
+
+	settings.supports = {
+		everything: true,
+		everythingExceptFlag: true
+	};
+
+	// Create a promise for DOMContentLoaded since the worker logic may finish after the event has fired.
+	var domReadyPromise = new Promise( function ( resolve ) {
+		document.addEventListener( 'DOMContentLoaded', resolve, {
+			once: true
+		} );
+	} );
+
+	// Obtain the emoji support from the browser, asynchronously when possible.
+	new Promise( function ( resolve ) {
+		var supportTests = getSessionSupportTests();
+		if ( supportTests ) {
+			resolve( supportTests );
+			return;
+		}
+
+		if ( supportsWorkerOffloading() ) {
+			try {
+				// Note that the functions are being passed as arguments due to minification.
+				var workerScript =
+					'postMessage(' +
+					testEmojiSupports.toString() +
+					'(' +
+					[
+						JSON.stringify( tests ),
+						browserSupportsEmoji.toString(),
+						emojiSetsRenderIdentically.toString()
+					].join( ',' ) +
+					'));';
+				var blob = new Blob( [ workerScript ], {
+					type: 'text/javascript'
+				} );
+				var worker = new Worker( URL.createObjectURL( blob ), { name: 'wpTestEmojiSupports' } );
+				worker.onmessage = function ( event ) {
+					supportTests = event.data;
+					setSessionSupportTests( supportTests );
+					worker.terminate();
+					resolve( supportTests );
+				};
+				return;
+			} catch ( e ) {}
+		}
+
+		supportTests = testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically );
+		setSessionSupportTests( supportTests );
+		resolve( supportTests );
+	} )
+		// Once the browser emoji support has been obtained from the session, finalize the settings.
+		.then( function ( supportTests ) {
+			/*
+			 * Tests the browser support for flag emojis and other emojis, and adjusts the
+			 * support settings accordingly.
+			 */
+			for ( var test in supportTests ) {
+				settings.supports[ test ] = supportTests[ test ];
+
+				settings.supports.everything =
+					settings.supports.everything && settings.supports[ test ];
+
+				if ( 'flag' !== test ) {
+					settings.supports.everythingExceptFlag =
+						settings.supports.everythingExceptFlag &&
+						settings.supports[ test ];
+				}
+			}
+
+			settings.supports.everythingExceptFlag =
+				settings.supports.everythingExceptFlag &&
+				! settings.supports.flag;
+
+			// Sets DOMReady to false and assigns a ready function to settings.
+			settings.DOMReady = false;
+			settings.readyCallback = function () {
+				settings.DOMReady = true;
+			};
+		} )
+		.then( function () {
+			return domReadyPromise;
+		} )
+		.then( function () {
+			// When the browser can not render everything we need to load a polyfill.
+			if ( ! settings.supports.everything ) {
+				settings.readyCallback();
+
+				var src = settings.source || {};
+
+				if ( src.concatemoji ) {
+					addScript( src.concatemoji );
+				} else if ( src.wpemoji && src.twemoji ) {
+					addScript( src.twemoji );
+					addScript( src.wpemoji );
+				}
+			}
+		} );
+} )( window, document, window._wpemojiSettings );
+
+/* ]]> */
+</script>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/**
+ * These rules are needed for backwards compatibility.
+ * They should match the button element rules in the base theme.json file.
+ */
+.wp-block-button__link {
+	color: #ffffff;
+	background-color: #32373c;
+	border-radius: 9999px; /* 100% causes an oval, but any explicit but really high value retains the pill shape. */
+
+	/* This needs a low specificity so it won't override the rules from the button element if defined in theme.json. */
+	box-shadow: none;
+	text-decoration: none;
+
+	/* The extra 2px are added to size solids the same as the outline versions.*/
+	padding: calc(0.667em + 2px) calc(1.333em + 2px);
+
+	font-size: 1.125em;
+}
+
+.wp-block-file__button {
+	background: #32373c;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+</style>
+<link rel='stylesheet' id='wc-blocks-vendors-style-css' href='../../wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style.css%3Fver=1661329122.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wc-blocks-style-css' href='../../wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css%3Fver=1661329122.css' type='text/css' media='all' />
+<link rel='stylesheet' id='chaty-front-css-css' href='../../wp-content/plugins/chaty/css/chaty-front.min.css%3Fver=1658112818.css' type='text/css' media='all' />
+<link rel='stylesheet' id='sp-lc-swiper-css' href='../../wp-content/plugins/logo-carousel-free/public/assets/css/swiper-bundle.min.css%3Fver=3.4.12.css' type='text/css' media='all' />
+<link rel='stylesheet' id='sp-lc-font-awesome-css' href='../../wp-content/plugins/logo-carousel-free/public/assets/css/font-awesome.min.css%3Fver=3.4.12.css' type='text/css' media='all' />
+<link rel='stylesheet' id='sp-lc-style-css' href='../../wp-content/plugins/logo-carousel-free/public/assets/css/style.min.css%3Fver=3.4.12.css' type='text/css' media='all' />
+<link rel='stylesheet' id='afrfq-front-css' href='../../wp-content/plugins/woocommerce-request-a-quote/assets/css/afrfq_front.css%3Fver=1.1.css' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-model-css' href='../../wp-content/plugins/woocommerce-request-a-quote/assets/css/jquery.modal.min.css%3Fver=1.0.css' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css' href='../../wp-includes/css/dashicons.css%3Fver=6.8.1.css' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-layout-css' href='../../wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css%3Fver=6.8.2.css' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-smallscreen-css' href='../../wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css%3Fver=6.8.2.css' type='text/css' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='woocommerce-general-css' href='../../wp-content/plugins/woocommerce/assets/css/woocommerce.css%3Fver=6.8.2.css' type='text/css' media='all' />
+<style id='woocommerce-inline-inline-css' type='text/css'>
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link rel='stylesheet' id='interico-fonts-css' href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='interico-style-css' href='../../wp-content/themes/interico/style.css%3Fver=1.1.3.css' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css' href='../../wp-content/themes/interico/fonts/font-awesome/css/font-awesome.css%3Fver=6.8.1.css' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css' href='../../wp-content/plugins/contact-form-7/includes/css/styles.css%3Fver=5.6.2.css' type='text/css' media='all' />
+<link rel='stylesheet' id='js_composer_front-css' href='../../wp-content/plugins/js_composer/assets/css/js_composer.min.css%3Fver=6.4.2.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-featherlight-css' href='../../wp-content/plugins/wp-featherlight/css/wp-featherlight.css%3Fver=1.3.4.css' type='text/css' media='all' />
+<script type="text/javascript" src="../../wp-includes/js/jquery/jquery.js%3Fver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="../../wp-includes/js/jquery/jquery-migrate.js%3Fver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="chaty-front-end-js-extra">
+/* <![CDATA[ */
+var chaty_settings = {"ajax_url":"https:\/\/jrtech.com.my\/wp-admin\/admin-ajax.php","analytics":"0","chaty_widgets":[{"id":0,"identifier":0,"settings":{"show_close_button":1,"position":"left","custom_position":1,"bottom_spacing":"25","side_spacing":"25","icon_view":"vertical","default_state":"click","cta_text":"Contact us","cta_text_color":"#333333","cta_bg_color":"#ffffff","show_cta":"first_click","is_pending_mesg_enabled":"off","pending_mesg_count":"1","pending_mesg_count_color":"#ffffff","pending_mesg_count_bgcolor":"#dd0000","widget_icon":"chat-base","widget_icon_url":"","font_family":"-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif","widget_size":"54","custom_widget_size":"54","is_google_analytics_enabled":0,"close_text":"Hide","widget_color":"#A886CD","widget_rgb_color":"168,134,205","has_custom_css":0,"custom_css":"","widget_token":"08bcf9e062","widget_index":"","attention_effect":""},"triggers":{"has_time_delay":1,"time_delay":"0","exit_intent":0,"has_display_after_page_scroll":0,"display_after_page_scroll":"0","auto_hide_widget":0,"hide_after":0,"show_on_pages_rules":[],"time_diff":0,"has_date_scheduling_rules":0,"date_scheduling_rules":{"start_date_time":"","end_date_time":""},"date_scheduling_rules_timezone":0,"day_hours_scheduling_rules_timezone":0,"has_day_hours_scheduling_rules":[],"day_hours_scheduling_rules":[],"day_time_diff":0,"show_on_direct_visit":0,"show_on_referrer_social_network":0,"show_on_referrer_search_engines":0,"show_on_referrer_google_ads":0,"show_on_referrer_urls":[],"has_show_on_specific_referrer_urls":0,"has_traffic_source":0,"has_countries":0,"countries":[],"has_target_rules":0},"channels":[{"channel":"Whatsapp","value":"164184916","hover_text":"WhatsApp","svg_icon":"<svg aria-hidden=\"true\" class=\"ico_d \" width=\"39\" height=\"39\" viewBox=\"0 0 39 39\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" style=\"transform: rotate(0deg);\"><circle class=\"color-element\" cx=\"19.4395\" cy=\"19.4395\" r=\"19.4395\" fill=\"#49E670\"\/><path d=\"M12.9821 10.1115C12.7029 10.7767 11.5862 11.442 10.7486 11.575C10.1902 11.7081 9.35269 11.8411 6.84003 10.7767C3.48981 9.44628 1.39593 6.25317 1.25634 6.12012C1.11674 5.85403 2.13001e-06 4.39053 2.13001e-06 2.92702C2.13001e-06 1.46351 0.83755 0.665231 1.11673 0.399139C1.39592 0.133046 1.8147 1.01506e-06 2.23348 1.01506e-06C2.37307 1.01506e-06 2.51267 1.01506e-06 2.65226 1.01506e-06C2.93144 1.01506e-06 3.21063 -2.02219e-06 3.35022 0.532183C3.62941 1.19741 4.32736 2.66092 4.32736 2.79397C4.46696 2.92702 4.46696 3.19311 4.32736 3.32616C4.18777 3.59225 4.18777 3.59224 3.90858 3.85834C3.76899 3.99138 3.6294 4.12443 3.48981 4.39052C3.35022 4.52357 3.21063 4.78966 3.35022 5.05576C3.48981 5.32185 4.18777 6.38622 5.16491 7.18449C6.42125 8.24886 7.39839 8.51496 7.81717 8.78105C8.09636 8.91409 8.37554 8.9141 8.65472 8.648C8.93391 8.38191 9.21309 7.98277 9.49228 7.58363C9.77146 7.31754 10.0507 7.1845 10.3298 7.31754C10.609 7.45059 12.2841 8.11582 12.5633 8.38191C12.8425 8.51496 13.1217 8.648 13.1217 8.78105C13.1217 8.78105 13.1217 9.44628 12.9821 10.1115Z\" transform=\"translate(12.9597 12.9597)\" fill=\"#FAFAFA\"\/><path d=\"M0.196998 23.295L0.131434 23.4862L0.323216 23.4223L5.52771 21.6875C7.4273 22.8471 9.47325 23.4274 11.6637 23.4274C18.134 23.4274 23.4274 18.134 23.4274 11.6637C23.4274 5.19344 18.134 -0.1 11.6637 -0.1C5.19344 -0.1 -0.1 5.19344 -0.1 11.6637C-0.1 13.9996 0.624492 16.3352 1.93021 18.2398L0.196998 23.295ZM5.87658 19.8847L5.84025 19.8665L5.80154 19.8788L2.78138 20.8398L3.73978 17.9646L3.75932 17.906L3.71562 17.8623L3.43104 17.5777C2.27704 15.8437 1.55796 13.8245 1.55796 11.6637C1.55796 6.03288 6.03288 1.55796 11.6637 1.55796C17.2945 1.55796 21.7695 6.03288 21.7695 11.6637C21.7695 17.2945 17.2945 21.7695 11.6637 21.7695C9.64222 21.7695 7.76778 21.1921 6.18227 20.039L6.17557 20.0342L6.16817 20.0305L5.87658 19.8847Z\" transform=\"translate(7.7758 7.77582)\" fill=\"white\" stroke=\"white\" stroke-width=\"0.2\"\/><\/svg>","is_desktop":1,"is_mobile":1,"icon_color":"#49E670","icon_rgb_color":"73,230,112","channel_type":"Whatsapp","custom_image_url":"","order":"","pre_set_message":"","is_use_web_version":"1","is_open_new_tab":"1","is_default_open":"0","has_welcome_message":"1","chat_welcome_message":"<p>How can we help you? :)<\/p>","qr_code_image_url":"","mail_subject":"","channel_account_type":"personal","contact_form_settings":[],"contact_fields":[],"url":"https:\/\/web.whatsapp.com\/send?phone=164184916","mobile_target":"","desktop_target":"_blank","target":"_blank","is_agent":0,"agent_data":[],"header_text":"","header_sub_text":"","header_bg_color":"","header_text_color":"","widget_token":"08bcf9e062","widget_index":"","click_event":""},{"channel":"Facebook_Messenger","value":"https:\/\/m.me\/jrtech09","hover_text":"Facebook Messenger","svg_icon":"<svg aria-hidden=\"true\" class=\"ico_d \" width=\"39\" height=\"39\" viewBox=\"0 0 39 39\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" style=\"transform: rotate(0deg);\"><circle class=\"color-element\" cx=\"19.4395\" cy=\"19.4395\" r=\"19.4395\" fill=\"#1E88E5\"\/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M0 9.63934C0 4.29861 4.68939 0 10.4209 0C16.1524 0 20.8418 4.29861 20.8418 9.63934C20.8418 14.98 16.1524 19.2787 10.4209 19.2787C9.37878 19.2787 8.33673 19.1484 7.42487 18.8879L3.90784 20.8418V17.1945C1.56311 15.3708 0 12.6353 0 9.63934ZM8.85779 10.1604L11.463 13.0261L17.1945 6.90384L12.1143 9.76959L9.37885 6.90384L3.64734 13.0261L8.85779 10.1604Z\" transform=\"translate(9.01854 10.3146)\" fill=\"white\"\/><\/svg>","is_desktop":1,"is_mobile":1,"icon_color":"#1E88E5","icon_rgb_color":"30,136,229","channel_type":"Facebook_Messenger","custom_image_url":"","order":"","pre_set_message":"","is_use_web_version":"1","is_open_new_tab":"1","is_default_open":"0","has_welcome_message":"0","chat_welcome_message":"","qr_code_image_url":"","mail_subject":"","channel_account_type":"personal","contact_form_settings":[],"contact_fields":[],"url":"https:\/\/m.me\/jrtech09","mobile_target":"","desktop_target":"_blank","target":"_blank","is_agent":0,"agent_data":[],"header_text":"","header_sub_text":"","header_bg_color":"","header_text_color":"","widget_token":"08bcf9e062","widget_index":"","click_event":""}]}],"data_analytics_settings":"off"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="../../wp-content/plugins/chaty/js/cht-front-script.min.js%3Fver=1658112818" id="chaty-front-end-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.js%3Fver=2.7.0-wc.6.8.2" id="jquery-blockui-js"></script>
+<script type="text/javascript" id="wc-add-to-cart-js-extra">
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/jrtech.com.my\/?page_id=5037","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://jrtech.com.my/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.js?ver=6.8.2" id="wc-add-to-cart-js"></script>
+<script type="text/javascript" src="https://jrtech.com.my/wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart.js?ver=6.4.2" id="vc_woocommerce-add-to-cart-js-js"></script>
+<link rel="https://api.w.org/" href="https://jrtech.com.my/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://jrtech.com.my/wp-json/wp/v2/product/13867" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://jrtech.com.my/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.8.1" />
+<meta name="generator" content="WooCommerce 6.8.2" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='../../index.html%3Fp=13867.html' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://jrtech.com.my/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fjrtech.com.my%2Fproduct%2Fdrawer-counter-chiller%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://jrtech.com.my/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fjrtech.com.my%2Fproduct%2Fdrawer-counter-chiller%2F&#038;format=xml" />
+<meta name="cdp-version" content="1.3.2" />
+<style type="text/css" id="custom-colors-css">header #logo { margin-top: 20px; }header #logo img { max-width:320px; }@media screen and (max-width: 990px) { header #logo { margin-top: 20px; } }@media screen and (max-width: 990px) { header #logo img { max-width:320px; } }@media screen and (max-width: 990px) { .navbar-toggle { top:20px; } }.header-style-2.subnav-dark .header-wrapper, .header-style-2.subnav-light .header-wrapper { background-color: #1e1e1e!important; }.subnav-dark .subnav, .subnav-light .subnav { background-color: #1e1e1e; }.subnav-light.subnav-angular .subnav::before, .subnav-dark.subnav-angular .subnav::before { border-right-color: #1e1e1e!important; }.subnav-light.subnav-angular .subnav::after, .subnav-dark.subnav-angular .subnav::after { border-top-color: #1e1e1e!important; }.subnav .social i, .subnav-light .subnav .social i, .subnav-light .social i { background-color: #0f0f0f; }.subnav .subnav-item .fa { color: #b09c77; }.nav-secondary .sub-menu li a { text-align: right; }#mainmenu > li > a:hover, #mainmenu > li.menu-item-has-children:hover:after, #mainmenu > li:hover > a, #header.header-light #mainmenu > li:hover > a, #header.header-light #mainmenu > li.menu-item-has-children:hover:after, .current-menu-item > a { color: #8ebae7!important; }@media screen and (min-width: 991px) { #mainmenu > li:before { background-color: #8ebae7; } }#header, #header.header-light { background-color: #161616; }.header-style-3 #header, .header-style-3 #header.header-light { background: linear-gradient(to bottom, #161616 0%, transparent 100%)!important; }#mainmenu li ul li a { color: #ffffff!important; }#mainmenu li ul li a:hover { color: #ffffff!important; }#mainmenu li ul li a { background-color: #69593e!important; }#mainmenu li ul li a:hover { background-color: #5a4a2f!important; }#mainmenu li ul li, #mainmenu ul { border-color: #5a4a2f!important; }#mainmenu li ul li ul li a { color: #cccccc!important; }#mainmenu li ul li ul li a:hover { color: #dbdbdb!important; }#mainmenu li ul li ul li a { background-color: #333333!important; }#mainmenu li ul li ul li a:hover { background-color: #242424!important; }#mainmenu li ul li ul li, #mainmenu ul li ul { border-color: #242424!important; }#top-content-area .title-content h1 { color: #ffffff; }#top-content-area .overlay { background-color: #444444; opacity: 0.3; }.btn, .btn-primary, .btn-regular, input[type='submit'], .woocommerce button[type='submit'], .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce button.button.alt, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt, .woocommerce button[type='submit'], .wp-block-button__link { border-width: 2px!important; padding: 15px 20px; border-radius: 3px; }.woocommerce button[type='submit'] { border-bottom-right-radius: 3px; border-top-right-radius: 3px; }.btn-primary, input[type=submit], input[type='submit'], .woocommerce button[type='submit'], .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce button.button.alt, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt, .woocommerce button[type='submit'], .wp-block-button__link, .body-dark .wp-block-button__link, .wp-block-search .wp-block-search__button, .wc-block-product-search .wc-block-product-search__button { color: #ffffff!important; background-color: #151d4b!important; border-color: #151d4b!important; }.btn-primary:active:hover,.btn-primary:active:focus,.btn-primary:hover,.btn-primary:focus,.btn-primary:active,input[type=submit]:hover,input[type=submit]:focus,input[type='submit']:hover,input[type='submit']:focus,.woocommerce button[type='submit']:hover,.woocommerce button[type='submit']:focus,.woocommerce #respond input#submit.alt:hover,.woocommerce a.button.alt:hover,.woocommerce button.button:hover,.woocommerce button.button.alt:hover,.woocommerce input.button:hover.woocommerce input.button.alt:hover,.woocommerce #respond input#submit:hover,.btn-primary:before, a.btn-primary:before,.woocommerce a.button:hover, .wp-block-button__link:hover,.body-dark .wp-block-button__link:hover,.wp-block-search .wp-block-search__button,.wc-block-product-search .wc-block-product-search__button { color: #ffffff!important; background-color: #000432!important; border-color: #000432!important; }.btn-regular, .wp-block-button.is-style-outline > a.wp-block-button__link { color: #999!important; border-color: #ddd!important; }.btn-regular:hover, .btn-regular:focus, .btn-regular:active, .wp-block-button.is-style-outline > a.wp-block-button__link:hover { background-color: #ddd; border-color: #ddd!important; }.btn-regular:hover, .btn-regular:focus, .btn-regular:active, .is-style-outline.wp-block-button .wp-block-button__link:hover { color: #777!important; }main ul li::before,.content ul li::before,.panel-body ul li::before,.page-content ul li:before,.tab-content ul li:before,.divider-light::before,.divider-dark::before,.read-more-dark::before,.read-more::before,.subtitle.style-dark::before,.dash.style-dark,.toggled,::selection,::-moz-selection,.tooltip-inner,.reply:hover:before { background-color: #151d4b; }blockquote { border-color: #151d4b; }a:hover, .post-info a:hover, .body-dark .post-info a:hover, .subtitle, .number-box:hover .btn-read-more, .number-box:hover .btn-read-more::after, .feature-box:hover .btn-read-more, .feature-box:hover .btn-read-more::after, .content-box.service-item:hover .btn-read-more, .content-box.service-item:hover .btn-read-more::after, .btn-read-more:hover, .body-dark .btn-read-more:hover, .blog-post-box:hover .btn-read-more, .blog-post-box:hover .btn-read-more::after, .btn-read-more:hover::after, .comments .testimonial.image-left .content-box-info .testimonial-content span.name, .reply:hover a.comment-reply-link, .sidebar-nav ul li a:hover, .sidebar-heading, .body-dark .sidebar-heading, .projects-navigation a:hover, .body-dark .projects-navigation a:hover, .projects-navigation .icon-icon-gallery:hover:before, .title-link-box.dark .btn-read-more:hover, .title-link-box.dark .btn-read-more:hover::after, .body-dark .title-link-box .btn-read-more:hover, .body-dark .title-link-box .btn-read-more:hover::after { color: #151d4b; }.nav-tabs.style-accent > li.active > a,.nav-tabs.style-accent > li.active > a:hover,.nav-tabs.style-accent > li.active > a:focus, .panel-group .accordion-toggle[aria-expanded='true'], .panel-group .accordion-toggle[aria-expanded='true']:hover { background-color: #151d4b!important; }.panel-body, .tab-content.style-accent { background-color: #0b1341; }.subtitle::before, .dash { opacity: 0.75; }.tooltip.top .tooltip-arrow { border-top-color: #151d4b; }.social i:hover, #footer-bot .social i:hover { color: #ffffff; background-color: #7d6741; }#btnTop:hover { background-color: #151d4b; }.preloader-wrapper.dark { background: #444; }.preloader-wrapper.dark .preloader { border-color: #666; }.preloader-wrapper.dark .preloader { border-top-color: #eee; }a.cta-footer { background-color: #151d4b; border-top-color: #010937; }a.cta-footer:hover {  background-color: #7d6741; border-top-color: #7d6741; }a.cta-footer h2, a.cta-footer h2::after { color: #ffffff!important; }a.cta-footer:hover h2, a.cta-footer:hover h2::after { color: #ffffff!important; }#footer h4.footer-header { color: #999999; }#footer.footer-dark h4.footer-header { color: #999999; }#footer, #footer ul li { color: #aaaaaa; }#footer.footer-dark, #footer.footer-dark ul li { color: #aaaaaa; }#footer a, #footer ul li a, ul.content-list a, #footer ul li:before { color: #aaaaaa; }#footer.footer-dark a, #footer.footer-dark ul li a, #footer.footer-dark ul.content-list a, #footer.footer-dark ul li:before { color: #aaaaaa; }#footer a:hover, #footer ul li a:hover, ul.content-list a:hover, ul.content-list li:hover, #footer ul li:hover:before { color: #ffffff; }#footer.footer-dark a:hover, #footer.footer-dark ul li a:hover, footer.footer-dark ul.content-list a:hover, footer.footer-dark ul.content-list li:hover, #footer.footer-dark ul li:hover:before { color: #ffffff; }#footer-bot { background-color: #111111; color: #666666; }#footer-bot .social i { color:#aaaaaa; background-color: #020202; }.content-box.service-item.service-box-dark .content-box-info:after { background-color: #7d6741; }.content-box.service-item.service-box-default:hover .box-heading, .content-box.service-item.service-box-white:hover .box-heading, .body-dark .content-box.service-item.service-box-default:hover .box-heading, .body-dark .content-box.service-item.service-box-white:hover .box-heading, .content-box.service-item.service-box-gray:hover h4.box-heading, .body-dark .content-box.service-item.service-box-gray:hover h4.box-heading { color: #7d6741; }.team-member:hover h4 { color: #7d6741; }.blog-post-box:hover .content-box-info .box-heading, .entry-title a:hover { color: #7d6741; }.gallery-categories ul li a.selected, .section-gallery.gallery-light .gallery-categories ul li a.selected, .section-gallery.gallery-light .gallery-categories ul li a.selected:hover, .gallery-categories ul li a.selected:hover  { color: #000000; }.captions-bottom .portfolio-box-caption-content::after { background-color: #7d6741; }.carousel-control:after, #gallery-slider .slick-prev:after, #gallery-slider .slick-next:after { background-color: #7d6741; }.gallery-categories ul li a.selected, .section-gallery.gallery-light .gallery-categories ul li a.selected, .section-gallery.gallery-light .gallery-categories ul li a.selected:hover, .gallery-categories ul li a.selected:hover  { background-color: #dddddd; }.section-gallery, .section-gallery.gallery-light .section-gallery { background-color: #333333; }.project-category { color: #cccccc; }.feature-box > i, .feature-box > .lnr { color: #7d6741; }.feature-box:hover > i, .feature-box:hover > .lnr { color: #7d6741; }.feature-box:hover .feature-title, .feature-box.dark:hover .feature-title { color: #7d6741; }.number-box:hover h3, .number-box.style-dark:hover h3 { color: #7d6741; }.number-box-number { background-color: #7d6741; }.number-box.style-default .number-box-number:after { background: #333333; }.number-box.style-dark .number-box-number { color: #333333; }</style>
+	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url("../../wp-content/themes/interico/img/bg/vertical-grid-5.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: scroll; }
+</style>
+	<link rel="icon" href="../../wp-content/uploads/2022/07/cropped-JR-Favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="../../wp-content/uploads/2022/07/cropped-JR-Favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../../wp-content/uploads/2022/07/cropped-JR-Favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://jrtech.com.my/wp-content/uploads/2022/07/cropped-JR-Favicon-270x270.png" />
+		<style type="text/css" id="wp-custom-css">
+			/*Slider Button*/
+#slider-fullwidth .btn-regular {
+    background: #161616;
+    color: white !important;
+    color: #ddd;
+    border-color: rgb(22 22 22)!important;
+}		</style>
+		<style type="text/css" data-type="vc_custom-css">.woocommerce table.shop_attributes th {
+    width: 250px !important;
+}</style><style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1657765008864{padding-top: 90px !important;padding-bottom: 50px !important;background-image: url(../../wp-content/uploads/2022/07/Demo.jpg%3Fid=13486) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}</style><noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript></head>
+
+
+<body class="wp-singular product-template-default single single-product postid-13867 custom-background wp-theme-interico theme-interico woocommerce woocommerce-page woocommerce-no-js wp-featherlight-captions header-style-1 subnav-fullwidth subnav-dark subnav-content-right header-typography-style-3 submenu-dark light custom-colors wpb-js-composer js-comp-ver-6.4.2 vc_responsive">
+	<div class="preloader-wrapper dark">
+	    <div class="preloader"></div>
+	</div>
+
+	<div id="wrapper">
+
+			<!-- Begin Subheader -->
+		<div class="subnav hide-on-mobile">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="subnav-item">
+							<p>
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+								Opening time: Mon-Fri 08:00 - 18:00							</p>
+						</div>
+						<div class="subnav-item">
+							<p>
+								<i class="fa fa-envelope-o" aria-hidden="true"></i>
+								Email: info@jrtech.com.my							</p>
+						</div>
+						<div class="subnav-item">
+							<p>
+								<i class="fa fa-phone" aria-hidden="true"></i>
+								Phone: +604-657 2916							</p>
+						</div>
+
+						
+						<ul class="social">
+															<li><a target="_blank" href="https://www.facebook.com/jrtech09"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div> <!-- End Subheader -->
+	
+		<!-- Begin Header -->
+		<div class="header-wrapper">
+			<header id="header" class="shadow-soft" data-spy="affix" data-offset-top="160">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+
+							<!-- Logo begin -->
+							<h1 id="logo">
+								<a href="../../index.html">
+
+																		
+										<img src="../../wp-content/uploads/2022/07/JR-Tech-Logo_Final-white.png" srcset="../../wp-content/uploads/2022/07/JR-Tech-Logo_Final-white.png, ../../wp-content/uploads/2022/07/JR-Tech-Logo_Final-white.png 2x" alt="JR Tech Solution">
+									
+									
+								</a>
+							</h1> <!-- Logo end -->
+
+							<!-- Responsive nav button begin -->
+							<button type="button" id="menu-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainmenu" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar top-bar"></span>
+								<span class="icon-bar middle-bar"></span>
+								<span class="icon-bar bottom-bar"></span>
+							</button> <!-- Responsive nav button end -->
+
+							<!-- Main menu begin -->
+							<nav>
+								<div class="menu-main-menu-container"><ul id="mainmenu" class="collapse navbar-collapse"><li id="menu-item-13769" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-13769"><a href="../../index.html">Home</a></li>
+<li id="menu-item-13768" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13768"><a href="../../about-us/index.html">About Us</a></li>
+<li id="menu-item-13941" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13941"><a href="../../services/index.html">Services</a></li>
+<li id="menu-item-13461" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13461"><a href="index.html#">Projects</a></li>
+<li id="menu-item-13870" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-13870"><a href="../../products/index.html">Products</a></li>
+<li id="menu-item-13463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13463"><a href="index.html#">Clients</a></li>
+<li id="menu-item-13625" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13625"><a href="../../contact-us/index.html">Contact Us</a></li>
+</ul></div>							</nav>  <!-- Main menu end -->
+
+													</div>
+					</div>
+				</div>
+			</header> <!-- End Header -->
+		</div>
+	<br />
+<b>Warning</b>:  Trying to access array offset on value of type bool in <b>/home/jrtechcom/public_html/wp-content/themes/interico/template-parts/top-content-area.php</b> on line <b>22</b><br />
+
+
+	<!-- Begin Top Content Area -->
+			<section id="top-content-area" class="tca-medium tca-text-center" style="background-image: url('../../wp-content/uploads/2022/07/sh2.jpg')">
+							<div class="overlay" style="opacity: 0.3; background-color: #444444;"></div>
+						<div class="lines-overlay animated fadeInDown"></div>
+							<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="title-content">
+
+																
+								<h1 class="page-title animated fadeInDown">Products</h1>
+								
+															
+							</div>
+						</div>
+					</div>
+				</div>
+			
+		</section> <!-- End Top Content Area -->
+	
+
+<!-- Begin breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">	
+			<!-- Breadcrumb NavXT 7.1.0 -->
+<span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to JR Tech Solution." href="../../index.html" class="home" ><span property="name">JR Tech Solution</span></a><meta property="position" content="1"></span><span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Products." href="../../products/index.html" class="archive post-product-archive" ><span property="name">Products</span></a><meta property="position" content="2"></span><span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to the Mo&#039;delux Category archives." href="../../product-category/modelux/index.html" class="taxonomy product_cat" ><span property="name">Mo'delux</span></a><meta property="position" content="3"></span><span property="itemListElement" typeof="ListItem"><span property="name" class="post post-product current-item">Drawer Counter Chiller</span><meta property="url" content="https://jrtech.com.my/product/drawer-counter-chiller/"><meta property="position" content="4"></span>		</div>
+	</div>
+<!-- End breadcrumbs -->		
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<main class="col-xs-12 col-md-9">
+	
+					
+			<div class="woocommerce-notices-wrapper"></div><div id="product-13867" class="product type-product post-13867 status-publish first instock product_cat-modelux has-post-thumbnail shipping-taxable purchasable product-type-simple">
+
+	<div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4" style="opacity: 0; transition: opacity .25s ease-in-out;">
+	<figure class="woocommerce-product-gallery__wrapper">
+		<div data-thumb="https://jrtech.com.my/wp-content/uploads/2022/08/Drawer-Counter-Chiller-100x100.jpg" data-thumb-alt="" class="woocommerce-product-gallery__image"><a href="../../wp-content/uploads/2022/08/Drawer-Counter-Chiller.jpg"><img width="600" height="599" src="../../wp-content/uploads/2022/08/Drawer-Counter-Chiller-600x599.jpg" class="wp-post-image" alt="" title="Drawer-Counter-Chiller" data-caption="" data-src="https://jrtech.com.my/wp-content/uploads/2022/08/Drawer-Counter-Chiller.jpg" data-large_image="https://jrtech.com.my/wp-content/uploads/2022/08/Drawer-Counter-Chiller.jpg" data-large_image_width="764" data-large_image_height="763" decoding="async" fetchpriority="high" srcset="../../wp-content/uploads/2022/08/Drawer-Counter-Chiller-600x599.jpg 600w, ../../wp-content/uploads/2022/08/Drawer-Counter-Chiller-300x300.jpg 300w, ../../wp-content/uploads/2022/08/Drawer-Counter-Chiller-150x150.jpg 150w, ../../wp-content/uploads/2022/08/Drawer-Counter-Chiller-72x72.jpg 72w, ../../wp-content/uploads/2022/08/Drawer-Counter-Chiller-100x100.jpg 100w, ../../wp-content/uploads/2022/08/Drawer-Counter-Chiller.jpg 764w" sizes="(max-width: 600px) 100vw, 600px" /></a></div>	</figure>
+</div>
+
+	<div class="summary entry-summary">
+		<h1 class="product_title entry-title">Drawer Counter Chiller</h1><p class="price">Request for Quote</p>
+
+	<form class="cart" action="index.html" method="post" enctype='multipart/form-data'>
+		
+			<div class="quantity">
+				<label class="screen-reader-text" for="quantity_6a39503644e54">Drawer Counter Chiller quantity</label>
+		<input
+			type="number"
+			id="quantity_6a39503644e54"
+			class="input-text qty text"
+			step="1"
+			min="1"
+			max=""
+			name="quantity"
+			value="1"
+			title="Qty"
+			size="4"
+			placeholder=""
+			inputmode="numeric"
+			autocomplete="off"
+		/>
+			</div>
+	<a href="javascript:void(0)" rel="nofollow" data-product_id="13867" data-product_sku="" class="afrfqbt_single_page button single_add_to_cart_button alt product_type_simple">Request a Quote</a>		
+	</form>
+
+	<div class="product_meta">
+
+	
+	
+	<span class="posted_in">Category: <a href="../../product-category/modelux/index.html" rel="tag">Mo'delux</a></span>
+	
+	
+</div>
+	</div>
+
+	
+	<div class="woocommerce-tabs wc-tabs-wrapper">
+		<ul class="tabs wc-tabs" role="tablist">
+							<li class="description_tab" id="tab-title-description" role="tab" aria-controls="tab-description">
+					<a href="index.html#tab-description">
+						Description					</a>
+				</li>
+							<li class="additional_information_tab" id="tab-title-additional_information" role="tab" aria-controls="tab-additional_information">
+					<a href="index.html#tab-additional_information">
+						Additional information					</a>
+				</li>
+					</ul>
+					<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description">
+				
+	<h2>Description</h2>
+
+<div class="vc_row wpb_row vc_row-fluid vc_custom_1657765008864 vc_row-has-fill"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<h1 style="text-align: center;"><span style="color: #ffffff;">Click Here For Free Demo Consultation</span></h1>
+
+		</div>
+	</div>
+<p class="text-center"><a href="../../quote-form/index.html" class="btn btn-regular arrow-right"><span>Read More</span></a></p></div></div></div></div>
+			</div>
+					<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content wc-tab" id="tab-additional_information" role="tabpanel" aria-labelledby="tab-title-additional_information">
+				
+	<h2>Additional information</h2>
+
+<table class="woocommerce-product-attributes shop_attributes">
+			<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_width">
+			<th class="woocommerce-product-attributes-item__label">Width</th>
+			<td class="woocommerce-product-attributes-item__value"><p>20.3 cm</p>
+</td>
+		</tr>
+			<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_length">
+			<th class="woocommerce-product-attributes-item__label">Length</th>
+			<td class="woocommerce-product-attributes-item__value"><p>33.7 cm</p>
+</td>
+		</tr>
+			<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_height">
+			<th class="woocommerce-product-attributes-item__label">Height</th>
+			<td class="woocommerce-product-attributes-item__value"><p>30 cm</p>
+</td>
+		</tr>
+			<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_weight">
+			<th class="woocommerce-product-attributes-item__label">Weight</th>
+			<td class="woocommerce-product-attributes-item__value"><p>5 kg</p>
+</td>
+		</tr>
+			<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_water">
+			<th class="woocommerce-product-attributes-item__label">Water</th>
+			<td class="woocommerce-product-attributes-item__value"><p>7 litre</p>
+</td>
+		</tr>
+	</table>
+			</div>
+		
+			</div>
+
+
+	<section class="related products">
+
+					<h2>Related products</h2>
+				
+		<ul class="products columns-3">
+
+			
+					<li class="product type-product post-13865 status-publish first instock product_cat-modelux has-post-thumbnail shipping-taxable purchasable product-type-simple">
+	<a href="../4-door-upright-mds-1040hrf1/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src="../../wp-content/uploads/2022/08/4-Door-Upright-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" srcset="../../wp-content/uploads/2022/08/4-Door-Upright-300x300.jpg 300w, ../../wp-content/uploads/2022/08/4-Door-Upright-150x150.jpg 150w, ../../wp-content/uploads/2022/08/4-Door-Upright-72x72.jpg 72w, ../../wp-content/uploads/2022/08/4-Door-Upright-600x599.jpg 600w, ../../wp-content/uploads/2022/08/4-Door-Upright-100x100.jpg 100w, ../../wp-content/uploads/2022/08/4-Door-Upright.jpg 764w" sizes="(max-width: 300px) 100vw, 300px" /><h2 class="woocommerce-loop-product__title">4 Door Upright MDS 1040HRF1</h2>
+	<span class="price">Request for Quote</span>
+</a><a href="javascript:void(0)" rel="nofollow" data-product_id="13865" data-product_sku="" class="afrfqbt button add_to_cart_button product_type_simple">Request a Quote</a></li>
+
+			
+		</ul>
+
+	</section>
+	</div>
+
+
+		
+					</main>
+		
+									<div class="col-xs-12 col-md-3 ">
+						<aside class="sidebar-nav">
+							<div class="widget woocommerce widget_product_search sidebar-nav"><h3 class="sidebar-heading">Search</h3><form role="search" method="get" class="woocommerce-product-search" action="../../index.html">
+	<label class="screen-reader-text" for="woocommerce-product-search-field-0">Search for:</label>
+	<input type="search" id="woocommerce-product-search-field-0" class="search-field" placeholder="Search products&hellip;" value="" name="s" />
+	<button type="submit" value="Search">Search</button>
+	<input type="hidden" name="post_type" value="product" />
+</form>
+</div><div class="widget woocommerce widget_product_categories sidebar-nav"><h3 class="sidebar-heading">Brand</h3><ul class="product-categories"><li class="cat-item cat-item-53 cat-parent"><a href="../../product-category/j-nox/index.html">J-Nox</a><ul class='children'>
+<li class="cat-item cat-item-55"><a href="../../product-category/j-nox/automatic-cooking-machine/index.html">Automatic Cooking Machine</a></li>
+<li class="cat-item cat-item-74"><a href="../../product-category/j-nox/commercial-induction-fryer-with-oil-filters/index.html">Commercial Induction Fryer with Oil FIlters</a></li>
+<li class="cat-item cat-item-84"><a href="../../product-category/j-nox/double-burner-induction-soup-cooker/index.html">Double Burner Induction Soup Cooker</a></li>
+<li class="cat-item cat-item-70"><a href="../../product-category/j-nox/double-tabletop-induction-built-in-flat-cooker/index.html">Double Tabletop Induction Built-in Flat Cooker</a></li>
+<li class="cat-item cat-item-71"><a href="../../product-category/j-nox/double-tabletop-induction-built-in-flat-cooker-wok-cooker/index.html">Double Tabletop Induction Built-in Flat Cooker &amp; Wok Cooker</a></li>
+<li class="cat-item cat-item-67"><a href="../../product-category/j-nox/double-tabletop-induction-flat-wok-cooker/index.html">Double Tabletop Induction Flat &amp; Wok Cooker</a></li>
+<li class="cat-item cat-item-63"><a href="../../product-category/j-nox/double-tabletop-induction-flat-cooker/index.html">Double Tabletop Induction Flat Cooker</a></li>
+<li class="cat-item cat-item-62"><a href="../../product-category/j-nox/freestanding-automatic-cooking-machine/index.html">Freestanding Automatic Cooking Machine</a></li>
+<li class="cat-item cat-item-96"><a href="../../product-category/j-nox/freestanding-double-door-induction-steamer/index.html">Freestanding Double Door Induction Steamer</a></li>
+<li class="cat-item cat-item-58"><a href="../../product-category/j-nox/freestanding-induction-automatic-pasta-cooker/index.html">Freestanding Induction Automatic Pasta Cooker</a></li>
+<li class="cat-item cat-item-93"><a href="../../product-category/j-nox/freestanding-induction-dim-sum-steamer/index.html">Freestanding Induction Dim Sum Steamer</a></li>
+<li class="cat-item cat-item-89"><a href="../../product-category/j-nox/freestanding-induction-double-larger-wok-cooker/index.html">Freestanding Induction Double Larger Wok Cooker</a></li>
+<li class="cat-item cat-item-92"><a href="../../product-category/j-nox/freestanding-induction-double-wok-cooker-with-two-sinks/index.html">Freestanding Induction Double Wok Cooker with Two Sinks</a></li>
+<li class="cat-item cat-item-81"><a href="../../product-category/j-nox/freestanding-induction-four-burners/index.html">Freestanding Induction Four Burners</a></li>
+<li class="cat-item cat-item-73"><a href="../../product-category/j-nox/freestanding-induction-fryer/index.html">Freestanding Induction Fryer</a></li>
+<li class="cat-item cat-item-76"><a href="../../product-category/j-nox/freestanding-induction-griddle/index.html">Freestanding Induction Griddle</a></li>
+<li class="cat-item cat-item-86"><a href="../../product-category/j-nox/freestanding-induction-large-soup-cooker/index.html">Freestanding Induction Large Soup Cooker</a></li>
+<li class="cat-item cat-item-94"><a href="../../product-category/j-nox/freestanding-induction-sea-food-steamer/index.html">Freestanding Induction Sea Food Steamer</a></li>
+<li class="cat-item cat-item-88"><a href="../../product-category/j-nox/freestanding-induction-single-larger-wok-cooker/index.html">Freestanding Induction Single Larger Wok Cooker</a></li>
+<li class="cat-item cat-item-90"><a href="../../product-category/j-nox/freestanding-induction-single-wok-cooker/index.html">Freestanding Induction Single Wok Cooker</a></li>
+<li class="cat-item cat-item-91"><a href="../../product-category/j-nox/freestanding-induction-single-wok-cooker-with-one-sink/index.html">Freestanding Induction Single Wok Cooker with One Sink</a></li>
+<li class="cat-item cat-item-82"><a href="../../product-category/j-nox/freestanding-induction-six-burners/index.html">Freestanding Induction Six Burners</a></li>
+<li class="cat-item cat-item-83"><a href="../../product-category/j-nox/freestanding-induction-soup-cooker/index.html">Freestanding Induction Soup Cooker</a></li>
+<li class="cat-item cat-item-85"><a href="../../product-category/j-nox/freestanding-induction-stew-soup-cooker/index.html">Freestanding Induction Stew Soup Cooker</a></li>
+<li class="cat-item cat-item-77"><a href="../../product-category/j-nox/freestanding-induction-teppanyaki/index.html">Freestanding Induction Teppanyaki</a></li>
+<li class="cat-item cat-item-95"><a href="../../product-category/j-nox/freestanding-single-door-induction-steamer/index.html">Freestanding Single Door Induction Steamer</a></li>
+<li class="cat-item cat-item-87"><a href="../../product-category/j-nox/freestanding-tilting-induction-soup-stove/index.html">Freestanding Tilting Induction Soup Stove</a></li>
+<li class="cat-item cat-item-61"><a href="../../product-category/j-nox/intelligent-stir-fryer-cooking-machine/index.html">Intelligent Stir Fryer Cooking Machine</a></li>
+<li class="cat-item cat-item-97"><a href="../../product-category/j-nox/multifunction-induction-food-steamer/index.html">Multifunction Induction Food Steamer</a></li>
+<li class="cat-item cat-item-60"><a href="../../product-category/j-nox/tabletop-automatic-cooking-machine/index.html">Tabletop Automatic Cooking Machine</a></li>
+<li class="cat-item cat-item-68"><a href="../../product-category/j-nox/tabletop-induction-build-in-wok-cooker/index.html">Tabletop Induction Build-in Wok Cooker</a></li>
+<li class="cat-item cat-item-69"><a href="../../product-category/j-nox/tabletop-induction-built-in-flat-cooker/index.html">Tabletop Induction Built-in Flat Cooker</a></li>
+<li class="cat-item cat-item-57"><a href="../../product-category/j-nox/tabletop-induction-deep-fryer/index.html">Tabletop Induction Deep Fryer</a></li>
+<li class="cat-item cat-item-56"><a href="../../product-category/j-nox/tabletop-induction-flat-cooker/index.html">Tabletop Induction Flat Cooker</a></li>
+<li class="cat-item cat-item-78"><a href="../../product-category/j-nox/tabletop-induction-four-burners/index.html">Tabletop Induction Four Burners</a></li>
+<li class="cat-item cat-item-59"><a href="../../product-category/j-nox/tabletop-induction-griddle/index.html">Tabletop Induction Griddle</a></li>
+<li class="cat-item cat-item-75"><a href="../../product-category/j-nox/tabletop-induction-pasta-cooker/index.html">Tabletop Induction Pasta Cooker</a></li>
+<li class="cat-item cat-item-79"><a href="../../product-category/j-nox/tabletop-induction-six-burners/index.html">Tabletop Induction Six Burners</a></li>
+<li class="cat-item cat-item-65"><a href="../../product-category/j-nox/tabletop-induction-wok-cooker/index.html">Tabletop Induction Wok Cooker</a></li>
+<li class="cat-item cat-item-66"><a href="../../product-category/j-nox/thin-tabletop-induction-wok-cooker/index.html">Thin Tabletop Induction Wok Cooker</a></li>
+</ul>
+</li>
+<li class="cat-item cat-item-54"><a href="../../product-category/jr-chem/index.html">JR-Chem</a></li>
+<li class="cat-item cat-item-47"><a href="../../product-category/megcook/index.html">Megcook</a></li>
+<li class="cat-item cat-item-52 current-cat"><a href="../../product-category/modelux/index.html">Mo'delux</a></li>
+<li class="cat-item cat-item-50"><a href="../../product-category/tamago/index.html">Tamago</a></li>
+</ul></div>						</aside>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+				    <!-- Begin Bot CTA -->
+			<a href="../../quote-form/index.html" class="cta-footer">
+				<div>
+					<h2>Get a free quote for your project. Click here.</h2>
+			    </div>
+			</a> <!-- End Bot CTA -->
+		
+					<!-- Begin Footer -->
+			<footer id="footer" class="footer-dark">
+				<div class="main-footer">
+					<div class="container">
+						<div class="row">
+																<div class="col-xs-12 col-sm-3 show-on-mobile widget-footer">
+										<div class="widget-container"><h4 class="footer-header">About us</h4>			<div class="textwidget"><p><strong>JR-TECH Solution Sdn. Bhd. </strong>strives to develop and maintain a good relationship with our clients to encompass common element for mutual success. These elements are an exchange of information, continuous improvement in service levels, an open line of communication and customer responsiveness</p>
+</div>
+		</div>									</div>
+																	<div class="col-xs-12 col-sm-3 show-on-mobile widget-footer">
+										<div class="widget-container"><h4 class="footer-header">Quick Links</h4><div class="menu-quick-links-container"><ul id="menu-quick-links" class="menu"><li id="menu-item-13944" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-13944"><a href="../../index.html">Home</a></li>
+<li id="menu-item-13945" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13945"><a href="../../about-us/index.html">About Us</a></li>
+<li id="menu-item-13946" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13946"><a href="../../services/index.html">Services</a></li>
+<li id="menu-item-13583" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13583"><a href="index.html#">Projects</a></li>
+<li id="menu-item-13947" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-13947"><a href="../../products/index.html">Products</a></li>
+<li id="menu-item-13585" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13585"><a href="index.html#">Clients</a></li>
+<li id="menu-item-13948" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13948"><a href="../../contact-us/index.html">Contact Us</a></li>
+</ul></div></div>									</div>
+																	<div class="col-xs-12 col-sm-3 show-on-mobile widget-footer">
+										<div class="widget-container"><h4 class="footer-header">Services</h4><div class="menu-services-container"><ul id="menu-services" class="menu"><li id="menu-item-13411" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13411"><a href="../../index.html%3Fpage_id=9239.html">Kitchen Equipment</a></li>
+<li id="menu-item-13412" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13412"><a href="../../index.html%3Fpage_id=9301.html">Kitchen Design &#038; Build</a></li>
+<li id="menu-item-13413" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13413"><a href="../../index.html%3Fpage_id=9297.html">Chemicals</a></li>
+<li id="menu-item-13414" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13414"><a href="../../index.html%3Fpage_id=9246.html">Kitchen Service</a></li>
+<li id="menu-item-13415" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13415"><a href="../../index.html%3Fpage_id=9304.html">Grease Trap Service</a></li>
+</ul></div></div>									</div>
+																	<div class="col-xs-12 col-sm-3 show-on-mobile widget-footer">
+										<div class="widget-container"><h4 class="footer-header">Contact us</h4>			<div class="textwidget">Phone: +604-657 2916
+<hr>
+Email: info@jrtech.com.my
+<hr>
+Address: 556-Y, Mukim 13, Batu Uban, Jalan Sultan Azlan Shah, 11700 Gelugor, Penang, Malaysia.
+<hr>
+<a href="../../contact-us/index.html" class="btn btn-primary arrow-right"><span>Contact us</span></a>
+</div>
+		</div>									</div>
+														</div>
+					</div>
+				</div>
+			</footer> <!-- End Footer -->
+		
+					<!-- Begin Footer Bot --> 
+			<div class="container-fluid" id="footer-bot">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<!-- Logo begin -->
+						    <div class="footer-logo-box">
+						    							    		JR Tech Solution						    	
+						    	<span class="copyright-text">© 2019 - 2022 JR-Tech Solution Sdn Bhd (856691-H) </span>
+						    	
+						    </div> <!-- Logo end -->
+						</div>
+						<div class="col-md-6">
+							<ul class="social">
+																	<li><a target="_blank" href="https://www.facebook.com/jrtech09"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+															</ul>
+													</div>
+					</div>
+				</div>
+			</div>  <!-- End Footer Bot -->
+		
+	</div> <!-- End wrapper -->
+
+			<a id="btnTop"></a>
+		
+	<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/interico\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org\/","@type":"Product","@id":"https:\/\/jrtech.com.my\/product\/drawer-counter-chiller\/#product","name":"Drawer Counter Chiller","url":"https:\/\/jrtech.com.my\/product\/drawer-counter-chiller\/","description":"Click Here For Free Demo Consultation\n\n\t\t\n\t\nRead More","image":"https:\/\/jrtech.com.my\/wp-content\/uploads\/2022\/08\/Drawer-Counter-Chiller.jpg","sku":13867,"offers":[{"@type":"Offer","price":"0.00","priceValidUntil":"2027-12-31","priceSpecification":{"price":"0.00","priceCurrency":"MYR","valueAddedTaxIncluded":"false"},"priceCurrency":"MYR","availability":"http:\/\/schema.org\/InStock","url":"https:\/\/jrtech.com.my\/product\/drawer-counter-chiller\/","seller":{"@type":"Organization","name":"JR Tech Solution","url":"https:\/\/jrtech.com.my"}}]}</script>	<script type="text/javascript">
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})();
+	</script>
+	<style id='core-block-supports-inline-css' type='text/css'>
+/**
+ * Core styles: block-supports
+ */
+
+</style>
+<script type="text/javascript" src="../../wp-content/plugins/logo-carousel-free/public/assets/js/swiper-bundle.min.js%3Fver=3.4.12" id="sp-lc-swiper-js-js"></script>
+<script type="text/javascript" id="sp-lc-script-js-extra">
+/* <![CDATA[ */
+var sp_logo_carousel_free_g = {"path":"https:\/\/jrtech.com.my\/wp-content\/plugins\/logo-carousel-free\/","loadScript":"https:\/\/jrtech.com.my\/wp-content\/plugins\/logo-carousel-free\/public\/assets\/js\/splc-script.min.js","url":"https:\/\/jrtech.com.my\/wp-admin\/post-new.php?post_type=sp_lc_shortcodes","shortCodeList":[{"id":13996,"title":"Clients"}]};
+/* ]]> */
+</script>
+<script type="text/javascript" src="../../wp-content/plugins/logo-carousel-free/public/assets/js/splc-script.min.js%3Fver=3.4.12" id="sp-lc-script-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/woocommerce-request-a-quote/assets/js/jquery.modal.min.js%3Fver=1.0" id="jquery-model-js"></script>
+<script type="text/javascript" id="afrfq-frontj-js-extra">
+/* <![CDATA[ */
+var afrfq_phpvars = {"admin_url":"https:\/\/jrtech.com.my\/wp-admin\/admin-ajax.php","nonce":"8d22e5364f","redirect":"","pageurl":"https:\/\/jrtech.com.my\/request-a-quote\/"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="../../wp-content/plugins/woocommerce-request-a-quote/assets/js/afrfq_front.js%3Fver=1.3" id="afrfq-frontj-js"></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?ver=1.0" id="Google reCaptcha JS-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/js_composer/assets/lib/bower/flexslider/jquery.flexslider-min.js%3Fver=6.4.2" id="flexslider-js"></script>
+<script type="text/javascript" id="wc-single-product-js-extra">
+/* <![CDATA[ */
+var wc_single_product_params = {"i18n_required_rating_text":"Please select a rating","review_rating_required":"yes","flexslider":{"rtl":false,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"zoom_enabled":"","zoom_options":[],"photoswipe_enabled":"","photoswipe_options":{"shareEl":false,"closeOnScroll":false,"history":false,"hideAnimationDuration":0,"showAnimationDuration":0},"flexslider_enabled":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="../../wp-content/plugins/woocommerce/assets/js/frontend/single-product.js%3Fver=6.8.2" id="wc-single-product-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.js%3Fver=2.1.4-wc.6.8.2" id="js-cookie-js"></script>
+<script type="text/javascript" id="woocommerce-js-extra">
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="../../wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.js%3Fver=6.8.2" id="woocommerce-js"></script>
+<script type="text/javascript" id="wc-cart-fragments-js-extra">
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_0291f89e083357ea4859663d8e9a4a5a","fragment_name":"wc_fragments_0291f89e083357ea4859663d8e9a4a5a","request_timeout":"5000"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="../../wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.js%3Fver=6.8.2" id="wc-cart-fragments-js"></script>
+<script type="text/javascript" src="../../wp-content/themes/interico/js/navigation.js%3Fver=20151215" id="navigation-js"></script>
+<script type="text/javascript" src="../../wp-content/themes/interico/js/bootstrap.min.js%3Fver=6.8.1" id="bootstrap-js-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/js_composer/assets/lib/bower/isotope/dist/isotope.pkgd.min.js%3Fver=6.4.2" id="isotope-js"></script>
+<script type="text/javascript" src="../../wp-includes/js/imagesloaded.min.js%3Fver=5.0.0" id="imagesloaded-js"></script>
+<script type="text/javascript" src="../../wp-content/themes/interico/js/slick.min.js%3Fver=6.8.1" id="slick-js"></script>
+<script type="text/javascript" src="../../wp-content/themes/interico/js/themicart.js%3Fver=6.8.1" id="interico-themicart-js"></script>
+<script type="text/javascript" src="../../wp-includes/js/dist/vendor/wp-polyfill.js%3Fver=3.15.0" id="wp-polyfill-js"></script>
+<script type="text/javascript" id="contact-form-7-js-extra">
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/jrtech.com.my\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="../../wp-content/plugins/contact-form-7/includes/js/index.js%3Fver=5.6.2" id="contact-form-7-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/wp-featherlight/js/vendor/jquery.detect_swipe.js%3Fver=2.1.4" id="jquery-detect-swipe-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/wp-featherlight/js/vendor/featherlight.js%3Fver=1.7.9" id="featherlight-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/wp-featherlight/js/vendor/featherlight.gallery.js%3Fver=1.7.9" id="featherlight-gallery-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/wp-featherlight/js/wpFeatherlight.js%3Fver=1.3.4" id="wp-featherlight-js"></script>
+<script type="text/javascript" src="../../wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js%3Fver=6.4.2" id="wpb_composer_front_js-js"></script>
+</body>
+</html>
+<!-- Page generated by LiteSpeed Cache 5.2 on 2026-06-22 15:09:42 -->
