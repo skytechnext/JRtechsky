@@ -7,7 +7,13 @@ in George Town, Penang).
 Everything recalculates live as you type. Nothing is sent anywhere — your inputs are
 saved only in your own browser (`localStorage`).
 
-🔗 **Open it:** just load `index.html` in a browser, or publish the folder to GitHub Pages.
+## 🔗 Preview the site (one click)
+
+- **Live site (GitHub Pages):** **https://skytechnext.github.io/JRtechsky/**
+  — published automatically by [`.github/workflows/pages.yml`](.github/workflows/pages.yml) on every push.
+- **Instant preview, no setup** (renders this branch straight from GitHub):
+  [open the estimator »](https://htmlpreview.github.io/?https://github.com/skytechnext/JRtechsky/blob/claude/pensive-einstein-dlerlg/index.html)
+- **Locally:** just open `index.html` in any browser — no build step.
 
 ---
 
@@ -83,11 +89,13 @@ Payback on setup      = setup fee ÷ client net saving
 
 ## Deploy to GitHub Pages
 
-This is a static site — no build step.
+This is a static site — no build step. Deployment is automated:
 
-1. Push these files to the repository (already on branch `claude/pensive-einstein-dlerlg`).
-2. In **Settings → Pages**, set the source to the branch and the root (`/`) folder.
-3. The estimator will be served at `https://<org>.github.io/<repo>/`.
+- [`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs on every push to
+  this branch (and on demand via **Actions → Run workflow**). It enables Pages on the
+  first run and publishes the site to **https://skytechnext.github.io/JRtechsky/**.
+- The first run needs Actions to be allowed to manage Pages. If it doesn't appear,
+  set **Settings → Pages → Source: GitHub Actions** once, then re-run the workflow.
 
 ## Customising the seeded numbers
 

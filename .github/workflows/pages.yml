@@ -1,0 +1,47 @@
+name: Deploy site to GitHub Pages
+
+# Publishes the kitchen estimator to GitHub Pages so it has a permanent,
+# one-click preview URL: https://skytechnext.github.io/JRtechsky/
+#
+# Runs automatically on every push to this branch, and can be started
+# manually with the "Run workflow" button (Actions tab → this workflow).
+
+on:
+  push:
+    branches: ["claude/pensive-einstein-dlerlg"]
+  workflow_dispatch:
+
+# Least-privilege permissions needed to publish Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deploys at once; let the newest win.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true # turns Pages on the first time this runs
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "." # static site lives at the repo root
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
