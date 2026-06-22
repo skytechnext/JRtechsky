@@ -1,0 +1,11 @@
+# dependencies (none required — this is a static site)
+node_modules/
+package.json
+package-lock.json
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
