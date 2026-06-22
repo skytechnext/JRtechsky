@@ -1,0 +1,13 @@
+xml_id,product_xml_id,product_code,bom_type,qty,uom
+bom_01,prod_fab_01,prod_fab_01,normal,1,Units
+bom_02,prod_fab_02,prod_fab_02,normal,1,Units
+bom_03,prod_fab_03,prod_fab_03,normal,1,Units
+bom_04,prod_fab_04,prod_fab_04,normal,1,Units
+bom_05,prod_fab_05,prod_fab_05,normal,1,Units
+bom_06,prod_fab_06,prod_fab_06,normal,1,Units
+bom_07,prod_fab_07,prod_fab_07,normal,1,Units
+bom_08,prod_fab_08,prod_fab_08,normal,1,Units
+bom_09,prod_fab_09,prod_fab_09,normal,1,Units
+bom_10,prod_fab_10,prod_fab_10,normal,1,Units
+bom_11,prod_fab_11,prod_fab_11,normal,1,Units
+bom_12,prod_fab_12,prod_fab_12,normal,1,Units

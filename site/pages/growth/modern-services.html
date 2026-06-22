@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Alternative Services — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="modern-services">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Growth &amp; Strategy</b> · Modern Alternative Services</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Growth &amp; Strategy</span>
+      <h1>New service lines that turn JR-Tech's install base into recurring, AI-enabled revenue.</h1>
+      <p>JR-Tech already touches the kitchen at every point — equipment, fabrication, service and
+      chemicals. The next move is to monetise that footprint as recurring, outcome-based services that
+      ride the brand's own "Experience the Future of Kitchens" positioning. This page proposes five
+      modern service lines, sizes the opportunity, and shows how each one is unlocked by the Odoo 19
+      platform.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <h2>Five new service lines</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag green">EaaS</span><h3>Equipment-as-a-Service</h3>
+            <p>Subscription access to ovens, dishwashers and induction ranges — bundled install,
+            servicing and upgrade path — instead of capex. Extends the existing rental line into a
+            true managed offer.</p></div>
+          <div class="card"><span class="tag green">PdM</span><h3>Predictive-maintenance subscription</h3>
+            <p>IoT sensors on critical equipment flag faults before failure; sold as an uptime
+            subscription on top of the Gold service tier.</p></div>
+          <div class="card"><span class="tag green">Audit</span><h3>Energy-efficiency audits</h3>
+            <p>Paid kitchen energy &amp; sustainability assessments — directly on-brand with the
+            energy-efficiency / smokeless / cook-&amp;-chill positioning — feeding equipment &amp;
+            retrofit sales.</p></div>
+          <div class="card"><span class="tag green">KaaS</span><h3>Kitchen-as-a-Service / cloud-kitchen fit-out</h3>
+            <p>Turnkey design-build-operate packages for cloud-kitchen and central-kitchen operators —
+            JR-Tech's consulting + fabrication + equipment + chemicals as one subscription-style deal.</p></div>
+          <div class="card"><span class="tag green">IoT</span><h3>Chemical auto-replenishment IoT</h3>
+            <p>Smart dosing units sense consumption and auto-reorder warewash, laundry and pool
+            chemicals — zero-touch resupply with the highest switching cost of all.</p></div>
+          <div class="card"><span class="tag">∑</span><h3>One platform underneath</h3>
+            <p>Every line above is a recurring contract, an asset to track and a service to dispatch —
+            exactly what Odoo 19 already manages for the core business.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Opportunity sizing</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="opp" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Where to lean first</h3>
+            <p>Plotted as 3-year revenue potential against time-to-launch. The fastest, stickiest wins
+            extend things JR-Tech already does:</p>
+            <ul>
+              <li><b>Chemical auto-replenish IoT</b> — quickest to launch, defends the chemical line.</li>
+              <li><b>Predictive maintenance</b> — natural up-sell on the service base.</li>
+              <li><b>EaaS</b> &amp; <b>KaaS</b> — largest prize, longer build, capital-aware.</li>
+              <li><b>Energy audits</b> — low-cost lead engine that pulls equipment sales.</li>
+            </ul>
+            <div class="callout tn"><b>So-what:</b> these are not greenfield ventures — they are
+            recurring-revenue wrappers around the existing four lines.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Service-line economics at a glance</h2>
+        <table class="tbl">
+          <tr><th>Service</th><th>Revenue model</th><th>Stickiness</th><th>Time to launch</th><th>Primary Odoo apps</th></tr>
+          <tr><td>Equipment-as-a-Service</td><td>Monthly subscription</td><td class="tag green">High</td><td>Medium</td><td>Rental · Subscriptions · Maintenance</td></tr>
+          <tr><td>Predictive maintenance</td><td>Uptime subscription</td><td class="tag green">High</td><td>Medium</td><td>Maintenance · IoT · Field Service</td></tr>
+          <tr><td>Energy-efficiency audits</td><td>Fixed-fee + retrofit pull-through</td><td class="tag warn">Medium</td><td class="tag green">Fast</td><td>Project · CRM · Sales</td></tr>
+          <tr><td>Kitchen-as-a-Service</td><td>Design-build-operate package</td><td class="tag green">High</td><td>Slow</td><td>Project · Manufacturing · Subscriptions</td></tr>
+          <tr><td>Chemical auto-replenish IoT</td><td>Usage subscription</td><td class="tag green">Very high</td><td class="tag green">Fast</td><td>IoT · Subscriptions · Inventory</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>How a new service line runs on Odoo 19</h2>
+        <div class="mermaid">
+flowchart LR
+    S[IoT sensor / usage event] --> O[Odoo IoT & Maintenance]
+    O --> T{Threshold / fault?}
+    T -- consumption low --> R[Auto reorder<br/>Subscriptions + Inventory]
+    T -- fault predicted --> F[Field Service work order]
+    R --> INV[Auto-invoice + MyInvois]
+    F --> INV
+    INV --> A[Analytics: LTV, churn, uptime]
+        </div>
+        <div class="callout"><b>The unlock:</b> each modern service is just sensing → contract →
+        dispatch → recurring invoice. Because Odoo already holds the customer, asset, stock and
+        service record, launching a new line is configuration, not a new system — the same advantage
+        that makes <a href="expansion.html">regional expansion</a> cheap.</div>
+      </section>
+
+      <section class="section">
+        <h2>What this means for the engagement</h2>
+        <div class="callout tn"><b>The platform pays for itself twice.</b> First by fixing today's
+        operations (<a href="operations-strategy.html">Operations Strategy</a>); then by enabling
+        entirely new recurring-revenue lines that competitors — narrow distributors, fabricators and
+        chemical routers alike (<a href="../intel/top3-competitors.html">Competitor Deep-Dive</a>) —
+        cannot assemble without JR-Tech's breadth. Sequence the fast, sticky wins first; fund the
+        larger EaaS/KaaS bets from the recurring base they create.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="operations-strategy.html">← Prev: Operations Strategy</a>
+        <a href="gtm.html">Next: Go-to-Market &amp; Marketing →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Opportunity sizing is TechNext analyst modelling — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('opp'), {
+  type:'bubble',
+  data:{ datasets:[
+    { label:'Chemical auto-replenish IoT', data:[{x:2,y:6,r:20}], backgroundColor:'rgba(22,192,152,.55)', borderColor:'#16C098' },
+    { label:'Predictive maintenance', data:[{x:4,y:7,r:18}], backgroundColor:'rgba(127,169,222,.55)', borderColor:'#3F6FB0' },
+    { label:'Energy-efficiency audits', data:[{x:2,y:4,r:13}], backgroundColor:'rgba(232,161,58,.55)', borderColor:'#E8A13A' },
+    { label:'Equipment-as-a-Service', data:[{x:6,y:9,r:26}], backgroundColor:'rgba(11,31,58,.5)', borderColor:'#0B1F3A' },
+    { label:'Kitchen-as-a-Service', data:[{x:8,y:8,r:24}], backgroundColor:'rgba(63,111,176,.5)', borderColor:'#3F6FB0' }
+  ]},
+  options:{ plugins:{ legend:{position:'bottom'} },
+    scales:{ x:{ min:0,max:10, title:{display:true,text:'Time to launch (months) →'} },
+             y:{ min:0,max:10, title:{display:true,text:'3-year revenue potential →'} } } }
+});
+</script>
+</body>
+</html>

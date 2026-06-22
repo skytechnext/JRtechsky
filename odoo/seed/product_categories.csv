@@ -1,0 +1,18 @@
+xml_id,name,parent_xml_id,note
+cat_equip,Kitchen Equipment,,Saleable / All
+cat_equip_cook,Cooking Equipment,cat_equip,cat_equip
+cat_equip_refrig,Refrigeration,cat_equip,cat_equip
+cat_equip_prep,Prep & Food Processing,cat_equip,cat_equip
+cat_equip_dish,Dishwashers & Warewashing,cat_equip,cat_equip
+cat_equip_acc,Equipment Accessories & Spares,cat_equip,cat_equip
+cat_fab,Stainless-Steel Fabrication,,Saleable / All
+cat_fab_raw,Raw SS Materials & Components,cat_fab,cat_fab
+cat_chem,Chemical Supplies,,Saleable / All
+cat_chem_dish,Dishwasher & Kitchen Cleaning,cat_chem,cat_chem
+cat_chem_house,Housekeeping Detergents,cat_chem,cat_chem
+cat_chem_laundry,Laundry Chemicals,cat_chem,cat_chem
+cat_chem_pool,Swimming-Pool Chemicals,cat_chem,cat_chem
+cat_house,Housekeeping & Pool Equipment,cat_equip,cat_equip
+cat_rental,Rental Equipment,cat_equip,cat_equip
+cat_service,Services,,Service
+cat_consult,Consulting & Design,cat_service,cat_service

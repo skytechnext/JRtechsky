@@ -1,0 +1,138 @@
+xml_id,name,default_code,category,product_type,uom,list_price,standard_cost,sale_tax,purchase_tax,can_be_sold,can_be_purchased,rent_ok,subscription,route,rmin,rmax
+prod_cook_01,4-Burner Gas Range w/ Oven,EQ-CK-001,cat_equip_cook,storable,Units,8500.0,6100.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_02,6-Burner Gas Range w/ Oven,EQ-CK-002,cat_equip_cook,storable,Units,11200.0,8050.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_03,Heavy-Duty Stockpot Stove,EQ-CK-003,cat_equip_cook,storable,Units,4200.0,2900.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_04,Commercial Wok Range (2-ring),EQ-CK-004,cat_equip_cook,storable,Units,6800.0,4700.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_05,Induction Wok Cooker 5kW (Advanced Induction Series),EQ-CK-005,cat_equip_cook,storable,Units,9800.0,6900.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_06,Induction Cooktop Twin 8kW,EQ-CK-006,cat_equip_cook,storable,Units,13500.0,9600.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_07,Salamander Grill,EQ-CK-007,cat_equip_cook,storable,Units,3900.0,2600.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_08,Char-Grill / Gas Griddle 900mm,EQ-CK-008,cat_equip_cook,storable,Units,5600.0,3800.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_09,Deep Fryer Double-Tank 2x12L,EQ-CK-009,cat_equip_cook,storable,Units,4300.0,2850.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_10,Convection Oven 6-Tray,EQ-CK-010,cat_equip_cook,storable,Units,12800.0,8900.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_11,Combi Steam Oven 10-Grid (Cook & Chill),EQ-CK-011,cat_equip_cook,storable,Units,42000.0,31000.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_12,Tilting Bratt Pan 80L,EQ-CK-012,cat_equip_cook,storable,Units,28500.0,20500.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_13,Rice Cooker Gas 10L,EQ-CK-013,cat_equip_cook,storable,Units,2100.0,1350.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_14,Pasta Cooker Electric,EQ-CK-014,cat_equip_cook,storable,Units,6200.0,4300.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_cook_15,Smokeless BBQ Grill (Brand AI Series),EQ-CK-015,cat_equip_cook,storable,Units,7400.0,5100.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_01,Upright Chiller 2-Door 1200L,EQ-RF-001,cat_equip_refrig,storable,Units,8900.0,6200.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_02,Upright Freezer 2-Door 1200L,EQ-RF-002,cat_equip_refrig,storable,Units,9800.0,6900.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_03,Undercounter Chiller 3-Door,EQ-RF-003,cat_equip_refrig,storable,Units,6400.0,4400.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_04,Blast Chiller 5-Tray (Cook & Chill),EQ-RF-004,cat_equip_refrig,storable,Units,26500.0,19000.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_05,Display Chiller Curved Glass,EQ-RF-005,cat_equip_refrig,storable,Units,7200.0,5000.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_06,Walk-in Cold Room Panel Set 3x3m,EQ-RF-006,cat_equip_refrig,storable,Units,32000.0,23000.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_07,Saladette Prep Fridge 1.8m,EQ-RF-007,cat_equip_refrig,storable,Units,5800.0,4000.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_08,Chest Freezer 500L,EQ-RF-008,cat_equip_refrig,storable,Units,3200.0,2100.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_09,Ice Maker 120kg/day,EQ-RF-009,cat_equip_refrig,storable,Units,9400.0,6700.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_ref_10,Beverage Cooler 2-Door,EQ-RF-010,cat_equip_refrig,storable,Units,4100.0,2750.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_01,Planetary Mixer 20L,EQ-PR-001,cat_equip_prep,storable,Units,5200.0,3500.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_02,Planetary Mixer 60L,EQ-PR-002,cat_equip_prep,storable,Units,14800.0,10500.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_03,Dough Sheeter 520mm,EQ-PR-003,cat_equip_prep,storable,Units,9600.0,6800.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_04,Meat Mincer Heavy-Duty,EQ-PR-004,cat_equip_prep,storable,Units,4300.0,2900.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_05,Vegetable Cutter / Slicer,EQ-PR-005,cat_equip_prep,storable,Units,3800.0,2500.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_06,Vacuum Packing Machine,EQ-PR-006,cat_equip_prep,storable,Units,5900.0,4100.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_07,Bowl Chopper 25L,EQ-PR-007,cat_equip_prep,storable,Units,18500.0,13000.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_08,Bench Top Spiral Mixer 10kg,EQ-PR-008,cat_equip_prep,storable,Units,6700.0,4600.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_09,Food Processor 5L,EQ-PR-009,cat_equip_prep,storable,Units,2800.0,1800.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_prep_10,Bone Saw Machine,EQ-PR-010,cat_equip_prep,storable,Units,4900.0,3300.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_dish_01,Undercounter Dishwasher,EQ-DW-001,cat_equip_dish,storable,Units,6800.0,4700.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_dish_02,Hood-Type Pass-Through Dishwasher,EQ-DW-002,cat_equip_dish,storable,Units,14500.0,10200.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_dish_03,Rack-Conveyor Dishwasher,EQ-DW-003,cat_equip_dish,storable,Units,52000.0,38000.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_dish_04,Flight-Type Dishwasher (Hotel),EQ-DW-004,cat_equip_dish,storable,Units,98000.0,72000.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_dish_05,Glasswasher Compact,EQ-DW-005,cat_equip_dish,storable,Units,4200.0,2800.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_dish_06,Utensil/Pot Washer,EQ-DW-006,cat_equip_dish,storable,Units,18900.0,13500.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_dish_07,Water Softener for Dishwasher,EQ-DW-007,cat_equip_dish,storable,Units,2600.0,1700.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_dish_08,Dishwasher Dosing Pump Kit,EQ-DW-008,cat_equip_dish,storable,Units,890.0,520.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_acc_01,Gas Regulator High-Pressure,EQ-AC-001,cat_equip_acc,storable,Units,145.0,85.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_02,SS Gas Hose 1.5m,EQ-AC-002,cat_equip_acc,storable,Units,65.0,32.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_03,Dishwasher Wash Arm,EQ-AC-003,cat_equip_acc,storable,Units,220.0,130.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_04,Dishwasher Rinse Jet Set,EQ-AC-004,cat_equip_acc,storable,Units,95.0,48.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_05,Thermostat Replacement,EQ-AC-005,cat_equip_acc,storable,Units,180.0,100.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_06,Door Gasket (Chiller),EQ-AC-006,cat_equip_acc,storable,Units,120.0,60.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_07,Compressor Relay,EQ-AC-007,cat_equip_acc,storable,Units,75.0,38.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_08,Burner Nozzle Set,EQ-AC-008,cat_equip_acc,storable,Units,60.0,28.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_09,GN Pan 1/1 SS,EQ-AC-009,cat_equip_acc,storable,Units,45.0,22.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_10,Dish Rack Glass 25-cell,EQ-AC-010,cat_equip_acc,storable,Units,85.0,45.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_11,Grease Filter Baffle SS,EQ-AC-011,cat_equip_acc,storable,Units,110.0,55.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_acc_12,Drain Pump Dishwasher,EQ-AC-012,cat_equip_acc,storable,Units,260.0,150.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,10,50
+prod_raw_01,SS304 Sheet 1.2mm 1219x2438,FAB-RAW-001,cat_fab_raw,storable,Units,320.0,210.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_02,SS304 Sheet 1.5mm 1219x2438,FAB-RAW-002,cat_fab_raw,storable,Units,410.0,275.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_03,SS304 Square Tube 38x38x1.5mm 6m,FAB-RAW-003,cat_fab_raw,storable,Units,95.0,58.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_04,SS304 Round Tube 50mm 6m,FAB-RAW-004,cat_fab_raw,storable,Units,110.0,68.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_05,SS Adjustable Bullet Foot,FAB-RAW-005,cat_fab_raw,storable,Units,12.0,6.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_06,SS Pull Handle 300mm,FAB-RAW-006,cat_fab_raw,storable,Units,18.0,9.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_07,SS Piano Hinge 1m,FAB-RAW-007,cat_fab_raw,storable,Units,22.0,11.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_08,SS Undershelf Bracket,FAB-RAW-008,cat_fab_raw,storable,Units,8.0,4.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_09,Sink Bowl Pressed 500x400x250,FAB-RAW-009,cat_fab_raw,storable,Units,85.0,48.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_10,SS Faucet Tap Pre-rinse,FAB-RAW-010,cat_fab_raw,storable,Units,240.0,150.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_11,Welding Consumables (per job),FAB-RAW-011,cat_fab_raw,storable,Units,35.0,20.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_raw_12,SS Sliding Door Track Set,FAB-RAW-012,cat_fab_raw,storable,Units,60.0,32.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,20,100
+prod_fab_01,SS Work Table 1500x700,FAB-001,cat_fab,storable,Units,1200.0,780.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_02,SS Work Table 1800x700,FAB-002,cat_fab,storable,Units,1400.0,910.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_03,SS Work Table w/ Undershelf 1200,FAB-003,cat_fab,storable,Units,1100.0,720.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_04,SS Wall Shelf 1500,FAB-004,cat_fab,storable,Units,380.0,240.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_05,SS Single-Bowl Sink Unit,FAB-005,cat_fab,storable,Units,980.0,620.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_06,SS Double-Bowl Sink Unit,FAB-006,cat_fab,storable,Units,1450.0,940.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_07,SS Pre-Rinse Sink w/ Spray,FAB-007,cat_fab,storable,Units,1850.0,1180.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_08,SS Dish-Landing Table 2000,FAB-008,cat_fab,storable,Units,1650.0,1050.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_09,SS Exhaust Hood Canopy 2000,FAB-009,cat_fab,storable,Units,2800.0,1750.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_10,SS Pot-Wash Sink Triple-Bowl,FAB-010,cat_fab,storable,Units,2200.0,1400.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_11,SS Cabinet Base w/ Sliding Doors,FAB-011,cat_fab,storable,Units,1980.0,1280.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_fab_12,SS Mobile Trolley 3-Tier,FAB-012,cat_fab,storable,Units,720.0,440.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,"Manufacture, MTO",,
+prod_chem_01,Dishwasher Detergent 20L,CHM-DET-001,cat_chem_dish,storable,Units,185.0,110.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_02,Dishwasher Rinse Aid 20L,CHM-RIN-002,cat_chem_dish,storable,Units,165.0,98.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_03,Manual Pot & Pan Detergent 20L,CHM-POT-003,cat_chem_dish,storable,Units,95.0,55.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_04,Degreaser Heavy-Duty 20L,CHM-DEG-004,cat_chem_dish,storable,Units,140.0,82.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_05,Oven & Grill Cleaner 5L,CHM-OVN-005,cat_chem_dish,storable,Units,78.0,44.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_06,Descaler / Limescale Remover 5L,CHM-DSC-006,cat_chem_dish,storable,Units,68.0,38.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_07,Sanitiser Food-Contact 20L,CHM-SAN-007,cat_chem_dish,storable,Units,120.0,70.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_08,Floor Cleaner Kitchen 20L,CHM-FLR-008,cat_chem_dish,storable,Units,88.0,50.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_09,Multi-Surface Cleaner 5L,CHM-MSC-009,cat_chem_house,storable,Units,42.0,23.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_10,Glass Cleaner 5L,CHM-GLS-010,cat_chem_house,storable,Units,38.0,20.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_11,Toilet Bowl Cleaner 5L,CHM-TBC-011,cat_chem_house,storable,Units,45.0,24.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_12,Air Freshener Concentrate 5L,CHM-AIR-012,cat_chem_house,storable,Units,55.0,30.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_13,Carpet Shampoo 20L,CHM-CAR-013,cat_chem_house,storable,Units,160.0,95.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_14,Hand Soap Antibacterial 5L,CHM-HND-014,cat_chem_house,storable,Units,48.0,26.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_15,Laundry Detergent Powder 20kg,CHM-LDP-015,cat_chem_laundry,storable,Units,210.0,130.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_16,Laundry Liquid 20L,CHM-LDL-016,cat_chem_laundry,storable,Units,175.0,105.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_17,Fabric Softener 20L,CHM-FSF-017,cat_chem_laundry,storable,Units,130.0,78.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_18,Laundry Bleach 20L,CHM-LBL-018,cat_chem_laundry,storable,Units,95.0,55.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_19,Stain Remover Booster 5L,CHM-STN-019,cat_chem_laundry,storable,Units,88.0,52.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_20,Chlorine Granules 25kg,CHM-CLG-020,cat_chem_pool,storable,Units,320.0,200.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_21,Liquid Chlorine 20L,CHM-CLL-021,cat_chem_pool,storable,Units,110.0,65.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_22,pH Reducer 25kg,CHM-PHR-022,cat_chem_pool,storable,Units,180.0,108.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_23,Algaecide 5L,CHM-ALG-023,cat_chem_pool,storable,Units,95.0,56.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_24,Pool Clarifier 5L,CHM-CLR-024,cat_chem_pool,storable,Units,85.0,50.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_chem_25,Stabiliser/Conditioner 25kg,CHM-STB-025,cat_chem_pool,storable,Units,240.0,145.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,15,80
+prod_house_01,Single-Disc Floor Scrubber,HK-001,cat_house,storable,Units,3200.0,2100.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_house_02,Wet & Dry Vacuum 60L,HK-002,cat_house,storable,Units,1450.0,950.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_house_03,Janitor Trolley SS,HK-003,cat_house,storable,Units,680.0,420.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_house_04,Pool Pump 1.5HP,HK-004,cat_house,storable,Units,2400.0,1600.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_house_05,Pool Sand Filter,HK-005,cat_house,storable,Units,1900.0,1250.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_house_06,Automatic Pool Cleaner,HK-006,cat_house,storable,Units,3600.0,2400.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_house_07,Pool Test Kit Digital,HK-007,cat_house,storable,Units,420.0,260.0,tax_sst_s10,tax_pur_s10,yes,yes,no,no,Buy,,
+prod_rent_01,RENTAL: Mobile Cold Room 3x3m,RNT-001,cat_rental,storable,Units,1800.0,0.0,tax_sst_sv8,tax_pur_s10,yes,no,yes,no,Buy,,
+prod_rent_02,RENTAL: Event Combi Oven 10-Grid,RNT-002,cat_rental,storable,Units,950.0,0.0,tax_sst_sv8,tax_pur_s10,yes,no,yes,no,Buy,,
+prod_rent_03,RENTAL: Portable Dishwasher Hood-Type,RNT-003,cat_rental,storable,Units,600.0,0.0,tax_sst_sv8,tax_pur_s10,yes,no,yes,no,Buy,,
+prod_rent_04,RENTAL: Gas Range 6-Burner,RNT-004,cat_rental,storable,Units,420.0,0.0,tax_sst_sv8,tax_pur_s10,yes,no,yes,no,Buy,,
+prod_rent_05,RENTAL: Bain-Marie Buffet Unit,RNT-005,cat_rental,storable,Units,220.0,0.0,tax_sst_sv8,tax_pur_s10,yes,no,yes,no,Buy,,
+prod_rent_06,RENTAL: Mobile Chiller Trailer,RNT-006,cat_rental,storable,Units,2500.0,0.0,tax_sst_sv8,tax_pur_s10,yes,no,yes,no,Buy,,
+prod_rent_07,RENTAL: Deep Fryer Twin-Tank,RNT-007,cat_rental,storable,Units,180.0,0.0,tax_sst_sv8,tax_pur_s10,yes,no,yes,no,Buy,,
+prod_rent_08,RENTAL: Induction Cooktop Set (4),RNT-008,cat_rental,storable,Units,380.0,0.0,tax_sst_sv8,tax_pur_s10,yes,no,yes,no,Buy,,
+prod_svc_01,Kitchen Design Consultation (per project),SVC-001,cat_consult,service,Units,12000.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_02,Space Planning & Layout (per project),SVC-002,cat_consult,service,Units,8500.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_03,Fabrication Design & Shop Drawings,SVC-003,cat_consult,service,Units,6500.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_04,Staff Training — Equipment Operation (per day),SVC-004,cat_consult,service,Units,1800.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_05,Staff Training — Food Safety & Hygiene (per day),SVC-005,cat_consult,service,Units,1500.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_06,Regulatory Compliance Advisory,SVC-006,cat_consult,service,Units,4200.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_07,Preventive Maintenance Visit,SVC-007,cat_service,service,Units,450.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_08,Annual Maintenance Contract — Standard,SVC-008,cat_service,service,Units,6000.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_09,Annual Maintenance Contract — Premium,SVC-009,cat_service,service,Units,12000.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_10,Emergency Service Call-Out,SVC-010,cat_service,service,Units,350.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_11,Equipment Repair Labour (per hour),SVC-011,cat_service,service,Units,120.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_12,Dishwasher Service & Calibration,SVC-012,cat_service,service,Units,580.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_13,Sanitary Piping Maintenance,SVC-013,cat_service,service,Units,780.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_14,Grease Trap Cleaning Service,SVC-014,cat_service,service,Units,650.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_15,Bio-Treatment Dosing Service (monthly),SVC-015,cat_service,service,Units,420.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_16,Tanker / Waste Pump-Out Service,SVC-016,cat_service,service,Units,1200.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_17,Installation & Commissioning,SVC-017,cat_service,service,Units,2500.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,
+prod_svc_18,Site Survey & Assessment,SVC-018,cat_service,service,Units,800.0,0.0,tax_sst_sv8,tax_pur_sv8,yes,no,no,no,,,

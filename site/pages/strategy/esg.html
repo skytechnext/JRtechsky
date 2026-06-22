@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESG &amp; Sustainability — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="esg">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Strategic Analysis</b> · ESG &amp; Sustainability</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Strategic Analysis</span>
+      <h1>ESG: turning the "future of kitchens"<br>brand into reportable substance.</h1>
+      <p>JR-Tech already markets energy-efficient, eco-friendly, smokeless kitchens. This page maps
+      that promise onto a real Environmental, Social and Governance agenda — a materiality matrix,
+      concrete commitments, and how Odoo 19 becomes the system of record that makes ESG <em>provable</em>.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">E·S·G</div><div class="lbl">three pillars, one data backbone</div></div>
+          <div class="kpi"><div class="num">~30%</div><div class="lbl">energy a kitchen can save via induction/efficient design (indicative)</div></div>
+          <div class="kpi"><div class="num">100%</div><div class="lbl">scheduled-waste &amp; chemical handling to be logged in-system</div></div>
+          <div class="kpi"><div class="num">2026+</div><div class="lbl">ESG procurement now a hotel/institutional tender criterion</div></div>
+        </div>
+        <p class="lead">For JR-Tech, ESG is not a compliance afterthought — it is the credibility layer
+        beneath its core differentiation. The 2024 brand book's energy-efficiency and sustainability
+        slogans only hold up if the company can evidence them. The opportunity is to move from
+        <em>claiming</em> green to <em>reporting</em> it — turning sustainability into a tender-winning,
+        margin-supporting asset.</p>
+      </section>
+
+      <section class="section">
+        <h2>The three pillars</h2>
+        <div class="grid g3">
+          <div class="card pad-lg" style="border-top:4px solid var(--tn-accent)">
+            <span class="tag green">Environmental</span>
+            <h3>Efficient kitchens, clean handling</h3>
+            <ul>
+              <li><b>Energy-efficient design</b> — induction, smokeless, cook-&amp;-chill cut client energy use.</li>
+              <li><b>Chemical stewardship</b> — correct dosing, safe storage, Scheduled-Wastes-compliant disposal.</li>
+              <li><b>Effluent &amp; grease management</b> — grease-trap/bio-treatment service reduces discharge load.</li>
+              <li><b>Resource efficiency</b> — fabrication offcut reduction, water-saving warewash.</li>
+            </ul>
+          </div>
+          <div class="card pad-lg" style="border-top:4px solid var(--jr-blue)">
+            <span class="tag">Social</span>
+            <h3>People &amp; safe food</h3>
+            <ul>
+              <li><b>Worker safety</b> — OSHA-compliant fabrication floor, PPE, welding controls.</li>
+              <li><b>Skills development</b> — training line builds the welder/technician pipeline.</li>
+              <li><b>Food safety enablement</b> — HACCP/halal-ready kitchens protect end consumers.</li>
+              <li><b>Fair, local supply</b> — Penang employment and local sourcing where viable.</li>
+            </ul>
+          </div>
+          <div class="card pad-lg" style="border-top:4px solid var(--jr-navy)">
+            <span class="tag warn">Governance</span>
+            <h3>Compliance &amp; transparency</h3>
+            <ul>
+              <li><b>E-invoicing &amp; tax integrity</b> — MyInvois/SST compliance built in.</li>
+              <li><b>Audit trails</b> — service, calibration and chemical logs traceable end-to-end.</li>
+              <li><b>Data &amp; document control</b> — single source of truth, access-controlled.</li>
+              <li><b>Anti-corruption &amp; procurement integrity</b> — structured, auditable tenders.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Materiality matrix</h2>
+        <p class="lead">ESG topics plotted by <b>importance to stakeholders</b> (x — customers,
+        regulators, communities) against <b>impact on the business</b> (y). The top-right are the
+        material issues JR-Tech should manage and report first; they cluster, unsurprisingly, around
+        energy efficiency, food/worker safety and compliance.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="materiality" height="320"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Material priorities</h3>
+            <table class="tbl">
+              <tr><th>Topic</th><th>Pillar</th><th>Priority</th></tr>
+              <tr><td>Energy-efficient kitchens</td><td>E</td><td><span class="tag green">High</span></td></tr>
+              <tr><td>Food safety / HACCP enablement</td><td>S</td><td><span class="tag green">High</span></td></tr>
+              <tr><td>Compliance &amp; e-invoicing</td><td>G</td><td><span class="tag green">High</span></td></tr>
+              <tr><td>Chemical &amp; waste handling</td><td>E</td><td><span class="tag warn">High–Med</span></td></tr>
+              <tr><td>Worker safety</td><td>S</td><td><span class="tag warn">Med</span></td></tr>
+              <tr><td>Local employment / skills</td><td>S</td><td><span class="tag">Med</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How Odoo enables ESG reporting</h2>
+        <p class="lead">ESG fails when it lives in slide decks. The reason JR-Tech can credibly report
+        is that the operational data already flows through Odoo — energy specs at design, chemical
+        volumes at resupply, waste collections at service, safety records at fabrication. ESG becomes a
+        report run, not a manual scramble.</p>
+        <div class="mermaid">
+flowchart LR
+  D[Design specs\nenergy-efficient kitchen] --> O[(Odoo 19\nsystem of record)]
+  CH[Chemical dosing & volumes] --> O
+  W[Grease-trap / waste collections] --> O
+  SV[Service & calibration logs] --> O
+  HR[Safety & training records] --> O
+  O --> RPT[ESG dashboard & report\nE / S / G metrics]
+  RPT --> T[Tender & customer ESG disclosures]
+  RPT --> M[Management & owner review]
+        </div>
+        <div class="grid g3">
+          <div class="card"><span class="tag green">Environmental</span><h3>Tracked in Odoo</h3>
+            <p>Energy-efficient equipment specs, chemical consumption, waste-collection logs — aggregated for client and corporate reporting.</p></div>
+          <div class="card"><span class="tag">Social</span><h3>Tracked in Odoo</h3>
+            <p>Field-service safety records, training completions and HACCP-enabling project documentation held against each account.</p></div>
+          <div class="card"><span class="tag warn">Governance</span><h3>Tracked in Odoo</h3>
+            <p>MyInvois e-invoices, audit trails, access controls and structured procurement — governance evidence on demand.</p></div>
+        </div>
+        <div class="callout tn"><b>So what for the Odoo build:</b> ESG is a "free" output of doing
+        operations well in one system. By designing the data model with E/S/G tags from day one, the
+        same records that run the business also satisfy customer and regulator ESG demands — converting
+        JR-Tech's eco brand into a defensible, reportable, tender-winning asset. Cross-link:
+        <a href="market-industry.html">Market &amp; Industry</a> (ESG procurement trend) and
+        <a href="../technology/security-myinvois.html">Security &amp; MyInvois</a> (governance layer).</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="financials.html">← Prev: Financial Snapshot &amp; Valuation</a>
+        <a href="../operations/stakeholders.html">Next: Stakeholder Perspectives →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('materiality'), {
+  type: 'bubble',
+  data: { datasets: [
+    { label:'Energy-efficient kitchens', data:[{x:9,y:9,r:18}], backgroundColor:'rgba(22,192,152,.6)' },
+    { label:'Food safety / HACCP', data:[{x:9,y:8,r:16}], backgroundColor:'rgba(127,169,222,.7)' },
+    { label:'Compliance & e-invoicing', data:[{x:8,y:9,r:16}], backgroundColor:'rgba(11,31,58,.6)' },
+    { label:'Chemical & waste handling', data:[{x:7,y:7,r:14}], backgroundColor:'rgba(63,111,176,.6)' },
+    { label:'Worker safety', data:[{x:6,y:6,r:12}], backgroundColor:'rgba(232,161,58,.6)' },
+    { label:'Local employment / skills', data:[{x:5,y:5,r:11}], backgroundColor:'rgba(90,107,130,.6)' }
+  ]},
+  options: {
+    scales:{
+      x:{ min:0,max:10, title:{display:true,text:'Importance to stakeholders →'}},
+      y:{ min:0,max:10, title:{display:true,text:'Impact on business →'}}
+    },
+    plugins:{ legend:{ position:'bottom', labels:{ boxWidth:10 } } }
+  }
+});
+</script>
+</body>
+</html>

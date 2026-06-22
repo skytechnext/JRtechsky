@@ -1,0 +1,45 @@
+code,name,account_type
+1000,Cash on Hand,asset_cash
+1010,Maybank Current Account,asset_cash
+1020,CIMB Current Account,asset_cash
+1100,Accounts Receivable,asset_receivable
+1200,Inventory — Equipment,asset_current
+1210,Inventory — Chemicals,asset_current
+1220,Inventory — Raw Stainless Steel,asset_current
+1230,WIP — Fabrication,asset_current
+1500,Rental Assets (Equipment for Hire),asset_fixed
+1510,Motor Vehicles (Service Vans),asset_fixed
+1520,Workshop Machinery & Tools,asset_fixed
+2000,Accounts Payable,liability_payable
+2100,SST Sales Tax Payable,liability_current
+2110,SST Service Tax Payable,liability_current
+2200,EPF Payable,liability_current
+2210,SOCSO Payable,liability_current
+2220,EIS Payable,liability_current
+2230,PCB (MTD) Payable,liability_current
+2300,Customer Deposits (Rental),liability_current
+2400,Deferred Subscription Income,liability_current
+3000,Share Capital,equity
+3100,Retained Earnings,equity
+4000,Sales — Kitchen Equipment,income
+4010,Sales — Dishwashers,income
+4020,Sales — Stainless Fabrication,income
+4030,Sales — Chemicals,income
+4040,Rental Income,income
+4050,Service & Maintenance Income,income
+4060,Repair Income,income
+4070,Consulting & Design Income,income
+4080,Subscription Income (Chemical Resupply),income
+5000,COGS — Equipment,expense_direct_cost
+5010,COGS — Chemicals,expense_direct_cost
+5020,COGS — Fabrication Materials,expense_direct_cost
+5030,COGS — Subcontract/Labour,expense_direct_cost
+6000,Salaries & Wages,expense
+6010,EPF/SOCSO/EIS Employer,expense
+6020,Rental of Premises,expense
+6030,Vehicle & Fuel,expense
+6040,Utilities,expense
+6050,Marketing,expense
+6060,Depreciation,expense
+6070,Repairs & Maintenance (Own),expense
+6080,Professional Fees,expense

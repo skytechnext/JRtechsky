@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go-to-Market &amp; Marketing — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="gtm">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Growth &amp; Strategy</b> · Go-to-Market &amp; Marketing</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Growth &amp; Strategy</span>
+      <h1>A digital go-to-market engine that fills the funnel and nurtures it inside Odoo.</h1>
+      <p>JR-Tech's pipeline today is relationship- and referral-led — durable but unscalable, and
+      invisible until a deal lands. This page defines the ideal customer profile, the channel mix,
+      a content and SEO plan, the lead funnel, and a CRM-driven nurture and marketing-automation model
+      that runs natively in Odoo 19 — turning a quiet brand into a measurable demand engine.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <h2>Ideal customer profile (ICP)</h2>
+        <table class="tbl">
+          <tr><th>Segment</th><th>Trigger to buy</th><th>Lead line</th><th>Priority</th></tr>
+          <tr><td>Hotels &amp; resorts</td><td>New property, refurb, compliance upgrade</td><td>Turnkey kitchen + chemicals + service</td><td class="tag green">Tier 1</td></tr>
+          <tr><td>Restaurant &amp; café chains</td><td>New outlets, multi-site standardisation</td><td>Equipment + fabrication + EaaS</td><td class="tag green">Tier 1</td></tr>
+          <tr><td>Central / cloud kitchens</td><td>Scale-up, throughput pressure</td><td>Kitchen-as-a-Service fit-out</td><td class="tag">Tier 2</td></tr>
+          <tr><td>Hospitals &amp; aged care</td><td>Hygiene &amp; compliance mandates</td><td>Warewash chemicals + maintenance</td><td class="tag">Tier 2</td></tr>
+          <tr><td>Schools, factories, condos</td><td>Canteen/pool upkeep, cost control</td><td>Chemical subscription + service contract</td><td class="tag warn">Tier 3</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Channel mix</h2>
+        <div class="grid g3">
+          <div class="card"><h3>Inbound &amp; SEO</h3><p>Rank for high-intent terms — "commercial
+          kitchen fabrication Malaysia", "warewash chemical supplier Penang", "kitchen equipment
+          rental". Pillar pages per line + local SEO for each branch region.</p></div>
+          <div class="card"><h3>Account-based outbound</h3><p>Targeted outreach to hotel groups and
+          chains at refurb/expansion triggers; consultant &amp; contractor partnerships for project
+          flow.</p></div>
+          <div class="card"><h3>Referral &amp; partner</h3><p>Formalise the existing referral
+          strength into a tracked partner programme with consultants, F&amp;B associations and
+          architects.</p></div>
+          <div class="card"><h3>Content &amp; thought leadership</h3><p>Energy-efficiency, smokeless
+          &amp; cook-&amp;-chill explainers; compliance guides; case studies — the "Future of
+          Kitchens" narrative as demand content.</p></div>
+          <div class="card"><h3>Paid &amp; social</h3><p>LinkedIn for B2B decision-makers; Google
+          Search for high-intent; retargeting on long fit-out consideration cycles.</p></div>
+          <div class="card"><h3>Events &amp; demo</h3><p>Trade shows and showroom demos of AI-induction
+          / smokeless tech to anchor the premium, on-brand positioning.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Content &amp; SEO plan</h2>
+        <div class="callout"><b>Hub-and-spoke:</b> one authoritative pillar page per business line,
+        surrounded by intent-matched articles (compliance, energy savings, equipment selection,
+        chemical safety), each with a clear conversion path into the funnel. Local landing pages per
+        region support the <a href="expansion.html">expansion</a> footprint.</div>
+        <table class="tbl">
+          <tr><th>Funnel stage</th><th>Content type</th><th>Example asset</th><th>Goal</th></tr>
+          <tr><td>Awareness</td><td>Educational / SEO</td><td>"Designing a compliant commercial kitchen in Malaysia"</td><td>Organic traffic</td></tr>
+          <tr><td>Consideration</td><td>Comparison / tools</td><td>Energy-savings calculator, rental vs. buy guide</td><td>Lead capture</td></tr>
+          <tr><td>Decision</td><td>Proof</td><td>Case study, turnkey reference, ROI model</td><td>Qualified opportunity</td></tr>
+          <tr><td>Retention</td><td>Lifecycle</td><td>Maintenance tips, chemical safety, upgrade offers</td><td>Cross-sell &amp; renewal</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Lead funnel</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="funnel" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>From visitor to recurring account</h3>
+            <p>The funnel makes the demand engine measurable for the first time. Illustrative monthly
+            volumes show conversion from traffic to closed-won, with the recurring lines (chemicals,
+            service) extending lifetime value well past the first deal.</p>
+            <ul>
+              <li>Visitors → leads via gated tools &amp; content.</li>
+              <li>Leads → MQLs scored on ICP fit &amp; intent.</li>
+              <li>MQLs → opportunities handed to sales in Odoo CRM.</li>
+              <li>Opportunities → closed-won, then onboarded to recurring contracts.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>CRM-driven nurture &amp; marketing automation in Odoo</h2>
+        <div class="mermaid">
+flowchart LR
+    W[Website / form / tool] --> L[Odoo CRM lead]
+    L --> SC{Lead scoring<br/>ICP fit + intent}
+    SC -- low --> N[Email nurture<br/>Marketing Automation]
+    SC -- high --> O[Opportunity → Sales]
+    N --> SC
+    O --> Q[Quotation]
+    Q --> WON[Closed-won]
+    WON --> SUB[Subscriptions:<br/>chemicals & service]
+    SUB --> X[Cross-sell campaigns]
+    X --> L
+        </div>
+        <div class="grid g3">
+          <div class="card"><h3>One record, end to end</h3><p>Lead capture, scoring, email/SMS nurture
+          and the sales pipeline live in Odoo CRM + Marketing Automation + Email Marketing — no
+          disconnected tools.</p></div>
+          <div class="card"><h3>Automated nurture</h3><p>Trigger-based journeys move unready leads
+          forward automatically and re-engage stalled deals, so the small team focuses on hot
+          opportunities.</p></div>
+          <div class="card"><h3>Closed-loop ROI</h3><p>Because marketing, sales and recurring revenue
+          share one database, JR-Tech can finally attribute revenue to channel and campaign and tune
+          spend.</p></div>
+        </div>
+        <div class="callout tn"><b>So-what for the engagement:</b> the same Odoo 19 backbone that runs
+        operations becomes the growth engine — every lead, quote and recurring contract on one spine,
+        with marketing automation turning the brand's "Future of Kitchens" story into a measurable
+        pipeline. This closes the loop with <a href="pricing.html">Pricing</a>,
+        <a href="modern-services.html">Modern Services</a> and
+        <a href="expansion.html">Expansion</a> into one coherent growth plan.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="modern-services.html">← Prev: Modern Alternative Services</a>
+        <a href="../advisory/appendix.html">Next: Appendix &amp; Sources →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Funnel volumes are TechNext analyst modelling — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('funnel'), {
+  type:'bar',
+  data:{ labels:['Visitors','Leads','MQLs','Opportunities','Closed-won'],
+    datasets:[{ label:'Monthly volume (illustrative)', data:[4000,420,140,48,14],
+      backgroundColor:['#7FA9DE','#5C8BC9','#3F6FB0','#10294D','#16C098'] }]},
+  options:{ indexAxis:'y', plugins:{ legend:{display:false} },
+    scales:{ x:{ type:'logarithmic', title:{display:true,text:'Volume (log scale)'} } } }
+});
+</script>
+</body>
+</html>
