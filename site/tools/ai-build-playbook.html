@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Build Playbook — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  pre.code{background:#0B1F3A;color:#D7E5F8;border-radius:12px;padding:16px 18px;overflow:auto;
+    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.55;
+    margin:12px 0;border:1px solid #16294a;}
+  pre.code .c{color:#7FA9DE;} pre.code .k{color:#16C098;font-weight:600;} pre.code .s{color:#E8C97A;}
+  code.inline{font-family:'JetBrains Mono',monospace;font-size:.88em;background:#EEF4FC;
+    border:1px solid var(--jr-line,#dbe3ef);border-radius:6px;padding:1px 6px;color:#0B1F3A;}
+  .pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+    background:#EEF4FC;border:1px solid #cfe;border-radius:6px;padding:2px 7px;margin:2px 3px 2px 0;}
+</style>
+</head>
+<body data-page="ai-build-playbook">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · AI Build Playbook</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents · Runbook v1.0</span>
+      <h1>AI Build Playbook — provision the JR-Tech Odoo 19 instance via MCP</h1>
+      <p>The deterministic runbook a future AI agent follows to stand up the JR-Tech Solution Sdn Bhd
+      Odoo 19 database end-to-end: connect over MCP / XML-RPC, install modules in dependency order,
+      load master data, generate demo transactions, then validate. Every step is idempotent and
+      keyed to the artifacts under <code class="inline">/odoo/seed</code>,
+      <code class="inline">/odoo/plan</code> and <code class="inline">/odoo/playbook</code>.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">12</div><div class="lbl">Odoo 19 apps installed in order</div></div>
+          <div class="kpi"><div class="num">7</div><div class="lbl">master-data load stages</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">demo transaction scenarios seeded</div></div>
+          <div class="kpi"><div class="num">100%</div><div class="lbl">idempotent — safe to re-run</div></div>
+        </div>
+        <div class="callout tn"><b>Read me first.</b> This playbook is the executable companion to the
+        <a href="odoo-platform.html">Odoo Platform primer</a>, the <a href="brd.html">BRD</a> and the
+        <a href="demo-walkthrough.html">Demo Walkthrough</a>. The agent must treat
+        <code class="inline">external IDs (xml_id)</code> as the unit of idempotency: every record it
+        creates carries a stable <code class="inline">jr_seed.&lt;name&gt;</code> identifier so a second
+        run updates rather than duplicates.</div>
+      </section>
+
+      <section class="section">
+        <h2>0 · Prerequisites</h2>
+        <p class="lead">Do not start until every item below is green. The agent should assert these
+        programmatically and abort with a clear message if any check fails.</p>
+        <table class="tbl">
+          <tr><th>#</th><th>Prerequisite</th><th>How the agent verifies it</th><th>Blocking?</th></tr>
+          <tr><td>P1</td><td>Odoo 19 instance reachable (Odoo.sh staging or on-prem)</td><td><code class="inline">GET /web/health</code> → 200; <code class="inline">common.version()</code> returns 19.x</td><td><span class="tag red">Yes</span></td></tr>
+          <tr><td>P2</td><td>Target database created &amp; empty (no app data)</td><td><code class="inline">list_dbs()</code> contains <code class="inline">jrtech</code>; <code class="inline">ir.module.module</code> count of installed apps = base only</td><td><span class="tag red">Yes</span></td></tr>
+          <tr><td>P3</td><td>Admin API credentials / API key</td><td>Successful <code class="inline">authenticate()</code> returns a non-zero <code class="inline">uid</code></td><td><span class="tag red">Yes</span></td></tr>
+          <tr><td>P4</td><td>Odoo MCP server connected (tool surface available)</td><td>MCP <code class="inline">odoo.search_read</code> / <code class="inline">odoo.execute_kw</code> tools resolve</td><td><span class="tag red">Yes</span></td></tr>
+          <tr><td>P5</td><td>Malaysia localization available</td><td><code class="inline">l10n_my</code> &amp; <code class="inline">l10n_my_edi</code> present in <code class="inline">ir.module.module</code></td><td><span class="tag warn">Recommended</span></td></tr>
+          <tr><td>P6</td><td>Seed artifacts present</td><td>Files exist under <code class="inline">/odoo/seed/*.json</code> (companies, users, products, boms, partners, pricelists, txns)</td><td><span class="tag red">Yes</span></td></tr>
+        </table>
+
+        <h3>Connection bootstrap</h3>
+        <p>Two transports are supported. Prefer MCP tools when available; fall back to XML-RPC for
+        bulk loads. Store the resolved <code class="inline">uid</code> and reuse it.</p>
+        <pre class="code"><span class="c"># --- XML-RPC fallback (Python) ---------------------------------</span>
+<span class="k">import</span> xmlrpc.client, os
+URL = os.environ[<span class="s">"ODOO_URL"</span>]        <span class="c"># https://jrtech.odoo.com</span>
+DB  = os.environ[<span class="s">"ODOO_DB"</span>]         <span class="c"># jrtech</span>
+USER= os.environ[<span class="s">"ODOO_LOGIN"</span>]      <span class="c"># admin / build-bot@technext.asia</span>
+KEY = os.environ[<span class="s">"ODOO_API_KEY"</span>]    <span class="c"># developer API key, NOT password</span>
+
+common = xmlrpc.client.ServerProxy(f<span class="s">"{URL}/xmlrpc/2/common"</span>)
+uid    = common.authenticate(DB, USER, KEY, {})
+<span class="k">assert</span> uid, <span class="s">"P3 FAILED: authentication returned 0"</span>
+models = xmlrpc.client.ServerProxy(f<span class="s">"{URL}/xmlrpc/2/object"</span>)
+
+<span class="k">def</span> call(model, method, *args, **kw):
+    <span class="k">return</span> models.execute_kw(DB, uid, KEY, model, method, list(args), kw)
+
+<span class="c"># --- MCP equivalent (preferred) --------------------------------</span>
+<span class="c"># odoo.execute_kw(model="res.partner", method="search_read",</span>
+<span class="c">#                 args=[[["is_company","=",True]]], kwargs={"fields":["name"]})</span></pre>
+      </section>
+
+      <section class="section">
+        <h2>1 · Build sequence overview</h2>
+        <p class="lead">The build is strictly ordered because Odoo enforces hard foreign-key
+        dependencies (a BoM needs products; a product needs UoM &amp; categories; a sale order needs a
+        customer and a pricelist). The agent executes the phases top-to-bottom and never proceeds past
+        a failed validation gate.</p>
+        <div class="mermaid">
+flowchart TD
+  A[0. Prereqs &amp; connect] --> B[1. Install modules in order]
+  B --> C[2. Company &amp; localization config]
+  C --> D[3. Users &amp; access rights]
+  D --> E[4. UoM, categories, taxes, journals]
+  E --> F[5. Products &amp; variants]
+  F --> G[6. BoMs &amp; work centers]
+  G --> H[7. Partners customers/vendors]
+  H --> I[8. Pricelists &amp; rental/subscription plans]
+  I --> J[9. Demo transactions]
+  J --> K[10. Validation gates]
+  K -->|fail| J
+  K -->|pass| L[Done: tag jr_seed/v1 complete]
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2 · Module install order</h2>
+        <p class="lead">Install in this exact order. Each <code class="inline">button_immediate_install</code>
+        pulls its own dependencies; ordering keeps localization and accounting wired correctly before
+        any document model loads. Idempotent: skip a module already in state
+        <code class="inline">installed</code>.</p>
+        <table class="tbl">
+          <tr><th>Step</th><th>Technical name</th><th>App</th><th>Why this order</th></tr>
+          <tr><td>M1</td><td><code class="inline">base_setup</code>, <code class="inline">contacts</code></td><td>Contacts</td><td>Partner model + company foundation</td></tr>
+          <tr><td>M2</td><td><code class="inline">l10n_my</code></td><td>Malaysia – Accounting</td><td>Loads MY chart of accounts &amp; tax templates before journals are needed</td></tr>
+          <tr><td>M3</td><td><code class="inline">account</code> → <code class="inline">account_accountant</code></td><td>Accounting</td><td>Full accounting (Enterprise) for bank rec &amp; analytic</td></tr>
+          <tr><td>M4</td><td><code class="inline">l10n_my_edi</code></td><td>Malaysia – MyInvois e-Invoicing</td><td>Needs accounting installed first; enables LHDN/MyInvois</td></tr>
+          <tr><td>M5</td><td><code class="inline">stock</code></td><td>Inventory</td><td>Warehouses, UoM, routes — prerequisite for products/MRP</td></tr>
+          <tr><td>M6</td><td><code class="inline">product</code>, <code class="inline">uom</code></td><td>(core)</td><td>Product templates, variants, units of measure</td></tr>
+          <tr><td>M7</td><td><code class="inline">purchase</code></td><td>Purchase</td><td>Vendors, RFQs — needed for chemical/equipment sourcing</td></tr>
+          <tr><td>M8</td><td><code class="inline">mrp</code></td><td>Manufacturing</td><td>BoMs &amp; work orders for stainless-steel fabrication</td></tr>
+          <tr><td>M9</td><td><code class="inline">sale_management</code></td><td>Sales</td><td>Quotations &amp; sale orders across all 4 business lines</td></tr>
+          <tr><td>M10</td><td><code class="inline">crm</code></td><td>CRM</td><td>Pipeline feeding Sales</td></tr>
+          <tr><td>M11</td><td><code class="inline">sale_renting</code></td><td>Rental</td><td>Equipment &amp; dishwasher rental cycles</td></tr>
+          <tr><td>M12</td><td><code class="inline">industry_fsm</code>, <code class="inline">maintenance</code>, <code class="inline">repair</code></td><td>Field Service · Maintenance · Repair</td><td>Service visits, grease-trap/tanker, equipment repair</td></tr>
+          <tr><td>M13</td><td><code class="inline">sale_subscription</code></td><td>Subscriptions</td><td>Recurring chemical resupply</td></tr>
+          <tr><td>M14</td><td><code class="inline">account_analytic</code> (auto)</td><td>(via Accounting)</td><td>Analytic accounting per business line</td></tr>
+        </table>
+        <pre class="code"><span class="c"># Install modules idempotently, in order</span>
+ORDER = [<span class="s">"contacts"</span>,<span class="s">"l10n_my"</span>,<span class="s">"account_accountant"</span>,<span class="s">"l10n_my_edi"</span>,
+         <span class="s">"stock"</span>,<span class="s">"purchase"</span>,<span class="s">"mrp"</span>,<span class="s">"sale_management"</span>,<span class="s">"crm"</span>,
+         <span class="s">"sale_renting"</span>,<span class="s">"industry_fsm"</span>,<span class="s">"maintenance"</span>,<span class="s">"repair"</span>,<span class="s">"sale_subscription"</span>]
+<span class="k">for</span> tech <span class="k">in</span> ORDER:
+    rec = call(<span class="s">"ir.module.module"</span>,<span class="s">"search_read"</span>,
+               [[<span class="s">"name"</span>,<span class="s">"="</span>,tech]],{<span class="s">"fields"</span>:[<span class="s">"state"</span>]})
+    <span class="k">if</span> rec <span class="k">and</span> rec[0][<span class="s">"state"</span>] != <span class="s">"installed"</span>:
+        call(<span class="s">"ir.module.module"</span>,<span class="s">"button_immediate_install"</span>,[rec[0][<span class="s">"id"</span>]])</pre>
+      </section>
+
+      <section class="section">
+        <h2>3 · Master-data load order</h2>
+        <p class="lead">Load strictly in this sequence. Each stage references external IDs created by
+        the previous stage, so the dependency chain
+        <b>companies → users → products → BoMs → partners → pricelists → transactions</b> must hold.</p>
+
+        <ol class="steps">
+          <li><b>Companies &amp; localization</b> — set <code class="inline">res.company</code> for
+            JR-Tech Solution Sdn Bhd: name, SSM <span class="pill">200901013633</span>, Penang address
+            (556-Y, Jalan Sultan Azlan Shah, 11700 Gelugor), MYR currency, fiscal year, country = MY.
+            Apply the MY chart of accounts and SST tax mapping. Configure the MyInvois TIN &amp;
+            certificate fields. Seed file: <code class="inline">/odoo/seed/01_company.json</code>.</li>
+          <li><b>Users &amp; access rights</b> — create <code class="inline">res.users</code> for the six
+            personas (Sales rep, Workshop/fabrication, Field-service tech, Storekeeper, Finance, Admin),
+            assign security groups per the <a href="staff-guides.html">Staff Guides</a> roles. Seed:
+            <code class="inline">/odoo/seed/02_users.json</code>. Idempotency key = login email.</li>
+          <li><b>Reference data</b> — UoM (unit, kg, L, hour, m²), product categories
+            (Fabrication, Equipment, Rental Assets, Chemicals, Service), analytic plans
+            (one analytic account per business line), accounting journals, and SST taxes (Sales 10% /
+            Service 6%). Seed: <code class="inline">/odoo/seed/03_reference.json</code>.</li>
+          <li><b>Products &amp; variants</b> — fabrication items (custom SS worktable, exhaust hood),
+            equipment for sale &amp; rental (induction range, dishwasher), chemical SKUs (dishwash
+            detergent, rinse aid, pool chlorine), and service products (maintenance hour, grease-trap
+            service). Tag each with its category &amp; analytic default. Seed:
+            <code class="inline">/odoo/seed/04_products.json</code>.</li>
+          <li><b>BoMs &amp; work centers</b> — define <code class="inline">mrp.bom</code> for fabricated
+            products (e.g. SS worktable = sheet + frame + labour) and
+            <code class="inline">mrp.workcenter</code> (Cutting, Welding, Assembly, QC). References product
+            external IDs from stage 4. Seed: <code class="inline">/odoo/seed/05_boms.json</code>.</li>
+          <li><b>Partners</b> — customers (hotels, restaurants, central kitchens, hospitals, condos) and
+            vendors (steel supplier, chemical importer). Set MY TIN, payment terms, pricelist link.
+            Seed: <code class="inline">/odoo/seed/06_partners.json</code>.</li>
+          <li><b>Pricelists, rental &amp; subscription plans</b> — MYR pricelists with customer-tier
+            rules, <code class="inline">sale.temporal.recurrence</code> rental durations, and
+            <code class="inline">sale.subscription.plan</code> monthly resupply. Seed:
+            <code class="inline">/odoo/seed/07_pricing.json</code>.</li>
+        </ol>
+
+        <div class="callout warn"><b>Hard rule:</b> never create a transaction (stage 9) before all of
+        stages 1–7 validate. A sale order line silently fails or mis-prices if its product, customer or
+        pricelist external ID is missing.</div>
+
+        <h3>Generic idempotent upsert pattern</h3>
+        <pre class="code"><span class="k">def</span> upsert(model, xmlid, vals):
+    <span class="c"># xmlid like "jr_seed.product_ss_worktable"</span>
+    module, name = xmlid.split(<span class="s">"."</span>,1)
+    found = call(<span class="s">"ir.model.data"</span>,<span class="s">"search_read"</span>,
+        [[[<span class="s">"module"</span>,<span class="s">"="</span>,module],[<span class="s">"name"</span>,<span class="s">"="</span>,name]]],{<span class="s">"fields"</span>:[<span class="s">"res_id"</span>]})
+    <span class="k">if</span> found:
+        rid = found[0][<span class="s">"res_id"</span>]
+        call(model,<span class="s">"write"</span>,[rid],vals)          <span class="c"># update in place</span>
+    <span class="k">else</span>:
+        rid = call(model,<span class="s">"create"</span>,vals)            <span class="c"># create new</span>
+        call(<span class="s">"ir.model.data"</span>,<span class="s">"create"</span>,{
+            <span class="s">"module"</span>:module,<span class="s">"name"</span>:name,<span class="s">"model"</span>:model,<span class="s">"res_id"</span>:rid})
+    <span class="k">return</span> rid</pre>
+      </section>
+
+      <section class="section">
+        <h2>4 · Demo transactions (stage 9)</h2>
+        <p class="lead">Generate the four narrative scenarios used by the
+        <a href="demo-walkthrough.html">Demo Walkthrough</a>. Create documents in draft, then confirm
+        through their state machines so downstream records (pickings, MOs, invoices) materialise
+        naturally rather than being hand-forged.</p>
+        <table class="tbl">
+          <tr><th>Scenario</th><th>Records created (in order)</th><th>Confirm calls</th></tr>
+          <tr><td>Fabrication MTO</td><td>CRM lead → <code class="inline">sale.order</code> (SS worktable) → <code class="inline">mrp.production</code> → <code class="inline">stock.picking</code> (delivery) → <code class="inline">account.move</code> (invoice)</td><td><code class="inline">action_confirm</code>, <code class="inline">button_mark_done</code>, <code class="inline">_create_invoices</code>, <code class="inline">action_post</code></td></tr>
+          <tr><td>Equipment rental</td><td><code class="inline">sale.order</code> w/ rental line → pickup picking → return picking → rental invoice</td><td><code class="inline">action_confirm</code>, <code class="inline">open_pickup</code>/<code class="inline">open_return</code></td></tr>
+          <tr><td>Field-service visit</td><td><code class="inline">fsm.task</code> (grease-trap) → timesheet + parts → <code class="inline">sale.order</code> → invoice</td><td><code class="inline">action_fsm_validate</code></td></tr>
+          <tr><td>Chemical subscription</td><td><code class="inline">sale.subscription</code> (monthly detergent) → recurring invoice → delivery</td><td><code class="inline">_create_recurring_invoice</code></td></tr>
+        </table>
+        <p>Seed data for each lives in <code class="inline">/odoo/seed/08_transactions.json</code>;
+        the orchestration script lives in <code class="inline">/odoo/playbook/build.py</code> and the
+        narrative mapping in <code class="inline">/odoo/plan/scenarios.md</code>.</p>
+      </section>
+
+      <section class="section">
+        <h2>5 · Validation gates</h2>
+        <p class="lead">After loading, the agent runs every check below and prints a pass/fail matrix.
+        Any failure rolls the run back to the relevant stage. Only when all gates pass does the agent
+        tag the database <code class="inline">jr_seed/v1 complete</code>.</p>
+        <table class="tbl">
+          <tr><th>Gate</th><th>Assertion</th><th>Query</th></tr>
+          <tr><td>V1 modules</td><td>All 14 modules <code class="inline">installed</code></td><td><code class="inline">ir.module.module</code> where name in ORDER &amp; state≠installed = 0</td></tr>
+          <tr><td>V2 company</td><td>Company currency = MYR, country = MY, SST taxes active</td><td><code class="inline">res.company</code> + <code class="inline">account.tax</code> count ≥ 2</td></tr>
+          <tr><td>V3 users</td><td>6 personas exist with correct groups</td><td><code class="inline">res.users</code> active count = 6</td></tr>
+          <tr><td>V4 products</td><td>Every product has category + UoM; fabricated products have a BoM</td><td><code class="inline">mrp.bom</code> per <code class="inline">manufacture</code>-routed product = 1</td></tr>
+          <tr><td>V5 pricing</td><td>Pricelists in MYR; subscription &amp; rental plans linked</td><td><code class="inline">product.pricelist</code>.currency = MYR</td></tr>
+          <tr><td>V6 txns</td><td>4 scenarios reached terminal state (invoice posted)</td><td><code class="inline">account.move</code> state=posted ≥ 4</td></tr>
+          <tr><td>V7 no dupes</td><td>Re-running the build creates 0 new records</td><td>row counts stable across two runs</td></tr>
+        </table>
+        <pre class="code"><span class="c"># Final gate: idempotency proof</span>
+before = snapshot_counts()        <span class="c"># dict model -&gt; row count</span>
+run_full_build()                  <span class="c"># second pass</span>
+after  = snapshot_counts()
+<span class="k">assert</span> before == after, f<span class="s">"V7 FAILED: drift {diff(before,after)}"</span>
+print(<span class="s">"BUILD OK — tagging jr_seed/v1 complete"</span>)</pre>
+        <div class="callout tn"><b>So what for the build:</b> a green run produces a fully navigable demo
+        that the <a href="demo-walkthrough.html">Demo Walkthrough</a> and
+        <a href="staff-guides.html">Staff Guides</a> reference verbatim — sales can show a real fabrication
+        quote-to-cash, finance can see posted SST invoices, and the owner sees the
+        <a href="../pages/delivery/kpis-benefits.html">KPI dashboards</a> populated.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../pages/advisory/glossary.html">← Prev: Glossary</a>
+        <a href="profit-estimator.html">Next: Profit Estimator →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appendix &amp; Sources — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="appendix">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Advisory</b> · Appendix &amp; Sources</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Advisory</span>
+      <h1>Appendix &amp; Sources: how this dossier<br>was sourced, and where every artifact lives.</h1>
+      <p>The transparency layer of the engagement. This page records the evidence base behind the
+      analysis, indexes every interactive tool and document we produced, and states the version and
+      confidentiality terms under which JR-Tech may rely on it.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">4</div><div class="lbl">source classes: brand book · business card · public web · analyst modelling</div></div>
+          <div class="kpi"><div class="num">40+</div><div class="lbl">dossier sections cross-referenced in this appendix</div></div>
+          <div class="kpi"><div class="num">12</div><div class="lbl">interactive tools &amp; documents indexed below</div></div>
+          <div class="kpi"><div class="num">v1.0</div><div class="lbl">release of record · 2026-06</div></div>
+        </div>
+        <p class="lead">This dossier blends a small core of <b>verified primary facts</b> about JR-Tech
+        Solution Sdn Bhd with <b>publicly observable signals</b> and a layer of <b>TechNext analyst
+        modelling</b> where public data is unavailable. The split is summarised below and detailed in
+        <a href="methodology.html">Methodology &amp; Assumptions</a>.</p>
+      </section>
+
+      <section class="section">
+        <h2>Methodology summary</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>The four-step approach</h3>
+            <ol class="steps">
+              <li><b>Anchor on primary facts.</b> Extract verified identity, contact, business-line
+              and capability data from the 2024 JR-Tech brand book and the director's business card.</li>
+              <li><b>Widen with public signals.</b> Corroborate against the public website
+              (www.jrtech.com.my), the Malaysian HORECA market and the Odoo 19 product surface.</li>
+              <li><b>Model the gaps.</b> Where headcount, revenue and named clients are not public,
+              construct realistic Penang-SME estimates consistent with the primary facts.</li>
+              <li><b>Tie every claim to the build.</b> Convert each finding into an Odoo 19 design or
+              delivery implication — the "so what" that the implementation plan acts on.</li>
+            </ol>
+          </div>
+          <div class="chartbox"><canvas id="srcMixChart" height="240"></canvas></div>
+        </div>
+        <div class="callout tn"><b>Single caveat, not scattered ones.</b> Rather than footnoting every
+        modelled number, we consolidate the modelling disclosure on the
+        <a href="methodology.html">Methodology</a> page. Treat any financial, headcount or named-client
+        figure as a TechNext analyst model unless explicitly attributed to a primary source here.</div>
+      </section>
+
+      <section class="section">
+        <h2>Source list</h2>
+        <table class="tbl">
+          <tr><th>#</th><th>Source</th><th>Class</th><th>What we relied on it for</th><th>Confidence</th></tr>
+          <tr><td>S1</td><td>JR-Tech 2024 Brand Book — <i>"Experience the Future of Kitchens"</i></td>
+            <td><span class="tag green">Primary</span></td>
+            <td>Brand identity, taglines, AI/eco positioning, capability narrative, business-line scope</td>
+            <td><span class="tag green">High</span></td></tr>
+          <tr><td>S2</td><td>Director business card — Tan Gim Boon</td>
+            <td><span class="tag green">Primary</span></td>
+            <td>Legal name, SSM 200901013633, director, phone/email, Gelugor (Penang) address</td>
+            <td><span class="tag green">High</span></td></tr>
+          <tr><td>S3</td><td>Public website — www.jrtech.com.my</td>
+            <td><span class="tag">Public web</span></td>
+            <td>Service catalogue corroboration, digital-presence and reputation read</td>
+            <td><span class="tag warn">Medium</span></td></tr>
+          <tr><td>S4</td><td>SSM corporate registry signal (Reg. 200901013633)</td>
+            <td><span class="tag">Public web</span></td>
+            <td>Incorporation circa 2009, Sdn Bhd legal form</td>
+            <td><span class="tag green">High</span></td></tr>
+          <tr><td>S5</td><td>Malaysian HORECA &amp; commercial-kitchen market literature</td>
+            <td><span class="tag">Public web</span></td>
+            <td>Market sizing, customer archetypes, competitor landscape</td>
+            <td><span class="tag warn">Medium</span></td></tr>
+          <tr><td>S6</td><td>Malaysian compliance frameworks — SST, MyInvois/LHDN, SSM, HACCP</td>
+            <td><span class="tag">Public web</span></td>
+            <td>Regulatory drivers, e-invoicing mandate, food-safety obligations</td>
+            <td><span class="tag green">High</span></td></tr>
+          <tr><td>S7</td><td>Odoo 19 product documentation &amp; editions</td>
+            <td><span class="tag">Public web</span></td>
+            <td>Target architecture, app mapping, licensing inputs to the ROI/TCO model</td>
+            <td><span class="tag green">High</span></td></tr>
+          <tr><td>S8</td><td>TechNext analyst modelling</td>
+            <td><span class="tag warn">Modelled</span></td>
+            <td>Headcount, revenue, named clients, benefit/ROI figures where public data is absent</td>
+            <td><span class="tag warn">Indicative</span></td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Document &amp; tool index</h2>
+        <p class="lead">Every actionable artifact in the dossier, grouped by purpose. The interactive
+        models recompute live in the browser; the documents are the deliverables JR-Tech signs off.</p>
+        <table class="tbl">
+          <tr><th>Artifact</th><th>Purpose</th><th>Type</th><th>Open</th></tr>
+          <tr><td>AI Build Playbook</td><td>How an AI agent builds the Odoo 19 instance via MCP with demo data</td><td>Document</td><td><a href="../../tools/ai-build-playbook.html">Open →</a></td></tr>
+          <tr><td>Profit Estimator</td><td>Live calculator: time, win-rate, shrinkage &amp; annual-benefit modelling</td><td>Interactive</td><td><a href="../../tools/profit-estimator.html">Open →</a></td></tr>
+          <tr><td>Owner FAQ</td><td>Searchable answers to the questions an SME owner actually asks</td><td>Interactive</td><td><a href="../../tools/owner-faq.html">Open →</a></td></tr>
+          <tr><td>Odoo Platform</td><td>Reference on the Odoo 19 platform and module surface</td><td>Document</td><td><a href="../../tools/odoo-platform.html">Open →</a></td></tr>
+          <tr><td>Requirements (BRD)</td><td>Business requirements document for the implementation</td><td>Document</td><td><a href="../../tools/brd.html">Open →</a></td></tr>
+          <tr><td>Quotation</td><td>Commercial quotation for the engagement</td><td>Document</td><td><a href="../../tools/quotation.html">Open →</a></td></tr>
+          <tr><td>Accounting Overhaul</td><td>SST / MyInvois-aligned finance redesign</td><td>Document</td><td><a href="../../tools/accounting-overhaul.html">Open →</a></td></tr>
+          <tr><td>Demo Walkthrough</td><td>Guided tour of the configured demo environment</td><td>Document</td><td><a href="../../tools/demo-walkthrough.html">Open →</a></td></tr>
+          <tr><td>Staff Guides</td><td>Role-based how-to guides for end users</td><td>Document</td><td><a href="../../tools/staff-guides.html">Open →</a></td></tr>
+          <tr><td>Discovery Questions</td><td>Printable departmental discovery questionnaire</td><td>Interactive</td><td><a href="../../tools/discovery-questions.html">Open →</a></td></tr>
+          <tr><td>ROI / TCO Model</td><td>3-year TCO, payback, NPV and ROI with live charts</td><td>Interactive</td><td><a href="../../tools/roi-tco.html">Open →</a></td></tr>
+          <tr><td>Project Gantt</td><td>Full implementation Gantt and milestone table</td><td>Interactive</td><td><a href="../../tools/gantt.html">Open →</a></td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Version &amp; disclaimer</h2>
+        <div class="grid g2">
+          <div class="card">
+            <h3>Version history</h3>
+            <table class="tbl">
+              <tr><th>Ver.</th><th>Date</th><th>Notes</th></tr>
+              <tr><td>v1.0</td><td>2026-06-22</td><td>Initial release of the full engagement dossier.</td></tr>
+              <tr><td>v0.9</td><td>2026-06</td><td>Internal TechNext review draft.</td></tr>
+            </table>
+          </div>
+          <div class="card">
+            <h3>Disclaimer</h3>
+            <p>This document is <b>confidential</b> and prepared by TechNext exclusively for JR-Tech
+            Solution Sdn Bhd (SSM 200901013633). It combines verified public information with TechNext
+            analyst modelling; modelled figures are <b>indicative estimates</b>, not audited financials
+            or guarantees of outcome. Calculator outputs depend on user-supplied inputs and assumptions.</p>
+            <p>No part may be redistributed without TechNext's written consent. See
+            <a href="methodology.html">Methodology &amp; Assumptions</a> for the full modelling note and
+            <a href="glossary.html">Glossary</a> for terminology.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../growth/gtm.html">← Prev: Go-to-Market &amp; Marketing</a>
+        <a href="methodology.html">Next: Methodology &amp; Assumptions →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('srcMixChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Primary (brand book + card)','Public web','Analyst modelling'],
+    datasets: [{ data: [30, 40, 30],
+      backgroundColor: ['#16C098','#7FA9DE','#E8A13A'], borderColor:'#fff', borderWidth:2 }]
+  },
+  options: { plugins:{ legend:{ position:'bottom' },
+    title:{ display:true, text:'Approximate weight of evidence by source class' } } }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPMN · Blueprint · UML — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="bpmn-uml">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Operations</b> · BPMN · Blueprint · UML</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Operations</span>
+      <h1>Future-state design — swimlanes, service blueprint and the data model.</h1>
+      <p>Having mapped the broken current state, this page designs the target. BPMN-style swimlane
+      diagrams show who does what across the redesigned quote-to-cash and field-service flows; a
+      service blueprint separates frontstage, backstage and support; and a UML class diagram defines
+      the Odoo 19 data model the whole platform stands on.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <h2>1 · BPMN swimlane — future-state quote-to-cash</h2>
+        <p class="lead">Each lane is a role; each step is a single Odoo action with a clear owner.
+        No re-keying — the record moves, the people don't rebuild it.</p>
+        <div class="mermaid">
+flowchart TB
+  subgraph CUST[Customer]
+    c1([Submit enquiry]) --> c5{Approve quote?}
+    c8([Receive e-invoice &amp; pay])
+  end
+  subgraph SALES[Sales — CRM/Sales]
+    s1[Lead captured] --> s2[Build quote from templates/BoM]
+    s2 --> s3[Send quote via portal]
+    s5[Confirm Sales Order]
+  end
+  subgraph OPS[Operations — MRP/FSM/Rental]
+    o1[Auto-create work / service / rental order]
+    o2[Execute &amp; record completion]
+  end
+  subgraph FIN[Finance — Accounting]
+    f1[Auto-draft invoice + SST]
+    f2[Submit MyInvois e-invoice]
+  end
+  c1 --> s1
+  s3 --> c5
+  c5 -->|No| s2
+  c5 -->|Yes| s5
+  s5 --> o1
+  o1 --> o2
+  o2 --> f1
+  f1 --> f2
+  f2 --> c8
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2 · BPMN swimlane — future-state field service</h2>
+        <p class="lead">A breakdown or scheduled visit flows from intake to a billed, signed job
+        without a single handwritten note.</p>
+        <div class="mermaid">
+flowchart TB
+  subgraph CUST[Customer]
+    c1([Report issue / due for service])
+    c6([Sign report on tech device])
+    c7([Receive e-invoice])
+  end
+  subgraph DISP[Dispatcher — Field Service]
+    d1[Create FSM task]
+    d2[Assign tech + schedule slot]
+    d3[Attach required parts to task]
+  end
+  subgraph TECH[Technician — FSM mobile]
+    t1[See asset history on phone]
+    t2[Perform work, log parts/time]
+    t3[Capture photos &amp; signature]
+  end
+  subgraph FIN[Finance — Accounting]
+    f1[Auto-invoice from task]
+    f2[MyInvois e-invoice]
+  end
+  c1 --> d1 --> d2 --> d3 --> t1 --> t2 --> t3 --> c6 --> f1 --> f2 --> c7
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>3 · Service blueprint</h2>
+        <p class="lead">The blueprint separates what the customer sees (frontstage) from the work
+        behind the line of visibility (backstage) and the systems that enable it (support) — for the
+        core "one-stop" service journey.</p>
+        <table class="tbl">
+          <tr><th>Stage</th><th>Customer action</th><th>Frontstage (visible)</th><th>Backstage (invisible)</th><th>Support process / Odoo app</th></tr>
+          <tr><td>Discover</td><td>Sends enquiry</td><td>Salesperson responds, books site visit</td><td>Lead logged, scored, assigned</td><td>CRM</td></tr>
+          <tr><td>Quote</td><td>Reviews quote in portal</td><td>Itemised quote with options</td><td>BoM &amp; price-list lookup, margin check</td><td>Sales · Manufacturing</td></tr>
+          <tr><td>Order</td><td>Approves online</td><td>Confirmation &amp; timeline</td><td>SO → work/rental/service orders auto-created</td><td>Sales · MRP · Rental · FSM</td></tr>
+          <tr><td>Fulfil</td><td>Awaits delivery / build</td><td>Status updates, install visit</td><td>Procurement, fabrication, scheduling</td><td>Purchase · Manufacturing · FSM</td></tr>
+          <tr><td>Serve</td><td>Uses equipment; requests support</td><td>Technician on site, signed report</td><td>Asset history, parts, preventive plan</td><td>Field Service · Maintenance</td></tr>
+          <tr><td>Replenish</td><td>Receives chemicals on schedule</td><td>Recurring delivery, no calls needed</td><td>Subscription renewal, reorder rules</td><td>Subscriptions · Inventory</td></tr>
+          <tr><td>Bill</td><td>Pays e-invoice</td><td>Compliant e-invoice in portal</td><td>SST calc, MyInvois submission, AR follow-up</td><td>Accounting</td></tr>
+        </table>
+        <div class="callout"><b>Line of visibility:</b> everything in the Backstage and Support
+        columns is invisible to the customer today because it lives in spreadsheets — Odoo makes it
+        reliable so the Frontstage promise holds.</div>
+      </section>
+
+      <section class="section">
+        <h2>4 · UML class diagram — Odoo 19 data model</h2>
+        <p class="lead">The entities and relationships the platform records. A <code>Customer</code>
+        anchors everything; an <code>Order</code> fans out into the fulfilment objects per business
+        line; all of them resolve to an <code>Invoice</code>.</p>
+        <div class="mermaid">
+classDiagram
+  class Customer {
+    +int id
+    +string name
+    +string segment
+    +string portalLogin
+    +contacts()
+  }
+  class Order {
+    +int id
+    +date orderDate
+    +string state
+    +float amountTotal
+    +confirm()
+  }
+  class Product {
+    +int id
+    +string name
+    +string type
+    +float listPrice
+    +float cost
+  }
+  class BoM {
+    +int id
+    +float qty
+    +components()
+  }
+  class WorkOrder {
+    +int id
+    +string workCentre
+    +float laborHours
+    +string state
+  }
+  class RentalContract {
+    +int id
+    +date startDate
+    +date returnDate
+    +float rate
+  }
+  class ServiceTask {
+    +int id
+    +string type
+    +date scheduled
+    +string report
+    +bool signed
+  }
+  class Subscription {
+    +int id
+    +string interval
+    +date nextRenewal
+  }
+  class Invoice {
+    +int id
+    +float sstAmount
+    +bool myInvoisSubmitted
+    +string state
+  }
+  Customer "1" --> "*" Order : places
+  Customer "1" --> "*" RentalContract : signs
+  Customer "1" --> "*" ServiceTask : requests
+  Customer "1" --> "*" Subscription : subscribes
+  Order "1" --> "*" Product : contains
+  Order "1" --> "*" WorkOrder : triggers
+  Order "1" --> "1" Invoice : billed by
+  Product "1" --> "0..1" BoM : built from
+  BoM "1" --> "*" Product : uses
+  WorkOrder "*" --> "1" BoM : follows
+  RentalContract "1" --> "1" Invoice : billed by
+  ServiceTask "1" --> "1" Invoice : billed by
+  ServiceTask "*" --> "1" Product : services
+  Subscription "1" --> "*" Invoice : generates
+        </div>
+        <div class="callout tn"><b>So what for the Odoo build:</b> this class model is the contract
+        between the process design and the configuration — every swimlane step writes to one of these
+        objects. It maps directly onto the apps detailed in
+        <a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a> and seeds the demo
+        data an AI agent loads via MCP.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="pain-solution.html">← Prev: Pain → Solution Matrix</a>
+        <a href="value-chain.html">Next: Value Chain &amp; Capability Map →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</body>
+</html>

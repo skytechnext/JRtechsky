@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff & Org Analysis — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="staff-org">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Company Profile</b> · Staff &amp; Org Analysis</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Company Profile</span>
+      <h1>Organisation &amp; headcount —<br>the people the ERP must serve.</h1>
+      <p>A modelled organisation structure for a Penang F&amp;B-engineering SME: five departments,
+      an illustrative ~45-person headcount, a capacity/utilisation read, and the workforce shape the
+      Odoo 19 roles, timesheets and field-service modules must fit.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">~45</div><div class="lbl">modelled total headcount</div></div>
+          <div class="kpi"><div class="num">5</div><div class="lbl">core departments</div></div>
+          <div class="kpi"><div class="num">~18</div><div class="lbl">field &amp; workshop "billable" staff</div></div>
+          <div class="kpi"><div class="num">72%</div><div class="lbl">modelled field-tech utilisation</div></div>
+        </div>
+        <div class="callout"><b>Modelling note:</b> JR-Tech does not publish headcount. The ~45-person
+        figure is TechNext modelling for a multi-line F&amp;B-engineering SME of this scope and is
+        used only to size the ERP — see Methodology &amp; Assumptions.</div>
+      </section>
+
+      <section class="section">
+        <h2>Departments &amp; modelled headcount</h2>
+        <table class="tbl">
+          <tr><th>Department</th><th>Function</th><th>Modelled headcount</th><th>Primary Odoo apps</th></tr>
+          <tr><td>Sales &amp; Accounts</td><td>Quoting, key accounts, cross-sell</td><td>8</td><td>CRM · Sales</td></tr>
+          <tr><td>Fabrication Workshop</td><td>Stainless cut · form · weld · polish</td><td>12</td><td>Manufacturing · Inventory</td></tr>
+          <tr><td>Service / Field Techs</td><td>Install, repair, grease-trap, tanker</td><td>10</td><td>Field Service · Maintenance · Repair</td></tr>
+          <tr><td>Chemical Supply</td><td>Resupply, logistics, dosing support</td><td>6</td><td>Subscriptions · Inventory</td></tr>
+          <tr><td>Admin &amp; Finance</td><td>Invoicing, SST/MyInvois, HR</td><td>9</td><td>Accounting · HR</td></tr>
+          <tr><th>Total</th><th></th><th>45</th><th>—</th></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Org chart</h2>
+        <div class="mermaid">
+flowchart TD
+  D[Director — Tan Gim Boon] --> SM[Sales &amp; Accounts Lead]
+  D --> FM[Workshop Manager]
+  D --> SVM[Service Operations Lead]
+  D --> CM[Chemical Supply Lead]
+  D --> AM[Admin &amp; Finance Lead]
+  SM --> SE[8 · Sales execs &amp; account mgrs]
+  FM --> WK[12 · Welders &amp; fabricators]
+  SVM --> FT[10 · Field technicians]
+  CM --> CS[6 · Supply &amp; logistics]
+  AM --> AF[9 · Accounts, admin &amp; HR]
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Headcount distribution &amp; capacity</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="hcBar" height="240"></canvas></div>
+          <div class="chartbox"><canvas id="utilBar" height="240"></canvas></div>
+        </div>
+        <div class="callout warn"><b>The read:</b> workshop and field-tech staff (the billable
+        capacity) are the constraint. Workshop utilisation runs hot in project peaks while field
+        techs lose hours to scheduling gaps and travel — both invisible without a system.</div>
+      </section>
+
+      <section class="section">
+        <h2>Capacity &amp; utilisation analysis</h2>
+        <table class="tbl">
+          <tr><th>Resource pool</th><th>Capacity driver</th><th>Modelled utilisation</th><th>Leakage</th></tr>
+          <tr><td>Fabrication workshop</td><td>Welder-hours vs. job backlog</td><td>84%</td><td>Rework, material wait</td></tr>
+          <tr><td>Field technicians</td><td>Billable hours vs. travel/idle</td><td>72%</td><td>Routing, no-show, parts gaps</td></tr>
+          <tr><td>Chemical logistics</td><td>Delivery runs vs. demand</td><td>68%</td><td>Unplanned ad-hoc orders</td></tr>
+          <tr><td>Sales</td><td>Quote throughput vs. follow-up</td><td>—</td><td>Manual re-quoting, lost leads</td></tr>
+        </table>
+        <div class="callout tn"><b>So-what:</b> a few points of utilisation recovered on ~18
+        billable staff is the clearest hard-dollar ERP payback — lifting field-tech utilisation from
+        72% toward 80% is equivalent to adding capacity without hiring.</div>
+      </section>
+
+      <section class="section">
+        <h2>So-what for the Odoo 19 build</h2>
+        <p>The org shape sets the ERP's role and scheduling design: five department roles with
+        scoped access; Manufacturing work orders and timesheets for the workshop; Field Service
+        dispatch, route and parts for technicians; Subscriptions for chemical logistics; and HR for
+        a ~45-person establishment. The capacity story is the benefits case — utilisation, not
+        headcount, is the lever.</p>
+        <div class="callout tn"><b>Cross-link:</b> see <a href="founders-leadership.html">Founders
+        &amp; Leadership</a> for the apex these departments report into, and the Department Workflows
+        pages for how work moves between them.</div>
+
+        <div class="pagenav">
+          <a href="founders-leadership.html">← Prev: Founders &amp; Leadership</a>
+          <a href="digital-presence.html">Next: Digital &amp; Web Presence →</a>
+        </div>
+      </section>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Headcount
+      and utilisation are analyst modelling — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('hcBar'), {
+  type: 'bar',
+  data: { labels: ['Sales','Workshop','Service','Chemical','Admin/Fin'],
+    datasets: [{ label:'Headcount', data:[8,12,10,6,9],
+      backgroundColor:['#3F6FB0','#0B1F3A','#7FA9DE','#16C098','#E8A13A'] }]},
+  options: { plugins:{ legend:{ display:false }, title:{ display:true, text:'Headcount by department' } },
+    scales:{ y:{ beginAtZero:true } } }
+});
+new Chart(document.getElementById('utilBar'), {
+  type: 'bar',
+  data: { labels: ['Workshop','Field techs','Chemical logistics'],
+    datasets: [
+      { label:'Current %', data:[84,72,68], backgroundColor:'#7FA9DE' },
+      { label:'Target %', data:[88,80,78], backgroundColor:'#16C098' }
+    ]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Utilisation: current vs target' } },
+    scales:{ y:{ beginAtZero:true, max:100 } } }
+});
+</script>
+</body>
+</html>

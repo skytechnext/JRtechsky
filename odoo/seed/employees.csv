@@ -1,0 +1,31 @@
+xml_id,name,job_title,department_xml_id,work_email,work_phone,wage_myr,create_user,user_login
+emp_01,Tan Gim Boon,Managing Director,dept_mgmt,tan.gim@jrtech.com.my,+6012-7363900,18000,yes,tan.gim@jrtech.com.my
+emp_02,Lim Cheng Hoe,Sales Director,dept_sales,lim.cheng@jrtech.com.my,+6012-2933912,12000,yes,lim.cheng@jrtech.com.my
+emp_03,Lee Wei Ming,Senior Sales Engineer,dept_sales,lee.wei@jrtech.com.my,+6012-2209805,7000,yes,lee.wei@jrtech.com.my
+emp_04,Wong Siew Lan,Sales Engineer,dept_sales,wong.siew@jrtech.com.my,+6012-8220576,5000,yes,wong.siew@jrtech.com.my
+emp_05,Ng Boon Hua,Sales Engineer,dept_sales,ng.boon@jrtech.com.my,+6012-4307113,5000,yes,ng.boon@jrtech.com.my
+emp_06,Ahmad bin Ismail,Account Executive (Chemicals),dept_chem,ahmad.bin@jrtech.com.my,+6012-4054301,4500,yes,ahmad.bin@jrtech.com.my
+emp_07,Siti binti Yusof,Account Executive (Chemicals),dept_chem,siti.binti@jrtech.com.my,+6012-3872427,4500,yes,siti.binti@jrtech.com.my
+emp_08,Raj a/l Muniandy,Consultant — Kitchen Design,dept_consult,raj.al@jrtech.com.my,+6012-3170528,8000,yes,raj.al@jrtech.com.my
+emp_09,Kumar Pillai,Space Planner,dept_consult,kumar.pillai@jrtech.com.my,+6012-8177968,6000,yes,kumar.pillai@jrtech.com.my
+emp_10,Chong Kar Wai,CAD Draftsperson,dept_consult,chong.kar@jrtech.com.my,+6012-2859791,4000,yes,chong.kar@jrtech.com.my
+emp_11,Goh Eng Hooi,Training Specialist,dept_consult,goh.eng@jrtech.com.my,+6012-7676566,5500,yes,goh.eng@jrtech.com.my
+emp_12,Teh Soo Peng,Fabrication Supervisor,dept_fab,teh.soo@jrtech.com.my,+6012-8213171,6500,no,teh.soo@jrtech.com.my
+emp_13,Ooi Beng Hock,Welder/Fabricator,dept_fab,ooi.beng@jrtech.com.my,+6012-9484144,3800,no,ooi.beng@jrtech.com.my
+emp_14,Faizal bin Rahman,Welder/Fabricator,dept_fab,faizal.bin@jrtech.com.my,+6012-6574866,3800,no,faizal.bin@jrtech.com.my
+emp_15,Nurul binti Hassan,Welder/Fabricator,dept_fab,nurul.binti@jrtech.com.my,+6012-2729295,3600,no,nurul.binti@jrtech.com.my
+emp_16,Devi a/p Krishnan,Sheet-metal Technician,dept_fab,devi.ap@jrtech.com.my,+6012-6953410,3600,no,devi.ap@jrtech.com.my
+emp_17,Hafiz bin Omar,Service Manager,dept_service,hafiz.bin@jrtech.com.my,+6012-5539336,9000,yes,hafiz.bin@jrtech.com.my
+emp_18,Mei Ling Tan,Senior Service Engineer,dept_service,mei.tan@jrtech.com.my,+6012-2266612,6000,yes,mei.tan@jrtech.com.my
+emp_19,Wei Jie Lim,Service Engineer,dept_service,wei.lim@jrtech.com.my,+6012-2249957,4500,yes,wei.lim@jrtech.com.my
+emp_20,Suresh Ramasamy,Service Engineer,dept_service,suresh.ramasamy@jrtech.com.my,+6012-2785972,4500,yes,suresh.ramasamy@jrtech.com.my
+emp_21,Chee Keong Lim,Service Engineer,dept_service,chee.lim@jrtech.com.my,+6012-3834068,4200,yes,chee.lim@jrtech.com.my
+emp_22,Aishah binti Salleh,Field Technician,dept_service,aishah.binti@jrtech.com.my,+6012-3951701,3500,yes,aishah.binti@jrtech.com.my
+emp_23,Vijay Nair,Field Technician,dept_service,vijay.nair@jrtech.com.my,+6012-6239227,3500,yes,vijay.nair@jrtech.com.my
+emp_24,Hui Min Cheah,Maintenance Planner,dept_service,hui.cheah@jrtech.com.my,+6012-7050099,4800,yes,hui.cheah@jrtech.com.my
+emp_25,Khalid bin Aziz,Warehouse Supervisor,dept_wh,khalid.bin@jrtech.com.my,+6012-2222599,4500,no,khalid.bin@jrtech.com.my
+emp_26,Puvanes an,Storekeeper,dept_wh,puvanes.an@jrtech.com.my,+6012-6708064,3200,no,puvanes.an@jrtech.com.my
+emp_27,Yong Choon Seng,Logistics/Driver,dept_wh,yong.choon@jrtech.com.my,+6012-3667971,3000,no,yong.choon@jrtech.com.my
+emp_28,Farah binti Latif,Finance Manager,dept_admin,farah.binti@jrtech.com.my,+6012-8006407,8500,yes,farah.binti@jrtech.com.my
+emp_29,Daniel Wong,Accounts Executive,dept_admin,daniel.wong@jrtech.com.my,+6012-7451625,4000,yes,daniel.wong@jrtech.com.my
+emp_30,Steven Goh,Admin & HR Executive,dept_admin,steven.goh@jrtech.com.my,+6012-7883140,3800,yes,steven.goh@jrtech.com.my

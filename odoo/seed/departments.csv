@@ -1,0 +1,9 @@
+xml_id,name,parent_xml_id
+dept_mgmt,Management,
+dept_sales,Sales & Business Dev,dept_mgmt
+dept_consult,Consulting & Design,dept_mgmt
+dept_fab,Stainless Fabrication,dept_mgmt
+dept_service,Field Service & Maintenance,dept_mgmt
+dept_chem,Chemical Supplies,dept_sales
+dept_wh,Warehouse & Logistics,dept_mgmt
+dept_admin,Finance & Admin,dept_mgmt

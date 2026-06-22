@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitor Deep-Dive — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="competitor-deepdive">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Strategic Analysis</b> · Competitor Deep-Dive</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Strategic Analysis</span>
+      <h1>Competitor landscape: where JR-Tech<br>wins, and where it bleeds.</h1>
+      <p>A structured read of the Malaysian and Penang commercial-kitchen equipment, fabrication and
+      kitchen-chemicals field — positioned on breadth versus specialisation — with a head-to-head
+      comparison and a clear-eyed account of JR-Tech's relative advantages and exposures.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <h2>How the field is structured</h2>
+        <p class="lead">The market splits into three archetypes that rarely overlap: <b>equipment
+        distributors</b> (broad catalogue, thin service), <b>specialist fabricators</b> (deep custom
+        metalwork, narrow scope) and <b>chemical/hygiene suppliers</b> (consumable annuities, no
+        engineering). JR-Tech is unusual in spanning all three plus consulting — the basis of its
+        "one-stop" claim. The competitive question is whether that breadth is monetised or merely
+        offered. Today, without integrated systems, much of it is the latter.</p>
+        <div class="grid g4">
+          <div class="kpi"><div class="num">3</div><div class="lbl">distinct competitor archetypes</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">lines JR-Tech spans vs. 1–2 for most rivals</div></div>
+          <div class="kpi"><div class="num">Fragmented</div><div class="lbl">no dominant full-stack national player</div></div>
+          <div class="kpi"><div class="num">Penang</div><div class="lbl">home-turf density advantage</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Positioning map</h2>
+        <p class="lead">Each player plotted by <b>breadth of offering</b> (x: single-line → full
+        turnkey) against <b>service &amp; integration depth</b> (y: transactional → embedded partner).
+        JR-Tech occupies the scarce upper-right — broad and service-led — but the position is only
+        defensible if integration is real, not aspirational.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="posMap" height="320"></canvas></div>
+          <div class="card pad-lg">
+            <h3>What the map says</h3>
+            <p>The upper-right quadrant is sparsely occupied — most rivals are either broad-but-shallow
+            distributors (lower-right) or deep-but-narrow specialists (upper-left). JR-Tech's natural
+            position is the contested top-right.</p>
+            <div class="callout tn"><b>So what for the Odoo build:</b> the dotted "JR-Tech with Odoo"
+            marker shows the intended move — same breadth, materially deeper integration, pulling clear
+            of the distributor pack. The ERP <em>is</em> the differentiation strategy made operational.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Head-to-head comparison</h2>
+        <p class="lead">Representative competitor set across the three archetypes (named illustratively
+        from the MY/Penang category; profiles modelled to category norms — see Methodology).</p>
+        <table class="tbl">
+          <tr>
+            <th>Competitor</th><th>Type</th><th>Equip.</th><th>Fab.</th><th>Service</th>
+            <th>Chemicals</th><th>Digital/ERP</th><th>Edge</th>
+          </tr>
+          <tr><td><b>JR-Tech</b></td><td>Full-stack</td><td>✔</td><td>✔ in-house</td><td>✔</td><td>✔</td>
+            <td><span class="tag warn">Manual → Odoo</span></td><td>Breadth + eco/AI brand</td></tr>
+          <tr><td>National equipment distributor</td><td>Distributor</td><td>✔✔</td><td>—</td><td>Limited</td><td>—</td>
+            <td><span class="tag">Some e-commerce</span></td><td>Catalogue &amp; scale</td></tr>
+          <tr><td>KL turnkey kitchen consultancy</td><td>Consult+fab</td><td>✔</td><td>✔</td><td>✔</td><td>—</td>
+            <td><span class="tag">Project tools</span></td><td>Design pedigree</td></tr>
+          <tr><td>Penang SS fabrication shop</td><td>Fabricator</td><td>—</td><td>✔✔</td><td>Install only</td><td>—</td>
+            <td><span class="tag red">None</span></td><td>Low-cost custom metal</td></tr>
+          <tr><td>Hygiene/chemical multinational</td><td>Chemicals</td><td>—</td><td>—</td><td>Dosing svc</td><td>✔✔</td>
+            <td><span class="tag green">Strong</span></td><td>Brand + dosing tech</td></tr>
+          <tr><td>Local cleaning-chemical SME</td><td>Chemicals</td><td>—</td><td>—</td><td>—</td><td>✔</td>
+            <td><span class="tag red">None</span></td><td>Price</td></tr>
+          <tr><td>Dishwasher/warewash specialist</td><td>Equip+svc</td><td>✔</td><td>—</td><td>✔✔</td><td>✔ tied</td>
+            <td><span class="tag">Vendor portal</span></td><td>Warewash niche</td></tr>
+          <tr><td>Grease-trap / waste contractor</td><td>Service</td><td>—</td><td>—</td><td>✔✔</td><td>—</td>
+            <td><span class="tag red">None</span></td><td>Compliance niche</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Where JR-Tech wins — and loses</h2>
+        <div class="grid g2">
+          <div class="card pad-lg" style="border-top:4px solid var(--tn-accent)">
+            <span class="tag green">Wins</span>
+            <ul>
+              <li><b>Single accountable partner</b> — one contract spans design, build, service, supply; rivals force the buyer to stitch vendors.</li>
+              <li><b>In-house fabrication</b> — controls cost, quality and lead time vs. distributors who outsource.</li>
+              <li><b>Annuity capture potential</b> — equipment install pulls through service + chemical resupply.</li>
+              <li><b>Eco/AI narrative</b> — the only player in the local set actively branding the future-of-kitchens position.</li>
+            </ul>
+          </div>
+          <div class="card pad-lg" style="border-top:4px solid var(--danger)">
+            <span class="tag red">Loses</span>
+            <ul>
+              <li><b>Catalogue depth &amp; price</b> — large distributors undercut on commodity equipment.</li>
+              <li><b>Digital maturity</b> — chemical multinationals offer dosing telemetry and portals JR can't yet match.</li>
+              <li><b>Lead generation</b> — thin online presence cedes top-of-funnel to better-marketed rivals.</li>
+              <li><b>Proof of value</b> — without data, the breadth advantage is asserted, not demonstrated, in tenders.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout tn"><b>So what for the Odoo build:</b> three of the four "loses" are
+        addressable by the ERP and adjacent digital work — a unified product catalogue, service/chemical
+        telemetry via Field Service &amp; IoT, and data-backed tender proposals. Odoo converts breadth
+        from a slogan into a measurable, hard-to-copy advantage. See the deeper named analysis in
+        <a href="../intel/top3-competitors.html">Top-3 Competitor Deep-Dive</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="porters.html">← Prev: Porter's Five Forces</a>
+        <a href="market-industry.html">Next: Market &amp; Industry →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('posMap'), {
+  type: 'scatter',
+  data: { datasets: [
+    { label:'JR-Tech (today)', data:[{x:8.5,y:6}], pointRadius:9, backgroundColor:'#0B1F3A' },
+    { label:'JR-Tech (with Odoo)', data:[{x:9,y:9}], pointRadius:9, pointStyle:'rectRot', backgroundColor:'#16C098' },
+    { label:'Equipment distributor', data:[{x:7,y:3}], pointRadius:8, backgroundColor:'#7FA9DE' },
+    { label:'Turnkey consultancy', data:[{x:6,y:7}], pointRadius:8, backgroundColor:'#3F6FB0' },
+    { label:'SS fabricator', data:[{x:3,y:5}], pointRadius:8, backgroundColor:'#E8A13A' },
+    { label:'Chemical multinational', data:[{x:3.5,y:8}], pointRadius:8, backgroundColor:'#E2544B' },
+    { label:'Warewash specialist', data:[{x:4,y:6.5}], pointRadius:8, backgroundColor:'#5C8BC9' },
+    { label:'Grease-trap contractor', data:[{x:2,y:4}], pointRadius:8, backgroundColor:'#5A6B82' }
+  ]},
+  options: {
+    scales:{
+      x:{ min:0,max:10, title:{display:true,text:'Breadth of offering (single-line → full turnkey) →'}},
+      y:{ min:0,max:10, title:{display:true,text:'Service & integration depth →'}}
+    },
+    plugins:{ legend:{ position:'bottom', labels:{ boxWidth:10 } } }
+  }
+});
+</script>
+</body>
+</html>

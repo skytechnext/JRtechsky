@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Management — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="change-management">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Delivery</b> · Change Management</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Delivery</span>
+      <h1>The ERP is the easy part.<br>Getting JR-Tech's people to adopt it is the project.</h1>
+      <p>JR-Tech runs on spreadsheets, WhatsApp and the institutional memory of a small, loyal team.
+      Replacing that with Odoo 19 is a behaviour change, not just a software change. This plan uses
+      ADKAR to manage individuals through the transition and Kotter to drive the organisation —
+      backed by a super-user network, a structured comms plan and an honest view of where resistance
+      will come from.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">~40</div><div class="lbl">staff to move from manual tools to Odoo</div></div>
+          <div class="kpi"><div class="num">5</div><div class="lbl">ADKAR stages every user must clear</div></div>
+          <div class="kpi"><div class="num">6–8</div><div class="lbl">super-users seeded across the 4 lines</div></div>
+          <div class="kpi"><div class="num">3</div><div class="lbl">go-lives, each a managed change event</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Two lenses: ADKAR for people, Kotter for the organisation</h2>
+        <p class="lead">We manage the individual journey and the organisational movement in parallel.
+        ADKAR tells us whether each person is ready; Kotter keeps leadership pushing the whole company
+        in the same direction.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>ADKAR — the individual change journey</h3>
+            <table class="tbl">
+              <tr><th>Stage</th><th>What it means at JR-Tech</th><th>Lever</th></tr>
+              <tr><td><b>Awareness</b></td><td>Why spreadsheets are now a liability — lost margin, no SLA visibility</td><td>Director town-hall, case for change</td></tr>
+              <tr><td><b>Desire</b></td><td>"This makes my day easier" for sales, store &amp; service staff</td><td>WIIFM by role, early wins</td></tr>
+              <tr><td><b>Knowledge</b></td><td>How to raise a quote, dispatch a job, issue an e-invoice in Odoo</td><td>Role-based training, job aids</td></tr>
+              <tr><td><b>Ability</b></td><td>Doing it live, unaided, at real volume</td><td>Sandbox practice, super-user shadowing</td></tr>
+              <tr><td><b>Reinforcement</b></td><td>It sticks — old tools retired, KPIs watched</td><td>Hypercare, recognition, no fallback</td></tr>
+            </table>
+          </div>
+          <div class="card pad-lg">
+            <h3>Kotter — the organisational movement</h3>
+            <ol class="steps">
+              <li><b>Create urgency.</b> Director frames manual ops as the cap on JR-Tech's "one-stop" growth.</li>
+              <li><b>Build the coalition.</b> Director + TechNext PM + line leads own the change visibly.</li>
+              <li><b>Form the vision.</b> One backbone, AI-assisted, MyInvois-ready — the maturity leap.</li>
+              <li><b>Communicate it.</b> Repeated, role-specific messaging through the comms plan below.</li>
+              <li><b>Enable action.</b> Super-users, time to train, removal of "we've always done it this way".</li>
+              <li><b>Generate short-term wins.</b> Phase 1 quote-to-cash live in ~8 weeks.</li>
+              <li><b>Sustain &amp; build.</b> Each phase compounds credibility into the next.</li>
+              <li><b>Anchor the change.</b> Odoo becomes how JR-Tech simply works — old tools decommissioned.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Adoption curve across the rollout</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="adoptionChart" height="250"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Riding the dip, not pretending it won't happen</h3>
+            <p>Every ERP go-live has a productivity dip as people abandon familiar tools. We plan for
+            it: Phase 1 dips first, then recovers above baseline as the backbone proves itself.
+            Innovators (the super-users) lead, the early majority follow once they see peers succeed,
+            and the laggards — typically long-tenured staff most attached to the old way — are pulled
+            across by reinforcement, not coercion.</p>
+            <div class="callout warn"><b>Watch the trough:</b> the highest resistance and ticket
+            volume cluster in the first two weeks after each go-live. Hypercare staffing and comms
+            intensity are deliberately weighted there.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Communications plan</h2>
+        <p class="lead">Communication is scheduled, audience-specific and two-way — JR-Tech's team
+        must be able to push concerns back up, not just receive announcements.</p>
+        <table class="tbl">
+          <tr><th>Audience</th><th>Key message</th><th>Channel</th><th>Cadence</th><th>Owner</th></tr>
+          <tr><td>Director / Sponsor (Tan Gim Boon)</td><td>Status, risks, decisions needed, value tracking</td><td>Steering review</td><td>Fortnightly</td><td>TechNext PM</td></tr>
+          <tr><td>Line leads (sales, store, service, chem.)</td><td>What changes for your team &amp; when</td><td>Working group + WhatsApp</td><td>Weekly</td><td>Functional Consultant</td></tr>
+          <tr><td>Super-users</td><td>Build decisions, config previews, training prep</td><td>Sandbox demos</td><td>Fortnightly</td><td>Functional Consultant</td></tr>
+          <tr><td>End-users (all staff)</td><td>WIIFM, timeline, "where to get help"</td><td>Town-hall + posters + chat</td><td>Per milestone</td><td>Director + PM</td></tr>
+          <tr><td>Field engineers</td><td>Mobile dispatch &amp; job-close how-to</td><td>On-site briefing</td><td>Pre Phase 2 go-live</td><td>Super-users</td></tr>
+          <tr><td>Finance team</td><td>SST/MyInvois cut-over, parallel-run plan</td><td>Targeted session</td><td>Pre Phase 1 go-live</td><td>Functional Consultant</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Resistance management</h2>
+        <table class="tbl">
+          <tr><th>Anticipated resistance</th><th>Root cause</th><th>Likelihood</th><th>Response</th></tr>
+          <tr><td>"Spreadsheets are faster"</td><td>Comfort &amp; muscle memory</td><td><span class="tag warn">High</span></td><td>Show side-by-side timing; retire the spreadsheet on go-live so there is no fallback</td></tr>
+          <tr><td>Fear of being measured / exposed</td><td>New visibility into individual performance</td><td><span class="tag warn">High</span></td><td>Frame KPIs as team/process metrics, not surveillance; lead with support</td></tr>
+          <tr><td>Field engineers reject mobile entry</td><td>Low digital confidence, on-site time pressure</td><td><span class="tag warn">Med</span></td><td>Simplify the mobile flow to &lt;5 taps; super-user ride-alongs</td></tr>
+          <tr><td>Finance distrust of migrated balances</td><td>Stakes of getting the ledger wrong</td><td><span class="tag red">High</span></td><td>Reconciliation sign-off + a short parallel run before retiring legacy</td></tr>
+          <tr><td>Leadership reverts under pressure</td><td>Short-term productivity dip</td><td><span class="tag">Med</span></td><td>Pre-agree the dip is expected; sponsor visibly holds the line</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Super-user network &amp; training linkage</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>The multiplier in a 40-person company</h3>
+            <p>We cannot embed a consultant beside every JR-Tech employee — so we build a network of
+            6–8 super-users, one to two per business line, identified in Phase 1. They are the most
+            respected operators in each team, given early access to the sandbox, deeper training, and
+            a direct line to the TechNext functional consultant.</p>
+            <p>After go-live they become first-line support: peer help is faster, less intimidating
+            and more credible than a help desk, and it keeps tickets off the consulting team.</p>
+            <div class="callout tn"><b>Selection rule:</b> pick for influence and willingness, not
+            seniority. A trusted, enthusiastic store clerk converts more peers than a reluctant
+            manager.</div>
+          </div>
+          <div class="card pad-lg">
+            <h3>How change links to training</h3>
+            <p>The change plan sets the <i>why</i> and <i>when</i>; the training curriculum delivers
+            the <i>how</i>. ADKAR's Knowledge and Ability stages are operationalised entirely through
+            role-based learning paths, and Reinforcement is sustained by hypercare.</p>
+            <ul>
+              <li>Super-users are trained one cycle ahead of their teams (train-the-trainer).</li>
+              <li>Each go-live is preceded by just-in-time, role-specific training — not generic decks.</li>
+              <li>Competency sign-off gates a user's access to live transactions.</li>
+            </ul>
+            <p><a href="training.html">See the Training &amp; Enablement curriculum →</a></p>
+          </div>
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="roadmap.html">← Prev: Implementation Roadmap</a>
+        <a href="hypercare.html">Next: Hypercare &amp; Support →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('adoptionChart'), {
+  type: 'line',
+  data: {
+    labels: ['Kick-off','P1 train','P1 go-live','+2 wk','P2 go-live','+2 wk','P3 go-live','BAU'],
+    datasets: [
+      { label: 'Adoption %', data: [0, 15, 35, 55, 60, 75, 82, 92],
+        borderColor: '#16C098', backgroundColor: 'rgba(22,192,152,.15)', tension: .35, fill: true },
+      { label: 'Productivity (rel. baseline)', data: [100, 95, 78, 92, 84, 98, 90, 118],
+        borderColor: '#3F6FB0', backgroundColor: 'rgba(63,111,176,.10)', tension: .35, fill: false }
+    ]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'bottom' } },
+    scales: { y: { title: { display: true, text: '% / index' } } } }
+});
+</script>
+</body>
+</html>

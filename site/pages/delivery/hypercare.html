@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypercare &amp; Support — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="hypercare">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Delivery</b> · Hypercare &amp; Support</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Delivery</span>
+      <h1>Go-live is the start of support, not the end of the project.</h1>
+      <p>The riskiest moment in any ERP programme is the first few weeks of live operation. Our
+      hypercare model surrounds JR-Tech with intensive, fast-response support immediately after each
+      go-live, then deliberately steps that support down as the team becomes self-sufficient — handing
+      over cleanly to a sustainable business-as-usual and application-management arrangement.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">3 wk</div><div class="lbl">intensive hypercare after each go-live</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">support tiers from peer to TechNext core</div></div>
+          <div class="kpi"><div class="num">4 h</div><div class="lbl">target response on a P1 production-down ticket</div></div>
+          <div class="kpi"><div class="num">BAU</div><div class="lbl">clean handover to managed support / AMS</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The hypercare timeline</h2>
+        <p class="lead">Hypercare runs as a step-down: maximum hands-on presence in week one, tapering
+        to scheduled check-ins by week three. Each phase go-live gets its own window, so the team is
+        never carrying a fresh app and a fresh support gap at once.</p>
+        <div class="mermaid">
+timeline
+    title Hypercare step-down per go-live
+    Day 0 Go-Live : On-site / on-call all day : Daily stand-up : War-room channel open
+    Week 1 : Same-day fixes : Twice-daily triage : Super-users front-line
+    Week 2 : Response within hours : Daily triage : Ticket trend reviewed
+    Week 3 : Scheduled support : Exit-criteria check : Knowledge base filled
+    Exit : Stabilisation sign-off : Handover to BAU / AMS : Lessons captured
+        </div>
+        <div class="callout tn"><b>Exit is earned, not timed:</b> hypercare only closes when the
+        ticket burn-down, data-quality and user-confidence criteria are met — see the burn-down chart
+        below. A still-noisy system stays in hypercare.</div>
+      </section>
+
+      <section class="section">
+        <h2>Support tiers &amp; SLAs</h2>
+        <p class="lead">Tickets are classified by priority and routed through four tiers. Peer
+        super-users resolve the bulk of day-to-day questions; only genuine defects reach TechNext's
+        core engineering.</p>
+        <table class="tbl">
+          <tr><th>Priority</th><th>Definition</th><th>Response (hypercare)</th><th>Resolution target</th><th>Owner tier</th></tr>
+          <tr><td><span class="tag red">P1 — Critical</span></td><td>Production down; cannot invoice, dispatch or ship</td><td>30 min</td><td>4 hours</td><td>Tier 3–4</td></tr>
+          <tr><td><span class="tag warn">P2 — High</span></td><td>Major function broken, workaround exists</td><td>2 hours</td><td>1 business day</td><td>Tier 2–3</td></tr>
+          <tr><td><span class="tag">P3 — Medium</span></td><td>Minor function / single-user blocker</td><td>1 business day</td><td>3 business days</td><td>Tier 1–2</td></tr>
+          <tr><td><span class="tag green">P4 — Low</span></td><td>Cosmetic, query, enhancement request</td><td>2 business days</td><td>Backlog / next sprint</td><td>Tier 1</td></tr>
+        </table>
+        <div class="grid g4" style="margin-top:18px">
+          <div class="card"><b>Tier 1 — Peer</b><p>Super-users in each line. Answer how-to questions, fix user error, deflect &gt;50% of tickets.</p></div>
+          <div class="card"><b>Tier 2 — Functional</b><p>TechNext functional consultant. Config, process and data issues.</p></div>
+          <div class="card"><b>Tier 3 — Technical</b><p>TechNext developer. Customisations, integrations, performance.</p></div>
+          <div class="card"><b>Tier 4 — Vendor</b><p>Odoo SH / platform &amp; MyInvois gateway escalation.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Escalation &amp; responsibilities (RACI)</h2>
+        <p class="lead">A clear escalation path prevents the worst hypercare failure mode: a P1 ticket
+        sitting unowned. This mini-RACI fixes who acts on production incidents.</p>
+        <table class="tbl">
+          <tr><th>Activity</th><th>Super-user</th><th>TechNext PM</th><th>Functional</th><th>Developer</th><th>Director</th></tr>
+          <tr><td>Log &amp; triage ticket</td><td>R</td><td>A</td><td>C</td><td>I</td><td>I</td></tr>
+          <tr><td>Resolve P3/P4</td><td>R</td><td>I</td><td>A</td><td>C</td><td>I</td></tr>
+          <tr><td>Resolve P1/P2 defect</td><td>I</td><td>A</td><td>R</td><td>R</td><td>I</td></tr>
+          <tr><td>Escalate to vendor</td><td>I</td><td>A</td><td>R</td><td>R</td><td>I</td></tr>
+          <tr><td>Business call on workaround</td><td>C</td><td>R</td><td>C</td><td>I</td><td>A</td></tr>
+          <tr><td>Approve hypercare exit</td><td>C</td><td>R</td><td>C</td><td>I</td><td>A</td></tr>
+        </table>
+        <p style="font-size:12.5px;color:var(--jr-slate)">R = Responsible · A = Accountable · C = Consulted · I = Informed</p>
+      </section>
+
+      <section class="section">
+        <h2>Ticket volume burn-down</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="burndownChart" height="250"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading the curve</h3>
+            <p>Ticket volume spikes on day one as the whole team hits the new system at once, then
+            falls steeply as the common questions get answered and super-users absorb the load. The
+            target line is the threshold below which we are comfortable stepping support down.</p>
+            <p>If actuals track above target into week three, hypercare extends and we investigate
+            root cause — usually a training gap or a missed configuration — rather than simply
+            throwing more support hours at symptoms.</p>
+            <div class="callout"><b>BAU trigger:</b> sustained volume below ~5 tickets/day with no
+            open P1/P2 for five consecutive working days.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Transition to BAU &amp; ongoing AMS</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Handover pack</span><h3>Leave nothing tacit</h3>
+            <p>Configuration workbook, data dictionary, role matrix, runbooks and the knowledge base
+            built during hypercare are handed to JR-Tech's super-users.</p></div>
+          <div class="card"><span class="tag green">Steady state</span><h3>Self-sufficient first line</h3>
+            <p>Super-users own Tier 1; JR-Tech logs anything beyond into the shared service desk.
+            Most days require no TechNext involvement at all.</p></div>
+          <div class="card"><span class="tag warn">AMS option</span><h3>Retainer for the rest</h3>
+            <p>An optional Application Management Service covers Tier 2–4: upgrades, new requirements,
+            MyInvois rule changes and the Phase 3 AI models — priced as a monthly retainer.</p></div>
+        </div>
+        <div class="callout tn"><b>So what for JR-Tech:</b> the model is designed to make TechNext
+        progressively <i>less</i> needed for day-to-day operations, while remaining on call for the
+        genuinely hard problems — aligning incentives toward a system JR-Tech truly owns.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="change-management.html">← Prev: Change Management</a>
+        <a href="risk-raci.html">Next: Risk Register &amp; RACI →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('burndownChart'), {
+  type: 'line',
+  data: {
+    labels: ['D1','D2','D3','D5','W2-1','W2-3','W3-1','W3-3','BAU'],
+    datasets: [
+      { label: 'Actual tickets/day', data: [42, 35, 28, 22, 16, 11, 8, 5, 3],
+        borderColor: '#E2544B', backgroundColor: 'rgba(226,84,75,.14)', tension: .3, fill: true },
+      { label: 'Target threshold', data: [40, 32, 26, 20, 14, 10, 7, 5, 5],
+        borderColor: '#16C098', borderDash: [6,4], tension: .3, fill: false, pointRadius: 0 }
+    ]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'bottom' } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: 'tickets / day' } } } }
+});
+</script>
+</body>
+</html>
