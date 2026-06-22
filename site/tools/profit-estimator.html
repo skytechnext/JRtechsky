@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profit Estimator — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  .ctrl { margin:0 0 16px; }
+  .ctrl label { display:block; font-size:13px; font-weight:600; color:var(--jr-ink); margin-bottom:6px; }
+  .ctrl .row { display:flex; align-items:center; gap:12px; }
+  .ctrl input[type=range] { flex:1; accent-color:var(--jr-blue-700); }
+  .ctrl input[type=number] { width:104px; padding:8px 10px; border:1px solid var(--jr-line);
+    border-radius:8px; font:inherit; font-size:14px; text-align:right; }
+  .ctrl .hint { font-size:11.5px; color:var(--jr-slate); margin-top:4px; }
+  .out-num { font-size:26px; font-weight:800; color:var(--jr-navy); line-height:1.1; }
+  .out-num.pos { color:#0E8E6E; }
+</style>
+</head>
+<body data-page="profit-estimator">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Profit Estimator</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents</span>
+      <h1>Profit Estimator: what does the<br>quoting, admin and stock chaos actually cost?</h1>
+      <p>A live model of the operational money JR-Tech leaves on the table today — and what an Odoo 19
+      backbone recovers. Move any slider; every output and the chart recompute instantly. All figures
+      in Malaysian Ringgit. Defaults are conservative SME estimates (see Methodology).</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Your inputs</h3>
+            <div class="ctrl"><label>Quotes issued per month</label>
+              <div class="row"><input type="range" id="r_quotes" min="5" max="200" step="1">
+                <input type="number" id="n_quotes"></div></div>
+            <div class="ctrl"><label>Average quote value (RM)</label>
+              <div class="row"><input type="range" id="r_value" min="500" max="100000" step="500">
+                <input type="number" id="n_value"></div></div>
+            <div class="ctrl"><label>Current quote turnaround (days)</label>
+              <div class="row"><input type="range" id="r_turn" min="0.5" max="14" step="0.5">
+                <input type="number" id="n_turn"></div>
+              <div class="hint">Faster quotes win more time-sensitive deals. Odoo target ≈ same-day.</div></div>
+            <div class="ctrl"><label>Current win-rate (%)</label>
+              <div class="row"><input type="range" id="r_win" min="5" max="80" step="1">
+                <input type="number" id="n_win"></div></div>
+            <div class="ctrl"><label>Inventory shrinkage / loss (% of stock value)</label>
+              <div class="row"><input type="range" id="r_shrink" min="0" max="15" step="0.5">
+                <input type="number" id="n_shrink"></div></div>
+            <div class="ctrl"><label>Annual inventory value carried (RM)</label>
+              <div class="row"><input type="range" id="r_inv" min="50000" max="3000000" step="10000">
+                <input type="number" id="n_inv"></div></div>
+            <div class="ctrl"><label>Manual admin hours / week (quotes, re-keying, chasing)</label>
+              <div class="row"><input type="range" id="r_admin" min="2" max="120" step="1">
+                <input type="number" id="n_admin"></div></div>
+            <div class="ctrl"><label>Fully-loaded staff cost (RM / hour)</label>
+              <div class="row"><input type="range" id="r_rate" min="15" max="150" step="1">
+                <input type="number" id="n_rate"></div></div>
+          </div>
+
+          <div>
+            <div class="grid g2">
+              <div class="kpi"><div class="out-num pos" id="o_time">—</div><div class="lbl">Admin labour recovered / year</div></div>
+              <div class="kpi"><div class="out-num pos" id="o_rev">—</div><div class="lbl">Revenue uplift (faster + higher win-rate)</div></div>
+              <div class="kpi"><div class="out-num pos" id="o_shrink">—</div><div class="lbl">Shrinkage savings / year</div></div>
+              <div class="kpi"><div class="out-num pos" id="o_hours">—</div><div class="lbl">Hours freed / year</div></div>
+            </div>
+            <div class="card pad-lg" style="margin-top:18px">
+              <div class="lbl" style="font-size:13px">Estimated total annual benefit</div>
+              <div class="out-num pos" id="o_total" style="font-size:40px">—</div>
+              <div class="hint" id="o_breakeven" style="font-size:12.5px;color:var(--jr-slate);margin-top:6px"></div>
+            </div>
+            <div class="chartbox" style="margin-top:18px"><canvas id="benefitChart" height="240"></canvas></div>
+          </div>
+        </div>
+        <div class="callout tn"><b>How the model works:</b> faster quoting and a tighter win-rate lift
+        booked revenue (we count the gross-margin slice, ≈25%); a connected stock ledger with reorder
+        rules cuts shrinkage roughly in half; and automating re-keying and chasing recovers ≈65% of the
+        manual admin hours. Tune the assumptions to your own reality — the case stands on your numbers.</div>
+      </section>
+
+      <section class="section">
+        <h2>From estimate to build</h2>
+        <p class="lead">Each benefit lever maps to a specific Odoo 19 capability in the proposed
+        architecture — this estimator quantifies what those modules are worth to JR-Tech.</p>
+        <table class="tbl">
+          <tr><th>Benefit lever</th><th>What changes operationally</th><th>Odoo 19 capability</th></tr>
+          <tr><td>Admin recovered</td><td>One quote source of truth; no re-keying between WhatsApp, Excel and email</td><td>CRM · Sales · Studio templates</td></tr>
+          <tr><td>Faster turnaround</td><td>Reusable product/BoM-priced quotes issued same-day</td><td>Sales · Manufacturing (BoM costing)</td></tr>
+          <tr><td>Higher win-rate</td><td>Professional, consistent, follow-up-tracked offers</td><td>CRM pipeline &amp; activities</td></tr>
+          <tr><td>Lower shrinkage</td><td>Real-time stock, lot/serial tracking, reorder rules</td><td>Inventory</td></tr>
+        </table>
+        <div class="pagenav">
+          <a href="ai-build-playbook.html">← Prev: AI Build Playbook</a>
+          <a href="owner-faq.html">Next: Owner FAQ →</a>
+        </div>
+        <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Indicative model — see Methodology &amp; Assumptions.</div></footer>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+var DEFAULTS = { quotes:40, value:8000, turn:4, win:30, shrink:5, inv:600000, admin:25, rate:45 };
+var WEEKS = 48, MARGIN = 0.25;
+
+var fields = ['quotes','value','turn','win','shrink','inv','admin','rate'];
+function rm(v){ return 'RM ' + Math.round(v).toLocaleString('en-MY'); }
+
+var chart;
+function compute(){
+  var v = {};
+  fields.forEach(function(f){ v[f] = parseFloat(document.getElementById('n_'+f).value) || 0; });
+
+  // Admin labour recovered: automate ~65% of manual admin hours
+  var hoursFreed = v.admin * WEEKS * 0.65;
+  var timeSaved = hoursFreed * v.rate;
+
+  // Revenue uplift: faster turnaround + higher win-rate
+  // Turnaround improvement -> proportional win-rate lift, capped; Odoo target ~0.5 day
+  var speedFactor = Math.min(0.30, Math.max(0, (v.turn - 0.5) / v.turn) * 0.5); // up to +30% relative win
+  var newWin = Math.min(0.95, (v.win/100) * (1 + speedFactor) + 0.05); // +5pts process quality, capped
+  var quotesYr = v.quotes * 12;
+  var wonNow = quotesYr * (v.win/100);
+  var wonNew = quotesYr * newWin;
+  var extraWon = Math.max(0, wonNew - wonNow);
+  var revUplift = extraWon * v.value * MARGIN;
+
+  // Shrinkage savings: halve shrinkage with real-time stock control
+  var shrinkSavings = v.inv * (v.shrink/100) * 0.5;
+
+  var total = timeSaved + revUplift + shrinkSavings;
+
+  document.getElementById('o_time').textContent = rm(timeSaved);
+  document.getElementById('o_rev').textContent = rm(revUplift);
+  document.getElementById('o_shrink').textContent = rm(shrinkSavings);
+  document.getElementById('o_hours').textContent = Math.round(hoursFreed).toLocaleString('en-MY') + ' h';
+  document.getElementById('o_total').textContent = rm(total);
+  document.getElementById('o_breakeven').textContent =
+    'Win-rate modelled to rise from ' + v.win.toFixed(0) + '% to ' + (newWin*100).toFixed(0) +
+    '% · ' + Math.round(extraWon) + ' extra deals/yr · ≈ ' + rm(total/12) + ' per month.';
+
+  var data = [timeSaved, revUplift, shrinkSavings];
+  if(chart){ chart.data.datasets[0].data = data; chart.update(); }
+}
+
+function link(f){
+  var r = document.getElementById('r_'+f), n = document.getElementById('n_'+f);
+  r.value = DEFAULTS[f]; n.value = DEFAULTS[f];
+  r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  n.addEventListener('input', function(){ r.value = n.value; compute(); });
+}
+fields.forEach(link);
+
+chart = new Chart(document.getElementById('benefitChart'), {
+  type: 'bar',
+  data: { labels: ['Admin recovered','Revenue uplift','Shrinkage savings'],
+    datasets: [{ label:'Annual benefit (RM)', data:[0,0,0],
+      backgroundColor:['#7FA9DE','#16C098','#E8A13A'] }] },
+  options: { plugins:{ legend:{ display:false }, title:{ display:true, text:'Annual benefit by category (RM)' } },
+    scales:{ y:{ beginAtZero:true, ticks:{ callback:function(v){ return 'RM ' + (v/1000) + 'k'; } } } } }
+});
+
+compute();
+</script>
+</body>
+</html>
