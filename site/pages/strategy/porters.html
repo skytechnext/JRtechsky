@@ -108,6 +108,80 @@
       </section>
 
       <section class="section">
+        <h2>Industry-attractiveness verdict</h2>
+        <p class="lead">Read as a whole, the industry is <b>moderately attractive today</b> — and
+        <b>structurally improving for an integrated digital operator</b>. The two forces that compress
+        the profit pool, rivalry and buyer power, are precisely the ones an ERP-backed, data-rich
+        operating model can blunt; the three milder forces (suppliers, entrants, substitutes) already
+        favour an incumbent with in-house fabrication, 16-year credibility and a full service network.
+        Scoring each force for <b>profit-pool friendliness</b> (0 = punishing, 10 = benign — the inverse
+        of intensity) yields a weighted attractiveness of <b>5.4 / 10</b>: a market worth competing in,
+        but only on differentiation rather than price.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="attractScore" height="300"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading the scores</h3>
+            <p>Substitutes (7.0) and entrants (6.0) are comfortable: custom fabrication, compliance and
+            after-sales are hard to substitute or replicate. Suppliers (5.0) sit mid-range, eased by
+            in-house fabrication and multi-sourced chemicals. The drag comes from rivalry (3.0) and
+            buyer power (4.0) — fragmented price competition and aggressive institutional tendering.</p>
+            <div class="callout"><b>Weighting:</b> rivalry and buyer power carry the heaviest weight
+            (25% each) as the binding constraints; suppliers and entrants 20% each; substitutes 10%.
+            The 5.4 composite confirms a moderate verdict, with clear upside as the two heaviest forces
+            are addressed.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How Odoo + AI shifts each force in JR-Tech's favour</h2>
+        <p class="lead">Each force has a specific operational lever inside the Odoo build. The pattern is
+        consistent: integration and data convert market exposure into defensible advantage.</p>
+        <table class="tbl">
+          <tr><th>Force</th><th>Today</th><th>With Odoo + AI</th><th>Net shift</th></tr>
+          <tr>
+            <td><b>Competitive rivalry</b></td>
+            <td>Fragmented price competition on undifferentiated supply erodes margin.</td>
+            <td>Chemicals and service moved onto Odoo Subscriptions and recurring contracts; AI churn
+            and renewal prompts keep the annuity sticky — raising switching costs.</td>
+            <td><span class="tag green">Lower pressure</span></td>
+          </tr>
+          <tr>
+            <td><b>Bargaining power of buyers</b></td>
+            <td>Buyers extract price concessions because margin is invisible at quote time.</td>
+            <td>Real-time analytic costing and margin-aware quoting let JR-Tech defend price with facts
+            and negotiate on documented total cost, not headline rate.</td>
+            <td><span class="tag green">Neutralised</span></td>
+          </tr>
+          <tr>
+            <td><b>Bargaining power of suppliers</b></td>
+            <td>Imported brands and steel mills hold pricing power, amplified by FX.</td>
+            <td>In-house fabrication plus multi-vendor sourcing and reordering rules in Odoo Purchase
+            spread dependence and surface the cheapest qualified source.</td>
+            <td><span class="tag green">Reduced</span></td>
+          </tr>
+          <tr>
+            <td><b>Threat of new entrants</b></td>
+            <td>Easy to resell one product line; hard to match the full four-line stack.</td>
+            <td>Integration depth — quote-to-fabricate-to-service-to-renew on one platform — raises the
+            entry bar; a copyable single line cannot replicate the orchestrated whole.</td>
+            <td><span class="tag green">Higher barrier</span></td>
+          </tr>
+          <tr>
+            <td><b>Threat of substitutes</b></td>
+            <td>Low-end imported kits and DIY cleaning substitute on price.</td>
+            <td>Documented SLAs, compliance records and e-invoicing readiness, all tracked in Odoo, make
+            the service relationship genuinely hard to substitute.</td>
+            <td><span class="tag green">More resistant</span></td>
+          </tr>
+        </table>
+        <div class="callout tn"><b>So what for the Odoo build:</b> every favourable shift maps to a
+        concrete module — Subscriptions and CRM for rivalry, analytic costing for buyer power, Purchase
+        multi-sourcing for suppliers, end-to-end integration for entrants, and SLA/compliance tracking
+        for substitutes. The strategic case and the implementation backlog are the same document.</div>
+      </section>
+
+      <section class="section">
         <h2>The five forces, mapped</h2>
         <div class="mermaid">
 flowchart TB
@@ -141,6 +215,25 @@ new Chart(document.getElementById('forceRadar'), {
     }]
   },
   options: { scales:{ r:{ min:0, max:5, ticks:{ stepSize:1 } } }, plugins:{ legend:{ position:'bottom' } } }
+});
+</script>
+<script>
+new Chart(document.getElementById('attractScore'), {
+  type: 'bar',
+  data: {
+    labels: ['Substitutes','New entrants','Supplier power','Buyer power','Rivalry','Overall (weighted)'],
+    datasets: [{
+      label: 'Profit-pool friendliness (0–10)',
+      data: [7.0, 6.0, 5.0, 4.0, 3.0, 5.4],
+      backgroundColor: ['#7FA9DE','#7FA9DE','#7FA9DE','#7FA9DE','#7FA9DE','#0B1F3A'],
+      borderColor:'#3F6FB0', borderWidth:1
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    scales:{ x:{ min:0, max:10, ticks:{ stepSize:2 } } },
+    plugins:{ legend:{ position:'bottom' } }
+  }
 });
 </script>
 </body>

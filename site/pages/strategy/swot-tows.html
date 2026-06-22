@@ -148,6 +148,139 @@
       </section>
 
       <section class="section">
+        <h2>Prioritised strategic-initiatives roadmap (impact × feasibility)</h2>
+        <p class="lead">Drawing the discrete moves out of the TOWS cells lets us rank them on the two
+        axes that govern sequencing: <b>impact</b> (value-at-stake against the modelled ≈ RM 430k/yr
+        steady-state benefit) and <b>feasibility</b> (how readily the Odoo 19 scope delivers it). The
+        bubble area encodes the annual value-at-stake. The pattern is decisive: the highest-feasibility,
+        compliance-critical items (MyInvois, AI-assisted quoting) cluster top-right and form the
+        <b>Now</b> wave — the same Phase 1 backlog the priority sequence below begins with.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="initBubble" height="300"></canvas></div>
+          <div class="card pad-lg">
+            <h3>How to read it</h3>
+            <p>Initiatives in the upper-right quadrant are both high-impact and immediately
+            deliverable — these are sequenced <b>Now</b>. The turnkey bundle and chemical
+            subscriptions carry the largest value-at-stake (largest bubbles) but depend on the
+            quoting and customer-record foundations, so they follow as <b>Next</b>. Real-time
+            costing and systematic cross-sell prompts mature once clean transactional data is
+            flowing — <b>Later</b>.</p>
+            <div class="callout tn"><b>Sequencing rule:</b> nothing in the revenue-growth waves
+            ships before the compliance and quoting foundation is live. Value compounds on a clean data spine.</div>
+          </div>
+        </div>
+        <table class="tbl">
+          <tr>
+            <th>Initiative</th><th>TOWS cell</th><th>Impact (0–10)</th><th>Feasibility (0–10)</th><th>Sequence</th>
+          </tr>
+          <tr>
+            <td><b>MyInvois e-invoicing compliance</b></td>
+            <td><span class="tag red">WT</span></td>
+            <td>9.0</td><td>9.0</td>
+            <td><span class="tag green">Now</span></td>
+          </tr>
+          <tr>
+            <td><b>AI-assisted, rule-based quoting</b></td>
+            <td><span class="tag warn">WO</span></td>
+            <td>8.5</td><td>8.0</td>
+            <td><span class="tag green">Now</span></td>
+          </tr>
+          <tr>
+            <td><b>Chemical &amp; service subscriptions</b></td>
+            <td><span class="tag green">SO</span></td>
+            <td>8.0</td><td>6.5</td>
+            <td><span class="tag">Next</span></td>
+          </tr>
+          <tr>
+            <td><b>Turnkey-kitchen bundled offer</b></td>
+            <td><span class="tag green">SO</span></td>
+            <td>9.0</td><td>5.5</td>
+            <td><span class="tag">Next</span></td>
+          </tr>
+          <tr>
+            <td><b>Real-time margin costing</b></td>
+            <td><span class="tag">ST</span></td>
+            <td>7.5</td><td>5.0</td>
+            <td><span class="tag warn">Later</span></td>
+          </tr>
+          <tr>
+            <td><b>Systematic cross-sell prompts</b></td>
+            <td><span class="tag warn">WO</span></td>
+            <td>7.0</td><td>6.0</td>
+            <td><span class="tag warn">Later</span></td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>TOWS → Odoo module → KPI linkage</h2>
+        <p class="lead">Each TOWS move resolves to a specific slice of the Odoo 19 scope and is held
+        accountable to a single, measurable target KPI. This is the contract between strategy and the
+        build: every module earns its place by moving a number.</p>
+        <table class="tbl">
+          <tr>
+            <th style="width:34%">TOWS strategy</th>
+            <th>Odoo module(s)</th>
+            <th>Target KPI</th>
+          </tr>
+          <tr>
+            <td><b>SO</b> — Turnkey AI-quoted kitchen bundle</td>
+            <td>CRM · Sales · Manufacturing (MRP)</td>
+            <td>Quote turnaround from <b>days → &lt;4 hours</b>; bundled-deal win rate ↑</td>
+          </tr>
+          <tr>
+            <td><b>SO</b> — Install base → subscriptions</td>
+            <td>Subscriptions · Field Service</td>
+            <td>Chemical-subscription <b>attach rate ≥ 35%</b> of active accounts</td>
+          </tr>
+          <tr>
+            <td><b>SO</b> — Lead on eco/AI kitchens with margin proof</td>
+            <td>Accounting (analytic) · Project/Timesheets</td>
+            <td>Per-project <b>gross margin ≥ 32%</b> on smart-kitchen lines</td>
+          </tr>
+          <tr>
+            <td><b>ST</b> — Real-time costing vs. FX/steel swings</td>
+            <td>Inventory · Purchase · Accounting</td>
+            <td>Quote-to-actual <b>margin variance &lt; 3pp</b></td>
+          </tr>
+          <tr>
+            <td><b>ST</b> — Quality &amp; SLA over discounting</td>
+            <td>Field Service · Maintenance · Repair · Helpdesk</td>
+            <td>Service <b>SLA-met ≥ 95%</b>; first-time-fix rate ↑</td>
+          </tr>
+          <tr>
+            <td><b>ST</b> — Plan fabrication around welder shortage</td>
+            <td>Manufacturing (MRP) · Project</td>
+            <td>Fabrication <b>capacity utilisation 75–85%</b></td>
+          </tr>
+          <tr>
+            <td><b>WO</b> — Rule-based, version-controlled quoting</td>
+            <td>Sales · Studio</td>
+            <td><b>≥ 80%</b> of quotes produced without director sign-off</td>
+          </tr>
+          <tr>
+            <td><b>WO</b> — Systematise cross-sell prompts</td>
+            <td>CRM · Subscriptions</td>
+            <td>Cross-sell <b>revenue per account ↑ 20%</b></td>
+          </tr>
+          <tr>
+            <td><b>WT</b> — MyInvois e-invoicing compliance</td>
+            <td>Accounting + MyInvois</td>
+            <td><b>100%</b> of invoices auto-submitted &amp; validated; <b>0</b> SST penalties</td>
+          </tr>
+          <tr>
+            <td><b>WT</b> — End single-point-of-failure processes</td>
+            <td>Studio · Project/Timesheets</td>
+            <td><b>0</b> critical processes owner-dependent (bus-factor ≥ 2)</td>
+          </tr>
+        </table>
+        <div class="callout tn"><b>So what for the Odoo build:</b> the linkage table is the acceptance
+        criteria. Phase 1 ships the WT modules (Accounting+MyInvois, Studio) against compliance and
+        bus-factor KPIs; Phases 2–3 layer the SO/WO/ST modules, each go-live gated by its target KPI
+        rather than by feature-completeness. If a module isn't moving its number, it isn't done.</div>
+      </section>
+
+      <section class="section">
         <h2>Strategy priority sequence</h2>
         <div class="mermaid">
 flowchart TD
@@ -184,6 +317,40 @@ new Chart(document.getElementById('swotChart'), {
     indexAxis:'y',
     scales:{ x:{ min:0, max:10, title:{display:true,text:'Strategic weight'} } },
     plugins:{ legend:{ display:false } }
+  }
+});
+</script>
+<script>
+new Chart(document.getElementById('initBubble'), {
+  type: 'bubble',
+  data: {
+    datasets: [
+      { label:'Now',   backgroundColor:'rgba(22,192,152,.55)', borderColor:'#16C098',
+        data:[
+          { x:9.0, y:9.0, r:24, label:'MyInvois compliance' },
+          { x:8.0, y:8.5, r:21, label:'AI-assisted quoting' }
+        ] },
+      { label:'Next',  backgroundColor:'rgba(127,169,222,.55)', borderColor:'#7FA9DE',
+        data:[
+          { x:6.5, y:8.0, r:26, label:'Chemical subscriptions' },
+          { x:5.5, y:9.0, r:30, label:'Turnkey bundle' }
+        ] },
+      { label:'Later', backgroundColor:'rgba(232,161,58,.55)', borderColor:'#E8A13A',
+        data:[
+          { x:5.0, y:7.5, r:18, label:'Real-time costing' },
+          { x:6.0, y:7.0, r:16, label:'Cross-sell prompts' }
+        ] }
+    ]
+  },
+  options: {
+    scales:{
+      x:{ min:0, max:10, title:{display:true, text:'Feasibility (0–10)'} },
+      y:{ min:0, max:10, title:{display:true, text:'Impact (0–10)'} }
+    },
+    plugins:{
+      legend:{ display:true, position:'top' },
+      tooltip:{ callbacks:{ label:(c)=> `${c.raw.label} — impact ${c.raw.y}, feasibility ${c.raw.x}` } }
+    }
   }
 });
 </script>
