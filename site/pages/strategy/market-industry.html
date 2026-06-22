@@ -241,6 +241,20 @@ new Chart(document.getElementById('segChart'), {
   },
   options: { scales:{ y:{ min:0, max:10 } }, plugins:{ legend:{ position:'bottom' } } }
 });
+new Chart(document.getElementById('scenarioChart'), {
+  type: 'line',
+  data: {
+    labels: ['FY26','FY27','FY28'],
+    datasets: [
+      { label:'Conservative', data:[19.5,21.0,22.5], borderColor:'#7FA9DE', backgroundColor:'#7FA9DE', tension:0.3 },
+      { label:'Base (Odoo-enabled)', data:[21.0,24.2,27.8], borderColor:'#16C098', backgroundColor:'#16C098', tension:0.3, borderWidth:3 },
+      { label:'Aggressive', data:[22.5,27.5,33.0], borderColor:'#3F6FB0', backgroundColor:'#3F6FB0', tension:0.3 }
+    ]
+  },
+  options: {
+    scales:{ y:{ beginAtZero:false, title:{display:true,text:'JR-Tech capture within SOM (RM million)'} } },
+    plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Capture trajectory inside ~RM45m obtainable pool' } } }
+});
 </script>
 </body>
 </html>

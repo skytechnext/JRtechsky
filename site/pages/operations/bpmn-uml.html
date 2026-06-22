@@ -94,7 +94,86 @@ flowchart TB
       </section>
 
       <section class="section">
-        <h2>3 · Service blueprint</h2>
+        <h2>3 · BPMN swimlane — chemical subscription resupply</h2>
+        <p class="lead">The recurring engine: a subscription plan drives delivery, stock replenishment
+        and invoicing on a cycle, with no customer phone call and no manual order — the antidote to
+        today's stock-outs.</p>
+        <div class="mermaid">
+flowchart TB
+  subgraph SYS[Odoo scheduler]
+    y1([Renewal date reached])
+  end
+  subgraph SUB[Subscriptions]
+    b1[Generate recurring SO from plan]
+    b2[Confirm &amp; price lines at SST-S-5/10]
+  end
+  subgraph INV[Inventory]
+    i1[Reserve chemical SKUs]
+    i2{Stock below reorder min?}
+    i3[Reorder rule raises replenishment]
+    i4[Deliver to customer site]
+  end
+  subgraph FIN[Finance — Accounting]
+    f1[Auto-recurring invoice]
+    f2[MyInvois e-invoice + AR follow-up]
+  end
+  subgraph CUST[Customer]
+    c1([Receive resupply on schedule])
+    c2([Pay e-invoice])
+  end
+  y1 --> b1 --> b2 --> i1 --> i2
+  i2 -->|Yes| i3 --> i4
+  i2 -->|No| i4
+  i4 --> f1 --> f2
+  i4 --> c1
+  f2 --> c2
+        </div>
+        <p><b>Seed tie-in:</b> <code>subscriptions.csv</code> (Monthly/Quarterly plans) +
+        <code>subscription_lines.csv</code> (chemical SKUs) + <code>reordering_rules.csv</code>.</p>
+      </section>
+
+      <section class="section">
+        <h2>4 · BPMN swimlane — rental return &amp; refurbishment</h2>
+        <p class="lead">Closing the rental asset loop: the return picking, inspection, the
+        repair-or-restock decision, and the late/damage billing that JR-Tech leaks today.</p>
+        <div class="mermaid">
+flowchart TB
+  subgraph CUST[Customer]
+    c1([Return date reached])
+    c2([Hand back asset])
+  end
+  subgraph STORE[Storekeeper — Rental/Inventory]
+    r1[System sends return reminder]
+    r2[Receive return picking]
+    r3[Inspect asset condition]
+    r4{Damaged or late?}
+    r5[Restock to available pool]
+  end
+  subgraph WS[Workshop — Repair/Maintenance]
+    w1[Raise repair order]
+    w2[Replace parts / refurbish]
+    w3[QC &amp; return to pool]
+  end
+  subgraph FIN[Finance — Accounting]
+    f1[Bill rental duration]
+    f2[Add late / damage fee]
+    f3[MyInvois e-invoice]
+  end
+  c1 --> r1 --> c2 --> r2 --> r3 --> r4
+  r4 -->|No| r5
+  r4 -->|Damaged| w1 --> w2 --> w3 --> r5
+  r4 -->|Late| f2
+  r5 --> f1
+  f2 --> f1
+  f1 --> f3
+        </div>
+        <p><b>Seed tie-in:</b> <code>rental_contracts.csv</code> / <code>rental_lines.csv</code>
+        (deposit, date_return) flow into <code>service_tasks.csv</code> (kind=repair) and back to the
+        rentable <code>product.product</code> pool.</p>
+      </section>
+
+      <section class="section">
+        <h2>5 · Service blueprint</h2>
         <p class="lead">The blueprint separates what the customer sees (frontstage) from the work
         behind the line of visibility (backstage) and the systems that enable it (support) — for the
         core "one-stop" service journey.</p>
@@ -114,82 +193,141 @@ flowchart TB
       </section>
 
       <section class="section">
-        <h2>4 · UML class diagram — Odoo 19 data model</h2>
+        <h2>6 · UML class diagram — Odoo 19 data model</h2>
         <p class="lead">The entities and relationships the platform records. A <code>Customer</code>
         anchors everything; an <code>Order</code> fans out into the fulfilment objects per business
         line; all of them resolve to an <code>Invoice</code>.</p>
         <div class="mermaid">
 classDiagram
   class Customer {
-    +int id
+    +string xmlId
     +string name
-    +string segment
-    +string portalLogin
+    +bool isCompany
+    +string archetype
+    +string vatTIN
+    +string pricelist
+    +string paymentTerm
     +contacts()
   }
+  class Vendor {
+    +string xmlId
+    +string name
+    +string supplies
+    +string vat
+    +string paymentTerm
+  }
+  class Product {
+    +string defaultCode
+    +string name
+    +string productType
+    +string uom
+    +float listPrice
+    +float standardCost
+    +bool rentOk
+    +bool subscription
+    +string route
+  }
+  class BoM {
+    +string xmlId
+    +float qty
+    +string uom
+    +components()
+  }
   class Order {
-    +int id
+    +string name
     +date orderDate
     +string state
     +float amountTotal
+    +string salesperson
     +confirm()
   }
-  class Product {
-    +int id
+  class ManufacturingOrder {
     +string name
-    +string type
-    +float listPrice
-    +float cost
-  }
-  class BoM {
-    +int id
     +float qty
-    +components()
+    +date datePlanned
+    +string state
+    +string warehouse
   }
   class WorkOrder {
-    +int id
     +string workCentre
     +float laborHours
     +string state
   }
   class RentalContract {
-    +int id
-    +date startDate
-    +date returnDate
-    +float rate
+    +string xmlId
+    +date dateStart
+    +date dateReturn
+    +float deposit
+    +float unitPrice
   }
   class ServiceTask {
-    +int id
-    +string type
-    +date scheduled
+    +string kind
+    +date scheduledDate
+    +string stage
     +string report
     +bool signed
   }
   class Subscription {
-    +int id
-    +string interval
+    +string plan
+    +string recurringRule
     +date nextRenewal
+    +string state
+  }
+  class PurchaseOrder {
+    +string name
+    +date orderDate
+    +string state
+    +float unitCost
   }
   class Invoice {
-    +int id
-    +float sstAmount
+    +string name
+    +float untaxed
+    +float tax
+    +float total
+    +string paymentStatus
     +bool myInvoisSubmitted
-    +string state
+  }
+  class Payment {
+    +string xmlId
+    +float amount
+    +date date
+    +string paymentType
+  }
+  class Tax {
+    +string xmlId
+    +string name
+    +float amount
+    +string typeTaxUse
+  }
+  class Employee {
+    +string xmlId
+    +string name
+    +string jobTitle
+    +string department
   }
   Customer "1" --> "*" Order : places
   Customer "1" --> "*" RentalContract : signs
   Customer "1" --> "*" ServiceTask : requests
   Customer "1" --> "*" Subscription : subscribes
   Order "1" --> "*" Product : contains
-  Order "1" --> "*" WorkOrder : triggers
+  Order "1" --> "0..1" ManufacturingOrder : triggers
+  ManufacturingOrder "1" --> "*" WorkOrder : routes
+  ManufacturingOrder "1" --> "1" BoM : consumes
   Order "1" --> "1" Invoice : billed by
   Product "1" --> "0..1" BoM : built from
   BoM "1" --> "*" Product : uses
-  WorkOrder "*" --> "1" BoM : follows
   RentalContract "1" --> "1" Invoice : billed by
-  ServiceTask "1" --> "1" Invoice : billed by
+  RentalContract "1" --> "*" Product : reserves
+  ServiceTask "1" --> "0..1" Invoice : billed by
   ServiceTask "*" --> "1" Product : services
+  ServiceTask "*" --> "1" Employee : assigned to
   Subscription "1" --> "*" Invoice : generates
+  Subscription "1" --> "*" Product : resupplies
+  Vendor "1" --> "*" PurchaseOrder : fulfils
+  PurchaseOrder "1" --> "*" Product : procures
+  Invoice "1" --> "*" Tax : applies
+  Invoice "1" --> "0..1" Payment : settled by
+  Employee "1" --> "*" Order : sells
         </div>
         <div class="callout tn"><b>So what for the Odoo build:</b> this class model is the contract
         between the process design and the configuration — every swimlane step writes to one of these

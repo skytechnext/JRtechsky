@@ -169,6 +169,74 @@ gantt
         </div>
       </section>
 
+      <section class="section">
+        <h2>Appendix A · Field-level mapping</h2>
+        <p class="lead">The build-grade detail behind the summary mapping above: each target Odoo model,
+        the exact fields the loader populates, the identity key that makes loads idempotent, and the
+        governing seed file in <code>odoo/seed/</code>. This mirrors the BRD
+        <a href="../tools/brd.html">data dictionary</a> and the seeded
+        <code>/odoo/seed/</code> schema the AI/MCP agent loads.</p>
+
+        <h3>A.1 · Master data</h3>
+        <table class="tbl" style="font-size:12.5px">
+          <tr><th>Seed file</th><th>Odoo model</th><th>Fields loaded</th><th>Identity key / transform</th></tr>
+          <tr><td><code>company.json</code></td><td><code>res.company</code>, <code>stock.warehouse</code></td><td>name, company_registry (SSM), vat (TIN), sst_registration, msic_code, currency, branches[], warehouses[]</td><td>xml_id; MSIC 46591; MYR</td></tr>
+          <tr><td><code>customers.csv</code></td><td><code>res.partner</code> (customer_rank&gt;0)</td><td>name, is_company, archetype, street/city/state/zip, phone, email, vat, property_payment_term, pricelist</td><td>xml_id; normalise phone +60; archetype→tag</td></tr>
+          <tr><td><code>vendors.csv</code></td><td><code>res.partner</code> (supplier_rank&gt;0)</td><td>name, supplies, city, phone, email, vat, property_supplier_payment_term</td><td>xml_id; supplier_rank=1</td></tr>
+          <tr><td><code>products.csv</code></td><td><code>product.template</code></td><td>default_code, category, product_type, uom, list_price, standard_cost, sale_tax, purchase_tax, can_be_sold/purchased, route, rent_ok, subscription, rmin/rmax</td><td>default_code; storable→consu+is_storable; tax→taxes.xml_id</td></tr>
+          <tr><td><code>product_categories.csv</code></td><td><code>product.category</code></td><td>name, parent_xml_id, note (income-account hint)</td><td>xml_id; self-parent</td></tr>
+          <tr><td><code>boms.csv</code> · <code>bom_lines.csv</code></td><td><code>mrp.bom</code> · <code>mrp.bom.line</code></td><td>product_xml_id (prod_fab_*), qty, uom; line → component_xml_id (prod_raw_*), qty</td><td>xml_id; components are raw only</td></tr>
+          <tr><td><code>reordering_rules.csv</code></td><td><code>stock.warehouse.orderpoint</code></td><td>product, warehouse, min_qty, max_qty, multiple_qty</td><td>product+warehouse</td></tr>
+          <tr><td><code>accounts.csv</code></td><td><code>account.account</code></td><td>code (MY 4-digit), name, account_type</td><td>code (unique)</td></tr>
+          <tr><td><code>taxes.csv</code></td><td><code>account.tax</code></td><td>name (SST-S-10/SST-S-5/SST-SV-8/EXEMPT-0), type_tax_use, amount, amount_type, tax_account_code</td><td>xml_id; tax_account_code→accounts.code</td></tr>
+          <tr><td><code>journals.csv</code></td><td><code>account.journal</code></td><td>name, type, code, default_account_code</td><td>xml_id</td></tr>
+          <tr><td><code>employees.csv</code> · <code>departments.csv</code></td><td><code>hr.employee</code> · <code>hr.department</code></td><td>name, job_title, department_xml_id, work_email, work_phone, wage_myr, create_user, user_login</td><td>xml_id; create_user→res.users</td></tr>
+        </table>
+
+        <h3>A.2 · Transactional &amp; open items</h3>
+        <table class="tbl" style="font-size:12.5px">
+          <tr><th>Seed file</th><th>Odoo model</th><th>Fields loaded</th><th>Identity key / rule</th></tr>
+          <tr><td><code>sale_orders.csv</code> · <code>sale_order_lines.csv</code></td><td><code>sale.order</code> · <code>sale.order.line</code></td><td>name, partner_xml_id, date_order, state, salesperson_xml_id, pricelist; line → product, qty, unit_price</td><td>name unique; FK→customers/products</td></tr>
+          <tr><td><code>rental_contracts.csv</code> · <code>rental_lines.csv</code></td><td><code>sale.order</code> (is_rental)</td><td>partner, is_rental, date_start, date_return, deposit, state; line → product (rent_ok), duration_days, unit_price</td><td>xml_id; line product must be rent_ok</td></tr>
+          <tr><td><code>subscriptions.csv</code> · <code>subscription_lines.csv</code></td><td><code>sale.subscription</code></td><td>partner, plan (Monthly/Quarterly), date_start, recurring_rule, state; line → chemical product, qty, unit_price</td><td>xml_id; line product = chemical</td></tr>
+          <tr><td><code>manufacturing_orders.csv</code></td><td><code>mrp.production</code></td><td>name, product_xml_id (fab), bom_ref, qty, date_planned, state, warehouse</td><td>name unique; product has BoM</td></tr>
+          <tr><td><code>purchase_orders.csv</code> · <code>purchase_order_lines.csv</code></td><td><code>purchase.order</code> · line</td><td>vendor_xml_id, date_order, state; line → product, qty, unit_cost</td><td>name; FK→vendors</td></tr>
+          <tr><td><code>service_tasks.csv</code></td><td><code>project.task</code> (FSM) / <code>maintenance.request</code> / <code>repair.order</code></td><td>kind, project_or_team, partner, assigned_emp_xml_id, scheduled_date, stage, linked_product</td><td>kind routes to model</td></tr>
+          <tr><td><code>projects.csv</code> · <code>project_tasks.csv</code></td><td><code>project.project</code> · <code>project.task</code></td><td>name, partner, manager_emp, date_start, is_fsm; task → assigned_emp, planned_hours, stage</td><td>xml_id</td></tr>
+          <tr><td><code>crm_leads.csv</code></td><td><code>crm.lead</code></td><td>name, partner_xml_id, type, stage, expected_revenue, probability, salesperson, team</td><td>xml_id</td></tr>
+          <tr><td><code>helpdesk_tickets.csv</code></td><td><code>helpdesk.ticket</code></td><td>name, partner, team, priority, stage, assigned_emp_xml_id</td><td>xml_id</td></tr>
+          <tr><td><code>invoices.csv</code></td><td><code>account.move</code> (out_invoice)</td><td>name, partner, source_so, invoice_date, untaxed, tax, total, journal, payment_status, state=posted</td><td>name unique; source_so confirmed only; total = Σ(qty×price)+SST</td></tr>
+          <tr><td><code>payments.csv</code></td><td><code>account.payment</code></td><td>invoice_xml_id, partner, amount, date, journal (bank), payment_type=inbound</td><td>paid invoices only; reconcile to invoice</td></tr>
+          <tr><td><code>opening_entries.csv</code></td><td><code>account.move</code> (entry, Misc)</td><td>journal, date, label, account_code, debit, credit</td><td>group by date/label; debits = credits = RM 875,000</td></tr>
+        </table>
+        <div class="callout"><b>Idempotency:</b> every <code>*_xml_id</code> resolves to a row in its
+        target file and is loaded as the record's <code>external_id</code>, so trial loads and the
+        production cutover can be re-run without creating duplicates.</div>
+      </section>
+
+      <section class="section">
+        <h2>Appendix B · Data-quality scorecard</h2>
+        <p class="lead">Each domain is scored before load on six dimensions — completeness, uniqueness,
+        validity, consistency, integrity and timeliness — to size the cleansing effort and set a
+        readiness gate. Scores below are an illustrative pre-cleanse baseline of JR-Tech's current
+        sources; the target for promotion to production is <b>≥ 95%</b> on every dimension.</p>
+        <table class="tbl" style="font-size:12.5px">
+          <tr><th>Domain</th><th>Complete</th><th>Unique</th><th>Valid</th><th>Consistent</th><th>Integrity</th><th>Readiness</th></tr>
+          <tr><td>Customers</td><td>82%</td><td>74%</td><td>80%</td><td>78%</td><td>—</td><td><span class="tag warn">Medium</span></td></tr>
+          <tr><td>Vendors</td><td>85%</td><td>88%</td><td>82%</td><td>84%</td><td>—</td><td><span class="tag green">Good</span></td></tr>
+          <tr><td>Products / price list</td><td>76%</td><td>70%</td><td>72%</td><td>68%</td><td>—</td><td><span class="tag red">Low</span></td></tr>
+          <tr><td>BoMs</td><td>60%</td><td>90%</td><td>78%</td><td>72%</td><td>85%</td><td><span class="tag red">Low</span></td></tr>
+          <tr><td>Rental assets</td><td>55%</td><td>80%</td><td>70%</td><td>65%</td><td>—</td><td><span class="tag red">Low</span></td></tr>
+          <tr><td>Open AR / AP</td><td>90%</td><td>95%</td><td>92%</td><td>88%</td><td>94%</td><td><span class="tag green">Good</span></td></tr>
+          <tr><td>Opening trial balance</td><td>95%</td><td>100%</td><td>96%</td><td>95%</td><td>100%</td><td><span class="tag green">Good</span></td></tr>
+        </table>
+        <div class="chartbox"><canvas id="dqChart" height="260"></canvas></div>
+        <div class="callout warn"><b>So what for the build:</b> products, BoMs and rental assets are the
+        weakest domains — they carry the missing UoM, category, serial and component data Odoo needs —
+        so cleansing &amp; enrichment effort (and steward time) is front-loaded onto them before
+        Trial Load 1.</div>
+      </section>
+
       <div class="pagenav">
         <a href="odoo-architecture.html">← Prev: Odoo 19 Architecture</a>
         <a href="integration-map.html">Next: Integration &amp; API Map →</a>
@@ -179,5 +247,22 @@ gantt
 </div>
 <script src="../../assets/js/nav.js"></script>
 <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('dqChart'), {
+  type: 'radar',
+  data: {
+    labels: ['Complete','Unique','Valid','Consistent','Integrity'],
+    datasets: [
+      { label: 'Products / price list', data: [76,70,72,68,75], borderColor:'#E2544B', backgroundColor:'rgba(226,84,75,0.12)' },
+      { label: 'Open AR / AP', data: [90,95,92,88,94], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,0.12)' },
+      { label: 'Target gate (95%)', data: [95,95,95,95,95], borderColor:'#7FA9DE', borderDash:[5,4], backgroundColor:'rgba(127,169,222,0.08)' }
+    ]
+  },
+  options: {
+    plugins:{ legend:{ position:'top' }, title:{ display:true, text:'Pre-cleanse data-quality baseline vs go-live gate' } },
+    scales:{ r:{ min:0, max:100, ticks:{ stepSize:20 } } }
+  }
+});
+</script>
 </body>
 </html>

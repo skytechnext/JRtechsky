@@ -86,6 +86,67 @@
       </section>
 
       <section class="section">
+        <h2>P&amp;L bridge — today's model to the post-ERP model</h2>
+        <p class="lead">The same revenue base, re-cut for what the ERP changes. The post-ERP P&amp;L is
+        not a growth fantasy — it is today's P&amp;L with ~RM 430k/yr of recovered margin, retained
+        recurring revenue and avoided cost flowing to the bottom line, net of the ~RM 83k/yr recurring
+        platform cost. The implementation outlay (RM 254k Year-1) is capitalised/expensed in transition,
+        not in this steady-state view.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="bridgeChart" height="280"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Modelled P&amp;L — before vs. steady-state after</h3>
+            <table class="tbl">
+              <tr><th>Line (RM 000s, annual)</th><th>Today</th><th>Post-ERP (mature)</th></tr>
+              <tr><td>Revenue</td><td>18,000</td><td>18,120</td></tr>
+              <tr><td>COGS</td><td>(12,420)</td><td>(12,300)</td></tr>
+              <tr><td><b>Gross profit</b></td><td><b>5,580</b></td><td><b>5,820</b></td></tr>
+              <tr><td>Gross margin %</td><td>31.0%</td><td>32.1%</td></tr>
+              <tr><td>Operating expenses</td><td>(3,280)</td><td>(3,190)</td></tr>
+              <tr><td>Platform cost (lic + AMS)</td><td>—</td><td>(83)</td></tr>
+              <tr><td><b>EBITDA</b></td><td><b>2,300</b></td><td><b>2,547</b></td></tr>
+            </table>
+            <p style="margin-top:12px">The mature steady-state uplift is <b>~RM 247k of EBITDA</b> from
+            the RM 430k benefit net of platform cost — before the larger mix-shift growth in the
+            three-year projection compounds on top. Recovered margin shows in GM%; retained recurring
+            revenue lifts the top line modestly; admin and avoided-service savings drop opex.</p>
+          </div>
+        </div>
+        <div class="callout tn"><b>Reconciliation:</b> this is the <em>same</em> ~RM 430k/yr benefit and
+        RM 254k / RM 83k cost used on the <a href="../executive/executive-summary.html">Executive
+        Summary</a> value-at-stake bridge and the <a href="../growth/pricing.html">Pricing</a> worked
+        example — here expressed as a P&amp;L delta rather than a cash-flow ROI.</div>
+      </section>
+
+      <section class="section">
+        <h2>Sensitivity — annual benefit vs. user-adoption rate</h2>
+        <p class="lead">The single biggest swing factor is not the technology — it is how thoroughly
+        staff actually use it. The RM 430k benefit assumes ~90% effective adoption of the quoting,
+        subscription and field-service workflows. The grid below flexes the realised benefit (and the
+        resulting payback) against adoption; even at a cautious 60% the case clears.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="sensChart" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Benefit &amp; payback by adoption</h3>
+            <table class="tbl">
+              <tr><th>Effective adoption</th><th>Annual benefit</th><th>Net Yr-1*</th><th>Payback</th></tr>
+              <tr><td>40% — poor</td><td>~RM 172k</td><td>−RM 82k</td><td>~22 mo</td></tr>
+              <tr><td>60% — cautious</td><td>~RM 258k</td><td>+RM 4k</td><td>~14 mo</td></tr>
+              <tr><td>75% — likely</td><td>~RM 323k</td><td>+RM 69k</td><td>~12 mo</td></tr>
+              <tr><td>90% — target</td><td>~RM 430k</td><td>+RM 176k</td><td>~9 mo†</td></tr>
+            </table>
+            <p class="muted" style="font-size:12.5px;color:#5a6b85;margin-top:10px">*Annual benefit less
+            RM 254k Year-1 investment. †Cumulative-benefit payback; the headline "&lt;18 months" used on
+            the Executive Summary is the conservative ramp-adjusted figure (benefit builds over the first
+            two-to-three quarters as adoption matures).</p>
+            <div class="callout warn"><b>So what:</b> the dominant lever on ROI is change management, not
+            licence cost. This is why the engagement front-loads training, hypercare and role-based
+            enablement — see <a href="../delivery/change-management.html">Change Management</a>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
         <h2>Indicative valuation</h2>
         <p class="lead">Triangulated two ways. Both are indicative ranges for a private MY SME, before
         any control premium or working-capital adjustment.</p>
@@ -173,6 +234,25 @@ new Chart(document.getElementById('projChart'), {
     ]
   },
   options: { scales:{ y:{ title:{display:true,text:'Revenue (RM million)'} } }, plugins:{ legend:{ position:'bottom' } } }
+});
+new Chart(document.getElementById('bridgeChart'), {
+  type:'bar',
+  data:{ labels:['EBITDA today','+ Recovered margin','+ Retained recurring','+ Admin/service savings','− Platform cost','EBITDA post-ERP'],
+    datasets:[{ label:'RM 000s',
+      data:[[0,2300],[2300,2450],[2450,2570],[2570,2630],[2547,2630],[0,2547]],
+      backgroundColor:['#0B1F3A','#16C098','#16C098','#16C098','#E2544B','#0B1F3A'] }]},
+  options:{ plugins:{ legend:{display:false}, title:{display:true, text:'EBITDA bridge: today → post-ERP (RM 000s)'} },
+    scales:{ y:{ title:{display:true, text:'RM 000s (cumulative)'} } } }
+});
+new Chart(document.getElementById('sensChart'), {
+  type:'line',
+  data:{ labels:['40%','60%','75%','90%','100%'],
+    datasets:[{ label:'Realised annual benefit (RM 000s)', data:[172,258,323,430,478],
+      borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.15)', tension:.25, fill:true },
+      { label:'Year-1 investment (RM 254k)', data:[254,254,254,254,254],
+      borderColor:'#E2544B', borderDash:[6,4], pointRadius:0 }]},
+  options:{ plugins:{ legend:{position:'bottom'}, title:{display:true, text:'Benefit vs. adoption rate'} },
+    scales:{ x:{ title:{display:true,text:'Effective user adoption'} }, y:{ beginAtZero:true, title:{display:true,text:'RM 000s / yr'} } } }
 });
 </script>
 </body>

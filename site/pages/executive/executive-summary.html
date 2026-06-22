@@ -32,6 +32,15 @@
     <main class="wrap">
 
       <section class="section">
+        <div class="callout tn" style="border-left-width:6px">
+          <b>Board recommendation (one line):</b> Approve a phased Odoo 19 Enterprise implementation by
+          TechNext at <b>RM 254k Year-1</b> (then ~RM 83k/yr) to capture <b>~RM 430k/yr</b> of
+          already-touched margin and recurring revenue, de-risk MyInvois compliance, and make
+          multi-region growth a configuration exercise — payback inside ~18 months.
+        </div>
+      </section>
+
+      <section class="section">
         <h2>The headline</h2>
         <div class="grid g4">
           <div class="kpi"><div class="num">−60%</div><div class="lbl">quote turnaround time<br><span class="delta up">▼ days → hours</span></div></div>
@@ -68,6 +77,51 @@
             invisible in the data. The business cannot see, price or scale what it cannot measure.</div>
           </div>
         </div>
+      </section>
+
+      <section class="section">
+        <h2>Strategic options considered</h2>
+        <p class="lead">Three credible paths were evaluated against cost, speed-to-value, risk and the
+        ability to support multi-region growth. The recommendation is Option C — a single integrated
+        Odoo 19 backbone — because it is the only option that resolves the root cause (fragmented data)
+        rather than a symptom.</p>
+        <div class="grid g3">
+          <div class="card pad-lg" style="border-top:4px solid var(--danger)">
+            <span class="tag red">Option A · Status quo+</span>
+            <h3>Patch the spreadsheets</h3>
+            <p>Keep the current tools, add templates and discipline. Lowest cash cost, but margin, stock
+            and SLA stay invisible; compliance exposure remains; cannot scale to a second branch.</p>
+            <p class="muted" style="font-size:12.5px;color:#5a6b85"><b>Verdict:</b> defers the problem;
+            MyInvois risk unaddressed.</p>
+          </div>
+          <div class="card pad-lg" style="border-top:4px solid var(--warn)">
+            <span class="tag warn">Option B · Best-of-breed</span>
+            <h3>Point tools, stitched</h3>
+            <p>Separate accounting, CRM and field-service apps integrated via connectors. Familiar
+            individually, but re-creates silos at the seams, multiplies licences and leaves integration
+            fragile and owner-dependent.</p>
+            <p class="muted" style="font-size:12.5px;color:#5a6b85"><b>Verdict:</b> higher long-run TCO,
+            partial visibility.</p>
+          </div>
+          <div class="card pad-lg" style="border-top:4px solid var(--tn-accent)">
+            <span class="tag green">Option C · Integrated ERP ✔</span>
+            <h3>One Odoo 19 backbone</h3>
+            <p>All four lines on a single quote-to-cash-to-service spine with AI-assisted quoting and
+            MyInvois from day one. Phased delivery contains risk; one data model makes margin, stock and
+            SLA visible and scalable across regions.</p>
+            <p class="muted" style="font-size:12.5px;color:#16996f"><b>Recommended.</b> Best value-at-stake
+            per ringgit; only option that scales.</p>
+          </div>
+        </div>
+        <table class="tbl" style="margin-top:18px">
+          <tr><th>Decision criterion</th><th>A · Status quo+</th><th>B · Best-of-breed</th><th>C · Integrated Odoo 19</th></tr>
+          <tr><td>Year-1 cash cost</td><td>Lowest (~RM 30k)</td><td>High (~RM 300k+ w/ integration)</td><td>RM 254k</td></tr>
+          <tr><td>Single source of truth</td><td><span class="tag red">No</span></td><td><span class="tag warn">Partial</span></td><td><span class="tag green">Yes</span></td></tr>
+          <tr><td>MyInvois / SST compliance</td><td><span class="tag red">Manual, exposed</span></td><td><span class="tag warn">Add-on</span></td><td><span class="tag green">Native, Phase 1</span></td></tr>
+          <tr><td>Multi-branch scalability</td><td><span class="tag red">No</span></td><td><span class="tag warn">Costly</span></td><td><span class="tag green">Configuration, not rebuild</span></td></tr>
+          <tr><td>Implementation risk</td><td>Low (but no benefit)</td><td>High (integration seams)</td><td>Medium, phase-gated</td></tr>
+          <tr><td>3-yr value-at-stake captured</td><td><span class="tag red">~0</span></td><td>Partial</td><td><span class="tag green">~RM 430k/yr at maturity</span></td></tr>
+        </table>
       </section>
 
       <section class="section">
@@ -144,6 +198,32 @@ flowchart LR
       </section>
 
       <section class="section">
+        <h2>Value-at-stake bridge — where the RM benefit comes from</h2>
+        <p class="lead">At maturity the model puts the annual recurring benefit at <b>~RM 430k/yr</b>,
+        against a Year-1 investment of <b>RM 254k</b> and ~RM 83k/yr thereafter. The bridge below
+        decomposes that benefit into its four sources — none of which require winning a single new
+        logo; they are margin and revenue JR-Tech already touches but cannot currently capture.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="vasChart" height="280"></canvas></div>
+          <div class="card pad-lg">
+            <h3>The four value pools (annual, at maturity)</h3>
+            <table class="tbl">
+              <tr><th>Value lever</th><th>Mechanism</th><th>RM/yr</th></tr>
+              <tr><td>Recovered &amp; protected margin</td><td>Margin-aware AI quoting + real-time costing cut ~8% leakage</td><td>~150k</td></tr>
+              <tr><td>Retained recurring revenue</td><td>Chemical/service subscriptions; forecasting ends resupply leakage</td><td>~120k</td></tr>
+              <tr><td>Admin &amp; finance efficiency</td><td>No re-keying; automated MyInvois e-invoicing (−30% admin hours)</td><td>~90k</td></tr>
+              <tr><td>Avoided emergency service</td><td>Predictive maintenance cuts costly call-outs &amp; downtime</td><td>~70k</td></tr>
+              <tr><td><b>Total annual benefit</b></td><td></td><td><b>~430k</b></td></tr>
+            </table>
+            <div class="callout tn"><b>Read-through:</b> RM 430k/yr against RM 254k Year-1 + RM 83k/yr
+            recurring is a first-year net of ~RM 93k and a steeper ramp thereafter — the basis of the
+            sub-18-month payback. Full build-up in the <a href="../../tools/roi-tco.html">ROI / TCO Model</a>
+            and <a href="../strategy/financials.html">Financial Snapshot</a>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
         <h2>The ask</h2>
         <div class="card pad-lg">
           <p class="lead" style="margin-bottom:14px">We ask the board to approve the following so
@@ -197,6 +277,16 @@ new Chart(document.getElementById('roiChart'), {
     ]},
   options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Investment vs. benefit (indexed) — breakeven ≈ M18' } },
     scales:{ y:{ beginAtZero:true, title:{ display:true, text:'relative units' } } } }
+});
+
+new Chart(document.getElementById('vasChart'), {
+  type:'bar',
+  data:{ labels:['Recovered margin','Retained recurring','Admin efficiency','Avoided service','Total benefit'],
+    datasets:[{ label:'RM 000s / yr (at maturity)',
+      data:[[0,150],[150,270],[270,360],[360,430],[0,430]],
+      backgroundColor:['#16C098','#16C098','#16C098','#16C098','#0B1F3A'] }]},
+  options:{ plugins:{ legend:{display:false}, title:{display:true, text:'Annual value-at-stake bridge (RM 000s)'} },
+    scales:{ y:{ beginAtZero:true, title:{display:true, text:'RM 000s (cumulative)'} } } }
 });
 </script>
 </body>

@@ -64,6 +64,26 @@
       </section>
 
       <section class="section">
+        <h2>Coverage gaps &amp; quantified impact</h2>
+        <p class="lead">Four areas under-weighted in the headline matrix deserve their own treatment —
+        procurement discipline, the finance close, inventory accuracy and after-sales — because each
+        carries a measurable RM or hours leakage today. Figures are realistic Penang-SME estimates,
+        annualised, consistent with the seed scale (137 products, 46 customers, recurring chemical
+        subscriptions).</p>
+        <table class="tbl">
+          <tr><th>#</th><th>Function</th><th>Pain / gap</th><th>Odoo 19 solution</th><th>Quantified impact (annual)</th><th>Hours saved / yr</th></tr>
+          <tr><td>19</td><td>Procurement</td><td>Emergency &amp; off-contract buying at premium prices; no PO discipline</td><td>Purchase reorder rules + RFQ/PO + vendor price lists &amp; lead times</td><td><b>~RM 60–90k</b> avoided premium spend (≈5–8% of purchasing)</td><td>~150 hrs (manual PO/chasing)</td></tr>
+          <tr><td>20</td><td>Finance / close</td><td>Month-end close runs 8–10 working days on Excel reconciliation</td><td>Real-time ledger, bank reconciliation, close checklist, analytic P&amp;L</td><td>Close cut to <b>≤ 3 days</b>; faster, defensible SST-02 filing</td><td>~300 hrs (bookkeeper + director)</td></tr>
+          <tr><td>21</td><td>Inventory</td><td>Stock accuracy ~80–85%; write-offs &amp; stalled jobs from phantom stock</td><td>Real-time multi-location stock, cycle counts, serial/lot on assets</td><td>Accuracy to <b>≥ 97%</b>; <b>~RM 40–70k</b> less write-off / rush freight</td><td>~120 hrs (recounts, searches)</td></tr>
+          <tr><td>22</td><td>After-sales</td><td>Warranty &amp; repair history not tracked; repeat-service revenue leaks</td><td>Repair orders + Maintenance equipment register + Helpdesk tickets linked to the customer asset</td><td><b>~RM 50–80k</b> captured repair/PM revenue; fewer warranty disputes</td><td>~100 hrs (history hunting)</td></tr>
+          <tr><td>23</td><td>After-sales</td><td>No structured support channel; requests lost in WhatsApp</td><td>Helpdesk teams, SLAs &amp; ticket stages tied to equipment &amp; subscriptions</td><td>Higher retention on rental &amp; chemical accounts; measurable SLA</td><td>~80 hrs (triage)</td></tr>
+        </table>
+        <div class="chartbox"><canvas id="impactChart" height="260"></canvas></div>
+        <p class="doc-meta">Indicative annual RM impact by area — modelled, not booked; methodology on the
+        relevant delivery pages. Totals feed the <a href="../tools/roi-tco.html">ROI / TCO model</a>.</p>
+      </section>
+
+      <section class="section">
         <h2>The causal logic</h2>
         <p class="lead">Most pains share three root causes — fragmented tools, no shared data, no
         automation. Odoo collapses all three into a single backbone.</p>
@@ -118,6 +138,22 @@ new Chart(document.getElementById('severityChart'), {
     indexAxis: 'y',
     plugins:{ legend:{ display:false } },
     scales:{ x:{ min:0, max:10, title:{ display:true, text:'Severity score' } } }
+  }
+});
+new Chart(document.getElementById('impactChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Procurement premium','Inventory write-off','After-sales revenue','Faster close (effort)'],
+    datasets: [{
+      label: 'Indicative annual impact (RM, midpoint)',
+      data: [75000, 55000, 65000, 35000],
+      backgroundColor: ['#E8A13A','#E8A13A','#16C098','#7FA9DE']
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins:{ legend:{ display:false }, title:{ display:true, text:'Quantified impact of closing the coverage gaps (RM/yr, midpoint)' } },
+    scales:{ x:{ beginAtZero:true, title:{ display:true, text:'RM per year (indicative)' } } }
   }
 });
 </script>

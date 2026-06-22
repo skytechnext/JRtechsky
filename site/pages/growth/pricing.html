@@ -124,6 +124,68 @@
       </section>
 
       <section class="section">
+        <h2>Value-based pricing model — worked RM example</h2>
+        <p class="lead">Cost-plus prices the input; value-based prices the outcome the customer would
+        otherwise pay for in lost covers, failed audits and emergency call-outs. The model below sets
+        the price floor at cost-plus, the ceiling at the customer's economic value, and JR-Tech's
+        target between them. A single 120-seat hotel banquet kitchen makes it concrete.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Service contract — Gold "Uptime" (annual)</h3>
+            <table class="tbl">
+              <tr><th>Component</th><th>RM/yr</th></tr>
+              <tr><td>Delivery cost (4× PM visits, parts buffer, dispatch)</td><td>5,400</td></tr>
+              <tr><td>Cost-plus floor (cost × 1.4)</td><td>7,560</td></tr>
+              <tr><td>Customer value: one avoided weekend dishwasher failure</td><td>~18,000</td></tr>
+              <tr><td><b>JR-Tech value price (Gold retainer)</b></td><td><b>12,000</b></td></tr>
+              <tr><td>Gross margin at value price</td><td><b>55%</b></td></tr>
+            </table>
+            <p style="margin-top:10px">Priced to value, the Gold tier earns ~RM 6.6k gross vs ~RM 2.2k at
+            the cost-plus floor — same work, <b>3×</b> the contribution, and the customer still pays a
+            third of their downtime exposure.</p>
+          </div>
+          <div class="card pad-lg">
+            <h3>Chemical subscription — "Managed Dosing" (per month)</h3>
+            <table class="tbl">
+              <tr><th>Component</th><th>RM/mo</th></tr>
+              <tr><td>Warewash + housekeeping chemical COGS</td><td>520</td></tr>
+              <tr><td>Dispenser amortisation + dosing service</td><td>180</td></tr>
+              <tr><td>Total delivery cost</td><td>700</td></tr>
+              <tr><td>Per-cover value basis (~9,000 covers/mo)</td><td>—</td></tr>
+              <tr><td><b>Subscription price</b></td><td><b>1,250</b></td></tr>
+              <tr><td>Gross margin</td><td><b>44%</b></td></tr>
+            </table>
+            <p style="margin-top:10px">Versus ad-hoc per-litre selling (~33% GM, lumpy, churny), the
+            subscription lifts margin ~11pts <em>and</em> converts the account into predictable MRR — the
+            dispenser is the switching cost that defends the price.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:22px">The combined account — margin bridge from box to bundle</h3>
+        <p>Stitching the two together with the original equipment sale shows why the bundle, not the
+        box, is the franchise. One hotel account over its first year:</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="vbpBridge" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Year-1 gross margin by layer (one account)</h3>
+            <table class="tbl">
+              <tr><th>Layer</th><th>Revenue</th><th>GM%</th><th>GM (RM)</th></tr>
+              <tr><td>Equipment / fit-out (one-time)</td><td>~48,000</td><td>24%</td><td>11,520</td></tr>
+              <tr><td>Gold service contract</td><td>12,000</td><td>55%</td><td>6,600</td></tr>
+              <tr><td>Chemical subscription (12 mo)</td><td>15,000</td><td>44%</td><td>6,600</td></tr>
+              <tr><td><b>Total Year-1</b></td><td><b>75,000</b></td><td><b>33%</b></td><td><b>24,720</b></td></tr>
+            </table>
+            <div class="callout tn"><b>So what for the Odoo build:</b> the recurring wrap adds ~RM 13.2k of
+            high-margin GM on top of an RM 11.5k box — and renews every year while the box does not. Odoo
+            Subscriptions, Field Service and margin-on-quote make this attach the <em>default</em>, not
+            the exception. Multiplied across the install base, this attach uplift is the single largest
+            contributor to the <a href="../strategy/financials.html">~RM 430k/yr value-at-stake</a> — the
+            "retained recurring revenue" and "recovered margin" pools.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
         <h2>How Odoo 19 enables dynamic &amp; tiered pricing</h2>
         <div class="mermaid">
 flowchart LR
@@ -180,6 +242,15 @@ new Chart(document.getElementById('rental'), {
       { label:'Rental + service + chem (cumulative GM)', data:[2,8,15,23,31,40,49], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.15)', tension:.2 }
     ]},
   options:{ plugins:{ legend:{position:'bottom'} }, scales:{ y:{ title:{display:true,text:'Cumulative gross margin (RM 000s)'} } } }
+});
+new Chart(document.getElementById('vbpBridge'), {
+  type:'bar',
+  data:{ labels:['Equipment GM','+ Service contract','+ Chemical sub','Total Yr-1 GM'],
+    datasets:[{ label:'RM 000s gross margin',
+      data:[[0,11.52],[11.52,18.12],[18.12,24.72],[0,24.72]],
+      backgroundColor:['#7FA9DE','#16C098','#16C098','#0B1F3A'] }]},
+  options:{ plugins:{ legend:{display:false}, title:{display:true, text:'One account — Year-1 GM: box vs. bundle (RM 000s)'} },
+    scales:{ y:{ title:{display:true, text:'RM 000s (cumulative GM)'} } } }
 });
 </script>
 </body>

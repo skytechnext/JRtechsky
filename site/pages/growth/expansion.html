@@ -73,6 +73,66 @@
       </section>
 
       <section class="section">
+        <h2>Three horizons of growth</h2>
+        <p class="lead">Framed as McKinsey's Three Horizons, expansion is not a single bet but a managed
+        portfolio: defend and densify the core (H1), build the adjacent regional engine (H2), and seed
+        the options that become tomorrow's business (H3). Each horizon is funded by the cash and the
+        operational control the prior horizon establishes — and the Odoo backbone is the precondition
+        that lets H2 and H3 scale without re-inventing process.</p>
+        <div class="grid g3">
+          <div class="card pad-lg" style="border-top:4px solid var(--tn-accent)">
+            <span class="tag green">Horizon 1 · Defend &amp; densify (0–12 mo)</span>
+            <h3>Maximise the Penang core</h3>
+            <p>Lift cross-sell attach (service + chemical) on the existing install base, convert ad-hoc
+            buyers to subscriptions, and protect margin with real-time costing. No new geography — pure
+            yield on what JR-Tech already touches.</p>
+            <p class="muted" style="font-size:12.5px;color:#16996f"><b>Funded by:</b> the ~RM 430k/yr ERP
+            value-at-stake. <b>Enabler:</b> CRM, Subscriptions, margin-on-quote.</p>
+          </div>
+          <div class="card pad-lg" style="border-top:4px solid var(--jr-blue)">
+            <span class="tag">Horizon 2 · Build the engine (12–30 mo)</span>
+            <h3>Klang Valley &amp; Johor branches</h3>
+            <p>Replicate the proven Penang operating model into the two largest adjacent demand basins —
+            owned KL branch + service hub, Johor sales office + satellite stock. Recurring revenue leads,
+            capital footprint follows.</p>
+            <p class="muted" style="font-size:12.5px;color:#5a6b85"><b>Enabler:</b> Odoo multi-company /
+            multi-warehouse — a new branch is a configuration, not a rebuild.</p>
+          </div>
+          <div class="card pad-lg" style="border-top:4px solid var(--warn)">
+            <span class="tag warn">Horizon 3 · Seed the options (24–48 mo)</span>
+            <h3>East MY + new models</h3>
+            <p>Channel-partner reach into Sabah/Sarawak, IoT auto-replenish chemical telemetry, and an
+            "as-a-service" smart-kitchen subscription. Small bets today; the next S-curve if they take.</p>
+            <p class="muted" style="font-size:12.5px;color:#5a6b85"><b>Enabler:</b> Field Service + IoT
+            data, partner portals, subscription billing at scale.</p>
+          </div>
+        </div>
+        <div class="chartbox" style="margin-top:18px"><canvas id="horizonChart" height="230"></canvas></div>
+        <p class="muted" style="font-size:12.5px;color:#5a6b85;text-align:center">Illustrative contribution
+        by horizon over time — H1 cash funds H2 build-out; H3 options mature into the next core.</p>
+      </section>
+
+      <section class="section">
+        <h2>Investment &amp; payback per region</h2>
+        <p class="lead">Each new basin is underwritten on its own economics — entry cost, time to
+        operational breakeven, and modelled obtainable contribution at maturity. The numbers are
+        deliberately staged so that no single region's capital outlay rivals the core ERP investment of
+        RM 254k, and each is approved on its own go/no-go gate.</p>
+        <table class="tbl">
+          <tr><th>Region</th><th>Entry model</th><th>Est. setup investment</th><th>Annual run-cost</th><th>Modelled mature contribution</th><th>Payback</th></tr>
+          <tr><td>Penang (H1 core)</td><td>Densify existing</td><td>—  (ERP-enabled)</td><td>incl. in base</td><td>+~RM 430k/yr yield uplift</td><td><span class="tag green">&lt;18 mo</span></td></tr>
+          <tr><td>Klang Valley (H2 · P1)</td><td>Owned branch + service hub</td><td>~RM 420k</td><td>~RM 600k</td><td>~RM 900k/yr GM contribution</td><td>~20–24 mo</td></tr>
+          <tr><td>Johor (H2 · P2)</td><td>Sales office + satellite stock</td><td>~RM 180k</td><td>~RM 260k</td><td>~RM 380k/yr GM contribution</td><td>~18–22 mo</td></tr>
+          <tr><td>East MY (H3 · P3)</td><td>Channel partner / distributor</td><td>~RM 70k</td><td>~RM 90k (margin share)</td><td>~RM 150k/yr GM contribution</td><td>~14–18 mo</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the Odoo build:</b> the per-region setup cost is dominated
+        by premises, stock and talent — <em>not</em> systems, because the operating model is inherited
+        from the Odoo backbone at near-zero marginal software cost. That is precisely why H1's ERP
+        investment is the unlock for the whole H2/H3 expansion portfolio. See the
+        <a href="../strategy/financials.html">Financial Snapshot</a> for the consolidated growth case.</div>
+      </section>
+
+      <section class="section">
         <h2>Expansion roadmap</h2>
         <div class="mermaid">
 gantt
@@ -137,6 +197,17 @@ new Chart(document.getElementById('bubble'), {
   options:{ plugins:{ legend:{position:'bottom'} },
     scales:{ x:{ min:0,max:10, title:{display:true,text:'Market attractiveness →'} },
              y:{ min:0,max:10, title:{display:true,text:'Ease of entry →'} } } }
+});
+new Chart(document.getElementById('horizonChart'), {
+  type:'line',
+  data:{ labels:['Now','Y1','Y2','Y3','Y4'],
+    datasets:[
+      { label:'H1 · Core yield (Penang)', data:[100,135,150,158,162], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.18)', fill:true, tension:.3 },
+      { label:'H2 · Regional branches', data:[0,5,30,75,110], borderColor:'#3F6FB0', backgroundColor:'rgba(127,169,222,.18)', fill:true, tension:.3 },
+      { label:'H3 · New options', data:[0,0,4,15,40], borderColor:'#E8A13A', backgroundColor:'rgba(232,161,58,.18)', fill:true, tension:.3 }
+    ]},
+  options:{ plugins:{ legend:{position:'bottom'}, title:{display:true, text:'Three Horizons — indexed contribution over time'} },
+    scales:{ y:{ beginAtZero:true, title:{display:true, text:'Indexed contribution'} } } }
 });
 </script>
 </body>
