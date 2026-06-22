@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porter's Five Forces — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="porters">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Strategic Analysis</b> · Porter's Five Forces</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Strategic Analysis</span>
+      <h1>Porter's Five Forces: how attractive<br>is JR-Tech's industry — and where is power?</h1>
+      <p>An assessment of competitive rivalry, buyer and supplier power, the threat of new entrants
+      and substitutes across the Malaysian commercial-kitchen engineering and chemicals market — with
+      the strategic implications that shape both pricing and the Odoo build.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <h2>Force-by-force assessment</h2>
+        <p class="lead">On balance the industry is <b>moderately attractive</b>: fragmented rivalry and
+        moderate entry barriers cap profitability, but switching costs from an entrenched, multi-line
+        relationship — and the recurring service/chemical annuity — give an integrated operator real
+        defensibility. The strategic prize is to raise switching costs and dampen buyer power through
+        integration, exactly what an ERP-backed "one-stop" model does.</p>
+        <table class="tbl">
+          <tr><th>Force</th><th>Intensity</th><th>Why</th></tr>
+          <tr>
+            <td><b>Competitive rivalry</b></td>
+            <td><span class="tag red">High</span></td>
+            <td>Fragmented field of equipment dealers, fabricators and chemical suppliers; many compete
+            on price for undifferentiated supply. Few rivals match JR-Tech's full four-line breadth.</td>
+          </tr>
+          <tr>
+            <td><b>Bargaining power of buyers</b></td>
+            <td><span class="tag warn">Medium–High</span></td>
+            <td>Large hotel groups and institutional buyers (hospitals, schools) tender aggressively and
+            demand compliance/e-invoicing. Smaller F&amp;B operators are price-sensitive but sticky once
+            equipment is installed.</td>
+          </tr>
+          <tr>
+            <td><b>Bargaining power of suppliers</b></td>
+            <td><span class="tag warn">Medium</span></td>
+            <td>Imported equipment brands and stainless-steel mills hold pricing power, amplified by FX.
+            In-house fabrication reduces dependence; chemical raw-material suppliers are multi-sourced.</td>
+          </tr>
+          <tr>
+            <td><b>Threat of new entrants</b></td>
+            <td><span class="tag warn">Medium</span></td>
+            <td>Low barriers to becoming an equipment reseller or chemical distributor; <b>high</b>
+            barriers to replicating in-house fabrication, 16-year credibility and a full service network.</td>
+          </tr>
+          <tr>
+            <td><b>Threat of substitutes</b></td>
+            <td><span class="tag green">Low–Medium</span></td>
+            <td>Off-the-shelf imported kitchen kits and DIY cleaning supplies substitute at the low end;
+            custom fabrication, compliance and after-sales service are not easily substituted.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Force intensity profile</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="forceRadar" height="300"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Where the pressure concentrates</h3>
+            <p>Rivalry and buyer power are the binding constraints. Both are <b>information</b>
+            problems as much as market ones: JR-Tech loses on price because it cannot see its own
+            margin fast enough to compete intelligently, and concedes to buyers because it cannot prove
+            service value with data.</p>
+            <div class="callout tn"><b>So what for the Odoo build:</b> real-time costing blunts buyer
+            power (defend margin with facts), recurring subscriptions raise switching costs against
+            rivals, and documented SLAs convert service into a substitute-resistant moat. Porter's
+            diagnosis is, in effect, an ERP requirements list.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Strategic implications</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Raise switching costs</span><h3>Lock the annuity</h3>
+            <p>Move chemicals and service onto Odoo Subscriptions and contracts so customers stay for
+            convenience and SLA, not just price. Each renewal weakens rivalry pressure.</p></div>
+          <div class="card"><span class="tag">Neutralise buyer power</span><h3>Compete on value</h3>
+            <p>Use Odoo analytics to win on documented quality, compliance and total cost — not headline
+            price — especially in institutional tenders that reward e-invoicing readiness.</p></div>
+          <div class="card"><span class="tag green">Deepen the moat</span><h3>Integrate the four lines</h3>
+            <p>The fully integrated "turnkey" offer is the hardest force to replicate — new entrants
+            can copy one line, not the whole orchestrated stack. Odoo is the orchestration layer.</p></div>
+        </div>
+        <div class="callout"><b>Cross-link:</b> the rivalry read is detailed in the
+        <a href="competitor-deepdive.html">Competitor Deep-Dive</a>; buyer power dynamics inform
+        <a href="../growth/pricing.html">Pricing Strategy</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>The five forces, mapped</h2>
+        <div class="mermaid">
+flowchart TB
+  NE[New entrants\nMedium] --> R((Industry rivalry\nHIGH))
+  SUB[Substitutes\nLow–Medium] --> R
+  SUP[Suppliers\nMedium] --> R
+  BUY[Buyers\nMedium–High] --> R
+  R --> JR{{JR-Tech response:\nintegrate · subscribe · prove value}}
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="swot-tows.html">← Prev: SWOT &amp; TOWS</a>
+        <a href="competitor-deepdive.html">Next: Competitor Deep-Dive →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('forceRadar'), {
+  type: 'radar',
+  data: {
+    labels: ['Rivalry','Buyer power','Supplier power','New entrants','Substitutes'],
+    datasets: [{
+      label: 'Force intensity (1–5)',
+      data: [5, 4, 3, 3, 2],
+      borderColor:'#3F6FB0', backgroundColor:'rgba(127,169,222,.25)', pointBackgroundColor:'#0B1F3A'
+    }]
+  },
+  options: { scales:{ r:{ min:0, max:5, ticks:{ stepSize:1 } } }, plugins:{ legend:{ position:'bottom' } } }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why AI is Important — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="why-ai">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Overview</b> · Why AI is Important</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Overview · The AI Imperative</span>
+      <h1>Why AI matters for JR-Tech — and why now.</h1>
+      <p>JR-Tech already sells "the future of kitchens." This page makes the case that the same
+      future belongs in JR-Tech's <em>own</em> operations: concrete, near-term AI use-cases that turn a
+      four-line F&amp;B engineering SME into a faster, higher-margin, more defensible business — and
+      how Odoo 19's native AI lets us deliver them without a science project.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">~30%</div><div class="lbl">of quoting &amp; admin hours recoverable with AI-assisted drafting</div></div>
+          <div class="kpi"><div class="num">15–25%</div><div class="lbl">chemical stock-outs &amp; overstock avoidable via demand forecasting</div></div>
+          <div class="kpi"><div class="num">↓ downtime</div><div class="lbl">predictive maintenance cuts emergency dishwasher/equipment call-outs</div></div>
+          <div class="kpi"><div class="num">2026</div><div class="lbl">MyInvois mandate window — AI document handling is no longer optional</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The positioning gap — and the opportunity</h2>
+        <p class="lead">JR-Tech's 2024 brand book sells <b>"Experience the Future of Kitchens"</b> —
+        AI-powered cooking, advanced induction, smokeless and cook-&amp;-chill technology. That is the
+        story told to customers. Behind the counter, the business still runs on spreadsheets,
+        WhatsApp threads and disconnected point tools. AI closes that credibility gap: a company that
+        sells intelligent kitchens should run on an intelligent back office.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>What "AI" actually means here</h3>
+            <p>Not robots and not hype. For an F&amp;B engineering SME, AI is a set of pragmatic
+            assistants embedded in everyday work: drafting a quote from a site photo and a few notes,
+            predicting which cleaning chemicals a hotel will need next month, flagging a dishwasher
+            pump before it fails, and reading a supplier invoice so no one re-keys it.</p>
+            <div class="callout tn"><b>Brand alignment:</b> every internal AI win becomes a sales
+            proof point. "We forecast <em>your</em> chemical demand because we forecast our own."</div>
+          </div>
+          <div class="chartbox"><canvas id="effortChart" height="260"></canvas></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Five concrete AI use-cases for JR-Tech</h2>
+        <p class="lead">Each maps to an existing JR-Tech business line and to an Odoo 19 module, so
+        adoption is incremental — not a moonshot.</p>
+        <table class="tbl">
+          <tr><th>Use-case</th><th>Business line</th><th>What the AI does</th><th>Outcome</th><th>Horizon</th></tr>
+          <tr>
+            <td><b>AI-assisted quoting</b></td>
+            <td>JR-Consulting / Equipment</td>
+            <td>Drafts itemised quotes from site notes, photos and a product catalog; suggests pricing &amp; upsells from history.</td>
+            <td>Quote turnaround from days to hours; consistent margins.</td>
+            <td><span class="tag green">Phase 1</span></td>
+          </tr>
+          <tr>
+            <td><b>Demand forecasting (chemicals)</b></td>
+            <td>JR-Chemical Supplies</td>
+            <td>Predicts per-customer resupply cadence for dishwasher, laundry &amp; pool chemicals; auto-proposes reorder points.</td>
+            <td>Fewer stock-outs &amp; less dead stock; recurring revenue lift.</td>
+            <td><span class="tag green">Phase 2</span></td>
+          </tr>
+          <tr>
+            <td><b>Predictive maintenance</b></td>
+            <td>JR-Equipment Supports (service)</td>
+            <td>Scores assets on age, service history &amp; usage to schedule visits before failures (dishwashers, grease traps, induction).</td>
+            <td>Less emergency downtime; smoother field-service routing.</td>
+            <td><span class="tag warn">Phase 2–3</span></td>
+          </tr>
+          <tr>
+            <td><b>Document &amp; email automation</b></td>
+            <td>All lines · Finance</td>
+            <td>Reads supplier invoices &amp; POs, drafts replies, extracts line items, routes for approval — feeds MyInvois.</td>
+            <td>Re-keying eliminated; faster cash cycle; audit trail.</td>
+            <td><span class="tag green">Phase 1</span></td>
+          </tr>
+          <tr>
+            <td><b>Vision QC for fabrication</b></td>
+            <td>In-house fabrication team</td>
+            <td>Image checks on stainless-steel welds &amp; dimensions against the work order before delivery.</td>
+            <td>Fewer rework trips; defensible quality story.</td>
+            <td><span class="tag">Phase 3 / pilot</span></td>
+          </tr>
+        </table>
+        <div class="callout"><b>So what for the Odoo build:</b> use-cases 1 and 4 ship in Phase 1
+        because they ride Odoo 19's native AI in Sales and Accounting; the rest layer on as data
+        accumulates. See the <a href="../technology/ai-catalog.html">AI &amp; Automation Catalog</a>
+        for the full module mapping.</p></div>
+      </section>
+
+      <section class="section">
+        <h2>How an AI-assisted quote actually flows</h2>
+        <p class="lead">The highest-frequency, highest-friction process at JR-Tech is quoting across
+        four product lines. Here is the target flow once Odoo 19 + AI is live.</p>
+        <div class="mermaid">
+flowchart LR
+  A[Site visit / enquiry<br/>notes + photos] --> B{Odoo CRM<br/>AI draft}
+  B --> C[Catalog match<br/>equipment · chemicals · fabrication]
+  C --> D[AI suggests<br/>pricing &amp; upsell]
+  D --> E[Engineer reviews<br/>&amp; adjusts]
+  E --> F[Quote sent<br/>e-sign]
+  F --> G{Won?}
+  G -- Yes --> H[Auto: SO · MO · Field Service · Invoice]
+  G -- No --> I[AI logs reason<br/>feeds forecasting]
+  H --> J[MyInvois e-invoice]
+        </div>
+        <div class="callout tn"><b>The compounding effect:</b> every quote — won or lost — becomes
+        training data for pricing, forecasting and upsell. The system gets smarter the more JR-Tech
+        sells.</div>
+      </section>
+
+      <section class="section">
+        <h2>The cost of inaction</h2>
+        <p class="lead">Doing nothing is not free. Margin leaks, slow quotes and reactive maintenance
+        compound while AI-enabled competitors pull ahead. The gap widens every quarter.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="inactionChart" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Where the leakage hides today</h3>
+            <table class="tbl">
+              <tr><th>Symptom</th><th>Hidden cost</th></tr>
+              <tr><td>Quotes drafted manually in Excel/Word</td><td>Lost deals to faster rivals; margin guesswork</td></tr>
+              <tr><td>Chemical reorders by gut feel</td><td>Stock-outs (lost recurring revenue) + dead stock</td></tr>
+              <tr><td>Run-to-failure equipment service</td><td>Emergency call-outs, unhappy HORECA clients</td></tr>
+              <tr><td>Invoices re-keyed by hand</td><td>Errors, slow cash cycle, MyInvois exposure</td></tr>
+            </table>
+            <div class="callout warn"><b>Regulatory clock:</b> Malaysia's MyInvois e-invoicing is
+            rolling out to SMEs through 2026–27. Manual document handling becomes a compliance risk,
+            not just an inefficiency.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The AI adoption curve — meet customers where the market is going</h2>
+        <p class="lead">SME AI adoption in Malaysian services is on a steep S-curve. Acting in the
+        2026 window puts JR-Tech among early adopters, ahead of the late-majority crowd it competes
+        with for HORECA contracts.</p>
+        <div class="chartbox"><canvas id="adoptionChart" height="240"></canvas></div>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Innovators</span><h3>The future-of-kitchens brand</h3>
+          <p>JR-Tech already markets AI to customers — internal adoption simply makes the promise real.</p></div>
+          <div class="card"><span class="tag green">Early adopters</span><h3>Where we land in 2026</h3>
+          <p>Odoo 19 native AI lets a 16-year SME adopt without a data-science team.</p></div>
+          <div class="card"><span class="tag warn">Late majority</span><h3>The competition</h3>
+          <p>Most Penang F&amp;B equipment rivals still quote by hand — a real, time-boxed edge.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How Odoo 19's AI features plug in</h2>
+        <p class="lead">The reason this is feasible for an SME is that we are not building AI from
+        scratch — Odoo 19 ships AI capabilities natively across the apps JR-Tech already needs.</p>
+        <table class="tbl">
+          <tr><th>Odoo 19 capability</th><th>JR-Tech use-case it powers</th><th>Module</th></tr>
+          <tr><td>AI-assisted content &amp; field suggestions</td><td>Quote drafting, email replies, product descriptions</td><td>CRM · Sales</td></tr>
+          <tr><td>Invoice / document data extraction (OCR + AI)</td><td>Supplier invoice &amp; PO digitisation → MyInvois</td><td>Accounting · Documents</td></tr>
+          <tr><td>Forecasting &amp; reordering rules</td><td>Chemical resupply demand prediction</td><td>Inventory · Subscriptions</td></tr>
+          <tr><td>Maintenance scheduling &amp; asset analytics</td><td>Predictive equipment service</td><td>Maintenance · Field Service</td></tr>
+          <tr><td>Automation / server actions &amp; AI agents</td><td>Routing approvals, lost-reason capture, alerts</td><td>Studio · Automation</td></tr>
+        </table>
+        <div class="callout tn"><b>Bottom line:</b> AI is not a separate project bolted on later — it
+        is delivered <em>through</em> the Odoo 19 backbone, phase by phase, alongside the operational
+        cleanup. See the <a href="../executive/executive-summary.html">Executive Summary</a> for the
+        phased plan and ROI, and <a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a>
+        for the technical shape.</p></div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../../index.html">← Prev: Overview</a>
+        <a href="../executive/executive-summary.html">Next: Executive Summary →</a>
+      </div>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.
+      Adoption figures combine public SME-AI benchmarks with TechNext analyst modelling — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('effortChart'), {
+  type: 'bar',
+  data: { labels: ['Quoting','Invoice handling','Reorder planning','Service scheduling'],
+    datasets: [
+      { label: 'Hours / week today (manual)', data: [12,9,6,5], backgroundColor:'#E2544B' },
+      { label: 'With Odoo 19 + AI', data: [4,2,2,2], backgroundColor:'#16C098' }
+    ]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Recoverable admin effort (illustrative SME model)' } },
+    scales:{ y:{ beginAtZero:true, title:{ display:true, text:'hours / week' } } } }
+});
+
+new Chart(document.getElementById('inactionChart'), {
+  type: 'line',
+  data: { labels: ['2026','2027','2028','2029'],
+    datasets: [
+      { label: 'Cumulative margin leak — do nothing', data: [0,60,140,240], borderColor:'#E2544B', backgroundColor:'rgba(226,84,75,.12)', fill:true, tension:.3 },
+      { label: 'With AI-enabled Odoo 19', data: [0,15,25,30], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.14)', fill:true, tension:.3 }
+    ]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Indexed cost of inaction (relative units)' } },
+    scales:{ y:{ beginAtZero:true } } }
+});
+
+new Chart(document.getElementById('adoptionChart'), {
+  type: 'line',
+  data: { labels: ['2022','2023','2024','2025','2026','2027','2028','2029'],
+    datasets: [
+      { label: 'MY SME services AI adoption (%)', data: [4,8,15,26,42,60,74,83], borderColor:'#3F6FB0', backgroundColor:'rgba(127,169,222,.18)', fill:true, tension:.4, pointRadius:4 }
+    ]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'AI adoption S-curve — JR-Tech enters in the early-adopter band (2026)' } },
+    scales:{ y:{ beginAtZero:true, max:100, title:{ display:true, text:'% of firms' } } } }
+});
+</script>
+</body>
+</html>

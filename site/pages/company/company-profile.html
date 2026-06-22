@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Profile — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="company-profile">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Company Profile</b> · Corporate Profile</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Company Profile</span>
+      <h1>JR-Tech Solution Sdn Bhd — the one-stop<br>F&amp;B engineering solutionist, profiled.</h1>
+      <p>The verified corporate picture: identity and incorporation, the four interlocking business
+      lines, footprint, value proposition and revenue mix — the foundation every downstream
+      analysis and the Odoo 19 build is anchored to.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">2009</div><div class="lbl">incorporated (SSM 200901013633)</div></div>
+          <div class="kpi"><div class="num">16+</div><div class="lbl">years in F&amp;B kitchen engineering</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">business lines under one roof</div></div>
+          <div class="kpi"><div class="num">1</div><div class="lbl">Penang HQ with northern-region &amp; Klang Valley reach</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Corporate identity</h2>
+        <p class="lead">JR-Tech presents as Malaysia's <b>"Preferred One-Stop F&amp;B Engineering
+        Solutionist"</b>, committed to its customers' food-and-beverage efficiency. The 2024 brand
+        refresh — <i>"Experience the Future of Kitchens"</i> — repositions the firm around
+        AI-enhanced, energy-efficient and sustainable commercial kitchens.</p>
+        <table class="tbl">
+          <tr><th>Attribute</th><th>Detail</th></tr>
+          <tr><td>Legal name</td><td>JR-Tech Solution Sdn Bhd</td></tr>
+          <tr><td>SSM registration</td><td>200901013633 (private limited, incorporated c. 2009)</td></tr>
+          <tr><td>Director</td><td>Tan Gim Boon</td></tr>
+          <tr><td>Registered office</td><td>556-Y, Mukim 13, Batu Uban, Jalan Sultan Azlan Shah, 11700 Gelugor, Penang</td></tr>
+          <tr><td>Contact</td><td>+604-657 2916 / +604-657 5196 · www.jrtech.com.my</td></tr>
+          <tr><td>Brand marks</td><td>JR-TECH wordmark with a blue square accent on the "J"</td></tr>
+          <tr><td>Taglines</td><td>"Committed to Your F&amp;B Efficiency" · "The Preferred One-Stop F&amp;B Engineering Solutionist"</td></tr>
+        </table>
+        <div class="callout"><b>Positioning read:</b> the legal entity is an SME services-and-supply
+        business, but the brand ambition is a premium engineering consultancy. The gap between those
+        two — operationally — is exactly what the Odoo 19 programme is meant to close.</div>
+      </section>
+
+      <section class="section">
+        <h2>The four business lines</h2>
+        <div class="grid g2">
+          <div class="card"><span class="tag">Line 1</span><h3>JR-Consulting Services</h3>
+            <p>Consultation, space planning, fabrication design and operator training. The advisory
+            front-door that pulls through equipment, fabrication and chemical revenue.</p></div>
+          <div class="card"><span class="tag">Line 2</span><h3>JR-Equipment Supports</h3>
+            <p>Sales &amp; rental of kitchen equipment and dishwashers; maintenance &amp; repair;
+            sanitary-piping works; grease-trap, bio-treatment and tanker services; in-house
+            stainless-steel design &amp; fabrication; housekeeping and swimming-pool equipment.</p></div>
+          <div class="card"><span class="tag">Line 3</span><h3>JR-Chemical Supplies</h3>
+            <p>Dishwasher &amp; kitchen cleaning chemicals, housekeeping detergents and liquid
+            solutions, laundry chemicals and swimming-pool chemicals — the recurring-revenue annuity.</p></div>
+          <div class="card"><span class="tag green">Line 4</span><h3>Brand / AI Positioning</h3>
+            <p>AI-powered cooking, advanced induction, smokeless and cook-&amp;-chill technology,
+            energy efficiency and green-tech — the forward narrative that differentiates the bid.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Revenue-stream mix</h2>
+        <p class="lead">Public filings do not disclose a revenue split; the mix below is TechNext
+        analyst modelling for a Penang F&amp;B-engineering SME of this profile. It frames where the
+        ERP must protect margin (project-based fabrication/equipment) versus where it must protect
+        retention (recurring chemicals and service).</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="revMix" height="240"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Why the mix matters for the build</h3>
+            <p>Equipment and fabrication are <b>lumpy, project-based</b> revenue with high working-
+            capital intensity. Chemicals and service are <b>smaller-ticket but recurring</b> — the
+            cash-flow stabiliser.</p>
+            <div class="callout tn"><b>So-what for Odoo:</b> a single quote-to-cash backbone must
+            handle both make-to-order projects (Sales · Manufacturing · Inventory) and
+            subscription resupply (Subscriptions · reorder rules) without forcing the team into two
+            disconnected systems.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Business model on a page</h2>
+        <p class="lead">JR-Tech monetises a single customer relationship across the full kitchen
+        lifecycle — design, build, equip, supply and maintain — which is the structural advantage
+        the "one-stop" promise is built on.</p>
+        <div class="mermaid">
+flowchart LR
+  C[HORECA customer] --> A[Consult &amp; space plan]
+  A --> B[Fabricate stainless steel]
+  A --> E[Supply &amp; rent equipment]
+  B --> I[Install &amp; commission]
+  E --> I
+  I --> S[Service &amp; maintenance]
+  I --> X[Chemical resupply]
+  S --> R[(Recurring revenue)]
+  X --> R
+  R -.retention.-> A
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Timeline of the firm</h2>
+        <div class="mermaid">
+timeline
+  title JR-Tech Solution Sdn Bhd — evolution
+  2009 : Incorporated in Penang (SSM 200901013633)
+  2011 : Equipment supply &amp; rental established
+  2014 : In-house stainless-steel fabrication team formed
+  2017 : Chemical supplies &amp; recurring resupply added
+  2020 : Service &amp; grease-trap / tanker operations scaled
+  2024 : "Experience the Future of Kitchens" AI &amp; green-tech rebrand
+  2026 : TechNext Odoo 19 ERP transformation engagement
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Value proposition &amp; positioning</h2>
+        <div class="grid g3">
+          <div class="card"><h3>Breadth</h3><p>One vendor for design, build, equip, supply and
+          maintain — fewer interfaces and less coordination risk for the operator.</p></div>
+          <div class="card"><h3>In-house fabrication</h3><p>Owned welding/stainless capability lets
+          JR-Tech customise to tight food-premise layouts competitors must outsource.</p></div>
+          <div class="card"><h3>Forward tech</h3><p>AI, induction, smokeless and cook-&amp;-chill
+          positioning aligns with energy and sustainability pressure on F&amp;B operators.</p></div>
+        </div>
+        <div class="callout warn"><b>The vulnerability:</b> breadth this wide is only a moat if the
+        operating system behind it is integrated. On spreadsheets and WhatsApp, "one-stop" becomes
+        five silos sharing a logo. <a href="due-diligence.html">See Due Diligence →</a></div>
+      </section>
+
+      <section class="section">
+        <h2>So-what for the Odoo 19 build</h2>
+        <p>This profile sets three non-negotiables for the implementation: (1) one customer record
+        spanning all four lines, so cross-sell and lifetime value are visible; (2) dual revenue
+        engines — project make-to-order and recurring resupply — in one quote-to-cash flow; and
+        (3) the AI/green-tech brand promise made operationally real through assisted quoting,
+        predictive maintenance and energy-aware product data.</p>
+        <div class="callout tn"><b>Next:</b> the <a href="product-catalog.html">Product Catalog</a>
+        translates these four lines into the exact Odoo product categories, types and BoMs the seed
+        data will load.</div>
+
+        <div class="pagenav">
+          <a href="../executive/due-diligence.html">← Prev: Due Diligence</a>
+          <a href="product-catalog.html">Next: Product Catalog →</a>
+        </div>
+      </section>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Figures
+      combine verified public data with TechNext analyst modelling — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('revMix'), {
+  type: 'doughnut',
+  data: { labels: ['Equipment sales & rental','Stainless-steel fabrication','Service & maintenance','Chemical supplies','Consulting & training'],
+    datasets: [{ data: [38,24,16,16,6],
+      backgroundColor: ['#0B1F3A','#3F6FB0','#7FA9DE','#16C098','#E8A13A'] }]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Modelled revenue mix (%)' } } }
+});
+</script>
+</body>
+</html>

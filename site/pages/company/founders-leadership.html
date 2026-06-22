@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founders & Leadership — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="founders-leadership">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Company Profile</b> · Founders &amp; Leadership</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Company Profile</span>
+      <h1>Founder-led, owner-operated —<br>the leadership picture &amp; its risks.</h1>
+      <p>Tan Gim Boon leads JR-Tech as Director. This page profiles the leadership, reads the
+      founder-led operating style, and surfaces the key-person and succession risks the ERP
+      programme must explicitly de-risk.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">1</div><div class="lbl">principal director: Tan Gim Boon</div></div>
+          <div class="kpi"><div class="num">16+</div><div class="lbl">years owner-operating the firm</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">business lines under one decision-maker</div></div>
+          <div class="kpi"><div class="num">High</div><div class="lbl">modelled key-person concentration</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Leadership profile — Tan Gim Boon, Director</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <span class="tag">Director</span>
+            <h3>Tan Gim Boon</h3>
+            <p>The founding director and primary commercial relationship for JR-Tech. Reachable
+            directly (+6012-476 0525 · jrtechboon@gmail.com), which itself signals how central the
+            founder is to sales, quoting and key-account trust.</p>
+            <p>Hands-on across consulting, equipment, fabrication and chemicals — the connective
+            tissue that lets a single SME credibly sell a "one-stop" proposition.</p>
+          </div>
+          <div class="card pad-lg">
+            <h3>Leadership style (assessed)</h3>
+            <ul>
+              <li><b>Owner-operator:</b> close to customers, quotes and the shop floor.</li>
+              <li><b>Relationship-led selling:</b> trust and responsiveness over process.</li>
+              <li><b>Technical credibility:</b> deep domain feel for kitchen engineering.</li>
+              <li><b>Centralised decisions:</b> speed today, bottleneck at scale.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Leadership / org structure</h2>
+        <div class="mermaid">
+flowchart TD
+  D[Tan Gim Boon — Director] --> S[Sales &amp; Accounts]
+  D --> F[Fabrication Workshop Lead]
+  D --> SV[Service / Field Operations Lead]
+  D --> C[Chemical Supply Lead]
+  D --> A[Admin &amp; Finance Lead]
+  S --> S1[Sales executives]
+  F --> F1[Welders / fabricators]
+  SV --> SV1[Field technicians]
+  C --> C1[Supply / logistics]
+  A --> A1[Accounts &amp; admin]
+        </div>
+        <div class="callout warn"><b>Single apex:</b> all five functions report into one person.
+        That is fast and coherent today, but every cross-line decision and most pricing flows
+        through a single point.</div>
+      </section>
+
+      <section class="section">
+        <h2>Founder-led risk profile</h2>
+        <p class="lead">Founder dependence is the dominant operating risk for an SME of this shape.
+        The chart contrasts the concentration today against the target state after an ERP-enabled
+        process rollout.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="riskRadar" height="240"></canvas></div>
+          <div class="card pad-lg">
+            <h3>What the radar says</h3>
+            <p>Knowledge, pricing authority and customer trust are concentrated in the founder.
+            Process documentation and decision delegation are the weakest dimensions — exactly
+            where institutional memory should live in a system, not a person.</p>
+            <div class="callout tn"><b>So-what for Odoo:</b> codifying quoting rules, price lists,
+            BoMs and service SLAs into Odoo moves tacit founder knowledge into the system — the
+            single most effective key-person de-risking lever available.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Succession &amp; continuity</h2>
+        <table class="tbl">
+          <tr><th>Risk</th><th>Exposure</th><th>Mitigation (ERP-enabled)</th></tr>
+          <tr><td>Key-person dependence</td><td><span class="tag red">High</span></td><td>Codify quoting, pricing &amp; BoMs in Odoo; delegate approvals via workflow</td></tr>
+          <tr><td>Tacit pricing knowledge</td><td><span class="tag warn">Medium-High</span></td><td>Price lists, cost-plus rules &amp; margin guardrails in Sales</td></tr>
+          <tr><td>Customer relationships held personally</td><td><span class="tag warn">Medium</span></td><td>CRM with shared account history &amp; activity log</td></tr>
+          <tr><td>No second-line leaders named</td><td><span class="tag warn">Medium</span></td><td>Department leads formalised with system roles &amp; KPIs</td></tr>
+          <tr><td>Continuity on absence/exit</td><td><span class="tag warn">Medium</span></td><td>Documented processes &amp; auditable records reduce handover risk</td></tr>
+        </table>
+        <ol class="steps">
+          <li>Name and empower five department leads with defined Odoo roles.</li>
+          <li>Migrate pricing logic and BoMs from the founder's head into the system.</li>
+          <li>Route approvals (quotes, POs, credits) through workflow, not one inbox.</li>
+          <li>Make customer history shared and visible in CRM, not personal.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>So-what for the Odoo 19 build</h2>
+        <p>Leadership analysis turns into two design mandates: (1) the ERP must externalise founder
+        knowledge — pricing, BoMs, service standards — so the business is resilient to a single
+        absence; and (2) role-based access and approval workflows must let department leads operate
+        autonomously while the founder retains visibility, not control of every transaction.</p>
+        <div class="callout tn"><b>Cross-link:</b> the <a href="staff-org.html">Staff &amp; Org
+        Analysis</a> models the headcount and departments that these leadership roles sit above.</div>
+
+        <div class="pagenav">
+          <a href="product-catalog.html">← Prev: Product Catalog</a>
+          <a href="staff-org.html">Next: Staff &amp; Org Analysis →</a>
+        </div>
+      </section>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Leadership
+      assessment is analyst modelling grounded in verified facts — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('riskRadar'), {
+  type: 'radar',
+  data: { labels: ['Knowledge concentration','Pricing authority','Customer trust held','Process documentation','Decision delegation','Continuity readiness'],
+    datasets: [
+      { label: 'Today', data: [5,5,5,2,2,2], borderColor:'#E2544B', backgroundColor:'rgba(226,84,75,.15)' },
+      { label: 'Target (post-ERP)', data: [3,3,4,5,4,4], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.18)' }
+    ]},
+  options: { scales:{ r:{ min:0, max:5, ticks:{ stepSize:1 } } }, plugins:{ legend:{ position:'bottom' } } }
+});
+</script>
+</body>
+</html>

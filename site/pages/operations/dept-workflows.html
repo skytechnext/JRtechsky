@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Department Workflows — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="dept-workflows">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Operations</b> · Department Workflows</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Operations</span>
+      <h1>Current-state workflows — where the work actually breaks.</h1>
+      <p>Six end-to-end processes carry JR-Tech's revenue: quote-to-cash, fabrication jobs, equipment
+      rental, field service, chemical resupply and procurement. Below, each is mapped as it runs
+      <em>today</em> — across spreadsheets, WhatsApp and phone calls — with the friction points
+      flagged in red. These are the exact handoffs the Odoo 19 design eliminates.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <h2>Reading these maps</h2>
+        <p class="lead">Steps shaded red are friction points — manual re-keying, lost context,
+        missing data or uncontrolled approvals. Each diagram ends with the system of record today
+        and the Odoo app that replaces it.</p>
+        <div class="callout warn"><b>Cross-cutting friction:</b> every process below depends on
+        information living in a different place from where the next person works — so handoffs are
+        re-typed, delayed, or simply forgotten. Detail in the
+        <a href="pain-solution.html">Pain → Solution Matrix</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>1 · Quote-to-cash (sales)</h2>
+        <p class="lead">The spine of the business: enquiry → quote → order → delivery → invoice →
+        payment, spanning all four business lines.</p>
+        <div class="mermaid">
+flowchart TD
+  A([Enquiry via call / WhatsApp]) --> B[Salesperson logs lead in notebook]
+  B --> C{Quote needed?}
+  C -->|Yes| D[Rebuild quote in Excel from scratch]:::pain
+  D --> E[Guess fabrication / install price]:::pain
+  E --> F[Email PDF quote]
+  F --> G{Customer accepts?}
+  G -->|Negotiate| D
+  G -->|Yes| H[Verbal handoff to ops]:::pain
+  H --> I[Deliver / build / install]
+  I --> J[Tell admin to invoice]:::pain
+  J --> K[Manual invoice + SST in Excel]:::pain
+  K --> L([Chase payment by phone]):::pain
+  classDef pain fill:#FBE3E1,stroke:#C13B33,color:#7A211B;
+        </div>
+        <p><b>System of record today:</b> Excel + email + memory. <b>Odoo replaces with:</b>
+        CRM → Sales → Accounting, one continuous record.</p>
+      </section>
+
+      <section class="section">
+        <h2>2 · Fabrication job (workshop)</h2>
+        <p class="lead">Custom stainless-steel kitchen builds from the in-house fabrication team.</p>
+        <div class="mermaid">
+flowchart TD
+  A([Won fabrication order]) --> B[Sketch / measure on site]
+  B --> C[Estimate steel &amp; labour by feel]:::pain
+  C --> D[Buy material ad-hoc]:::pain
+  D --> E[Cut · weld · assemble]
+  E --> F[Track progress on paper job card]:::pain
+  F --> G{Material short?}
+  G -->|Yes| D
+  G -->|No| H[Quality check]
+  H --> I[Deliver &amp; install]
+  I --> J[Actual cost never reconciled to quote]:::pain
+  J --> K([Margin unknown]):::pain
+  classDef pain fill:#FBE3E1,stroke:#C13B33,color:#7A211B;
+        </div>
+        <p><b>System of record today:</b> paper job cards. <b>Odoo replaces with:</b> Manufacturing
+        (BoM + routing + work orders) with real material &amp; labour cost per job.</p>
+      </section>
+
+      <section class="section">
+        <h2>3 · Equipment rental</h2>
+        <p class="lead">Sales &amp; rental of kitchen equipment and dishwashers — an asset-lifecycle
+        process today managed almost entirely off-system.</p>
+        <div class="mermaid">
+flowchart TD
+  A([Rental request]) --> B[Check availability by phone to workshop]:::pain
+  B --> C{Available?}
+  C -->|No| D[Decline or delay]:::pain
+  C -->|Yes| E[Handwritten rental note]:::pain
+  E --> F[Deliver asset to customer]
+  F --> G[No reminder for return date]:::pain
+  G --> H{Returned on time?}
+  H -->|Late| I[Missed extra billing]:::pain
+  H -->|Yes| J[Inspect for damage]
+  J --> K[Manual rental invoice]:::pain
+  K --> L([Asset back to floating pool]):::pain
+  classDef pain fill:#FBE3E1,stroke:#C13B33,color:#7A211B;
+        </div>
+        <p><b>System of record today:</b> rental notebook. <b>Odoo replaces with:</b> Rental +
+        Inventory — asset tracking, automated return reminders, contract billing.</p>
+      </section>
+
+      <section class="section">
+        <h2>4 · Field service (install · repair · grease-trap · tanker)</h2>
+        <p class="lead">Dispatch and after-sales support across Penang and beyond.</p>
+        <div class="mermaid">
+flowchart TD
+  A([Service / breakdown call]) --> B[Admin notes job on whiteboard]:::pain
+  B --> C[Phone a technician]:::pain
+  C --> D[Tech drives out — no asset history]:::pain
+  D --> E{Right parts on van?}
+  E -->|No| F[Return for parts / reschedule]:::pain
+  E -->|Yes| G[Perform service]
+  G --> H[Handwritten service report]:::pain
+  H --> I[Report re-keyed or lost]:::pain
+  I --> J[Admin invoices later — if remembered]:::pain
+  J --> K([No preventive schedule for next visit]):::pain
+  classDef pain fill:#FBE3E1,stroke:#C13B33,color:#7A211B;
+        </div>
+        <p><b>System of record today:</b> whiteboard + phone. <b>Odoo replaces with:</b> Field
+        Service (mobile) + Maintenance + Repair — scheduled, asset-aware, billed on completion.</p>
+      </section>
+
+      <section class="section">
+        <h2>5 · Chemical resupply</h2>
+        <p class="lead">Recurring dishwasher, housekeeping, laundry and pool chemical replenishment.</p>
+        <div class="mermaid">
+flowchart TD
+  A([Customer runs low]) --> B{Who notices?}
+  B -->|Customer calls| C[Urgent delivery]:::pain
+  B -->|Nobody| D[Stock-out at customer site]:::pain
+  C --> E[Check our stock]
+  D --> E
+  E --> F{In stock?}
+  F -->|No| G[Emergency purchase at higher cost]:::pain
+  F -->|Yes| H[Deliver]
+  G --> H
+  H --> I[Manual one-off invoice]:::pain
+  I --> J([No consumption data, no forecast]):::pain
+  classDef pain fill:#FBE3E1,stroke:#C13B33,color:#7A211B;
+        </div>
+        <p><b>System of record today:</b> customer phone calls. <b>Odoo replaces with:</b>
+        Subscriptions (auto recurring orders + invoices) + Inventory reorder rules.</p>
+      </section>
+
+      <section class="section">
+        <h2>6 · Procurement</h2>
+        <p class="lead">Buying steel, equipment, spares and chemicals to feed the other five flows.</p>
+        <div class="mermaid">
+flowchart TD
+  A([Someone realises stock is low]):::pain --> B[Phone or WhatsApp a known vendor]:::pain
+  B --> C[Compare price from memory / old emails]:::pain
+  C --> D[Place verbal PO]:::pain
+  D --> E[Goods arrive — no goods-receipt check]:::pain
+  E --> F[Invoice filed in a tray]:::pain
+  F --> G{Matches order?}
+  G -->|Unclear| H[Pay anyway]:::pain
+  G -->|Yes| I[Pay]
+  H --> J([No spend visibility]):::pain
+  I --> J
+  classDef pain fill:#FBE3E1,stroke:#C13B33,color:#7A211B;
+        </div>
+        <p><b>System of record today:</b> emails + invoice tray. <b>Odoo replaces with:</b> Purchase
+        (RFQ → PO → 3-way match) driven by Manufacturing demand &amp; reorder rules.</p>
+      </section>
+
+      <section class="section">
+        <h2>Friction concentration by process</h2>
+        <p class="lead">Counting the red steps above gives a crude but honest heat reading of where
+        manual effort and risk concentrate today — and where Odoo automation pays back first.</p>
+        <div class="chartbox"><canvas id="frictionChart" height="240"></canvas></div>
+        <div class="callout tn"><b>So what for the Odoo build:</b> quote-to-cash and field service
+        carry the most friction and touch the most stakeholders, so they anchor the early phases.
+        The future-state designs are on <a href="bpmn-uml.html">BPMN · Blueprint · UML</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="stakeholders.html">← Prev: Stakeholder Perspectives</a>
+        <a href="pain-solution.html">Next: Pain → Solution Matrix →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('frictionChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Quote-to-cash','Field service','Procurement','Chemical resupply','Rental','Fabrication'],
+    datasets: [{
+      label: 'Manual friction points (red steps)',
+      data: [6, 6, 7, 4, 5, 5],
+      backgroundColor: ['#E2544B','#E2544B','#C13B33','#E8A13A','#E8A13A','#E8A13A']
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins:{ legend:{ display:false } },
+    scales:{ x:{ beginAtZero:true, title:{ display:true, text:'Number of manual / risky handoffs today' } } }
+  }
+});
+</script>
+</body>
+</html>
