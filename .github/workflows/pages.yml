@@ -9,6 +9,7 @@ name: Deploy site to GitHub Pages
 on:
   push:
     branches: ["claude/pensive-einstein-dlerlg"]
+    paths-ignore: ["**.md"] # don't redeploy for docs-only changes
   workflow_dispatch:
 
 # Least-privilege permissions needed to publish Pages.

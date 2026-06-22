@@ -6,8 +6,10 @@
   reply, include a short **Links** list with:
   - the repository — https://github.com/skytechnext/JRtechsky
   - the current working branch (link to its tree on GitHub)
-  - the live website / preview URL (GitHub Pages once deployed, plus an
-    instant no-setup preview link when Pages isn't live yet)
+  - the live website / preview URL. Until GitHub Pages is enabled, use the
+    instant githack preview (works now, no setup):
+    https://raw.githack.com/skytechnext/JRtechsky/claude/pensive-einstein-dlerlg/index.html
+    Once Pages is on, the permanent URL is https://skytechnext.github.io/JRtechsky/
   Keep the links clickable so the site can be previewed in one click.
 
 ## Project

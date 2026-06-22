@@ -9,10 +9,13 @@ saved only in your own browser (`localStorage`).
 
 ## 🔗 Preview the site (one click)
 
-- **Live site (GitHub Pages):** **https://skytechnext.github.io/JRtechsky/**
-  — published automatically by [`.github/workflows/pages.yml`](.github/workflows/pages.yml) on every push.
-- **Instant preview, no setup** (renders this branch straight from GitHub):
-  [open the estimator »](https://htmlpreview.github.io/?https://github.com/skytechnext/JRtechsky/blob/claude/pensive-einstein-dlerlg/index.html)
+- **Instant preview — works right now, no setup:**
+  **https://raw.githack.com/skytechnext/JRtechsky/claude/pensive-einstein-dlerlg/index.html**
+  Renders this branch live, with full styling and interactivity (verified).
+- **Permanent home (GitHub Pages):** https://skytechnext.github.io/JRtechsky/
+  — switch it on once at **Settings → Pages → Source: GitHub Actions** (needs repo admin;
+  the Actions token isn't allowed to enable Pages by itself). After that,
+  [`.github/workflows/pages.yml`](.github/workflows/pages.yml) republishes on every push.
 - **Locally:** just open `index.html` in any browser — no build step.
 
 ---
@@ -94,8 +97,10 @@ This is a static site — no build step. Deployment is automated:
 - [`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs on every push to
   this branch (and on demand via **Actions → Run workflow**). It enables Pages on the
   first run and publishes the site to **https://skytechnext.github.io/JRtechsky/**.
-- The first run needs Actions to be allowed to manage Pages. If it doesn't appear,
-  set **Settings → Pages → Source: GitHub Actions** once, then re-run the workflow.
+- One-time setup: the default Actions token can't switch Pages on, so a repo admin
+  enables it once at **Settings → Pages → Source: GitHub Actions**. The workflow then
+  deploys on the next push (or via **Actions → Run workflow**). Until then, use the
+  instant githack preview link above.
 
 ## Customising the seeded numbers
 
