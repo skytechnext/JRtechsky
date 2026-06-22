@@ -60,6 +60,15 @@ odoo/
 - This is **DEV/STAGING demo data only.** Do not load illustrative customer names or opening
   balances into a production company. See plan §6.
 
+## Naming note (alignment with the human-facing HTML playbook)
+
+`site/tools/ai-build-playbook.html` illustrates the seed with a numbered-JSON convention
+(e.g. `04_products.json`). The **authoritative, machine-readable files are the descriptively named
+CSV/JSON in this `seed/` folder** documented in `SCHEMA.md`. The mapping is conceptual, not literal:
+`company.json`↔companies/users, `products.csv`↔products, `boms.csv`/`bom_lines.csv`↔BoMs,
+`customers.csv`+`vendors.csv`↔partners, transactions↔the `sale_*/purchase_*/mrp_*/invoices/...` CSVs.
+Module list, phase order, SST rates (10%/8%) and the SSM number (200901013633) match across both.
+
 ## Record volumes (what a correct load produces)
 
 | Type | Count |
