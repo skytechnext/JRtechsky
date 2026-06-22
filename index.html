@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JR Tech Web Portal — Site Directory</title>
+  <meta name="description" content="A directory of the websites hosted in this repository, built and maintained by JR Tech Solution, a Malaysian commercial kitchen solutions provider." />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Inline SVG favicon: an "JR" steel-plate mark with a heat-amber flame notch. No external file, no 404. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230E1217'/%3E%3Cpath d='M32 12c5 6 8 11 8 16a8 8 0 0 1-16 0c0-3 1.5-5 3-7-1 4 2 6 5 4-2-4 0-9 0-13z' fill='%23F59E0B'/%3E%3Crect x='14' y='44' width='36' height='3' rx='1.5' fill='%238A97A6'/%3E%3C/svg%3E" />
+
+  <!-- Optional web fonts. Page is designed to look great with the system stack if these fail. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       JR TECH WEB PORTAL
+       Concept: a fabrication spec-sheet / shop drawing for a
+       stainless-steel commercial-kitchen workshop.
+       - Cool slate ground, brushed-steel surfaces, hairline rules.
+       - One warm "heat" accent (amber) used only where heat belongs:
+         the CTA, the live count, focus rings, and small highlights.
+       - Monospace "spec" labels + index numbers read like a drawing.
+       Single file. No build step. No external JS/CSS dependencies.
+       ============================================================ */
+
+    :root {
+      /* --- Committed palette --- */
+      --ground:      #0E1217; /* near-black cool slate */
+      --surface:     #151A21; /* raised panel */
+      --surface-2:   #1B212B; /* card face */
+      --hairline:    #2A323D; /* steel hairline border */
+      --hairline-2:  #3A4452; /* brighter edge / hover */
+      --text:        #E7ECF2; /* cool off-white */
+      --muted:       #A7B2C0; /* secondary text */
+      --faint:       #6F7C8C; /* captions, spec labels */
+      --accent:      #F59E0B; /* heat amber */
+      --accent-soft: #FB923C; /* warmer flame */
+      --accent-ink:  #1A1206; /* text on amber */
+
+      /* --- Type roles --- */
+      --font-display: "Inter", "Helvetica Neue", Helvetica, "Segoe UI", system-ui, -apple-system, sans-serif;
+      --font-body:    "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --font-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+      /* --- Geometry --- */
+      --radius:      15px;
+      --radius-sm:   10px;
+      --maxw:        1180px;
+      --gutter:      clamp(20px, 5vw, 56px);
+      --ease:        cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background-color: var(--ground);
+      /* Faint cool gradient + a single warm glow anchored top-left, CSS-only. */
+      background-image:
+        radial-gradient(900px 520px at 82% -8%, rgba(245, 158, 11, 0.10), transparent 60%),
+        radial-gradient(800px 600px at -5% 0%, rgba(58, 68, 82, 0.30), transparent 55%);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: 0.005em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    img { display: block; max-width: 100%; }
+
+    /* Shared "spec label" — small mono, tracked-out caps, like a drawing callout. */
+    .spec {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--faint);
+      font-weight: 500;
+    }
+
+    /* Layout wrapper */
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    /* ---------- Header / top bar ---------- */
+    .topbar {
+      border-bottom: 1px solid var(--hairline);
+      background: linear-gradient(180deg, rgba(21, 26, 33, 0.65), rgba(14, 18, 23, 0));
+    }
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .brand__plate {
+      display: grid;
+      place-items: center;
+      padding: 8px 12px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(160deg, #1d242e, #11161d);
+    }
+    .brand__logo { height: 22px; width: auto; }
+    .brand__txt { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand__name { font-weight: 700; font-size: 0.95rem; letter-spacing: 0.01em; }
+    .brand__sub { font-size: 0.7rem; color: var(--faint); letter-spacing: 0.04em; }
+    .topbar__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .topbar__tag::before {
+      content: "";
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--hairline);
+    }
+    /* Brushed-stainless grain — the one bold material move, CSS only. */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.022) 0px,
+        rgba(255, 255, 255, 0.022) 1px,
+        rgba(0, 0, 0, 0.025) 2px,
+        rgba(255, 255, 255, 0.01) 3px,
+        rgba(0, 0, 0, 0.0) 5px
+      );
+      opacity: 0.6;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+    }
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      padding-block: clamp(48px, 8vw, 92px);
+    }
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+    .hero__eyebrow .rule {
+      flex: 0 0 auto;
+      width: clamp(40px, 12vw, 120px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--hairline-2), transparent);
+    }
+    h1.hero__title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.6rem, 8.5vw, 6rem);
+      line-height: 0.96;
+      letter-spacing: -0.035em;
+      margin: 0;
+      color: var(--text);
+      text-wrap: balance;
+    }
+    h1.hero__title .heat {
+      color: var(--accent);
+      /* a hair of glow so the "heat" word reads warm without shouting */
+      text-shadow: 0 0 34px rgba(245, 158, 11, 0.28);
+    }
+    .hero__lede {
+      margin: 22px 0 0;
+      max-width: 46ch;
+      font-size: clamp(1rem, 2.4vw, 1.2rem);
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* Spec chips under the hero (count + finish callouts) */
+    .specsheet {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 9px;
+      padding: 9px 15px;
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      background: rgba(21, 26, 33, 0.55);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .chip strong {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+    .chip .k { color: var(--faint); letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.68rem; }
+
+    /* ---------- Directory section ---------- */
+    main { display: block; }
+    .section {
+      padding-block: clamp(44px, 7vw, 76px);
+    }
+    .section__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 22px;
+      margin-bottom: clamp(26px, 4vw, 40px);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .section__head h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.25rem, 3.2vw, 1.7rem);
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .section__head .count-of {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      color: var(--faint);
+      white-space: nowrap;
+    }
+    .section__head .count-of b { color: var(--text); font-weight: 700; }
+
+    /* ---------- Card grid ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: clamp(18px, 2.4vw, 26px);
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-2);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.45s var(--ease), border-color 0.3s ease, box-shadow 0.45s var(--ease);
+      will-change: transform;
+    }
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-6px);
+      border-color: var(--hairline-2);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.04) inset,
+        0 22px 48px -22px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(245, 158, 11, 0.08);
+    }
+
+    .card__media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--surface);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease), filter 0.5s ease;
+      filter: saturate(0.92) contrast(1.02);
+    }
+    .card:hover .card__img,
+    .card:focus-within .card__img {
+      transform: scale(1.055);
+      filter: saturate(1) contrast(1.04);
+    }
+    /* index badge over the media, like a drawing item number */
+    .card__index {
+      position: absolute;
+      top: 12px; left: 12px;
+      z-index: 2;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: rgba(14, 18, 23, 0.72);
+      border: 1px solid var(--hairline);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    /* subtle gradient so text never fights a bright photo edge */
+    .card__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(14, 18, 23, 0.35));
+      pointer-events: none;
+    }
+
+    .card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 22px 22px 24px;
+      flex: 1 1 auto;
+    }
+    .card__title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.32rem;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin: 0;
+      color: var(--text);
+    }
+    .card__tagline {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin: -4px 0 0;
+    }
+    .card__desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+      padding: 4px 10px;
+      border: 1px solid var(--hairline);
+      border-radius: 7px;
+      background: rgba(14, 18, 23, 0.4);
+    }
+
+    .card__cta {
+      margin-top: auto;
+      padding-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      color: var(--accent);
+    }
+    .card__cta .arrow {
+      display: inline-block;
+      transition: transform 0.35s var(--ease);
+    }
+    .card:hover .card__cta .arrow,
+    .card:focus-within .card__cta .arrow {
+      transform: translateX(5px);
+    }
+
+    /* Stretched link: makes the whole card clickable while the <a> stays
+       the real, keyboard-focusable, semantic link target. */
+    .card__link {
+      text-decoration: none;
+      color: inherit;
+      outline: none;
+    }
+    .card__link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+    }
+    /* focus ring on the card when the inner link is focused via keyboard */
+    .card:focus-within {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ---------- Footer ---------- */
+    footer.foot {
+      border-top: 1px solid var(--hairline);
+      margin-top: 20px;
+    }
+    .foot__inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px 28px;
+      padding-block: 30px 40px;
+    }
+    .foot__note { color: var(--faint); font-size: 0.88rem; max-width: 60ch; }
+    .foot__note b { color: var(--muted); font-weight: 600; }
+    .foot__meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--faint);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .foot__meta b { color: var(--text); font-weight: 700; }
+
+    /* ---------- Accessibility / motion ---------- */
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    /* The whole card is the focus target (see .card:focus-within), so the
+       stretched link itself doesn't draw a second, smaller ring inside it. */
+    .card__link:focus-visible { outline: none; }
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -56px;
+      z-index: 50;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 12px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .card:hover, .card:focus-within { transform: none; }
+      .card:hover .card__img, .card:focus-within .card__img { transform: none; }
+    }
+
+    /* Small screens: tighten the hero spec chips, keep section head stacked-friendly */
+    @media (max-width: 560px) {
+      .topbar__tag { display: none; }
+      .section__head { align-items: flex-start; }
+    }
+    @media (max-width: 420px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#directory">Skip to site list</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header>
+    <div class="topbar">
+      <div class="wrap topbar__inner">
+        <a class="brand" href="#top" aria-label="JR Tech Web Portal home">
+          <span class="brand__plate">
+            <img class="brand__logo"
+                 src="jrtech.com.my/wp-content/uploads/2022/07/JR-Tech-Logo_Final-white.png"
+                 alt="JR Tech Solution logo" width="78" height="22" />
+          </span>
+          <span class="brand__txt">
+            <span class="brand__name">JR Tech Web Portal</span>
+            <span class="brand__sub">Hosted site directory</span>
+          </span>
+        </a>
+        <span class="spec topbar__tag">Site Directory</span>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero" id="top">
+      <div class="wrap hero__inner">
+        <div class="hero__eyebrow">
+          <span class="spec">JR Tech Solution</span>
+          <span class="rule" aria-hidden="true"></span>
+          <span class="spec">Commercial Kitchen Solution Provider</span>
+        </div>
+
+        <h1 class="hero__title">JR&nbsp;Tech<br /><span class="heat">Web&nbsp;Portal</span></h1>
+
+        <p class="hero__lede">
+          A directory of the websites hosted in this repository — each one a
+          self-contained static export you can open and browse on its own.
+        </p>
+
+        <div class="specsheet" aria-label="Directory summary">
+          <span class="chip">
+            <span class="k">Indexed</span>
+            <strong id="site-count">0 sites</strong>
+          </span>
+          <span class="chip">
+            <span class="k">Build</span>
+            Static export
+          </span>
+          <span class="chip">
+            <span class="k">Origin</span>
+            Malaysia
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main>
+    <section class="section wrap" id="directory" aria-labelledby="directory-title">
+      <div class="section__head">
+        <h2 id="directory-title">Hosted sites</h2>
+        <span class="count-of" id="count-of" aria-hidden="true">— / —</span>
+      </div>
+
+      <!-- Cards are rendered from the `sites` array below. -->
+      <div class="grid" id="site-grid"></div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <p class="foot__note">
+        Each entry is a <b>static export</b> — plain HTML and assets, no server or database
+        required. Links open the site's local copy in this repository.
+      </p>
+      <p class="foot__meta">Last updated <b>2026&#8209;06&#8209;22</b></p>
+    </div>
+  </footer>
+
+  <!-- ===================== DATA + RENDER ===================== -->
+  <script>
+    // To add a website, copy one object and edit the fields.
+    //   name        — site title shown on the card
+    //   tagline     — one short line under the title
+    //   description — 1–2 sentence summary
+    //   url         — entry point, RELATIVE to this file (so double-clicking works offline)
+    //   thumb       — card image path, also relative
+    //   alt         — alt text for the thumbnail (describe the image)
+    //   tags        — array of short labels (rendered as chips)
+    const sites = [
+      {
+        name: "JR Tech Solution",
+        tagline: "Commercial Kitchen Solution Provider",
+        description:
+          "A Malaysia-based commercial kitchen solutions provider — design, fabrication, and supply of stainless-steel kitchen equipment for restaurants, hotels, and institutions.",
+        url: "jrtech.com.my/index.html",
+        thumb: "jrtech.com.my/wp-content/uploads/2022/07/front-view-professional-kitchen-1-scaled.jpg",
+        alt: "Stainless-steel commercial kitchen with an extraction hood, range, and wooden prep counters.",
+        tags: ["Commercial Kitchen", "Stainless Steel", "Static Export"]
+      }
+      // ← add the next site object here
+    ];
+
+    /* ---- Render ---- */
+    (function renderDirectory() {
+      var grid = document.getElementById("site-grid");
+      if (!grid) return;
+
+      // Build cards
+      var frag = document.createDocumentFragment();
+      sites.forEach(function (site, i) {
+        var idx = String(i + 1).padStart(2, "0");
+
+        var card = document.createElement("article");
+        card.className = "card";
+
+        // tags markup
+        var tagsHtml = (site.tags || [])
+          .map(function (t) { return '<li class="tag">' + escapeHtml(t) + "</li>"; })
+          .join("");
+
+        card.innerHTML =
+          '<div class="card__media">' +
+            '<span class="card__index">' + idx + "</span>" +
+            '<img class="card__img" loading="lazy" decoding="async" ' +
+                 'src="' + escapeAttr(site.thumb) + '" ' +
+                 'alt="' + escapeAttr(site.alt || site.name) + '" />' +
+          "</div>" +
+          '<div class="card__body">' +
+            '<h3 class="card__title">' +
+              '<a class="card__link" href="' + escapeAttr(site.url) + '">' + escapeHtml(site.name) + "</a>" +
+            "</h3>" +
+            '<p class="card__tagline">' + escapeHtml(site.tagline || "") + "</p>" +
+            '<p class="card__desc">' + escapeHtml(site.description || "") + "</p>" +
+            (tagsHtml ? '<ul class="card__tags" aria-label="Tags">' + tagsHtml + "</ul>" : "") +
+            '<span class="card__cta" aria-hidden="true">Visit site <span class="arrow">&rarr;</span></span>' +
+          "</div>";
+
+        frag.appendChild(card);
+      });
+      grid.appendChild(frag);
+
+      // Live count derived from the array length
+      var n = sites.length;
+      var countEl = document.getElementById("site-count");
+      if (countEl) countEl.textContent = n + (n === 1 ? " site" : " sites");
+
+      var ofEl = document.getElementById("count-of");
+      if (ofEl) {
+        var total = String(n).padStart(2, "0");
+        ofEl.textContent = total + " / " + total;
+      }
+    })();
+
+    /* ---- tiny escaping helpers (data is trusted, but stay safe) ---- */
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+    function escapeAttr(s) {
+      return String(s)
+        .replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+  </script>
+</body>
+</html>

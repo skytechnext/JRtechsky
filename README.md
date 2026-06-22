@@ -3,6 +3,17 @@
 A static, WordPress-free recreation of **https://jrtech.com.my/** (JR Tech Solution —
 Commercial Kitchen Solution Provider), crawled and exported to plain HTML + assets.
 
+## Live site & deployment
+
+The root `index.html` is a portal page that links to every site hosted in this repo
+(currently the `jrtech.com.my/` export). Pushing to **`main`** triggers
+`.github/workflows/deploy.yml`, which publishes the entire repository — the portal page
+and every site folder — to **GitHub Pages**. You can also run the deploy manually from the
+**Actions** tab via **"Run workflow"** (works from any branch).
+
+> Fallback: if Pages isn't auto-enabled by the workflow, set
+> **Settings → Pages → Source** to **"GitHub Actions"**.
+
 ## Why
 
 The live site is a WordPress install that currently prints PHP warnings on every page

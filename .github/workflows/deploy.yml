@@ -1,0 +1,58 @@
+# Deploys the entire repository to GitHub Pages using GitHub's official,
+# first-party Pages actions. No third-party actions are used.
+name: Deploy to GitHub Pages
+
+# When this workflow runs:
+on:
+  # Automatically on every push to the main or master branch.
+  push:
+    branches:
+      - main
+      - master
+  # Manually, from the Actions tab ("Run workflow"), on any branch.
+  workflow_dispatch:
+
+# Permissions the GITHUB_TOKEN needs to publish to Pages.
+permissions:
+  contents: read      # read the repository files
+  pages: write        # publish to GitHub Pages
+  id-token: write     # let the deploy step authenticate via OIDC
+
+# Allow only one Pages deployment at a time. Queued runs wait their turn
+# instead of being cancelled, so an in-progress publish always finishes.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # Single job: build the artifact and deploy it to Pages.
+  deploy:
+    runs-on: ubuntu-latest
+    # Bind this job to the github-pages environment; the live URL is taken
+    # from the deploy step's output and shown in the GitHub UI.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # 1. Check out the repository contents.
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Configure Pages. enablement: true auto-enables GitHub Pages for
+      #    the repo, so no manual click in Settings -> Pages is required.
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      # 3. Package the whole repo root ('.') as the Pages artifact, so the
+      #    portal index.html and every site folder are served as-is.
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      # 4. Deploy the uploaded artifact to GitHub Pages.
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
