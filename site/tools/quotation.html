@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implementation Quotation — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  .qhead{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;
+    border:1px solid var(--jr-line,#dbe3ef);border-radius:14px;padding:20px 22px;background:#fff;}
+  .qhead h3{margin:0 0 4px;color:#0B1F3A;} .qhead .muted{font-size:12.5px;color:#5a6b85;line-height:1.7;}
+  table.tbl td.num,table.tbl th.num{text-align:right;white-space:nowrap;}
+  tr.sub td{background:#F4F7FC;font-weight:600;}
+  tr.tot td{background:#0B1F3A;color:#fff;font-weight:700;font-size:15px;}
+  .sect-lbl td{background:#EEF4FC;font-weight:700;color:#0B1F3A;}
+</style>
+</head>
+<body data-page="quotation">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Quotation</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents · Quotation QTN-2026-JRT-001</span>
+      <h1>Odoo 19 Implementation Quotation</h1>
+      <p>A formal quotation from TechNext to JR-Tech Solution Sdn Bhd for the Odoo 19 Enterprise
+      implementation scoped in the <a href="brd.html">BRD</a> — licenses, phased implementation, data
+      migration, training, hypercare and ongoing application-management support, priced in MYR with
+      SST and payment milestones.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="qhead">
+          <div>
+            <h3>From — TechNext</h3>
+            <div class="muted">Odoo Implementation Partner<br>technext.asia<br>Att: Engagement Lead</div>
+          </div>
+          <div>
+            <h3>To — JR-Tech Solution Sdn Bhd</h3>
+            <div class="muted">SSM 200901013633<br>556-Y, Jalan Sultan Azlan Shah, 11700 Gelugor, Penang<br>
+            Att: Tan Gim Boon (Director)</div>
+          </div>
+          <div>
+            <h3>Quotation</h3>
+            <div class="muted">No.: <b>QTN-2026-JRT-001</b><br>Date: 22 Jun 2026<br>
+            Valid until: <b>21 Aug 2026</b> (60 days)<br>Currency: <b>MYR (RM)</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>A · Software licenses (Odoo 19 Enterprise · Custom plan)</h2>
+        <table class="tbl">
+          <tr><th>Item</th><th class="num">Users</th><th class="num">Unit / user / yr (RM)</th><th class="num">Amount (RM)</th></tr>
+          <tr><td>Odoo 19 Enterprise — Custom plan (all apps, Studio, API), annual</td><td class="num">20</td><td class="num">2,820</td><td class="num">56,400</td></tr>
+          <tr><td>New-implementation partner discount (15%)</td><td class="num"></td><td class="num"></td><td class="num">−8,460</td></tr>
+          <tr class="sub"><td colspan="3">Subtotal A — Year-1 licenses</td><td class="num">47,940</td></tr>
+        </table>
+        <p class="muted" style="font-size:12.5px;color:#5a6b85">Field technicians operate via the Odoo mobile
+        app under shared internal seats. License renews annually; indicative per <a href="odoo-platform.html">Odoo
+        Platform</a>. Hosting (Odoo.sh Custom) billed within the per-user price.</p>
+      </section>
+
+      <section class="section">
+        <h2>B · Implementation services (by phase)</h2>
+        <table class="tbl">
+          <tr><th>Phase</th><th>Scope</th><th class="num">Days</th><th class="num">Rate (RM/day)</th><th class="num">Amount (RM)</th></tr>
+          <tr><td>P1 — Discovery &amp; design</td><td>Workshops, finalise BRD, solution design, build playbook prep</td><td class="num">12</td><td class="num">1,800</td><td class="num">21,600</td></tr>
+          <tr><td>P2 — Core build &amp; config</td><td>CRM/Sales, Inventory/Purchase, Manufacturing, Accounting + SST/MyInvois</td><td class="num">28</td><td class="num">1,800</td><td class="num">50,400</td></tr>
+          <tr><td>P3 — Line-specific build</td><td>Rental, Field Service/Maintenance/Repair, Subscriptions, analytic by line</td><td class="num">20</td><td class="num">1,800</td><td class="num">36,000</td></tr>
+          <tr><td>P4 — UAT &amp; cutover</td><td>UAT support, fixes, go-live cutover &amp; opening balances</td><td class="num">10</td><td class="num">1,800</td><td class="num">18,000</td></tr>
+          <tr class="sub"><td colspan="4">Subtotal B — Implementation</td><td class="num">126,000</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>C · Data migration, training, hypercare &amp; AMS</h2>
+        <table class="tbl">
+          <tr><th>Item</th><th>Scope</th><th class="num">Amount (RM)</th></tr>
+          <tr><td>Data migration</td><td>Master data (products, BoMs, partners, pricelists) + opening balances &amp; open AR/AP</td><td class="num">14,000</td></tr>
+          <tr><td>Training &amp; enablement</td><td>6 role-based sessions + staff quick-start guides + admin train-the-trainer</td><td class="num">9,000</td></tr>
+          <tr><td>Hypercare (4 weeks post go-live)</td><td>Priority support, daily stand-ups, rapid issue resolution</td><td class="num">12,000</td></tr>
+          <tr><td>AMS — Application Management (12 months)</td><td>Support retainer, minor changes, version upkeep — RM 2,500/mo × 12</td><td class="num">30,000</td></tr>
+          <tr class="sub"><td colspan="2">Subtotal C</td><td class="num">65,000</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Summary &amp; totals</h2>
+        <table class="tbl">
+          <tr class="sect-lbl"><td colspan="2">Year-1 investment</td></tr>
+          <tr><td>Subtotal A — Software licenses (Year-1)</td><td class="num">47,940</td></tr>
+          <tr><td>Subtotal B — Implementation services</td><td class="num">126,000</td></tr>
+          <tr><td>Subtotal C — Migration, training, hypercare, AMS</td><td class="num">65,000</td></tr>
+          <tr class="sub"><td>Subtotal (before SST)</td><td class="num">238,940</td></tr>
+          <tr><td>SST — Service Tax @ 8% (on services B + C)</td><td class="num">15,280</td></tr>
+          <tr class="tot"><td>Total payable (Year-1, incl. SST)</td><td class="num">RM 254,220</td></tr>
+        </table>
+        <p class="muted" style="font-size:12.5px;color:#5a6b85">SST applied at 8% Service Tax on taxable
+        professional services (Subtotals B and C = RM 191,000 × 8% = RM 15,280). Software license
+        resale treated as out-of-scope of service tax for this estimate; final tax treatment confirmed at
+        invoicing. From Year 2, recurring cost = license renewal (RM ~47.9k) + AMS (RM 30k) + SST.</p>
+        <div class="grid g4">
+          <div class="kpi"><div class="num">RM 238.9k</div><div class="lbl">Year-1 before SST</div></div>
+          <div class="kpi"><div class="num">RM 254.2k</div><div class="lbl">Year-1 incl. SST</div></div>
+          <div class="kpi"><div class="num">~70</div><div class="lbl">implementation person-days</div></div>
+          <div class="kpi"><div class="num">RM ~83k</div><div class="lbl">indicative Year-2 recurring (lic + AMS, pre-SST)</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Payment milestones</h2>
+        <table class="tbl">
+          <tr><th>Milestone</th><th>Trigger</th><th class="num">% of services (B+C)</th><th class="num">Amount + SST (RM)</th></tr>
+          <tr><td>M1 — Mobilisation</td><td>On signing / project kickoff</td><td class="num">25%</td><td class="num">51,570</td></tr>
+          <tr><td>M2 — Core build accepted</td><td>End of Phase 2 (core modules in UAT)</td><td class="num">30%</td><td class="num">61,884</td></tr>
+          <tr><td>M3 — Line build accepted</td><td>End of Phase 3</td><td class="num">25%</td><td class="num">51,570</td></tr>
+          <tr><td>M4 — Go-live</td><td>Production cutover &amp; sponsor sign-off</td><td class="num">15%</td><td class="num">30,942</td></tr>
+          <tr><td>M5 — Hypercare close</td><td>End of 4-week hypercare</td><td class="num">5%</td><td class="num">10,314</td></tr>
+          <tr class="sub"><td colspan="3">Software licenses</td><td class="num">47,940 — due on signing (annual, in advance)</td></tr>
+          <tr class="sub"><td colspan="3">AMS retainer</td><td class="num">Billed monthly from go-live</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Terms &amp; conditions</h2>
+        <ol class="steps">
+          <li><b>Validity.</b> This quotation is valid for 60 days from the date above. Prices in MYR.</li>
+          <li><b>Scope.</b> Per the <a href="brd.html">BRD v1.0</a>. Change requests outside scope are
+            quoted separately at RM 1,800/day.</li>
+          <li><b>Licenses.</b> Odoo Enterprise licenses are billed by Odoo SA; renew annually. Indicative
+            pricing — confirmed at order. User count adjustable at renewal.</li>
+          <li><b>Taxes.</b> SST (Service Tax 8%) added to professional services as itemised. JR-Tech is
+            responsible for its own MyInvois / LHDN registration; TechNext provides configuration support.</li>
+          <li><b>Client responsibilities.</b> Timely provision of clean master data, named users for
+            workshops/UAT, and decisions within agreed turnaround.</li>
+          <li><b>Payment.</b> Net 14 days from invoice. Late payment may pause services.</li>
+          <li><b>Warranty.</b> Defects in delivered configuration corrected free during the 4-week
+            hypercare. Thereafter covered under AMS.</li>
+          <li><b>Confidentiality &amp; IP.</b> Mutual NDA applies. JR-Tech owns its data &amp;
+            configuration; TechNext retains its reusable methodologies.</li>
+        </ol>
+        <div class="callout tn"><b>So what for the build:</b> the phase structure here mirrors the
+        <a href="../pages/delivery/roadmap.html">Implementation Roadmap</a> and
+        <a href="gantt.html">Project Gantt</a>; the ROI of this investment is modelled in the
+        <a href="roi-tco.html">ROI / TCO model</a>.</div>
+        <p class="muted" style="font-size:12.5px;color:#5a6b85">Acceptance: this quotation is accepted on
+        signature of the engagement letter / order form referencing QTN-2026-JRT-001.</p>
+      </section>
+
+      <div class="pagenav">
+        <a href="brd.html">← Prev: Requirements (BRD)</a>
+        <a href="accounting-overhaul.html">Next: Accounting Overhaul →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>
