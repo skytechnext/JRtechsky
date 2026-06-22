@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Migration — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="data-migration">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Technology</b> · Data Migration</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Technology</span>
+      <h1>Data Migration Strategy</h1>
+      <p>JR-Tech's history lives in spreadsheets, WhatsApp threads and paper files. This is how we
+      get it into Odoo 19 cleanly: the sources, the source→model→field mapping, the cleansing and
+      reconciliation approach, and a cutover that never risks the live business.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">4</div><div class="lbl">source types: spreadsheets · WhatsApp · paper · point tools</div></div>
+          <div class="kpi"><div class="num">~10</div><div class="lbl">target Odoo models in scope for load</div></div>
+          <div class="kpi"><div class="num">2</div><div class="lbl">trial loads before the real cutover</div></div>
+          <div class="kpi"><div class="num">100%</div><div class="lbl">financial-balance reconciliation gate before go-live</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Where the data lives today</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Sources</h3>
+            <ul>
+              <li><b>Excel / Google Sheets</b> — customer lists, price lists, quotes, rental logs,
+              chemical resupply schedules, stock counts.</li>
+              <li><b>WhatsApp</b> — customer enquiries, service requests, order confirmations,
+              photos of jobs and equipment.</li>
+              <li><b>Paper</b> — service reports, delivery orders, signed contracts, supplier
+              invoices, fabrication drawings.</li>
+              <li><b>Point tools</b> — standalone accounting/bookkeeping file, email inbox.</li>
+            </ul>
+          </div>
+          <div class="card"><h3>The migration philosophy</h3>
+            <p>Migrate <b>masters and open items</b>, not the full transactional archive. Customers,
+            suppliers, products, price lists, open quotes/orders, rental assets, active service
+            contracts and opening financial balances come across. Closed history stays in a
+            read-only archive and (for finance) as opening balances — keeping the new database fast
+            and clean.</p>
+            <div class="callout warn"><b>WhatsApp &amp; paper</b> are not bulk-migrated. They are
+            triaged: active threads and open jobs are captured manually into Odoo; the rest is
+            scanned/archived. New inbound flows are redirected into Odoo from day one.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Migration mapping</h2>
+        <p class="lead">Each source field maps to a specific Odoo model, field and transform rule.
+        Loads use the standard Odoo import (CSV) or, for relational integrity, the
+        <code>external ID</code>-keyed import / XML-RPC scripts.</p>
+        <table class="tbl">
+          <tr><th>Source</th><th>Odoo model</th><th>Key field(s)</th><th>Transform / rule</th></tr>
+          <tr><td>Customer list (Sheet)</td><td><code>res.partner</code></td><td>name, phone, email, address, is_company</td><td>Dedupe on name+phone; split person vs company; normalise MY phone to +60</td></tr>
+          <tr><td>Supplier list (Sheet)</td><td><code>res.partner</code></td><td>name, supplier_rank, SST/TIN</td><td>Flag supplier_rank=1; capture TIN for MyInvois</td></tr>
+          <tr><td>Product / price list</td><td><code>product.template</code></td><td>name, list_price, default_code, uom, category</td><td>Assign categories per business line; map UoM; strip currency symbols</td></tr>
+          <tr><td>Chemical SKUs</td><td><code>product.template</code></td><td>type=consu/product, reordering rules</td><td>Tag for Subscriptions; set min/max for reorder</td></tr>
+          <tr><td>Open quotes</td><td><code>sale.order</code> (draft)</td><td>partner_id, order_line, state</td><td>Only open/pending; link via partner external ID</td></tr>
+          <tr><td>Rental assets</td><td><code>product.product</code> + <code>maintenance.equipment</code></td><td>serial/lot, model, status</td><td>Create serials; seed service history where known</td></tr>
+          <tr><td>Active service contracts</td><td><code>sale.subscription</code> / FSM</td><td>partner, recurrence, SLA</td><td>Map billing cycle; set next invoice date</td></tr>
+          <tr><td>Stock on hand</td><td><code>stock.quant</code> (inventory adjustment)</td><td>product, location, qty</td><td>Counted at cutover; loaded as opening adjustment</td></tr>
+          <tr><td>Open AR / AP</td><td><code>account.move</code></td><td>partner, amount, due date</td><td>Load open invoices/bills only; reconcile to statement</td></tr>
+          <tr><td>Trial-balance opening</td><td><code>account.move</code> (opening entry)</td><td>account, debit, credit</td><td>Single dated opening journal; must balance to zero</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Cleansing approach</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag">1 · Profile</span><h3>Assess</h3>
+            <p>Profile each source for duplicates, blanks, inconsistent formats and orphan
+            references before any load. Quantify the cleansing effort up front.</p></div>
+          <div class="card"><span class="tag">2 · Standardise</span><h3>Normalise</h3>
+            <p>Phone/address formats, currency, units of measure, product naming and category
+            taxonomy aligned to the Odoo structure on the
+            <a href="odoo-architecture.html">architecture page</a>.</p></div>
+          <div class="card"><span class="tag">3 · Dedupe</span><h3>De-duplicate</h3>
+            <p>Merge duplicate customers/suppliers/products using deterministic keys (name+phone,
+            default_code) with a human-reviewed exception list.</p></div>
+          <div class="card"><span class="tag">4 · Enrich</span><h3>Complete</h3>
+            <p>Fill gaps that Odoo needs — TIN/SST IDs for MyInvois, UoM, product categories — owned
+            by JR-Tech data stewards, not guessed.</p></div>
+          <div class="card"><span class="tag">5 · Stage</span><h3>External IDs</h3>
+            <p>Assign stable <code>external ID</code>s so relationships (orders→customers,
+            BoMs→products) survive re-imports and trial loads.</p></div>
+          <div class="card"><span class="tag green">6 · Validate</span><h3>Gate</h3>
+            <p>Row counts, control totals and referential checks must pass before promotion to the
+            next environment.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Migration timeline</h2>
+        <p class="lead">Two full trial loads de-risk the real cutover. Each trial is validated and
+        signed off before the next; the production load happens over a controlled freeze window.</p>
+        <div class="mermaid">
+gantt
+    title Data migration timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b
+    section Prepare
+    Source inventory & profiling      :a1, 2026-07-01, 14d
+    Mapping & transform rules         :a2, after a1, 14d
+    section Cleansing
+    Standardise & dedupe (stewards)   :b1, after a2, 21d
+    Enrichment (TIN/SST, UoM)         :b2, after a2, 21d
+    section Trial loads
+    Trial load 1 + validation         :c1, after b1, 10d
+    Fix & re-map                      :c2, after c1, 7d
+    Trial load 2 + UAT sign-off       :c3, after c2, 10d
+    section Cutover
+    Freeze & final delta load         :d1, after c3, 3d
+    Opening balances & reconciliation :d2, after d1, 2d
+    Go-live                           :milestone, after d2, 0d
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Cutover &amp; reconciliation</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Cutover strategy</h3>
+            <ol class="steps">
+              <li><b>Freeze</b> — short business freeze on master-data edits; legacy goes
+              read-only.</li>
+              <li><b>Delta load</b> — load any records created since the last trial extract.</li>
+              <li><b>Opening balances</b> — post the dated opening journal and inventory
+              adjustment.</li>
+              <li><b>Reconcile &amp; sign-off</b> — finance and ops confirm totals match before the
+              system is declared live.</li>
+              <li><b>Go-live</b> — Odoo becomes the system of record; new transactions only in
+              Odoo.</li>
+            </ol>
+          </div>
+          <div class="card"><h3>Validation &amp; reconciliation gates</h3>
+            <table class="tbl" style="font-size:12.5px">
+              <tr><th>Check</th><th>Pass criterion</th></tr>
+              <tr><td>Row counts</td><td>Loaded = source (minus logged exclusions)</td></tr>
+              <tr><td>Customer/supplier dedupe</td><td>0 unresolved duplicates</td></tr>
+              <tr><td>AR / AP totals</td><td>Match legacy aged balances to the cent</td></tr>
+              <tr><td>Trial balance</td><td>Opening journal balances to zero; ties to prior close</td></tr>
+              <tr><td>Stock value</td><td>Inventory valuation = counted opening value</td></tr>
+              <tr><td>Referential integrity</td><td>No orphan orders/BoMs/contracts</td></tr>
+            </table>
+            <div class="callout tn"><b>Rollback:</b> because legacy stays read-only and intact
+            through go-live, the fallback is simply to defer cutover — no destructive cutoff. This
+            ties into the <a href="../delivery/roadmap.html">roadmap</a> and
+            <a href="../delivery/risk-raci.html">risk register</a>.</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="odoo-architecture.html">← Prev: Odoo 19 Architecture</a>
+        <a href="integration-map.html">Next: Integration &amp; API Map →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</body>
+</html>

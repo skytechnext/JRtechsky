@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+<style>
+  .gl-controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:0 0 18px; }
+  .gl-controls input { flex:1; min-width:220px; padding:11px 14px; border:1px solid var(--jr-line);
+    border-radius:10px; font-size:14px; font-family:inherit; }
+  .gl-filters { display:flex; gap:8px; flex-wrap:wrap; }
+  .gl-chip { border:1px solid var(--jr-line); background:#fff; color:var(--jr-slate); cursor:pointer;
+    font:inherit; font-size:12px; font-weight:600; padding:7px 13px; border-radius:999px; }
+  .gl-chip.on { background:var(--jr-navy); color:#fff; border-color:var(--jr-navy); }
+  .gl-count { font-size:12.5px; color:var(--jr-slate); margin:0 0 14px; }
+  table.tbl td.term { font-weight:700; color:var(--jr-navy); white-space:nowrap; }
+  .gl-empty { padding:18px; color:var(--jr-slate); text-align:center; }
+</style>
+</head>
+<body data-page="glossary">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Advisory</b> · Glossary</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Advisory</span>
+      <h1>Glossary: the Odoo, kitchen and<br>Malaysian-compliance vocabulary of this engagement.</h1>
+      <p>A searchable reference so every JR-Tech stakeholder — from the fabrication floor to finance —
+      reads the dossier with the same definitions. Filter by category or type any term to narrow the list.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="gl-controls">
+          <input id="glSearch" placeholder="Search terms or definitions…  e.g. BoM, MyInvois, HACCP" autocomplete="off">
+          <div class="gl-filters" id="glFilters">
+            <button class="gl-chip on" data-cat="all">All</button>
+            <button class="gl-chip" data-cat="odoo">Odoo / ERP</button>
+            <button class="gl-chip" data-cat="fnb">F&amp;B / Kitchen</button>
+            <button class="gl-chip" data-cat="my">MY Compliance</button>
+          </div>
+        </div>
+        <p class="gl-count" id="glCount"></p>
+        <table class="tbl" id="glTable">
+          <thead><tr><th style="width:170px">Term</th><th>Definition</th><th style="width:130px">Category</th></tr></thead>
+          <tbody id="glBody"></tbody>
+        </table>
+        <div class="gl-empty" id="glEmpty" style="display:none">No matching terms. Clear the search or pick another category.</div>
+        <div class="callout tn"><b>So what for the build:</b> a shared vocabulary shortens discovery and
+        training. These terms map directly to fields and apps in the target Odoo 19 design — see the
+        <a href="../../tools/discovery-questions.html">Discovery Questions</a> and
+        <a href="../../tools/owner-faq.html">Owner FAQ</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="methodology.html">← Prev: Methodology &amp; Assumptions</a>
+        <a href="../../tools/ai-build-playbook.html">Next: AI Build Playbook →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+var TERMS = [
+  // Odoo / ERP
+  ["ERP","Enterprise Resource Planning — a single integrated system that runs sales, inventory, manufacturing, service and finance on one shared database. Odoo 19 is the ERP proposed for JR-Tech.","odoo"],
+  ["Odoo","Open-source modular business suite (CRM, Sales, Inventory, Manufacturing, Accounting, etc.). Available as Community (free) and Enterprise (licensed) editions.","odoo"],
+  ["Module / App","A self-contained Odoo feature set (e.g. Sales, Inventory, Field Service) that can be installed independently and shares data with others.","odoo"],
+  ["BoM","Bill of Materials — the list of components, quantities and operations needed to manufacture a product. Drives JR-Tech's stainless-steel fabrication.","odoo"],
+  ["MO","Manufacturing Order — an instruction to produce a quantity of a product from its BoM, consuming components and tracking work-order progress.","odoo"],
+  ["MTO","Make to Order — a procurement/manufacturing rule that creates supply (purchase or production) only when a sales order is confirmed, instead of from stock.","odoo"],
+  ["MTS","Make to Stock — supply replenished against forecast/reorder rules and fulfilled from on-hand inventory rather than per order.","odoo"],
+  ["Work Order","A step within a Manufacturing Order performed at a work centre (e.g. cutting, welding, assembly), with its own time tracking.","odoo"],
+  ["Work Centre","A resource (machine, bench or team) where work orders are executed; used for capacity and cost.","odoo"],
+  ["RFQ","Request for Quotation — a draft purchase order sent to a vendor asking for pricing before it becomes a confirmed Purchase Order.","odoo"],
+  ["PO","Purchase Order — a confirmed order to a supplier for goods or services.","odoo"],
+  ["SO","Sales Order — a confirmed customer order generated from a quotation; drives delivery and invoicing.","odoo"],
+  ["Quotation","A draft, version-controlled offer to a customer in Odoo Sales; becomes a Sales Order once accepted.","odoo"],
+  ["CRM","Customer Relationship Management — pipeline of leads and opportunities, activities and forecasting.","odoo"],
+  ["Lead / Opportunity","A potential deal in CRM; a lead is unqualified, an opportunity is a qualified deal in the pipeline.","odoo"],
+  ["Reordering Rule","A min/max rule that automatically triggers replenishment (RFQ or MO) when stock falls below a threshold.","odoo"],
+  ["Lead Time","The time between ordering/producing and availability; used for scheduling procurement and manufacturing.","odoo"],
+  ["Routing","The sequence of operations/work centres a product passes through during manufacturing.","odoo"],
+  ["Subscription","A recurring Odoo Sales contract that auto-generates invoices — used for JR-Tech chemical resupply.","odoo"],
+  ["Field Service (FSM)","Odoo app for scheduling, dispatching and billing on-site work such as installs, grease-trap and tanker visits.","odoo"],
+  ["Maintenance","Odoo app for preventive and corrective upkeep of equipment/assets, including AI-assisted predictive maintenance.","odoo"],
+  ["Repair","Odoo app managing return, diagnosis, parts and repair of customer or rental equipment.","odoo"],
+  ["MCP","Model Context Protocol — the interface an AI agent uses to read/write Odoo programmatically, e.g. to load demo data and configure modules.","odoo"],
+  ["Demo Data","Realistic sample records (products, BoMs, customers, orders) loaded so stakeholders can see the system working before go-live.","odoo"],
+  ["Chart of Accounts","The structured list of ledger accounts used in Odoo Accounting, localised for Malaysia.","odoo"],
+  ["Hypercare","The intensive post-go-live support window where the implementer stabilises the live system.","odoo"],
+  // F&B / Kitchen
+  ["F&B","Food &amp; Beverage — the industry JR-Tech serves; covers restaurants, hotels, caterers, central kitchens and canteens.","fnb"],
+  ["HORECA","Hotels, Restaurants &amp; Catering — the institutional foodservice segment that buys commercial kitchen equipment and service.","fnb"],
+  ["Central Kitchen","A large production kitchen that prepares food for multiple outlets; a core JR-Tech customer archetype.","fnb"],
+  ["Cloud Kitchen","A delivery-only kitchen with no dine-in; relies on efficient, compact commercial equipment.","fnb"],
+  ["Cook &amp; Chill","A process of cooking food then rapidly chilling it for safe storage and later regeneration — a JR-Tech brand capability.","fnb"],
+  ["Blast Chiller","Equipment that rapidly drops food temperature through the bacterial-growth danger zone, central to Cook &amp; Chill.","fnb"],
+  ["Induction Cooking","Electromagnetic heating of cookware directly; the basis of JR-Tech's energy-efficient Advanced Induction Series.","fnb"],
+  ["Smokeless Cooking","Kitchen technology that captures or eliminates cooking smoke/grease, improving air quality and compliance.","fnb"],
+  ["Grease Trap","A plumbing device that intercepts fats, oils and grease before they enter drainage; JR-Tech provides maintenance and tanker service.","fnb"],
+  ["Bio Treatment","Biological treatment of grease/waste to break down organic matter, part of JR-Tech's sanitary services.","fnb"],
+  ["Fabrication","In-house manufacture of custom stainless-steel kitchen equipment (benches, hoods, sinks) by JR-Tech's welding team.","fnb"],
+  ["Stainless Steel (SS304/SS316)","Corrosion-resistant steel grades used in commercial kitchens; SS304 is standard, SS316 suits harsher/chemical environments.","fnb"],
+  ["Space Planning","Designing kitchen layout for workflow, hygiene zoning and code compliance — a JR-Consulting service.","fnb"],
+  ["Dishwasher / Warewashing","Commercial dish/glass washing equipment sold, rented and serviced by JR-Tech, with matching chemicals.","fnb"],
+  ["Dosing System","Automated dispensing of cleaning/laundry chemicals at correct concentrations, reducing waste and risk.","fnb"],
+  ["Segregated Prep Areas","Separation of raw and ready-to-eat preparation zones to prevent cross-contamination, required by food-premises regulations.","fnb"],
+  ["Cold Chain","Temperature-controlled handling of perishable goods from storage to service.","fnb"],
+  // MY Compliance
+  ["SST","Sales &amp; Service Tax — Malaysia's consumption tax (service tax commonly 8%) that JR-Tech must charge and remit on applicable supplies.","my"],
+  ["MyInvois","Malaysia's national e-invoicing platform operated by LHDN; invoices are validated in near real-time and assigned a unique identifier and QR.","my"],
+  ["LHDN","Lembaga Hasil Dalam Negeri — the Inland Revenue Board of Malaysia, administering income tax and the MyInvois e-invoicing mandate.","my"],
+  ["SSM","Suruhanjaya Syarikat Malaysia — the Companies Commission of Malaysia; registrar of JR-Tech Solution Sdn Bhd (Reg. 200901013633).","my"],
+  ["Sdn Bhd","Sendirian Berhad — a Malaysian private limited company, the legal form of JR-Tech Solution Sdn Bhd.","my"],
+  ["HACCP","Hazard Analysis and Critical Control Points — a systematic food-safety framework identifying and controlling hazards in food handling.","my"],
+  ["TIN","Tax Identification Number — the taxpayer reference required on MyInvois e-invoices for both buyer and seller.","my"],
+  ["e-Invoice","A structured electronic invoice submitted to and validated by MyInvois, replacing or supplementing the traditional paper/PDF invoice.","my"],
+  ["Food Premises Regulations","Malaysian rules (under the Food Act/local authority) governing kitchen hygiene, layout, hand-wash facilities and workflow that shape JR-Tech designs.","my"],
+  ["DOSH","Department of Occupational Safety &amp; Health — regulator for workplace safety relevant to fabrication and installation work.","my"],
+  ["Withholding / Self-billed","MyInvois mechanisms for transactions where the buyer issues the invoice or tax is withheld; handled in the Accounting overhaul.","my"]
+];
+
+var body = document.getElementById('glBody');
+var search = document.getElementById('glSearch');
+var countEl = document.getElementById('glCount');
+var emptyEl = document.getElementById('glEmpty');
+var tableEl = document.getElementById('glTable');
+var catLabels = { odoo:'Odoo / ERP', fnb:'F&B / Kitchen', my:'MY Compliance' };
+var catTag = { odoo:'', fnb:'green', my:'warn' };
+var activeCat = 'all';
+
+function render(){
+  var q = search.value.trim().toLowerCase();
+  body.innerHTML = '';
+  var shown = 0;
+  TERMS.slice().sort(function(a,b){ return a[0].replace(/&amp;/g,'&').localeCompare(b[0].replace(/&amp;/g,'&')); })
+  .forEach(function(t){
+    var hay = (t[0] + ' ' + t[1]).toLowerCase();
+    var catOk = activeCat === 'all' || t[2] === activeCat;
+    var qOk = !q || hay.indexOf(q) > -1;
+    if (catOk && qOk){
+      shown++;
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td class="term">' + t[0] + '</td><td>' + t[1] +
+        '</td><td><span class="tag ' + catTag[t[2]] + '">' + catLabels[t[2]] + '</span></td>';
+      body.appendChild(tr);
+    }
+  });
+  countEl.textContent = 'Showing ' + shown + ' of ' + TERMS.length + ' terms.';
+  tableEl.style.display = shown ? '' : 'none';
+  emptyEl.style.display = shown ? 'none' : '';
+}
+
+search.addEventListener('input', render);
+document.getElementById('glFilters').addEventListener('click', function(e){
+  var b = e.target.closest('.gl-chip'); if(!b) return;
+  activeCat = b.getAttribute('data-cat');
+  this.querySelectorAll('.gl-chip').forEach(function(c){ c.classList.toggle('on', c===b); });
+  render();
+});
+render();
+</script>
+</body>
+</html>

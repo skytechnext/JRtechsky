@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regional Expansion — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="expansion">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Growth &amp; Strategy</b> · Regional Expansion</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Growth &amp; Strategy</span>
+      <h1>From a Penang base to a multi-region F&amp;B engineering footprint across Malaysia.</h1>
+      <p>JR-Tech's Gelugor base anchors the northern region, but the largest HORECA demand sits in the
+      Klang Valley, with secondary clusters in Johor and resource-led demand in East Malaysia. This
+      page prioritises those markets, weighs the market-entry options for each, lays out a phased
+      roadmap, and shows why a scalable Odoo 19 backbone is the precondition for opening a second
+      branch without losing control.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <h2>The expansion logic</h2>
+        <div class="grid g4">
+          <div class="kpi"><div class="num">Penang</div><div class="lbl">home base — northern region stronghold</div></div>
+          <div class="kpi"><div class="num">Klang Valley</div><div class="lbl">largest HORECA &amp; hotel density in MY</div></div>
+          <div class="kpi"><div class="num">Johor</div><div class="lbl">JB growth + Singapore-spillover demand</div></div>
+          <div class="kpi"><div class="num">East MY</div><div class="lbl">Sabah/Sarawak — hospitality &amp; resorts, thin supply</div></div>
+        </div>
+        <p class="lead" style="margin-top:18px">Expansion is sequenced by demand density, logistics
+        reach from existing operations, and competitive intensity — not by ambition. The goal is a hub
+        in each major demand basin that can sell, fabricate-or-fulfil, service and resupply locally.</p>
+      </section>
+
+      <section class="section">
+        <h2>Prioritisation matrix</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="bubble" height="280"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading the matrix</h3>
+            <p>Each region is scored on <b>market attractiveness</b> (demand size, growth) vs.
+            <b>ease of entry</b> (logistics from base, competitive whitespace, regulatory friction).
+            Bubble size = estimated serviceable revenue opportunity.</p>
+            <ul>
+              <li><b>Klang Valley</b> — highest attractiveness, moderate ease (crowded, but huge): <span class="tag green">Priority 1</span></li>
+              <li><b>Johor</b> — strong growth, good logistics via highway: <span class="tag">Priority 2</span></li>
+              <li><b>East Malaysia</b> — attractive whitespace, hard logistics: <span class="tag warn">Priority 3 (partner-led)</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Market-entry options by region</h2>
+        <table class="tbl">
+          <tr><th>Region</th><th>Recommended entry</th><th>Rationale</th><th>Risk to manage</th></tr>
+          <tr><td>Klang Valley</td><td class="tag green">Owned branch + service hub</td><td>Volume justifies a sales, light-assembly &amp; field-service presence; defend against KL distributors</td><td>Cost of premises &amp; talent; cannibalising margin on price wars</td></tr>
+          <tr><td>Johor</td><td>Sales office + 3PL/satellite stock</td><td>Reach via North–South highway; test demand before fixed cost</td><td>Lead-time on fabrication shipped from Penang</td></tr>
+          <tr><td>East Malaysia</td><td class="tag warn">Channel partner / distributor</td><td>Sea-freight &amp; service logistics make owned ops premature; partner for reach</td><td>Brand &amp; SLA control; chemical resupply cadence</td></tr>
+          <tr><td>All new regions</td><td>Mobile service crews + rental fleet</td><td>Win recurring revenue early before capital footprint</td><td>Asset tracking across branches</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Expansion roadmap</h2>
+        <div class="mermaid">
+gantt
+    title JR-Tech multi-region expansion (illustrative)
+    dateFormat YYYY-MM
+    axisFormat %Y-%m
+    section Foundation
+    Odoo 19 multi-company / multi-warehouse go-live   :a1, 2026-07, 5m
+    Standardise pricing, SLA & stock processes        :a2, after a1, 3m
+    section Klang Valley (P1)
+    Market entry & first branch                       :b1, 2026-11, 4m
+    Field-service & rental fleet ramp                 :b2, after b1, 6m
+    section Johor (P2)
+    Sales office + satellite stock                    :c1, 2027-04, 4m
+    Fabrication fulfilment model                      :c2, after c1, 4m
+    section East Malaysia (P3)
+    Channel-partner appointment                       :d1, 2027-09, 4m
+    Chemical auto-replenish rollout                   :d2, after d1, 5m
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Why a scalable ERP underpins multi-branch growth</h2>
+        <div class="grid g3">
+          <div class="card"><h3>Multi-company &amp; multi-warehouse</h3><p>Odoo 19 runs each branch as a
+          company/warehouse with consolidated reporting — inter-branch stock transfers and a single
+          P&amp;L view across regions.</p></div>
+          <div class="card"><h3>One process, every branch</h3><p>Quoting, pricing tiers, service SLAs
+          and chemical resupply are configured once and inherited — a new branch opens on day one with
+          proven workflows, not a fresh spreadsheet.</p></div>
+          <div class="card"><h3>Asset &amp; service visibility</h3><p>Rental fleet and field-service
+          jobs are tracked centrally, so utilisation and SLA performance stay visible as crews spread
+          across regions.</p></div>
+        </div>
+        <div class="callout tn"><b>So-what:</b> the binding constraint on expansion is not demand — it
+        is operational control. Opening a branch on spreadsheets multiplies chaos by the number of
+        sites. A unified Odoo 19 backbone makes the second, third and fourth location a configuration
+        exercise, not a re-invention. Pair this with <a href="operations-strategy.html">Operations
+        Strategy</a> for the capacity and routing model, and <a href="pricing.html">Pricing
+        Strategy</a> for consistent margins across regions.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="pricing.html">← Prev: Pricing Strategy</a>
+        <a href="operations-strategy.html">Next: Operations Strategy →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Regional scoring and timelines are TechNext analyst modelling — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('bubble'), {
+  type:'bubble',
+  data:{ datasets:[
+    { label:'Klang Valley', data:[{x:8.0,y:6.2,r:30}], backgroundColor:'rgba(22,192,152,.5)', borderColor:'#16C098' },
+    { label:'Johor', data:[{x:6.0,y:6.8,r:20}], backgroundColor:'rgba(127,169,222,.5)', borderColor:'#3F6FB0' },
+    { label:'Penang (base)', data:[{x:5.5,y:9.0,r:22}], backgroundColor:'rgba(11,31,58,.45)', borderColor:'#0B1F3A' },
+    { label:'East Malaysia', data:[{x:5.8,y:3.2,r:16}], backgroundColor:'rgba(232,161,58,.5)', borderColor:'#E8A13A' }
+  ]},
+  options:{ plugins:{ legend:{position:'bottom'} },
+    scales:{ x:{ min:0,max:10, title:{display:true,text:'Market attractiveness →'} },
+             y:{ min:0,max:10, title:{display:true,text:'Ease of entry →'} } } }
+});
+</script>
+</body>
+</html>
