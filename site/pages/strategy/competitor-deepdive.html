@@ -65,6 +65,132 @@
       </section>
 
       <section class="section">
+        <h2>Strategic-group map narrative</h2>
+        <p class="lead">Beneath the player-by-player scatter sit four <b>strategic groups</b> —
+        clusters of firms that compete on the same logic and are separated from one another by
+        <b>mobility barriers</b>: the capital, capability and time it takes to cross from one group
+        into the next. Reading the market this way explains why JR-Tech's position is awkward to
+        copy rather than merely pleasant to occupy.</p>
+        <p>The first group — <b>broad-shallow distributors</b> — wins on catalogue and scale, moving
+        commodity equipment at thin margin with little service attached. The second — <b>deep-narrow
+        specialists and fabricators</b> — wins on craft within a single line: custom stainless
+        metalwork, warewash, or design pedigree, but cannot follow a client across the rest of the
+        kitchen. The third — <b>chemical and hygiene annuity players</b> — wins on the recurring
+        consumable relationship and, increasingly, dosing telemetry, yet owns no engineering. Each
+        group is internally coherent and individually defensible.</p>
+        <p>The fourth group is nearly empty: the <b>full-stack integrated partner</b> that carries a
+        client from design through fabrication, install, service and chemical resupply under one
+        accountable contract. JR-Tech sits here by virtue of its four lines — but a position is only
+        worth holding if rivals struggle to enter it. They do. A distributor cannot become full-stack
+        by adding a SKU; it must stand up <b>in-house fabrication</b> (capital, skilled labour, QC), a
+        <b>field-service network</b> (technicians, parts logistics, SLAs), a <b>recurring chemical
+        operation</b> (formulation, dosing, compliance) and — the barrier that ties the others together
+        — <b>integrated data</b> that lets one quote, one job and one service history flow across all
+        four. The first three are buyable over years; the fourth is where JR-Tech's Odoo investment
+        builds the moat, because it converts four loosely-run businesses into one operating system that
+        a specialist cannot replicate by acquisition alone.</p>
+        <div class="chartbox">
+          <div class="mermaid">
+flowchart TB
+  M([Commercial-kitchen market]) --> G1
+  M --> G2
+  M --> G3
+  M --> G4
+  subgraph G1[Broad-shallow distributors]
+    A1[Wide catalogue, thin service, price-led]
+  end
+  subgraph G2[Deep-narrow specialists & fabricators]
+    A2[Custom metalwork / warewash / design depth]
+  end
+  subgraph G3[Chemical & hygiene annuity players]
+    A3[Consumable relationship + dosing telemetry]
+  end
+  subgraph G4[Full-stack integrated partner — JR-Tech]
+    A4[Design + fabricate + install + service + supply]
+  end
+  G1 -. mobility barrier .-> G4
+  G2 -. mobility barrier .-> G4
+  G3 -. mobility barrier .-> G4
+  B[/"Barrier = in-house fabrication + service network +<br>recurring chemical ops + INTEGRATED DATA (Odoo)"/]
+  G4 --- B
+        </div></div>
+        <div class="callout tn"><b>So what for the Odoo build:</b> the first three components of the
+        mobility barrier are physical and slowly buyable; the integrated-data layer is the one that
+        makes the breadth compound instead of merely coexist. Odoo is therefore not a back-office
+        upgrade — it is the wall around the strategic group JR-Tech wants to own.</div>
+      </section>
+
+      <section class="section">
+        <h2>Where to play / how to win</h2>
+        <p class="lead">Strategy is a coherent set of choices about <b>where to compete</b> and
+        <b>how to prevail there</b>. For JR-Tech the two must reinforce each other: the chosen arenas
+        should be exactly the ones where full-stack integration is decisive and commodity scale is not.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Where to play</h3>
+            <ul>
+              <li><b>Northern-region institutional &amp; hospitality</b> — Penang/northern-corridor
+              hotels, hospitals, campuses and central kitchens, where home-turf density and rapid
+              service response are structural advantages.</li>
+              <li><b>Turnkey bundles over loose boxes</b> — projects where design, fabrication, install
+              and commissioning sell as one accountable scope, not a line-item equipment quote.</li>
+              <li><b>Chemical-subscription annuity</b> — convert every equipment and service relationship
+              into recurring hygiene supply, the highest-retention, highest-margin line.</li>
+              <li><b>Selectively avoid</b> the pure commodity-box price war against national distributors;
+              compete on integration value, not catalogue depth alone.</li>
+            </ul>
+          </div>
+          <div class="card pad-lg">
+            <h3>How to win</h3>
+            <ul>
+              <li><b>One accountable partner</b> — a single contract and a single owner across the
+              kitchen lifecycle, removing the integration burden rivals push onto the buyer.</li>
+              <li><b>Integration depth, operationalised</b> — quote-to-cash, fabrication, field service
+              and chemical resupply run on one Odoo backbone so breadth is delivered, not just listed.</li>
+              <li><b>Data-backed tender proof</b> — service histories, uptime and lifecycle-cost data
+              turn the breadth claim into evidence buyers can verify.</li>
+              <li><b>Eco/AI brand</b> — the future-of-kitchens narrative, credible because the underlying
+              telemetry and efficiency data actually exist in the system.</li>
+            </ul>
+          </div>
+        </div>
+        <table class="tbl">
+          <tr>
+            <th>Dimension</th><th>JR-Tech today</th><th>Best specialist rival</th><th>JR-Tech with Odoo</th>
+          </tr>
+          <tr><td><b>Catalogue depth</b></td>
+            <td>Adequate across 4 lines</td>
+            <td><span class="tag green">Distributor — deepest</span></td>
+            <td>Unified cross-line catalogue; breadth visible in one quote</td></tr>
+          <tr><td><b>Integration depth</b></td>
+            <td><span class="tag warn">Real but manual</span></td>
+            <td>Single-line only — cannot follow client</td>
+            <td><span class="tag green">One backbone, all four lines</span></td></tr>
+          <tr><td><b>Recurring-revenue capture</b></td>
+            <td>Leaky — pull-through not tracked</td>
+            <td>Chemical player — strong but narrow</td>
+            <td><span class="tag green">Subscription annuity tied to every install</span></td></tr>
+          <tr><td><b>Digital / telemetry</b></td>
+            <td><span class="tag red">Minimal</span></td>
+            <td>Chemical MNC — dosing telemetry</td>
+            <td>Field Service + IoT across equipment fleet</td></tr>
+          <tr><td><b>Tender proof</b></td>
+            <td>Asserted, not evidenced</td>
+            <td>Design pedigree / references</td>
+            <td><span class="tag green">Data-backed lifecycle &amp; uptime evidence</span></td></tr>
+          <tr><td><b>Brand</b></td>
+            <td>Local, word-of-mouth</td>
+            <td>MNC — strong hygiene brand</td>
+            <td>Eco/AI future-of-kitchens, data-credible</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the Odoo build:</b> every "JR-Tech with Odoo" column is a
+        configuration decision, not a wish — unified catalogue (Sales/Inventory), integration backbone
+        (cross-module quote-to-cash), annuity capture (Subscriptions), telemetry (Field Service + IoT),
+        and tender proof (reporting on the resulting data). The where-to-play arenas are deliberately the
+        ones these capabilities decide. Build the system and the strategy executes itself.</div>
+      </section>
+
+      <section class="section">
         <h2>Head-to-head comparison</h2>
         <p class="lead">Representative competitor set across the three archetypes (named illustratively
         from the MY/Penang category; profiles modelled to category norms — see Methodology).</p>

@@ -249,6 +249,20 @@ new Chart(document.getElementById('frictionChart'), {
     scales:{ x:{ beginAtZero:true, title:{ display:true, text:'Number of manual / risky handoffs today' } } }
   }
 });
+new Chart(document.getElementById('touchpointChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Quote-to-cash','Fabrication','Rental','Field service','Chemical resupply','Procurement'],
+    datasets: [
+      { label: 'Manual touchpoints — before', data: [8,7,6,7,5,6], backgroundColor: '#E2544B' },
+      { label: 'Manual touchpoints — after',  data: [2,2,1,1,0,2], backgroundColor: '#16C098' }
+    ]
+  },
+  options: {
+    plugins:{ legend:{ position:'top' }, title:{ display:true, text:'Manual re-keying touchpoints per process — before vs after Odoo' } },
+    scales:{ y:{ beginAtZero:true, title:{ display:true, text:'Touchpoints' } } }
+  }
+});
 </script>
 </body>
 </html>
