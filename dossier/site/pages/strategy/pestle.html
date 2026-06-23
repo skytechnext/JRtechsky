@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PESTLE Analysis — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="pestle">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Strategic Analysis</b> · PESTLE Analysis</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Strategic Analysis</span>
+      <h1>PESTLE: the macro forces shaping a<br>Penang F&amp;B kitchen-engineering SME.</h1>
+      <p>A structured scan of the Political, Economic, Social, Technological, Legal and
+      Environmental currents bearing on JR-Tech Solution Sdn Bhd — and a read on which ones
+      the Odoo 19 transformation must absorb, exploit or hedge against.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">6</div><div class="lbl">macro dimensions assessed</div></div>
+          <div class="kpi"><div class="num">8%</div><div class="lbl">Malaysia SST rate now applied to most JR-Tech services</div></div>
+          <div class="kpi"><div class="num">2026</div><div class="lbl">phased MyInvois mandate reaches SMEs of JR-Tech's size</div></div>
+          <div class="kpi"><div class="num">RM2/kg</div><div class="lbl">order of carbon-pricing signals entering MY industrial policy</div></div>
+        </div>
+        <p class="lead">JR-Tech sits at the intersection of three regulated worlds — commercial
+        foodservice, industrial fabrication and chemical handling — all inside Malaysia's tightening
+        compliance and sustainability agenda. The macro environment is, on balance, a tailwind: it
+        rewards exactly the "energy-efficient, compliant, one-stop" positioning the brand book
+        already claims. The risk is operational, not strategic — manual systems cannot keep pace
+        with e-invoicing, traceability and ESG reporting demands. That gap is the Odoo thesis.</p>
+      </section>
+
+      <section class="section">
+        <h2>The six dimensions</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Political</span><h3>Stable, pro-digitalisation</h3>
+            <p>Malaysia's MADANI economic agenda and MDEC SME-digitalisation grants actively subsidise
+            ERP adoption. Government foodservice procurement (hospitals, schools, GLCs) increasingly
+            requires e-invoicing and audit trails — favouring suppliers who can transact digitally.</p>
+            <p><b>Implication:</b> compliance-readiness becomes a tender qualifier; grants de-risk the Odoo capex.</p>
+          </div>
+          <div class="card"><span class="tag">Economic</span><h3>Resilient HORECA demand</h3>
+            <p>Post-pandemic tourism recovery (Penang is a top inbound destination) and Klang Valley
+            hotel/restaurant openings drive kitchen build-out. Headwinds: ringgit weakness lifts
+            imported stainless-steel and equipment costs; minimum-wage rises pressure fabrication labour.</p>
+            <p><b>Implication:</b> margin visibility per line becomes mission-critical — a core Odoo deliverable.</p>
+          </div>
+          <div class="card"><span class="tag">Social</span><h3>Halal, hygiene &amp; chefs</h3>
+            <p>Rising consumer expectations on food safety, halal integrity and sustainability shape
+            kitchen specs. A national shortage of skilled welders/technicians constrains the
+            in-house fabrication team's throughput.</p>
+            <p><b>Implication:</b> training (a JR business line) and workforce planning move up the agenda.</p>
+          </div>
+          <div class="card"><span class="tag">Technological</span><h3>AI &amp; smart kitchens</h3>
+            <p>Induction, cook-&amp;-chill, smokeless and IoT-enabled equipment are reshaping the
+            category — squarely the brand book's "Experience the Future of Kitchens" theme. Cloud ERP
+            and AI quoting are now affordable for SMEs.</p>
+            <p><b>Implication:</b> JR can lead on AI-enabled kitchens only if its own back office is digital first.</p>
+          </div>
+          <div class="card"><span class="tag warn">Legal</span><h3>Tightening compliance</h3>
+            <p>Food Act 1983 &amp; Food Hygiene Regulations 2009, MS 1480 (HACCP), JAKIM halal,
+            Factories &amp; Machinery / OSHA for fabrication, and the phased <b>MyInvois</b> e-invoicing
+            mandate plus 8% SST all bear directly on JR-Tech operations.</p>
+            <p><b>Implication:</b> e-invoicing and document control are non-negotiable Odoo scope.</p>
+          </div>
+          <div class="card"><span class="tag green">Environmental</span><h3>Energy &amp; effluent</h3>
+            <p>Energy-efficiency mandates, grease-trap/effluent rules (DOE), Scheduled Wastes
+            Regulations for chemical handling, and corporate ESG procurement pressure from hotel
+            chains. JR's eco positioning is an asset — if it can be evidenced.</p>
+            <p><b>Implication:</b> Odoo becomes the system of record for ESG and waste-handling proof.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Impact vs. likelihood</h2>
+        <p class="lead">Each PESTLE factor plotted by probability of materially affecting JR-Tech in the
+        next 24 months (x) against business impact if it does (y). Bubble size reflects how directly the
+        Odoo build addresses it. The top-right quadrant — high-impact, high-likelihood — is dominated by
+        regulatory and economic forces the ERP is designed to neutralise.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="ilChart" height="300"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading the quadrant</h3>
+            <table class="tbl">
+              <tr><th>Factor</th><th>Posture</th></tr>
+              <tr><td>MyInvois / SST</td><td><span class="tag red">Mitigate now</span></td></tr>
+              <tr><td>HACCP / halal demand</td><td><span class="tag green">Exploit</span></td></tr>
+              <tr><td>Ringgit / input costs</td><td><span class="tag warn">Hedge via margin visibility</span></td></tr>
+              <tr><td>Smart-kitchen tech</td><td><span class="tag green">Lead</span></td></tr>
+              <tr><td>Skilled-labour shortage</td><td><span class="tag warn">Plan &amp; train</span></td></tr>
+              <tr><td>ESG procurement pressure</td><td><span class="tag green">Differentiate</span></td></tr>
+            </table>
+            <div class="callout tn"><b>So what for the Odoo build:</b> four of the six top forces are
+            directly answered by Odoo modules — Accounting/MyInvois for legal, real-time P&amp;L for
+            economic, document control for HACCP, and an ESG data layer for environmental. PESTLE
+            confirms the ERP is not a back-office nicety but a market-access requirement.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>From macro force to Odoo response</h2>
+        <div class="mermaid">
+flowchart LR
+  P[Political: e-invoice tenders] --> A[Odoo Accounting + MyInvois]
+  L[Legal: SST 8% & MyInvois] --> A
+  E[Economic: input-cost & FX pressure] --> M[Real-time margin by line]
+  T[Technological: AI smart kitchens] --> Q[AI-assisted quoting & catalog]
+  S[Social: halal & hygiene specs] --> D[Document & spec control]
+  EN[Environmental: effluent & energy] --> G[ESG / waste data of record]
+  A --> R[(Compliant, fundable, future-proof JR-Tech)]
+  M --> R
+  Q --> R
+  D --> R
+  G --> R
+        </div>
+        <div class="callout"><b>Cross-link:</b> the legal and environmental threads carry into
+        <a href="../technology/security-myinvois.html">Security &amp; MyInvois</a> and
+        <a href="esg.html">ESG &amp; Sustainability</a>; the economic margin thread feeds the
+        <a href="financials.html">Financial Snapshot</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../executive/due-diligence.html">← Prev: Due Diligence</a>
+        <a href="swot-tows.html">Next: SWOT &amp; TOWS →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('ilChart'), {
+  type: 'bubble',
+  data: { datasets: [
+    { label:'Legal (MyInvois/SST)', data:[{x:9,y:9,r:20}], backgroundColor:'rgba(226,84,75,.6)' },
+    { label:'Economic (FX/costs)', data:[{x:8,y:8,r:16}], backgroundColor:'rgba(232,161,58,.6)' },
+    { label:'Technological (smart kitchens)', data:[{x:7,y:8,r:18}], backgroundColor:'rgba(22,192,152,.6)' },
+    { label:'Social (halal/hygiene)', data:[{x:7,y:6,r:12}], backgroundColor:'rgba(127,169,222,.7)' },
+    { label:'Environmental (ESG/effluent)', data:[{x:6,y:7,r:16}], backgroundColor:'rgba(63,111,176,.6)' },
+    { label:'Political (digital tenders)', data:[{x:6,y:6,r:12}], backgroundColor:'rgba(11,31,58,.55)' }
+  ]},
+  options: {
+    scales: {
+      x:{ min:0,max:10, title:{display:true,text:'Likelihood (next 24 months) →'}},
+      y:{ min:0,max:10, title:{display:true,text:'Business impact →'}}
+    },
+    plugins:{ legend:{ position:'bottom', labels:{ boxWidth:10 } } }
+  }
+});
+</script>
+</body>
+</html>

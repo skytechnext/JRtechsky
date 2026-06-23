@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Snapshot &amp; Valuation — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="financials">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Strategic Analysis</b> · Financial Snapshot &amp; Valuation</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Strategic Analysis</span>
+      <h1>A modelled financial snapshot —<br>and what JR-Tech could be worth.</h1>
+      <p>An analyst model of JR-Tech's revenue mix, gross margin by line, a three-year projection and
+      an indicative valuation range. These figures are TechNext estimates calibrated to a Malaysian
+      F&amp;B-engineering SME of this profile — illustrative, not audited.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="callout warn"><b>Analyst model — read first.</b> JR-Tech is a private SME; public
+        financials are not disclosed. The figures below are TechNext's modelled estimates, built from
+        the four business lines in <a href="../../index.html">CLIENT_FACTS</a> and Malaysian SME
+        benchmarks. They illustrate structure and direction, not certified results. See
+        <a href="../advisory/methodology.html">Methodology &amp; Assumptions</a>.</div>
+        <div class="grid g4">
+          <div class="kpi"><div class="num">~RM18m</div><div class="lbl">modelled FY2025 revenue</div></div>
+          <div class="kpi"><div class="num">~31%</div><div class="lbl">blended gross margin</div><div class="delta up">▲ post-ERP target 36%</div></div>
+          <div class="kpi"><div class="num">~RM2.3m</div><div class="lbl">modelled EBITDA</div></div>
+          <div class="kpi"><div class="num">RM14–22m</div><div class="lbl">indicative valuation range</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Revenue mix &amp; margin by line</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="mixChart" height="280"></canvas></div>
+          <div class="chartbox"><canvas id="marginChart" height="280"></canvas></div>
+        </div>
+        <table class="tbl">
+          <tr><th>Business line</th><th>Modelled revenue</th><th>Share</th><th>Gross margin</th><th>Character</th></tr>
+          <tr><td>JR-Equipment (sales &amp; rental)</td><td>~RM8.1m</td><td>45%</td><td>~24%</td><td>Volume, FX-exposed</td></tr>
+          <tr><td>Fabrication (in-house SS)</td><td>~RM3.6m</td><td>20%</td><td>~38%</td><td>High-margin, capacity-bound</td></tr>
+          <tr><td>Service &amp; maintenance</td><td>~RM2.7m</td><td>15%</td><td>~42%</td><td>Sticky annuity</td></tr>
+          <tr><td>Chemicals &amp; consumables</td><td>~RM2.5m</td><td>14%</td><td>~33%</td><td>Recurring annuity</td></tr>
+          <tr><td>Consulting &amp; training</td><td>~RM1.1m</td><td>6%</td><td>~50%</td><td>Door-opener, high-margin</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the Odoo build:</b> the lowest-margin line (equipment)
+        is the largest, and the highest-margin lines (service, fabrication, consulting) are capacity- or
+        attach-rate-limited. Odoo's lever is mix-shift: raise the service/chemical attach rate on every
+        equipment sale, lifting blended margin toward the 36% target without new customers.</div>
+      </section>
+
+      <section class="section">
+        <h2>Three-year projection</h2>
+        <p class="lead">Two scenarios: <b>status quo</b> (manual systems, ~6% organic growth, flat
+        margin) versus <b>ERP-enabled</b> (better cross-sell attach, margin discipline and capacity
+        utilisation post-Odoo). The gap is the business case for the implementation.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="projChart" height="280"></canvas></div>
+          <div class="card pad-lg">
+            <h3>The Odoo delta</h3>
+            <table class="tbl">
+              <tr><th></th><th>FY26</th><th>FY27</th><th>FY28</th></tr>
+              <tr><td>Revenue — status quo</td><td>19.1</td><td>20.2</td><td>21.4</td></tr>
+              <tr><td>Revenue — with Odoo</td><td>20.0</td><td>23.5</td><td>27.8</td></tr>
+              <tr><td>GM% — with Odoo</td><td>32%</td><td>34%</td><td>36%</td></tr>
+            </table>
+            <p style="margin-top:12px">By FY28 the ERP-enabled path adds ~RM6.4m revenue and ~4pts of
+            margin — materially expanding EBITDA and, with it, enterprise value.</p>
+            <div class="callout"><b>Cross-link:</b> the investment side of this case is modelled in the
+            <a href="../../tools/roi-tco.html">ROI / TCO Model</a> and <a href="../delivery/kpis-benefits.html">KPIs &amp; Benefits</a>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>P&amp;L bridge — today's model to the post-ERP model</h2>
+        <p class="lead">The same revenue base, re-cut for what the ERP changes. The post-ERP P&amp;L is
+        not a growth fantasy — it is today's P&amp;L with ~RM 430k/yr of recovered margin, retained
+        recurring revenue and avoided cost flowing to the bottom line, net of the ~RM 83k/yr recurring
+        platform cost. The implementation outlay (RM 254k Year-1) is capitalised/expensed in transition,
+        not in this steady-state view.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="bridgeChart" height="280"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Modelled P&amp;L — before vs. steady-state after</h3>
+            <table class="tbl">
+              <tr><th>Line (RM 000s, annual)</th><th>Today</th><th>Post-ERP (mature)</th></tr>
+              <tr><td>Revenue</td><td>18,000</td><td>18,120</td></tr>
+              <tr><td>COGS</td><td>(12,420)</td><td>(12,300)</td></tr>
+              <tr><td><b>Gross profit</b></td><td><b>5,580</b></td><td><b>5,820</b></td></tr>
+              <tr><td>Gross margin %</td><td>31.0%</td><td>32.1%</td></tr>
+              <tr><td>Operating expenses</td><td>(3,280)</td><td>(3,190)</td></tr>
+              <tr><td>Platform cost (lic + AMS)</td><td>—</td><td>(83)</td></tr>
+              <tr><td><b>EBITDA</b></td><td><b>2,300</b></td><td><b>2,547</b></td></tr>
+            </table>
+            <p style="margin-top:12px">The mature steady-state uplift is <b>~RM 247k of EBITDA</b> from
+            the RM 430k benefit net of platform cost — before the larger mix-shift growth in the
+            three-year projection compounds on top. Recovered margin shows in GM%; retained recurring
+            revenue lifts the top line modestly; admin and avoided-service savings drop opex.</p>
+          </div>
+        </div>
+        <div class="callout tn"><b>Reconciliation:</b> this is the <em>same</em> ~RM 430k/yr benefit and
+        RM 254k / RM 83k cost used on the <a href="../executive/executive-summary.html">Executive
+        Summary</a> value-at-stake bridge and the <a href="../growth/pricing.html">Pricing</a> worked
+        example — here expressed as a P&amp;L delta rather than a cash-flow ROI.</div>
+      </section>
+
+      <section class="section">
+        <h2>Sensitivity — annual benefit vs. user-adoption rate</h2>
+        <p class="lead">The single biggest swing factor is not the technology — it is how thoroughly
+        staff actually use it. The RM 430k benefit assumes ~90% effective adoption of the quoting,
+        subscription and field-service workflows. The grid below flexes the realised benefit (and the
+        resulting payback) against adoption; even at a cautious 60% the case clears.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="sensChart" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Benefit &amp; payback by adoption</h3>
+            <table class="tbl">
+              <tr><th>Effective adoption</th><th>Annual benefit</th><th>Net Yr-1*</th><th>Payback</th></tr>
+              <tr><td>40% — poor</td><td>~RM 172k</td><td>−RM 82k</td><td>~22 mo</td></tr>
+              <tr><td>60% — cautious</td><td>~RM 258k</td><td>+RM 4k</td><td>~14 mo</td></tr>
+              <tr><td>75% — likely</td><td>~RM 323k</td><td>+RM 69k</td><td>~12 mo</td></tr>
+              <tr><td>90% — target</td><td>~RM 430k</td><td>+RM 176k</td><td>~9 mo†</td></tr>
+            </table>
+            <p class="muted" style="font-size:12.5px;color:#5a6b85;margin-top:10px">*Annual benefit less
+            RM 254k Year-1 investment. †Cumulative-benefit payback; the headline "&lt;18 months" used on
+            the Executive Summary is the conservative ramp-adjusted figure (benefit builds over the first
+            two-to-three quarters as adoption matures).</p>
+            <div class="callout warn"><b>So what:</b> the dominant lever on ROI is change management, not
+            licence cost. This is why the engagement front-loads training, hypercare and role-based
+            enablement — see <a href="../delivery/change-management.html">Change Management</a>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Indicative valuation</h2>
+        <p class="lead">Triangulated two ways. Both are indicative ranges for a private MY SME, before
+        any control premium or working-capital adjustment.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>1 · EBITDA multiple</h3>
+            <table class="tbl">
+              <tr><th>Basis</th><th>Value</th></tr>
+              <tr><td>Modelled FY25 EBITDA</td><td>~RM2.3m</td></tr>
+              <tr><td>SME multiple range</td><td>5.0×–7.0×</td></tr>
+              <tr><td><b>Implied enterprise value</b></td><td><b>RM11.5m–16.1m</b></td></tr>
+              <tr><td>Post-Odoo FY28 EBITDA (~RM3.4m) @ 6×</td><td>~RM20m+</td></tr>
+            </table>
+          </div>
+          <div class="card pad-lg">
+            <h3>2 · Discounted cash flow</h3>
+            <table class="tbl">
+              <tr><th>Assumption</th><th>Value</th></tr>
+              <tr><td>FCF base (FY26)</td><td>~RM1.6m</td></tr>
+              <tr><td>Growth (5-yr, ERP-enabled)</td><td>~10% → 4% terminal</td></tr>
+              <tr><td>Discount rate (WACC)</td><td>~14%</td></tr>
+              <tr><td><b>Indicative DCF value</b></td><td><b>RM16m–22m</b></td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="callout tn"><b>Valuation conclusion:</b> a blended indicative range of <b>RM14m–22m</b>,
+        with the upper half contingent on executing the ERP-enabled margin and growth path. Digital
+        maturity is not just operationally useful — it is directly value-accretive at exit.</div>
+      </section>
+
+      <section class="section">
+        <h2>Unit economics — the cross-sell engine</h2>
+        <div class="grid g3">
+          <div class="kpi"><div class="num">~RM48k</div><div class="lbl">avg. equipment/fit-out order value</div></div>
+          <div class="kpi"><div class="num">~RM6k/yr</div><div class="lbl">attached service + chemical annuity per active account</div></div>
+          <div class="kpi"><div class="num">3.2×</div><div class="lbl">modelled 5-yr LTV : first-order ratio with full attach</div></div>
+        </div>
+        <div class="mermaid">
+flowchart LR
+  E[Equipment / fit-out sale\n~RM48k, 24% GM] --> S[Service contract\n~42% GM]
+  E --> C[Chemical resupply\n~33% GM, recurring]
+  S --> L[(5-yr LTV ~3.2x\nfirst order)]
+  C --> L
+  L --> V[Higher blended margin\n→ higher valuation]
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="personas.html">← Prev: Customer Personas</a>
+        <a href="esg.html">Next: ESG &amp; Sustainability →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Modelled figures — see Methodology.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('mixChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Equipment','Fabrication','Service','Chemicals','Consulting'],
+    datasets: [{ data:[45,20,15,14,6],
+      backgroundColor:['#3F6FB0','#0B1F3A','#16C098','#7FA9DE','#E8A13A'] }]
+  },
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Revenue mix (% of FY25)' } } }
+});
+new Chart(document.getElementById('marginChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Equipment','Fabrication','Service','Chemicals','Consulting'],
+    datasets: [{ label:'Gross margin %', data:[24,38,42,33,50],
+      backgroundColor:['#3F6FB0','#0B1F3A','#16C098','#7FA9DE','#E8A13A'] }]
+  },
+  options: { scales:{ y:{ min:0, max:60, title:{display:true,text:'Gross margin %'} } },
+    plugins:{ legend:{ display:false }, title:{ display:true, text:'Gross margin by line' } } }
+});
+new Chart(document.getElementById('projChart'), {
+  type: 'line',
+  data: {
+    labels: ['FY25','FY26','FY27','FY28'],
+    datasets: [
+      { label:'Revenue — status quo (RMm)', data:[18.0,19.1,20.2,21.4], borderColor:'#E2544B', backgroundColor:'rgba(226,84,75,.1)', tension:.3 },
+      { label:'Revenue — with Odoo (RMm)', data:[18.0,20.0,23.5,27.8], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.12)', tension:.3, fill:true }
+    ]
+  },
+  options: { scales:{ y:{ title:{display:true,text:'Revenue (RM million)'} } }, plugins:{ legend:{ position:'bottom' } } }
+});
+new Chart(document.getElementById('bridgeChart'), {
+  type:'bar',
+  data:{ labels:['EBITDA today','+ Recovered margin','+ Retained recurring','+ Admin/service savings','− Platform cost','EBITDA post-ERP'],
+    datasets:[{ label:'RM 000s',
+      data:[[0,2300],[2300,2450],[2450,2570],[2570,2630],[2547,2630],[0,2547]],
+      backgroundColor:['#0B1F3A','#16C098','#16C098','#16C098','#E2544B','#0B1F3A'] }]},
+  options:{ plugins:{ legend:{display:false}, title:{display:true, text:'EBITDA bridge: today → post-ERP (RM 000s)'} },
+    scales:{ y:{ title:{display:true, text:'RM 000s (cumulative)'} } } }
+});
+new Chart(document.getElementById('sensChart'), {
+  type:'line',
+  data:{ labels:['40%','60%','75%','90%','100%'],
+    datasets:[{ label:'Realised annual benefit (RM 000s)', data:[172,258,323,430,478],
+      borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.15)', tension:.25, fill:true },
+      { label:'Year-1 investment (RM 254k)', data:[254,254,254,254,254],
+      borderColor:'#E2544B', borderDash:[6,4], pointRadius:0 }]},
+  options:{ plugins:{ legend:{position:'bottom'}, title:{display:true, text:'Benefit vs. adoption rate'} },
+    scales:{ x:{ title:{display:true,text:'Effective user adoption'} }, y:{ beginAtZero:true, title:{display:true,text:'RM 000s / yr'} } } }
+});
+</script>
+</body>
+</html>

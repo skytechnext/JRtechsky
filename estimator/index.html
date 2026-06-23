@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kitchen Estimator · Auntie Gaik Lean × JR Tech</title>
+  <meta name="description" content="A live kitchen economics estimator for Auntie Gaik Lean's Old School Eatery — KPIs, consumables, equipment life planning, depreciation and dual profit estimators for the F&amp;B operator and JR Tech." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Spline+Sans+Mono:wght@400;500;600&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ───────────────── Sticky pass / header ───────────────── -->
+  <header class="topbar tile-bg" role="banner">
+    <div class="topbar__inner">
+      <a class="brand" href="#top">
+        <span class="brand__mark" aria-hidden="true">✦</span>
+        <span class="brand__name">Auntie Gaik Lean</span>
+        <span class="brand__sep" aria-hidden="true">×</span>
+        <span class="brand__tech">JR&nbsp;TECH</span>
+      </a>
+      <div class="topbar__pass" aria-label="Live headline figures">
+        <span class="pass__item"><span class="pass__lbl">F&amp;B net / mo</span><span class="pass__val" data-out="hdrFnbNet">—</span></span>
+        <span class="pass__item"><span class="pass__lbl">JR Tech net / mo</span><span class="pass__val pass__val--cobalt" data-out="hdrJrNet">—</span></span>
+      </div>
+      <div class="topbar__controls">
+        <label class="ctrl">
+          <span class="ctrl__lbl">Currency</span>
+          <select id="currency" class="ctrl__sel">
+            <option value="RM">RM · Ringgit</option>
+            <option value="S$">S$ · SGD</option>
+            <option value="$">$ · USD</option>
+            <option value="€">€ · EUR</option>
+          </select>
+        </label>
+        <button type="button" class="btn btn--ghost" id="printBtn">Print / PDF</button>
+        <button type="button" class="btn btn--ghost" id="resetBtn">Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ───────────────── Hero / thesis ───────────────── -->
+    <section class="hero">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Kitchen Economics · George Town, Penang</p>
+          <h1 class="hero__title">Every plate<br /><em>adds up — twice.</em></h1>
+          <p class="hero__lede">
+            One kitchen, two ledgers. Tune the covers, costs, consumables and
+            equipment below and watch the numbers settle in real time — once for
+            the eatery that serves the food, and once for the team that runs the
+            tech behind the pass.
+          </p>
+          <p class="hero__note">Figures update live as you edit. Nothing leaves this page — your inputs are saved only in this browser.</p>
+        </div>
+
+        <div class="hero__ledger" aria-label="Live summary">
+          <article class="figure">
+            <span class="figure__lbl">F&amp;B net profit / month</span>
+            <span class="figure__val" data-out="heroFnbNet">—</span>
+            <span class="figure__sub"><span data-out="heroFnbMargin">—</span> net margin</span>
+          </article>
+          <article class="figure figure--cobalt">
+            <span class="figure__lbl">JR Tech net / month</span>
+            <span class="figure__val" data-out="heroJrNet">—</span>
+            <span class="figure__sub"><span data-out="heroJrMargin">—</span> margin on this account</span>
+          </article>
+          <div class="figure__row">
+            <article class="chip">
+              <span class="chip__lbl">Monthly revenue</span>
+              <span class="chip__val" data-out="heroRevenue">—</span>
+            </article>
+            <article class="chip">
+              <span class="chip__lbl">Covers / month</span>
+              <span class="chip__val" data-out="heroCovers">—</span>
+            </article>
+            <article class="chip">
+              <span class="chip__lbl">Prime cost</span>
+              <span class="chip__val" data-out="heroPrime">—</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── 01 · Kitchen metrics & KPIs ───────────────── -->
+    <section class="station" id="metrics">
+      <div class="station__head">
+        <span class="station__no">01</span>
+        <div>
+          <h2 class="station__title">Kitchen metrics &amp; KPIs</h2>
+          <p class="station__desc">The operating assumptions that drive everything downstream. Set the room, the covers and the cost lines.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="field-grid" id="kitchenInputs">
+          <label class="field"><span class="field__lbl">Seats in the dining room</span>
+            <input class="field__in" type="number" min="0" step="1" data-k="seats" /></label>
+          <label class="field"><span class="field__lbl">Covers served / day</span>
+            <input class="field__in" type="number" min="0" step="1" data-k="coversPerDay" /></label>
+          <label class="field"><span class="field__lbl">Operating days / month</span>
+            <input class="field__in" type="number" min="0" max="31" step="1" data-k="daysPerMonth" /></label>
+          <label class="field"><span class="field__lbl">Average spend / cover</span>
+            <input class="field__in" type="number" min="0" step="1" data-k="avgCheck" data-money /></label>
+          <label class="field"><span class="field__lbl">Food &amp; beverage cost</span>
+            <span class="field__suffix-wrap"><input class="field__in" type="number" min="0" max="100" step="0.5" data-k="foodCostPct" /><span class="field__suffix">%</span></span></label>
+          <label class="field"><span class="field__lbl">Kitchen + service payroll / month</span>
+            <input class="field__in" type="number" min="0" step="100" data-k="labour" data-money /></label>
+          <label class="field"><span class="field__lbl">Rent / month</span>
+            <input class="field__in" type="number" min="0" step="100" data-k="rent" data-money /></label>
+          <label class="field"><span class="field__lbl">Utilities (gas, power, water) / month</span>
+            <input class="field__in" type="number" min="0" step="50" data-k="utilities" data-money /></label>
+        </div>
+      </div>
+
+      <div class="kpi-grid" id="kpiGrid">
+        <article class="kpi"><span class="kpi__lbl">Monthly revenue</span><span class="kpi__val" data-out="kpiRevenue">—</span><span class="kpi__hint" data-out="kpiRevenueHint">—</span></article>
+        <article class="kpi"><span class="kpi__lbl">Covers / month</span><span class="kpi__val" data-out="kpiCovers">—</span><span class="kpi__hint" data-out="kpiTurns">—</span></article>
+        <article class="kpi"><span class="kpi__lbl">Average check</span><span class="kpi__val" data-out="kpiAvgCheck">—</span><span class="kpi__hint">per cover</span></article>
+        <article class="kpi"><span class="kpi__lbl">Food cost</span><span class="kpi__val" data-out="kpiFoodCost">—</span><span class="kpi__hint" data-out="kpiFoodPct">—</span></article>
+        <article class="kpi"><span class="kpi__lbl">Prime cost</span><span class="kpi__val" data-out="kpiPrime">—</span><span class="kpi__hint" data-out="kpiPrimePct">—</span></article>
+        <article class="kpi"><span class="kpi__lbl">Revenue / seat / month</span><span class="kpi__val" data-out="kpiRevPerSeat">—</span><span class="kpi__hint" data-out="kpiSeats">—</span></article>
+        <article class="kpi"><span class="kpi__lbl">Revenue / labour ringgit</span><span class="kpi__val" data-out="kpiLabourEff">—</span><span class="kpi__hint">higher is leaner</span></article>
+        <article class="kpi"><span class="kpi__lbl">Gross profit / month</span><span class="kpi__val" data-out="kpiGross">—</span><span class="kpi__hint" data-out="kpiGrossPct">—</span></article>
+      </div>
+      <p class="footnote">Prime cost = food &amp; beverage + payroll. A healthy full-service kitchen keeps prime cost under ~65% of revenue; the bar tints amber past 65% and rose past 75%.</p>
+    </section>
+
+    <!-- ───────────────── 02 · Consumables ───────────────── -->
+    <section class="station" id="consumables">
+      <div class="station__head">
+        <span class="station__no">02</span>
+        <div>
+          <h2 class="station__title">Monthly detergent &amp; disposables</h2>
+          <p class="station__desc">The quiet line that erodes margin — washroom chemicals, cleaning agents and single-use service items burned through each month.</p>
+        </div>
+      </div>
+
+      <div class="panel panel--flush">
+        <div class="table-wrap">
+          <table class="grid-table" id="consTable">
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col" class="num">Pack / unit cost</th>
+                <th scope="col" class="num">Units / month</th>
+                <th scope="col" class="num">Monthly cost</th>
+                <th scope="col" class="num">Share</th>
+                <th scope="col" class="act"><span class="vh">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="consBody"><!-- rows injected --></tbody>
+            <tfoot>
+              <tr>
+                <th scope="row">Total monthly consumables</th>
+                <td class="num"></td>
+                <td class="num" data-out="consUnits">—</td>
+                <td class="num strong" data-out="consTotal">—</td>
+                <td class="num">100%</td>
+                <td class="act"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="panel__foot">
+          <button type="button" class="btn btn--add" data-add="cons">+ Add item</button>
+          <span class="panel__stat">Per cover: <b data-out="consPerCover">—</b> · Per operating day: <b data-out="consPerDay">—</b></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── 03 · Equipment life plan ───────────────── -->
+    <section class="station" id="lifeplan">
+      <div class="station__head">
+        <span class="station__no">03</span>
+        <div>
+          <h2 class="station__title">Equipment life plan &amp; replacement</h2>
+          <p class="station__desc">Every machine has a clock. Track when each asset is due and the monthly reserve that quietly funds its replacement before it fails service.</p>
+        </div>
+      </div>
+
+      <div class="panel panel--flush">
+        <div class="table-wrap">
+          <table class="grid-table" id="equipTable">
+            <thead>
+              <tr>
+                <th scope="col">Asset</th>
+                <th scope="col" class="num">Installed</th>
+                <th scope="col" class="num">Cost</th>
+                <th scope="col" class="num">Life (yrs)</th>
+                <th scope="col" class="num">Replace by</th>
+                <th scope="col" class="num">Reserve / mo</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="act"><span class="vh">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="equipBody"><!-- rows injected --></tbody>
+            <tfoot>
+              <tr>
+                <th scope="row">Sinking fund</th>
+                <td class="num"></td>
+                <td class="num strong" data-out="equipCost">—</td>
+                <td class="num"></td>
+                <td class="num"></td>
+                <td class="num strong" data-out="equipReserve">—</td>
+                <td data-out="equipDueCount">—</td>
+                <td class="act"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="panel__foot">
+          <button type="button" class="btn btn--add" data-add="equip">+ Add asset</button>
+          <span class="panel__stat">Set aside <b data-out="equipReserve2">—</b> a month and the line never gets caught short.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── 04 · Depreciation ───────────────── -->
+    <section class="station" id="depreciation">
+      <div class="station__head">
+        <span class="station__no">04</span>
+        <div>
+          <h2 class="station__title">Inventory depreciation</h2>
+          <p class="station__desc">Straight-line book value across the same assets — what the kitchen is worth on paper today, and the non-cash cost it carries into the P&amp;L each month.</p>
+        </div>
+      </div>
+
+      <div class="panel panel--flush">
+        <div class="table-wrap">
+          <table class="grid-table" id="depTable">
+            <thead>
+              <tr>
+                <th scope="col">Asset</th>
+                <th scope="col" class="num">Cost</th>
+                <th scope="col" class="num">Salvage</th>
+                <th scope="col" class="num">Age</th>
+                <th scope="col" class="num">Annual dep.</th>
+                <th scope="col" class="num">Accumulated</th>
+                <th scope="col" class="num">Book value</th>
+                <th scope="col" class="bar-col">Remaining</th>
+              </tr>
+            </thead>
+            <tbody id="depBody"><!-- rows injected --></tbody>
+            <tfoot>
+              <tr>
+                <th scope="row">Portfolio</th>
+                <td class="num strong" data-out="depCost">—</td>
+                <td class="num"></td>
+                <td class="num"></td>
+                <td class="num strong" data-out="depAnnual">—</td>
+                <td class="num strong" data-out="depAccum">—</td>
+                <td class="num strong" data-out="depBook">—</td>
+                <td class="bar-col"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="panel__foot">
+          <span class="panel__stat">Monthly depreciation charged to the F&amp;B P&amp;L: <b data-out="depMonthly">—</b> · Book value retained: <b data-out="depRetainedPct">—</b></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── 05 · Profit estimator — F&B ───────────────── -->
+    <section class="station station--profit" id="profit-fnb">
+      <div class="station__head">
+        <span class="station__no">05</span>
+        <div>
+          <h2 class="station__title">Profit estimator — <span class="tint-gold">F&amp;B operator</span></h2>
+          <p class="station__desc">The eatery's monthly P&amp;L. Revenue from the room, less every cost line gathered above, down to net profit.</p>
+        </div>
+      </div>
+
+      <div class="profit profit--gold">
+        <div class="profit__lines">
+          <div class="pline pline--in"><span class="pline__lbl">Revenue</span><span class="pline__val" data-out="pfRevenue">—</span></div>
+          <div class="pline"><span class="pline__lbl">Food &amp; beverage cost</span><span class="pline__val" data-out="pfFood">—</span></div>
+          <div class="pline"><span class="pline__lbl">Payroll</span><span class="pline__val" data-out="pfLabour">—</span></div>
+          <div class="pline"><span class="pline__lbl">Rent</span><span class="pline__val" data-out="pfRent">—</span></div>
+          <div class="pline"><span class="pline__lbl">Utilities</span><span class="pline__val" data-out="pfUtil">—</span></div>
+          <div class="pline"><span class="pline__lbl">Detergent &amp; disposables <a class="pline__ref" href="#consumables">02</a></span><span class="pline__val" data-out="pfCons">—</span></div>
+          <div class="pline"><span class="pline__lbl">Equipment depreciation <a class="pline__ref" href="#depreciation">04</a></span><span class="pline__val" data-out="pfDep">—</span></div>
+          <label class="pline pline--edit"><span class="pline__lbl">Other overheads / month</span><input class="pline__in" type="number" min="0" step="100" data-k="fnbOther" data-money /></label>
+          <div class="pline pline--net"><span class="pline__lbl">Net profit / month</span><span class="pline__val" data-out="pfNet">—</span></div>
+        </div>
+        <aside class="profit__readout">
+          <div class="readout"><span class="readout__lbl">Net margin</span><span class="readout__val" data-out="pfMargin">—</span></div>
+          <div class="readout"><span class="readout__lbl">Net profit / year</span><span class="readout__val" data-out="pfYear">—</span></div>
+          <div class="readout"><span class="readout__lbl">Break-even covers / day</span><span class="readout__val" data-out="pfBreakeven">—</span></div>
+          <div class="readout readout--muted"><span class="readout__lbl">Equipment reserve (cash set-aside, not in P&amp;L)</span><span class="readout__val" data-out="pfReserve">—</span></div>
+          <p class="readout__note">Depreciation is the non-cash cost of assets wearing out; the reserve is real cash put aside to replace them. They are shown separately so neither is double-counted.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ───────────────── 06 · Profit estimator — JR Tech ───────────────── -->
+    <section class="station station--profit" id="profit-jr">
+      <div class="station__head">
+        <span class="station__no">06</span>
+        <div>
+          <h2 class="station__title">Profit estimator — <span class="tint-cobalt">JR Tech</span></h2>
+          <p class="station__desc">The vendor's side of the same account: what JR Tech earns running the kitchen's systems, the cost to serve, and the payback the client gets in return.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="field-grid field-grid--jr" id="jrInputs">
+          <label class="field"><span class="field__lbl">One-time setup &amp; install fee</span>
+            <input class="field__in" type="number" min="0" step="100" data-k="jrSetupFee" data-money /></label>
+          <label class="field"><span class="field__lbl">Cost to deliver that setup</span>
+            <input class="field__in" type="number" min="0" step="100" data-k="jrSetupCost" data-money /></label>
+          <label class="field"><span class="field__lbl">Software subscription / month</span>
+            <input class="field__in" type="number" min="0" step="10" data-k="jrSubscription" data-money /></label>
+          <label class="field"><span class="field__lbl">Support &amp; maintenance retainer / month</span>
+            <input class="field__in" type="number" min="0" step="10" data-k="jrSupportFee" data-money /></label>
+          <label class="field"><span class="field__lbl">Hardware lease / month</span>
+            <input class="field__in" type="number" min="0" step="10" data-k="jrHardwareLease" data-money /></label>
+          <label class="field"><span class="field__lbl">Cloud &amp; infrastructure / month</span>
+            <input class="field__in" type="number" min="0" step="10" data-k="jrInfraCost" data-money /></label>
+          <label class="field"><span class="field__lbl">Support hours / month</span>
+            <input class="field__in" type="number" min="0" step="0.5" data-k="jrSupportHours" /></label>
+          <label class="field"><span class="field__lbl">Engineer cost / hour</span>
+            <input class="field__in" type="number" min="0" step="10" data-k="jrHourlyCost" data-money /></label>
+          <label class="field"><span class="field__lbl">Hardware deployed (capital)</span>
+            <input class="field__in" type="number" min="0" step="100" data-k="jrHardwareCapital" data-money /></label>
+          <label class="field"><span class="field__lbl">Contract term (months)</span>
+            <input class="field__in" type="number" min="1" step="1" data-k="jrTermMonths" /></label>
+          <label class="field"><span class="field__lbl">Payment processing fee</span>
+            <span class="field__suffix-wrap"><input class="field__in" type="number" min="0" max="100" step="0.1" data-k="jrProcessingPct" /><span class="field__suffix">%</span></span></label>
+          <label class="field"><span class="field__lbl">Est. monthly saving the system gives the kitchen</span>
+            <input class="field__in" type="number" min="0" step="50" data-k="jrClientSaving" data-money /></label>
+        </div>
+      </div>
+
+      <div class="profit profit--cobalt">
+        <div class="profit__lines">
+          <div class="pline pline--in"><span class="pline__lbl">Recurring revenue (subscription + support + lease)</span><span class="pline__val" data-out="jrRecurRev">—</span></div>
+          <div class="pline"><span class="pline__lbl">Infrastructure</span><span class="pline__val" data-out="jrInfra">—</span></div>
+          <div class="pline"><span class="pline__lbl">Support labour</span><span class="pline__val" data-out="jrLabour">—</span></div>
+          <div class="pline"><span class="pline__lbl">Hardware amortisation</span><span class="pline__val" data-out="jrHwAmort">—</span></div>
+          <div class="pline"><span class="pline__lbl">Payment processing</span><span class="pline__val" data-out="jrProcessing">—</span></div>
+          <div class="pline pline--net"><span class="pline__lbl">Net recurring profit / month</span><span class="pline__val" data-out="jrNet">—</span></div>
+        </div>
+        <aside class="profit__readout">
+          <div class="readout"><span class="readout__lbl">Recurring margin</span><span class="readout__val" data-out="jrMargin">—</span></div>
+          <div class="readout"><span class="readout__lbl">Setup margin (one-time)</span><span class="readout__val" data-out="jrSetupMargin">—</span></div>
+          <div class="readout"><span class="readout__lbl">Account value over contract</span><span class="readout__val" data-out="jrLtv">—</span></div>
+          <div class="readout readout--muted"><span class="readout__lbl">JR Tech as % of kitchen revenue</span><span class="readout__val" data-out="jrShare">—</span></div>
+        </aside>
+      </div>
+
+      <div class="roi">
+        <h3 class="roi__title">What the client gets back</h3>
+        <div class="roi__grid">
+          <article class="kpi kpi--cobalt"><span class="kpi__lbl">Net saving after JR fees / month</span><span class="kpi__val" data-out="roiNetSaving">—</span><span class="kpi__hint">saving − recurring fee</span></article>
+          <article class="kpi kpi--cobalt"><span class="kpi__lbl">Payback on setup</span><span class="kpi__val" data-out="roiPayback">—</span><span class="kpi__hint">to recover the install fee</span></article>
+          <article class="kpi kpi--cobalt"><span class="kpi__lbl">First-year return</span><span class="kpi__val" data-out="roiFirstYear">—</span><span class="kpi__hint">net of all JR costs</span></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer tile-bg" role="contentinfo">
+    <div class="footer__inner">
+      <p class="footer__brand"><span aria-hidden="true">✦</span> Auntie Gaik Lean's Old School Eatery <span class="footer__dim">· Kitchen Estimator</span></p>
+      <p class="footer__by">Built by <b>JR&nbsp;TECH</b> · estimates only, not financial advice · figures stay in your browser</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

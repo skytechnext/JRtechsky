@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff & Org Analysis — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="staff-org">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Company Profile</b> · Staff &amp; Org Analysis</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Company Profile</span>
+      <h1>Organisation &amp; headcount —<br>the people the ERP must serve.</h1>
+      <p>A modelled organisation structure for a Penang F&amp;B-engineering SME: five departments,
+      an illustrative ~45-person headcount, a capacity/utilisation read, and the workforce shape the
+      Odoo 19 roles, timesheets and field-service modules must fit.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">~45</div><div class="lbl">modelled total headcount</div></div>
+          <div class="kpi"><div class="num">5</div><div class="lbl">core departments</div></div>
+          <div class="kpi"><div class="num">~18</div><div class="lbl">field &amp; workshop "billable" staff</div></div>
+          <div class="kpi"><div class="num">72%</div><div class="lbl">modelled field-tech utilisation</div></div>
+        </div>
+        <div class="callout"><b>Modelling note:</b> JR-Tech does not publish headcount. The ~45-person
+        figure is TechNext modelling for a multi-line F&amp;B-engineering SME of this scope and is
+        used only to size the ERP — see Methodology &amp; Assumptions.</div>
+      </section>
+
+      <section class="section">
+        <h2>Departments &amp; modelled headcount</h2>
+        <table class="tbl">
+          <tr><th>Department</th><th>Function</th><th>Modelled headcount</th><th>Primary Odoo apps</th></tr>
+          <tr><td>Sales &amp; Accounts</td><td>Quoting, key accounts, cross-sell</td><td>8</td><td>CRM · Sales</td></tr>
+          <tr><td>Fabrication Workshop</td><td>Stainless cut · form · weld · polish</td><td>12</td><td>Manufacturing · Inventory</td></tr>
+          <tr><td>Service / Field Techs</td><td>Install, repair, grease-trap, tanker</td><td>10</td><td>Field Service · Maintenance · Repair</td></tr>
+          <tr><td>Chemical Supply</td><td>Resupply, logistics, dosing support</td><td>6</td><td>Subscriptions · Inventory</td></tr>
+          <tr><td>Admin &amp; Finance</td><td>Invoicing, SST/MyInvois, HR</td><td>9</td><td>Accounting · HR</td></tr>
+          <tr><th>Total</th><th></th><th>45</th><th>—</th></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Org chart</h2>
+        <div class="mermaid">
+flowchart TD
+  D[Director — Tan Gim Boon] --> SM[Sales &amp; Accounts Lead]
+  D --> FM[Workshop Manager]
+  D --> SVM[Service Operations Lead]
+  D --> CM[Chemical Supply Lead]
+  D --> AM[Admin &amp; Finance Lead]
+  SM --> SE[8 · Sales execs &amp; account mgrs]
+  FM --> WK[12 · Welders &amp; fabricators]
+  SVM --> FT[10 · Field technicians]
+  CM --> CS[6 · Supply &amp; logistics]
+  AM --> AF[9 · Accounts, admin &amp; HR]
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Roles &amp; responsibilities (RACI-lite)</h2>
+        <p>Who owns each core process across the five departments. <b>R</b> = Responsible (does the
+        work), <b>A</b> = Accountable (owns the outcome), <b>C</b> = Consulted, <b>I</b> = Informed.
+        Today most "A" cells collapse onto the Director — the concentration the Odoo role design
+        must unwind.</p>
+        <table class="tbl">
+          <tr><th>Process</th><th>Sales &amp; Accounts</th><th>Workshop</th><th>Service</th><th>Chemical</th><th>Admin/Finance</th></tr>
+          <tr><td>Lead → quote</td><td><span class="tag green">A/R</span></td><td>C</td><td>C</td><td>I</td><td>I</td></tr>
+          <tr><td>Fabrication job delivery</td><td>I</td><td><span class="tag green">A/R</span></td><td>C</td><td>—</td><td>I</td></tr>
+          <tr><td>Install &amp; field service</td><td>I</td><td>C</td><td><span class="tag green">A/R</span></td><td>C</td><td>I</td></tr>
+          <tr><td>Chemical resupply</td><td>C</td><td>—</td><td>C</td><td><span class="tag green">A/R</span></td><td>I</td></tr>
+          <tr><td>Invoicing &amp; collections</td><td>C</td><td>I</td><td>I</td><td>I</td><td><span class="tag green">A/R</span></td></tr>
+          <tr><td>Procurement &amp; stock</td><td>C</td><td>R</td><td>R</td><td>R</td><td><span class="tag green">A</span></td></tr>
+          <tr><td>Pricing &amp; margin approval</td><td>R</td><td>C</td><td>C</td><td>C</td><td><span class="tag green">A</span></td></tr>
+          <tr><td>Compliance (SST / MyInvois)</td><td>I</td><td>I</td><td>I</td><td>I</td><td><span class="tag green">A/R</span></td></tr>
+        </table>
+        <div class="callout warn"><b>The read:</b> pricing and procurement accountability today route
+        through the Director, not the leads. Codifying these as Odoo approval roles is what lets
+        department leads own their "A" cells without losing founder visibility.</div>
+      </section>
+
+      <section class="section">
+        <h2>Skills-gap matrix vs the Odoo target operating model</h2>
+        <p>Current capability versus what each department needs to run the target Odoo 19 processes.
+        The gap column is the training/hiring priority that the capability plan below addresses.</p>
+        <table class="tbl">
+          <tr><th>Department</th><th>Capability needed for Odoo TOM</th><th>Current</th><th>Target</th><th>Gap</th></tr>
+          <tr><td>Sales &amp; Accounts</td><td>CRM pipeline discipline, structured quoting</td><td><span class="tag warn">Basic</span></td><td>Proficient</td><td><span class="tag warn">Medium</span></td></tr>
+          <tr><td>Workshop</td><td>Work-order &amp; BoM literacy, timesheet logging</td><td><span class="tag red">Low</span></td><td>Proficient</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>Service / Field</td><td>Mobile field-service app, parts &amp; checklist capture</td><td><span class="tag red">Low</span></td><td>Proficient</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>Chemical Supply</td><td>Subscription / recurring-order management</td><td><span class="tag warn">Basic</span></td><td>Proficient</td><td><span class="tag warn">Medium</span></td></tr>
+          <tr><td>Admin &amp; Finance</td><td>Odoo Accounting, e-invoicing, payroll</td><td><span class="tag warn">Basic</span></td><td>Advanced</td><td><span class="tag warn">Medium</span></td></tr>
+          <tr><td>All depts</td><td>Reporting &amp; dashboard self-service</td><td><span class="tag red">None</span></td><td>Basic</td><td><span class="tag warn">Medium</span></td></tr>
+        </table>
+        <div class="callout tn"><b>So-what for Odoo:</b> the two "High" gaps — workshop and field
+        techs — are also the billable-capacity functions, so adoption training there protects the
+        utilisation payback. Phase the rollout to coach these teams first.</div>
+      </section>
+
+      <section class="section">
+        <h2>Headcount distribution &amp; capacity</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="hcBar" height="240"></canvas></div>
+          <div class="chartbox"><canvas id="utilBar" height="240"></canvas></div>
+        </div>
+        <div class="callout warn"><b>The read:</b> workshop and field-tech staff (the billable
+        capacity) are the constraint. Workshop utilisation runs hot in project peaks while field
+        techs lose hours to scheduling gaps and travel — both invisible without a system.</div>
+      </section>
+
+      <section class="section">
+        <h2>Capacity &amp; utilisation analysis</h2>
+        <table class="tbl">
+          <tr><th>Resource pool</th><th>Capacity driver</th><th>Modelled utilisation</th><th>Leakage</th></tr>
+          <tr><td>Fabrication workshop</td><td>Welder-hours vs. job backlog</td><td>84%</td><td>Rework, material wait</td></tr>
+          <tr><td>Field technicians</td><td>Billable hours vs. travel/idle</td><td>72%</td><td>Routing, no-show, parts gaps</td></tr>
+          <tr><td>Chemical logistics</td><td>Delivery runs vs. demand</td><td>68%</td><td>Unplanned ad-hoc orders</td></tr>
+          <tr><td>Sales</td><td>Quote throughput vs. follow-up</td><td>—</td><td>Manual re-quoting, lost leads</td></tr>
+        </table>
+        <div class="callout tn"><b>So-what:</b> a few points of utilisation recovered on ~18
+        billable staff is the clearest hard-dollar ERP payback — lifting field-tech utilisation from
+        72% toward 80% is equivalent to adding capacity without hiring.</div>
+      </section>
+
+      <section class="section">
+        <h2>Span of control &amp; FTE by function</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="spanBar" height="240"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading span of control</h3>
+            <p>Below the Director, five leads each carry a workable span (6–12 direct reports). The
+            true span-of-control problem sits one level up: every lead reports to a single apex, and
+            cross-functional decisions (pricing, procurement) re-converge there.</p>
+            <div class="callout warn"><b>The read:</b> the org isn't over-layered — it's
+            under-delegated. Odoo approval workflows widen the founder's effective span without
+            adding management layers.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Hiring &amp; capability plan to support growth</h2>
+        <p>A phased plan that pairs targeted hires with capability-building, sequenced to the Odoo
+        rollout so new roles inherit system-native ways of working rather than legacy habits.</p>
+        <table class="tbl">
+          <tr><th>Horizon</th><th>Hire / role</th><th>Department</th><th>Rationale</th><th>Capability move</th></tr>
+          <tr><td>0–6 mo</td><td>Marketing / digital coordinator</td><td>Sales</td><td>Own the digital funnel &amp; CRM lead flow</td><td>Train as CRM &amp; Website super-user</td></tr>
+          <tr><td>0–6 mo</td><td>Service scheduler / dispatcher</td><td>Service</td><td>Lift field-tech utilisation 72%→80%</td><td>Field Service admin certification</td></tr>
+          <tr><td>6–12 mo</td><td>Workshop planner / estimator</td><td>Workshop</td><td>Standardise BoMs &amp; job costing</td><td>Manufacturing &amp; costing key-user</td></tr>
+          <tr><td>6–12 mo</td><td>Finance / e-invoicing officer</td><td>Admin/Finance</td><td>MyInvois &amp; SST throughput at scale</td><td>Odoo Accounting advanced</td></tr>
+          <tr><td>12–18 mo</td><td>2–3 field technicians</td><td>Service</td><td>Convert recovered demand into capacity</td><td>Onboard mobile-app native</td></tr>
+          <tr><td>12–18 mo</td><td>Operations manager (2nd line)</td><td>Cross</td><td>De-risk founder dependence</td><td>Cross-module dashboard owner</td></tr>
+        </table>
+        <div class="callout tn"><b>So-what:</b> the first two hires are self-funding — the scheduler
+        pays for itself in recovered field-tech hours, and the coordinator converts the captured
+        digital funnel into quotes. Both are prerequisites, not costs.</div>
+      </section>
+
+      <section class="section">
+        <h2>So-what for the Odoo 19 build</h2>
+        <p>The org shape sets the ERP's role and scheduling design: five department roles with
+        scoped access; Manufacturing work orders and timesheets for the workshop; Field Service
+        dispatch, route and parts for technicians; Subscriptions for chemical logistics; and HR for
+        a ~45-person establishment. The capacity story is the benefits case — utilisation, not
+        headcount, is the lever.</p>
+        <div class="callout tn"><b>Cross-link:</b> see <a href="founders-leadership.html">Founders
+        &amp; Leadership</a> for the apex these departments report into, and the Department Workflows
+        pages for how work moves between them.</div>
+
+        <div class="pagenav">
+          <a href="founders-leadership.html">← Prev: Founders &amp; Leadership</a>
+          <a href="digital-presence.html">Next: Digital &amp; Web Presence →</a>
+        </div>
+      </section>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Headcount
+      and utilisation are analyst modelling — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('hcBar'), {
+  type: 'bar',
+  data: { labels: ['Sales','Workshop','Service','Chemical','Admin/Fin'],
+    datasets: [{ label:'Headcount', data:[8,12,10,6,9],
+      backgroundColor:['#3F6FB0','#0B1F3A','#7FA9DE','#16C098','#E8A13A'] }]},
+  options: { plugins:{ legend:{ display:false }, title:{ display:true, text:'Headcount by department' } },
+    scales:{ y:{ beginAtZero:true } } }
+});
+new Chart(document.getElementById('utilBar'), {
+  type: 'bar',
+  data: { labels: ['Workshop','Field techs','Chemical logistics'],
+    datasets: [
+      { label:'Current %', data:[84,72,68], backgroundColor:'#7FA9DE' },
+      { label:'Target %', data:[88,80,78], backgroundColor:'#16C098' }
+    ]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Utilisation: current vs target' } },
+    scales:{ y:{ beginAtZero:true, max:100 } } }
+});
+new Chart(document.getElementById('spanBar'), {
+  type: 'bar',
+  data: { labels: ['Sales Lead','Workshop Mgr','Service Lead','Chemical Lead','Admin/Fin Lead'],
+    datasets: [{ label:'Direct reports (FTE)', data:[8,12,10,6,9],
+      backgroundColor:['#3F6FB0','#0B1F3A','#7FA9DE','#16C098','#E8A13A'] }]},
+  options: { indexAxis:'y', plugins:{ legend:{ display:false }, title:{ display:true, text:'Span of control: FTE per lead' } },
+    scales:{ x:{ beginAtZero:true } } }
+});
+</script>
+</body>
+</html>

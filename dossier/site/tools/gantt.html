@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Gantt — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-page="gantt">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Project Gantt</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents</span>
+      <h1>Project Gantt: the full Odoo 19<br>implementation, week by week.</h1>
+      <p>The end-to-end delivery schedule for the JR-Tech rollout — discovery through hypercare —
+      rendered as a live Mermaid Gantt, with a milestone table beneath it. The plan phases value:
+      the quoting and stock pain is solved first, the rest follows on a proven backbone.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">~6 mo</div><div class="lbl">discovery to full go-live</div></div>
+          <div class="kpi"><div class="num">5</div><div class="lbl">delivery phases</div></div>
+          <div class="kpi"><div class="num">8</div><div class="lbl">tracked milestones</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">business lines onboarded</div></div>
+        </div>
+        <p class="lead">Dates below are illustrative, anchored to a Q3 2026 start. The critical path
+        runs through data readiness and Phase 1 sign-off — slip there moves everything, which is why
+        discovery and migration get dedicated tracks rather than being squeezed into build sprints.</p>
+      </section>
+
+      <section class="section">
+        <h2>Implementation Gantt</h2>
+        <div class="mermaid">
+gantt
+  title JR-Tech × TechNext — Odoo 19 Implementation
+  dateFormat  YYYY-MM-DD
+  axisFormat  %b %d
+
+  section Phase 0 · Discovery
+  Kickoff &amp; stakeholder mapping      :done,    p0a, 2026-07-01, 5d
+  Department discovery workshops      :active,  p0b, after p0a, 12d
+  Business Requirements Doc (BRD)     :         p0c, after p0b, 8d
+  Solution design &amp; app mapping      :         p0d, after p0c, 6d
+  milestone BRD sign-off              :milestone, m1, after p0c, 0d
+
+  section Phase 1 · Core (Sales · Stock · Finance)
+  Environment &amp; base config          :         p1a, after p0d, 6d
+  Data cleanup &amp; migration (core)    :crit,    p1b, after p0d, 14d
+  CRM &amp; Sales configuration          :         p1c, after p1a, 12d
+  Inventory &amp; Purchase configuration :         p1d, after p1a, 12d
+  Accounting · SST · MyInvois         :crit,    p1e, after p1c, 14d
+  Core UAT &amp; fixes                   :         p1f, after p1e, 10d
+  milestone Phase 1 go-live           :milestone, m2, after p1f, 0d
+
+  section Phase 2 · Operations
+  Manufacturing (fabrication BoMs)    :         p2a, after p1f, 14d
+  Field Service &amp; Maintenance        :         p2b, after p1f, 14d
+  Repair &amp; Rental                    :         p2c, after p2a, 10d
+  Subscriptions (chemical resupply)   :         p2d, after p2b, 8d
+  Operations UAT                      :         p2e, after p2c, 10d
+  milestone Phase 2 go-live           :milestone, m3, after p2e, 0d
+
+  section Phase 3 · AI &amp; Analytics
+  AI-assisted quoting                 :         p3a, after p2e, 10d
+  Predictive maintenance &amp; reorder   :         p3b, after p2e, 10d
+  Management dashboards &amp; KPIs       :         p3c, after p3a, 8d
+  milestone Analytics live            :milestone, m4, after p3c, 0d
+
+  section Phase 4 · Enablement &amp; Hypercare
+  Role-based training                 :         p4a, after p1e, 12d
+  Cutover &amp; final migration          :crit,    p4b, after p2e, 5d
+  Hypercare support window            :         p4c, after m3, 30d
+  Project close &amp; handover           :         p4d, after p4c, 5d
+  milestone Project close             :milestone, m5, after p4d, 0d
+        </div>
+        <div class="callout warn"><b>Critical path (red):</b> data cleanup/migration, the
+        SST/MyInvois accounting build, and the final cutover. These tasks have the least float — they
+        are where the Risk Register and RACI focus accountability.</div>
+      </section>
+
+      <section class="section">
+        <h2>Milestone table</h2>
+        <table class="tbl">
+          <tr><th>#</th><th>Milestone</th><th>Phase</th><th>Target</th><th>Exit criteria</th><th>Owner</th></tr>
+          <tr><td>M1</td><td>BRD sign-off</td><td>Discovery</td><td>Wk 5</td><td>Requirements agreed &amp; baselined; scope frozen for Phase 1</td><td>JR-Tech + TechNext</td></tr>
+          <tr><td>M2</td><td>Phase 1 go-live</td><td>Core</td><td>Wk 14</td><td>Quotes, stock &amp; SST/MyInvois invoicing live; core UAT passed</td><td>TechNext</td></tr>
+          <tr><td>M3</td><td>Phase 2 go-live</td><td>Operations</td><td>Wk 20</td><td>Fabrication, field service, repair, rental &amp; subscriptions live</td><td>TechNext</td></tr>
+          <tr><td>M4</td><td>Analytics live</td><td>AI &amp; Analytics</td><td>Wk 24</td><td>AI quoting, predictive reorder/maintenance &amp; dashboards in use</td><td>TechNext</td></tr>
+          <tr><td>M5</td><td>Project close</td><td>Hypercare</td><td>Wk 30</td><td>Hypercare exited, KPIs met, handover &amp; documentation complete</td><td>Joint steering</td></tr>
+          <tr><td>G1</td><td>Data ready</td><td>Core</td><td>Wk 9</td><td>Cleaned master data validated &amp; loaded — gate to Phase 1 UAT</td><td>JR-Tech</td></tr>
+          <tr><td>G2</td><td>Super-users trained</td><td>Enablement</td><td>Wk 12</td><td>Department champions certified ahead of go-live</td><td>TechNext</td></tr>
+          <tr><td>G3</td><td>Cutover complete</td><td>Hypercare</td><td>Wk 20</td><td>Final migration done; legacy tools retired for live areas</td><td>Joint</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the build:</b> the Gantt and milestones are the spine of
+        the engagement — they connect the <a href="../pages/delivery/roadmap.html">Implementation
+        Roadmap</a>, <a href="../pages/delivery/risk-raci.html">Risk Register &amp; RACI</a> and
+        <a href="roi-tco.html">ROI / TCO Model</a> (payback starts at M2, not at project close).</div>
+
+      </section>
+
+      <section class="section">
+        <h2>Work-breakdown structure (behind the Gantt)</h2>
+        <p class="lead">The Gantt shows the shape; this is the detail beneath every bar — phase →
+        workstream → task, with duration, the dependency it waits on, and the accountable owner. It is
+        the planning artefact estimates and the resource plan are built from.</p>
+        <table class="tbl">
+          <tr><th>Phase</th><th>Workstream</th><th>Task</th><th>Duration</th><th>Depends on</th><th>Owner</th></tr>
+          <tr><td rowspan="3"><b>P0 · Discovery</b></td><td>Mobilisation</td><td>Kickoff &amp; stakeholder mapping</td><td>5d</td><td>—</td><td>TechNext PM</td></tr>
+          <tr><td>Requirements</td><td>Department discovery workshops</td><td>12d</td><td>Kickoff</td><td>Business analyst</td></tr>
+          <tr><td>Design</td><td>BRD + solution design &amp; app mapping</td><td>14d</td><td>Workshops</td><td>Solution architect</td></tr>
+          <tr><td rowspan="6"><b>P1 · Core</b></td><td>Platform</td><td>Environment &amp; base config</td><td>6d</td><td>Solution design</td><td>Developer</td></tr>
+          <tr><td>Data <span class="tag red">critical</span></td><td>Core master-data cleanup &amp; migration</td><td>14d</td><td>Solution design</td><td>JR-Tech data owner</td></tr>
+          <tr><td>Commercial</td><td>CRM &amp; Sales configuration</td><td>12d</td><td>Base config</td><td>Consultant</td></tr>
+          <tr><td>Supply</td><td>Inventory &amp; Purchase configuration</td><td>12d</td><td>Base config</td><td>Consultant</td></tr>
+          <tr><td>Finance <span class="tag red">critical</span></td><td>Accounting · SST · MyInvois</td><td>14d</td><td>CRM/Sales config</td><td>Finance consultant</td></tr>
+          <tr><td>Quality</td><td>Core UAT &amp; fixes</td><td>10d</td><td>Accounting build + migration</td><td>Super-users</td></tr>
+          <tr><td rowspan="5"><b>P2 · Operations</b></td><td>Make</td><td>Manufacturing (fabrication BoMs)</td><td>14d</td><td>Core UAT</td><td>Consultant</td></tr>
+          <tr><td>Service</td><td>Field Service &amp; Maintenance</td><td>14d</td><td>Core UAT</td><td>Consultant</td></tr>
+          <tr><td>Service</td><td>Repair &amp; Rental</td><td>10d</td><td>Manufacturing</td><td>Consultant</td></tr>
+          <tr><td>Recurring</td><td>Subscriptions (chemical resupply)</td><td>8d</td><td>Field Service</td><td>Consultant</td></tr>
+          <tr><td>Quality</td><td>Operations UAT</td><td>10d</td><td>Repair &amp; Rental</td><td>Super-users</td></tr>
+          <tr><td rowspan="3"><b>P3 · AI &amp; Analytics</b></td><td>Intelligence</td><td>AI-assisted quoting</td><td>10d</td><td>Operations UAT</td><td>Developer</td></tr>
+          <tr><td>Intelligence</td><td>Predictive maintenance &amp; reorder</td><td>10d</td><td>Operations UAT</td><td>Developer</td></tr>
+          <tr><td>Reporting</td><td>Management dashboards &amp; KPIs</td><td>8d</td><td>AI quoting</td><td>BI consultant</td></tr>
+          <tr><td rowspan="4"><b>P4 · Enablement &amp; Hypercare</b></td><td>People</td><td>Role-based training</td><td>12d</td><td>Accounting build</td><td>Trainer</td></tr>
+          <tr><td>Cutover <span class="tag red">critical</span></td><td>Cutover &amp; final migration</td><td>5d</td><td>Operations UAT</td><td>TechNext PM</td></tr>
+          <tr><td>Support</td><td>Hypercare support window</td><td>30d</td><td>Phase 2 go-live</td><td>Support team</td></tr>
+          <tr><td>Close</td><td>Project close &amp; handover</td><td>5d</td><td>Hypercare</td><td>Joint steering</td></tr>
+        </table>
+        <div class="callout warn"><b>Critical path:</b> the engagement's longest dependent chain runs
+        <em>solution design → core data migration → SST/MyInvois accounting build → core UAT →
+        operations UAT → final cutover</em>. These tasks carry the least float — any slip moves
+        go-live one-for-one. They map directly to the red bars in the Gantt and the top entries of the
+        <a href="../pages/delivery/risk-raci.html">Risk Register &amp; RACI</a>. Training runs in
+        parallel off the accounting build, so it does not extend the path.</div>
+      </section>
+
+      <section class="section">
+        <h2>Resource loading by phase</h2>
+        <p class="lead">Effort is not flat across the plan. This shows planned person-days by role
+        across the five phases — the basis of the staffing profile and the resource line in the
+        <a href="roi-tco.html">ROI / TCO model</a>. Build effort peaks in Phase 1–2; super-user load
+        rises into UAT and training.</p>
+        <div class="chartbox"><canvas id="resourceChart" height="260"></canvas></div>
+        <div class="callout tn"><b>So what for the build:</b> the developer/consultant peak in Phases
+        1–2 sets when TechNext capacity must be ring-fenced, while the super-user ramp in Phase 1 UAT
+        and Phase 4 training is the JR-Tech commitment that protects adoption — the leading indicator
+        on the <a href="../pages/delivery/kpis-benefits.html">KPIs &amp; Benefits</a> page.</div>
+
+        <div class="pagenav">
+          <a href="roi-tco.html">← Prev: ROI / TCO Model</a>
+          <span></span>
+        </div>
+        <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Illustrative schedule — see Methodology &amp; Assumptions.</div></footer>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('resourceChart'), {
+  type: 'bar',
+  data: {
+    labels: ['P0 Discovery','P1 Core','P2 Operations','P3 AI & Analytics','P4 Enablement'],
+    datasets: [
+      { label: 'Consultant (person-days)', data: [10, 48, 56, 8, 6],
+        backgroundColor: '#0B1F3A' },
+      { label: 'Developer (person-days)', data: [4, 24, 14, 28, 10],
+        backgroundColor: '#7FA9DE' },
+      { label: 'Super-user / JR-Tech (person-days)', data: [12, 22, 16, 6, 24],
+        backgroundColor: '#16C098' }
+    ]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'bottom' } },
+    scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: 'Person-days' } } } }
+});
+</script>
+</body>
+</html>

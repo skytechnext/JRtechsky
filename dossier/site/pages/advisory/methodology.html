@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology &amp; Assumptions — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="methodology">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Advisory</b> · Methodology &amp; Assumptions</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Advisory</span>
+      <h1>Methodology &amp; Assumptions: how the<br>dossier was built — and what we modelled.</h1>
+      <p>This is the page that earns the rest of the dossier its credibility. It explains the research
+      process, names the analytical frameworks behind each section, and carries the single consolidated
+      note that some figures are TechNext analyst models where public data was unavailable.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">2</div><div class="lbl">verified primary sources at the core (brand book + card)</div></div>
+          <div class="kpi"><div class="num">7</div><div class="lbl">strategy frameworks applied across the dossier</div></div>
+          <div class="kpi"><div class="num">1</div><div class="lbl">consolidated modelling note — not per-figure caveats</div></div>
+          <div class="kpi"><div class="num">100%</div><div class="lbl">findings tied back to an Odoo 19 build implication</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How the dossier was produced</h2>
+        <p class="lead">The engagement followed a disciplined evidence pipeline: anchor on what is
+        verifiably true about JR-Tech, widen with public signals, model only the gaps, then convert
+        every finding into a concrete Odoo 19 design or delivery decision.</p>
+        <div class="mermaid">
+flowchart LR
+  A[Primary facts\nBrand book + card] --> B[Public-web\ncorroboration]
+  B --> C[Gap analysis\nWhat is not public?]
+  C --> D[Analyst modelling\nMY-SME estimates]
+  A --> E[Findings]
+  B --> E
+  D --> E
+  E --> F[Odoo 19 build\nimplications]
+  style A fill:#16C098,color:#fff
+  style D fill:#E8A13A,color:#fff
+  style F fill:#0B1F3A,color:#fff
+        </div>
+        <div class="grid g2">
+          <div class="card">
+            <h3>What is verified</h3>
+            <p>Legal name and SSM number, incorporation era (~2009), director and contact details, the
+            Gelugor (Penang) office, the four business lines, and the brand/AI positioning — all drawn
+            directly from the brand book and business card.</p>
+          </div>
+          <div class="card">
+            <h3>What is modelled</h3>
+            <p>Headcount, revenue and valuation, named clients, win-rates, shrinkage rates and the
+            benefit/ROI figures in the interactive tools. These are realistic Penang-SME estimates,
+            clearly indicative rather than audited.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The consolidated modelling note</h2>
+        <div class="callout warn"><b>Read this once; it applies everywhere.</b> Where public data does
+        not exist — specifically <b>financials (revenue, margins, valuation), headcount, and client
+        names</b> — the figures in this dossier are <b>TechNext analyst models</b>, constructed to be
+        realistic for a Penang-based F&amp;B kitchen-engineering SME incorporated around 2009 and
+        consistent with the verified facts on the <a href="appendix.html">Appendix &amp; Sources</a>
+        page. They are decision-support estimates, <b>not</b> audited accounts, statutory filings, or
+        guarantees of outcome. We deliberately state this <b>once</b> rather than caveating every number,
+        so the analysis reads cleanly. Verified primary facts are attributed in the source list (S1–S7);
+        anything not attributable there should be treated as modelled (S8).</div>
+        <table class="tbl">
+          <tr><th>Figure type</th><th>Source basis</th><th>Treatment</th></tr>
+          <tr><td>Identity, contact, SSM, business lines</td><td>Primary (S1, S2)</td><td><span class="tag green">Verified</span></td></tr>
+          <tr><td>Service catalogue, digital presence</td><td>Public web (S3)</td><td><span class="tag">Corroborated</span></td></tr>
+          <tr><td>Compliance drivers (SST, MyInvois, HACCP)</td><td>Public frameworks (S6)</td><td><span class="tag green">Verified</span></td></tr>
+          <tr><td>Odoo editions, app mapping, licence inputs</td><td>Odoo docs (S7)</td><td><span class="tag green">Verified</span></td></tr>
+          <tr><td>Headcount &amp; org structure</td><td>Analyst model (S8)</td><td><span class="tag warn">Modelled</span></td></tr>
+          <tr><td>Revenue, margins, valuation</td><td>Analyst model (S8)</td><td><span class="tag warn">Modelled</span></td></tr>
+          <tr><td>Named clients / case examples</td><td>Analyst model (S8)</td><td><span class="tag warn">Illustrative</span></td></tr>
+          <tr><td>Benefit, ROI, payback figures</td><td>Analyst model + user inputs</td><td><span class="tag warn">Indicative</span></td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Frameworks used</h2>
+        <p class="lead">Each analytical section is built on an established framework so the reasoning is
+        transparent and repeatable rather than ad hoc.</p>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Macro</span><h3>PESTLE</h3><p>Political, Economic, Social, Technological, Legal, Environmental scan of the MY F&amp;B-engineering context.</p></div>
+          <div class="card"><span class="tag">Position</span><h3>SWOT / TOWS</h3><p>Internal strengths/weaknesses against external opportunities/threats, converted to action via TOWS.</p></div>
+          <div class="card"><span class="tag">Industry</span><h3>Porter's Five Forces</h3><p>Rivalry, entrants, substitutes, and buyer/supplier power in commercial-kitchen supply.</p></div>
+          <div class="card"><span class="tag">Process</span><h3>BPMN &amp; UML</h3><p>As-is/to-be process modelling and data/object modelling for the Odoo design.</p></div>
+          <div class="card"><span class="tag">Value</span><h3>Value-Chain Analysis</h3><p>Primary and support activities mapped to capability and to Odoo modules.</p></div>
+          <div class="card"><span class="tag">Delivery</span><h3>RACI &amp; Risk Register</h3><p>Accountability mapping and structured risk scoring across the rollout.</p></div>
+          <div class="card"><span class="tag green">Finance</span><h3>TCO / NPV / ROI</h3><p>Discounted three-year cost-benefit modelling underpinning the ROI/TCO tool.</p></div>
+          <div class="card"><span class="tag green">Benefit</span><h3>Driver-based benefit modelling</h3><p>Time, win-rate and shrinkage drivers translated into the Profit Estimator.</p></div>
+          <div class="card"><span class="tag">Personas</span><h3>Archetype &amp; JTBD</h3><p>Customer archetypes and jobs-to-be-done framing the demand-side analysis.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Key assumptions in the interactive models</h2>
+        <table class="tbl">
+          <tr><th>Assumption</th><th>Default</th><th>Used in</th></tr>
+          <tr><td>Currency</td><td>Malaysian Ringgit (MYR / RM)</td><td>All tools</td></tr>
+          <tr><td>Working weeks per year</td><td>48</td><td>Profit Estimator</td></tr>
+          <tr><td>Discount rate (NPV)</td><td>10% p.a.</td><td>ROI / TCO Model</td></tr>
+          <tr><td>Analysis horizon</td><td>3 years</td><td>ROI / TCO Model</td></tr>
+          <tr><td>SST rate on services</td><td>8%</td><td>Accounting / context</td></tr>
+          <tr><td>Win-rate &amp; shrinkage uplift</td><td>User-set; defaults are conservative SME midpoints</td><td>Profit Estimator</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the build:</b> because the assumptions are explicit and the
+        tools recompute live, JR-Tech can stress-test the business case with its own numbers before a
+        single Odoo module is configured — the analysis is a working model, not a static claim.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="appendix.html">← Prev: Appendix &amp; Sources</a>
+        <a href="glossary.html">Next: Glossary →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</body>
+</html>

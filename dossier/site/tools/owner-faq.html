@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owner FAQ — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  .faq-controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:0 0 14px; }
+  .faq-controls input { flex:1; min-width:220px; padding:11px 14px; border:1px solid var(--jr-line);
+    border-radius:10px; font:inherit; font-size:14px; }
+  .faq-cats { display:flex; gap:8px; flex-wrap:wrap; }
+  .faq-chip { border:1px solid var(--jr-line); background:#fff; color:var(--jr-slate); cursor:pointer;
+    font:inherit; font-size:12px; font-weight:600; padding:7px 13px; border-radius:999px; }
+  .faq-chip.on { background:var(--jr-navy); color:#fff; border-color:var(--jr-navy); }
+  .faq-count { font-size:12.5px; color:var(--jr-slate); margin:0 0 10px; }
+  .faq-item { background:#fff; border:1px solid var(--jr-line); border-radius:12px; margin-bottom:10px;
+    box-shadow:var(--shadow-sm); overflow:hidden; }
+  .faq-q { display:flex; justify-content:space-between; align-items:center; gap:14px; cursor:pointer;
+    padding:15px 18px; font-weight:700; color:var(--jr-navy); font-size:15px; }
+  .faq-q .cat { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--jr-blue-700); background:rgba(127,169,222,.16); padding:3px 8px; border-radius:999px; white-space:nowrap; }
+  .faq-q .tog { color:var(--jr-blue-700); font-weight:800; font-size:18px; }
+  .faq-a { display:none; padding:0 18px 16px; color:var(--jr-ink); font-size:14px; line-height:1.65; }
+  .faq-item.open .faq-a { display:block; }
+  .faq-item.open .faq-q .tog::after { content:'−'; }
+  .faq-q .tog::after { content:'+'; }
+  .faq-bar { display:flex; gap:10px; margin-bottom:14px; }
+  .faq-bar button { border:1px solid var(--jr-line); background:#fff; font:inherit; font-size:12.5px;
+    font-weight:600; padding:7px 12px; border-radius:9px; cursor:pointer; color:var(--jr-blue-700); }
+</style>
+</head>
+<body data-page="owner-faq">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Owner FAQ</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents</span>
+      <h1>Owner FAQ: the honest answers an<br>SME owner actually wants before saying yes.</h1>
+      <p>Twenty-four plain-language answers to the questions a Penang F&amp;B business owner asks about
+      Odoo, ERP, cost, risk, timeline and AI. Search any keyword or filter by topic; click a question
+      to expand it. Written for Tan Gim Boon's chair, not a sales deck.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="faq-controls">
+          <input id="faqSearch" placeholder="Search questions &amp; answers…  e.g. cost, MyInvois, timeline" autocomplete="off">
+          <div class="faq-cats" id="faqCats">
+            <button class="faq-chip on" data-cat="all">All</button>
+            <button class="faq-chip" data-cat="Cost">Cost</button>
+            <button class="faq-chip" data-cat="Risk">Risk</button>
+            <button class="faq-chip" data-cat="Timeline">Timeline</button>
+            <button class="faq-chip" data-cat="Odoo">Odoo / ERP</button>
+            <button class="faq-chip" data-cat="AI">AI</button>
+            <button class="faq-chip" data-cat="Compliance">Compliance</button>
+          </div>
+        </div>
+        <div class="faq-bar">
+          <button id="expandAll">Expand all</button>
+          <button id="collapseAll">Collapse all</button>
+        </div>
+        <p class="faq-count" id="faqCount"></p>
+        <div id="faqList"></div>
+        <div class="callout tn" id="faqEmpty" style="display:none">No matching questions. Clear the search or pick another topic.</div>
+
+        <div class="callout tn"><b>Still on the fence?</b> Pair this with the live
+        <a href="profit-estimator.html">Profit Estimator</a> and
+        <a href="roi-tco.html">ROI / TCO Model</a> to put your own numbers behind the answers.</div>
+
+        <div class="pagenav">
+          <a href="profit-estimator.html">← Prev: Profit Estimator</a>
+          <a href="odoo-platform.html">Next: Odoo Platform →</a>
+        </div>
+        <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+var FAQ = [
+  ["Cost","How much does an Odoo 19 implementation actually cost for a business our size?","For a Penang SME with around 15 users, budget a one-time implementation in the RM80k–RM250k range plus annual running costs (hosting, support, and Enterprise seats if chosen). The exact figure depends on how many of the four business lines go live first and how much custom fabrication logic we configure. Use the ROI / TCO Model on this site to plug in your own numbers."],
+  ["Cost","Community or Enterprise edition — which is cheaper for us?","Community has no licence fee but you carry hosting and lean more on partner support. Enterprise charges per user per month (≈RM150) but bundles hosting, one-click upgrades and functional support. Below roughly 10–12 users Community is usually cheaper; above that Enterprise often wins on total cost once support is priced in. The ROI / TCO Model shows your crossover point."],
+  ["Cost","Are there hidden costs we should expect?","The usual surprises are data cleanup, extra training for resistant teams, third-party connectors (e.g. payment or e-invoicing middleware) and scope creep. We name these up front in the Quotation and Risk Register so there are no month-six shocks."],
+  ["Cost","Can we start small and expand later?","Yes — that is the recommended path. We phase the rollout: get Sales/CRM, Inventory and Accounting live first (the quoting and stock pain), then add Manufacturing, Field Service and Subscriptions. Odoo's modular design means you pay for and learn one area at a time."],
+  ["Risk","What if the project fails or stalls halfway?","We de-risk with a phased plan, fixed milestone sign-offs, a documented BRD and a Risk Register with named owners. Each phase delivers usable value on its own, so even a pause leaves you with a working system rather than a half-built one. You also own your data and the Odoo instance throughout."],
+  ["Risk","Will my staff actually use it, or fight it?","Adoption is the number-one risk in any ERP project, and we treat it as one. The Change Management plan includes role-based Staff Guides, hands-on training, super-users in each department and a hypercare window after go-live. Designing workflows around how your team already works — not against it — is half the battle."],
+  ["Risk","What happens to our data if we ever leave Odoo or TechNext?","Your data is yours. Odoo stores everything in a standard PostgreSQL database that can be exported in full. There is no proprietary lock-in on the data itself, and we document the architecture so another partner could pick it up."],
+  ["Risk","Is our business data safe in the cloud?","Odoo supports encrypted hosting, role-based access control, audit logs and regular backups. We cover this in the Security, Compliance &amp; MyInvois section, including where data is hosted and who can see what. You can also self-host on Community if you prefer data on your own infrastructure."],
+  ["Risk","We've been burned by software before. Why is this different?","Past failures usually come from buying software with no process design, no training and no accountability. This engagement starts with discovery and a BRD, maps your actual workflows, and ties every requirement to a tested configuration with demo data you can try before go-live."],
+  ["Timeline","How long until we're live?","A focused first phase (Sales, Inventory, Accounting) typically goes live in 8–14 weeks. The full multi-line rollout across all four business lines runs roughly 4–7 months depending on data readiness and your team's availability. See the Project Gantt for the detailed schedule."],
+  ["Timeline","How much of my team's time will this take?","Expect a few hours a week from key people during discovery and testing, more intensively around training and go-live. A part-time internal project champion makes the biggest difference to staying on schedule."],
+  ["Timeline","What's the very first step?","Discovery. We run the structured Discovery Questions across each department, then write the BRD. Nothing gets built until we agree on what the system must do — that is what keeps the timeline honest."],
+  ["Timeline","Can we keep running the business during the switch?","Yes. We run the new system in parallel and migrate data in stages, cutting over one area at a time. There is no day where the lights go off; the old way keeps working until the new way is proven."],
+  ["Odoo","What is Odoo, in plain terms?","Odoo is one connected system that replaces the patchwork of spreadsheets, WhatsApp threads and standalone tools. Sales, stock, fabrication jobs, service visits, chemical resupply and accounting all share the same data, so you see the whole business in one place and in real time."],
+  ["Odoo","Why Odoo and not SAP, Microsoft or a custom build?","SAP and large Microsoft deployments are built and priced for enterprises, not Penang SMEs. A fully custom build is slow and expensive to maintain. Odoo hits the sweet spot: broad functionality out of the box, affordable, and flexible enough to handle JR-Tech's custom fabrication and service work."],
+  ["Odoo","Which Odoo modules will we use?","The target architecture uses around 12 apps: CRM, Sales, Inventory, Manufacturing (for stainless-steel fabrication), Rental, Field Service, Maintenance, Repair, Subscriptions (chemical resupply), Purchase, Accounting and reporting. See the Odoo 19 Architecture page for the full map."],
+  ["Odoo","Can Odoo handle our custom stainless-steel fabrication?","Yes. Fabrication is modelled as make-to-order manufacturing: each custom job gets a Bill of Materials and work orders through your cutting, welding and assembly steps, with real costing. That turns one-off quotes into repeatable, profitable jobs."],
+  ["Odoo","Can it run all four business lines together?","That is the whole point. Consulting, equipment sales/rental, service and chemicals run on one platform with shared customers, stock and accounting — so your 'one-stop solutionist' promise finally shows up in your numbers, not just your brochure."],
+  ["Odoo","Does it work on phones for our field technicians?","Yes. Field Service and Inventory have mobile apps so technicians can see their schedule, log grease-trap and tanker visits, capture signatures and consume parts on site — no paper job sheets to re-key later."],
+  ["AI","Where does AI actually fit into this?","Practical, not hype. AI assists quoting (drafting and pricing from past jobs), flags maintenance before equipment fails, forecasts chemical resupply, and surfaces anomalies in stock and margin. It fits naturally with JR-Tech's own 'Experience the Future of Kitchens' brand. See the AI &amp; Automation Catalog."],
+  ["AI","Will AI replace my staff?","No — it removes the drudgery (re-keying, chasing, manual reorder calculations) so your people spend time on customers and craft. The goal is fewer mistakes and faster quotes, not fewer jobs."],
+  ["AI","Is the AI reliable enough to trust with real decisions?","AI here is assistive: it drafts and suggests, a human approves. Quotes, purchase orders and maintenance actions still pass through your team. You get the speed of automation with a person in control of anything that matters."],
+  ["Compliance","Will this keep us compliant with MyInvois and SST?","Yes — that is a core requirement, not an add-on. Odoo Accounting is configured for Malaysian SST and integrates with MyInvois so invoices are validated with LHDN in near real-time. The Accounting Overhaul and Security/MyInvois pages detail exactly how."],
+  ["Compliance","Does it help with food-safety and kitchen regulations our clients face?","Indirectly but usefully: structured records of equipment, maintenance and service history support your clients' HACCP and food-premises compliance, and your fabrication designs already build in hygiene zoning. The system gives you the documentation trail to prove it."]
+];
+
+var list = document.getElementById('faqList');
+var search = document.getElementById('faqSearch');
+var countEl = document.getElementById('faqCount');
+var emptyEl = document.getElementById('faqEmpty');
+var activeCat = 'all';
+
+function build(){
+  list.innerHTML = '';
+  FAQ.forEach(function(f, i){
+    var item = document.createElement('div');
+    item.className = 'faq-item';
+    item.setAttribute('data-cat', f[0]);
+    item.setAttribute('data-hay', (f[1] + ' ' + f[2]).toLowerCase());
+    item.innerHTML = '<div class="faq-q"><span>' + f[1] + '</span>' +
+      '<span style="display:flex;gap:10px;align-items:center"><span class="cat">' + f[0] +
+      '</span><span class="tog"></span></span></div>' +
+      '<div class="faq-a">' + f[2] + '</div>';
+    item.querySelector('.faq-q').addEventListener('click', function(){ item.classList.toggle('open'); });
+    list.appendChild(item);
+  });
+}
+
+function filter(){
+  var q = search.value.trim().toLowerCase();
+  var shown = 0;
+  document.querySelectorAll('.faq-item').forEach(function(it){
+    var catOk = activeCat==='all' || it.getAttribute('data-cat')===activeCat;
+    var qOk = !q || it.getAttribute('data-hay').indexOf(q) > -1;
+    var ok = catOk && qOk;
+    it.style.display = ok ? '' : 'none';
+    if(ok) shown++;
+  });
+  countEl.textContent = 'Showing ' + shown + ' of ' + FAQ.length + ' questions.';
+  emptyEl.style.display = shown ? 'none' : '';
+}
+
+search.addEventListener('input', filter);
+document.getElementById('faqCats').addEventListener('click', function(e){
+  var b=e.target.closest('.faq-chip'); if(!b) return;
+  activeCat=b.getAttribute('data-cat');
+  this.querySelectorAll('.faq-chip').forEach(function(c){ c.classList.toggle('on', c===b); });
+  filter();
+});
+document.getElementById('expandAll').addEventListener('click', function(){
+  document.querySelectorAll('.faq-item').forEach(function(it){ if(it.style.display!=='none') it.classList.add('open'); }); });
+document.getElementById('collapseAll').addEventListener('click', function(){
+  document.querySelectorAll('.faq-item').forEach(function(it){ it.classList.remove('open'); }); });
+
+build();
+filter();
+</script>
+</body>
+</html>

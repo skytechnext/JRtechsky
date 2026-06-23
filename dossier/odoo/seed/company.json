@@ -1,0 +1,49 @@
+{
+  "company": {
+    "xml_id": "jr_company_main",
+    "name": "JR-Tech Solution Sdn Bhd",
+    "company_registry": "200901013633",
+    "vat": "C20090101363300",
+    "sst_registration": "B16-1808-31000123",
+    "msic_code": "46591",
+    "currency": "MYR",
+    "country": "Malaysia",
+    "street": "556-Y, Mukim 13, Batu Uban, Jalan Sultan Azlan Shah",
+    "city": "Gelugor",
+    "state": "Penang",
+    "zip": "11700",
+    "phone": "+604-657 2916",
+    "email": "info@jrtech.com.my",
+    "website": "https://www.jrtech.com.my"
+  },
+  "branches": [
+    {
+      "xml_id": "jr_branch_gelugor",
+      "name": "JR-Tech \u2014 Gelugor HQ & Fabrication",
+      "city": "Gelugor",
+      "state": "Penang",
+      "type": "HQ/Warehouse/Fabrication"
+    },
+    {
+      "xml_id": "jr_branch_kl",
+      "name": "JR-Tech \u2014 Klang Valley Service Hub",
+      "city": "Shah Alam",
+      "state": "Selangor",
+      "type": "Service hub / van stock"
+    }
+  ],
+  "warehouses": [
+    {
+      "xml_id": "wh_gelugor",
+      "name": "Gelugor Main",
+      "code": "GLG",
+      "branch": "jr_branch_gelugor"
+    },
+    {
+      "xml_id": "wh_kl",
+      "name": "KL Service Van Stock",
+      "code": "KLV",
+      "branch": "jr_branch_kl"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+project_xml_id,name,assigned_emp_xml_id,planned_hours,stage
+proj_01,Site Survey,emp_11,24,Done
+proj_01,Concept Design,emp_11,40,In Progress
+proj_01,Space Planning,emp_08,40,In Progress
+proj_01,Shop Drawings,emp_08,16,Done
+proj_01,Fabrication Coordination,emp_10,24,Done
+proj_01,Equipment Selection,emp_09,24,Done
+proj_01,Installation Supervision,emp_08,16,To Do
+proj_01,Training & Handover,emp_08,16,Done
+proj_02,Site Survey,emp_11,40,In Progress
+proj_02,Concept Design,emp_11,24,In Progress
+proj_02,Space Planning,emp_11,8,In Progress
+proj_02,Shop Drawings,emp_08,16,To Do
+proj_02,Fabrication Coordination,emp_11,8,To Do
+proj_02,Equipment Selection,emp_11,24,Done
+proj_02,Installation Supervision,emp_09,8,Done
+proj_02,Training & Handover,emp_09,40,In Progress
+proj_03,Site Survey,emp_11,40,To Do
+proj_03,Concept Design,emp_10,16,To Do
+proj_03,Space Planning,emp_08,16,In Progress
+proj_03,Shop Drawings,emp_08,24,In Progress
+proj_03,Fabrication Coordination,emp_10,16,To Do
+proj_03,Equipment Selection,emp_11,24,Done
+proj_03,Installation Supervision,emp_11,40,To Do
+proj_03,Training & Handover,emp_10,40,To Do

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Migration — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="data-migration">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Technology</b> · Data Migration</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Technology</span>
+      <h1>Data Migration Strategy</h1>
+      <p>JR-Tech's history lives in spreadsheets, WhatsApp threads and paper files. This is how we
+      get it into Odoo 19 cleanly: the sources, the source→model→field mapping, the cleansing and
+      reconciliation approach, and a cutover that never risks the live business.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">4</div><div class="lbl">source types: spreadsheets · WhatsApp · paper · point tools</div></div>
+          <div class="kpi"><div class="num">~10</div><div class="lbl">target Odoo models in scope for load</div></div>
+          <div class="kpi"><div class="num">2</div><div class="lbl">trial loads before the real cutover</div></div>
+          <div class="kpi"><div class="num">100%</div><div class="lbl">financial-balance reconciliation gate before go-live</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Where the data lives today</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Sources</h3>
+            <ul>
+              <li><b>Excel / Google Sheets</b> — customer lists, price lists, quotes, rental logs,
+              chemical resupply schedules, stock counts.</li>
+              <li><b>WhatsApp</b> — customer enquiries, service requests, order confirmations,
+              photos of jobs and equipment.</li>
+              <li><b>Paper</b> — service reports, delivery orders, signed contracts, supplier
+              invoices, fabrication drawings.</li>
+              <li><b>Point tools</b> — standalone accounting/bookkeeping file, email inbox.</li>
+            </ul>
+          </div>
+          <div class="card"><h3>The migration philosophy</h3>
+            <p>Migrate <b>masters and open items</b>, not the full transactional archive. Customers,
+            suppliers, products, price lists, open quotes/orders, rental assets, active service
+            contracts and opening financial balances come across. Closed history stays in a
+            read-only archive and (for finance) as opening balances — keeping the new database fast
+            and clean.</p>
+            <div class="callout warn"><b>WhatsApp &amp; paper</b> are not bulk-migrated. They are
+            triaged: active threads and open jobs are captured manually into Odoo; the rest is
+            scanned/archived. New inbound flows are redirected into Odoo from day one.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Migration mapping</h2>
+        <p class="lead">Each source field maps to a specific Odoo model, field and transform rule.
+        Loads use the standard Odoo import (CSV) or, for relational integrity, the
+        <code>external ID</code>-keyed import / XML-RPC scripts.</p>
+        <table class="tbl">
+          <tr><th>Source</th><th>Odoo model</th><th>Key field(s)</th><th>Transform / rule</th></tr>
+          <tr><td>Customer list (Sheet)</td><td><code>res.partner</code></td><td>name, phone, email, address, is_company</td><td>Dedupe on name+phone; split person vs company; normalise MY phone to +60</td></tr>
+          <tr><td>Supplier list (Sheet)</td><td><code>res.partner</code></td><td>name, supplier_rank, SST/TIN</td><td>Flag supplier_rank=1; capture TIN for MyInvois</td></tr>
+          <tr><td>Product / price list</td><td><code>product.template</code></td><td>name, list_price, default_code, uom, category</td><td>Assign categories per business line; map UoM; strip currency symbols</td></tr>
+          <tr><td>Chemical SKUs</td><td><code>product.template</code></td><td>type=consu/product, reordering rules</td><td>Tag for Subscriptions; set min/max for reorder</td></tr>
+          <tr><td>Open quotes</td><td><code>sale.order</code> (draft)</td><td>partner_id, order_line, state</td><td>Only open/pending; link via partner external ID</td></tr>
+          <tr><td>Rental assets</td><td><code>product.product</code> + <code>maintenance.equipment</code></td><td>serial/lot, model, status</td><td>Create serials; seed service history where known</td></tr>
+          <tr><td>Active service contracts</td><td><code>sale.subscription</code> / FSM</td><td>partner, recurrence, SLA</td><td>Map billing cycle; set next invoice date</td></tr>
+          <tr><td>Stock on hand</td><td><code>stock.quant</code> (inventory adjustment)</td><td>product, location, qty</td><td>Counted at cutover; loaded as opening adjustment</td></tr>
+          <tr><td>Open AR / AP</td><td><code>account.move</code></td><td>partner, amount, due date</td><td>Load open invoices/bills only; reconcile to statement</td></tr>
+          <tr><td>Trial-balance opening</td><td><code>account.move</code> (opening entry)</td><td>account, debit, credit</td><td>Single dated opening journal; must balance to zero</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Cleansing approach</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag">1 · Profile</span><h3>Assess</h3>
+            <p>Profile each source for duplicates, blanks, inconsistent formats and orphan
+            references before any load. Quantify the cleansing effort up front.</p></div>
+          <div class="card"><span class="tag">2 · Standardise</span><h3>Normalise</h3>
+            <p>Phone/address formats, currency, units of measure, product naming and category
+            taxonomy aligned to the Odoo structure on the
+            <a href="odoo-architecture.html">architecture page</a>.</p></div>
+          <div class="card"><span class="tag">3 · Dedupe</span><h3>De-duplicate</h3>
+            <p>Merge duplicate customers/suppliers/products using deterministic keys (name+phone,
+            default_code) with a human-reviewed exception list.</p></div>
+          <div class="card"><span class="tag">4 · Enrich</span><h3>Complete</h3>
+            <p>Fill gaps that Odoo needs — TIN/SST IDs for MyInvois, UoM, product categories — owned
+            by JR-Tech data stewards, not guessed.</p></div>
+          <div class="card"><span class="tag">5 · Stage</span><h3>External IDs</h3>
+            <p>Assign stable <code>external ID</code>s so relationships (orders→customers,
+            BoMs→products) survive re-imports and trial loads.</p></div>
+          <div class="card"><span class="tag green">6 · Validate</span><h3>Gate</h3>
+            <p>Row counts, control totals and referential checks must pass before promotion to the
+            next environment.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Migration timeline</h2>
+        <p class="lead">Two full trial loads de-risk the real cutover. Each trial is validated and
+        signed off before the next; the production load happens over a controlled freeze window.</p>
+        <div class="mermaid">
+gantt
+    title Data migration timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b
+    section Prepare
+    Source inventory & profiling      :a1, 2026-07-01, 14d
+    Mapping & transform rules         :a2, after a1, 14d
+    section Cleansing
+    Standardise & dedupe (stewards)   :b1, after a2, 21d
+    Enrichment (TIN/SST, UoM)         :b2, after a2, 21d
+    section Trial loads
+    Trial load 1 + validation         :c1, after b1, 10d
+    Fix & re-map                      :c2, after c1, 7d
+    Trial load 2 + UAT sign-off       :c3, after c2, 10d
+    section Cutover
+    Freeze & final delta load         :d1, after c3, 3d
+    Opening balances & reconciliation :d2, after d1, 2d
+    Go-live                           :milestone, after d2, 0d
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Cutover &amp; reconciliation</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Cutover strategy</h3>
+            <ol class="steps">
+              <li><b>Freeze</b> — short business freeze on master-data edits; legacy goes
+              read-only.</li>
+              <li><b>Delta load</b> — load any records created since the last trial extract.</li>
+              <li><b>Opening balances</b> — post the dated opening journal and inventory
+              adjustment.</li>
+              <li><b>Reconcile &amp; sign-off</b> — finance and ops confirm totals match before the
+              system is declared live.</li>
+              <li><b>Go-live</b> — Odoo becomes the system of record; new transactions only in
+              Odoo.</li>
+            </ol>
+          </div>
+          <div class="card"><h3>Validation &amp; reconciliation gates</h3>
+            <table class="tbl" style="font-size:12.5px">
+              <tr><th>Check</th><th>Pass criterion</th></tr>
+              <tr><td>Row counts</td><td>Loaded = source (minus logged exclusions)</td></tr>
+              <tr><td>Customer/supplier dedupe</td><td>0 unresolved duplicates</td></tr>
+              <tr><td>AR / AP totals</td><td>Match legacy aged balances to the cent</td></tr>
+              <tr><td>Trial balance</td><td>Opening journal balances to zero; ties to prior close</td></tr>
+              <tr><td>Stock value</td><td>Inventory valuation = counted opening value</td></tr>
+              <tr><td>Referential integrity</td><td>No orphan orders/BoMs/contracts</td></tr>
+            </table>
+            <div class="callout tn"><b>Rollback:</b> because legacy stays read-only and intact
+            through go-live, the fallback is simply to defer cutover — no destructive cutoff. This
+            ties into the <a href="../delivery/roadmap.html">roadmap</a> and
+            <a href="../delivery/risk-raci.html">risk register</a>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Appendix A · Field-level mapping</h2>
+        <p class="lead">The build-grade detail behind the summary mapping above: each target Odoo model,
+        the exact fields the loader populates, the identity key that makes loads idempotent, and the
+        governing seed file in <code>odoo/seed/</code>. This mirrors the BRD
+        <a href="../../tools/brd.html">data dictionary</a> and the seeded
+        <code>/odoo/seed/</code> schema the AI/MCP agent loads.</p>
+
+        <h3>A.1 · Master data</h3>
+        <table class="tbl" style="font-size:12.5px">
+          <tr><th>Seed file</th><th>Odoo model</th><th>Fields loaded</th><th>Identity key / transform</th></tr>
+          <tr><td><code>company.json</code></td><td><code>res.company</code>, <code>stock.warehouse</code></td><td>name, company_registry (SSM), vat (TIN), sst_registration, msic_code, currency, branches[], warehouses[]</td><td>xml_id; MSIC 46591; MYR</td></tr>
+          <tr><td><code>customers.csv</code></td><td><code>res.partner</code> (customer_rank&gt;0)</td><td>name, is_company, archetype, street/city/state/zip, phone, email, vat, property_payment_term, pricelist</td><td>xml_id; normalise phone +60; archetype→tag</td></tr>
+          <tr><td><code>vendors.csv</code></td><td><code>res.partner</code> (supplier_rank&gt;0)</td><td>name, supplies, city, phone, email, vat, property_supplier_payment_term</td><td>xml_id; supplier_rank=1</td></tr>
+          <tr><td><code>products.csv</code></td><td><code>product.template</code></td><td>default_code, category, product_type, uom, list_price, standard_cost, sale_tax, purchase_tax, can_be_sold/purchased, route, rent_ok, subscription, rmin/rmax</td><td>default_code; storable→consu+is_storable; tax→taxes.xml_id</td></tr>
+          <tr><td><code>product_categories.csv</code></td><td><code>product.category</code></td><td>name, parent_xml_id, note (income-account hint)</td><td>xml_id; self-parent</td></tr>
+          <tr><td><code>boms.csv</code> · <code>bom_lines.csv</code></td><td><code>mrp.bom</code> · <code>mrp.bom.line</code></td><td>product_xml_id (prod_fab_*), qty, uom; line → component_xml_id (prod_raw_*), qty</td><td>xml_id; components are raw only</td></tr>
+          <tr><td><code>reordering_rules.csv</code></td><td><code>stock.warehouse.orderpoint</code></td><td>product, warehouse, min_qty, max_qty, multiple_qty</td><td>product+warehouse</td></tr>
+          <tr><td><code>accounts.csv</code></td><td><code>account.account</code></td><td>code (MY 4-digit), name, account_type</td><td>code (unique)</td></tr>
+          <tr><td><code>taxes.csv</code></td><td><code>account.tax</code></td><td>name (SST-S-10/SST-S-5/SST-SV-8/EXEMPT-0), type_tax_use, amount, amount_type, tax_account_code</td><td>xml_id; tax_account_code→accounts.code</td></tr>
+          <tr><td><code>journals.csv</code></td><td><code>account.journal</code></td><td>name, type, code, default_account_code</td><td>xml_id</td></tr>
+          <tr><td><code>employees.csv</code> · <code>departments.csv</code></td><td><code>hr.employee</code> · <code>hr.department</code></td><td>name, job_title, department_xml_id, work_email, work_phone, wage_myr, create_user, user_login</td><td>xml_id; create_user→res.users</td></tr>
+        </table>
+
+        <h3>A.2 · Transactional &amp; open items</h3>
+        <table class="tbl" style="font-size:12.5px">
+          <tr><th>Seed file</th><th>Odoo model</th><th>Fields loaded</th><th>Identity key / rule</th></tr>
+          <tr><td><code>sale_orders.csv</code> · <code>sale_order_lines.csv</code></td><td><code>sale.order</code> · <code>sale.order.line</code></td><td>name, partner_xml_id, date_order, state, salesperson_xml_id, pricelist; line → product, qty, unit_price</td><td>name unique; FK→customers/products</td></tr>
+          <tr><td><code>rental_contracts.csv</code> · <code>rental_lines.csv</code></td><td><code>sale.order</code> (is_rental)</td><td>partner, is_rental, date_start, date_return, deposit, state; line → product (rent_ok), duration_days, unit_price</td><td>xml_id; line product must be rent_ok</td></tr>
+          <tr><td><code>subscriptions.csv</code> · <code>subscription_lines.csv</code></td><td><code>sale.subscription</code></td><td>partner, plan (Monthly/Quarterly), date_start, recurring_rule, state; line → chemical product, qty, unit_price</td><td>xml_id; line product = chemical</td></tr>
+          <tr><td><code>manufacturing_orders.csv</code></td><td><code>mrp.production</code></td><td>name, product_xml_id (fab), bom_ref, qty, date_planned, state, warehouse</td><td>name unique; product has BoM</td></tr>
+          <tr><td><code>purchase_orders.csv</code> · <code>purchase_order_lines.csv</code></td><td><code>purchase.order</code> · line</td><td>vendor_xml_id, date_order, state; line → product, qty, unit_cost</td><td>name; FK→vendors</td></tr>
+          <tr><td><code>service_tasks.csv</code></td><td><code>project.task</code> (FSM) / <code>maintenance.request</code> / <code>repair.order</code></td><td>kind, project_or_team, partner, assigned_emp_xml_id, scheduled_date, stage, linked_product</td><td>kind routes to model</td></tr>
+          <tr><td><code>projects.csv</code> · <code>project_tasks.csv</code></td><td><code>project.project</code> · <code>project.task</code></td><td>name, partner, manager_emp, date_start, is_fsm; task → assigned_emp, planned_hours, stage</td><td>xml_id</td></tr>
+          <tr><td><code>crm_leads.csv</code></td><td><code>crm.lead</code></td><td>name, partner_xml_id, type, stage, expected_revenue, probability, salesperson, team</td><td>xml_id</td></tr>
+          <tr><td><code>helpdesk_tickets.csv</code></td><td><code>helpdesk.ticket</code></td><td>name, partner, team, priority, stage, assigned_emp_xml_id</td><td>xml_id</td></tr>
+          <tr><td><code>invoices.csv</code></td><td><code>account.move</code> (out_invoice)</td><td>name, partner, source_so, invoice_date, untaxed, tax, total, journal, payment_status, state=posted</td><td>name unique; source_so confirmed only; total = Σ(qty×price)+SST</td></tr>
+          <tr><td><code>payments.csv</code></td><td><code>account.payment</code></td><td>invoice_xml_id, partner, amount, date, journal (bank), payment_type=inbound</td><td>paid invoices only; reconcile to invoice</td></tr>
+          <tr><td><code>opening_entries.csv</code></td><td><code>account.move</code> (entry, Misc)</td><td>journal, date, label, account_code, debit, credit</td><td>group by date/label; debits = credits = RM 875,000</td></tr>
+        </table>
+        <div class="callout"><b>Idempotency:</b> every <code>*_xml_id</code> resolves to a row in its
+        target file and is loaded as the record's <code>external_id</code>, so trial loads and the
+        production cutover can be re-run without creating duplicates.</div>
+      </section>
+
+      <section class="section">
+        <h2>Appendix B · Data-quality scorecard</h2>
+        <p class="lead">Each domain is scored before load on six dimensions — completeness, uniqueness,
+        validity, consistency, integrity and timeliness — to size the cleansing effort and set a
+        readiness gate. Scores below are an illustrative pre-cleanse baseline of JR-Tech's current
+        sources; the target for promotion to production is <b>≥ 95%</b> on every dimension.</p>
+        <table class="tbl" style="font-size:12.5px">
+          <tr><th>Domain</th><th>Complete</th><th>Unique</th><th>Valid</th><th>Consistent</th><th>Integrity</th><th>Readiness</th></tr>
+          <tr><td>Customers</td><td>82%</td><td>74%</td><td>80%</td><td>78%</td><td>—</td><td><span class="tag warn">Medium</span></td></tr>
+          <tr><td>Vendors</td><td>85%</td><td>88%</td><td>82%</td><td>84%</td><td>—</td><td><span class="tag green">Good</span></td></tr>
+          <tr><td>Products / price list</td><td>76%</td><td>70%</td><td>72%</td><td>68%</td><td>—</td><td><span class="tag red">Low</span></td></tr>
+          <tr><td>BoMs</td><td>60%</td><td>90%</td><td>78%</td><td>72%</td><td>85%</td><td><span class="tag red">Low</span></td></tr>
+          <tr><td>Rental assets</td><td>55%</td><td>80%</td><td>70%</td><td>65%</td><td>—</td><td><span class="tag red">Low</span></td></tr>
+          <tr><td>Open AR / AP</td><td>90%</td><td>95%</td><td>92%</td><td>88%</td><td>94%</td><td><span class="tag green">Good</span></td></tr>
+          <tr><td>Opening trial balance</td><td>95%</td><td>100%</td><td>96%</td><td>95%</td><td>100%</td><td><span class="tag green">Good</span></td></tr>
+        </table>
+        <div class="chartbox"><canvas id="dqChart" height="260"></canvas></div>
+        <div class="callout warn"><b>So what for the build:</b> products, BoMs and rental assets are the
+        weakest domains — they carry the missing UoM, category, serial and component data Odoo needs —
+        so cleansing &amp; enrichment effort (and steward time) is front-loaded onto them before
+        Trial Load 1.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="odoo-architecture.html">← Prev: Odoo 19 Architecture</a>
+        <a href="integration-map.html">Next: Integration &amp; API Map →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('dqChart'), {
+  type: 'radar',
+  data: {
+    labels: ['Complete','Unique','Valid','Consistent','Integrity'],
+    datasets: [
+      { label: 'Products / price list', data: [76,70,72,68,75], borderColor:'#E2544B', backgroundColor:'rgba(226,84,75,0.12)' },
+      { label: 'Open AR / AP', data: [90,95,92,88,94], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,0.12)' },
+      { label: 'Target gate (95%)', data: [95,95,95,95,95], borderColor:'#7FA9DE', borderDash:[5,4], backgroundColor:'rgba(127,169,222,0.08)' }
+    ]
+  },
+  options: {
+    plugins:{ legend:{ position:'top' }, title:{ display:true, text:'Pre-cleanse data-quality baseline vs go-live gate' } },
+    scales:{ r:{ min:0, max:100, ticks:{ stepSize:20 } } }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top-3 Competitor Deep-Dive — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="top3-competitors">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Competitive Intel</b> · Top-3 Competitor Deep-Dive</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Competitive Intel</span>
+      <h1>Where JR-Tech wins, where it bleeds — three rival archetypes in Malaysia's commercial-kitchen market.</h1>
+      <p>A grounded read on the three competitor types JR-Tech meets most often in tenders: the
+      national equipment distributor, the specialist stainless-steel fabricator, and the
+      cleaning-chemical route operator. We profile each, score them head-to-head against JR-Tech's
+      "one-stop" model, and show why an integrated Odoo 19 backbone is the structural advantage none
+      of them can easily copy.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <h2>The competitive set</h2>
+        <p class="lead">JR-Tech's "one-stop F&amp;B engineering solutionist" promise straddles four
+        markets that competitors usually attack one at a time. Most rivals are deeper in a single
+        line and shallower across the rest. The three archetypes below are composites built from
+        observable Malaysian market patterns — distributor economics, fabrication-shop structures and
+        chemical-route models — not named firms, to keep claims defensible.</p>
+        <div class="grid g3">
+          <div class="kpi"><div class="num">A</div><div class="lbl">National Equipment Distributor — broad catalog, brand agencies, KL-centric reach</div></div>
+          <div class="kpi"><div class="num">B</div><div class="lbl">Specialist SS Fabricator — custom stainless, project-led, thin services tail</div></div>
+          <div class="kpi"><div class="num">C</div><div class="lbl">Chemical Route Operator — recurring resupply &amp; dispenser servicing at scale</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Capability radar — JR-Tech vs. the field</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="radar" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Read of the chart</h3>
+            <p>JR-Tech's signature is <b>breadth with credible depth in fabrication and after-sales</b> —
+            the only profile that scores moderate-to-high on all six axes. Each rival spikes on one or
+            two axes and collapses on integration.</p>
+            <div class="callout tn"><b>So-what for the Odoo build:</b> breadth is only an advantage if
+            the four lines share one customer record, one stock ledger and one service history. Today
+            they don't, so JR-Tech competes as four mediocre point players. Odoo 19 converts breadth
+            from a slogan into a measurable cross-sell and SLA moat.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Competitor A — National Equipment Distributor</h2>
+        <div class="grid g2">
+          <div class="card">
+            <span class="tag">Profile</span>
+            <p>Large catalog house holding brand agencies for ovens, refrigeration, dishwashers and
+            cooking ranges. Klang-Valley headquarters, showroom-led, strong procurement and credit
+            terms with manufacturers. Sells to dealers, consultants and large chains; light on custom
+            fabrication and recurring chemical revenue.</p>
+          </div>
+          <div class="card">
+            <span class="tag green">Strengths</span>
+            <ul>
+              <li>Buying power and brand authorisations → keen unit pricing.</li>
+              <li>Stock depth and fast lead times on standard equipment.</li>
+              <li>National logistics and a recognised showroom presence.</li>
+            </ul>
+            <span class="tag red">Weaknesses</span>
+            <ul>
+              <li>Box-mover economics — little design, fabrication or workflow consulting.</li>
+              <li>After-sales often outsourced; weak field-service ownership.</li>
+              <li>Thin in Penang/northern region; relationships are transactional.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout warn"><b>Pricing posture:</b> aggressive cost-plus on hardware (often
+        single-digit margins to win volume), recovering margin on accessories and freight. Competes on
+        the line-item, not the outcome.</div>
+      </section>
+
+      <section class="section">
+        <h2>Competitor B — Specialist Stainless-Steel Fabricator</h2>
+        <div class="grid g2">
+          <div class="card">
+            <span class="tag">Profile</span>
+            <p>Welding-and-fabrication workshop producing custom benches, hoods, sinks and exhaust
+            canopies for project consultants and contractors. Strong on bespoke metalwork and
+            site-fit; little equipment trading, no chemical line, project-driven cashflow with
+            lumpy utilisation.</p>
+          </div>
+          <div class="card">
+            <span class="tag green">Strengths</span>
+            <ul>
+              <li>Deep craft skill; can match difficult kitchen geometries.</li>
+              <li>Price-competitive on metal where it controls the shop floor.</li>
+              <li>Trusted by main contractors for fit-out packages.</li>
+            </ul>
+            <span class="tag red">Weaknesses</span>
+            <ul>
+              <li>No recurring revenue — feast-or-famine on project pipeline.</li>
+              <li>Manual job costing; margin leakage on rework and offcuts.</li>
+              <li>Cannot offer equipment, chemicals or maintenance as one contract.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout warn"><b>Pricing posture:</b> quote-by-drawing, labour-plus-material with
+        wide estimator variance. Wins on relationship and turnaround; loses on jobs that need a
+        bundled equipment + service wrap — exactly JR-Tech's home ground.</div>
+      </section>
+
+      <section class="section">
+        <h2>Competitor C — Cleaning-Chemical Route Operator</h2>
+        <div class="grid g2">
+          <div class="card">
+            <span class="tag">Profile</span>
+            <p>Detergent and warewash chemical supplier running a dispenser-and-resupply model: places
+            dosing equipment free or on loan, locks in recurring chemical volume, services dispensers
+            on a route. Strong recurring revenue, weak on capital equipment and fabrication.</p>
+          </div>
+          <div class="card">
+            <span class="tag green">Strengths</span>
+            <ul>
+              <li>Sticky, contracted recurring revenue with predictable cashflow.</li>
+              <li>Route density → low cost-to-serve per drop.</li>
+              <li>Embedded dispensers create high switching costs.</li>
+            </ul>
+            <span class="tag red">Weaknesses</span>
+            <ul>
+              <li>Narrow — no equipment, design or fabrication offer.</li>
+              <li>Vulnerable to price-only chemical challengers.</li>
+              <li>Limited consultative value beyond the dosing cupboard.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout warn"><b>Pricing posture:</b> value/subscription on chemicals with
+        dispenser hardware amortised into per-litre price. The model JR-Tech should emulate and extend
+        across its own warewash and pool-chemical lines.</div>
+      </section>
+
+      <section class="section">
+        <h2>Head-to-head battlecards</h2>
+        <table class="tbl">
+          <tr><th>Battleground</th><th>vs. A — Distributor</th><th>vs. B — Fabricator</th><th>vs. C — Chemical route</th></tr>
+          <tr><td>Where they beat JR-Tech</td><td>Unit price &amp; stock depth on standard boxes</td><td>Raw fabrication speed on metal-only jobs</td><td>Route density &amp; recurring-revenue discipline</td></tr>
+          <tr><td>JR-Tech's counter</td><td>Bundle design + fabrication + install + service so price isn't line-item comparable</td><td>Wrap fabrication in equipment supply, compliance design &amp; after-sales</td><td>Tie chemical resupply to equipment &amp; maintenance the customer already buys</td></tr>
+          <tr><td>Proof to bring</td><td>Total-cost-of-ownership &amp; single-contract simplicity</td><td>Turnkey kitchen reference + compliance sign-off</td><td>One invoice, one SLA across equipment + chemicals</td></tr>
+          <tr><td>Trap to avoid</td><td>Being dragged into a box-price war</td><td>Quoting metal alone without the services tail</td><td>Losing the dispenser foothold to a free-placement rival</td></tr>
+          <tr><td>Win condition</td><td class="tag green">Outcome selling</td><td class="tag green">Turnkey bundling</td><td class="tag green">Recurring lock-in</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Strategic positioning map</h2>
+        <p class="lead">Plotting breadth of offer against depth of recurring relationship shows the
+        white space JR-Tech can own: the integrated quadrant rivals cannot reach without rebuilding
+        their business model.</p>
+        <div class="mermaid">
+quadrantChart
+    title Breadth of offer vs. depth of recurring relationship
+    x-axis Narrow offer --> Broad one-stop offer
+    y-axis Transactional --> Recurring & sticky
+    quadrant-1 Integrated solutionist (target)
+    quadrant-2 Sticky but narrow
+    quadrant-3 Commodity box-movers
+    quadrant-4 Broad but transactional
+    JR-Tech today: [0.62, 0.40]
+    JR-Tech on Odoo: [0.80, 0.78]
+    A Distributor: [0.55, 0.22]
+    B Fabricator: [0.28, 0.30]
+    C Chemical route: [0.30, 0.80]
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What this means for the engagement</h2>
+        <div class="callout tn"><b>The moat is integration, not any single line.</b> JR-Tech already
+        spans equipment, fabrication, service and chemicals — the rare combination none of the three
+        rivals hold. The vulnerability is that these run as silos, so the company defends each line on
+        the rival's own terms (price vs. A, speed vs. B, route vs. C). Odoo 19 unifies the customer,
+        asset, stock and service record so JR-Tech can sell and bill the bundle, see cross-line
+        margin, and turn breadth into the defensible "one-stop" position the brand already claims.
+        See <a href="../growth/pricing.html">Pricing Strategy</a> and
+        <a href="../growth/modern-services.html">Modern Alternative Services</a> for how to convert
+        this positioning into revenue.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../delivery/kpis-benefits.html">← Prev: KPIs &amp; Benefits</a>
+        <a href="../growth/pricing.html">Next: Pricing Strategy →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Competitor archetypes are composites of observable market patterns, not named firms — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('radar'), {
+  type:'radar',
+  data:{ labels:['Equipment supply','Custom fabrication','Field service & maintenance','Chemical / recurring','Design & compliance','One-stop integration'],
+    datasets:[
+      { label:'JR-Tech', data:[4,4,4,3,4,4], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.18)' },
+      { label:'A · Distributor', data:[5,1,2,1,2,2], borderColor:'#3F6FB0', backgroundColor:'rgba(63,111,176,.12)' },
+      { label:'B · Fabricator', data:[1,5,2,0,3,1], borderColor:'#E8A13A', backgroundColor:'rgba(232,161,58,.14)' },
+      { label:'C · Chemical route', data:[1,0,3,5,1,1], borderColor:'#E2544B', backgroundColor:'rgba(226,84,75,.12)' }
+    ]},
+  options:{ scales:{ r:{ min:0, max:5, ticks:{ stepSize:1 } } }, plugins:{ legend:{ position:'bottom' } } }
+});
+</script>
+</body>
+</html>

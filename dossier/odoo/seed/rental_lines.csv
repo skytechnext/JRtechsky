@@ -1,0 +1,17 @@
+rental_xml_id,product_xml_id,qty,duration_days,unit_price
+rent_01,prod_rent_05,2,3,220.0
+rent_02,prod_rent_03,2,7,600.0
+rent_03,prod_rent_06,1,14,2500.0
+rent_04,prod_rent_04,1,7,420.0
+rent_05,prod_rent_02,2,3,950.0
+rent_06,prod_rent_08,3,30,380.0
+rent_07,prod_rent_03,3,3,600.0
+rent_08,prod_rent_06,2,7,2500.0
+rent_09,prod_rent_01,1,3,1800.0
+rent_10,prod_rent_02,3,30,950.0
+rent_11,prod_rent_07,1,7,180.0
+rent_12,prod_rent_07,1,14,180.0
+rent_13,prod_rent_03,1,3,600.0
+rent_14,prod_rent_05,3,7,220.0
+rent_15,prod_rent_02,2,7,950.0
+rent_16,prod_rent_04,1,14,420.0

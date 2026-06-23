@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Catalog — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="product-catalog">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Company Profile</b> · Product Catalog</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Company Profile</span>
+      <h1>The product &amp; service catalog —<br>mapped to Odoo product data.</h1>
+      <p>A structured catalog across all four business lines with illustrative MYR pricing, and the
+      exact Odoo product categories, product types and bills-of-material the seed data must load.
+      This page is the contract between the business and the ERP master data.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">6</div><div class="lbl">Odoo product categories</div></div>
+          <div class="kpi"><div class="num">3</div><div class="lbl">product types: Storable · Consumable · Service</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">chemical sub-lines on resupply</div></div>
+          <div class="kpi"><div class="num">MTO</div><div class="lbl">make-to-order route for fabrication</div></div>
+        </div>
+        <div class="callout tn"><b>Seed-data alignment:</b> every catalog row below names its Odoo
+        <i>product category</i> and <i>product type</i>. The demo database loads exactly these
+        categories so quotes, BoMs, stock and subscriptions reconcile out of the box.</div>
+      </section>
+
+      <section class="section">
+        <h2>Odoo product category tree</h2>
+        <div class="mermaid">
+flowchart TD
+  ROOT[All / Saleable] --> KE[Kitchen Equipment]
+  ROOT --> DW[Dishwashers]
+  ROOT --> FAB[Stainless-Steel Fabricated]
+  ROOT --> SP[Spare Parts]
+  ROOT --> CH[Chemicals]
+  ROOT --> SV[Services]
+  CH --> CH1[Dishwash &amp; Kitchen Cleaning]
+  CH --> CH2[Housekeeping Detergents]
+  CH --> CH3[Laundry Chemicals]
+  CH --> CH4[Swimming-Pool Chemicals]
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Line 1 · Kitchen equipment <span class="tag">Storable</span></h2>
+        <table class="tbl">
+          <tr><th>Product</th><th>Category</th><th>Illustrative MYR</th><th>Odoo type</th></tr>
+          <tr><td>Advanced induction cooker (4-zone)</td><td>Kitchen Equipment</td><td>8,500</td><td>Storable</td></tr>
+          <tr><td>Smokeless griddle / teppanyaki unit</td><td>Kitchen Equipment</td><td>6,200</td><td>Storable</td></tr>
+          <tr><td>Cook-&amp;-chill blast chiller</td><td>Kitchen Equipment</td><td>14,000</td><td>Storable</td></tr>
+          <tr><td>Combi oven (10-tray)</td><td>Kitchen Equipment</td><td>22,000</td><td>Storable</td></tr>
+          <tr><td>Upright reach-in chiller</td><td>Kitchen Equipment</td><td>4,800</td><td>Storable</td></tr>
+        </table>
+        <div class="callout"><b>Rental variant:</b> the same storable products carry a Rental
+        configuration (daily/monthly) so sales and rental share one product master.</div>
+      </section>
+
+      <section class="section">
+        <h2>Line 2 · Dishwashers <span class="tag">Storable</span></h2>
+        <table class="tbl">
+          <tr><th>Product</th><th>Category</th><th>Illustrative MYR</th><th>Odoo type</th></tr>
+          <tr><td>Undercounter glasswasher</td><td>Dishwashers</td><td>5,400</td><td>Storable</td></tr>
+          <tr><td>Hood-type passthrough dishwasher</td><td>Dishwashers</td><td>13,500</td><td>Storable</td></tr>
+          <tr><td>Rack-conveyor dishwasher</td><td>Dishwashers</td><td>38,000</td><td>Storable</td></tr>
+          <tr><td>Water-softener add-on</td><td>Dishwashers</td><td>2,100</td><td>Storable</td></tr>
+        </table>
+        <div class="callout tn"><b>Pull-through:</b> each dishwasher links to a recommended
+        dishwash-chemical subscription — modelled in Odoo as a related product / optional product.</div>
+      </section>
+
+      <section class="section">
+        <h2>Line 3 · Stainless-steel fabricated items <span class="tag warn">Make-to-Order · BoM</span></h2>
+        <p class="lead">Fabricated items are configured-to-order. In Odoo each is a manufactured
+        product with a <b>Bill of Materials</b> (sheet, profile, fittings) and routing (cut · form ·
+        weld · polish), produced via the MTO route triggered from the sales quote.</p>
+        <table class="tbl">
+          <tr><th>Product</th><th>Category</th><th>Illustrative MYR</th><th>Odoo type</th><th>BoM components</th></tr>
+          <tr><td>Custom work table (2.4m)</td><td>SS Fabricated</td><td>1,900</td><td>Manufactured</td><td>SS304 sheet, legs, bracing</td></tr>
+          <tr><td>Exhaust hood + plenum</td><td>SS Fabricated</td><td>6,800</td><td>Manufactured</td><td>SS sheet, baffle filters, duct</td></tr>
+          <tr><td>Sink unit (double bowl)</td><td>SS Fabricated</td><td>2,400</td><td>Manufactured</td><td>SS sheet, bowls, tap, waste set</td></tr>
+          <tr><td>Wall &amp; under-counter shelving run</td><td>SS Fabricated</td><td>1,300</td><td>Manufactured</td><td>SS profile, brackets, fixings</td></tr>
+        </table>
+        <div class="callout"><b>Why a BoM, not a flat product:</b> margin on fabrication is decided
+        at the shop floor. Costing the sheet, fittings and labour through a BoM is what makes
+        project margin visible at quote time rather than at month-end.</div>
+      </section>
+
+      <section class="section">
+        <h2>Line 4 · Spare parts <span class="tag">Storable</span></h2>
+        <table class="tbl">
+          <tr><th>Product</th><th>Category</th><th>Illustrative MYR</th><th>Odoo type</th></tr>
+          <tr><td>Wash/rinse pump assembly</td><td>Spare Parts</td><td>620</td><td>Storable</td></tr>
+          <tr><td>Heating element (dishwasher)</td><td>Spare Parts</td><td>340</td><td>Storable</td></tr>
+          <tr><td>Door gasket / seal kit</td><td>Spare Parts</td><td>95</td><td>Storable</td></tr>
+          <tr><td>Grease-trap basket &amp; fittings</td><td>Spare Parts</td><td>180</td><td>Storable</td></tr>
+        </table>
+        <div class="callout warn"><b>Reorder rules:</b> spares are the classic stock-out risk on a
+        service call. Odoo min/max reorder rules per part turn "let me check the van" into a
+        first-time-fix.</div>
+      </section>
+
+      <section class="section">
+        <h2>Line 5 · Chemicals — four sub-lines <span class="tag green">Consumable · Subscription</span></h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="chemMix" height="240"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Recurring by design</h3>
+            <p>Chemicals are consumable and best sold on resupply. In Odoo they are modelled as
+            consumable products attached to <b>Subscription</b> plans with reorder cadence per
+            customer site.</p>
+            <div class="callout tn"><b>So-what:</b> subscriptions convert one-off chemical orders
+            into predictable monthly recurring revenue — and feed demand forecasting for inventory.</div>
+          </div>
+        </div>
+        <table class="tbl">
+          <tr><th>Sub-line</th><th>Example SKU</th><th>Category</th><th>Illustrative MYR</th><th>Odoo type</th></tr>
+          <tr><td>Dishwash &amp; kitchen cleaning</td><td>Auto-dish detergent 20L</td><td>Chemicals / Dishwash</td><td>140</td><td>Consumable</td></tr>
+          <tr><td>Housekeeping detergents</td><td>Multi-surface concentrate 20L</td><td>Chemicals / Housekeeping</td><td>120</td><td>Consumable</td></tr>
+          <tr><td>Laundry chemicals</td><td>Industrial laundry detergent 20L</td><td>Chemicals / Laundry</td><td>160</td><td>Consumable</td></tr>
+          <tr><td>Swimming-pool chemicals</td><td>Chlorine / pH balancer set</td><td>Chemicals / Pool</td><td>110</td><td>Consumable</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Services <span class="tag">Service type</span></h2>
+        <table class="tbl">
+          <tr><th>Service</th><th>Category</th><th>Illustrative MYR</th><th>Odoo type</th></tr>
+          <tr><td>Space planning &amp; design consultation</td><td>Services</td><td>2,500 / project</td><td>Service</td></tr>
+          <tr><td>Equipment maintenance contract</td><td>Services</td><td>3,600 / yr</td><td>Service (Subscription)</td></tr>
+          <tr><td>Grease-trap / bio-treatment / tanker</td><td>Services</td><td>450 / visit</td><td>Service</td></tr>
+          <tr><td>Operator training</td><td>Services</td><td>1,200 / session</td><td>Service</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>So-what for the Odoo 19 build</h2>
+        <p>This catalog defines the master-data backbone: six product categories, three product
+        types, a make-to-order route with BoMs for fabrication, reorder rules for spares, and
+        subscription plans for chemicals and maintenance. Loading the seed data to <i>this exact
+        structure</i> means quotes, work orders, stock moves and recurring invoices all reconcile
+        from day one.</p>
+        <div class="callout tn"><b>Cross-link:</b> the <a href="company-profile.html">Company
+        Profile</a> revenue mix and this catalog together feed the BRD and the demo-data blueprint.</div>
+
+        <div class="pagenav">
+          <a href="company-profile.html">← Prev: Company Profile</a>
+          <a href="founders-leadership.html">Next: Founders &amp; Leadership →</a>
+        </div>
+      </section>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Pricing is
+      illustrative analyst modelling for seed data — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('chemMix'), {
+  type: 'pie',
+  data: { labels: ['Dishwash & kitchen','Housekeeping','Laundry','Swimming-pool'],
+    datasets: [{ data: [40,26,20,14],
+      backgroundColor: ['#16C098','#3F6FB0','#7FA9DE','#E8A13A'] }]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Chemical sub-line revenue share (%)' } } }
+});
+</script>
+</body>
+</html>

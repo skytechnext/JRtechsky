@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integration &amp; API Map — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="integration-map">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Technology</b> · Integration &amp; API Map</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Technology</span>
+      <h1>Integration &amp; API Map</h1>
+      <p>Odoo is JR-Tech's hub, but it does not stand alone. This is the external system map —
+      e-invoicing, payments, bank feeds, WhatsApp, e-commerce and equipment telemetry — with the
+      connection method and direction for each, so the build team knows exactly what to wire.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">8</div><div class="lbl">external integration domains in scope</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">connection methods: XML-RPC · JSON-RPC · REST · webhook</div></div>
+          <div class="kpi"><div class="num">MyInvois</div><div class="lbl">LHDN e-invoicing via the localisation connector</div></div>
+          <div class="kpi"><div class="num">FPX</div><div class="lbl">+ e-wallet payments for MY customers</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Integration landscape</h2>
+        <p class="lead">Odoo exposes <b>XML-RPC</b> and <b>JSON-RPC</b> external APIs for full
+        CRUD/automation, consumes/produces <b>REST</b> for modern services, and supports inbound
+        <b>webhooks</b> for event-driven flows. The diagram groups integrations by direction
+        relative to Odoo.</p>
+        <div class="mermaid">
+flowchart LR
+    subgraph EXT_IN["Inbound to Odoo"]
+      WA["WhatsApp Business API"]
+      ECOM["e-Commerce storefront"]
+      IOT["Equipment telemetry / IoT"]
+      BANK["Bank feeds"]
+    end
+    ODOO{{"Odoo 19<br/>Enterprise"}}
+    subgraph EXT_OUT["Outbound / bidirectional"]
+      MYINV["MyInvois / LHDN<br/>e-Invoicing"]
+      PAY["Payment gateways<br/>FPX · e-wallets · card"]
+      MAIL["Email (SMTP/IMAP)"]
+    end
+
+    WA -- "webhook / REST" --> ODOO
+    ECOM -- "native / REST" --> ODOO
+    IOT -- "MQTT→webhook / REST" --> ODOO
+    BANK -- "feed / OFX import" --> ODOO
+    ODOO -- "REST (signed docs)" --> MYINV
+    ODOO -- "REST redirect / token" --> PAY
+    ODOO -- "SMTP/IMAP" --> MAIL
+    ODOO -. "XML-RPC / JSON-RPC" .- DEV["Custom AI services<br/>forecasting · vision QC"]
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Connector &amp; API table</h2>
+        <table class="tbl">
+          <tr><th>Integration</th><th>Purpose</th><th>Method</th><th>Direction</th><th>Notes</th></tr>
+          <tr><td><b>MyInvois (LHDN)</b></td><td>Submit validated e-invoices, receive UIN &amp; QR</td><td>REST</td><td>Odoo → LHDN</td><td>Via Odoo MY e-invoicing localisation; see <a href="security-myinvois.html">Security &amp; MyInvois</a></td></tr>
+          <tr><td><b>FPX</b></td><td>Online bank-transfer payment</td><td>REST redirect</td><td>Bidirectional</td><td>Through a MY payment service provider / gateway acquirer</td></tr>
+          <tr><td><b>E-wallets</b> (Touch 'n Go, GrabPay, Boost)</td><td>Wallet checkout</td><td>REST / hosted</td><td>Bidirectional</td><td>Via aggregator (e.g. iPay88/Razer) as Odoo payment provider</td></tr>
+          <tr><td><b>Card</b> (Visa/Mastercard)</td><td>Card payment on web/POS</td><td>REST / token</td><td>Bidirectional</td><td>Stripe/local acquirer payment provider</td></tr>
+          <tr><td><b>Bank feeds</b></td><td>Auto-import statements for reconciliation</td><td>Feed / OFX-CSV import</td><td>Bank → Odoo</td><td>Where MY bank supports feed; else statement import</td></tr>
+          <tr><td><b>WhatsApp Business</b></td><td>Enquiries, order/service notifications, chatbot</td><td>Webhook + REST</td><td>Bidirectional</td><td>Meta Cloud API or BSP; feeds CRM/Helpdesk</td></tr>
+          <tr><td><b>Email</b></td><td>Inbound lead/ticket capture, outbound docs</td><td>SMTP / IMAP</td><td>Bidirectional</td><td>Native Odoo mail gateway</td></tr>
+          <tr><td><b>e-Commerce</b></td><td>Catalogue, web RFQ, online sales</td><td>Native + REST</td><td>Bidirectional</td><td>Odoo Website/eCommerce native, or external store via REST</td></tr>
+          <tr><td><b>IoT / telemetry</b></td><td>Runtime hours, fault codes for predictive maintenance</td><td>MQTT → webhook / Odoo IoT Box</td><td>Device → Odoo</td><td>Future phase; feeds Maintenance risk scoring</td></tr>
+          <tr><td><b>Custom AI services</b></td><td>Demand forecasting, vision QC scores</td><td>XML-RPC / JSON-RPC</td><td>Bidirectional</td><td>External model reads/writes Odoo records securely</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Per-integration specification</h2>
+        <p class="lead">The connector table above answers <em>what</em> connects; this answers
+        <em>how it behaves in production</em>. Each row is a build-ready contract — direction,
+        protocol, trigger frequency, the Odoo objects on the wire, the failure mode, and a single
+        accountable owner. This is the table the developer codes against and the operator runs.</p>
+        <table class="tbl">
+          <tr><th>System</th><th>Direction</th><th>Protocol</th><th>Frequency / trigger</th><th>Payload / Odoo objects</th><th>Error handling</th><th>Owner</th></tr>
+          <tr>
+            <td><b>MyInvois (LHDN)</b></td><td>Odoo → LHDN, ack back</td><td>REST/JSON, signed</td>
+            <td>On invoice post (near-real-time); 72h submission window</td>
+            <td><code>account.move</code> (out_invoice/out_refund) → UBL 2.1 doc; returns UIN, validation status, QR</td>
+            <td>Queue + retry w/ backoff; rejected docs flagged on the move, blocked from re-issue until corrected; daily exception report</td>
+            <td>Finance lead (TechNext build)</td>
+          </tr>
+          <tr>
+            <td><b>FPX / e-wallets</b></td><td>Bidirectional</td><td>REST redirect + return callback</td>
+            <td>On customer checkout (web/portal)</td>
+            <td><code>payment.transaction</code> ↔ gateway; reconciles to <code>account.payment</code> / <code>sale.order</code></td>
+            <td>Callback verified by signature; pending/failed states reconciled by scheduled poll; orphaned txns surfaced to AR clerk</td>
+            <td>Finance + web admin</td>
+          </tr>
+          <tr>
+            <td><b>Bank feeds</b></td><td>Bank → Odoo</td><td>Feed API or OFX/CSV import</td>
+            <td>Daily (feed) or on-demand statement upload</td>
+            <td><code>account.bank.statement(.line)</code>; auto-match to <code>account.payment</code> / open invoices</td>
+            <td>Unmatched lines parked in reconciliation widget; duplicate-statement guard on import; month-end variance check</td>
+            <td>Accountant (JR-Tech)</td>
+          </tr>
+          <tr>
+            <td><b>WhatsApp Business</b></td><td>Bidirectional</td><td>Webhook (inbound) + REST (outbound)</td>
+            <td>Event-driven inbound; outbound on CRM/FSM/invoice triggers</td>
+            <td>Messages → <code>crm.lead</code> / <code>helpdesk.ticket</code> / <code>mail.message</code>; templates out for order &amp; job notices</td>
+            <td>Webhook signature check; failed sends retried then logged to activity; template-rejection alerts to admin</td>
+            <td>CRM owner + BSP</td>
+          </tr>
+          <tr>
+            <td><b>Email (SMTP/IMAP)</b></td><td>Bidirectional</td><td>SMTP out / IMAP fetch in</td>
+            <td>Outbound on document events; inbound poll every few minutes</td>
+            <td>Aliases route to <code>crm.lead</code> / <code>helpdesk.ticket</code>; outbound <code>mail.mail</code> for quotes, invoices, reminders</td>
+            <td>Bounce handling on mail server; failed outbound retried; catch-all alias prevents lost inbound</td>
+            <td>IT admin (JR-Tech)</td>
+          </tr>
+          <tr>
+            <td><b>e-Commerce</b></td><td>Bidirectional</td><td>Native (Website) or REST (external store)</td>
+            <td>Real-time on browse/checkout; stock sync on movement</td>
+            <td><code>product.template</code>, <code>sale.order</code>, <code>stock.quant</code>, <code>res.partner</code></td>
+            <td>Native = single source (no sync); external store = idempotent upserts, stock-oversell guard, sync error queue</td>
+            <td>Web admin (JR-Tech)</td>
+          </tr>
+          <tr>
+            <td><b>IoT / equipment telemetry</b></td><td>Device → Odoo</td><td>MQTT → webhook / IoT Box</td>
+            <td>Streaming/periodic (runtime hrs, fault codes)</td>
+            <td>Telemetry → <code>maintenance.equipment</code> meters → triggers <code>maintenance.request</code></td>
+            <td>Gateway buffers on disconnect; out-of-range readings quarantined; device-offline alert after threshold</td>
+            <td>Service lead (later phase)</td>
+          </tr>
+        </table>
+        <div class="callout"><b>Read this with</b> the <a href="security-myinvois.html">Security &amp;
+        MyInvois</a> page for the credential and least-privilege model behind each connector, and the
+        <a href="data-migration.html">Data Migration</a> page for the master-data each one depends on.</div>
+      </section>
+
+      <section class="section">
+        <h2>Integration sequencing &amp; phasing</h2>
+        <p class="lead">Integrations are not all wired at once — each is switched on with the module
+        that needs it, so go-live carries only what is essential and later connectors land on a proven
+        core. The sequence below is locked to the delivery
+        <a href="../delivery/roadmap.html">roadmap</a> and the
+        <a href="../../tools/gantt.html">project Gantt</a>.</p>
+        <table class="tbl">
+          <tr><th>Phase</th><th>Integrations switched on</th><th>Why here</th><th>Pre-requisite</th></tr>
+          <tr><td><b>Phase 1 · Core</b></td><td>Email · MyInvois · FPX · bank feeds</td><td>Cannot invoice or get paid legally/financially without these — they are go-live blockers</td><td>SST &amp; CoA configured; TIN/MSIC on company</td></tr>
+          <tr><td><b>Phase 2 · Operations</b></td><td>WhatsApp Business (CRM/FSM/Helpdesk notices)</td><td>Field-service dispatch &amp; ticketing exist to notify against; replaces ad-hoc WhatsApp</td><td>Field Service &amp; Helpdesk live; BSP account approved</td></tr>
+          <tr><td><b>Phase 3 · Front-of-house</b></td><td>e-Commerce + e-wallets/card</td><td>Catalogue &amp; stock are trustworthy; chemical resupply can sell online</td><td>Inventory accurate; pricelists set</td></tr>
+          <tr><td><b>Phase 3+ · Intelligence</b></td><td>IoT telemetry · custom AI (XML/JSON-RPC)</td><td>Predictive maintenance &amp; forecasting need history to be useful</td><td>Maintenance equipment registry &amp; clean transaction history</td></tr>
+        </table>
+        <div class="mermaid">
+flowchart LR
+    subgraph PH1["Phase 1 · Core"]
+      A1[Email]
+      A2[MyInvois]
+      A3[FPX]
+      A4[Bank feeds]
+    end
+    subgraph PH2["Phase 2 · Operations"]
+      B1[WhatsApp Business]
+    end
+    subgraph PH3["Phase 3 · Front-of-house"]
+      C1[e-Commerce]
+      C2[e-wallets / card]
+    end
+    subgraph PH4["Phase 3+ · Intelligence"]
+      D1[IoT telemetry]
+      D2[Custom AI services]
+    end
+    PH1 --> PH2 --> PH3 --> PH4
+    classDef p1 fill:#0B1F3A,color:#fff,stroke:#0B1F3A;
+    classDef p2 fill:#EEF4FC,stroke:#7FA9DE,color:#10294D;
+    classDef p3 fill:#EAFBF5,stroke:#16C098,color:#0E8E6E;
+    classDef p4 fill:#FFF6E9,stroke:#E0A93B,color:#8A5A00;
+    class A1,A2,A3,A4 p1;
+    class B1 p2;
+    class C1,C2 p3;
+    class D1,D2 p4;
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Middleware / iPaaS vs native connector</h2>
+        <p class="lead">A recurring design question: when should a connection run through Odoo's
+        built-in providers and APIs, and when does it warrant a middleware layer (iPaaS such as an
+        integration bus, queue, or low-code orchestrator)? The default is native; middleware is earned,
+        not assumed.</p>
+        <div class="grid g2">
+          <div class="card pad-lg"><span class="tag green">Native connector — default</span>
+            <h3>Use Odoo's own providers &amp; APIs</h3>
+            <p>MyInvois, payment providers, bank sync, mail gateway and Website/eCommerce all ship as
+            maintained Odoo features. They version with the platform, need no extra hosting, and keep
+            one source of truth. Custom AI reads/writes directly over XML-RPC/JSON-RPC.</p>
+            <p style="font-size:13px;color:var(--jr-slate)">Best when: a native provider exists, volume
+            is modest, and the flow is point-to-point.</p>
+          </div>
+          <div class="card pad-lg"><span class="tag warn">Middleware / iPaaS — when earned</span>
+            <h3>Insert a broker only for real need</h3>
+            <p>Justified when many systems fan-in/out, payloads need heavy transformation, retries and
+            dead-letter queues must be guaranteed, or a partner system has no native Odoo link.
+            Candidates: a managed iPaaS, a message queue, or the Odoo IoT Box for device traffic.</p>
+            <p style="font-size:13px;color:var(--jr-slate)">Cost: extra component to host, secure,
+            monitor and license — only worth it past a clear complexity threshold.</p>
+          </div>
+        </div>
+        <table class="tbl">
+          <tr><th>Integration</th><th>Recommended approach</th><th>Rationale</th></tr>
+          <tr><td>MyInvois, payments, bank, email, e-commerce</td><td><span class="tag green">Native</span></td><td>First-party Odoo support; no broker adds value</td></tr>
+          <tr><td>WhatsApp Business</td><td><span class="tag green">Native / BSP</span></td><td>Connector or BSP webhook is sufficient at JR-Tech volume</td></tr>
+          <tr><td>IoT telemetry</td><td><span class="tag warn">Light middleware</span></td><td>MQTT broker / IoT Box buffers and normalises device streams before Odoo</td></tr>
+          <tr><td>Custom AI services</td><td><span class="tag">Direct RPC</span></td><td>Scoped API user over XML/JSON-RPC; add a queue only if batch volume grows</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the Odoo build:</b> JR-Tech's launch architecture is
+        deliberately broker-free — every Phase 1 integration is native. The only place middleware is
+        pre-approved is IoT device traffic, and even that is deferred until predictive maintenance is
+        on the roadmap. This keeps the go-live surface small, cheap to run and easy to audit.</div>
+      </section>
+
+      <section class="section">
+        <h2>Integration principles</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag green">Native first</span><h3>Use built-ins before code</h3>
+            <p>Payments, bank sync, email, e-commerce and MyInvois ship as Odoo
+            providers/localisations. Configure these before building anything custom.</p></div>
+          <div class="card"><span class="tag">Event-driven</span><h3>Webhooks over polling</h3>
+            <p>WhatsApp and IoT push events to Odoo via webhooks/automated actions, avoiding
+            brittle polling and keeping data fresh.</p></div>
+          <div class="card"><span class="tag">Secured</span><h3>Scoped API access</h3>
+            <p>External services authenticate with dedicated API users and the least-privilege roles
+            defined on <a href="security-myinvois.html">Security &amp; Compliance</a>.</p></div>
+        </div>
+        <div class="callout tn"><b>So what for the Odoo build:</b> the only <em>must-have at
+        go-live</em> integrations are MyInvois, at least one MY payment method (FPX), bank
+        reconciliation and email. WhatsApp and IoT/telemetry are sequenced into later phases on the
+        <a href="../delivery/roadmap.html">roadmap</a>, in step with the AI use-cases that depend on
+        them in the <a href="ai-catalog.html">AI catalog</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="data-migration.html">← Prev: Data Migration</a>
+        <a href="security-myinvois.html">Next: Security, Compliance &amp; MyInvois →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</body>
+</html>

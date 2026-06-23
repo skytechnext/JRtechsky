@@ -1,121 +1,57 @@
-# Kitchen Estimator — Auntie Gaik Lean × JR Tech
+# JR-Tech Solution — Consolidated Digital Portfolio
 
-A single-page, zero-dependency **kitchen economics estimator** built by **JR Tech**
-for **Auntie Gaik Lean's Old School Eatery** (a Michelin-starred Peranakan restaurant
-in George Town, Penang).
+Everything built for **JR-Tech Solution Sdn Bhd** (SSM 200901013633) — Malaysia's
+one-stop commercial kitchen partner in Gelugor, Penang — gathered into a single,
+zero-build static site. A portal at the root routes to four properties, and the whole
+repository deploys together to GitHub Pages.
 
-Everything recalculates live as you type. Nothing is sent anywhere — your inputs are
-saved only in your own browser (`localStorage`).
+## 🔗 Preview (one click)
 
-## 🔗 Preview the site (one click)
-
-- **Instant preview — works right now, no setup:**
+- **Instant preview — works now, no setup:**
   **https://raw.githack.com/skytechnext/JRtechsky/claude/pensive-einstein-dlerlg/index.html**
-  Renders this branch live, with full styling and interactivity (verified).
 - **Permanent home (GitHub Pages):** https://skytechnext.github.io/JRtechsky/
-  — switch it on once at **Settings → Pages → Source: GitHub Actions** (needs repo admin;
-  the Actions token isn't allowed to enable Pages by itself). After that,
-  [`.github/workflows/pages.yml`](.github/workflows/pages.yml) republishes on every push.
-- **Locally:** just open `index.html` in any browser — no build step.
+  — enable once at **Settings → Pages → Deploy from a branch → `claude/pensive-einstein-dlerlg` → `/ (root)`**,
+  or set **Source: GitHub Actions** to use [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+- **Locally:** open `index.html` — no build step.
 
----
+## What's inside
 
-## What it does
+| # | Property | Folder | What it is |
+|---|----------|--------|------------|
+| 01 | **Marketing Website** | [`marketing/`](marketing/) | Bespoke, conversion-focused site (home, services, projects, contact) with full SEO + a marketing plan. *(from the `gallant-noether` build)* |
+| 02 | **Kitchen Estimator** | [`estimator/`](estimator/) | Live kitchen-economics tool — KPIs, consumables, equipment life plan, depreciation, and dual profit estimators (F&B operator + JR Tech). |
+| 03 | **Odoo 19 ERP Dossier** | [`dossier/`](dossier/) | Due-diligence, strategy & Odoo 19 implementation dossier (50+ pages, interactive tools) + a `odoo/` demo-data build kit. *(from the `wizardly-mayer` build)* |
+| 04 | **Current Website (archive)** | [`website/`](website/) | WordPress-free static capture of the live `jrtech.com.my` — full product catalog, projects, about, contact. *(from the `lucid-mendel` build)* |
 
-The tool flows as six numbered "stations", in dependency order — each one feeds the
-profit roll-ups at the end.
+The portal page is [`index.html`](index.html) at the root.
 
-| # | Station | What it gives you |
-|---|---------|-------------------|
-| **01** | **Kitchen metrics & KPIs** | Monthly revenue, covers, average check, food cost, **prime cost** (with healthy/amber/over-budget tinting), revenue per seat, revenue per labour ringgit, gross profit & margin, seat turns/day. |
-| **02** | **Monthly detergent & disposables** | An editable line-item table for cleaning chemicals and single-use service items — pack cost × units/month → monthly spend, each item's share, and cost per cover / per day. |
-| **03** | **Equipment life plan & replacement** | For every asset: install date, cost, useful life → **replacement date**, a monthly **sinking-fund reserve**, and an *On plan / Due / Replace now* status. |
-| **04** | **Inventory depreciation** | Straight-line book value across the **same** assets: salvage %, age, annual & accumulated depreciation, current **book value**, and remaining-life bars. Feeds a non-cash depreciation charge into the F&B P&L. |
-| **05** | **Profit estimator — F&B operator** | The eatery's monthly P&L: revenue less food, payroll, rent, utilities, consumables (02), depreciation (04) and overheads → **net profit**, net margin, annual profit, and **break-even covers/day**. |
-| **06** | **Profit estimator — JR Tech** | The vendor's side of the same account: recurring revenue (subscription + support + hardware lease) less cost-to-serve → **net recurring profit**, recurring margin, one-time setup margin, account value over the contract, and the **client's ROI** (net saving, payback on setup, first-year return). |
+## How the branches were combined
 
-### Two profit estimators, one kitchen
-- **Station 05 (gold)** answers *"is the restaurant making money?"*
-- **Station 06 (cobalt)** answers *"is JR Tech making money on this account — and is the client getting their money back?"*
+Five Claude working branches each produced a separate deliverable for the same client.
+This branch consolidates them so they serve as **one site under one URL**:
 
----
+- The four built deliverables were moved into their own top-level folders (above), each
+  self-contained with relative paths, so links and assets keep working in place.
+- A new **portal** (`index.html`) introduces JR-Tech and links to all four.
+- `lucid-mendel` is used as the canonical site archive (the most complete mirror, 225
+  catalog pages); `peaceful-goodall` was an earlier, partial mirror whose *portal idea* is
+  carried forward and upgraded here, so nothing of value is lost.
+- A single [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) publishes the
+  whole repo; `.nojekyll` keeps every path (including `_research/`) served verbatim.
 
-## How to use it
-
-- **Edit any field** — every input recalculates the whole page instantly.
-- **Add / remove rows** in the consumables and equipment tables with the `+ Add` buttons and the `×` on each row.
-- **Currency** — switch between RM / S$ / $ / € in the top bar (symbol only; no FX conversion).
-- **Print / PDF** — the top-bar button opens a clean print layout (controls hidden) for sharing an estimate.
-- **Reset** — restores the seeded figures and clears saved data.
-- **Your data stays local** — saved to this browser only, never uploaded.
-
-The figures shipped in the tool are realistic placeholders for a ~44-seat operation;
-edit them to match the real account.
-
----
-
-## The formulas (so the numbers are auditable)
+## Layout
 
 ```
-Covers / month        = covers/day × operating days/month
-Revenue               = covers/month × average check
-Food cost             = revenue × food-cost %
-Prime cost            = food cost + payroll          (healthy < 65% of revenue)
-Consumables / month   = Σ (pack cost × units/month)
-
-Equipment reserve/mo  = cost ÷ (life in years × 12)        — full replacement sinking fund
-Replacement date      = install date + useful life
-Annual depreciation   = (cost − salvage value) ÷ useful life   — straight line
-Accumulated dep.      = annual depreciation × age   (capped at cost − salvage)
-Book value            = cost − accumulated depreciation
-Monthly dep. charge   = total annual depreciation ÷ 12        — flows into the F&B P&L
-
-F&B net profit        = revenue − food − payroll − rent − utilities
-                                − consumables − depreciation − overheads
-Break-even covers/day = fixed costs ÷ contribution per cover ÷ operating days
-
-JR recurring revenue  = subscription + support retainer + hardware lease
-JR cost to serve      = infrastructure + (support hours × hourly cost)
-                                + hardware amortisation + payment processing
-JR net recurring      = recurring revenue − cost to serve
-Account value         = setup margin + (JR net recurring × contract months)
-
-Client net saving/mo  = estimated saving − JR recurring fee
-Payback on setup      = setup fee ÷ client net saving
-```
-
-> **Depreciation vs reserve** are shown separately and never double-counted: depreciation
-> is the *non-cash* cost of assets wearing out (it sits in the P&L); the reserve is *real
-> cash* set aside to replace them (a cash-flow item).
-
----
-
-## Deploy to GitHub Pages
-
-This is a static site — no build step. Deployment is automated:
-
-- [`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs on every push to
-  this branch (and on demand via **Actions → Run workflow**). It enables Pages on the
-  first run and publishes the site to **https://skytechnext.github.io/JRtechsky/**.
-- One-time setup: the default Actions token can't switch Pages on, so a repo admin
-  enables it once at **Settings → Pages → Source: GitHub Actions**. The workflow then
-  deploys on the next push (or via **Actions → Run workflow**). Until then, use the
-  instant githack preview link above.
-
-## Customising the seeded numbers
-
-All defaults live in the `DEFAULTS` object at the top of [`app.js`](app.js) — kitchen
-assumptions, the consumables list, the equipment register, and the JR Tech commercials.
-Edit them there to change what every visitor sees on first load.
-
-## Project files
-
-```
-index.html   structure & content
-styles.css   design system (Peranakan jade / brass / cobalt, porcelain panels)
-app.js       state, live computation (pure compute()), persistence, rendering
+index.html              ← portal / front door
+.nojekyll               ← serve every path as-is on Pages
+.github/workflows/      ← deploy whole repo to Pages
+estimator/              ← 02 · kitchen estimator (index.html, styles.css, app.js)
+marketing/              ← 01 · bespoke marketing site + MARKETING-PLAN.md
+dossier/                ← 03 · Odoo 19 dossier (site/) + demo-data kit (odoo/)
+website/                ← 04 · static archive of jrtech.com.my
 ```
 
 ---
 
-*Estimates only — not financial advice. Built by JR Tech.*
+*Static, zero-build. Assembled by JR Tech / TechNext (technext.asia). Estimates and
+projections are illustrative, not financial advice.*

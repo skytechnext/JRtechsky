@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discovery Questions — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  .dq-controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:0 0 14px; }
+  .dq-controls input { flex:1; min-width:220px; padding:11px 14px; border:1px solid var(--jr-line);
+    border-radius:10px; font:inherit; font-size:14px; }
+  .dq-cats { display:flex; gap:8px; flex-wrap:wrap; }
+  .dq-chip { border:1px solid var(--jr-line); background:#fff; color:var(--jr-slate); cursor:pointer;
+    font:inherit; font-size:12px; font-weight:600; padding:7px 13px; border-radius:999px; }
+  .dq-chip.on { background:var(--jr-navy); color:#fff; border-color:var(--jr-navy); }
+  .dq-bar { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  .dq-bar button { border:1px solid var(--jr-line); background:#fff; font:inherit; font-size:12.5px;
+    font-weight:600; padding:7px 12px; border-radius:9px; cursor:pointer; color:var(--jr-blue-700); }
+  .dq-prog { font-size:12.5px; color:var(--jr-slate); margin-left:auto; }
+  .dq-group { margin-bottom:18px; }
+  .dq-group h3 { margin:18px 0 8px; }
+  .dq-q { display:flex; gap:12px; align-items:flex-start; padding:10px 14px; background:#fff;
+    border:1px solid var(--jr-line); border-radius:10px; margin-bottom:7px; box-shadow:var(--shadow-sm); }
+  .dq-q input { margin-top:3px; width:18px; height:18px; accent-color:var(--tn-accent); flex:none; }
+  .dq-q label { font-size:14px; line-height:1.5; cursor:pointer; }
+  .dq-q.done label { text-decoration:line-through; color:var(--jr-slate); }
+  @media print { .dq-controls,.dq-bar { display:none !important; } .dq-q { break-inside:avoid; } }
+</style>
+</head>
+<body data-page="discovery-questions">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Discovery Questions</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents</span>
+      <h1>Discovery Questions: the structured<br>checklist that turns into the BRD.</h1>
+      <p>Sixty-plus questions organised by department and process, designed to be worked through with
+      each JR-Tech team. Tick items as you cover them, filter by area, and print a clean checklist for
+      on-site workshops. The answers feed directly into the Requirements (BRD).</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="dq-controls">
+          <input id="dqSearch" placeholder="Search questions…  e.g. quote, stock, invoice, SST" autocomplete="off">
+          <div class="dq-cats" id="dqCats"></div>
+        </div>
+        <div class="dq-bar">
+          <button id="checkAll">Tick visible</button>
+          <button id="clearAll">Clear all</button>
+          <button onclick="window.print()">Print checklist</button>
+          <span class="dq-prog" id="dqProg"></span>
+        </div>
+        <div id="dqList"></div>
+        <div class="callout tn" id="dqEmpty" style="display:none">No matching questions. Clear the search or pick another area.</div>
+
+        <div class="callout tn"><b>So what for the build:</b> every answer maps to an Odoo configuration
+        decision — fields, workflows, approval rules and integrations. Completing this checklist is the
+        fastest route to an accurate <a href="brd.html">BRD</a> and a Gantt that holds.</div>
+
+        <div class="pagenav">
+          <a href="staff-guides.html">← Prev: Staff Guides</a>
+          <a href="roi-tco.html">Next: ROI / TCO Model →</a>
+        </div>
+        <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+var QUESTIONS = {
+  "Sales & Quoting": [
+    "How are quotes created today, and in which tools (Excel, WhatsApp, email)?",
+    "How long does a typical quote take from request to issue?",
+    "Who approves quotes, and above what value?",
+    "How do you price across the four business lines — fixed lists, markups, or per-job?",
+    "How are quote revisions and versions tracked?",
+    "What is your current win-rate, and do you know why deals are lost?",
+    "How are follow-ups on open quotes handled and by whom?",
+    "Do quotes pull from a product catalogue or are they typed each time?",
+    "How are custom fabrication jobs estimated and costed?"
+  ],
+  "Inventory & Procurement": [
+    "How many stock locations / warehouses do you operate?",
+    "How is stock counted today, and how often?",
+    "What is your estimated inventory shrinkage or loss?",
+    "How do you decide when to reorder, and from which suppliers?",
+    "Do you track equipment by lot or serial number?",
+    "How are purchase orders raised and approved?",
+    "How are supplier prices and lead times maintained?",
+    "How do rental assets get tracked separately from sale stock?",
+    "How are chemical consumables stock-managed and reordered?"
+  ],
+  "Fabrication & Manufacturing": [
+    "What stages does a stainless-steel fabrication job pass through?",
+    "Do you maintain Bills of Materials for repeat products?",
+    "How is labour and material cost captured per job?",
+    "How is work-centre capacity and scheduling managed?",
+    "How are job changes and rework recorded?",
+    "How is finished fabrication linked back to the sales order?",
+    "What quality checks happen before delivery/installation?"
+  ],
+  "Field Service & Maintenance": [
+    "How are service jobs (install, grease-trap, tanker) scheduled and dispatched?",
+    "How do technicians receive their daily jobs today?",
+    "How are parts used on site recorded and billed?",
+    "Do you offer preventive maintenance contracts, and how are they tracked?",
+    "How is equipment service history stored?",
+    "How are repairs of returned equipment managed end to end?",
+    "How are customer sign-offs and photos captured on site?",
+    "What SLAs do you commit to, and how do you measure them?"
+  ],
+  "Chemical Supply & Subscriptions": [
+    "Which chemical products are sold on recurring resupply?",
+    "How are recurring deliveries scheduled and invoiced today?",
+    "How do you forecast customer chemical consumption?",
+    "How are dosing equipment and contracts linked to supply?",
+    "How are price changes passed through to subscription customers?"
+  ],
+  "Finance & Accounting": [
+    "What accounting system do you use today?",
+    "How is SST calculated, charged and reported?",
+    "Are you onboarded to MyInvois, and at what stage?",
+    "How are customer invoices and credit notes issued?",
+    "How is accounts receivable / collections managed?",
+    "How long does month-end close take today?",
+    "How do you see profitability per job, line or customer?",
+    "How are supplier bills matched to POs and receipts?",
+    "What financial reports does management need, and how often?"
+  ],
+  "CRM & Customers": [
+    "Where is your customer and contact data kept today?",
+    "How do new leads enter the business?",
+    "How is customer communication history tracked?",
+    "How do you segment customers (hotels, restaurants, central kitchens, etc.)?",
+    "How is repeat / after-sales business generated and tracked?"
+  ],
+  "People & Process": [
+    "How many staff will use the system, and in which roles?",
+    "Who will be the internal project champion?",
+    "Which teams are most resistant to change, and why?",
+    "What are the must-keep parts of how you work today?",
+    "What level of IT literacy can we assume across teams?",
+    "Who owns master data (products, customers, suppliers) going forward?",
+    "Have past system or process changes here succeeded or stalled — and why?",
+    "How much time can each team realistically give to training and UAT?",
+    "What incentives or recognition will reinforce adoption after go-live?",
+    "Who has authority to retire the old spreadsheets so there is no shadow system?",
+    "What is the single behaviour change that will be hardest to land?"
+  ],
+  "Data Migration": [
+    "Which spreadsheets, files and point tools hold the master data we must migrate?",
+    "Who can authoritatively confirm the opening trial balance and AR/AP open items?",
+    "How will rental assets be identified — serial numbers, asset tags, or model only?",
+    "What unit-of-measure and product-category taxonomy should we standardise on?",
+    "How far back should closed transaction history be retained (archive vs migrate)?",
+    "Who are the data stewards responsible for cleansing and enrichment per domain?",
+    "How will WhatsApp threads and paper jobs in flight be captured at cutover?",
+    "What length of business freeze is acceptable for the final cutover load?"
+  ],
+  "Compliance & MyInvois": [
+    "Is JR-Tech registered for SST, and which SST rates apply to which products/services (10% / 5% / 8%)?",
+    "What is the company TIN, SST registration and MSIC code for MyInvois setup?",
+    "What stage is your MyInvois / LHDN onboarding and digital certificate at?",
+    "How are B2C (general-public) versus B2B (TIN-carrying) customers to be classified?",
+    "What document-retention and PDPA data-handling rules must we honour?",
+    "Are there any audit, certification or food-premises regulatory reports to produce?"
+  ],
+  "Reporting & Analytics": [
+    "Which reports does the Director need, at what cadence, to run the business?",
+    "Do you need profitability broken out by business line via analytic accounting?",
+    "What KPIs define success for sales, fabrication, rental, service and chemicals?",
+    "Which numbers are reviewed daily on the shop floor vs monthly by management?",
+    "What MRR / churn visibility do you need on the chemical subscription base?"
+  ],
+  "Integrations": [
+    "Which payment methods must customers be able to use (FPX, e-wallets, card)?",
+    "Which bank(s) do you use, and do they support automated statement feeds?",
+    "Should WhatsApp enquiries and service requests flow into CRM/Helpdesk?",
+    "Will an external AI/agent service read or write Odoo data, and for what?",
+    "Is any equipment telemetry (runtime, fault codes) available for predictive maintenance?"
+  ],
+  "Data & IT": [
+    "What data must be migrated, and from which systems/spreadsheets?",
+    "How clean is that data today (duplicates, gaps)?",
+    "Do you prefer cloud hosting or self-hosting?",
+    "What devices will staff use (desktop, mobile, tablets on site)?",
+    "What existing tools must integrate (payments, e-invoicing, email)?",
+    "What are your backup and data-retention expectations?",
+    "Are there any data-privacy or confidentiality constraints?"
+  ],
+  "Strategy & Outcomes": [
+    "What does success look like 12 months after go-live?",
+    "Which single pain, if solved, would justify the project alone?",
+    "What growth plans (regions, lines) should the system support?",
+    "What is your budget envelope and decision timeline?",
+    "How will you measure ROI internally?"
+  ]
+};
+
+var listEl = document.getElementById('dqList');
+var catsEl = document.getElementById('dqCats');
+var search = document.getElementById('dqSearch');
+var emptyEl = document.getElementById('dqEmpty');
+var progEl = document.getElementById('dqProg');
+var activeCat = 'all';
+var total = 0, idCounter = 0;
+
+// build category chips
+var cats = ['all'].concat(Object.keys(QUESTIONS));
+cats.forEach(function(c){
+  var b = document.createElement('button');
+  b.className = 'dq-chip' + (c==='all'?' on':'');
+  b.setAttribute('data-cat', c);
+  b.textContent = c==='all' ? 'All' : c;
+  catsEl.appendChild(b);
+});
+
+function build(){
+  listEl.innerHTML = '';
+  Object.keys(QUESTIONS).forEach(function(group){
+    var g = document.createElement('div');
+    g.className = 'dq-group';
+    g.setAttribute('data-cat', group);
+    g.innerHTML = '<h3>' + group + '</h3>';
+    QUESTIONS[group].forEach(function(q){
+      var id = 'dq' + (idCounter++);
+      total++;
+      var row = document.createElement('div');
+      row.className = 'dq-q';
+      row.setAttribute('data-hay', q.toLowerCase());
+      row.innerHTML = '<input type="checkbox" id="'+id+'"><label for="'+id+'">'+q+'</label>';
+      var cb = row.querySelector('input');
+      cb.addEventListener('change', function(){ row.classList.toggle('done', cb.checked); updateProg(); });
+      g.appendChild(row);
+    });
+    listEl.appendChild(g);
+  });
+}
+
+function updateProg(){
+  var boxes = listEl.querySelectorAll('input[type=checkbox]');
+  var done = listEl.querySelectorAll('input[type=checkbox]:checked').length;
+  progEl.textContent = done + ' / ' + total + ' covered';
+}
+
+function filter(){
+  var q = search.value.trim().toLowerCase();
+  var anyShown = 0;
+  document.querySelectorAll('.dq-group').forEach(function(g){
+    var catOk = activeCat==='all' || g.getAttribute('data-cat')===activeCat;
+    var visibleInGroup = 0;
+    g.querySelectorAll('.dq-q').forEach(function(row){
+      var qOk = !q || row.getAttribute('data-hay').indexOf(q) > -1;
+      var ok = catOk && qOk;
+      row.style.display = ok ? '' : 'none';
+      if(ok) visibleInGroup++;
+    });
+    g.style.display = (catOk && visibleInGroup) ? '' : 'none';
+    anyShown += visibleInGroup;
+  });
+  emptyEl.style.display = anyShown ? 'none' : '';
+}
+
+search.addEventListener('input', filter);
+catsEl.addEventListener('click', function(e){
+  var b=e.target.closest('.dq-chip'); if(!b) return;
+  activeCat=b.getAttribute('data-cat');
+  this.querySelectorAll('.dq-chip').forEach(function(c){ c.classList.toggle('on', c===b); });
+  filter();
+});
+document.getElementById('checkAll').addEventListener('click', function(){
+  document.querySelectorAll('.dq-q').forEach(function(row){
+    if(row.style.display!=='none'){ var cb=row.querySelector('input'); cb.checked=true; row.classList.add('done'); }
+  });
+  updateProg();
+});
+document.getElementById('clearAll').addEventListener('click', function(){
+  document.querySelectorAll('.dq-q').forEach(function(row){
+    var cb=row.querySelector('input'); cb.checked=false; row.classList.remove('done'); });
+  updateProg();
+});
+
+build();
+filter();
+updateProg();
+</script>
+</body>
+</html>

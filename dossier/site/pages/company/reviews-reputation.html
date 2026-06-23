@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews & Reputation — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="reviews-reputation">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Company Profile</b> · Reviews &amp; Reputation</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Company Profile</span>
+      <h1>Reputation &amp; social proof —<br>the trust layer of the funnel.</h1>
+      <p>How JR-Tech is likely seen online today, the sentiment themes that move B2B trust, an
+      NPS-style model and a reputation scorecard — with recommendations the ERP and service
+      operations can act on. All third-party content is modelled from generic patterns, not specific
+      claims.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">Thin</div><div class="lbl">modelled public review volume</div></div>
+          <div class="kpi"><div class="num">+22</div><div class="lbl">modelled NPS (positive but fragile)</div></div>
+          <div class="kpi"><div class="num">2.6/5</div><div class="lbl">reputation maturity score</div></div>
+          <div class="kpi"><div class="num">3</div><div class="lbl">priority reputation moves</div></div>
+        </div>
+        <div class="callout"><b>Important:</b> JR-Tech's public review footprint is thin, which is
+        typical of B2B engineering SMEs. Figures and themes below are TechNext modelling from
+        generic industry patterns — no specific reviews or named third parties are quoted or
+        fabricated. Validate during discovery.</div>
+      </section>
+
+      <section class="section">
+        <h2>Platform presence (assessed)</h2>
+        <table class="tbl">
+          <tr><th>Platform</th><th>Status</th><th>Reputation effect</th></tr>
+          <tr><td>Google Business Profile</td><td><span class="tag warn">Partial</span></td><td>Few reviews → weak first-impression trust signal</td></tr>
+          <tr><td>Facebook page</td><td><span class="tag warn">Partial</span></td><td>Recommendations under-used vs. engagement potential</td></tr>
+          <tr><td>Industry directories / B2B</td><td><span class="tag red">Sparse</span></td><td>Low presence where procurement teams check</td></tr>
+          <tr><td>Word-of-mouth / referral</td><td><span class="tag green">Likely strong</span></td><td>Founder-led trust drives repeat &amp; referral</td></tr>
+        </table>
+        <div class="callout warn"><b>The asymmetry:</b> private reputation (referrals, repeat
+        customers) is probably the firm's strongest asset — but almost none of it is captured
+        publicly where new buyers look.</div>
+      </section>
+
+      <section class="section">
+        <h2>Sentiment themes (modelled)</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="sentBar" height="240"></canvas></div>
+          <div class="card pad-lg">
+            <h3>What drives the score</h3>
+            <p>For F&amp;B-engineering SMEs, positive sentiment clusters around <b>responsiveness,
+            technical competence and one-stop convenience</b>. Friction clusters around <b>response
+            time on service calls, parts availability and follow-up after install</b>.</p>
+            <div class="callout tn"><b>So-what:</b> nearly every negative theme is an
+            operations/SLA problem an ERP-backed service desk fixes — reputation is downstream of
+            field execution.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Channel sentiment breakdown</h2>
+        <p>Modelled sentiment split per public channel, showing where positive signal concentrates
+        and where the firm is most exposed. Generic-pattern modelling for a referral-strong B2B SME —
+        no specific reviews or named parties.</p>
+        <table class="tbl">
+          <tr><th>Channel</th><th>Positive</th><th>Neutral</th><th>Negative</th><th>Dominant theme</th><th>Priority move</th></tr>
+          <tr><td>Google Business Profile</td><td>60%</td><td>25%</td><td>15%</td><td>Responsiveness, competence</td><td><span class="tag green">Drive volume</span></td></tr>
+          <tr><td>Facebook</td><td>65%</td><td>25%</td><td>10%</td><td>Project quality</td><td><span class="tag warn">Reactivate recs</span></td></tr>
+          <tr><td>Word-of-mouth / referral</td><td>80%</td><td>15%</td><td>5%</td><td>Trust, one-stop</td><td><span class="tag green">Make public</span></td></tr>
+          <tr><td>Service-call feedback</td><td>55%</td><td>20%</td><td>25%</td><td>Response time, parts</td><td><span class="tag red">Fix via SLA</span></td></tr>
+          <tr><td>B2B directories</td><td>—</td><td>—</td><td>—</td><td>Sparse presence</td><td><span class="tag warn">Establish</span></td></tr>
+        </table>
+        <div class="callout warn"><b>The exposure:</b> service-call feedback carries the most
+        negative share and is exactly the signal that scales into public detractors as volume grows
+        — making it the first thing the ERP service desk must contain.</div>
+      </section>
+
+      <section class="section">
+        <h2>Reputation-management playbook</h2>
+        <p>An operating playbook with two halves: a review-generation engine that systematically
+        turns good jobs into public proof, and response SLAs that ensure no feedback goes unanswered.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Review generation engine</h3>
+            <ol class="steps">
+              <li>Trigger an automated review request 24h after every closed service/install job.</li>
+              <li>Route satisfied customers (CSAT ≥ 4) to Google &amp; Facebook; route the rest to a
+              private recovery flow first.</li>
+              <li>Quarterly outreach to repeat &amp; referral accounts to convert private goodwill
+              into public reviews and short case studies.</li>
+              <li>Make leaving a review frictionless — QR on the job sheet and a one-tap link.</li>
+            </ol>
+          </div>
+          <div class="card pad-lg">
+            <h3>Response SLAs</h3>
+            <table class="tbl">
+              <tr><th>Feedback type</th><th>First response</th><th>Owner</th></tr>
+              <tr><td>Positive review</td><td><span class="tag green">≤ 48h</span></td><td>Marketing</td></tr>
+              <tr><td>Neutral / question</td><td><span class="tag warn">≤ 24h</span></td><td>Service Lead</td></tr>
+              <tr><td>Negative review</td><td><span class="tag red">≤ 4h</span></td><td>Service Lead + Director</td></tr>
+              <tr><td>Complaint → case</td><td>Resolve <span class="tag warn">≤ 5 days</span></td><td>Helpdesk owner</td></tr>
+            </table>
+            <div class="callout tn"><b>So-what:</b> every negative item becomes a tracked Odoo
+            Helpdesk case with an owner and clock — turning reputation defence into a measurable
+            process, not a personal scramble.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>NPS-style model</h2>
+        <p class="lead">A modelled promoter/passive/detractor split for a referral-strong but
+        process-light SME. The headline NPS is positive but fragile — heavily dependent on the
+        founder personally closing service loops.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="npsDonut" height="240"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Why it's fragile</h3>
+            <p>Promoters are real but concentrated in relationship accounts. Detractors come from
+            service-execution slips — late visits, repeat fixes, parts delays — that scale poorly as
+            volume grows.</p>
+            <div class="callout"><b>Lever:</b> systematic SLAs and proactive maintenance convert
+            passives to promoters and shrink the detractor tail.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Reputation flywheel</h2>
+        <div class="mermaid">
+flowchart LR
+  J[Great service job] --> A[Ask for review at close]
+  A --> R[Public review / recommendation]
+  R --> T[Trust signal for new buyers]
+  T --> W[New enquiries]
+  W --> J
+  S[Odoo Field Service SLAs] -.enable.-> J
+  S -.trigger.-> A
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Reputation scorecard &amp; recommendations</h2>
+        <table class="tbl">
+          <tr><th>Dimension</th><th>Score</th><th>Recommendation</th></tr>
+          <tr><td>Review volume</td><td><span class="tag red">1.5/5</span></td><td>Automate post-service review requests from Odoo</td></tr>
+          <tr><td>Review velocity / freshness</td><td><span class="tag red">1.5/5</span></td><td>Steady cadence beats sporadic bursts</td></tr>
+          <tr><td>Response to feedback</td><td><span class="tag warn">2.5/5</span></td><td>Reply to every review; log complaints as cases</td></tr>
+          <tr><td>Sentiment quality</td><td><span class="tag green">3.5/5</span></td><td>Protect via SLA discipline &amp; first-time-fix</td></tr>
+          <tr><td>Referral capture</td><td><span class="tag warn">2.5/5</span></td><td>Turn private referrals into public proof</td></tr>
+        </table>
+        <ol class="steps">
+          <li>Automate review/feedback requests at service-job close from Odoo Field Service.</li>
+          <li>Log every complaint as a tracked case with an owner and SLA — close the loop.</li>
+          <li>Convert referral and repeat-customer goodwill into public reviews and case studies.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>CSAT / NPS measurement plan in Odoo Helpdesk</h2>
+        <p>How the trust layer becomes measurable inside the ERP. Each metric has a source event, a
+        cadence and a target, so reputation moves from anecdote to a tracked operating KPI.</p>
+        <table class="tbl">
+          <tr><th>Metric</th><th>Source in Odoo</th><th>Trigger</th><th>Cadence</th><th>Target</th></tr>
+          <tr><td>Job CSAT</td><td>Field Service / Helpdesk rating</td><td>On job/case close</td><td>Every job</td><td><span class="tag green">≥ 4.3/5</span></td></tr>
+          <tr><td>Relationship NPS</td><td>Helpdesk survey to account contacts</td><td>Scheduled</td><td>Quarterly</td><td><span class="tag green">≥ +40</span></td></tr>
+          <tr><td>First-time-fix rate</td><td>Field Service work orders</td><td>Per visit</td><td>Monthly</td><td><span class="tag green">≥ 85%</span></td></tr>
+          <tr><td>Complaint resolution time</td><td>Helpdesk SLA timer</td><td>Case open→close</td><td>Monthly</td><td><span class="tag warn">≤ 5 days</span></td></tr>
+          <tr><td>Public review volume / velocity</td><td>Review-request automation log</td><td>Post-job</td><td>Monthly</td><td><span class="tag warn">+5–8 / mo</span></td></tr>
+        </table>
+        <div class="callout tn"><b>So-what for Odoo:</b> CSAT and NPS surveys ride on Helpdesk and
+        Field Service events the firm already generates, so measurement adds no manual work — the
+        same close-out that finishes a job also captures the score and triggers the review request.</div>
+      </section>
+
+      <section class="section">
+        <h2>Before / after reputation funnel</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="repFunnel" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading the funnel</h3>
+            <p>Today most goodwill evaporates between a happy job and a public review — no ask, no
+            capture, no response. With the Odoo-driven playbook, every stage retains more: jobs
+            trigger asks, asks convert to reviews, and reviews get answered and surfaced.</p>
+            <div class="callout"><b>The shift:</b> the firm's strongest asset — private referral
+            trust — finally becomes public proof a new buyer can find. Volumes are illustrative of
+            the conversion uplift, not measured counts.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>So-what for the Odoo 19 build</h2>
+        <p>Reputation is the output of operations, so the ERP is the reputation engine: Field
+        Service SLAs and proactive Maintenance reduce the friction that creates detractors;
+        automated post-job feedback requests build review volume and velocity; and Helpdesk cases
+        make sure no complaint is dropped. Public trust then compounds into the demand the
+        <a href="digital-presence.html">digital funnel</a> captures.</p>
+        <div class="callout tn"><b>Closing the group:</b> together these six Company Profile pages
+        give the engagement its verified baseline — identity, catalog, leadership, org, digital and
+        reputation — the foundation the Strategic Analysis builds on next.</div>
+
+        <div class="pagenav">
+          <a href="digital-presence.html">← Prev: Digital &amp; Web Presence</a>
+          <a href="../strategy/pestle.html">Next: PESTLE Analysis →</a>
+        </div>
+      </section>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Reputation
+      figures and themes are generic-pattern modelling, not specific third-party claims — see
+      Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('sentBar'), {
+  type: 'bar',
+  data: { labels: ['Responsiveness','Technical competence','One-stop convenience','Service response time','Parts availability','Post-install follow-up'],
+    datasets: [{ label:'Net sentiment', data:[3,3,2,-2,-2,-1],
+      backgroundColor:['#16C098','#16C098','#16C098','#E2544B','#E2544B','#E2544B'] }]},
+  options: { indexAxis:'y', plugins:{ legend:{ display:false }, title:{ display:true, text:'Modelled sentiment by theme' } } }
+});
+new Chart(document.getElementById('npsDonut'), {
+  type: 'doughnut',
+  data: { labels: ['Promoters','Passives','Detractors'],
+    datasets: [{ data:[42,38,20], backgroundColor:['#16C098','#7FA9DE','#E2544B'] }]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Modelled NPS mix (%) → NPS +22' } } }
+});
+new Chart(document.getElementById('repFunnel'), {
+  type: 'bar',
+  data: { labels: ['Satisfied jobs','Review asked','Public review left','Review responded to'],
+    datasets: [
+      { label:'Today (% retained)', data:[100,15,5,3], backgroundColor:'#E2544B' },
+      { label:'With Odoo playbook', data:[100,90,45,45], backgroundColor:'#16C098' }
+    ]},
+  options: { indexAxis:'y', plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Reputation funnel: before vs after (illustrative)' } },
+    scales:{ x:{ beginAtZero:true, max:100 } } }
+});
+</script>
+</body>
+</html>

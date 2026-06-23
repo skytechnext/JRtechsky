@@ -1,0 +1,47 @@
+xml_id,name,is_company,customer_rank,supplier_rank,archetype,street,city,state,zip,country,phone,email,vat,property_payment_term,pricelist
+cust_01,Eastern & Oriental Hotel Penang,yes,1,0,hotel,298 Jalan Hotel,Penang,Penang,35526,Malaysia,+604-9620026,procurement@eastern.com.my,C696851208775,30 Days,Hotel/Chain
+cust_02,Lone Pine Hotel Batu Ferringhi,yes,1,0,hotel,474 Jalan Hotel,Penang,Penang,57012,Malaysia,+604-5918643,procurement@lone.com.my,C826057869069,30 Days,Hotel/Chain
+cust_03,Hcompton Hotel Georgetown,yes,1,0,hotel,258 Jalan Hotel,Penang,Penang,38117,Malaysia,+604-7050301,procurement@hcompton.com.my,C633815139124,30 Days,Hotel/Chain
+cust_04,Sunway Hotel Seberang Jaya,yes,1,0,hotel,355 Jalan Hotel,Penang,Penang,37836,Malaysia,+604-4760166,procurement@sunway.com.my,C585207205443,30 Days,Hotel/Chain
+cust_05,Bayview Beach Resort,yes,1,0,hotel,37 Jalan Hotel,Penang,Penang,43455,Malaysia,+604-3621405,procurement@bayview.com.my,C195181056185,30 Days,Hotel/Chain
+cust_06,Shangri-La Rasa Sayang,yes,1,0,hotel,228 Jalan Hotel,Penang,Penang,80428,Malaysia,+604-5074550,procurement@shangri-la.com.my,C616219039939,30 Days,Hotel/Chain
+cust_07,Cititel Penang,yes,1,0,hotel,403 Jalan Hotel,Penang,Penang,52733,Malaysia,+604-4003370,procurement@cititel.com.my,C970321121544,30 Days,Hotel/Chain
+cust_08,G Hotel Gurney,yes,1,0,hotel,207 Jalan Hotel,Penang,Penang,65351,Malaysia,+604-3747076,procurement@g.com.my,C572716551498,30 Days,Hotel/Chain
+cust_09,Nasi Kandar Pelita Group,yes,1,0,restaurant,240 Jalan Restaurant,Penang,Penang,49883,Malaysia,+604-3776268,procurement@nasi.com.my,,Immediate,Default
+cust_10,Tek Sen Restaurant,yes,1,0,restaurant,57 Jalan Restaurant,Penang,Penang,95495,Malaysia,+604-8907108,procurement@tek.com.my,,Immediate,Default
+cust_11,Hameediyah Restaurant,yes,1,0,restaurant,320 Jalan Restaurant,Penang,Penang,99148,Malaysia,+604-4755922,procurement@hameediyah.com.my,,Immediate,Default
+cust_12,Toh Soon Cafe,yes,1,0,cafe,341 Jalan Cafe,Penang,Penang,45037,Malaysia,+604-5310504,procurement@toh.com.my,,Immediate,Default
+cust_13,Kebaya Dining Room,yes,1,0,restaurant,401 Jalan Restaurant,Penang,Penang,59712,Malaysia,+604-3921976,procurement@kebaya.com.my,,Immediate,Default
+cust_14,China House Cafe,yes,1,0,cafe,217 Jalan Cafe,Penang,Penang,20071,Malaysia,+604-5393648,procurement@china.com.my,,Immediate,Default
+cust_15,Gurney Drive Hawker Centre Mgmt,yes,1,0,foodcourt,382 Jalan Foodcourt,Penang,Penang,97678,Malaysia,+604-5510091,procurement@gurney.com.my,,Immediate,Default
+cust_16,New World Park Food Court,yes,1,0,foodcourt,4 Jalan Foodcourt,Penang,Penang,70831,Malaysia,+604-3817811,procurement@new.com.my,,Immediate,Default
+cust_17,Penang General Hospital (Kitchen),yes,1,0,hospital,274 Jalan Hospital,Penang,Penang,22412,Malaysia,+604-4898383,procurement@penang.com.my,C124891934996,30 Days,Hotel/Chain
+cust_18,Island Hospital,yes,1,0,hospital,190 Jalan Hospital,Penang,Penang,57135,Malaysia,+604-2079220,procurement@island.com.my,C719600852771,30 Days,Hotel/Chain
+cust_19,Gleneagles Penang,yes,1,0,hospital,420 Jalan Hospital,Penang,Penang,30102,Malaysia,+604-2290097,procurement@gleneagles.com.my,C299423011329,30 Days,Hotel/Chain
+cust_20,Loh Guan Lye Specialists,yes,1,0,hospital,143 Jalan Hospital,Penang,Penang,18616,Malaysia,+604-8405601,procurement@loh.com.my,C543029135330,30 Days,Hotel/Chain
+cust_21,USM Universiti Sains Malaysia Cafeteria,yes,1,0,school,351 Jalan School,Penang,Penang,57550,Malaysia,+604-9519681,procurement@usm.com.my,,30 Days,Default
+cust_22,Disted College Canteen,yes,1,0,school,335 Jalan School,Penang,Penang,84589,Malaysia,+604-5985713,procurement@disted.com.my,,30 Days,Default
+cust_23,Chung Ling High School Canteen,yes,1,0,school,86 Jalan School,Penang,Penang,75333,Malaysia,+604-9078769,procurement@chung.com.my,,30 Days,Default
+cust_24,St Xavier's Institution Canteen,yes,1,0,school,449 Jalan School,Penang,Penang,76903,Malaysia,+604-4611324,procurement@st.com.my,,30 Days,Default
+cust_25,Penang Aged-Care Residence,yes,1,0,agedcare,445 Jalan Agedcare,Penang,Penang,33744,Malaysia,+604-7797201,procurement@penang.com.my,,Immediate,Default
+cust_26,Eden Parkview Condo Mgmt,yes,1,0,condo,272 Jalan Condo,Penang,Penang,99582,Malaysia,+604-9323533,procurement@eden.com.my,,Immediate,Default
+cust_27,Gurney Paragon Residences,yes,1,0,condo,4 Jalan Condo,Penang,Penang,21018,Malaysia,+604-2553216,procurement@gurney.com.my,,Immediate,Default
+cust_28,Quayside Condominium JMB,yes,1,0,condo,17 Jalan Condo,Penang,Penang,85454,Malaysia,+604-4900490,procurement@quayside.com.my,,Immediate,Default
+cust_29,Tropicana Bay Residences,yes,1,0,condo,274 Jalan Condo,Penang,Penang,67968,Malaysia,+604-9034482,procurement@tropicana.com.my,,Immediate,Default
+cust_30,Setia Pearl Island Clubhouse,yes,1,0,condo,419 Jalan Condo,Penang,Penang,25580,Malaysia,+604-7669240,procurement@setia.com.my,,Immediate,Default
+cust_31,Intel Penang Staff Canteen,yes,1,0,factory,362 Jalan Factory,Penang,Penang,89937,Malaysia,+604-8496799,procurement@intel.com.my,C991658585069,30 Days,Hotel/Chain
+cust_32,Bosch Penang Cafeteria,yes,1,0,factory,236 Jalan Factory,Penang,Penang,93570,Malaysia,+604-3177054,procurement@bosch.com.my,C296218880162,30 Days,Hotel/Chain
+cust_33,Dell Penang Canteen,yes,1,0,factory,474 Jalan Factory,Penang,Penang,36327,Malaysia,+604-8192609,procurement@dell.com.my,C591977060634,30 Days,Hotel/Chain
+cust_34,B Braun Penang Canteen,yes,1,0,factory,500 Jalan Factory,Penang,Penang,28272,Malaysia,+604-2681329,procurement@b.com.my,C267319571304,30 Days,Hotel/Chain
+cust_35,Sunway Carnival Mall Food Court,yes,1,0,foodcourt,453 Jalan Foodcourt,Penang,Penang,50886,Malaysia,+604-4831630,procurement@sunway.com.my,,Immediate,Default
+cust_36,Queensbay Mall F&B Tenants Assoc,yes,1,0,foodcourt,193 Jalan Foodcourt,Penang,Penang,18854,Malaysia,+604-2499780,procurement@queensbay.com.my,,Immediate,Default
+cust_37,KL Central Catering Sdn Bhd,yes,1,0,catering,281 Jalan Catering,Kuala Lumpur,Kuala Lumpur,82133,Malaysia,+604-7781474,procurement@kl.com.my,C486540870848,30 Days,Default
+cust_38,Selera Cloud Kitchen KL,yes,1,0,cloudkitchen,238 Jalan Cloudkitchen,Kuala Lumpur,Kuala Lumpur,17535,Malaysia,+604-3614934,procurement@selera.com.my,,Immediate,Default
+cust_39,Berjaya Times Square Hotel,yes,1,0,hotel,143 Jalan Hotel,Kuala Lumpur,Kuala Lumpur,99006,Malaysia,+604-8916420,procurement@berjaya.com.my,C200191170675,30 Days,Hotel/Chain
+cust_40,Sunway Resort Hotel,yes,1,0,hotel,144 Jalan Hotel,Selangor,Selangor,30190,Malaysia,+604-4097304,procurement@sunway.com.my,C325340269191,30 Days,Hotel/Chain
+cust_41,Ipoh Old Town Kopitiam Group,yes,1,0,cafe,218 Jalan Cafe,Perak,Perak,24705,Malaysia,+604-6398902,procurement@ipoh.com.my,,Immediate,Default
+cust_42,Johor Premium Catering,yes,1,0,catering,410 Jalan Catering,Johor,Johor,51832,Malaysia,+604-4049735,procurement@johor.com.my,C405353384069,30 Days,Default
+cust_43,Melaka Heritage Hotel,yes,1,0,hotel,335 Jalan Hotel,Melaka,Melaka,33074,Malaysia,+604-2101596,procurement@melaka.com.my,C795845452139,30 Days,Hotel/Chain
+cust_44,Alor Setar Central Kitchen,yes,1,0,catering,203 Jalan Catering,Kedah,Kedah,90346,Malaysia,+604-5848859,procurement@alor.com.my,C725587499043,30 Days,Default
+cust_45,The Banjaran Hotsprings Retreat,yes,1,0,hotel,23 Jalan Hotel,Perak,Perak,54102,Malaysia,+604-4000876,procurement@the.com.my,C399749413769,30 Days,Hotel/Chain
+cust_46,Avillion Port Dickson,yes,1,0,hotel,242 Jalan Hotel,Selangor,Selangor,96561,Malaysia,+604-3642262,procurement@avillion.com.my,C750912331404,30 Days,Hotel/Chain

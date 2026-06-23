@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk Register &amp; RACI — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="risk-raci">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Delivery</b> · Risk Register &amp; RACI</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Delivery</span>
+      <h1>Naming the risks early — and saying exactly who owns each one.</h1>
+      <p>An ERP programme fails quietly when nobody owns a risk and nobody knows who decides. This
+      page sets out a live risk register scored on probability and impact, plotted on a heatmap so the
+      few risks that truly threaten the programme are unmistakable — paired with a project RACI matrix
+      that fixes accountability across every workstream and role.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">16</div><div class="lbl">risks tracked in the live register</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">red-zone risks needing active mitigation</div></div>
+          <div class="kpi"><div class="num">6</div><div class="lbl">delivery roles in the RACI</div></div>
+          <div class="kpi"><div class="num">1</div><div class="lbl">accountable owner per risk — no shared blame</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Risk heatmap</h2>
+        <p class="lead">Each bubble is a register risk positioned by probability (x) and impact (y);
+        bubble size and colour reflect the resulting exposure score. Anything in the upper-right
+        carries an explicit, owned mitigation. Hover a point for the risk it represents.</p>
+        <div class="chartbox"><canvas id="heatmap" height="320"></canvas></div>
+        <p style="font-size:12.5px;color:var(--jr-slate)">Probability and impact scored 1 (low) – 5 (high). Exposure = probability × impact.</p>
+      </section>
+
+      <section class="section">
+        <h2>Risk register</h2>
+        <table class="tbl">
+          <tr><th>#</th><th>Risk</th><th>Category</th><th>P</th><th>I</th><th>Exp.</th><th>Mitigation</th><th>Owner</th></tr>
+          <tr><td>R1</td><td>Legacy data dirty / duplicated, blocking migration</td><td>Data</td><td>4</td><td>5</td><td><span class="tag red">20</span></td><td>Early data audit, cleansing sprint, reconciliation sign-off gate</td><td>Functional Consultant</td></tr>
+          <tr><td>R2</td><td>MyInvois e-invoicing rules change before go-live</td><td>Compliance</td><td>3</td><td>5</td><td><span class="tag red">15</span></td><td>Track LHDN guidance, isolate tax config, vendor escalation path</td><td>TechNext PM</td></tr>
+          <tr><td>R3</td><td>User resistance — team reverts to spreadsheets</td><td>People</td><td>4</td><td>4</td><td><span class="tag red">16</span></td><td>Change plan, super-users, retire old tools on cut-over</td><td>Director / Sponsor</td></tr>
+          <tr><td>R4</td><td>Scope creep across four business lines</td><td>Scope</td><td>4</td><td>4</td><td><span class="tag red">16</span></td><td>Phased gating, frozen BRD per phase, formal change control</td><td>TechNext PM</td></tr>
+          <tr><td>R5</td><td>Key person (Director) capacity for decisions</td><td>Governance</td><td>3</td><td>4</td><td><span class="tag warn">12</span></td><td>Fortnightly steering, pre-agreed decision SLAs, delegate authority</td><td>Director / Sponsor</td></tr>
+          <tr><td>R6</td><td>Fabrication BoM complexity underestimated</td><td>Technical</td><td>3</td><td>4</td><td><span class="tag warn">12</span></td><td>Early workshop with fabrication lead; pilot one product family</td><td>Functional Consultant</td></tr>
+          <tr><td>R7</td><td>Field engineers reject mobile data entry</td><td>People</td><td>3</td><td>3</td><td><span class="tag warn">9</span></td><td>Simplify flow to &lt;5 taps; super-user ride-alongs</td><td>Super-users</td></tr>
+          <tr><td>R8</td><td>Integration with bank / payment gateway slips</td><td>Technical</td><td>2</td><td>4</td><td><span class="tag warn">8</span></td><td>Confirm API access early; manual reconciliation fallback</td><td>Developer</td></tr>
+          <tr><td>R9</td><td>Insufficient training time before go-live</td><td>People</td><td>3</td><td>3</td><td><span class="tag warn">9</span></td><td>Just-in-time role training; competency sign-off gates access</td><td>Functional Consultant</td></tr>
+          <tr><td>R10</td><td>Inventory opening balances inaccurate</td><td>Data</td><td>3</td><td>4</td><td><span class="tag warn">12</span></td><td>Physical stock count before load; tolerance &lt;2% to exit</td><td>Super-users</td></tr>
+          <tr><td>R11</td><td>AI quoting / maintenance models underperform</td><td>Technical</td><td>3</td><td>2</td><td><span class="tag">6</span></td><td>Treat as Phase 3 enhancement; human-in-the-loop, not blocking</td><td>Developer</td></tr>
+          <tr><td>R12</td><td>Budget overrun from change requests</td><td>Commercial</td><td>2</td><td>4</td><td><span class="tag warn">8</span></td><td>Change-control log with cost/benefit; contingency line</td><td>TechNext PM</td></tr>
+          <tr><td>R13</td><td>SST configuration errors affect statutory filing</td><td>Compliance</td><td>2</td><td>5</td><td><span class="tag warn">10</span></td><td>Parallel run with finance; accountant sign-off pre go-live</td><td>Functional Consultant</td></tr>
+          <tr><td>R14</td><td>Connectivity / hosting downtime at go-live</td><td>Infrastructure</td><td>2</td><td>3</td><td><span class="tag">6</span></td><td>Odoo SH SLA; offline job-capture for field; comms plan</td><td>Developer</td></tr>
+          <tr><td>R15</td><td>Super-users leave / reassigned mid-project</td><td>People</td><td>2</td><td>4</td><td><span class="tag warn">8</span></td><td>Name two per line; document as you go; train-the-trainer</td><td>Director / Sponsor</td></tr>
+          <tr><td>R16</td><td>Phase 1 slips, cascading into Phase 2/3</td><td>Schedule</td><td>3</td><td>4</td><td><span class="tag warn">12</span></td><td>Overlap discovery; exit-criteria gates; protect critical path</td><td>TechNext PM</td></tr>
+        </table>
+        <div class="callout warn"><b>Red zone (exposure ≥ 15):</b> R1 dirty data, R2 MyInvois change,
+        R3 resistance and R4 scope creep. These four get named slots in every steering review until
+        their exposure drops.</div>
+      </section>
+
+      <section class="section">
+        <h2>Project RACI matrix</h2>
+        <p class="lead">Accountability is assigned per workstream. Exactly one role is Accountable (A)
+        for each — they own the outcome even when others do the work (R).</p>
+        <table class="tbl">
+          <tr><th>Workstream</th><th>Sponsor / Director</th><th>TechNext PM</th><th>Functional Consultant</th><th>Developer</th><th>Super-users</th><th>End-users</th></tr>
+          <tr><td>Business case &amp; funding</td><td>A/R</td><td>C</td><td>I</td><td>I</td><td>I</td><td>I</td></tr>
+          <tr><td>Programme governance &amp; schedule</td><td>A</td><td>R</td><td>C</td><td>I</td><td>I</td><td>I</td></tr>
+          <tr><td>Requirements &amp; process design</td><td>C</td><td>A</td><td>R</td><td>C</td><td>R</td><td>C</td></tr>
+          <tr><td>Configuration (Finance/Sales/Inv.)</td><td>I</td><td>A</td><td>R</td><td>C</td><td>C</td><td>I</td></tr>
+          <tr><td>Configuration (Mfg/Field/Rental)</td><td>I</td><td>A</td><td>R</td><td>C</td><td>C</td><td>I</td></tr>
+          <tr><td>Custom dev &amp; integrations</td><td>I</td><td>A</td><td>C</td><td>R</td><td>I</td><td>I</td></tr>
+          <tr><td>Data migration &amp; cleansing</td><td>I</td><td>A</td><td>R</td><td>R</td><td>C</td><td>I</td></tr>
+          <tr><td>MyInvois / SST compliance</td><td>C</td><td>A</td><td>R</td><td>C</td><td>I</td><td>I</td></tr>
+          <tr><td>Testing &amp; UAT</td><td>I</td><td>A</td><td>C</td><td>C</td><td>R</td><td>R</td></tr>
+          <tr><td>Training &amp; enablement</td><td>I</td><td>A</td><td>R</td><td>I</td><td>R</td><td>C</td></tr>
+          <tr><td>Change management &amp; comms</td><td>A</td><td>R</td><td>C</td><td>I</td><td>R</td><td>I</td></tr>
+          <tr><td>Go-live decision &amp; cut-over</td><td>A</td><td>R</td><td>C</td><td>C</td><td>C</td><td>I</td></tr>
+          <tr><td>Hypercare &amp; Tier-1 support</td><td>I</td><td>A</td><td>C</td><td>C</td><td>R</td><td>I</td></tr>
+          <tr><td>Benefits realisation &amp; KPIs</td><td>A</td><td>R</td><td>C</td><td>I</td><td>C</td><td>I</td></tr>
+        </table>
+        <p style="font-size:12.5px;color:var(--jr-slate)">R = Responsible · A = Accountable · C = Consulted · I = Informed</p>
+      </section>
+
+      <section class="section">
+        <div class="grid g2">
+          <div class="card"><span class="tag warn">Linked plan</span><h3>How risks are worked down</h3>
+            <p>The phased roadmap's exit-criteria gates are the primary control for the schedule and
+            data risks above — value is banked before complexity is added.</p>
+            <a href="roadmap.html">Implementation Roadmap →</a></div>
+          <div class="card"><span class="tag green">Linked plan</span><h3>People risks</h3>
+            <p>R3, R7 and R15 are owned through the change-management plan and super-user network.</p>
+            <a href="change-management.html">Change Management →</a></div>
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="hypercare.html">← Prev: Hypercare &amp; Support</a>
+        <a href="kpis-benefits.html">Next: KPIs &amp; Benefits →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+function expColor(e){ return e>=15 ? 'rgba(226,84,75,.75)' : e>=9 ? 'rgba(232,161,58,.75)' : 'rgba(22,192,152,.7)'; }
+var risks = [
+  {id:'R1',p:4,i:5},{id:'R2',p:3,i:5},{id:'R3',p:4,i:4},{id:'R4',p:4,i:4},
+  {id:'R5',p:3,i:4},{id:'R6',p:3,i:4},{id:'R7',p:3,i:3},{id:'R8',p:2,i:4},
+  {id:'R9',p:3,i:3},{id:'R10',p:3,i:4},{id:'R11',p:3,i:2},{id:'R12',p:2,i:4},
+  {id:'R13',p:2,i:5},{id:'R14',p:2,i:3},{id:'R15',p:2,i:4},{id:'R16',p:3,i:4}
+];
+new Chart(document.getElementById('heatmap'), {
+  type: 'bubble',
+  data: { datasets: [{
+    label: 'Risk exposure',
+    data: risks.map(function(r){ return { x:r.p, y:r.i, r:6+(r.p*r.i)/2.2, id:r.id, exp:r.p*r.i }; }),
+    backgroundColor: risks.map(function(r){ return expColor(r.p*r.i); })
+  }]},
+  options: {
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: function(c){ var d=c.raw; return d.id+' — exposure '+d.exp+' (P'+d.x+'×I'+d.y+')'; } } }
+    },
+    scales: {
+      x: { min:0.5, max:5.5, title:{ display:true, text:'Probability →' }, ticks:{ stepSize:1 } },
+      y: { min:0.5, max:5.5, title:{ display:true, text:'Impact →' }, ticks:{ stepSize:1 } }
+    }
+  }
+});
+</script>
+</body>
+</html>

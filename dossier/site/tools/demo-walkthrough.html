@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Walkthrough — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  code.inline{font-family:ui-monospace,Menlo,monospace;font-size:.85em;background:#EEF4FC;
+    border:1px solid #dbe3ef;border-radius:6px;padding:1px 6px;color:#0B1F3A;}
+  .scenario{border:1px solid #dbe3ef;border-left:4px solid #16C098;border-radius:12px;
+    padding:6px 18px 4px;margin:14px 0;background:#fff;}
+  .scenario h3{margin:14px 0 6px;}
+  .rec{font-size:12.5px;color:#5a6b85;} .rec b{color:#0B1F3A;}
+</style>
+</head>
+<body data-page="demo-walkthrough">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Demo Walkthrough</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents · Seeded Demo Tour</span>
+      <h1>Demo Walkthrough — a click-through tour of the seeded JR-Tech Odoo</h1>
+      <p>A scenario-by-scenario narrative of the demo database built by the
+      <a href="ai-build-playbook.html">AI Build Playbook</a>. Each step says what the user clicks,
+      what they see on screen, and the underlying Odoo records created — so JR-Tech's team can
+      experience the four business lines end-to-end before go-live.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">4</div><div class="lbl">end-to-end scenarios</div></div>
+          <div class="kpi"><div class="num">1</div><div class="lbl">company, MYR, SST-configured</div></div>
+          <div class="kpi"><div class="num">6</div><div class="lbl">seeded user roles to log in as</div></div>
+          <div class="kpi"><div class="num">✓</div><div class="lbl">every invoice posts &amp; submits to MyInvois</div></div>
+        </div>
+        <div class="callout tn"><b>How to use this.</b> Log into the staging demo, then follow each
+        scenario in order. The records named in each step (e.g. <code class="inline">sale.order S00012</code>)
+        are exactly what the seed script created — they trace back to the
+        <a href="brd.html">BRD acceptance criteria</a>. Role logins are in the
+        <a href="staff-guides.html">Staff Guides</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>Scenario A · Fabrication quote → MO → delivery → invoice</h2>
+        <p class="lead">The flagship JR-Consulting/fabrication flow: a Penang hotel orders a custom
+        stainless-steel worktable, which is manufactured to order, delivered and invoiced with SST.</p>
+        <div class="scenario">
+          <ol class="steps">
+            <li><b>Sales app → quotation.</b> You see a draft quote for
+              <i>Eastin Hotel Penang</i>, line item <i>Custom SS Worktable 1800×700</i>, qty 2,
+              MYR pricelist, Sales Tax 10% line.
+              <div class="rec"><b>Records:</b> <code class="inline">crm.lead</code> "Eastin — kitchen fit-out"
+              → <code class="inline">sale.order</code> <b>S00012</b> (state <code class="inline">draft</code>).</div></li>
+            <li><b>Confirm the quote.</b> Click <i>Confirm</i>; the order becomes a sales order and a
+              smart button "Manufacturing" appears.
+              <div class="rec"><b>Records:</b> <code class="inline">sale.order</code> S00012 →
+              <code class="inline">sale</code>; a <code class="inline">mrp.production</code> is generated
+              because the product is route = Manufacture/MTO.</div></li>
+            <li><b>Manufacturing app → the MO.</b> You see <code class="inline">MO/00007</code> with its
+              BoM components (SS sheet, frame tube, fasteners) and operations across work centers
+              Cutting → Welding → Assembly → QC.
+              <div class="rec"><b>Records:</b> <code class="inline">mrp.production</code> MO/00007 +
+              <code class="inline">mrp.bom</code>, <code class="inline">stock.move</code> (component
+              consumption).</div></li>
+            <li><b>Produce.</b> Mark the work orders done and <i>Produce</i>; finished worktables enter
+              stock at the workshop location.
+              <div class="rec"><b>Records:</b> MO/00007 → <code class="inline">done</code>;
+              <code class="inline">stock.move</code> finished goods in.</div></li>
+            <li><b>Delivery.</b> Back on S00012, the Delivery smart button shows
+              <code class="inline">WH/OUT/00021</code>; validate it to ship to the hotel.
+              <div class="rec"><b>Records:</b> <code class="inline">stock.picking</code> WH/OUT/00021 →
+              <code class="inline">done</code>.</div></li>
+            <li><b>Invoice + MyInvois.</b> <i>Create invoice</i> → <i>Confirm</i>; the customer invoice
+              carries the 10% Sales Tax and, once posted, shows a MyInvois submission status.
+              <div class="rec"><b>Records:</b> <code class="inline">account.move</code> <b>INV/2026/0034</b>
+              (state <code class="inline">posted</code>) with SST tax line + e-invoice status.</div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Scenario B · Equipment rental cycle</h2>
+        <p class="lead">JR-Equipment Supports rents a commercial dishwasher to a café for two weeks —
+        pickup, return and duration-based billing.</p>
+        <div class="scenario">
+          <ol class="steps">
+            <li><b>Rental app → new order.</b> You see a rental order for <i>Hailam Kopi Café</i>, product
+              <i>Commercial Dishwasher (Rental Asset)</i>, rental period 14 days with a price from the
+              rental pricing rule.
+              <div class="rec"><b>Records:</b> <code class="inline">sale.order</code> <b>R00005</b> with a
+              rental line + <code class="inline">sale.temporal.recurrence</code> (duration).</div></li>
+            <li><b>Confirm &amp; pick up.</b> Confirm the order, then <i>Pick-up</i>; the asset is marked
+              out and reserved against availability.
+              <div class="rec"><b>Records:</b> pickup <code class="inline">stock.picking</code> →
+              <code class="inline">done</code>; asset qty reserved.</div></li>
+            <li><b>Return.</b> After 14 days, <i>Return</i> the dishwasher; Odoo computes the billable
+              duration and any late/damage fee.
+              <div class="rec"><b>Records:</b> return <code class="inline">stock.picking</code> →
+              <code class="inline">done</code>; rental line quantity confirmed.</div></li>
+            <li><b>Invoice.</b> Create the invoice for the rental duration; Service Tax 8% applies.
+              <div class="rec"><b>Records:</b> <code class="inline">account.move</code> posted, analytic =
+              <i>Equipment &amp; Rental</i>.</div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Scenario C · Field-service maintenance visit</h2>
+        <p class="lead">A grease-trap / bio-treatment service call handled on the technician's mobile,
+        invoicing logged time and parts.</p>
+        <div class="scenario">
+          <ol class="steps">
+            <li><b>Field Service app → task.</b> You see <code class="inline">FSM Task</code>
+              "Grease-trap service — <i>Sunway Carnival Food Court</i>", scheduled and assigned to a
+              technician.
+              <div class="rec"><b>Records:</b> <code class="inline">project.task</code> /
+              <code class="inline">fsm.task</code> <b>FSM/00013</b>.</div></li>
+            <li><b>On site (mobile).</b> The tech opens the task on the Odoo mobile app, runs the
+              checklist, starts the timer, and adds the part <i>Bio-treatment dosing</i>.
+              <div class="rec"><b>Records:</b> <code class="inline">account.analytic.line</code>
+              (timesheet) + a product line for parts used.</div></li>
+            <li><b>Customer sign-off.</b> Capture the customer signature and mark the task done.
+              <div class="rec"><b>Records:</b> task → <code class="inline">done</code>; signature stored.</div></li>
+            <li><b>Invoice.</b> <i>Create invoice</i> turns logged time + parts into a customer invoice
+              with Service Tax 8%; analytic = <i>Service</i>.
+              <div class="rec"><b>Records:</b> <code class="inline">sale.order</code> (auto) →
+              <code class="inline">account.move</code> posted.</div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Scenario D · Chemical subscription resupply</h2>
+        <p class="lead">JR-Chemical Supplies runs a monthly recurring resupply of dishwasher detergent to
+        a central kitchen — auto-invoiced and auto-delivered each cycle.</p>
+        <div class="scenario">
+          <ol class="steps">
+            <li><b>Subscriptions app → the subscription.</b> You see an active subscription for
+              <i>Pulau Tikus Central Kitchen</i>, plan <i>Monthly Detergent Resupply</i>, recurring
+              monthly, next-invoice date set.
+              <div class="rec"><b>Records:</b> <code class="inline">sale.order</code> with
+              <code class="inline">sale.subscription.plan</code> <b>SUB00004</b>.</div></li>
+            <li><b>Cycle runs.</b> On the recurring date, Odoo generates the invoice automatically (the
+              demo runs it manually via <i>Generate invoice</i>).
+              <div class="rec"><b>Records:</b> <code class="inline">account.move</code> posted, Sales Tax
+              10%, analytic = <i>Chemicals</i>; MRR updates.</div></li>
+            <li><b>Delivery.</b> A delivery order is created for the detergent quantity and validated from
+              the chemicals store.
+              <div class="rec"><b>Records:</b> <code class="inline">stock.picking</code> →
+              <code class="inline">done</code>.</div></li>
+            <li><b>Reporting.</b> The Subscriptions dashboard shows the new MRR and churn metrics; the
+              owner sees recurring revenue building.
+              <div class="rec"><b>Records:</b> subscription KPIs (MRR) recomputed.</div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The thread tying it together</h2>
+        <p class="lead">All four scenarios feed one ledger. After the tour, open Accounting to see four
+        posted invoices, each tagged to its analytic business line — the live P&amp;L the
+        <a href="accounting-overhaul.html">Accounting Overhaul</a> promises.</p>
+        <div class="mermaid">
+flowchart LR
+  A[A · Fabrication] --> L[(Accounting<br/>ledger)]
+  B[B · Rental] --> L
+  C[C · Field Service] --> L
+  D[D · Chemicals] --> L
+  L --> P[P&amp;L by analytic line]
+  L --> E[MyInvois e-invoices]
+        </div>
+        <div class="callout tn"><b>So what for the build:</b> if every scenario above runs cleanly, the
+        <a href="ai-build-playbook.html">build playbook</a> validation gates V1–V7 are green and the
+        <a href="brd.html">BRD</a> acceptance criteria AC-01–AC-06 are demonstrably met.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="accounting-overhaul.html">← Prev: Accounting Overhaul</a>
+        <a href="staff-guides.html">Next: Staff Guides →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</body>
+</html>

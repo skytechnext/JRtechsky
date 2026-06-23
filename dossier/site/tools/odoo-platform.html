@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odoo Platform — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  .shot{background:#F4F7FC;border:1px dashed #9db8de;border-radius:12px;padding:18px;color:#3c5a86;
+    font-size:13px;display:flex;gap:14px;align-items:flex-start;}
+  .shot .ico{font-size:26px;line-height:1;}
+  .shot b{color:#0B1F3A;}
+</style>
+</head>
+<body data-page="odoo-platform">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Odoo Platform</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents · Platform Primer</span>
+      <h1>The Odoo Platform — what we're building JR-Tech on, and why</h1>
+      <p>A plain-language primer for JR-Tech's leadership: what Odoo 19 is, how Community and
+      Enterprise differ, the hosting choices (Odoo.sh vs on-prem), the app ecosystem, the
+      per-user licensing model in MYR, and TechNext's recommended edition and app set for a Penang
+      F&amp;B engineering business running four lines.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">19</div><div class="lbl">target version (Odoo 19, 2025/26 LTS line)</div></div>
+          <div class="kpi"><div class="num">40+</div><div class="lbl">first-party apps in one suite</div></div>
+          <div class="kpi"><div class="num">1</div><div class="lbl">flat per-user price — all apps included (Enterprise)</div></div>
+          <div class="kpi"><div class="num">~RM 156</div><div class="lbl">indicative Enterprise / user / month (Standard plan)</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What Odoo 19 is</h2>
+        <p class="lead">Odoo is an integrated business-management suite — a single database where
+        CRM, Sales, Inventory, Manufacturing, Accounting, Field Service and more share one set of
+        customers, products and documents. Instead of stitching together a quoting tool, a stock
+        spreadsheet, an accounting package and WhatsApp threads, JR-Tech runs the whole quote → make →
+        deliver → invoice → service loop in one place.</p>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Modular</span><h3>Apps, not silos</h3>
+            <p>You switch on only the apps you need. Each app extends the same data model, so a sale
+            order can spawn a manufacturing order and a field-service task without integrations.</p></div>
+          <div class="card"><span class="tag">Open</span><h3>Open-source core</h3>
+            <p>The Community edition is open-source (LGPL). That means no lock-in on the data model and
+            a large ecosystem of community modules — useful insurance for an SME.</p></div>
+          <div class="card"><span class="tag green">AI-ready</span><h3>Automation &amp; AI hooks</h3>
+            <p>Server actions, scheduled jobs and an external API (XML-RPC / JSON-RPC) let an AI agent
+            read and write records — the basis for JR-Tech's AI-assisted quoting and the
+            <a href="ai-build-playbook.html">AI Build Playbook</a>.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Community vs Enterprise</h2>
+        <p class="lead">Both run the same core. Enterprise adds the apps and capabilities JR-Tech
+        actually depends on — full Accounting, Field Service, Subscriptions, Studio and MyInvois
+        e-invoicing — plus official support and a mobile app.</p>
+        <table class="tbl">
+          <tr><th>Capability</th><th>Community (free)</th><th>Enterprise (paid)</th><th>JR-Tech needs it?</th></tr>
+          <tr><td>CRM, Sales, Inventory, Purchase, basic Manufacturing</td><td><span class="tag green">Yes</span></td><td><span class="tag green">Yes</span></td><td>Core</td></tr>
+          <tr><td>Full Accounting (bank sync, follow-ups, analytic)</td><td><span class="tag red">No (invoicing only)</span></td><td><span class="tag green">Yes</span></td><td><b>Yes</b> — see <a href="accounting-overhaul.html">Accounting Overhaul</a></td></tr>
+          <tr><td>Field Service, Maintenance, Repair</td><td><span class="tag warn">Partial</span></td><td><span class="tag green">Yes</span></td><td><b>Yes</b> — grease-trap, tanker, repairs</td></tr>
+          <tr><td>Subscriptions (recurring chemical resupply)</td><td><span class="tag red">No</span></td><td><span class="tag green">Yes</span></td><td><b>Yes</b></td></tr>
+          <tr><td>Rental</td><td><span class="tag warn">Partial</span></td><td><span class="tag green">Yes</span></td><td><b>Yes</b> — equipment &amp; dishwasher rental</td></tr>
+          <tr><td>MyInvois / LHDN e-invoicing (<code>l10n_my_edi</code>)</td><td><span class="tag red">No</span></td><td><span class="tag green">Yes</span></td><td><b>Mandatory</b> in Malaysia</td></tr>
+          <tr><td>Studio (no-code customisation), mobile app, official support</td><td><span class="tag red">No</span></td><td><span class="tag green">Yes</span></td><td>Yes</td></tr>
+        </table>
+        <div class="callout tn"><b>Recommendation:</b> JR-Tech runs <b>Odoo 19 Enterprise</b>. The
+        Subscriptions, Field Service and full Accounting / MyInvois features are non-negotiable for the
+        four business lines and Malaysian compliance — and they exist only in Enterprise.</div>
+      </section>
+
+      <section class="section">
+        <h2>Hosting: Odoo.sh vs on-premise</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="hostChart" height="240"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Three ways to host</h3>
+            <p><b>Odoo Online (SaaS):</b> simplest, fully managed, but no custom code. Good for a pure
+            out-of-the-box deployment.</p>
+            <p><b>Odoo.sh (PaaS):</b> managed cloud with staging/production branches, daily backups,
+            and the ability to run custom modules and the external API. <b>TechNext's recommendation
+            for JR-Tech</b> — it supports the Studio tweaks and the AI build pipeline while staying
+            managed.</p>
+            <p><b>On-premise:</b> maximum control, but JR-Tech would own servers, backups, upgrades and
+            security. Hard to justify for a ~30-seat F&amp;B SME.</p>
+            <div class="callout"><b>Verdict:</b> Odoo.sh Production + Staging. Penang-friendly latency
+            via regional cloud, managed backups, and a staging branch the AI agent uses to dry-run the
+            <a href="ai-build-playbook.html">build playbook</a> before promoting to production.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The app ecosystem for JR-Tech</h2>
+        <p class="lead">The recommended app set maps one-to-one onto JR-Tech's four lines. This is the
+        same set the <a href="brd.html">BRD</a> and <a href="../pages/technology/odoo-architecture.html">Odoo
+        Architecture</a> pages specify.</p>
+        <div class="mermaid">
+flowchart LR
+  CRM[CRM] --> SALE[Sales]
+  SALE --> MRP[Manufacturing<br/>fabrication]
+  SALE --> RENT[Rental<br/>equipment]
+  SALE --> SUB[Subscriptions<br/>chemicals]
+  SALE --> FSM[Field Service<br/>grease-trap/tanker]
+  MRP --> STK[Inventory]
+  RENT --> STK
+  SUB --> STK
+  FSM --> MAINT[Maintenance]
+  FSM --> REP[Repair]
+  PUR[Purchase] --> STK
+  SALE --> ACC[Accounting<br/>SST + MyInvois]
+  MRP --> ACC
+  RENT --> ACC
+  SUB --> ACC
+  FSM --> ACC
+        </div>
+        <table class="tbl">
+          <tr><th>Business line</th><th>Primary apps</th><th>What it replaces today</th></tr>
+          <tr><td>JR-Consulting (planning, fabrication, training)</td><td>CRM · Sales · Manufacturing · Inventory</td><td>Quote spreadsheets, manual job tracking</td></tr>
+          <tr><td>JR-Equipment Supports (sales &amp; rental, maintenance)</td><td>Sales · Rental · Field Service · Maintenance · Repair</td><td>WhatsApp dispatch, paper service logs</td></tr>
+          <tr><td>JR-Chemical Supplies (recurring resupply)</td><td>Subscriptions · Sales · Inventory · Purchase</td><td>Manual reorder, ad-hoc invoicing</td></tr>
+          <tr><td>Finance (all lines)</td><td>Accounting (SST, MyInvois, analytic)</td><td>External bookkeeper, month-end spreadsheets</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Licensing &amp; pricing model</h2>
+        <p class="lead">Enterprise is priced <b>per user, per month</b> — and crucially, a paid user
+        gets <b>all</b> apps. You don't pay per app. Pricing below is indicative in MYR for planning;
+        the binding figures are in the <a href="quotation.html">Quotation</a> and modelled in the
+        <a href="roi-tco.html">ROI / TCO model</a>.</p>
+        <table class="tbl">
+          <tr><th>Plan</th><th>What you get</th><th>Indicative / user / month</th><th>Notes</th></tr>
+          <tr><td>One App Free</td><td>A single app, unlimited users</td><td>RM 0</td><td>Too limited — JR-Tech needs many apps</td></tr>
+          <tr><td>Standard</td><td>All apps, cloud (Odoo Online/.sh)</td><td>≈ RM 156</td><td>No external API / Studio multi-company depth</td></tr>
+          <tr><td>Custom</td><td>All apps + Studio + external API + multi-company</td><td>≈ RM 235</td><td><b>Recommended</b> — needed for AI build &amp; integrations</td></tr>
+        </table>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="costChart" height="240"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Indicative annual license cost</h3>
+            <p>Modelling ~20 internal Odoo users (office sales, finance, storekeeper, dispatch,
+            workshop leads — field techs largely use the mobile app under the same seats) on the
+            <b>Custom</b> plan:</p>
+            <div class="kpi" style="margin:8px 0"><div class="num">≈ RM 56k</div><div class="lbl">indicative license / year (20 users · Custom · annual billing)</div></div>
+            <div class="callout warn"><b>Caveat:</b> Odoo list pricing changes and is often discounted on
+            annual billing and for new-implementation partners. Treat these as planning figures — the
+            <a href="quotation.html">Quotation</a> carries the committed numbers.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What the screens look like</h2>
+        <p class="lead">Live screenshots will be captured from the seeded demo once the
+        <a href="ai-build-playbook.html">build playbook</a> runs. Until then, the key screens are
+        described below.</p>
+        <div class="grid g2">
+          <div class="shot"><div class="ico">🧾</div><div><b>[Screenshot: Sales quotation]</b><br>
+            A JR-Tech quote for a custom SS worktable — header with customer (a Penang hotel), MYR
+            pricelist, SST line, and a button to confirm into a manufacturing order.</div></div>
+          <div class="shot"><div class="ico">🏭</div><div><b>[Screenshot: Manufacturing order]</b><br>
+            A work-order kanban across Cutting → Welding → Assembly → QC work centers for the fabricated
+            worktable, with component availability from Inventory.</div></div>
+          <div class="shot"><div class="ico">🛠</div><div><b>[Screenshot: Field Service task]</b><br>
+            A grease-trap service visit on the technician's mobile app — checklist, time log, parts used,
+            customer signature, auto-generated invoice.</div></div>
+          <div class="shot"><div class="ico">📊</div><div><b>[Screenshot: Accounting dashboard]</b><br>
+            Real-time P&amp;L by analytic account (one per business line), SST tax report, and the
+            MyInvois submission status column.</div></div>
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="owner-faq.html">← Prev: Owner FAQ</a>
+        <a href="brd.html">Next: Requirements (BRD) →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('hostChart'), {
+  type:'radar',
+  data:{ labels:['Setup ease','Control','Custom code','Backups managed','Cost efficiency','Scalability'],
+    datasets:[
+      {label:'Odoo Online', data:[5,2,1,5,4,3], borderColor:'#7FA9DE', backgroundColor:'rgba(127,169,222,.15)'},
+      {label:'Odoo.sh', data:[4,4,5,5,4,5], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.18)'},
+      {label:'On-premise', data:[2,5,5,1,2,4], borderColor:'#E2544B', backgroundColor:'rgba(226,84,75,.12)'}
+    ]},
+  options:{ scales:{ r:{ min:0,max:5,ticks:{stepSize:1} } }, plugins:{ legend:{ position:'bottom' } } }
+});
+new Chart(document.getElementById('costChart'), {
+  type:'bar',
+  data:{ labels:['5 users','10 users','20 users','30 users'],
+    datasets:[{ label:'Indicative license RM/year (Custom)', data:[14100,28200,56400,84600],
+      backgroundColor:'#0B1F3A' }]},
+  options:{ plugins:{ legend:{ display:false } },
+    scales:{ y:{ ticks:{ callback:v=>'RM '+(v/1000)+'k' } } } }
+});
+</script>
+</body>
+</html>

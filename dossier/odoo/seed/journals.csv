@@ -1,0 +1,7 @@
+xml_id,name,type,code,default_account_code
+jnl_sale,Customer Invoices,sale,INV,4000
+jnl_purchase,Vendor Bills,purchase,BILL,2000
+jnl_bank_mbb,Maybank,bank,MBB,1010
+jnl_bank_cimb,CIMB,bank,CIMB,1020
+jnl_cash,Cash,cash,CSH,1000
+jnl_misc,Miscellaneous Operations,general,MISC,

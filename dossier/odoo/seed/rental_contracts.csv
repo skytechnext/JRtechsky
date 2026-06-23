@@ -1,0 +1,17 @@
+xml_id,name,partner_xml_id,is_rental,date_start,date_return,deposit,state
+rent_01,R2000,cust_33,yes,2026-04-03,2026-04-06,2000,sale
+rent_02,R2001,cust_13,yes,2026-03-25,2026-04-01,500,sale
+rent_03,R2002,cust_03,yes,2026-04-14,2026-04-28,1000,sale
+rent_04,R2003,cust_10,yes,2026-05-02,2026-05-09,2000,done
+rent_05,R2004,cust_27,yes,2026-04-23,2026-04-26,1000,sale
+rent_06,R2005,cust_23,yes,2026-04-30,2026-05-30,500,sale
+rent_07,R2006,cust_29,yes,2026-06-05,2026-06-08,1000,done
+rent_08,R2007,cust_24,yes,2026-06-12,2026-06-19,500,sale
+rent_09,R2008,cust_18,yes,2026-04-02,2026-04-05,500,done
+rent_10,R2009,cust_09,yes,2026-04-26,2026-05-26,500,sale
+rent_11,R2010,cust_08,yes,2026-05-04,2026-05-11,2000,sale
+rent_12,R2011,cust_22,yes,2026-04-08,2026-04-22,500,sale
+rent_13,R2012,cust_03,yes,2026-04-13,2026-04-16,1000,done
+rent_14,R2013,cust_35,yes,2026-03-28,2026-04-04,1000,sale
+rent_15,R2014,cust_07,yes,2026-03-30,2026-04-06,2000,sale
+rent_16,R2015,cust_01,yes,2026-05-03,2026-05-17,500,sale

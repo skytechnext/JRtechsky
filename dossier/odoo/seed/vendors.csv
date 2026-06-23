@@ -1,0 +1,23 @@
+xml_id,name,is_company,customer_rank,supplier_rank,supplies,city,phone,email,vat,property_supplier_payment_term
+vend_01,Rational Malaysia Sdn Bhd,yes,0,1,combi ovens,Johor,+603-64876354,sales@rational.com,C414107071290,30 Days
+vend_02,Hoshizaki Asia,yes,0,1,ice/refrigeration,Johor,+603-68900994,sales@hoshizaki.com,C546222019939,30 Days
+vend_03,Winterhalter Malaysia,yes,0,1,dishwashers,Melaka,+603-27292326,sales@winterhalter.com,C343718036468,30 Days
+vend_04,Hobart Malaysia,yes,0,1,warewashing/mixers,Kedah,+603-49010827,sales@hobart.com,C830780637260,30 Days
+vend_05,Electrolux Professional MY,yes,0,1,cooking equipment,Kedah,+603-39576175,sales@electrolux.com,C234615004952,30 Days
+vend_06,Fagor Industrial Asia,yes,0,1,cooking equipment,Johor,+603-23191941,sales@fagor.com,C321899888844,30 Days
+vend_07,Berjaya Steel Products,yes,0,1,stainless steel,Johor,+603-88875076,sales@berjaya.com,C790041734318,30 Days
+vend_08,Acidchem / SS Steel Supply Penang,yes,0,1,raw stainless,Selangor,+603-37115632,sales@acidchem.com,C698969224492,30 Days
+vend_09,Diversey Malaysia,yes,0,1,cleaning chemicals,Johor,+603-60293088,sales@diversey.com,C433615464129,30 Days
+vend_10,Ecolab Malaysia,yes,0,1,dishwasher chemicals,Kuala Lumpur,+603-52309214,sales@ecolab.com,C580530029411,30 Days
+vend_11,Kärcher Malaysia,yes,0,1,housekeeping equipment,Selangor,+603-81055866,sales@kärcher.com,C430601509775,30 Days
+vend_12,Astral Pool Malaysia,yes,0,1,pool equipment,Penang,+603-53027943,sales@astral.com,C735868251012,30 Days
+vend_13,Chemical Industries (Malaya) Bhd,yes,0,1,pool chemicals,Johor,+603-78889563,sales@chemical.com,C832027859770,30 Days
+vend_14,Welding Alloys Penang,yes,0,1,welding consumables,Penang,+603-56102697,sales@welding.com,C879763099021,30 Days
+vend_15,Penang Industrial Gas,yes,0,1,gas supply,Selangor,+603-24521815,sales@penang.com,C782829193774,30 Days
+vend_16,Northern SS Fittings Trading,yes,0,1,ss fittings,Penang,+603-21777327,sales@northern.com,C832086076806,30 Days
+vend_17,KDK Fans & Ventilation MY,yes,0,1,ventilation,Kuala Lumpur,+603-39253447,sales@kdk.com,C922432103976,30 Days
+vend_18,Panasonic Appliances MY,yes,0,1,appliances,Penang,+603-24778849,sales@panasonic.com,C762567335416,30 Days
+vend_19,Comark Instruments Asia,yes,0,1,thermometers/calibration,Kedah,+603-31558664,sales@comark.com,C787094624585,30 Days
+vend_20,Logistics Express Penang,yes,0,1,freight,Perlis,+603-65494748,sales@logistics.com,C901099192011,30 Days
+vend_21,Tenaga Workshop Tools,yes,0,1,workshop tools,Kedah,+603-39703448,sales@tenaga.com,C883700789382,30 Days
+vend_22,Selangor Detergent Manufacturers,yes,0,1,laundry chemicals,Melaka,+603-34583626,sales@selangor.com,C105433905413,30 Days

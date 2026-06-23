@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI in Action — Peer Story — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="ai-peer-story">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Technology</b> · AI in Action — Peer Story</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Technology</span>
+      <h1>AI in Action — A Peer Story</h1>
+      <p>What happens when a kitchen-equipment SME just like JR-Tech puts its business on a unified
+      ERP with AI assistance? This is the journey of "Selatan Kitchen Engineering" — a composite
+      peer — from spreadsheet chaos to a measurable operational turnaround.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="callout warn"><b>Illustrative composite.</b> "Selatan Kitchen Engineering" is
+        not a real company. It is a composite peer assembled by TechNext from anonymised, typical
+        outcomes of Malaysian HORECA / kitchen-equipment SMEs that adopted Odoo + AI. The metrics
+        are modelled to be realistic and conservative for a business of JR-Tech's size — see
+        <a href="../advisory/methodology.html">Methodology &amp; Assumptions</a>. Treat them as a
+        plausible target trajectory, not a guarantee.</div>
+      </section>
+
+      <section class="section">
+        <h2>The peer at a glance</h2>
+        <div class="grid g4">
+          <div class="kpi"><div class="num">~RM18m</div><div class="lbl">annual revenue (equipment + service + chemicals)</div></div>
+          <div class="kpi"><div class="num">~55</div><div class="lbl">staff incl. in-house fabrication crew</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">business lines — mirroring JR-Tech</div></div>
+          <div class="kpi"><div class="num">18 mo</div><div class="lbl">from go-live to the measured results below</div></div>
+        </div>
+        <p class="lead" style="margin-top:18px">Selatan sold and rented commercial kitchen
+        equipment, ran a fabrication workshop, dispatched a service crew for installs and
+        grease-trap work, and resupplied cleaning chemicals — the same shape as JR-Tech. Before the
+        project, it ran on a tangle of Excel quote sheets, a WhatsApp group per customer, and a
+        bookkeeper closing the month three weeks late.</p>
+      </section>
+
+      <section class="section">
+        <h2>Before &amp; after — the operating picture</h2>
+        <div class="grid g2">
+          <div class="card"><span class="tag red">Before</span>
+            <h3>Disconnected, reactive, invisible</h3>
+            <ul>
+              <li>Quotes hand-built in Excel; no version control, ~2-day turnaround.</li>
+              <li>Rental assets tracked on a whiteboard — double-bookings and "lost" units.</li>
+              <li>Service calls triaged over WhatsApp; no SLA, no history.</li>
+              <li>Chemical resupply was reactive — customers ran out, then called.</li>
+              <li>Vendor bills keyed by hand; month-end close +21 days.</li>
+              <li>No view of margin by line until the accountant reconciled quarterly.</li>
+            </ul>
+          </div>
+          <div class="card"><span class="tag green">After (Odoo 19 + AI)</span>
+            <h3>Unified, proactive, measured</h3>
+            <ul>
+              <li>AI-assisted quotes drafted in minutes from a brief; one source of truth.</li>
+              <li>Rental lifecycle in Odoo — utilisation visible, no double-booking.</li>
+              <li>Field Service with scheduled SLAs and full equipment service history.</li>
+              <li>Chemical resupply on auto-renewing subscriptions with forecasted volumes.</li>
+              <li>OCR turns supplier bills into draft entries; close in ~5 days.</li>
+              <li>Live margin-by-line dashboard for the owner, daily.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The numbers that moved</h2>
+        <p class="lead">Eighteen months after go-live, the gains clustered where you would expect
+        for a services-and-supply SME: faster cash, less leakage, higher recurring revenue.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="beforeAfter" height="260"></canvas></div>
+          <div class="chartbox"><canvas id="recurring" height="260"></canvas></div>
+        </div>
+        <div class="grid g4" style="margin-top:18px">
+          <div class="kpi"><div class="num">−68%</div><div class="lbl">quote turnaround time<span class="delta up"> ▲</span></div></div>
+          <div class="kpi"><div class="num">+9 pts</div><div class="lbl">sales win-rate from lead scoring &amp; speed</div></div>
+          <div class="kpi"><div class="num">−16 days</div><div class="lbl">month-end close (21 → 5)</div></div>
+          <div class="kpi"><div class="num">+34%</div><div class="lbl">recurring chemical-supply revenue</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The adoption journey</h2>
+        <p class="lead">The order mattered. Selatan banked finance + sales quick wins first, which
+        funded credibility for the harder service and AI phases.</p>
+        <div class="mermaid">
+timeline
+    title Selatan's 18-month ERP + AI journey
+    Months 0-3 : Core finance & inventory live : OCR vendor-bill capture : SST + e-invoicing ready
+    Months 3-7 : CRM + AI-assisted quoting : Rental lifecycle in Odoo : Lead scoring switched on
+    Months 7-12 : Field Service & Maintenance : Service SLAs & history : Chemical subscriptions
+    Months 12-18 : Demand forecasting on chemicals : Predictive maintenance pilot : Owner margin dashboards
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Lessons that transfer to JR-Tech</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Lesson 1</span><h3>Clean data first, AI second</h3>
+            <p>The forecasting and lead-scoring wins only appeared once 6+ months of clean
+            transactional data existed. Selatan's delay was data, not models — see
+            <a href="data-migration.html">Data Migration</a>.</p></div>
+          <div class="card"><span class="tag">Lesson 2</span><h3>Quote speed is the gateway win</h3>
+            <p>AI quoting was the change staff felt first and championed. It bought goodwill for the
+            tougher field-service discipline that followed.</p></div>
+          <div class="card"><span class="tag">Lesson 3</span><h3>Recurring revenue is the prize</h3>
+            <p>Turning ad-hoc chemical orders into forecasted subscriptions was the single biggest
+            margin and valuation lever — bigger than any efficiency cut.</p></div>
+          <div class="card"><span class="tag">Lesson 4</span><h3>Field staff need mobile, not desktop</h3>
+            <p>Adoption stalled until the service crew got the Odoo mobile + barcode flow. Plan
+            enablement around the van, not the office.</p></div>
+          <div class="card"><span class="tag">Lesson 5</span><h3>One owner-sponsor, weekly</h3>
+            <p>The director's weekly review of the live dashboard drove discipline. AI surfaces the
+            signal; leadership has to act on it.</p></div>
+          <div class="card"><span class="tag">Lesson 6</span><h3>Start native, customise sparingly</h3>
+            <p>Native Odoo AI/OCR delivered ~70% of the value at a fraction of the cost; bespoke
+            vision QC stayed a deliberate, later bet.</p></div>
+        </div>
+        <div class="callout tn"><b>So what for JR-Tech:</b> the catalogue on the
+        <a href="ai-catalog.html">AI &amp; Automation Catalog</a> is sequenced on exactly this
+        lesson — native quick wins early, data-hungry models once the ERP has been live long enough
+        to feed them.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="ai-catalog.html">← Prev: AI &amp; Automation Catalog</a>
+        <a href="odoo-architecture.html">Next: Odoo 19 Architecture →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('beforeAfter'), {
+  type:'bar',
+  data:{ labels:['Quote turnaround (hrs)','Month-end close (days)','Rental units "lost"/yr','AP keying hrs/mo'],
+    datasets:[
+      { label:'Before', data:[48,21,14,40], backgroundColor:'#E2544B' },
+      { label:'After',  data:[5,5,1,8],     backgroundColor:'#16C098' }
+    ]},
+  options:{ indexAxis:'y', plugins:{ legend:{position:'bottom'}, title:{display:true,text:'Operational metrics — before vs after'} },
+    scales:{ x:{ beginAtZero:true } } }
+});
+new Chart(document.getElementById('recurring'), {
+  type:'line',
+  data:{ labels:['Pre','M3','M6','M9','M12','M15','M18'],
+    datasets:[
+      { label:'Recurring chemical revenue (RM k/mo)', data:[210,215,235,260,275,290,281],
+        borderColor:'#3F6FB0', backgroundColor:'rgba(127,169,222,.18)', fill:true, tension:.3 },
+      { label:'Service contract revenue (RM k/mo)', data:[60,65,80,105,130,150,165],
+        borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.15)', fill:true, tension:.3 }
+    ]},
+  options:{ plugins:{ legend:{position:'bottom'}, title:{display:true,text:'Recurring revenue ramp post go-live'} },
+    scales:{ y:{ beginAtZero:false, title:{display:true,text:'RM thousand / month'} } } }
+});
+</script>
+</body>
+</html>

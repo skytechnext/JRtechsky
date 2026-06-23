@@ -1,0 +1,8 @@
+journal,date,label,account_code,debit,credit
+jnl_misc,2025-12-31,Opening balance — Share Capital,3000,,500000
+jnl_misc,2025-12-31,Opening balance — Maybank,1010,500000,
+jnl_misc,2025-12-31,Opening — Inventory Equipment,1200,180000,
+jnl_misc,2025-12-31,Opening — Inventory Chemicals,1210,45000,
+jnl_misc,2025-12-31,Opening — Raw Stainless Steel,1220,30000,
+jnl_misc,2025-12-31,Opening — Rental Assets,1500,120000,
+jnl_misc,2025-12-31,Opening — Retained Earnings,3100,,375000

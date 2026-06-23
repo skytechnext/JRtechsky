@@ -1,0 +1,7 @@
+xml_id,name,type_tax_use,amount,amount_type,tax_account_code,note
+tax_sst_s10,SST Sales 10%,sale,10.0,percent,2100,Taxable goods (standard)
+tax_sst_s5,SST Sales 5%,sale,5.0,percent,2100,Taxable goods (reduced)
+tax_sst_sv8,SST Service 8%,sale,8.0,percent,2110,Taxable services
+tax_exempt0,SST Exempt 0%,sale,0.0,percent,,Exempt/zero-rated
+tax_pur_s10,SST Purchase 10%,purchase,10.0,percent,2100,Input sales tax
+tax_pur_sv8,SST Purchase Service 8%,purchase,8.0,percent,2110,Input service tax

@@ -1,0 +1,4 @@
+xml_id,name,partner_xml_id,manager_emp_xml_id,date_start,is_fsm
+proj_01,Eastern & Oriental — Central Kitchen Redesign,cust_01,emp_08,2026-02-22,no
+proj_02,Island Hospital — Cook & Chill Implementation,cust_18,emp_08,2026-03-14,no
+proj_03,Intel Penang — Staff Canteen Expansion,cust_31,emp_08,2026-04-03,no

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pain → Solution Matrix — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="pain-solution">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Operations</b> · Pain → Solution Matrix</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Operations</span>
+      <h1>Every pain, its root cause, and the Odoo capability that closes it.</h1>
+      <p>This is the business case in one table. For each operational pain we trace the underlying
+      root cause, the specific Odoo 19 solution, and the benefit JR-Tech realises — across sales,
+      fabrication, rental, field service, chemicals, procurement and finance. The companion chart
+      ranks the pains by severity so sequencing follows impact.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <h2>Pains by severity</h2>
+        <p class="lead">Severity blends financial leakage, customer impact and frequency on a 0–10
+        scale. The highest bars are the first targets for the Odoo rollout.</p>
+        <div class="chartbox"><canvas id="severityChart" height="300"></canvas></div>
+      </section>
+
+      <section class="section">
+        <h2>The matrix</h2>
+        <p class="lead">Eighteen pains spanning the whole operation. The <b>Sev</b> column carries the
+        severity tag used in the chart above.</p>
+        <table class="tbl">
+          <tr><th>#</th><th>Function</th><th>Pain</th><th>Root cause</th><th>Odoo 19 solution</th><th>Benefit</th><th>Sev</th></tr>
+          <tr><td>1</td><td>Sales</td><td>Quotes rebuilt from scratch, slow &amp; inconsistent</td><td>No reusable product/price catalog; Excel only</td><td>CRM + Sales templates, price lists, product variants</td><td>Faster, consistent quotes; higher win rate</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>2</td><td>Sales</td><td>Fabrication &amp; install prices guessed</td><td>No costed BoMs feeding the quote</td><td>Quote priced from Manufacturing BoM &amp; routing</td><td>Quotes reflect true cost; protected margin</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>3</td><td>Sales</td><td>No pipeline visibility for the Director</td><td>Leads in notebooks &amp; heads</td><td>CRM pipeline + forecast dashboard</td><td>Predictable revenue, better resourcing</td><td><span class="tag warn">Med</span></td></tr>
+          <tr><td>4</td><td>Fabrication</td><td>Job cost never reconciled to quote</td><td>No analytic accounting per job</td><td>Manufacturing + Analytic Accounting</td><td>True per-job margin; estimating improves</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>5</td><td>Fabrication</td><td>Material shortages stall builds</td><td>Buying is reactive, not BoM-driven</td><td>MRP demand → Purchase reorder</td><td>On-time builds; less idle labour</td><td><span class="tag warn">Med</span></td></tr>
+          <tr><td>6</td><td>Fabrication</td><td>No progress visibility on the shop floor</td><td>Paper job cards</td><td>Work orders &amp; work-centre kanban</td><td>Realistic delivery dates to customers</td><td><span class="tag warn">Med</span></td></tr>
+          <tr><td>7</td><td>Rental</td><td>Availability unknown without phoning workshop</td><td>Assets not tracked in a system</td><td>Rental + Inventory serialised assets</td><td>Instant availability; fewer lost rentals</td><td><span class="tag warn">Med</span></td></tr>
+          <tr><td>8</td><td>Rental</td><td>Late returns &amp; missed extra billing</td><td>No return reminders or contract terms</td><td>Rental contracts with return scheduling</td><td>Recovered revenue; tighter asset turns</td><td><span class="tag warn">Med</span></td></tr>
+          <tr><td>9</td><td>Field Service</td><td>Techs arrive without asset history or parts</td><td>No equipment register; phone dispatch</td><td>Field Service mobile + equipment records</td><td>Higher first-time-fix; fewer truck rolls</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>10</td><td>Field Service</td><td>Service work done but never invoiced</td><td>Handwritten reports re-keyed or lost</td><td>Mobile report → auto invoice on completion</td><td>Captured revenue; faster cash</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>11</td><td>Field Service</td><td>No preventive maintenance — only breakdowns</td><td>No scheduled-maintenance triggers</td><td>Maintenance preventive plans on equipment</td><td>Recurring service revenue; less downtime</td><td><span class="tag warn">Med</span></td></tr>
+          <tr><td>12</td><td>Chemicals</td><td>Stock-outs &amp; emergency deliveries</td><td>Resupply driven by customer calls</td><td>Subscriptions auto-recurring orders</td><td>Reliable resupply; predictable revenue</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>13</td><td>Chemicals</td><td>No consumption data or forecasting</td><td>One-off manual orders, no history</td><td>Subscription + sales analytics</td><td>Forecast demand; right-size stock</td><td><span class="tag warn">Med</span></td></tr>
+          <tr><td>14</td><td>Procurement</td><td>Reactive buying, no spend visibility</td><td>Verbal POs, invoices in a tray</td><td>Purchase RFQ → PO → 3-way match</td><td>Controlled spend; vendor leverage</td><td><span class="tag warn">Med</span></td></tr>
+          <tr><td>15</td><td>Procurement</td><td>Emergency purchases at higher cost</td><td>No reorder points</td><td>Inventory reorder rules &amp; lead times</td><td>Lower cost of goods; fewer rushes</td><td><span class="tag warn">Med</span></td></tr>
+          <tr><td>16</td><td>Finance</td><td>Double entry between Excel &amp; accounts</td><td>Disconnected tools</td><td>Single Odoo ledger from every transaction</td><td>Less admin; fewer errors</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>17</td><td>Finance</td><td>Manual SST &amp; no e-invoicing readiness</td><td>No tax automation; MyInvois mandate</td><td>Accounting SST + MyInvois e-invoice</td><td>Compliance; avoids penalties</td><td><span class="tag red">High</span></td></tr>
+          <tr><td>18</td><td>Finance</td><td>Slow month-end &amp; ad-hoc collections</td><td>No real-time ledger or AR follow-up</td><td>Real-time P&amp;L + automated AR reminders</td><td>Faster close; healthier cash flow</td><td><span class="tag warn">Med</span></td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Coverage gaps &amp; quantified impact</h2>
+        <p class="lead">Four areas under-weighted in the headline matrix deserve their own treatment —
+        procurement discipline, the finance close, inventory accuracy and after-sales — because each
+        carries a measurable RM or hours leakage today. Figures are realistic Penang-SME estimates,
+        annualised, consistent with the seed scale (137 products, 46 customers, recurring chemical
+        subscriptions).</p>
+        <table class="tbl">
+          <tr><th>#</th><th>Function</th><th>Pain / gap</th><th>Odoo 19 solution</th><th>Quantified impact (annual)</th><th>Hours saved / yr</th></tr>
+          <tr><td>19</td><td>Procurement</td><td>Emergency &amp; off-contract buying at premium prices; no PO discipline</td><td>Purchase reorder rules + RFQ/PO + vendor price lists &amp; lead times</td><td><b>~RM 60–90k</b> avoided premium spend (≈5–8% of purchasing)</td><td>~150 hrs (manual PO/chasing)</td></tr>
+          <tr><td>20</td><td>Finance / close</td><td>Month-end close runs 8–10 working days on Excel reconciliation</td><td>Real-time ledger, bank reconciliation, close checklist, analytic P&amp;L</td><td>Close cut to <b>≤ 3 days</b>; faster, defensible SST-02 filing</td><td>~300 hrs (bookkeeper + director)</td></tr>
+          <tr><td>21</td><td>Inventory</td><td>Stock accuracy ~80–85%; write-offs &amp; stalled jobs from phantom stock</td><td>Real-time multi-location stock, cycle counts, serial/lot on assets</td><td>Accuracy to <b>≥ 97%</b>; <b>~RM 40–70k</b> less write-off / rush freight</td><td>~120 hrs (recounts, searches)</td></tr>
+          <tr><td>22</td><td>After-sales</td><td>Warranty &amp; repair history not tracked; repeat-service revenue leaks</td><td>Repair orders + Maintenance equipment register + Helpdesk tickets linked to the customer asset</td><td><b>~RM 50–80k</b> captured repair/PM revenue; fewer warranty disputes</td><td>~100 hrs (history hunting)</td></tr>
+          <tr><td>23</td><td>After-sales</td><td>No structured support channel; requests lost in WhatsApp</td><td>Helpdesk teams, SLAs &amp; ticket stages tied to equipment &amp; subscriptions</td><td>Higher retention on rental &amp; chemical accounts; measurable SLA</td><td>~80 hrs (triage)</td></tr>
+        </table>
+        <div class="chartbox"><canvas id="impactChart" height="260"></canvas></div>
+        <p class="doc-meta">Indicative annual RM impact by area — modelled, not booked; methodology on the
+        relevant delivery pages. Totals feed the <a href="../../tools/roi-tco.html">ROI / TCO model</a>.</p>
+      </section>
+
+      <section class="section">
+        <h2>The causal logic</h2>
+        <p class="lead">Most pains share three root causes — fragmented tools, no shared data, no
+        automation. Odoo collapses all three into a single backbone.</p>
+        <div class="mermaid">
+flowchart LR
+  RC1[Fragmented<br/>point tools]:::rc --> P[18 operational pains]:::pain
+  RC2[No shared<br/>system of record]:::rc --> P
+  RC3[No automation /<br/>manual re-keying]:::rc --> P
+  P --> S[Odoo 19 unified backbone]:::sol
+  S --> B1[Protected margin]:::ben
+  S --> B2[Captured revenue]:::ben
+  S --> B3[Compliance &amp; speed]:::ben
+  classDef rc fill:#FEF6E9,stroke:#B5781A,color:#5E3D08;
+  classDef pain fill:#FBE3E1,stroke:#C13B33,color:#7A211B;
+  classDef sol fill:#EAFBF5,stroke:#0E8E6E,color:#075440;
+  classDef ben fill:#EEF4FC,stroke:#3F6FB0,color:#143258;
+        </div>
+        <div class="callout tn"><b>So what for the Odoo build:</b> the eight High-severity pains
+        (sales quoting, job costing, field-service capture, chemical resupply, finance &amp;
+        compliance) define the Phase-1 scope. The future-state processes that deliver them are
+        designed on <a href="bpmn-uml.html">BPMN · Blueprint · UML</a>; the value framing is on
+        <a href="value-chain.html">Value Chain &amp; Capability Map</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="dept-workflows.html">← Prev: Department Workflows</a>
+        <a href="bpmn-uml.html">Next: BPMN · Blueprint · UML →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('severityChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'Manual SST / no e-invoicing','Service done, never invoiced','Chemical stock-outs',
+      'Job cost vs quote unknown','Techs arrive unprepared','Quotes slow & inconsistent',
+      'Double entry Excel↔accounts','Fab/install prices guessed','No preventive maintenance',
+      'Reactive procurement','Late rental returns','Slow month-end close'
+    ],
+    datasets: [{
+      label: 'Severity (financial + customer + frequency, 0–10)',
+      data: [9.5, 9, 8.5, 8.5, 8, 8, 8, 7.5, 6.5, 6.5, 6, 6],
+      backgroundColor: function(c){ var v=c.raw; return v>=8?'#E2544B':(v>=6.5?'#E8A13A':'#7FA9DE'); }
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins:{ legend:{ display:false } },
+    scales:{ x:{ min:0, max:10, title:{ display:true, text:'Severity score' } } }
+  }
+});
+new Chart(document.getElementById('impactChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Procurement premium','Inventory write-off','After-sales revenue','Faster close (effort)'],
+    datasets: [{
+      label: 'Indicative annual impact (RM, midpoint)',
+      data: [75000, 55000, 65000, 35000],
+      backgroundColor: ['#E8A13A','#E8A13A','#16C098','#7FA9DE']
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins:{ legend:{ display:false }, title:{ display:true, text:'Quantified impact of closing the coverage gaps (RM/yr, midpoint)' } },
+    scales:{ x:{ beginAtZero:true, title:{ display:true, text:'RM per year (indicative)' } } }
+  }
+});
+</script>
+</body>
+</html>

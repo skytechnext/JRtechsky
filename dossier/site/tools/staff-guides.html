@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Guides — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 18px;}
+  .tabs button{font:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1px solid #cfdaeb;
+    background:#fff;color:#0B1F3A;padding:8px 14px;border-radius:999px;}
+  .tabs button.active{background:#0B1F3A;color:#fff;border-color:#0B1F3A;}
+  .role{display:none;} .role.show{display:block;}
+  .role-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  .role-head .ico{font-size:30px;}
+  .tip{font-size:12.5px;color:#0E8E6E;background:rgba(22,192,152,.10);border-radius:8px;
+    padding:8px 12px;margin:8px 0;}
+  code.inline{font-family:ui-monospace,Menlo,monospace;font-size:.85em;background:#EEF4FC;
+    border:1px solid #dbe3ef;border-radius:6px;padding:1px 6px;color:#0B1F3A;}
+</style>
+</head>
+<body data-page="staff-guides">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Staff Guides</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents · Role-based Quick-Start</span>
+      <h1>Staff Guides — your daily tasks in Odoo, by role</h1>
+      <p>One-page quick-starts for each JR-Tech role: what you do every day in Odoo 19, the exact
+      steps, and tips. Pick your role below. These guides match the seeded
+      <a href="demo-walkthrough.html">Demo Walkthrough</a> and the access rights set up by the
+      <a href="ai-build-playbook.html">AI Build Playbook</a>.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="tabs" id="tabs">
+          <button data-r="sales" class="active">🧑‍💼 Sales Rep</button>
+          <button data-r="workshop">🏭 Workshop / Fabrication</button>
+          <button data-r="fsm">🛠 Field-Service Tech</button>
+          <button data-r="store">📦 Storekeeper</button>
+          <button data-r="finance">📒 Finance</button>
+          <button data-r="admin">⚙️ Admin</button>
+        </div>
+
+        <!-- SALES -->
+        <div class="role show" data-role="sales">
+          <div class="role-head"><span class="ico">🧑‍💼</span><h2>Sales Rep</h2></div>
+          <p class="lead">You turn enquiries into confirmed orders across all four business lines.
+          Apps: <b>CRM</b>, <b>Sales</b>.</p>
+          <h3>Daily tasks</h3>
+          <ol class="steps">
+            <li><b>Check your pipeline.</b> CRM → My Pipeline. Review new leads, update stages, set the
+              expected close date and the business line tag.</li>
+            <li><b>Qualify a lead.</b> Open the opportunity, log the call/site visit in the chatter, add
+              the customer contact details.</li>
+            <li><b>Create a quotation.</b> Click <i>New Quotation</i> (or Sales → New). Pick the customer,
+              add product lines from the right catalogue, confirm the MYR pricelist and that SST shows.</li>
+            <li><b>Send it.</b> <i>Send by Email</i> — the branded PDF goes to the customer; the quote is
+              version-tracked in the chatter.</li>
+            <li><b>Confirm won deals.</b> When accepted, <i>Confirm</i>. Fabrication quotes auto-create a
+              manufacturing order; rental/subscription quotes start their cycles.</li>
+            <li><b>Follow up.</b> Use Activities to schedule the next touch; nothing slips.</li>
+          </ol>
+          <div class="tip">Tip: never edit prices line-by-line — fix the pricelist so every rep quotes the
+          same. Use <i>Optional Products</i> to upsell maintenance or chemicals on equipment deals.</div>
+        </div>
+
+        <!-- WORKSHOP -->
+        <div class="role" data-role="workshop">
+          <div class="role-head"><span class="ico">🏭</span><h2>Workshop / Fabrication Lead</h2></div>
+          <p class="lead">You turn confirmed fabrication orders into finished stainless-steel products.
+          Apps: <b>Manufacturing</b>, <b>Inventory</b>.</p>
+          <h3>Daily tasks</h3>
+          <ol class="steps">
+            <li><b>Review the MO list.</b> Manufacturing → Operations → Manufacturing Orders. Sort by
+              deadline; see which orders are ready (components available) vs waiting.</li>
+            <li><b>Check material availability.</b> Open an MO; if components are missing, the status shows
+              <i>Waiting</i> — flag the storekeeper to replenish.</li>
+            <li><b>Plan work orders.</b> Move the job through the work centers: Cutting → Welding →
+              Assembly → QC. Start/stop the timer on each operation.</li>
+            <li><b>Produce.</b> When QC passes, <i>Mark as Done</i> / <i>Produce</i>; the finished good
+              enters stock and the linked sale order's delivery becomes ready.</li>
+            <li><b>Report issues.</b> Log scrap or rework so cost roll-up stays accurate.</li>
+          </ol>
+          <div class="tip">Tip: keep BoMs current — if a design changes, update the BoM so material cost
+          and the quote-vs-actual margin stay honest.</div>
+        </div>
+
+        <!-- FSM -->
+        <div class="role" data-role="fsm">
+          <div class="role-head"><span class="ico">🛠</span><h2>Field-Service Technician</h2></div>
+          <p class="lead">You run service visits — grease-trap/tanker, installs, repairs — from your
+          phone. App: <b>Field Service</b> (Odoo mobile).</p>
+          <h3>Daily tasks</h3>
+          <ol class="steps">
+            <li><b>See today's jobs.</b> Open the Field Service app on mobile → My Tasks. Tasks are sorted
+              by schedule and location.</li>
+            <li><b>Travel &amp; start.</b> Tap a task, tap <i>Start</i> to begin the timer when you arrive
+              on site.</li>
+            <li><b>Do the work.</b> Run the checklist, add parts used (they pull from van/store stock),
+              and note anything for follow-up.</li>
+            <li><b>Get sign-off.</b> Capture the customer's signature, then <i>Mark as Done</i> /
+              <i>Validate</i>.</li>
+            <li><b>Invoice.</b> The logged time + parts flow to an invoice automatically — no paperwork
+              back at the office.</li>
+          </ol>
+          <div class="tip">Tip: always start and stop the timer — billable hours you don't log are revenue
+          JR-Tech never sees. Add photos to the task for proof of service.</div>
+        </div>
+
+        <!-- STORE -->
+        <div class="role" data-role="store">
+          <div class="role-head"><span class="ico">📦</span><h2>Storekeeper</h2></div>
+          <p class="lead">You keep stock accurate and goods moving. Apps: <b>Inventory</b>,
+          <b>Purchase</b>.</p>
+          <h3>Daily tasks</h3>
+          <ol class="steps">
+            <li><b>Process receipts.</b> Inventory → Receipts. Validate incoming deliveries from vendors so
+              stock updates immediately.</li>
+            <li><b>Process deliveries.</b> Inventory → Delivery Orders. Pick, pack and validate outgoing
+              orders (sales, rentals, subscription resupplies).</li>
+            <li><b>Handle rental pickup/return.</b> Validate the pickup picking when an asset goes out and
+              the return picking when it comes back.</li>
+            <li><b>Watch replenishment.</b> Check Reordering Rules; when a chemical or spare hits its min,
+              confirm the auto-generated RFQ/PO.</li>
+            <li><b>Count &amp; reconcile.</b> Run cycle counts via Inventory Adjustments to keep on-hand
+              accurate.</li>
+          </ol>
+          <div class="tip">Tip: validate movements the moment they happen — real-time stock is what lets
+          sales promise delivery dates and the workshop start jobs.</div>
+        </div>
+
+        <!-- FINANCE -->
+        <div class="role" data-role="finance">
+          <div class="role-head"><span class="ico">📒</span><h2>Finance</h2></div>
+          <p class="lead">You own the ledger, SST and MyInvois. App: <b>Accounting</b>.</p>
+          <h3>Daily tasks</h3>
+          <ol class="steps">
+            <li><b>Review draft invoices.</b> Accounting → Customer Invoices. Check tax (Sales 10% /
+              Service 8%) and analytic line, then <i>Confirm</i> to post.</li>
+            <li><b>Submit MyInvois.</b> Posted B2B invoices submit to LHDN; watch the e-invoice status
+              column and re-submit any failures.</li>
+            <li><b>Enter/validate vendor bills.</b> Match bills to POs &amp; receipts (3-way), then post
+              and schedule payment.</li>
+            <li><b>Reconcile the bank.</b> Use the Reconciliation screen daily so the close isn't a
+              month-end scramble.</li>
+            <li><b>Chase receivables.</b> Run Follow-up reports; send reminders to overdue customers.</li>
+            <li><b>Report.</b> Pull P&amp;L by analytic (business line), the SST report and AR aging for
+              the Director.</li>
+          </ol>
+          <div class="tip">Tip: keep periods locked once closed (Accounting → Lock Dates) so posted
+          numbers can't drift. Full design in the <a href="accounting-overhaul.html">Accounting Overhaul</a>.</div>
+        </div>
+
+        <!-- ADMIN -->
+        <div class="role" data-role="admin">
+          <div class="role-head"><span class="ico">⚙️</span><h2>Administrator</h2></div>
+          <p class="lead">You keep the system healthy and people correctly access-controlled. Apps:
+          <b>Settings</b>, all.</p>
+          <h3>Daily / periodic tasks</h3>
+          <ol class="steps">
+            <li><b>Manage users.</b> Settings → Users. Add/disable staff, assign the right security
+              groups per role (Sales, Inventory, Accounting, FSM, etc.).</li>
+            <li><b>Check integrations.</b> Confirm the MyInvois connection, outgoing mail and bank sync are
+              healthy.</li>
+            <li><b>Maintain master data.</b> Keep products, pricelists, customers and vendors tidy; archive
+              obsolete records rather than deleting.</li>
+            <li><b>Apply config changes.</b> Use Studio for small no-code tweaks; route bigger changes to
+              TechNext under AMS.</li>
+            <li><b>Monitor backups &amp; staging.</b> On Odoo.sh, verify daily backups and use the staging
+              branch to test changes before production.</li>
+          </ol>
+          <div class="tip">Tip: grant the least access a role needs. Field techs don't need accounting;
+          sales don't need user management. The <a href="ai-build-playbook.html">build playbook</a> sets
+          the baseline groups — keep to it.</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Role &amp; app cheat-sheet</h2>
+        <table class="tbl">
+          <tr><th>Role</th><th>Primary apps</th><th>First thing each day</th></tr>
+          <tr><td>Sales Rep</td><td>CRM · Sales</td><td>Review My Pipeline &amp; activities</td></tr>
+          <tr><td>Workshop / Fabrication</td><td>Manufacturing · Inventory</td><td>Check ready vs waiting MOs</td></tr>
+          <tr><td>Field-Service Tech</td><td>Field Service (mobile)</td><td>Open My Tasks for today</td></tr>
+          <tr><td>Storekeeper</td><td>Inventory · Purchase</td><td>Clear receipts &amp; deliveries</td></tr>
+          <tr><td>Finance</td><td>Accounting</td><td>Post draft invoices, submit MyInvois</td></tr>
+          <tr><td>Administrator</td><td>Settings · all</td><td>Check users, integrations, backups</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the build:</b> these six roles are exactly the
+        <code class="inline">res.users</code> the <a href="ai-build-playbook.html">AI Build Playbook</a>
+        seeds (stage 2) and validates in gate V3 — and the personas trained in
+        <a href="../pages/delivery/training.html">Training &amp; Enablement</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="demo-walkthrough.html">← Prev: Demo Walkthrough</a>
+        <a href="discovery-questions.html">Next: Discovery Questions →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>
+(function(){
+  var tabs=document.getElementById('tabs');
+  tabs.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    tabs.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    var r=b.getAttribute('data-r');
+    document.querySelectorAll('.role').forEach(function(el){
+      el.classList.toggle('show', el.getAttribute('data-role')===r);
+    });
+  });
+})();
+</script>
+</body>
+</html>

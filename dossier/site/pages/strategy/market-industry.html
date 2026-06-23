@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market &amp; Industry — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="market-industry">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Strategic Analysis</b> · Market &amp; Industry</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Strategic Analysis</span>
+      <h1>The Malaysian HORECA kitchen market:<br>size, growth and where JR-Tech plays.</h1>
+      <p>A sizing of the commercial-foodservice equipment, fabrication and kitchen-chemicals
+      opportunity in Malaysia — TAM, SAM and a realistic SOM for JR-Tech — together with the growth
+      drivers, segments, regulatory context and trends that frame the ERP-enabled growth plan.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">~RM3.0b</div><div class="lbl">est. MY commercial kitchen equipment &amp; fit-out (TAM, modelled)</div></div>
+          <div class="kpi"><div class="num">~RM600m</div><div class="lbl">serviceable — northern region + chemicals/service (SAM)</div></div>
+          <div class="kpi"><div class="num">~RM45m</div><div class="lbl">realistic obtainable 3-yr target (SOM)</div></div>
+          <div class="kpi"><div class="num">~7–9%</div><div class="lbl">modelled segment CAGR through 2028</div></div>
+        </div>
+        <p class="lead">Malaysia's commercial foodservice equipment market rides on a recovering tourism
+        and hospitality base, sustained institutional catering (hospitals, schools, factories) and a
+        structural shift toward energy-efficient, compliant kitchens. The category is fragmented and
+        under-digitised on the supply side — favouring an integrated operator that can both build and
+        service. Figures here are TechNext analyst models calibrated to category norms; see
+        <a href="../advisory/methodology.html">Methodology</a>.</p>
+      </section>
+
+      <section class="section">
+        <h2>TAM · SAM · SOM</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="tamFunnel" height="300"></canvas></div>
+          <div class="card pad-lg">
+            <h3>From total market to fair share</h3>
+            <table class="tbl">
+              <tr><th>Layer</th><th>Definition</th><th>Size</th></tr>
+              <tr><td><b>TAM</b></td><td>All MY commercial kitchen equipment, fabrication, service &amp; chemicals</td><td>~RM3.0b</td></tr>
+              <tr><td><b>SAM</b></td><td>Northern-region HORECA + institutional + nationwide chemical resupply JR can credibly serve</td><td>~RM600m</td></tr>
+              <tr><td><b>SOM</b></td><td>Realistic capture in 3 years given capacity, brand and the Odoo-enabled cross-sell</td><td>~RM45m</td></tr>
+            </table>
+            <div class="callout tn"><b>So what for the Odoo build:</b> the SOM is gated less by demand
+            than by JR-Tech's ability to quote, deliver and resupply at scale without dropping margin or
+            SLA. Lifting SOM is an execution problem — the precise problem Odoo solves. The growth path
+            is modelled in <a href="financials.html">Financial Snapshot</a>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Sizing assumptions behind TAM / SAM / SOM</h2>
+        <p class="lead">Each layer is built bottom-up from unit economics rather than asserted as a
+        round number — so the narrowing from RM3.0b to RM45m is auditable. The annuity (chemicals,
+        spares, service) is treated as a recurring annual stream, while fit-out and replacement are
+        modelled on an installed-base and replacement-cycle basis.</p>
+        <table class="tbl">
+          <tr><th>Layer</th><th>Driver / basis</th><th>Assumption</th><th>Resulting size</th></tr>
+          <tr><td><b>TAM</b><br>~RM3.0b</td>
+            <td>Installed base of MY commercial kitchens × average fit-out value, amortised over a
+            replacement cycle, plus a nationwide chemical &amp; service annuity</td>
+            <td>~60,000 commercial kitchens nationwide; blended fit-out/equipment ~RM250k on a ~10-yr
+            replacement cycle ≈ RM1.5b/yr; new build-out ≈ RM0.6b/yr; chemical, spares &amp; service
+            annuity ≈ RM0.9b/yr</td>
+            <td><b>~RM3.0b/yr</b> total addressable</td></tr>
+          <tr><td><b>SAM</b><br>~RM600m</td>
+            <td>Northern-region (Penang, Kedah, Perak, Perlis) share of fit-out/equipment + JR's
+            serviceable product lines, plus nationwide chemical resupply where JR ships beyond region</td>
+            <td>~18% of national equipment/fabrication is northern-region serviceable ≈ RM380m;
+            serviceable institutional &amp; HORECA lines JR credibly bids ≈ RM120m; nationwide chemical
+            resupply reachable by JR ≈ RM100m</td>
+            <td><b>~RM600m/yr</b> serviceable</td></tr>
+          <tr><td><b>SOM</b><br>~RM45m</td>
+            <td>Realistic 3-year obtainable share of SAM given JR's capacity, brand and Odoo-enabled
+            cross-sell — the pool JR competes for, not the slice it wins</td>
+            <td>~7.5% blended obtainable share of the RM600m SAM, weighted to annuity and northern
+            fit-out where JR is strongest; reachable as capacity, quoting throughput and resupply
+            attach improve over FY26–FY28</td>
+            <td><b>~RM45m</b> obtainable pool (3-yr)</td></tr>
+        </table>
+        <div class="callout"><b>Read SOM precisely:</b> the ~RM45m is the <em>obtainable market pool</em>
+        JR-Tech can realistically contest over three years — it is <em>not</em> JR-Tech's booked revenue.
+        JR's actual capture is a subset of this pool; against the financials page's FY25 revenue of
+        ~RM18m, the SOM frames headroom, while realised revenue is governed by win rate, attach rate and
+        delivery capacity.</div>
+      </section>
+
+      <section class="section">
+        <h2>Three scenario projections (Conservative / Base / Aggressive)</h2>
+        <p class="lead">Within the ~RM45m obtainable pool, JR-Tech's actual capture depends on three
+        controllable levers: chemical/service <b>attach rate</b> on the installed base, the pace of
+        <b>branch rollout</b> extending serviceable reach, and quote-to-order <b>win rate</b>. The chart
+        traces JR's captured revenue within SOM across FY26–FY28 under three scenarios. The Base case is
+        the Odoo-enabled path — where CRM-driven cross-sell, faster quoting and clean MyInvois-ready
+        tenders lift attach and win rates in step.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="scenarioChart" height="300"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Capture trajectory within SOM</h3>
+            <p>All three lines sit comfortably inside the RM45m obtainable pool — capture is a single-digit
+            to low-double-digit share of SOM, consistent with a fragmented market and a regional leader.
+            The Base case reconciles with the financials page's ERP-enabled FY28 revenue of ~RM27.8m: the
+            incremental capture shown here is the market-side expression of that revenue build, net of the
+            non-SOM and out-of-period revenue JR already carries.</p>
+            <p>The spread between Conservative and Aggressive is driven almost entirely by attach rate and
+            branch timing — demand is not the binding constraint, execution is.</p>
+          </div>
+        </div>
+        <table class="tbl">
+          <tr><th>Scenario</th><th>Key assumptions (attach · branch rollout · win rate)</th><th>FY28 obtainable capture</th><th>Implied CAGR (FY25→FY28)</th></tr>
+          <tr><td><b>Conservative</b></td>
+            <td>Attach ~35%; no new branch (Penang only); win rate ~25%; partial Odoo adoption</td>
+            <td>~RM22.5m</td><td>~7.7%</td></tr>
+          <tr><td><b>Base</b><br><span class="tag green">Odoo-enabled</span></td>
+            <td>Attach ~50%; one northern branch in FY27; win rate ~32%; full Odoo CRM + quoting +
+            MyInvois cross-sell</td>
+            <td>~RM27.8m</td><td>~15.6%</td></tr>
+          <tr><td><b>Aggressive</b></td>
+            <td>Attach ~62%; two branches by FY28; win rate ~40%; mature Odoo data flywheel</td>
+            <td>~RM33.0m</td><td>~22.4%</td></tr>
+        </table>
+        <div class="callout tn"><b>Cross-link:</b> these capture figures are the market-side view of the
+        revenue, margin and cash build modelled in <a href="financials.html">Financial Snapshot</a> — the
+        Base/Odoo-enabled FY28 ~RM27.8m is the shared anchor between the two pages.</div>
+      </section>
+
+      <section class="section">
+        <h2>Growth drivers</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag green">Demand</span><h3>Tourism &amp; F&amp;B build-out</h3>
+            <p>Penang and Klang Valley hotel, restaurant and cloud-kitchen openings drive new
+            fit-outs and equipment demand.</p></div>
+          <div class="card"><span class="tag green">Structural</span><h3>Energy &amp; sustainability</h3>
+            <p>Rising energy costs and ESG procurement push induction, smokeless and cook-&amp;-chill
+            upgrades — JR-Tech's brand sweet spot.</p></div>
+          <div class="card"><span class="tag green">Regulatory</span><h3>Compliance retrofits</h3>
+            <p>HACCP, halal and hygiene rules force kitchen redesigns and certified equipment, creating
+            recurring consulting and fabrication work.</p></div>
+          <div class="card"><span class="tag">Annuity</span><h3>Resupply &amp; service</h3>
+            <p>Every install seeds recurring chemical, spares and maintenance revenue — the most
+            valuable, defensible market layer.</p></div>
+          <div class="card"><span class="tag">Channel</span><h3>Institutional catering</h3>
+            <p>Hospitals, schools, factory canteens and central kitchens expand, demanding compliant,
+            documented supply chains.</p></div>
+          <div class="card"><span class="tag">Tech</span><h3>Digitalisation grants</h3>
+            <p>SME digital-adoption incentives lower the cost of the very capability that unlocks share.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Segments &amp; relative attractiveness</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="segChart" height="280"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Where to lean in</h3>
+            <p>Hotels and institutional catering offer the largest, stickiest contracts; independent
+            restaurants are high-volume but price-sensitive; condominiums (pool/housekeeping) and cloud
+            kitchens are smaller but fast-growing and underserved.</p>
+            <p>The chemical &amp; service annuity cuts across <em>all</em> segments — which is why
+            cross-segment customer data in Odoo compounds in value.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Regulatory context</h2>
+        <table class="tbl">
+          <tr><th>Framework</th><th>What it governs</th><th>Bearing on JR-Tech</th></tr>
+          <tr><td><b>Food Act 1983 &amp; Food Hygiene Reg. 2009</b></td><td>Food-premises hygiene, layout, hand-wash, segregation</td><td>Drives consulting &amp; compliant fabrication scope</td></tr>
+          <tr><td><b>MS 1480 (HACCP)</b></td><td>Hazard analysis &amp; critical control points</td><td>Spec requirement for institutional kitchens</td></tr>
+          <tr><td><b>JAKIM Halal certification</b></td><td>Halal integrity, segregation, traceable supply</td><td>Equipment &amp; chemical selection, documentation</td></tr>
+          <tr><td><b>OSHA / Factories &amp; Machinery</b></td><td>Fabrication-floor safety, welding, pressure systems</td><td>Governs in-house fabrication operations</td></tr>
+          <tr><td><b>DOE effluent &amp; Scheduled Wastes</b></td><td>Grease-trap discharge, chemical handling/disposal</td><td>Underpins grease-trap &amp; chemical lines</td></tr>
+          <tr><td><b>MyInvois e-invoicing &amp; 8% SST</b></td><td>Mandatory e-invoicing, service tax</td><td>Hard gate for institutional tenders — Odoo scope</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Trends shaping 2026–2028</h2>
+        <div class="mermaid">
+flowchart LR
+  T1[AI & IoT smart kitchens] --> O[Premium, higher-margin demand]
+  T2[Energy-efficiency mandates] --> O
+  T3[HACCP/halal tightening] --> C[More compliance-led retrofits]
+  T4[E-invoicing mandate] --> C
+  T5[Recurring-revenue shift] --> A[Subscriptions & service annuities]
+  O --> JR{{JR-Tech: integrated, ERP-backed one-stop}}
+  C --> JR
+  A --> JR
+        </div>
+        <div class="callout"><b>Cross-link:</b> regulatory threads connect to
+        <a href="../technology/security-myinvois.html">Security &amp; MyInvois</a>; segment economics
+        feed <a href="personas.html">Customer Personas</a> and <a href="../growth/gtm.html">Go-to-Market</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="competitor-deepdive.html">← Prev: Competitor Deep-Dive</a>
+        <a href="personas.html">Next: Customer Personas →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('tamFunnel'), {
+  type: 'bar',
+  data: {
+    labels: ['TAM ~RM3.0b','SAM ~RM600m','SOM ~RM45m'],
+    datasets: [{ label:'RM million', data:[3000,600,45],
+      backgroundColor:['#7FA9DE','#3F6FB0','#16C098'] }]
+  },
+  options: { indexAxis:'y',
+    scales:{ x:{ type:'logarithmic', title:{display:true,text:'RM million (log scale)'} } },
+    plugins:{ legend:{ display:false } } }
+});
+new Chart(document.getElementById('segChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Hotels','Institutional catering','Restaurants/cafés','Cloud kitchens','Condos (pool/HK)'],
+    datasets: [
+      { label:'Market size (rel.)', data:[9,8,7,4,3], backgroundColor:'#3F6FB0' },
+      { label:'Attractiveness to JR-Tech', data:[8,9,6,7,6], backgroundColor:'#16C098' }
+    ]
+  },
+  options: { scales:{ y:{ min:0, max:10 } }, plugins:{ legend:{ position:'bottom' } } }
+});
+new Chart(document.getElementById('scenarioChart'), {
+  type: 'line',
+  data: {
+    labels: ['FY26','FY27','FY28'],
+    datasets: [
+      { label:'Conservative', data:[19.5,21.0,22.5], borderColor:'#7FA9DE', backgroundColor:'#7FA9DE', tension:0.3 },
+      { label:'Base (Odoo-enabled)', data:[21.0,24.2,27.8], borderColor:'#16C098', backgroundColor:'#16C098', tension:0.3, borderWidth:3 },
+      { label:'Aggressive', data:[22.5,27.5,33.0], borderColor:'#3F6FB0', backgroundColor:'#3F6FB0', tension:0.3 }
+    ]
+  },
+  options: {
+    scales:{ y:{ beginAtZero:false, title:{display:true,text:'JR-Tech capture within SOM (RM million)'} } },
+    plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Capture trajectory inside ~RM45m obtainable pool' } } }
+});
+</script>
+</body>
+</html>

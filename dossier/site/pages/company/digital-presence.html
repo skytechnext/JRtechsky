@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital & Web Presence — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="digital-presence">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Company Profile</b> · Digital &amp; Web Presence</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Company Profile</span>
+      <h1>Digital footprint &amp; discoverability —<br>where the funnel leaks.</h1>
+      <p>An assessment of jrtech.com.my, social channels, SEO and overall digital maturity. The gap
+      between a strong AI/green-tech brand narrative and a thin digital funnel is a growth
+      constraint the ERP and connected channels can directly address.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">1</div><div class="lbl">corporate site: www.jrtech.com.my</div></div>
+          <div class="kpi"><div class="num">Low</div><div class="lbl">modelled organic discoverability</div></div>
+          <div class="kpi"><div class="num">2.2/5</div><div class="lbl">overall digital maturity score</div></div>
+          <div class="kpi"><div class="num">5</div><div class="lbl">quick wins inside 90 days</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Channel inventory</h2>
+        <table class="tbl">
+          <tr><th>Channel</th><th>Status (assessed)</th><th>Primary gap</th></tr>
+          <tr><td>Corporate website (jrtech.com.my)</td><td><span class="tag">Present</span></td><td>Brochure-style; no lead capture or product catalog</td></tr>
+          <tr><td>Google Business Profile</td><td><span class="tag warn">Partial</span></td><td>Incomplete listing, few photos, thin reviews</td></tr>
+          <tr><td>Facebook</td><td><span class="tag warn">Partial</span></td><td>Irregular posting, weak product showcase</td></tr>
+          <tr><td>LinkedIn (company)</td><td><span class="tag red">Weak / absent</span></td><td>No B2B presence for HORECA decision-makers</td></tr>
+          <tr><td>Instagram / video</td><td><span class="tag red">Weak / absent</span></td><td>Fabrication &amp; AI-kitchen story is highly visual but untold</td></tr>
+          <tr><td>Email / CRM nurture</td><td><span class="tag red">Absent</span></td><td>No structured follow-up of quotes or leads</td></tr>
+        </table>
+        <div class="callout warn"><b>Assessment basis:</b> based on plausible generic patterns for a
+        Penang B2B engineering SME; no specific traffic or follower figures are claimed. Confirm
+        during discovery.</div>
+      </section>
+
+      <section class="section">
+        <h2>Channel-by-channel scorecard</h2>
+        <p>Each owned and earned channel scored 1–5 across reach, content cadence, conversion path
+        and review/proof capture. The composite exposes where effort converts to pipeline and where
+        the brand story dead-ends.</p>
+        <table class="tbl">
+          <tr><th>Channel</th><th>Reach</th><th>Content cadence</th><th>Conversion path</th><th>Proof capture</th><th>Composite</th><th>Verdict</th></tr>
+          <tr><td>Website (jrtech.com.my)</td><td>3</td><td>2</td><td>1</td><td>1</td><td>1.8/5</td><td><span class="tag warn">Rebuild as funnel</span></td></tr>
+          <tr><td>Google Business Profile</td><td>3</td><td>2</td><td>3</td><td>2</td><td>2.5/5</td><td><span class="tag warn">Optimise first</span></td></tr>
+          <tr><td>Facebook</td><td>3</td><td>2</td><td>2</td><td>2</td><td>2.3/5</td><td><span class="tag warn">Reactivate</span></td></tr>
+          <tr><td>Instagram</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1.0/5</td><td><span class="tag red">Establish</span></td></tr>
+          <tr><td>LinkedIn (company)</td><td>1</td><td>1</td><td>2</td><td>1</td><td>1.3/5</td><td><span class="tag red">Establish (B2B)</span></td></tr>
+          <tr><td>YouTube</td><td>1</td><td>1</td><td>1</td><td>2</td><td>1.3/5</td><td><span class="tag red">Establish (proof)</span></td></tr>
+          <tr><td>WhatsApp Business</td><td>4</td><td>3</td><td>3</td><td>1</td><td>2.8/5</td><td><span class="tag green">Formalise + log</span></td></tr>
+        </table>
+        <div class="callout"><b>Pattern:</b> WhatsApp is the de-facto front door (strong reach, weak
+        logging); the website and visual channels — exactly where the AI/eco-kitchen story is most
+        persuasive — are the weakest. Scores are TechNext assessment, not platform analytics.</div>
+      </section>
+
+      <section class="section">
+        <h2>Digital maturity scorecard</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="maturityRadar" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading the scorecard</h3>
+            <p>Brand assets are the strongest dimension — the 2024 rebrand gives JR-Tech a clear,
+            premium story. Everything that <i>converts</i> that story — findability, lead capture,
+            content and marketing automation — scores low.</p>
+            <div class="callout tn"><b>So-what:</b> the brand is ready; the digital machine to
+            monetise it is not. That is a fixable, high-ROI gap.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>SEO &amp; discoverability gaps</h2>
+        <div class="mermaid">
+flowchart LR
+  Q[Buyer searches: commercial kitchen Penang] --> G{Found?}
+  G -- weak SEO --> L[Lands on competitor]
+  G -- thin GBP --> M[No map pack presence]
+  Q2[Buyer needs: dishwasher chemicals] --> G2{Catalog online?}
+  G2 -- no --> P[Phone/WhatsApp only]
+  L --> LOSS[(Lost demand)]
+  M --> LOSS
+  P -.manual.-> CRM[Unstructured follow-up]
+        </div>
+        <div class="callout"><b>The leak:</b> demand exists and is searching, but the site neither
+        ranks for it nor captures it — every lead arrives by phone/WhatsApp and lives outside any
+        system.</div>
+      </section>
+
+      <section class="section">
+        <h2>90-day digital quick-win backlog</h2>
+        <p>A sequenced backlog scoped to the first quarter, ordered so cheap visibility wins (GBP,
+        on-page SEO) land before the build-heavier funnel work. Owner column assumes a marketing
+        coordinator working alongside the TechNext implementation.</p>
+        <table class="tbl">
+          <tr><th>#</th><th>Quick win</th><th>Sprint</th><th>Effort</th><th>Owner</th><th>Expected outcome</th></tr>
+          <tr><td>1</td><td>Complete &amp; verify Google Business Profile: hours, services, 20+ photos, Q&amp;A</td><td>Days 0–15</td><td><span class="tag green">Low</span></td><td>Marketing</td><td>Map-pack eligibility, review inflow</td></tr>
+          <tr><td>2</td><td>On-page SEO for 8 core service terms + Penang geo-pages</td><td>Days 0–30</td><td><span class="tag warn">Medium</span></td><td>Marketing + web</td><td>Organic ranking on long-tail intent</td></tr>
+          <tr><td>3</td><td>Reactivate Facebook + launch Instagram with project reels</td><td>Days 15–45</td><td><span class="tag warn">Medium</span></td><td>Marketing</td><td>Visual brand proof, engagement</td></tr>
+          <tr><td>4</td><td>Add catalog &amp; service pages with enquiry forms</td><td>Days 30–60</td><td><span class="tag warn">Medium</span></td><td>Web + Odoo</td><td>On-site lead capture</td></tr>
+          <tr><td>5</td><td>Wire web/WhatsApp enquiries → Odoo CRM with source tagging</td><td>Days 45–75</td><td><span class="tag warn">Medium</span></td><td>TechNext</td><td>Zero-leak, attributable funnel</td></tr>
+          <tr><td>6</td><td>Stand up LinkedIn company page + 3 thought-leadership posts/mo</td><td>Days 45–90</td><td><span class="tag green">Low</span></td><td>Director + Marketing</td><td>B2B credibility with HORECA buyers</td></tr>
+          <tr><td>7</td><td>Launch YouTube with 3 fabrication / AI-kitchen explainer videos</td><td>Days 60–90</td><td><span class="tag warn">Medium</span></td><td>Marketing</td><td>Durable SEO + sales-enablement assets</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>SEO keyword &amp; opportunity map</h2>
+        <p>Commercial-intent terms a Penang / Klang Valley HORECA buyer actually searches, scored on
+        modelled monthly demand, ranking difficulty and fit to JR-Tech's four business lines.
+        Volumes are directional estimates for prioritisation, not measured analytics.</p>
+        <table class="tbl">
+          <tr><th>Keyword / phrase</th><th>Intent</th><th>Est. demand</th><th>Difficulty</th><th>Business line</th><th>Priority</th></tr>
+          <tr><td>commercial kitchen equipment Penang</td><td>Buy</td><td>Med</td><td><span class="tag green">Low</span></td><td>Equipment</td><td><span class="tag green">P1</span></td></tr>
+          <tr><td>commercial kitchen design Malaysia</td><td>Consult</td><td>Med</td><td><span class="tag warn">Medium</span></td><td>Consulting</td><td><span class="tag green">P1</span></td></tr>
+          <tr><td>stainless steel kitchen fabrication Penang</td><td>Buy</td><td>Low-Med</td><td><span class="tag green">Low</span></td><td>Fabrication</td><td><span class="tag green">P1</span></td></tr>
+          <tr><td>commercial dishwasher chemicals supplier</td><td>Buy</td><td>Med</td><td><span class="tag green">Low</span></td><td>Chemicals</td><td><span class="tag green">P1</span></td></tr>
+          <tr><td>grease trap cleaning service Penang</td><td>Service</td><td>Med</td><td><span class="tag green">Low</span></td><td>Equipment/Service</td><td><span class="tag green">P1</span></td></tr>
+          <tr><td>induction cooking range restaurant Malaysia</td><td>Research</td><td>Med</td><td><span class="tag warn">Medium</span></td><td>Equipment (AI/eco)</td><td><span class="tag warn">P2</span></td></tr>
+          <tr><td>energy efficient commercial kitchen</td><td>Research</td><td>Low-Med</td><td><span class="tag warn">Medium</span></td><td>Brand/AI</td><td><span class="tag warn">P2</span></td></tr>
+          <tr><td>cook and chill system supplier Malaysia</td><td>Buy</td><td>Low</td><td><span class="tag warn">Medium</span></td><td>Equipment (AI/eco)</td><td><span class="tag warn">P2</span></td></tr>
+          <tr><td>central kitchen setup contractor</td><td>Consult</td><td>Low</td><td><span class="tag red">High</span></td><td>Consulting</td><td><span class="tag warn">P3</span></td></tr>
+        </table>
+        <div class="callout tn"><b>So-what:</b> the P1 cluster is low-difficulty, high-intent and maps
+        one-to-one to existing business lines — the fastest organic route to capturing demand that
+        currently leaks to competitors and directories.</div>
+      </section>
+
+      <section class="section">
+        <h2>Competitor digital benchmark</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="competitorBench" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading the benchmark</h3>
+            <p>Against a modelled profile of typical Penang/MY commercial-kitchen competitors,
+            JR-Tech's brand strength is ahead of the pack — but it trails on website conversion,
+            SEO footprint, social activity and review volume, the dimensions that actually surface
+            a supplier in a buyer's search.</p>
+            <div class="callout warn"><b>The gap is closeable:</b> competitors lead on
+            <i>presence</i>, not capability. The 90-day backlog targets exactly the four bars where
+            JR-Tech sits below the benchmark line.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>So-what for the Odoo 19 build</h2>
+        <p>Digital presence is not a side project — it is the front of the funnel the ERP measures
+        and converts. Odoo's Website, CRM and Marketing modules let JR-Tech publish a real catalog,
+        capture web enquiries straight into CRM, and nurture them with automation — turning a
+        brochure site into a measurable pipeline that feeds Sales.</p>
+        <div class="callout tn"><b>Cross-link:</b> the <a href="reviews-reputation.html">Reviews
+        &amp; Reputation</a> page extends this into the social-proof layer that converts discovery
+        into trust.</div>
+
+        <div class="pagenav">
+          <a href="staff-org.html">← Prev: Staff &amp; Org Analysis</a>
+          <a href="reviews-reputation.html">Next: Reviews &amp; Reputation →</a>
+        </div>
+      </section>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Digital
+      assessment uses generic-pattern modelling — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('maturityRadar'), {
+  type: 'radar',
+  data: { labels: ['Brand assets','Website / catalog','SEO & findability','Social presence','Lead capture','Marketing automation'],
+    datasets: [
+      { label: 'Current', data: [4,2,1,2,1,1], borderColor:'#E2544B', backgroundColor:'rgba(226,84,75,.15)' },
+      { label: 'Target', data: [5,4,4,4,5,4], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.18)' }
+    ]},
+  options: { scales:{ r:{ min:0, max:5, ticks:{ stepSize:1 } } }, plugins:{ legend:{ position:'bottom' } } }
+});
+new Chart(document.getElementById('competitorBench'), {
+  type: 'bar',
+  data: { labels: ['Brand strength','Website conversion','SEO footprint','Social activity','Review volume','Catalog depth'],
+    datasets: [
+      { label: 'JR-Tech', data: [4.2,1.8,1.5,1.8,1.5,2.0], backgroundColor:'#0B1F3A' },
+      { label: 'Competitor benchmark', data: [3.0,3.0,3.2,3.0,3.3,2.8], backgroundColor:'#7FA9DE' }
+    ]},
+  options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'JR-Tech vs modelled MY competitor (1–5)' } },
+    scales:{ y:{ beginAtZero:true, max:5 } } }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odoo 19 Architecture — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="odoo-architecture">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Technology</b> · Odoo 19 Architecture</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Technology</span>
+      <h1>Odoo 19 Target Architecture</h1>
+      <p>The technical core of the engagement: which Odoo 19 apps run JR-Tech, how data flows
+      between them, which edition and hosting we recommend and why, and where Odoo 19's native AI
+      fits. One unified data model behind four interlocking business lines.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">21</div><div class="lbl">target modules across the four business lines</div></div>
+          <div class="kpi"><div class="num">1</div><div class="lbl">PostgreSQL database — single source of truth</div></div>
+          <div class="kpi"><div class="num">Enterprise</div><div class="lbl">recommended edition (rationale below)</div></div>
+          <div class="kpi"><div class="num">Odoo.sh</div><div class="lbl">recommended hosting for a lean IT team</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The module map</h2>
+        <p class="lead">Odoo is a modular ERP on a single shared data model — partners, products,
+        stock moves and journal entries are reused by every app, which is what eliminates the
+        re-keying JR-Tech does today. Modules below are grouped by domain; all post to one
+        Accounting ledger.</p>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Front office</span><h3>Sell &amp; engage</h3>
+            <ul>
+              <li><b>CRM</b> — pipeline, predictive lead scoring</li>
+              <li><b>Sales</b> — quotations, order management</li>
+              <li><b>Subscriptions</b> — recurring chemical resupply</li>
+              <li><b>Website / eCommerce</b> — catalogue &amp; web RFQs</li>
+              <li><b>POS</b> — counter / showroom sales</li>
+              <li><b>Helpdesk</b> — customer tickets &amp; SLAs</li>
+            </ul>
+          </div>
+          <div class="card"><span class="tag">Supply &amp; make</span><h3>Stock, buy, fabricate</h3>
+            <ul>
+              <li><b>Inventory</b> — multi-warehouse, lots/serials, barcode</li>
+              <li><b>Purchase</b> — RFQs, vendor bills, reordering</li>
+              <li><b>Manufacturing (MRP)</b> — stainless-steel BoMs &amp; work orders</li>
+              <li><b>Quality</b> — QC checks on MO &amp; receipts</li>
+              <li><b>Barcode</b> — warehouse &amp; fabrication scanning</li>
+            </ul>
+          </div>
+          <div class="card"><span class="tag">Service &amp; assets</span><h3>Rent, install, maintain</h3>
+            <ul>
+              <li><b>Rental</b> — equipment lifecycle &amp; contracts</li>
+              <li><b>Field Service</b> — dispatch, on-site tasks</li>
+              <li><b>Maintenance</b> — preventive &amp; corrective</li>
+              <li><b>Repair</b> — workshop repair orders</li>
+              <li><b>Project</b> — kitchen build / fit-out projects</li>
+            </ul>
+          </div>
+          <div class="card"><span class="tag">Finance &amp; compliance</span><h3>Account &amp; control</h3>
+            <ul>
+              <li><b>Accounting</b> — full ledger, SST, MyInvois e-invoicing</li>
+              <li><b>Documents</b> — central file store + OCR routing</li>
+              <li><b>Sign</b> — e-signature on contracts &amp; service reports</li>
+            </ul>
+          </div>
+          <div class="card"><span class="tag">People</span><h3>HR</h3>
+            <ul>
+              <li><b>HR / Employees</b> — records &amp; org</li>
+              <li><b>Payroll</b> — MY payroll (EPF/SOCSO/EIS/PCB)</li>
+            </ul>
+          </div>
+          <div class="card"><span class="tag green">Platform</span><h3>Build &amp; extend</h3>
+            <ul>
+              <li><b>Studio</b> — low-code customisation of forms, fields, automations</li>
+              <li><b>Odoo 19 AI</b> — AI text, OCR, predictive scoring</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Architecture &amp; data flow</h2>
+        <p class="lead">Every transactional app feeds Inventory (stock moves) and Accounting
+        (journal entries). The diagram shows the principal data flows — a quote becomes a sale,
+        which can spawn a fabrication MO, a rental contract or a field-service task, all converging
+        on stock and the ledger.</p>
+        <div class="mermaid">
+flowchart TD
+    subgraph FRONT["Front office"]
+      WEB["Website / eCommerce"]
+      CRM["CRM + lead scoring"]
+      SAL["Sales / Quotations"]
+      SUB["Subscriptions"]
+      POS["POS"]
+    end
+    subgraph OPS["Operations"]
+      MRP["Manufacturing (MRP)"]
+      QC["Quality"]
+      RENT["Rental"]
+      FSM["Field Service"]
+      MNT["Maintenance"]
+      REP["Repair"]
+      PRJ["Project"]
+    end
+    subgraph CORE["Shared core"]
+      INV["Inventory + Barcode"]
+      PUR["Purchase"]
+      ACC["Accounting<br/>SST · MyInvois"]
+      DOC["Documents + OCR"]
+      SIGN["Sign"]
+    end
+    AI(["Odoo 19 AI<br/>text · OCR · scoring"])
+
+    WEB --> CRM --> SAL
+    SUB --> SAL
+    POS --> ACC
+    SAL --> MRP
+    SAL --> RENT
+    SAL --> FSM
+    SAL --> INV
+    MRP --> QC --> INV
+    RENT --> INV
+    FSM --> MNT
+    FSM --> REP --> INV
+    PRJ --> SAL
+    INV --> ACC
+    PUR --> INV
+    PUR --> ACC
+    DOC --> PUR
+    SAL --> SIGN
+    AI -.assists.-> SAL
+    AI -.assists.-> CRM
+    AI -.assists.-> DOC
+    AI -.assists.-> MNT
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Business line → module mapping</h2>
+        <table class="tbl">
+          <tr><th>JR-Tech business line</th><th>Key processes</th><th>Primary Odoo 19 modules</th></tr>
+          <tr><td><b>JR-Consulting Services</b><br>Consultation · space planning · training</td>
+            <td>Project-based kitchen design, fit-out, training delivery, deliverable sign-off</td>
+            <td>Project · Sales · Documents · Sign · Timesheets</td></tr>
+          <tr><td><b>JR-Equipment — Sales</b><br>Kitchen equipment &amp; accessories</td>
+            <td>Quote → order → deliver → invoice; showroom/counter sales</td>
+            <td>CRM · Sales · Inventory · Barcode · POS · Accounting</td></tr>
+          <tr><td><b>JR-Equipment — Rental</b><br>Dishwashers &amp; equipment rental</td>
+            <td>Asset lifecycle, contracts, returns, recurring billing</td>
+            <td>Rental · Inventory · Accounting · Sign</td></tr>
+          <tr><td><b>JR-Equipment — Fabrication</b><br>In-house stainless-steel fabrication</td>
+            <td>Make-to-order BoMs, work orders, QC, custom design</td>
+            <td>Manufacturing (MRP) · Quality · Inventory · Project</td></tr>
+          <tr><td><b>JR-Equipment — Service</b><br>Maintenance, repair, grease-trap, tanker, piping</td>
+            <td>Dispatch, preventive plans, on-site tasks, repair workshop, SLAs</td>
+            <td>Field Service · Maintenance · Repair · Helpdesk</td></tr>
+          <tr><td><b>JR-Chemical Supplies</b><br>Cleaning / laundry / pool chemicals</td>
+            <td>Recurring resupply, reorder rules, demand-led delivery</td>
+            <td>Subscriptions · Inventory · Purchase · Sales</td></tr>
+          <tr><td><b>Cross-cutting — Finance &amp; compliance</b></td>
+            <td>Ledger, SST, MyInvois e-invoicing, payroll, document control</td>
+            <td>Accounting · Payroll/HR · Documents · Studio</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Edition recommendation — Community vs Enterprise</h2>
+        <div class="grid g2">
+          <div class="card"><span class="tag">Odoo Community (free, OSS)</span>
+            <h3>What it covers</h3>
+            <p>CRM, Sales, Inventory, Purchase, Manufacturing, Project, Website and Accounting
+            <em>basics</em>. Strong foundation, but several apps JR-Tech depends on are
+            <b>Enterprise-only</b>.</p>
+            <p><b>Gaps for JR-Tech:</b> no Field Service, no full Subscriptions, no Documents OCR /
+            Invoice Digitisation, no Sign, no Studio, no Helpdesk, no Quality, no Odoo 19 AI text,
+            and only a partial Accounting (no advanced reconciliation, follow-ups, or the localised
+            MyInvois e-invoicing tooling).</p>
+          </div>
+          <div class="card"><span class="tag green">Odoo Enterprise — recommended</span>
+            <h3>Why JR-Tech needs it</h3>
+            <ul>
+              <li><b>Field Service, Subscriptions, Helpdesk, Quality, Repair</b> — core to the
+              service and chemical-supply lines.</li>
+              <li><b>Documents + OCR</b> and <b>Sign</b> — the AP automation and paperless service
+              reports in the AI catalog.</li>
+              <li><b>Studio</b> — low-code fit of JR-Tech's bespoke flows without forking code.</li>
+              <li><b>Full Accounting + MY localisation</b> — SST and MyInvois compliance.</li>
+              <li><b>Odoo 19 AI</b> (AI text, predictive scoring) — the native quick wins.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout tn"><b>Recommendation:</b> deploy <b>Odoo 19 Enterprise</b>. The
+        AI/OCR/Field-Service/Subscriptions capabilities that the JR-Tech business case rests on are
+        Enterprise-only; replicating them on Community via third-party OCA modules would cost more
+        in integration and maintenance than the per-user Enterprise licence, and forfeit the
+        supported MyInvois localisation. Per-user pricing is confirmed at contracting in the
+        <a href="../../tools/roi-tco.html">ROI / TCO Model</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>Hosting — Odoo.sh vs on-premise</h2>
+        <table class="tbl">
+          <tr><th>Dimension</th><th>Odoo.sh (recommended)</th><th>On-premise</th></tr>
+          <tr><td>Best for</td><td>Lean IT team, fast delivery, managed ops</td><td>Strict data-residency / existing datacentre</td></tr>
+          <tr><td>Ops burden</td><td>Odoo manages OS, backups, scaling, upgrades staging</td><td>JR-Tech owns servers, patching, backups, DR</td></tr>
+          <tr><td>Custom code</td><td>Git-based deploy, staging branches, Studio + custom modules</td><td>Full control of the stack</td></tr>
+          <tr><td>Backups / DR</td><td>Automated daily backups, point-in-time restore</td><td>Must be built &amp; tested in-house</td></tr>
+          <tr><td>Data residency</td><td>Regional hosting; confirm MY/SG region at signup</td><td>Fully local control</td></tr>
+        </table>
+        <div class="callout"><b>Recommendation:</b> host on <b>Odoo.sh</b>. JR-Tech does not run a
+        datacentre or a dedicated infra team; Odoo.sh gives managed backups, staging branches for
+        safe upgrades, and Git-based deployment of any Studio/custom modules — removing
+        infrastructure risk from a small business. Reserve on-prem only if a future enterprise
+        client mandates strict local data residency beyond what regional Odoo.sh hosting satisfies.
+        Data-protection specifics are on
+        <a href="security-myinvois.html">Security, Compliance &amp; MyInvois</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>Odoo 19 native AI features</h2>
+        <div class="grid g3">
+          <div class="card"><h3>AI text &amp; assistant</h3>
+            <p>In-context generation across Sales, CRM, Documents and email — drafting quotes,
+            replies and document narratives grounded on the record. Powers use-cases 1, 6 and 7 in
+            the <a href="ai-catalog.html">AI catalog</a>.</p></div>
+          <div class="card"><h3>Invoice / document digitisation (OCR)</h3>
+            <p>Reads vendor bills, receipts and expenses into draft accounting entries with line
+            matching — the AP-automation quick win.</p></div>
+          <div class="card"><h3>Predictive lead scoring</h3>
+            <p>Built-in CRM probability model ranks leads on historical conversion patterns once
+            sufficient pipeline data exists.</p></div>
+        </div>
+        <div class="callout tn"><b>So what:</b> the architecture is deliberately
+        <em>native-first</em>. Three of JR-Tech's earliest AI wins need no custom model — they are
+        configuration on Enterprise. Bespoke models (demand forecasting, vision QC, predictive
+        maintenance) attach to this same data model later via the connectors on the
+        <a href="integration-map.html">Integration &amp; API Map</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="ai-peer-story.html">← Prev: AI in Action — Peer Story</a>
+        <a href="data-migration.html">Next: Data Migration →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Automation Catalog — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="ai-catalog">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Technology</b> · AI &amp; Automation Catalog</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Technology</span>
+      <h1>AI &amp; Automation Catalog</h1>
+      <p>Nine concrete AI and automation use-cases scoped for JR-Tech, each mapped to the Odoo 19
+      mechanism that delivers it, its build effort and its business impact. This is the menu the
+      steering committee picks from — sequenced so quick wins fund the harder bets.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">9</div><div class="lbl">prioritised AI / automation use-cases</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">native to Odoo 19 AI &amp; OCR — minimal custom code</div></div>
+          <div class="kpi"><div class="num">5</div><div class="lbl">"do-first" quadrant: high impact, low effort</div></div>
+          <div class="kpi"><div class="num">~30%</div><div class="lbl">modelled admin-hours reclaimed across quoting &amp; AP</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How to read this catalog</h2>
+        <p class="lead">Each use-case is a card: the business <b>trigger</b> that fires it, the
+        Odoo/AI <b>mechanism</b> that delivers it, the build <b>effort</b> (S/M/L) and the expected
+        <b>impact</b>. Native capabilities (Odoo 19 AI text, OCR digitisation, forecasting) are
+        labelled — those carry the least delivery risk and are sequenced first. Custom AI services
+        (vision QC, demand forecasting on chemicals) are framed honestly as later-phase bets.</p>
+        <div class="callout tn"><b>Sequencing principle:</b> ship the four native quick wins in
+        Phase 2 of the <a href="../delivery/roadmap.html">roadmap</a> to bank ROI and build trust,
+        then invest the savings into the data-hungry custom models in Phase 3.</div>
+      </section>
+
+      <section class="section">
+        <h2>The nine use-cases</h2>
+        <div class="grid g3">
+
+          <div class="card"><span class="tag green">Native-assisted</span>
+            <h3>1 · AI-assisted quoting</h3>
+            <p>Generates first-draft quotation lines, scope notes and cover text from a short brief
+            across all four business lines.</p>
+            <table class="tbl" style="font-size:12.5px;margin-top:10px">
+              <tr><th>Trigger</th><td>New CRM opportunity / RFQ received via web or WhatsApp</td></tr>
+              <tr><th>Mechanism</th><td>Odoo 19 AI text on Sales + product/price templates; historical won-quote retrieval</td></tr>
+              <tr><th>Effort</th><td><span class="tag">S</span> config + prompt library</td></tr>
+              <tr><th>Impact</th><td><span class="tag green">High</span> quote turnaround 2 days → hours</td></tr>
+            </table>
+          </div>
+
+          <div class="card"><span class="tag green">Native-assisted</span>
+            <h3>2 · Lead scoring</h3>
+            <p>Ranks inbound enquiries so the small sales team works the hottest HORECA leads first
+            instead of first-come-first-served.</p>
+            <table class="tbl" style="font-size:12.5px;margin-top:10px">
+              <tr><th>Trigger</th><td>Lead created / updated in CRM</td></tr>
+              <tr><th>Mechanism</th><td>Odoo CRM predictive lead scoring (probability model on historical conversions)</td></tr>
+              <tr><th>Effort</th><td><span class="tag">S</span> built-in, needs ~6 mo data</td></tr>
+              <tr><th>Impact</th><td><span class="tag">Med</span> higher win-rate on finite sales capacity</td></tr>
+            </table>
+          </div>
+
+          <div class="card"><span class="tag warn">Custom model</span>
+            <h3>3 · Demand forecasting — chemicals</h3>
+            <p>Predicts dishwasher / laundry / pool chemical reorder volumes per site so resupply
+            runs become proactive subscriptions, not reactive calls.</p>
+            <table class="tbl" style="font-size:12.5px;margin-top:10px">
+              <tr><th>Trigger</th><td>Daily batch on consumption &amp; delivery history</td></tr>
+              <tr><th>Mechanism</th><td>Time-series forecast feeding Inventory reordering rules + Subscriptions</td></tr>
+              <tr><th>Effort</th><td><span class="tag warn">M</span> external model + connector</td></tr>
+              <tr><th>Impact</th><td><span class="tag green">High</span> stable recurring revenue, fewer stock-outs</td></tr>
+            </table>
+          </div>
+
+          <div class="card"><span class="tag warn">Custom model</span>
+            <h3>4 · Predictive maintenance</h3>
+            <p>Flags rental dishwashers and kitchen equipment likely to fail, converting emergency
+            callouts into planned, profitable service visits.</p>
+            <table class="tbl" style="font-size:12.5px;margin-top:10px">
+              <tr><th>Trigger</th><td>Telemetry / service-history thresholds, runtime hours</td></tr>
+              <tr><th>Mechanism</th><td>Odoo Maintenance preventive plans + risk score from telemetry (see Integration Map)</td></tr>
+              <tr><th>Effort</th><td><span class="tag warn">L</span> needs IoT data maturity</td></tr>
+              <tr><th>Impact</th><td><span class="tag green">High</span> uptime SLA + maintenance margin</td></tr>
+            </table>
+          </div>
+
+          <div class="card"><span class="tag green">Native (OCR)</span>
+            <h3>5 · OCR / AP automation</h3>
+            <p>Reads supplier invoices and receipts into draft vendor bills — killing the manual
+            keying that delays month-end close.</p>
+            <table class="tbl" style="font-size:12.5px;margin-top:10px">
+              <tr><th>Trigger</th><td>Supplier bill emailed / uploaded to Documents</td></tr>
+              <tr><th>Mechanism</th><td>Odoo Invoice Digitization (OCR) → draft <code>account.move</code> with line matching</td></tr>
+              <tr><th>Effort</th><td><span class="tag">S</span> native, per-page credits</td></tr>
+              <tr><th>Impact</th><td><span class="tag green">High</span> AP keying ~80% eliminated</td></tr>
+            </table>
+          </div>
+
+          <div class="card"><span class="tag green">Native-assisted</span>
+            <h3>6 · Customer / WhatsApp chatbot</h3>
+            <p>Answers product, rental-availability and service-status questions, captures leads and
+            books service slots after hours.</p>
+            <table class="tbl" style="font-size:12.5px;margin-top:10px">
+              <tr><th>Trigger</th><td>Inbound chat on website / WhatsApp Business</td></tr>
+              <tr><th>Mechanism</th><td>Odoo Livechat + AI replies grounded on product &amp; Helpdesk knowledge base</td></tr>
+              <tr><th>Effort</th><td><span class="tag warn">M</span> WhatsApp connector + KB curation</td></tr>
+              <tr><th>Impact</th><td><span class="tag">Med</span> faster response, lead capture 24/7</td></tr>
+            </table>
+          </div>
+
+          <div class="card"><span class="tag green">Native-assisted</span>
+            <h3>7 · Document generation</h3>
+            <p>Drafts service reports, maintenance summaries, method statements and proposal
+            narratives from structured Odoo records.</p>
+            <table class="tbl" style="font-size:12.5px;margin-top:10px">
+              <tr><th>Trigger</th><td>Service order closed / proposal requested</td></tr>
+              <tr><th>Mechanism</th><td>Odoo 19 AI text on document fields + Sign for execution</td></tr>
+              <tr><th>Effort</th><td><span class="tag">S</span> prompt + template config</td></tr>
+              <tr><th>Impact</th><td><span class="tag">Med</span> consistent, faster paperwork</td></tr>
+            </table>
+          </div>
+
+          <div class="card"><span class="tag warn">Custom model</span>
+            <h3>8 · Vision QC — fabrication</h3>
+            <p>Inspects in-house stainless-steel fabrication (welds, dimensions, finish) via camera
+            to standardise quality before delivery.</p>
+            <table class="tbl" style="font-size:12.5px;margin-top:10px">
+              <tr><th>Trigger</th><td>Fabrication work-order QC checkpoint</td></tr>
+              <tr><th>Mechanism</th><td>Vision model → Odoo Quality check result on the MO; defects raise alerts</td></tr>
+              <tr><th>Effort</th><td><span class="tag warn">L</span> bespoke, training images</td></tr>
+              <tr><th>Impact</th><td><span class="tag">Med</span> rework &amp; warranty cost down</td></tr>
+            </table>
+          </div>
+
+          <div class="card"><span class="tag">Automation</span>
+            <h3>9 · Smart reorder &amp; resupply</h3>
+            <p>Closes the loop: forecasts feed reorder rules and auto-generate purchase orders and
+            chemical resupply subscription renewals.</p>
+            <table class="tbl" style="font-size:12.5px;margin-top:10px">
+              <tr><th>Trigger</th><td>Stock below min / subscription cycle</td></tr>
+              <tr><th>Mechanism</th><td>Inventory reordering rules + Purchase RFQ automation + Subscriptions</td></tr>
+              <tr><th>Effort</th><td><span class="tag">S</span> native rules engine</td></tr>
+              <tr><th>Impact</th><td><span class="tag">Med</span> fewer stock-outs, less working capital</td></tr>
+            </table>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Impact vs. effort</h2>
+        <p class="lead">Bubble size = relative confidence/data-readiness today (larger = more
+        ready). The top-left "do-first" quadrant — high impact, low effort — is dominated by native
+        Odoo 19 capabilities. The high-effort bets sit lower-right and depend on data maturity that
+        only accrues once the ERP is live.</p>
+        <div class="chartbox"><canvas id="bubbleChart" height="300"></canvas></div>
+        <div class="callout"><b>So what for the Odoo build:</b> every use-case here is wired to a
+        real Odoo module — see the <a href="odoo-architecture.html">Odoo 19 Architecture</a> for the
+        module map and the <a href="integration-map.html">Integration &amp; API Map</a> for the
+        telemetry and WhatsApp connectors several of these depend on.</p>
+      </section>
+
+      <div class="pagenav">
+        <a href="../operations/value-chain.html">← Prev: Value Chain &amp; Capability Map</a>
+        <a href="ai-peer-story.html">Next: AI in Action — Peer Story →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('bubbleChart'), {
+  type: 'bubble',
+  data: { datasets: [
+    { label:'Native / quick win', backgroundColor:'rgba(22,192,152,.55)', borderColor:'#16C098',
+      data:[
+        {x:1.6,y:9,r:20,n:'AI quoting'},
+        {x:1.4,y:8.5,r:18,n:'OCR / AP'},
+        {x:1.5,y:6,r:15,n:'Lead scoring'},
+        {x:1.5,y:6.5,r:14,n:'Doc generation'},
+        {x:1.8,y:6.8,r:16,n:'Smart reorder'}
+      ]},
+    { label:'Custom / later bet', backgroundColor:'rgba(127,169,222,.55)', borderColor:'#3F6FB0',
+      data:[
+        {x:5,y:8.5,r:13,n:'Demand forecast'},
+        {x:7.5,y:8.8,r:9,n:'Predictive maint.'},
+        {x:6,y:6.5,r:12,n:'Chatbot'},
+        {x:8.5,y:6.5,r:7,n:'Vision QC'}
+      ]}
+  ]},
+  options:{
+    plugins:{
+      legend:{ position:'bottom' },
+      tooltip:{ callbacks:{ label:function(c){ return c.raw.n+' — effort '+c.raw.x+', impact '+c.raw.y; } } }
+    },
+    scales:{
+      x:{ title:{display:true,text:'Build effort (low → high)'}, min:0, max:10 },
+      y:{ title:{display:true,text:'Business impact'}, min:4, max:10 }
+    }
+  }
+});
+</script>
+</body>
+</html>

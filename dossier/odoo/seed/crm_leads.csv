@@ -1,0 +1,46 @@
+xml_id,name,partner_xml_id,type,stage,expected_revenue,probability,salesperson_xml_id,team
+lead_01,SS fabrication — prep counters — New World Park Food Court,cust_16,opportunity,Qualified,90000,100,emp_03,Equipment
+lead_02,Equipment rental for event — Kebaya Dining Room,cust_13,opportunity,Qualified,15000,100,emp_04,Chemicals
+lead_03,Full kitchen fit-out — Nasi Kandar Pelita Group,cust_09,opportunity,Qualified,60000,100,emp_04,Equipment
+lead_04,Induction range upgrade — Selera Cloud Kitchen KL,cust_38,opportunity,New,25000,100,emp_04,Projects
+lead_05,Pool chemical supply — Melaka Heritage Hotel,cust_43,opportunity,Qualified,8000,10,emp_03,Chemicals
+lead_06,Grease trap service contract — Sunway Resort Hotel,cust_40,opportunity,Lost,60000,10,emp_05,Chemicals
+lead_07,Central kitchen design — Nasi Kandar Pelita Group,cust_09,opportunity,New,8000,50,emp_07,Equipment
+lead_08,Cold room installation — Cititel Penang,cust_07,opportunity,Proposition,15000,25,emp_06,Projects
+lead_09,Annual maintenance contract — Queensbay Mall F&B Tenants Assoc,cust_36,opportunity,Qualified,120000,50,emp_03,Equipment
+lead_10,Annual maintenance contract — Loh Guan Lye Specialists,cust_20,opportunity,Qualified,40000,25,emp_04,Chemicals
+lead_11,Grease trap service contract — Tek Sen Restaurant,cust_10,opportunity,Qualified,40000,75,emp_06,Equipment
+lead_12,Warewashing line overhaul — Island Hospital,cust_18,opportunity,New,120000,25,emp_05,Equipment
+lead_13,Cold room installation — Gurney Drive Hawker Centre Mgmt,cust_15,opportunity,Lost,25000,10,emp_06,Equipment
+lead_14,Grease trap service contract — Penang General Hospital (Kitchen),cust_17,opportunity,Lost,25000,75,emp_07,Chemicals
+lead_15,Pool chemical supply — Sunway Hotel Seberang Jaya,cust_04,opportunity,Proposition,8000,25,emp_03,Chemicals
+lead_16,Smokeless grill trial — Intel Penang Staff Canteen,cust_31,opportunity,New,120000,75,emp_03,Chemicals
+lead_17,Chemical supply contract — Sunway Hotel Seberang Jaya,cust_04,opportunity,New,40000,25,emp_06,Chemicals
+lead_18,Cook & chill system — Cititel Penang,cust_07,opportunity,Qualified,40000,75,emp_05,Chemicals
+lead_19,Equipment rental for event — China House Cafe,cust_14,opportunity,Lost,25000,75,emp_04,Equipment
+lead_20,Equipment rental for event — B Braun Penang Canteen,cust_34,opportunity,Won,25000,25,emp_06,Projects
+lead_21,Full kitchen fit-out — Hcompton Hotel Georgetown,cust_03,opportunity,Lost,8000,10,emp_06,Chemicals
+lead_22,Equipment rental for event — Setia Pearl Island Clubhouse,cust_30,opportunity,Proposition,60000,50,emp_04,Chemicals
+lead_23,Chemical supply contract — Intel Penang Staff Canteen,cust_31,opportunity,Qualified,120000,75,emp_03,Chemicals
+lead_24,Grease trap service contract — Cititel Penang,cust_07,opportunity,Won,8000,100,emp_03,Projects
+lead_25,Cold room installation — Setia Pearl Island Clubhouse,cust_30,opportunity,Proposition,120000,75,emp_04,Equipment
+lead_26,Warewashing line overhaul — Queensbay Mall F&B Tenants Assoc,cust_36,opportunity,Qualified,120000,100,emp_07,Chemicals
+lead_27,Warewashing line overhaul — Gurney Paragon Residences,cust_27,opportunity,Qualified,90000,10,emp_05,Projects
+lead_28,Dishwasher replacement — Selera Cloud Kitchen KL,cust_38,opportunity,New,15000,50,emp_04,Projects
+lead_29,Induction range upgrade — Nasi Kandar Pelita Group,cust_09,opportunity,Proposition,60000,100,emp_07,Projects
+lead_30,Induction range upgrade — New World Park Food Court,cust_16,opportunity,Lost,90000,10,emp_04,Equipment
+lead_31,Induction range upgrade — Sunway Hotel Seberang Jaya,cust_04,opportunity,Qualified,120000,75,emp_03,Projects
+lead_32,Pool chemical supply — Tek Sen Restaurant,cust_10,opportunity,Won,25000,25,emp_04,Equipment
+lead_33,Pool chemical supply — Hameediyah Restaurant,cust_11,opportunity,Won,40000,10,emp_04,Chemicals
+lead_34,Grease trap service contract — Bayview Beach Resort,cust_05,opportunity,Proposition,15000,10,emp_03,Chemicals
+lead_35,Combi oven upgrade — Hcompton Hotel Georgetown,cust_03,opportunity,Proposition,15000,25,emp_06,Equipment
+lead_36,Smokeless grill trial — Ipoh Old Town Kopitiam Group,cust_41,opportunity,Qualified,25000,25,emp_07,Chemicals
+lead_37,Cook & chill system — Chung Ling High School Canteen,cust_23,opportunity,Won,25000,25,emp_07,Chemicals
+lead_38,Cold room installation — Gleneagles Penang,cust_19,opportunity,Lost,40000,25,emp_04,Projects
+lead_39,Annual maintenance contract — Eastern & Oriental Hotel Penang,cust_01,opportunity,New,60000,75,emp_04,Chemicals
+lead_40,Pool chemical supply — China House Cafe,cust_14,opportunity,Won,60000,25,emp_04,Equipment
+lead_41,Annual maintenance contract — Shangri-La Rasa Sayang,cust_06,opportunity,Won,120000,10,emp_05,Equipment
+lead_42,Combi oven upgrade — Sunway Resort Hotel,cust_40,opportunity,Lost,60000,75,emp_03,Projects
+lead_43,SS fabrication — prep counters — Sunway Resort Hotel,cust_40,opportunity,Lost,8000,25,emp_04,Projects
+lead_44,Smokeless grill trial — Alor Setar Central Kitchen,cust_44,opportunity,Proposition,120000,10,emp_04,Equipment
+lead_45,SS fabrication — prep counters — Penang Aged-Care Residence,cust_25,opportunity,Lost,15000,100,emp_06,Projects

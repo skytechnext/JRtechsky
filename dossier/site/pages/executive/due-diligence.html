@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Due Diligence — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="due-diligence">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Executive</b> · Due Diligence</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Executive · Due Diligence</span>
+      <h1>A structured due-diligence read on JR-Tech<br>across seven lenses.</h1>
+      <p>TechNext's discovery view of JR-Tech Solution Sdn Bhd — corporate, commercial, operational,
+      financial, technology, and legal/compliance — with a RAG-rated findings table and a
+      readiness radar. Verified facts are stated as such; where public data is thin we apply
+      Malaysia-SME modelling, flagged in the findings.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">7</div><div class="lbl">due-diligence lenses assessed</div></div>
+          <div class="kpi"><div class="num">~2009</div><div class="lbl">incorporated · SSM 200901013633</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">business lines under one roof</div></div>
+          <div class="kpi"><div class="num">3</div><div class="lbl">red / amber compliance items to close pre-go-live</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Due-diligence readiness radar</h2>
+        <p class="lead">A 0–5 maturity read per lens. The shape shows a fundamentally sound,
+        long-established business whose gaps are concentrated in technology and data — exactly the
+        surface the Odoo 19 engagement addresses.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="ddRadar" height="280"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading the radar</h3>
+            <table class="tbl">
+              <tr><th>Lens</th><th>Score</th><th>Read</th></tr>
+              <tr><td>Corporate</td><td>4 / 5</td><td>Long-standing Sdn Bhd, clear directorship</td></tr>
+              <tr><td>Commercial</td><td>4 / 5</td><td>Diversified, sticky HORECA base</td></tr>
+              <tr><td>Operational</td><td>3 / 5</td><td>Capable but siloed &amp; manual</td></tr>
+              <tr><td>Financial</td><td>3 / 5</td><td>Modelled; visibility limited by tooling</td></tr>
+              <tr><td>Technology</td><td>2 / 5</td><td>Spreadsheets/WhatsApp; the core gap</td></tr>
+              <tr><td>Legal / Compliance</td><td>3 / 5</td><td>Solid base; MyInvois &amp; halal to confirm</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>1 · Corporate</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Entity &amp; governance</h3>
+            <p><b>Legal name:</b> JR-Tech Solution Sdn Bhd · <b>SSM Reg.:</b> 200901013633
+            (incorporated ~2009). <b>Director:</b> Tan Gim Boon. Registered office:
+            556-Y, Mukim 13, Batu Uban, Jalan Sultan Azlan Shah, 11700 Gelugor, Penang.</p>
+            <p>A private limited company with ~16 years of continuous trading signals stability and
+            an established reputation in the Penang F&amp;B engineering market.</p>
+          </div>
+          <div class="card pad-lg">
+            <h3>Watch-items</h3>
+            <ul>
+              <li>Key-person concentration around the director — succession &amp; delegation depth to confirm.</li>
+              <li>Shareholding structure &amp; any related-party suppliers to verify in formal DD.</li>
+              <li>Statutory filings (annual returns, audited accounts) to be requested.</li>
+            </ul>
+            <div class="callout"><b>So what for the build:</b> a single director/sponsor simplifies
+            decision-making for the Odoo rollout but raises change-management dependency — addressed in
+            <a href="../delivery/change-management.html">Change Management</a>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2 · Commercial</h2>
+        <p class="lead">Four interlocking lines give JR-Tech a "one-stop" wedge: win a kitchen
+        fit-out, then retain the client through equipment rental, maintenance and recurring chemical
+        supply. That cross-sell motion is the commercial crown jewel — and today it is invisible in the
+        data.</p>
+        <table class="tbl">
+          <tr><th>Line</th><th>Revenue character</th><th>Stickiness</th><th>DD note</th></tr>
+          <tr><td>JR-Consulting (design/fab/training)</td><td>Project-based, lumpy</td><td>Medium</td><td>Anchor for downstream cross-sell</td></tr>
+          <tr><td>JR-Equipment (sales &amp; rental)</td><td>Capex + recurring rental</td><td>High (rental)</td><td>Asset register not formalised</td></tr>
+          <tr><td>Service &amp; maintenance</td><td>Recurring, reactive</td><td>High</td><td>SLA terms to document</td></tr>
+          <tr><td>JR-Chemical Supplies</td><td>Recurring consumable</td><td>Very high</td><td>Best annuity; forecast-able</td></tr>
+        </table>
+        <div class="callout tn"><b>Crown jewel:</b> chemical resupply + rental + service form a
+        recurring-revenue annuity layered on project work. Making it visible and forecastable is the
+        single biggest commercial upside of the engagement.</div>
+      </section>
+
+      <section class="section">
+        <h2>3 · Operational</h2>
+        <p class="lead">JR-Tech's operational capability is genuine — in-house fabrication, regulatory
+        kitchen design, after-sales service. The weakness is the connective tissue between functions.</p>
+        <div class="mermaid">
+flowchart TD
+  E[Enquiry / site visit] --> Q[Quote in Excel/Word]
+  Q --> O[Order via WhatsApp/email]
+  O --> F[Fabrication job sheet]
+  O --> P[Procurement spreadsheet]
+  F --> D[Delivery / install]
+  P --> D
+  D --> S[Service &amp; chemical resupply]
+  S --> B[Manual invoicing]
+  Q -. no link .-> B
+  P -. no link .-> S
+  classDef gap fill:#FEECEC,stroke:#E2544B,color:#7A1F1A;
+  class Q,O,P,B gap
+        </div>
+        <div class="callout warn"><b>Finding:</b> the red nodes are manual, disconnected steps where
+        data is re-entered or lost. Each break point is a margin, stock or SLA blind spot —
+        and a direct target for the Odoo 19 quote-to-cash spine.</div>
+      </section>
+
+      <section class="section">
+        <h2>4 · Financial (modelled)</h2>
+        <p class="lead">Public financials for a private Penang SME are not disclosed; the figures below
+        are TechNext's illustrative Malaysia-SME model, consistent with a 16-year four-line operation.
+        They frame the shape of the business, not audited fact.</p>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="revMix" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Indicative financial profile</h3>
+            <table class="tbl">
+              <tr><th>Dimension</th><th>Modelled read</th></tr>
+              <tr><td>Revenue mix</td><td>Project (equipment/fab) heavy, growing recurring tail</td></tr>
+              <tr><td>Gross margin</td><td>Higher on chemicals/service; thinner on equipment resale</td></tr>
+              <tr><td>Cash cycle</td><td>Stretched by manual invoicing &amp; collections</td></tr>
+              <tr><td>Visibility</td><td>Month-end only; no real-time P&amp;L</td></tr>
+              <tr><td>Working capital</td><td>Tied up in unforecasted chemical/equipment stock</td></tr>
+            </table>
+            <div class="callout"><b>So what:</b> Phase 1 Accounting + real-time P&amp;L directly lifts
+            the financial-visibility score; see <a href="../strategy/financials.html">Financial Snapshot &amp; Valuation</a>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>5 · Technology</h2>
+        <p class="lead">This is the lowest-scoring lens and the reason for the engagement. The business
+        runs on general-purpose tools with no system of record.</p>
+        <div class="grid g3">
+          <div class="card"><span class="tag red">Gap</span><h3>No ERP</h3>
+          <p>Spreadsheets and WhatsApp act as the de-facto operating system across all four lines.</p></div>
+          <div class="card"><span class="tag red">Gap</span><h3>No single customer record</h3>
+          <p>The same HORECA client may appear differently in quoting, service and chemical resupply.</p></div>
+          <div class="card"><span class="tag warn">Risk</span><h3>Data fragility</h3>
+          <p>Business-critical data on personal devices and local files — backup &amp; continuity risk.</p></div>
+        </div>
+        <div class="callout tn"><b>So what for the build:</b> a clean slate is an advantage — no legacy
+        ERP to decommission. Migration is data clean-up + load, not a system rip-out. See
+        <a href="../technology/data-migration.html">Data Migration</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>6 · Legal &amp; compliance (Malaysia)</h2>
+        <p class="lead">As an F&amp;B kitchen engineering and chemical-supply business, JR-Tech sits
+        under several Malaysian regulatory regimes. Most are well within reach; two need confirmation
+        before go-live.</p>
+        <table class="tbl">
+          <tr><th>Regime</th><th>Relevance to JR-Tech</th><th>Status</th></tr>
+          <tr><td>MY food-premises regulations</td><td>Kitchen design must meet segregated prep, hand-wash &amp; workflow rules (a brand-book strength)</td><td><span class="tag green">Strength</span></td></tr>
+          <tr><td>DOSH / OSHA (chemicals &amp; fabrication)</td><td>Chemical handling/storage &amp; welding workshop safety; SDS &amp; PPE</td><td><span class="tag warn">Confirm</span></td></tr>
+          <tr><td>Halal considerations</td><td>Cleaning chemicals &amp; kitchen builds for halal F&amp;B clients may require halal-compatible documentation</td><td><span class="tag warn">Confirm</span></td></tr>
+          <tr><td>MyInvois e-invoicing (LHDN)</td><td>Mandatory e-invoicing rolling out to SMEs through 2026–27</td><td><span class="tag red">Action</span></td></tr>
+          <tr><td>SST / tax</td><td>Service tax &amp; sales tax on applicable supplies</td><td><span class="tag warn">In-system</span></td></tr>
+        </table>
+        <div class="callout warn"><b>Priority:</b> MyInvois readiness is a hard 2026 dependency —
+        built into Phase 1 Accounting. Halal &amp; DOSH documentation are quick confirmations that
+        de-risk the compliance lens. Detail in <a href="../technology/security-myinvois.html">Security, Compliance &amp; MyInvois</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>7 · RAG-rated findings &amp; risk register</h2>
+        <p class="lead">Consolidated findings across all lenses, Red / Amber / Green rated by severity,
+        each with a mitigation owned in the delivery plan.</p>
+        <table class="tbl">
+          <tr><th>#</th><th>Finding</th><th>Lens</th><th>Rating</th><th>Mitigation</th></tr>
+          <tr><td>1</td><td>No ERP / system of record across four lines</td><td>Technology</td><td><span class="tag red">Red</span></td><td>Odoo 19 backbone, phased rollout</td></tr>
+          <tr><td>2</td><td>MyInvois e-invoicing not yet in place</td><td>Compliance</td><td><span class="tag red">Red</span></td><td>Phase 1 Accounting + MyInvois connector</td></tr>
+          <tr><td>3</td><td>Recurring-revenue (chemicals) unforecasted</td><td>Commercial</td><td><span class="tag warn">Amber</span></td><td>Phase 2 forecasting &amp; reorder rules</td></tr>
+          <tr><td>4</td><td>No formal asset register for rental fleet</td><td>Operational</td><td><span class="tag warn">Amber</span></td><td>Phase 2 Rental + Inventory asset records</td></tr>
+          <tr><td>5</td><td>Key-person dependency on director</td><td>Corporate</td><td><span class="tag warn">Amber</span></td><td>Sponsor + data owner; change mgmt plan</td></tr>
+          <tr><td>6</td><td>Business data on personal devices / local files</td><td>Technology</td><td><span class="tag warn">Amber</span></td><td>Cloud system of record + backups</td></tr>
+          <tr><td>7</td><td>Halal / DOSH documentation to confirm</td><td>Compliance</td><td><span class="tag warn">Amber</span></td><td>Document review pre-go-live</td></tr>
+          <tr><td>8</td><td>Established entity, diversified, sticky base</td><td>Corporate / Commercial</td><td><span class="tag green">Green</span></td><td>Leverage as transformation foundation</td></tr>
+          <tr><td>9</td><td>In-house fabrication &amp; regulatory design capability</td><td>Operational</td><td><span class="tag green">Green</span></td><td>Formalise via Manufacturing module (Phase 3)</td></tr>
+        </table>
+        <div class="grid g2" style="margin-top:18px">
+          <div class="chartbox"><canvas id="ragChart" height="220"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Overall DD verdict</h3>
+            <p>JR-Tech is a <b>sound, long-established business with a clear digital deficit</b> rather
+            than a structural problem. No red flags sit in corporate or commercial fundamentals; both
+            reds are addressable in Phase 1. The risk profile is favourable for an ERP transformation.</p>
+            <div class="callout tn"><b>Recommendation:</b> proceed. Close the two red items in Phase 1,
+            work the ambers across Phases 2–3. Continue to the
+            <a href="executive-summary.html">Executive Summary</a> for the plan and ask.</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="executive-summary.html">← Prev: Executive Summary</a>
+        <a href="../company/company-profile.html">Next: Company Profile →</a>
+      </div>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd (SSM 200901013633).
+      Findings combine verified facts with TechNext analyst modelling; financials are illustrative — see Methodology &amp; Assumptions.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('ddRadar'), {
+  type: 'radar',
+  data: { labels: ['Corporate','Commercial','Operational','Financial','Technology','Legal/Compliance'],
+    datasets: [
+      { label: 'Current maturity', data: [4,4,3,3,2,3], borderColor:'#3F6FB0', backgroundColor:'rgba(127,169,222,.20)' },
+      { label: 'Post-engagement target', data: [4,5,5,5,5,5], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.16)' }
+    ]},
+  options: { scales:{ r:{ min:0, max:5, ticks:{ stepSize:1 } } }, plugins:{ legend:{ position:'bottom' } } }
+});
+
+new Chart(document.getElementById('revMix'), {
+  type: 'doughnut',
+  data: { labels: ['Equipment sales','Fabrication / consulting','Rental','Service & maintenance','Chemical supply'],
+    datasets: [{ data: [32,22,14,14,18], backgroundColor:['#0B1F3A','#3F6FB0','#7FA9DE','#16C098','#0E8E6E'] }]},
+  options: { plugins:{ legend:{ position:'right' }, title:{ display:true, text:'Modelled revenue mix (illustrative)' } } }
+});
+
+new Chart(document.getElementById('ragChart'), {
+  type: 'bar',
+  data: { labels: ['Red','Amber','Green'],
+    datasets: [{ label:'Findings', data:[2,5,2], backgroundColor:['#E2544B','#E8A13A','#16C098'] }]},
+  options: { plugins:{ legend:{ display:false }, title:{ display:true, text:'Findings by RAG rating' } },
+    scales:{ y:{ beginAtZero:true, ticks:{ stepSize:1 } } } }
+});
+</script>
+</body>
+</html>

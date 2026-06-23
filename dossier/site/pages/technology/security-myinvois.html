@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security, Compliance &amp; MyInvois — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="security-myinvois">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Technology</b> · Security, Compliance &amp; MyInvois</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Technology</span>
+      <h1>Security, Compliance &amp; MyInvois e-Invoicing</h1>
+      <p>The compliance backbone: how Odoo 19 meets Malaysia's LHDN e-Invoicing mandate, handles
+      SST, protects personal data under the PDPA, controls access, and stands up backups, disaster
+      recovery and an auditable trail. This is what keeps JR-Tech compliant as it scales.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">LHDN</div><div class="lbl">MyInvois e-invoicing — phased mandate</div></div>
+          <div class="kpi"><div class="num">SST</div><div class="lbl">sales &amp; service tax handled in the ledger</div></div>
+          <div class="kpi"><div class="num">PDPA</div><div class="lbl">Personal Data Protection Act 2010 compliance</div></div>
+          <div class="kpi"><div class="num">RBAC</div><div class="lbl">role-based access across the four business lines</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>MyInvois — the LHDN e-Invoicing mandate</h2>
+        <p class="lead">Malaysia's Inland Revenue Board (LHDN / IRBM) is rolling out mandatory
+        e-Invoicing through the <b>MyInvois</b> platform in phases by annual turnover. Each invoice
+        must be submitted for clearance, validated by LHDN, and returned with a unique identifier
+        and a QR code before it is shared with the buyer.</p>
+        <table class="tbl">
+          <tr><th>Phase</th><th>Taxpayer threshold (annual turnover)</th><th>Mandatory from</th></tr>
+          <tr><td>Phase 1</td><td>&gt; RM100 million</td><td>1 Aug 2024</td></tr>
+          <tr><td>Phase 2</td><td>&gt; RM25m up to RM100m</td><td>1 Jan 2025</td></tr>
+          <tr><td>Phase 3</td><td>&gt; RM5m up to RM25m</td><td>1 Jul 2025</td></tr>
+          <tr><td>Phase 4</td><td>&gt; RM1m up to RM5m</td><td>1 Jan 2026</td></tr>
+          <tr><td>Phase 5</td><td>up to RM1m (with low-turnover exemptions/grace as announced)</td><td>1 Jul 2026 (per latest LHDN schedule)</td></tr>
+        </table>
+        <div class="callout warn"><b>Where JR-Tech sits:</b> as an established F&amp;B engineering
+        SME, JR-Tech almost certainly falls inside the 2025–2026 phases. The system must be
+        e-invoicing-capable at go-live regardless of the exact phase date — LHDN has continued to
+        adjust the lower-turnover timeline, so we build for compliance now, not later. Confirm the
+        applicable phase against JR-Tech's audited turnover during discovery.</div>
+      </section>
+
+      <section class="section">
+        <h2>How Odoo 19 complies</h2>
+        <div class="grid g2">
+          <div class="chartbox" style="padding:18px">
+            <div class="mermaid">
+sequenceDiagram
+    participant U as JR-Tech (Odoo)
+    participant L as LHDN MyInvois
+    participant B as Customer
+    U->>U: Confirm invoice (account.move)
+    U->>L: Submit e-invoice (REST, signed)
+    L-->>U: Validate → UIN + QR + status
+    U->>B: Share validated invoice (PDF + QR)
+    B-->>L: (Optional) reject within window
+    L-->>U: Status updates / cancellation
+            </div>
+          </div>
+          <div class="card pad-lg">
+            <h3>The Odoo flow</h3>
+            <ul>
+              <li><b>Localisation connector</b> — Odoo's Malaysian e-invoicing module maps invoice
+              fields to the MyInvois schema and submits via the LHDN API.</li>
+              <li><b>Clearance model</b> — invoices are transmitted for validation; the returned
+              <b>UIN</b> and <b>QR code</b> are stored on the <code>account.move</code> and printed
+              on the document.</li>
+              <li><b>Master data</b> — buyer/supplier <b>TIN</b>, SST registration and
+              classification codes are captured on <code>res.partner</code> (loaded during
+              <a href="data-migration.html">migration</a>).</li>
+              <li><b>Consolidation &amp; B2C</b> — supported for receipts where individual
+              e-invoices are not requested, per LHDN rules.</li>
+              <li><b>Status sync</b> — validation/rejection/cancellation states are tracked back on
+              the invoice for a full audit trail.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>SST handling</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Tax configuration</h3>
+            <p>Odoo's MY localisation ships Sales &amp; Service Tax codes. JR-Tech's mix spans
+            <b>taxable goods</b> (equipment, chemicals) and <b>taxable services</b> (maintenance,
+            grease-trap, repair) — each line carries the correct SST treatment, computed
+            automatically and posted to the right tax accounts.</p>
+          </div>
+          <div class="card"><h3>Reporting</h3>
+            <p>Tax is summarised in Odoo's tax reports for the SST return, with the audit trail from
+            each invoice line back to the journal entry. SST amounts also flow into the MyInvois
+            submission, keeping the e-invoice and the tax return consistent from one source.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Data protection — PDPA</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag">PDPA</span><h3>Lawful processing</h3>
+            <p>Customer and employee personal data is processed for defined business purposes with
+            consent captured where required; data-subject access/correction is supported through
+            Odoo records.</p></div>
+          <div class="card"><span class="tag">Minimise</span><h3>Data minimisation</h3>
+            <p>Only data needed for the transaction is stored; sensitive fields are restricted by
+            role, and retention follows a defined schedule.</p></div>
+          <div class="card"><span class="tag">Secure</span><h3>Security safeguards</h3>
+            <p>Encryption in transit (TLS), encrypted backups, hosting-level access controls, and
+            data residency confirmed via the <a href="odoo-architecture.html">hosting</a> choice
+            (Odoo.sh regional / on-prem).</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Access control &amp; roles</h2>
+        <p class="lead">Odoo's security model combines <b>groups</b> (role membership),
+        <b>access rights</b> (model-level CRUD) and <b>record rules</b> (row-level filters). Roles
+        are scoped to JR-Tech's four lines so staff see only what they should.</p>
+        <table class="tbl">
+          <tr><th>Role</th><th>Apps / scope</th><th>Access principle</th></tr>
+          <tr><td>Director / Owner</td><td>All apps + dashboards</td><td>Full visibility; approval authority</td></tr>
+          <tr><td>Sales / CRM</td><td>CRM, Sales, Subscriptions</td><td>Own &amp; team pipeline; no ledger access</td></tr>
+          <tr><td>Finance</td><td>Accounting, MyInvois, Payroll</td><td>Full finance; segregation from sales discounts</td></tr>
+          <tr><td>Warehouse / Fabrication</td><td>Inventory, MRP, Quality, Barcode</td><td>Stock &amp; production only</td></tr>
+          <tr><td>Field Service tech</td><td>Field Service, Maintenance, Repair (mobile)</td><td>Assigned tasks; read-only customer data</td></tr>
+          <tr><td>API / integration user</td><td>Scoped REST/RPC endpoints</td><td>Least-privilege; per-connector (see <a href="integration-map.html">Integration Map</a>)</td></tr>
+        </table>
+        <div class="callout"><b>Controls:</b> enforce two-factor authentication for admin and
+        finance, segregation of duties (the person who creates a vendor bill is not the one who
+        pays it), and periodic access reviews.</div>
+      </section>
+
+      <section class="section">
+        <h2>Backups, DR &amp; audit trail</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag green">Backups</span><h3>Automated &amp; tested</h3>
+            <p>On Odoo.sh, daily backups with point-in-time restore are managed by the platform.
+            Restores are tested periodically — an untested backup is not a backup.</p></div>
+          <div class="card"><span class="tag">DR</span><h3>Recovery objectives</h3>
+            <p>Target <b>RPO ≤ 24h</b> and <b>RTO measured in hours</b> via platform restore. A
+            documented runbook names who does what during an incident.</p></div>
+          <div class="card"><span class="tag">Audit</span><h3>Immutable trail</h3>
+            <p>Odoo's chatter and audit logging track who changed what and when; posted journal
+            entries are locked, and e-invoice status history is retained for LHDN.</p></div>
+        </div>
+        <div class="callout tn"><b>So what for the Odoo build:</b> compliance is not a bolt-on. The
+        MyInvois connector, SST tax codes, PDPA-aware roles and the backup/DR posture are configured
+        in <b>Phase 1</b> alongside core finance on the
+        <a href="../delivery/roadmap.html">roadmap</a> — so JR-Tech is audit- and
+        e-invoicing-ready from the first live invoice.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="integration-map.html">← Prev: Integration &amp; API Map</a>
+        <a href="../delivery/roadmap.html">Next: Implementation Roadmap →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</body>
+</html>

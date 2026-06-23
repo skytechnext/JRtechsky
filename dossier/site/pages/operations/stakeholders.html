@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stakeholder Perspectives — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="stakeholders">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Operations</b> · Stakeholder Perspectives</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Operations</span>
+      <h1>Who the ERP serves — and what each of them needs to win.</h1>
+      <p>JR-Tech's "one-stop F&amp;B engineering solutionist" promise is delivered by seven distinct
+      stakeholder groups, each measured on different outcomes. This page maps their power and
+      interest, then states — concretely — the goals, pains and the specific Odoo 19 capability
+      that resolves each constituency. Every later design decision in this dossier traces back here.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <h2>The stakeholder landscape</h2>
+        <p class="lead">A mid-sized Penang F&amp;B engineering SME runs lean: the Director still
+        touches most decisions, while four operating functions and two enabling functions carry the
+        day-to-day. Customers sit on the outside but exert the strongest pull on every process.</p>
+        <div class="grid g4">
+          <div class="kpi"><div class="num">7</div><div class="lbl">internal &amp; external stakeholder groups in scope</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">operating functions: sales · fabrication · field service · chemical supply</div></div>
+          <div class="kpi"><div class="num">2</div><div class="lbl">enabling functions: finance/admin · procurement</div></div>
+          <div class="kpi"><div class="num">1</div><div class="lbl">unified Odoo 19 backbone replacing the silos</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Power / interest grid</h2>
+        <p class="lead">Each bubble is a stakeholder placed by their influence over the engagement
+        (power, y-axis) and their day-to-day stake in the platform (interest, x-axis). The quadrant
+        dictates engagement strategy: <b>manage closely</b> (top-right), <b>keep satisfied</b>
+        (top-left), <b>keep informed</b> (bottom-right) and <b>monitor</b> (bottom-left).</p>
+        <div class="chartbox"><canvas id="piGrid" height="300"></canvas></div>
+        <div class="grid g4" style="margin-top:18px">
+          <div class="card"><span class="tag red">Manage closely</span><p>Director, Finance/Admin — high power, high interest. Co-design, weekly steering.</p></div>
+          <div class="card"><span class="tag warn">Keep satisfied</span><p>Customers — high power, lower process interest. Surface value via portals &amp; SLAs.</p></div>
+          <div class="card"><span class="tag">Keep informed</span><p>Sales, Fabrication, Field Service — high interest, moderate power. Train &amp; involve.</p></div>
+          <div class="card"><span class="tag green">Engage</span><p>Procurement, Chemical Supply — operational owners of reorder &amp; recurring revenue.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How the stakeholders connect</h2>
+        <p class="lead">Value flows from a customer enquiry through sales into the operating
+        functions, supported by procurement and finance. Today these handoffs happen over WhatsApp,
+        phone and spreadsheets; Odoo turns each arrow into a tracked, auditable record.</p>
+        <div class="mermaid">
+flowchart LR
+  CUST([Customer / HORECA])
+  DIR[Director<br/>Tan Gim Boon]
+  SALES[Sales &amp; Quoting]
+  FAB[Workshop / Fabrication]
+  FS[Field-Service Techs]
+  CHEM[Chemical Supply]
+  PROC[Procurement]
+  FIN[Finance / Admin]
+
+  CUST -->|enquiry| SALES
+  SALES -->|custom build| FAB
+  SALES -->|install / repair| FS
+  SALES -->|resupply contract| CHEM
+  DIR -.approves.-> SALES
+  FAB -->|material need| PROC
+  CHEM -->|stock need| PROC
+  FS -->|spare parts| PROC
+  PROC -->|invoices| FIN
+  FAB -->|job cost| FIN
+  FS -->|service billing| FIN
+  CHEM -->|recurring billing| FIN
+  FIN -->|e-invoice / MyInvois| CUST
+  FS -->|service report| CUST
+  DIR -.steers.-> FIN
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Stakeholder cards — goals, pains, what Odoo gives them</h2>
+
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <span class="tag red">Manage closely</span>
+            <h3>Director — Tan Gim Boon</h3>
+            <p><b>Goals:</b> protect margin across four business lines, keep the "one-stop"
+            reputation intact, make confident decisions without waiting for month-end.</p>
+            <p><b>Pains:</b> no single view of cash, jobs or stock; decisions rely on memory and
+            WhatsApp threads; profitability per job is invisible until it is too late.</p>
+            <div class="callout tn"><b>Odoo gives:</b> a live executive dashboard (Spreadsheet /
+            Studio KPIs) with consolidated P&amp;L, pipeline, work-in-progress and overdue
+            receivables — one screen, real time.</div>
+          </div>
+
+          <div class="card pad-lg">
+            <span class="tag">Keep informed</span>
+            <h3>Sales &amp; Quoting</h3>
+            <p><b>Goals:</b> turn enquiries into accurate quotes fast, across consulting, equipment,
+            rental and chemicals; win on responsiveness, not just price.</p>
+            <p><b>Pains:</b> quotes rebuilt from scratch in Excel; no version history; pricing for
+            fabricated items guessed; lost visibility once a job moves to the workshop.</p>
+            <div class="callout tn"><b>Odoo gives:</b> CRM + Sales with reusable product/BoM-priced
+            quote templates, AI-assisted line suggestions, version control and one-click conversion
+            to a manufacturing, rental or service order.</div>
+          </div>
+
+          <div class="card pad-lg">
+            <span class="tag">Keep informed</span>
+            <h3>Workshop / Fabrication Lead</h3>
+            <p><b>Goals:</b> deliver custom stainless-steel kitchens on time and on cost; keep the
+            welding team utilised; reduce rework and material waste.</p>
+            <p><b>Pains:</b> jobs tracked on paper; no Bill of Materials, so steel and labour
+            costs are estimated; no link between the quote and the shop floor.</p>
+            <div class="callout tn"><b>Odoo gives:</b> Manufacturing with BoMs, routings and work
+            orders; real material consumption and labour booked against each job for true cost.</div>
+          </div>
+
+          <div class="card pad-lg">
+            <span class="tag green">Engage</span>
+            <h3>Field-Service Technicians</h3>
+            <p><b>Goals:</b> arrive prepared, fix first-time, log work cleanly; service installs,
+            repairs, grease-trap, bio-treatment and tanker jobs across Penang &amp; the Klang Valley.</p>
+            <p><b>Pains:</b> jobs dispatched by phone; no asset history on site; parts not on the
+            van; service reports handwritten and re-keyed (or lost).</p>
+            <div class="callout tn"><b>Odoo gives:</b> Field Service mobile app — scheduled jobs,
+            equipment service history, parts on the order, photos and signed reports captured on the
+            phone; Maintenance triggers preventive visits automatically.</div>
+          </div>
+
+          <div class="card pad-lg">
+            <span class="tag green">Engage</span>
+            <h3>Chemical Supply</h3>
+            <p><b>Goals:</b> keep recurring dishwasher, housekeeping, laundry and pool chemical
+            customers replenished on time; grow predictable recurring revenue.</p>
+            <p><b>Pains:</b> resupply driven by customer calls or memory; no consumption tracking;
+            stock-outs and emergency deliveries erode margin.</p>
+            <div class="callout tn"><b>Odoo gives:</b> Subscriptions for auto-recurring resupply
+            orders and invoices, plus Inventory reorder rules so chemical SKUs are never short.</div>
+          </div>
+
+          <div class="card pad-lg">
+            <span class="tag red">Manage closely</span>
+            <h3>Finance / Admin</h3>
+            <p><b>Goals:</b> bill accurately and fast, stay SST- and MyInvois-compliant, control
+            cash, close the month quickly.</p>
+            <p><b>Pains:</b> double entry between Excel and accounting; manual SST; e-invoicing
+            looming; receivables chased ad-hoc; no job-level profitability.</p>
+            <div class="callout tn"><b>Odoo gives:</b> Accounting with automated SST, MyInvois
+            e-invoice submission, analytic accounting per job/line, and aged-receivable follow-ups.</div>
+          </div>
+
+          <div class="card pad-lg">
+            <span class="tag green">Engage</span>
+            <h3>Procurement</h3>
+            <p><b>Goals:</b> buy steel, equipment, spares and chemicals at the right price and time;
+            avoid both stock-outs and dead stock.</p>
+            <p><b>Pains:</b> purchasing reactive and manual; no link to fabrication BoMs or reorder
+            points; vendor pricing scattered across emails.</p>
+            <div class="callout tn"><b>Odoo gives:</b> Purchase with RFQs, vendor price lists and
+            automated reordering driven by manufacturing demand and inventory rules.</div>
+          </div>
+
+          <div class="card pad-lg">
+            <span class="tag warn">Keep satisfied</span>
+            <h3>Customers (HORECA)</h3>
+            <p><b>Goals:</b> hotels, restaurants, central kitchens, hospitals and condos want one
+            reliable partner for design, equipment, service and chemicals — with no surprises.</p>
+            <p><b>Pains:</b> unclear quote status, slow service response, no record of past work,
+            paper invoices.</p>
+            <div class="callout tn"><b>Odoo gives:</b> a customer Portal for quotes, orders, service
+            history and e-invoices — making the "one-stop" promise visible and self-serve.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Engagement strategy by quadrant</h2>
+        <table class="tbl">
+          <tr><th>Stakeholder</th><th>Power</th><th>Interest</th><th>Strategy</th><th>Primary Odoo touchpoint</th></tr>
+          <tr><td>Director</td><td>High</td><td>High</td><td>Manage closely — co-design, steering</td><td>Executive dashboard</td></tr>
+          <tr><td>Finance / Admin</td><td>High</td><td>High</td><td>Manage closely — process owner</td><td>Accounting · MyInvois</td></tr>
+          <tr><td>Customers</td><td>High</td><td>Medium</td><td>Keep satisfied — show value</td><td>Customer Portal</td></tr>
+          <tr><td>Sales &amp; Quoting</td><td>Medium</td><td>High</td><td>Keep informed — train &amp; champion</td><td>CRM · Sales</td></tr>
+          <tr><td>Fabrication Lead</td><td>Medium</td><td>High</td><td>Keep informed — pilot early</td><td>Manufacturing</td></tr>
+          <tr><td>Field-Service Techs</td><td>Medium</td><td>High</td><td>Engage — mobile-first rollout</td><td>Field Service · Maintenance</td></tr>
+          <tr><td>Chemical Supply</td><td>Low</td><td>High</td><td>Engage — recurring revenue lever</td><td>Subscriptions</td></tr>
+          <tr><td>Procurement</td><td>Low</td><td>Medium</td><td>Engage — demand-driven buying</td><td>Purchase · Inventory</td></tr>
+        </table>
+        <div class="callout"><b>So what for the Odoo build:</b> the quadrant ordering becomes the
+        rollout sequence — Finance and Sales anchor Phase 1, the operating functions follow in
+        Phase 2, and the Customer Portal lands once internal data is trustworthy. See the
+        <a href="../delivery/roadmap.html">Implementation Roadmap</a> and the
+        <a href="dept-workflows.html">Department Workflows</a> for the process detail.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../strategy/esg.html">← Prev: ESG &amp; Sustainability</a>
+        <a href="dept-workflows.html">Next: Department Workflows →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('piGrid'), {
+  type: 'scatter',
+  data: { datasets: [
+    { label:'Director', data:[{x:9,y:10}], backgroundColor:'#E2544B', pointRadius:16, pointHoverRadius:18 },
+    { label:'Finance / Admin', data:[{x:8.5,y:8.5}], backgroundColor:'#C13B33', pointRadius:14 },
+    { label:'Customers', data:[{x:5,y:8.5}], backgroundColor:'#E8A13A', pointRadius:15 },
+    { label:'Sales & Quoting', data:[{x:8,y:6}], backgroundColor:'#3F6FB0', pointRadius:14 },
+    { label:'Fabrication Lead', data:[{x:7.5,y:5.5}], backgroundColor:'#5C8BC9', pointRadius:13 },
+    { label:'Field-Service Techs', data:[{x:8.5,y:5}], backgroundColor:'#7FA9DE', pointRadius:13 },
+    { label:'Chemical Supply', data:[{x:7,y:3.5}], backgroundColor:'#16C098', pointRadius:12 },
+    { label:'Procurement', data:[{x:5,y:3.5}], backgroundColor:'#0E8E6E', pointRadius:12 }
+  ]},
+  options: {
+    plugins:{ legend:{ position:'bottom' },
+      tooltip:{ callbacks:{ label:function(c){ return c.dataset.label+' (interest '+c.parsed.x+', power '+c.parsed.y+')'; } } } },
+    scales:{
+      x:{ min:0, max:10, title:{ display:true, text:'Interest in the platform →' }, ticks:{ stepSize:2 } },
+      y:{ min:0, max:11, title:{ display:true, text:'Power over the engagement →' }, ticks:{ stepSize:2 } }
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accounting Overhaul — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>code.inline{font-family:ui-monospace,Menlo,monospace;font-size:.88em;background:#EEF4FC;
+  border:1px solid #dbe3ef;border-radius:6px;padding:1px 6px;color:#0B1F3A;}</style>
+</head>
+<body data-page="accounting-overhaul">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Accounting Overhaul</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents · Finance Transformation Plan</span>
+      <h1>Accounting Overhaul — from month-end spreadsheets to a live ledger</h1>
+      <p>How JR-Tech's finance function moves from an external bookkeeper and Excel close to a real-time
+      Odoo 19 Accounting backbone: a localized Malaysian chart of accounts, correct SST taxes,
+      MyInvois e-invoicing, automated AR/AP, bank reconciliation, analytic accounting by business line,
+      management reporting, opening-balance migration and a redesigned month-end close.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">~3 wk</div><div class="lbl">current lag before P&amp;L is visible</div></div>
+          <div class="kpi"><div class="num">T+5</div><div class="lbl">target month-end close (business days)</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">analytic accounts — one per business line</div></div>
+          <div class="kpi"><div class="num">100%</div><div class="lbl">B2B invoices via MyInvois e-invoicing</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>1 · Current bookkeeping pain</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Where it hurts today</h3>
+            <ul>
+              <li>Books kept off-system by an external bookkeeper; data re-keyed from invoices &amp; bank statements.</li>
+              <li>Margin and cash position are invisible until ~3 weeks after month-end.</li>
+              <li>No split of profitability by business line — fabrication vs rental vs chemicals vs service all blended.</li>
+              <li>SST handled manually; risk of mis-coded sales vs service tax.</li>
+              <li>MyInvois e-invoicing not yet operationalised — a live compliance exposure.</li>
+              <li>AR follow-up is ad hoc; overdue debtors chased inconsistently.</li>
+              <li>Bank reconciliation is a manual end-of-month exercise.</li>
+            </ul></div>
+          <div class="chartbox"><canvas id="painChart" height="240"></canvas></div>
+        </div>
+        <div class="callout warn"><b>Compliance risk:</b> Malaysia's MyInvois e-invoicing mandate is
+        rolling out by turnover band; B2B invoices must be cleared through LHDN. Manual processes cannot
+        scale to this — automating it is the single biggest reason finance must move onto Odoo now.</div>
+      </section>
+
+      <section class="section">
+        <h2>2 · Target Odoo Accounting setup</h2>
+        <div class="mermaid">
+flowchart LR
+  subgraph Sources
+    SO[Sales / Rental / Subs / FSM] --> INV[Customer invoices]
+    PO[Purchase] --> BILL[Vendor bills]
+  end
+  INV --> EDI[MyInvois e-invoice]
+  INV --> AR[AR &amp; follow-ups]
+  BILL --> AP[AP &amp; payments]
+  AR --> BANK[Bank reconciliation]
+  AP --> BANK
+  INV --> AN[Analytic by business line]
+  BILL --> AN
+  AN --> RPT[Management reports / P&amp;L by line]
+  BANK --> RPT
+  EDI --> RPT
+        </div>
+        <table class="tbl">
+          <tr><th>Component</th><th>Configuration</th><th>Outcome</th></tr>
+          <tr><td>Chart of accounts</td><td>Malaysian localized CoA (<code class="inline">l10n_my</code>)</td><td>Compliant, familiar account structure</td></tr>
+          <tr><td>Taxes</td><td>SST: Sales Tax 10% on goods, Service Tax 8% on taxable services; tax-exempt &amp; zero-rated where applicable</td><td>Correct tax on every line by product type</td></tr>
+          <tr><td>E-invoicing</td><td><code class="inline">l10n_my_edi</code> → MyInvois/LHDN submission &amp; status</td><td>Cleared B2B e-invoices, audit trail</td></tr>
+          <tr><td>Analytic accounting</td><td>One analytic account per line: Fabrication · Equipment/Rental · Chemicals · Service</td><td>True P&amp;L per business line</td></tr>
+          <tr><td>AR automation</td><td>Payment terms, follow-up levels &amp; reminders</td><td>Faster collections, less DSO</td></tr>
+          <tr><td>AP</td><td>Vendor bills via 3-way match from Purchase</td><td>Controlled spend, fewer errors</td></tr>
+          <tr><td>Bank</td><td>Bank sync / statement import + reconciliation rules</td><td>Continuous (not month-end) reconciliation</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>3 · SST &amp; tax configuration</h2>
+        <table class="tbl">
+          <tr><th>Transaction type</th><th>Tax</th><th>Rate</th><th>Applies to (examples)</th></tr>
+          <tr><td>Sale of goods (taxable)</td><td>Sales Tax</td><td>10%</td><td>Fabricated worktables, equipment sold, chemicals (where taxable)</td></tr>
+          <tr><td>Taxable services</td><td>Service Tax</td><td>8%</td><td>Maintenance, grease-trap/tanker service, consulting, training</td></tr>
+          <tr><td>Rental of equipment</td><td>Service Tax</td><td>8%</td><td>Equipment &amp; dishwasher rental (treated as taxable service)</td></tr>
+          <tr><td>Exempt / out-of-scope</td><td>—</td><td>0%</td><td>Items below threshold or exempt categories</td></tr>
+        </table>
+        <div class="callout"><b>Design note:</b> taxes are set as product-level defaults so a sales rep
+        never picks the wrong tax. Fabricated goods carry Sales Tax; service products carry Service Tax;
+        rental products carry Service Tax — wired during master-data load (stage 3 of the
+        <a href="ai-build-playbook.html">build playbook</a>). Final rates/treatment confirmed with
+        JR-Tech's tax agent.</div>
+      </section>
+
+      <section class="section">
+        <h2>4 · MyInvois e-invoicing flow</h2>
+        <ol class="steps">
+          <li><b>Onboarding.</b> JR-Tech registers on the MyTax / MyInvois portal, obtains its TIN and
+            digital certificate; TechNext configures these in <code class="inline">l10n_my_edi</code>.</li>
+          <li><b>Invoice creation.</b> Finance posts a customer invoice as usual in Odoo (from Sales,
+            Rental, Subscriptions or Field Service).</li>
+          <li><b>Submission.</b> Odoo transmits the e-invoice to LHDN; the document gets a validation
+            status and a QR/UIN reference.</li>
+          <li><b>Clearance &amp; sharing.</b> On success the invoice is cleared; the validated PDF (with
+            QR) is shared with the customer.</li>
+          <li><b>Monitoring.</b> Finance watches the MyInvois status column; failures are re-submitted.
+            Consolidated e-invoices handle B2C as permitted.</li>
+        </ol>
+        <p style="font-size:13px;color:#5a6b85">Cross-reference the security &amp; compliance detail on the
+        <a href="../pages/technology/security-myinvois.html">Security, Compliance &amp; MyInvois</a> page.</p>
+      </section>
+
+      <section class="section">
+        <h2>5 · Analytic accounting by business line</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Why analytic, not just departments</h3>
+            <p>JR-Tech's value is knowing which line makes money. Every invoice line, vendor bill and
+            fabrication cost is tagged to an analytic account, so the P&amp;L can be sliced by line
+            without separate ledgers. Default analytic distributions are set on products and on
+            field-service / rental / subscription orders so tagging is automatic.</p>
+            <p>This feeds the owner dashboard on <a href="../pages/delivery/kpis-benefits.html">KPIs &amp;
+            Benefits</a> and supports the <a href="../pages/strategy/financials.html">Financial
+            Snapshot</a>.</p>
+          </div>
+          <div class="chartbox"><canvas id="lineChart" height="240"></canvas></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>6 · Opening-balance migration</h2>
+        <table class="tbl">
+          <tr><th>Step</th><th>What moves</th><th>Method</th></tr>
+          <tr><td>O1</td><td>Trial balance as at cutover date</td><td>Journal entry to opening-balance account, posted to the new CoA</td></tr>
+          <tr><td>O2</td><td>Open customer invoices (AR)</td><td>Imported as open items per customer with original dates &amp; due dates</td></tr>
+          <tr><td>O3</td><td>Open vendor bills (AP)</td><td>Imported as open items per vendor</td></tr>
+          <tr><td>O4</td><td>Inventory valuation</td><td>Opening stock quantities &amp; values per product/location</td></tr>
+          <tr><td>O5</td><td>Fixed assets (if tracked)</td><td>Asset register with net book values</td></tr>
+          <tr><td>O6</td><td>Reconciliation</td><td>Migrated balances tie back to the legacy trial balance — signed off before go-live</td></tr>
+        </table>
+        <p style="font-size:13px;color:#5a6b85">Only opening balances and open items migrate — full
+        transaction history stays in the legacy records (per <a href="brd.html">BRD</a> out-of-scope).
+        Mechanics align with the <a href="../pages/technology/data-migration.html">Data Migration</a> page.</p>
+      </section>
+
+      <section class="section">
+        <h2>7 · Month-end close redesign</h2>
+        <div class="grid g2">
+          <div class="card"><span class="tag red">Before</span><h3>Legacy close (~3 weeks)</h3>
+            <ul>
+              <li>Wait for external bookkeeper to process documents</li>
+              <li>Re-key bank statements, reconcile manually in Excel</li>
+              <li>Manual SST computation</li>
+              <li>No line-level P&amp;L</li>
+              <li>Owner sees results weeks late</li>
+            </ul></div>
+          <div class="card"><span class="tag green">After</span><h3>Odoo close (target T+5)</h3>
+            <ul>
+              <li>Bank auto-reconciled continuously through the month</li>
+              <li>AR/AP up to date as documents post in real time</li>
+              <li>SST report generated from the system</li>
+              <li>Analytic P&amp;L by line available any day</li>
+              <li>Close checklist: accruals, depreciation, lock period, reports issued</li>
+            </ul></div>
+        </div>
+        <table class="tbl">
+          <tr><th>Day</th><th>Close task</th><th>Owner</th></tr>
+          <tr><td>T+1</td><td>Confirm all invoices/bills posted; cut-off check</td><td>Finance</td></tr>
+          <tr><td>T+2</td><td>Bank reconciliation finalised; clearing accounts cleared</td><td>Finance</td></tr>
+          <tr><td>T+3</td><td>Accruals, prepayments, depreciation entries</td><td>Finance</td></tr>
+          <tr><td>T+4</td><td>SST report &amp; MyInvois status check; analytic review</td><td>Finance</td></tr>
+          <tr><td>T+5</td><td>Lock period; issue P&amp;L (by line), balance sheet, AR aging</td><td>Finance → Director</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the build:</b> this design is what the
+        <a href="ai-build-playbook.html">AI Build Playbook</a> configures in stages 1–3 (company,
+        localization, taxes, journals, analytic plans) and validates in gate V2 — and what the
+        <a href="demo-walkthrough.html">Demo Walkthrough</a> shows producing a posted, MyInvois-cleared
+        SST invoice.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="quotation.html">← Prev: Quotation</a>
+        <a href="demo-walkthrough.html">Next: Demo Walkthrough →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('painChart'), {
+  type:'bar',
+  data:{ labels:['Close time','Tax accuracy','Line visibility','AR control','Compliance'],
+    datasets:[
+      {label:'Today', data:[1,2,1,2,1], backgroundColor:'#E2544B'},
+      {label:'With Odoo', data:[5,5,5,5,5], backgroundColor:'#16C098'}
+    ]},
+  options:{ indexAxis:'y', scales:{ x:{ min:0,max:5,ticks:{stepSize:1} } },
+    plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Finance maturity (1–5)' } } }
+});
+new Chart(document.getElementById('lineChart'), {
+  type:'doughnut',
+  data:{ labels:['Fabrication','Equipment & Rental','Chemicals','Service'],
+    datasets:[{ data:[34,28,22,16],
+      backgroundColor:['#0B1F3A','#7FA9DE','#16C098','#E8A13A'] }]},
+  options:{ plugins:{ legend:{ position:'bottom' },
+    title:{ display:true, text:'Illustrative revenue mix by analytic line (%)' } } }
+});
+</script>
+</body>
+</html>

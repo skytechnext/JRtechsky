@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implementation Roadmap — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="roadmap">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Delivery</b> · Implementation Roadmap</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Delivery</span>
+      <h1>A phased Odoo 19 roadmap that banks value early<br>and de-risks the hard apps later.</h1>
+      <p>JR-Tech's four business lines cannot all go live at once without overwhelming a ~40-person
+      SME. We sequence the rollout into three phases over six to nine months — start with the
+      financial and commercial backbone, layer in fabrication and field service once people trust the
+      core, and finish with the recurring-revenue and AI capabilities that compound the return.</p>
+    </div></header>
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">3</div><div class="lbl">phases across a 6–9 month horizon</div></div>
+          <div class="kpi"><div class="num">12</div><div class="lbl">core Odoo 19 apps deployed end-to-end</div></div>
+          <div class="kpi"><div class="num">~8 wk</div><div class="lbl">to first go-live (Finance · Sales · Inventory)</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl">business lines unified on one backbone</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Master schedule</h2>
+        <p class="lead">Phases overlap deliberately: discovery and data work for the next phase begins
+        while the current phase is still in user-acceptance testing, so momentum never stalls. Dates
+        are indicative from a Q3 2026 kick-off and are anchored to the milestones in each phase card.</p>
+        <div class="mermaid">
+gantt
+    title JR-Tech Odoo 19 Implementation — Indicative Schedule
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b
+    section Mobilise
+    Kick-off &amp; discovery          :done, m1, 2026-07-01, 21d
+    Environment &amp; data audit      :active, m2, 2026-07-08, 21d
+    section Phase 1 — Core Backbone
+    Config Finance/Sales/Inventory :p1a, 2026-07-22, 28d
+    Data migration &amp; UAT          :p1b, after p1a, 21d
+    Phase 1 Go-Live                :milestone, g1, 2026-09-15, 0d
+    Hypercare 1                    :p1c, after g1, 21d
+    section Phase 2 — Operations
+    Config Mfg/Field/Rental/Maint  :p2a, 2026-09-22, 35d
+    Integration &amp; UAT             :p2b, after p2a, 21d
+    Phase 2 Go-Live                :milestone, g2, 2026-12-01, 0d
+    Hypercare 2                    :p2c, after g2, 21d
+    section Phase 3 — Compound
+    Subscriptions/eCom/AI/BI       :p3a, 2026-12-08, 42d
+    UAT &amp; analytics tuning         :p3b, after p3a, 21d
+    Phase 3 Go-Live                :milestone, g3, 2027-03-02, 0d
+    Transition to BAU/AMS          :p3c, after g3, 28d
+        </div>
+        <div class="callout tn"><b>So what for the build:</b> the demo dataset should be loaded in
+        the same phase order — a credible Phase 1 instance (chart of accounts, customers, stock) is
+        the foundation every later app references, so we seed it first via MCP and grow it outward.</div>
+      </section>
+
+      <section class="section">
+        <h2>Phase detail</h2>
+        <div class="grid g3">
+
+          <div class="card pad-lg">
+            <span class="tag">Phase 1 · Months 1–2</span>
+            <h3>Commercial &amp; financial backbone</h3>
+            <p><b>Scope:</b> stand up the single source of truth for money and stock. Every quote,
+            invoice and stock movement across all four lines starts flowing through Odoo.</p>
+            <p><b>Modules:</b> Accounting (SST + MyInvois e-invoicing), CRM, Sales, Inventory,
+            Contacts.</p>
+            <p><b>Milestones:</b></p>
+            <ul>
+              <li>Chart of accounts &amp; SST tax config signed off</li>
+              <li>Customer/supplier master migrated &amp; de-duplicated</li>
+              <li>First MyInvois-compliant e-invoice issued</li>
+              <li>Opening stock counted and loaded</li>
+            </ul>
+            <p><b>Exit criteria:</b> a full quote-to-cash cycle runs in production for one week with a
+            balanced trial balance and &lt;2% stock variance against the count.</p>
+          </div>
+
+          <div class="card pad-lg">
+            <span class="tag warn">Phase 2 · Months 3–5</span>
+            <h3>Operations &amp; service engine</h3>
+            <p><b>Scope:</b> bring JR-Tech's physical work — fabrication, equipment rental and on-site
+            service — onto the platform so jobs, assets and engineers are visible end-to-end.</p>
+            <p><b>Modules:</b> Manufacturing (stainless-steel make-to-order), Field Service,
+            Rental, Maintenance, Repair.</p>
+            <p><b>Milestones:</b></p>
+            <ul>
+              <li>Fabrication BoMs &amp; work-order routings built</li>
+              <li>Rental asset register &amp; contract templates live</li>
+              <li>Field engineers dispatching from mobile</li>
+              <li>Preventive-maintenance schedules generating tickets</li>
+            </ul>
+            <p><b>Exit criteria:</b> a fabrication job, a rental contract and a grease-trap service
+            visit each complete in-system with costs landing back on the customer P&amp;L.</p>
+          </div>
+
+          <div class="card pad-lg">
+            <span class="tag green">Phase 3 · Months 6–9</span>
+            <h3>Recurring revenue &amp; intelligence</h3>
+            <p><b>Scope:</b> turn JR-Tech's chemical resupply into predictable subscription revenue,
+            open a digital channel, and switch on the AI and analytics that pay back the investment.</p>
+            <p><b>Modules:</b> Subscriptions, eCommerce/Website, AI (assisted quoting + predictive
+            maintenance), Dashboards/BI.</p>
+            <p><b>Milestones:</b></p>
+            <ul>
+              <li>Chemical subscription plans &amp; auto-reorder live</li>
+              <li>Spare-parts &amp; chemicals web store published</li>
+              <li>AI quote-draft &amp; maintenance-risk models in use</li>
+              <li>Executive KPI dashboard adopted by leadership</li>
+            </ul>
+            <p><b>Exit criteria:</b> recurring invoices auto-generate, the BI dashboard reconciles to
+            the GL, and AI suggestions are accepted on a majority of eligible quotes.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Effort &amp; value profile by phase</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="effortChart" height="240"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Front-load discipline, back-load payoff</h3>
+            <p>Phase 1 is deliberately the heaviest on TechNext consulting effort relative to the
+            number of apps — getting the ledger, tax and master data right is non-negotiable and every
+            later phase inherits it. Phase 3 carries the lightest configuration burden but the highest
+            cumulative business value, because subscriptions and AI act on data the earlier phases
+            already made trustworthy.</p>
+            <div class="callout"><b>Sequencing rule:</b> no app goes into a later phase if a Phase 1
+            app it depends on has not cleared its exit criteria. Manufacturing waits for clean
+            Inventory; Subscriptions wait for clean Accounting.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How each phase is run</h2>
+        <p class="lead">Every phase follows the same disciplined cadence, so JR-Tech's team learns one
+        rhythm and repeats it three times with growing confidence.</p>
+        <ol class="steps">
+          <li><b>Discover &amp; confirm.</b> Re-validate process maps and the BRD for the phase's
+          apps with the relevant super-users; freeze scope before any configuration.</li>
+          <li><b>Configure &amp; iterate.</b> Build in a sandbox, demo working software fortnightly,
+          and adjust against real JR-Tech scenarios rather than abstract requirements.</li>
+          <li><b>Migrate &amp; reconcile.</b> Load and cleanse the data this phase needs, then reconcile
+          against source records before sign-off.</li>
+          <li><b>Test &amp; accept.</b> Run scripted UAT with super-users; defects are triaged and the
+          phase is gated on the documented exit criteria — not on a calendar date.</li>
+          <li><b>Train &amp; go live.</b> Role-based training immediately before cut-over, then a
+          time-boxed hypercare window with on-call support.</li>
+          <li><b>Stabilise &amp; hand on.</b> Close hypercare, capture lessons, and start discovery for
+          the next phase already in flight.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Where this connects</h2>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Change</span><h3>People readiness</h3>
+            <p>Each go-live is paced to the adoption curve in the change plan, with super-users
+            embedded from Phase 1.</p>
+            <a href="change-management.html">Change Management →</a></div>
+          <div class="card"><span class="tag warn">Risk</span><h3>What could derail it</h3>
+            <p>The phased gating directly mitigates the top schedule and data risks tracked in the
+            register.</p>
+            <a href="risk-raci.html">Risk Register &amp; RACI →</a></div>
+          <div class="card"><span class="tag green">Value</span><h3>Proving the payback</h3>
+            <p>Phase exit criteria map to the baseline-to-target KPIs we commit to realise.</p>
+            <a href="kpis-benefits.html">KPIs &amp; Benefits →</a></div>
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../technology/security-myinvois.html">← Prev: Security, Compliance &amp; MyInvois</a>
+        <a href="change-management.html">Next: Change Management →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('effortChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Phase 1\nBackbone','Phase 2\nOperations','Phase 3\nCompound'],
+    datasets: [
+      { label: 'Consulting effort (rel.)', data: [45, 38, 30], backgroundColor: '#3F6FB0' },
+      { label: 'Apps deployed', data: [5, 5, 4], backgroundColor: '#7FA9DE' },
+      { type: 'line', label: 'Cumulative value (rel.)', data: [30, 65, 100],
+        borderColor: '#16C098', backgroundColor: 'rgba(22,192,152,.18)', tension: .3, fill: true, yAxisID: 'y' }
+    ]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'bottom' } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: 'relative index' } } } }
+});
+</script>
+</body>
+</html>

@@ -14,9 +14,15 @@
 
 ## Project
 
-A static, zero-build **Kitchen Estimator** web app (`index.html`, `styles.css`,
-`app.js`) built by JR Tech for Auntie Gaik Lean's Old School Eatery. It is
-published with GitHub Pages via `.github/workflows/pages.yml`.
+This repo is the **consolidated digital portfolio of JR-Tech Solution Sdn Bhd**
+(Penang commercial-kitchen provider). A static portal at the root (`index.html`)
+links to four self-contained properties, all deployed together to GitHub Pages via
+`.github/workflows/deploy.yml` (`.nojekyll` keeps every path served as-is).
 
 - Live site: https://skytechnext.github.io/JRtechsky/
-- Seeded defaults live in the `DEFAULTS` object at the top of `app.js`.
+- Folders: `estimator/` (kitchen estimator tool — defaults in the `DEFAULTS` object
+  at the top of `estimator/app.js`), `marketing/` (bespoke marketing site),
+  `dossier/` (Odoo 19 ERP dossier + `odoo/` data kit), `website/` (static archive of
+  jrtech.com.my). Each property is self-contained with relative paths.
+- When combining work from sibling `claude/*` branches, import each into its own
+  top-level folder and route to it from the portal — keep the pieces self-contained.

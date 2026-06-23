@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Requirements Document — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  .frid{font-weight:700;color:#0B1F3A;white-space:nowrap;}
+  table.tbl td .tag{margin:0;}
+  .doc-meta{font-size:12.5px;color:#5a6b85;}
+  .doc-meta b{color:#0B1F3A;}
+</style>
+</head>
+<body data-page="brd">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Requirements (BRD)</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents · BRD v1.0 · Confidential</span>
+      <h1>Business Requirements Document — JR-Tech Odoo 19 ERP</h1>
+      <p>The authoritative statement of what the JR-Tech Solution Sdn Bhd Odoo 19 implementation must
+      deliver: scope, stakeholders, current-state, functional requirements by module, non-functional
+      requirements, integrations, reporting, assumptions, exclusions and acceptance criteria.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <table class="tbl">
+          <tr><th>Document</th><td class="doc-meta">Business Requirements Document — JR-Tech Odoo 19 ERP</td>
+              <th>Version</th><td class="doc-meta"><b>1.0</b></td></tr>
+          <tr><th>Client</th><td class="doc-meta">JR-Tech Solution Sdn Bhd · SSM 200901013633 · Gelugor, Penang</td>
+              <th>Date</th><td class="doc-meta">22 June 2026</td></tr>
+          <tr><th>Prepared by</th><td class="doc-meta">TechNext (technext.asia) — Odoo Implementation Partner</td>
+              <th>Status</th><td class="doc-meta"><span class="tag warn">For sign-off</span></td></tr>
+          <tr><th>Sponsor</th><td class="doc-meta">Tan Gim Boon (Director)</td>
+              <th>Classification</th><td class="doc-meta">Confidential</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>1 · Purpose &amp; scope</h2>
+        <p class="lead">JR-Tech operates four interlocking F&amp;B-engineering business lines on
+        spreadsheets, WhatsApp and disconnected point tools. This project replaces those with a single
+        Odoo 19 Enterprise platform spanning lead-to-cash, fabrication, rental, field service, chemical
+        subscriptions and finance — Malaysia-compliant (SST, MyInvois) and AI-ready.</p>
+        <div class="grid g2">
+          <div class="card"><h3>In scope</h3>
+            <ul>
+              <li>CRM &amp; Sales across all four lines</li>
+              <li>Manufacturing (stainless-steel fabrication, MTO)</li>
+              <li>Inventory &amp; Purchase</li>
+              <li>Rental of equipment &amp; dishwashers</li>
+              <li>Field Service, Maintenance &amp; Repair (incl. grease-trap / tanker)</li>
+              <li>Subscriptions (recurring chemical resupply)</li>
+              <li>Accounting: localized CoA, SST, MyInvois e-invoicing, analytic by line</li>
+              <li>Opening-balance &amp; master-data migration</li>
+              <li>Reporting / dashboards &amp; role-based training</li>
+            </ul></div>
+          <div class="card"><h3>Out of scope (this phase)</h3>
+            <ul>
+              <li>E-commerce / customer web portal storefront</li>
+              <li>Payroll &amp; full HR (deferred to a later phase)</li>
+              <li>Manufacturing shop-floor IoT / machine integration</li>
+              <li>Multi-currency (MYR only at go-live)</li>
+              <li>Custom mobile app beyond standard Odoo mobile</li>
+              <li>Historical transaction migration beyond opening balances &amp; open items</li>
+            </ul></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2 · Stakeholders</h2>
+        <table class="tbl">
+          <tr><th>Stakeholder</th><th>Role</th><th>Interest in the ERP</th></tr>
+          <tr><td>Tan Gim Boon (Director)</td><td>Project sponsor / owner</td><td>Real-time margin, cash, single source of truth</td></tr>
+          <tr><td>Sales team</td><td>Quoting across 4 lines</td><td>Fast, accurate, version-controlled quotes</td></tr>
+          <tr><td>Workshop / fabrication lead</td><td>Make-to-order production</td><td>BoMs, work orders, material availability</td></tr>
+          <tr><td>Field-service technicians</td><td>On-site service</td><td>Mobile dispatch, checklists, parts, sign-off</td></tr>
+          <tr><td>Storekeeper</td><td>Inventory &amp; goods movement</td><td>Accurate stock, reorder, rental returns</td></tr>
+          <tr><td>Finance / bookkeeper</td><td>Accounting &amp; compliance</td><td>SST, MyInvois, faster close, AR/AP control</td></tr>
+          <tr><td>TechNext</td><td>Implementation partner</td><td>Deliver to BRD &amp; acceptance criteria</td></tr>
+          <tr><td>LHDN / Customs</td><td>Regulator (external)</td><td>MyInvois e-invoice &amp; SST compliance</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>3 · Current state &amp; pain points</h2>
+        <p class="lead">Synthesised from the <a href="../pages/operations/pain-solution.html">Pain → Solution
+        Matrix</a> and <a href="../pages/operations/dept-workflows.html">Department Workflows</a>.</p>
+        <table class="tbl">
+          <tr><th>Area</th><th>Current state</th><th>Pain</th></tr>
+          <tr><td>Quoting</td><td>Excel templates emailed per line</td><td>No version control, pricing drift, slow turnaround</td></tr>
+          <tr><td>Fabrication</td><td>Job sheets on paper / whiteboard</td><td>No BoM costing, material shortages discovered late</td></tr>
+          <tr><td>Rental</td><td>Manual logbook of assets out/in</td><td>Lost assets, missed return billing</td></tr>
+          <tr><td>Service</td><td>WhatsApp dispatch, paper logs</td><td>No SLA visibility, unbilled time &amp; parts</td></tr>
+          <tr><td>Chemicals</td><td>Customers re-order ad hoc</td><td>Stockouts, manual recurring invoicing</td></tr>
+          <tr><td>Inventory</td><td>Spreadsheet stock counts</td><td>Inaccurate stock, no reorder rules</td></tr>
+          <tr><td>Finance</td><td>External bookkeeper, month-end Excel</td><td>Margin &amp; cash invisible until weeks later; MyInvois risk</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>4 · Functional requirements</h2>
+        <p class="lead">Each requirement carries an ID (FR-&lt;module&gt;-NNN), a priority
+        (<span class="tag red">Must</span> / <span class="tag warn">Should</span> /
+        <span class="tag">Could</span>) and the Odoo module that satisfies it.</p>
+
+        <h3>4.1 CRM &amp; Sales</h3>
+        <table class="tbl">
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th><th>Odoo</th></tr>
+          <tr><td class="frid">FR-CRM-001</td><td>Capture leads/opportunities tagged by business line &amp; source; pipeline stages</td><td><span class="tag red">Must</span></td><td>CRM</td></tr>
+          <tr><td class="frid">FR-SAL-001</td><td>Create quotations using line-specific product catalogues &amp; MYR pricelists</td><td><span class="tag red">Must</span></td><td>Sales</td></tr>
+          <tr><td class="frid">FR-SAL-002</td><td>Quote versioning &amp; PDF with JR-Tech branding; email + portal send</td><td><span class="tag red">Must</span></td><td>Sales</td></tr>
+          <tr><td class="frid">FR-SAL-003</td><td>Confirm a fabrication quote → auto-create manufacturing order</td><td><span class="tag red">Must</span></td><td>Sales · MRP</td></tr>
+          <tr><td class="frid">FR-SAL-004</td><td>AI-assisted quote drafting from a brief (Phase 3 enhancement)</td><td><span class="tag">Could</span></td><td>Sales · API</td></tr>
+        </table>
+
+        <h3>4.2 Manufacturing (fabrication)</h3>
+        <table class="tbl">
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th><th>Odoo</th></tr>
+          <tr><td class="frid">FR-MRP-001</td><td>Maintain BoMs for fabricated products (components + labour)</td><td><span class="tag red">Must</span></td><td>Manufacturing</td></tr>
+          <tr><td class="frid">FR-MRP-002</td><td>Work centers &amp; routing: Cutting → Welding → Assembly → QC</td><td><span class="tag red">Must</span></td><td>Manufacturing</td></tr>
+          <tr><td class="frid">FR-MRP-003</td><td>Make-to-order: MO consumes components, produces finished good</td><td><span class="tag red">Must</span></td><td>Manufacturing · Inventory</td></tr>
+          <tr><td class="frid">FR-MRP-004</td><td>Real cost roll-up (material + labour) into product cost &amp; margin</td><td><span class="tag warn">Should</span></td><td>MRP · Accounting</td></tr>
+        </table>
+
+        <h3>4.3 Inventory &amp; Purchase</h3>
+        <table class="tbl">
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th><th>Odoo</th></tr>
+          <tr><td class="frid">FR-INV-001</td><td>Multi-location warehouse (workshop, store, vans) with real-time stock</td><td><span class="tag red">Must</span></td><td>Inventory</td></tr>
+          <tr><td class="frid">FR-INV-002</td><td>Reorder rules &amp; replenishment for chemicals &amp; spares</td><td><span class="tag red">Must</span></td><td>Inventory · Purchase</td></tr>
+          <tr><td class="frid">FR-PUR-001</td><td>Vendor RFQ → PO → receipt → vendor bill 3-way match</td><td><span class="tag warn">Should</span></td><td>Purchase</td></tr>
+          <tr><td class="frid">FR-INV-003</td><td>Lot/serial tracking for high-value equipment assets</td><td><span class="tag warn">Should</span></td><td>Inventory</td></tr>
+        </table>
+
+        <h3>4.4 Rental</h3>
+        <table class="tbl">
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th><th>Odoo</th></tr>
+          <tr><td class="frid">FR-RNT-001</td><td>Rentable equipment &amp; dishwasher catalogue with availability calendar</td><td><span class="tag red">Must</span></td><td>Rental</td></tr>
+          <tr><td class="frid">FR-RNT-002</td><td>Rental order → pickup picking → return picking → billing of duration</td><td><span class="tag red">Must</span></td><td>Rental · Inventory</td></tr>
+          <tr><td class="frid">FR-RNT-003</td><td>Late-return &amp; damage fees</td><td><span class="tag warn">Should</span></td><td>Rental</td></tr>
+        </table>
+
+        <h3>4.5 Field Service, Maintenance &amp; Repair</h3>
+        <table class="tbl">
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th><th>Odoo</th></tr>
+          <tr><td class="frid">FR-FSM-001</td><td>Schedule &amp; dispatch service visits (grease-trap, tanker, install, repair)</td><td><span class="tag red">Must</span></td><td>Field Service</td></tr>
+          <tr><td class="frid">FR-FSM-002</td><td>Mobile: checklist, timesheet, parts used, customer signature on site</td><td><span class="tag red">Must</span></td><td>Field Service</td></tr>
+          <tr><td class="frid">FR-FSM-003</td><td>Auto-create invoice from logged time &amp; parts</td><td><span class="tag red">Must</span></td><td>Field Service · Sales</td></tr>
+          <tr><td class="frid">FR-MNT-001</td><td>Preventive maintenance schedules for serviced equipment</td><td><span class="tag warn">Should</span></td><td>Maintenance</td></tr>
+          <tr><td class="frid">FR-REP-001</td><td>Repair orders linking parts, labour &amp; warranty</td><td><span class="tag warn">Should</span></td><td>Repair</td></tr>
+        </table>
+
+        <h3>4.6 Subscriptions (chemicals)</h3>
+        <table class="tbl">
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th><th>Odoo</th></tr>
+          <tr><td class="frid">FR-SUB-001</td><td>Recurring monthly resupply plans per customer/site</td><td><span class="tag red">Must</span></td><td>Subscriptions</td></tr>
+          <tr><td class="frid">FR-SUB-002</td><td>Auto-generate recurring invoice + delivery on cycle</td><td><span class="tag red">Must</span></td><td>Subscriptions · Inventory</td></tr>
+          <tr><td class="frid">FR-SUB-003</td><td>Upsell / quantity change &amp; churn reporting (MRR)</td><td><span class="tag warn">Should</span></td><td>Subscriptions</td></tr>
+        </table>
+
+        <h3>4.7 Accounting &amp; compliance</h3>
+        <table class="tbl">
+          <tr><th>ID</th><th>Requirement</th><th>Priority</th><th>Odoo</th></tr>
+          <tr><td class="frid">FR-ACC-001</td><td>Malaysian localized chart of accounts</td><td><span class="tag red">Must</span></td><td>Accounting (l10n_my)</td></tr>
+          <tr><td class="frid">FR-ACC-002</td><td>SST tax config (Sales 10% / 5% goods · Service 8%) on the right lines</td><td><span class="tag red">Must</span></td><td>Accounting</td></tr>
+          <tr><td class="frid">FR-ACC-003</td><td>MyInvois / LHDN e-invoice submission &amp; status tracking</td><td><span class="tag red">Must</span></td><td>l10n_my_edi</td></tr>
+          <tr><td class="frid">FR-ACC-004</td><td>Analytic accounting: P&amp;L by business line</td><td><span class="tag red">Must</span></td><td>Accounting</td></tr>
+          <tr><td class="frid">FR-ACC-005</td><td>Bank reconciliation &amp; AR follow-up automation</td><td><span class="tag warn">Should</span></td><td>Accounting</td></tr>
+          <tr><td class="frid">FR-ACC-006</td><td>Month-end close checklist &amp; management reports</td><td><span class="tag warn">Should</span></td><td>Accounting</td></tr>
+        </table>
+        <p class="doc-meta">Full accounting design lives in the <a href="accounting-overhaul.html">Accounting
+        Overhaul</a> plan.</p>
+      </section>
+
+      <section class="section">
+        <h2>5 · Non-functional requirements</h2>
+        <table class="tbl">
+          <tr><th>ID</th><th>Category</th><th>Requirement</th></tr>
+          <tr><td class="frid">NFR-001</td><td>Availability</td><td>≥ 99.5% uptime on Odoo.sh production; daily managed backups</td></tr>
+          <tr><td class="frid">NFR-002</td><td>Performance</td><td>Core list/form views load &lt; 2s for ≤ 30 concurrent users</td></tr>
+          <tr><td class="frid">NFR-003</td><td>Security</td><td>Role-based access; API keys not passwords; audit trail on financial records</td></tr>
+          <tr><td class="frid">NFR-004</td><td>Compliance</td><td>SST &amp; MyInvois conformant; PDPA-aligned data handling</td></tr>
+          <tr><td class="frid">NFR-005</td><td>Usability</td><td>Field techs operate on mobile; role-based quick-start guides provided</td></tr>
+          <tr><td class="frid">NFR-006</td><td>Scalability</td><td>Support growth to 50 users &amp; a 2nd company without re-architecture</td></tr>
+          <tr><td class="frid">NFR-007</td><td>Maintainability</td><td>Customisation via Studio/config first; documented &amp; idempotent build</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>6 · Integrations &amp; reporting</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Integrations</h3>
+            <table class="tbl">
+              <tr><th>System</th><th>Direction</th><th>Mechanism</th></tr>
+              <tr><td>MyInvois (LHDN)</td><td>Outbound</td><td><code>l10n_my_edi</code> API</td></tr>
+              <tr><td>Bank statements</td><td>Inbound</td><td>Bank sync / MT940/CSV import</td></tr>
+              <tr><td>Email (quotes, invoices)</td><td>Outbound</td><td>Outgoing mail server</td></tr>
+              <tr><td>AI agent / build</td><td>Bi-directional</td><td>External API (XML-RPC / MCP)</td></tr>
+            </table>
+            <p class="doc-meta">Detail: <a href="../pages/technology/integration-map.html">Integration &amp;
+            API Map</a>.</p></div>
+          <div class="card"><h3>Reporting / dashboards</h3>
+            <ul>
+              <li>Sales pipeline &amp; quote-win rate by line</li>
+              <li>Fabrication order status &amp; cost vs quote</li>
+              <li>Rental utilisation &amp; overdue returns</li>
+              <li>Field-service SLA &amp; billable utilisation</li>
+              <li>Subscription MRR &amp; churn</li>
+              <li>P&amp;L by analytic (business line), SST report, AR aging</li>
+            </ul>
+            <p class="doc-meta">Targets: <a href="../pages/delivery/kpis-benefits.html">KPIs &amp;
+            Benefits</a>.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>7 · Assumptions &amp; constraints</h2>
+        <ul>
+          <li>Odoo 19 <b>Enterprise</b> on Odoo.sh (Custom plan) — per <a href="odoo-platform.html">Odoo Platform</a>.</li>
+          <li>Single company, single currency (MYR), single legal entity at go-live.</li>
+          <li>JR-Tech provides clean master data (products, customers, opening balances) on agreed templates.</li>
+          <li>Named business users available for workshops, UAT and training.</li>
+          <li>MyInvois TIN, digital certificate &amp; LHDN onboarding completed by JR-Tech with TechNext guidance.</li>
+          <li>Customisation favours configuration / Studio over custom code.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>8 · Acceptance criteria</h2>
+        <p class="lead">The project is accepted when every criterion below is demonstrated in
+        production (or production-equivalent staging) and signed off by the sponsor.</p>
+        <table class="tbl">
+          <tr><th>ID</th><th>Acceptance criterion</th><th>Linked FRs</th></tr>
+          <tr><td class="frid">AC-01</td><td>A fabrication quote → MO → delivery → posted SST invoice completes end-to-end</td><td>FR-SAL-001/003, FR-MRP-003, FR-ACC-002</td></tr>
+          <tr><td class="frid">AC-02</td><td>A rental order bills correctly for duration after return picking</td><td>FR-RNT-002</td></tr>
+          <tr><td class="frid">AC-03</td><td>A field-service visit invoices logged time &amp; parts from mobile</td><td>FR-FSM-002/003</td></tr>
+          <tr><td class="frid">AC-04</td><td>A monthly chemical subscription auto-invoices &amp; delivers on cycle</td><td>FR-SUB-002</td></tr>
+          <tr><td class="frid">AC-05</td><td>A sample invoice submits to MyInvois and returns a valid status</td><td>FR-ACC-003</td></tr>
+          <tr><td class="frid">AC-06</td><td>P&amp;L can be filtered by business line via analytic accounting</td><td>FR-ACC-004</td></tr>
+          <tr><td class="frid">AC-07</td><td>Each of the six roles completes daily tasks per the staff guides in UAT</td><td>NFR-005</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the build:</b> these acceptance criteria are exactly the
+        scenarios the <a href="ai-build-playbook.html">AI Build Playbook</a> seeds and the
+        <a href="demo-walkthrough.html">Demo Walkthrough</a> rehearses — BRD, build and demo are one
+        traceable chain.</div>
+      </section>
+
+      <section class="section">
+        <h2>9 · Use-case scenarios</h2>
+        <p class="lead">The functional requirements above are validated against six end-to-end
+        scenarios — one per business flow — each written as actor · trigger · main flow · alternates ·
+        post-condition, grounded in the seed data (137 products, 46 customers, 12 BoMs). These are the
+        scripts the <a href="demo-walkthrough.html">Demo Walkthrough</a> rehearses.</p>
+
+        <div class="grid g2">
+          <div class="card"><h3>UC-01 · Fabrication quote → make-to-order → SST e-invoice</h3>
+            <table class="tbl" style="font-size:12.5px">
+              <tr><th>Actor</th><td>Salesperson, Workshop lead, Finance</td></tr>
+              <tr><th>Trigger</th><td>Hotel customer (e.g. <code>cust_*</code>, hotel archetype) requests a custom stainless prep table</td></tr>
+              <tr><th>Main flow</th><td>Quote built from a fabricated product carrying a BoM (<code>prod_fab_*</code>, one of 12 <code>boms.csv</code> records) → confirm SO → MO auto-created (<code>mrp.production</code>) → components consumed (<code>prod_raw_*</code>) via Cutting→Welding→Assembly→QC → delivery → invoice with SST-S-10 → MyInvois submission</td></tr>
+              <tr><th>Alternate</th><td>Component short → reorder rule raises PO; quote re-priced if steel cost moved</td></tr>
+              <tr><th>Post-condition</th><td>Posted <code>account.move</code> with valid MyInvois UIN; actual job cost reconciled to quoted margin</td></tr>
+              <tr><th>Covers</th><td>FR-SAL-001/003, FR-MRP-001/003/004, FR-ACC-002/003</td></tr>
+            </table></div>
+
+          <div class="card"><h3>UC-02 · Equipment rental → return → duration billing</h3>
+            <table class="tbl" style="font-size:12.5px">
+              <tr><th>Actor</th><td>Salesperson, Storekeeper, Finance</td></tr>
+              <tr><th>Trigger</th><td>Catering customer needs a dishwasher for a 14-day event</td></tr>
+              <tr><th>Main flow</th><td>Check availability on rental calendar → rental contract (<code>rental_contracts.csv</code>, <code>is_rental</code>) with deposit → pickup picking → return picking → bill duration at Service Tax 8%</td></tr>
+              <tr><th>Alternate</th><td>Late return → late fee line added; damage on inspection → repair order raised</td></tr>
+              <tr><th>Post-condition</th><td>Asset back in available pool; rental revenue + any late/damage fees invoiced</td></tr>
+              <tr><th>Covers</th><td>FR-RNT-001/002/003, FR-INV-003</td></tr>
+            </table></div>
+
+          <div class="card"><h3>UC-03 · Field-service dispatch → mobile capture → auto-invoice</h3>
+            <table class="tbl" style="font-size:12.5px">
+              <tr><th>Actor</th><td>Dispatcher, Technician, Finance</td></tr>
+              <tr><th>Trigger</th><td>Customer reports a grease-trap service due (<code>service_tasks.csv</code>, kind=field_service)</td></tr>
+              <tr><th>Main flow</th><td>FSM task created on "JR Field Service" project → assigned to employee (<code>employees.csv</code>) + scheduled → tech sees asset history on mobile → logs time + parts → captures photo + signature → auto-invoice with Service Tax 8%</td></tr>
+              <tr><th>Alternate</th><td>Wrong/insufficient parts → task rescheduled; warranty job → zero-rated labour line</td></tr>
+              <tr><th>Post-condition</th><td>Signed worksheet stored; billable time + parts captured; preventive plan set for next visit</td></tr>
+              <tr><th>Covers</th><td>FR-FSM-001/002/003, FR-MNT-001, FR-REP-001</td></tr>
+            </table></div>
+
+          <div class="card"><h3>UC-04 · Chemical subscription resupply cycle</h3>
+            <table class="tbl" style="font-size:12.5px">
+              <tr><th>Actor</th><td>Subscriptions owner, Storekeeper, Finance</td></tr>
+              <tr><th>Trigger</th><td>Monthly/Quarterly plan renewal date reached (<code>subscriptions.csv</code>, <code>sale.subscription.plan</code>)</td></tr>
+              <tr><th>Main flow</th><td>Recurring rule fires → SO + delivery generated for chemical SKUs (<code>subscription_lines.csv</code>) → reorder rule replenishes warehouse stock → recurring invoice at SST-S-5/10</td></tr>
+              <tr><th>Alternate</th><td>Quantity upsell mid-term → MRR recalculated; non-payment → churn flag</td></tr>
+              <tr><th>Post-condition</th><td>Customer resupplied with no manual order; MRR + churn metrics updated</td></tr>
+              <tr><th>Covers</th><td>FR-SUB-001/002/003, FR-INV-002</td></tr>
+            </table></div>
+
+          <div class="card"><h3>UC-05 · Demand-driven procurement &amp; 3-way match</h3>
+            <table class="tbl" style="font-size:12.5px">
+              <tr><th>Actor</th><td>Storekeeper / buyer, Finance</td></tr>
+              <tr><th>Trigger</th><td>Reorder point breached or MO raises component demand (<code>reordering_rules.csv</code>)</td></tr>
+              <tr><th>Main flow</th><td>RFQ → PO to vendor (<code>vendors.csv</code>) → receipt picking → vendor bill matched 3-way (PO = receipt = bill) → payment per supplier payment term</td></tr>
+              <tr><th>Alternate</th><td>Price/qty variance on bill → blocked for review; partial receipt → backorder</td></tr>
+              <tr><th>Post-condition</th><td>Stock received and valued; controlled AP with full spend visibility</td></tr>
+              <tr><th>Covers</th><td>FR-PUR-001, FR-INV-001/002</td></tr>
+            </table></div>
+
+          <div class="card"><h3>UC-06 · Period close → SST return → analytic P&amp;L</h3>
+            <table class="tbl" style="font-size:12.5px">
+              <tr><th>Actor</th><td>Finance / bookkeeper, Director</td></tr>
+              <tr><th>Trigger</th><td>Month-end reached</td></tr>
+              <tr><th>Main flow</th><td>Bank feed reconciled (<code>payments.csv</code> against <code>invoices.csv</code>) → AR follow-up run → SST output/input summarised → close checklist completed → P&amp;L filtered by analytic (business line)</td></tr>
+              <tr><th>Alternate</th><td>Unreconciled item → suspense + exception list; failed MyInvois doc → resubmit</td></tr>
+              <tr><th>Post-condition</th><td>Period locked; SST-02 return figures ready; per-line margin visible to the Director</td></tr>
+              <tr><th>Covers</th><td>FR-ACC-001/004/005/006</td></tr>
+            </table></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>10 · Data dictionary</h2>
+        <p class="lead">The master and transactional entities the platform records, with their Odoo
+        model, the key fields the build must populate, and the governing seed file. This is the
+        canonical glossary behind the <a href="../pages/operations/bpmn-uml.html">UML class model</a>
+        and the field-level appendix on <a href="../pages/technology/data-migration.html">Data Migration</a>.</p>
+        <table class="tbl">
+          <tr><th>Entity</th><th>Odoo model</th><th>Key fields / attributes</th><th>Identity key</th><th>Seed file</th></tr>
+          <tr><td>Company</td><td><code>res.company</code></td><td>name, company_registry (SSM), vat (TIN), sst_registration, msic_code, currency=MYR</td><td>xml_id</td><td>company.json</td></tr>
+          <tr><td>Customer</td><td><code>res.partner</code></td><td>name, is_company, archetype, address, vat (TIN/BRN), property_payment_term, pricelist</td><td>xml_id</td><td>customers.csv (46)</td></tr>
+          <tr><td>Vendor</td><td><code>res.partner</code></td><td>name, supplier_rank, supplies, vat, supplier payment term</td><td>xml_id</td><td>vendors.csv</td></tr>
+          <tr><td>Product</td><td><code>product.template</code></td><td>default_code, category, product_type, uom, list_price, standard_cost, sale_tax, route, rent_ok, subscription, rmin/rmax</td><td>default_code / xml_id</td><td>products.csv (137)</td></tr>
+          <tr><td>BoM</td><td><code>mrp.bom</code> + lines</td><td>product_xml_id (prod_fab_*), qty, uom; lines → component_xml_id (prod_raw_*), qty</td><td>xml_id</td><td>boms.csv (12) · bom_lines.csv</td></tr>
+          <tr><td>Reorder rule</td><td><code>stock.warehouse.orderpoint</code></td><td>product, warehouse, min_qty, max_qty, multiple_qty</td><td>product+warehouse</td><td>reordering_rules.csv</td></tr>
+          <tr><td>Sale order</td><td><code>sale.order</code> + lines</td><td>name, partner, date_order, state, salesperson, pricelist; line → product, qty, unit_price</td><td>name / xml_id</td><td>sale_orders.csv</td></tr>
+          <tr><td>Rental contract</td><td><code>sale.order</code> (is_rental)</td><td>partner, date_start, date_return, deposit, state; line → product (rent_ok), duration_days</td><td>xml_id</td><td>rental_contracts.csv</td></tr>
+          <tr><td>Subscription</td><td><code>sale.subscription</code></td><td>partner, plan (Monthly/Quarterly), recurring_rule, state (progress/churn)</td><td>xml_id</td><td>subscriptions.csv</td></tr>
+          <tr><td>Manufacturing order</td><td><code>mrp.production</code></td><td>product (prod_fab_*), bom_ref, qty, date_planned, state, warehouse</td><td>name / xml_id</td><td>manufacturing_orders.csv</td></tr>
+          <tr><td>Service task</td><td><code>project.task</code> (FSM) / <code>maintenance.request</code> / <code>repair.order</code></td><td>kind, partner, assigned_emp, scheduled_date, stage, linked_product</td><td>xml_id</td><td>service_tasks.csv</td></tr>
+          <tr><td>Purchase order</td><td><code>purchase.order</code> + lines</td><td>vendor, date_order, state; line → product, qty, unit_cost</td><td>name / xml_id</td><td>purchase_orders.csv</td></tr>
+          <tr><td>Invoice</td><td><code>account.move</code> (out_invoice)</td><td>partner, source_so, invoice_date, untaxed, tax, total, journal, payment_status, state</td><td>name / xml_id</td><td>invoices.csv</td></tr>
+          <tr><td>Payment</td><td><code>account.payment</code></td><td>invoice, partner, amount, date, journal (bank), payment_type=inbound</td><td>xml_id</td><td>payments.csv</td></tr>
+          <tr><td>Tax</td><td><code>account.tax</code></td><td>name (SST-S-10/SST-S-5/SST-SV-8/EXEMPT-0), type_tax_use, amount, tax_account_code</td><td>xml_id</td><td>taxes.csv</td></tr>
+          <tr><td>Account</td><td><code>account.account</code></td><td>code (MY 4-digit), name, account_type</td><td>code</td><td>accounts.csv</td></tr>
+          <tr><td>Employee / Dept</td><td><code>hr.employee</code> / <code>hr.department</code></td><td>name, job_title, department, work_email, wage_myr, user_login</td><td>xml_id</td><td>employees.csv · departments.csv</td></tr>
+        </table>
+        <p class="doc-meta">All foreign keys resolve via stable <code>xml_id</code> external IDs so loads
+        are idempotent (per the <code>/odoo/seed/</code> schema); currency is MYR throughout;
+        opening entries balance to RM 875,000.</p>
+      </section>
+
+      <section class="section">
+        <h2>11 · Reporting requirements</h2>
+        <p class="lead">Named Odoo reports and dashboards each module must deliver at go-live, with the
+        owner who consumes them and the cadence. Targets are quantified on
+        <a href="../pages/delivery/kpis-benefits.html">KPIs &amp; Benefits</a>.</p>
+        <table class="tbl">
+          <tr><th>ID</th><th>Module</th><th>Report / dashboard</th><th>Owner</th><th>Cadence</th></tr>
+          <tr><td class="frid">RPT-CRM-01</td><td>CRM</td><td>Pipeline by stage &amp; business line; expected-revenue forecast; win/loss analysis</td><td>Director / Sales</td><td>Weekly</td></tr>
+          <tr><td class="frid">RPT-SAL-01</td><td>Sales</td><td>Sales Analysis (pivot) by product category, customer archetype &amp; salesperson; quotation-to-order conversion</td><td>Sales lead</td><td>Weekly</td></tr>
+          <tr><td class="frid">RPT-MRP-01</td><td>Manufacturing</td><td>MO status board (kanban by work centre); cost analysis — actual vs BoM standard per job</td><td>Workshop lead</td><td>Daily</td></tr>
+          <tr><td class="frid">RPT-INV-01</td><td>Inventory</td><td>Stock valuation; forecasted/replenishment report; inventory-accuracy (cycle-count) variance</td><td>Storekeeper</td><td>Daily / monthly count</td></tr>
+          <tr><td class="frid">RPT-PUR-01</td><td>Purchase</td><td>Purchase Analysis by vendor &amp; category; 3-way-match exception list; vendor lead-time</td><td>Buyer / Finance</td><td>Weekly</td></tr>
+          <tr><td class="frid">RPT-RNT-01</td><td>Rental</td><td>Rental schedule (Gantt); asset utilisation %; overdue-return report</td><td>Storekeeper / Sales</td><td>Daily</td></tr>
+          <tr><td class="frid">RPT-FSM-01</td><td>Field Service</td><td>Technician planning (map/Gantt); SLA / first-time-fix rate; billable-utilisation; un-invoiced tasks</td><td>Dispatcher</td><td>Daily</td></tr>
+          <tr><td class="frid">RPT-SUB-01</td><td>Subscriptions</td><td>MRR &amp; ARR dashboard; churn / retention; recurring-revenue forecast</td><td>Subscriptions owner</td><td>Monthly</td></tr>
+          <tr><td class="frid">RPT-ACC-01</td><td>Accounting</td><td>P&amp;L &amp; Balance Sheet by analytic (business line); AR aged-receivable; cash-flow</td><td>Finance / Director</td><td>Monthly</td></tr>
+          <tr><td class="frid">RPT-ACC-02</td><td>Accounting</td><td>SST return summary (output/input by tax code); MyInvois submission status &amp; rejection log</td><td>Finance</td><td>Taxable period</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>12 · Requirements traceability matrix</h2>
+        <p class="lead">The audit spine of the project: every functional requirement traces to the Odoo
+        module that satisfies it, the acceptance test that proves it, and the KPI that measures the
+        benefit in production. No requirement is "done" until its row is green end-to-end.</p>
+        <table class="tbl">
+          <tr><th>FR</th><th>Module</th><th>Acceptance test</th><th>KPI measured</th></tr>
+          <tr><td class="frid">FR-CRM-001</td><td>CRM</td><td>Lead captured, tagged by line, advances through pipeline stages</td><td>Pipeline coverage; win-rate by line</td></tr>
+          <tr><td class="frid">FR-SAL-001/002</td><td>Sales</td><td>Branded, versioned quote sent via portal from catalogue + pricelist</td><td>Quote turnaround time; quote→order conversion</td></tr>
+          <tr><td class="frid">FR-SAL-003</td><td>Sales · MRP</td><td>AC-01 — confirming a fabrication quote auto-creates the MO</td><td>Order→MO lead time</td></tr>
+          <tr><td class="frid">FR-MRP-001/003</td><td>Manufacturing</td><td>AC-01 — MO consumes BoM components, produces finished good</td><td>On-time build %; material-shortage stalls</td></tr>
+          <tr><td class="frid">FR-MRP-004</td><td>MRP · Accounting</td><td>Actual job cost rolls up &amp; reconciles to quoted margin</td><td>Job margin variance (actual vs quote)</td></tr>
+          <tr><td class="frid">FR-INV-001/002</td><td>Inventory</td><td>Multi-location stock real-time; reorder rule raises replenishment</td><td>Inventory accuracy %; stock-out incidents</td></tr>
+          <tr><td class="frid">FR-PUR-001</td><td>Purchase</td><td>UC-05 — RFQ→PO→receipt→bill 3-way match completes</td><td>3-way-match exception rate; spend visibility</td></tr>
+          <tr><td class="frid">FR-RNT-002</td><td>Rental · Inventory</td><td>AC-02 — rental bills correctly for duration after return picking</td><td>Asset utilisation %; recovered late-return revenue</td></tr>
+          <tr><td class="frid">FR-FSM-002/003</td><td>Field Service</td><td>AC-03 — mobile visit invoices logged time &amp; parts</td><td>First-time-fix %; un-invoiced-task rate</td></tr>
+          <tr><td class="frid">FR-MNT-001</td><td>Maintenance</td><td>Preventive plan generates next scheduled visit on equipment</td><td>Preventive-vs-breakdown ratio</td></tr>
+          <tr><td class="frid">FR-SUB-002</td><td>Subscriptions</td><td>AC-04 — monthly plan auto-invoices &amp; delivers on cycle</td><td>MRR; subscription churn %</td></tr>
+          <tr><td class="frid">FR-ACC-002</td><td>Accounting</td><td>AC-01 — invoice posts with correct SST (10/5/8%)</td><td>SST accuracy; tax-adjustment count</td></tr>
+          <tr><td class="frid">FR-ACC-003</td><td>l10n_my_edi</td><td>AC-05 — sample invoice submits to MyInvois, returns valid status</td><td>MyInvois acceptance rate; rejection count</td></tr>
+          <tr><td class="frid">FR-ACC-004</td><td>Accounting</td><td>AC-06 — P&amp;L filterable by business-line analytic</td><td>Days-to-close; per-line margin visibility</td></tr>
+        </table>
+        <div class="callout tn"><b>So what for the build:</b> this matrix is the contract between the BRD,
+        the <a href="../pages/operations/bpmn-uml.html">future-state design</a>, the seed data an AI
+        agent loads via MCP, and the <a href="demo-walkthrough.html">demo</a> — one traceable chain from
+        requirement to measured outcome.</div>
+      </section>
+
+      <section class="section">
+        <h2>13 · Integration requirements</h2>
+        <p class="lead">Detailed, testable integration requirements consistent with the
+        <a href="../pages/technology/integration-map.html">Integration &amp; API Map</a>. Only the four
+        <span class="tag red">Must</span> items are required at go-live; the rest sequence onto the
+        <a href="../pages/delivery/roadmap.html">roadmap</a>.</p>
+        <table class="tbl">
+          <tr><th>ID</th><th>Integration</th><th>Requirement</th><th>Method / direction</th><th>Priority</th></tr>
+          <tr><td class="frid">FR-INT-001</td><td>MyInvois (LHDN)</td><td>Submit validated e-invoices and store the returned UIN/QR &amp; status against the <code>account.move</code></td><td>REST · Odoo → LHDN</td><td><span class="tag red">Must</span></td></tr>
+          <tr><td class="frid">FR-INT-002</td><td>Payments (FPX)</td><td>At least one MY bank-transfer method on portal invoices, reconciled back to the ledger</td><td>REST redirect · bidirectional</td><td><span class="tag red">Must</span></td></tr>
+          <tr><td class="frid">FR-INT-003</td><td>Bank feeds</td><td>Auto-import / statement import for reconciliation against payments &amp; invoices</td><td>Feed / OFX-CSV · bank → Odoo</td><td><span class="tag red">Must</span></td></tr>
+          <tr><td class="frid">FR-INT-004</td><td>Email gateway</td><td>Outbound branded quotes/invoices; inbound lead/ticket capture</td><td>SMTP/IMAP · bidirectional</td><td><span class="tag red">Must</span></td></tr>
+          <tr><td class="frid">FR-INT-005</td><td>WhatsApp Business</td><td>Enquiry &amp; service-request capture into CRM/Helpdesk; status notifications outbound</td><td>Webhook + REST · bidirectional</td><td><span class="tag warn">Should</span></td></tr>
+          <tr><td class="frid">FR-INT-006</td><td>e-Wallets / card</td><td>Touch 'n Go / GrabPay / Boost &amp; card via aggregator payment provider</td><td>REST / hosted · bidirectional</td><td><span class="tag warn">Should</span></td></tr>
+          <tr><td class="frid">FR-INT-007</td><td>AI / MCP services</td><td>External agent reads/writes records (seed load, forecasting, vision QC) over scoped API users</td><td>XML-RPC / JSON-RPC · bidirectional</td><td><span class="tag warn">Should</span></td></tr>
+          <tr><td class="frid">FR-INT-008</td><td>Equipment IoT / telemetry</td><td>Runtime hours &amp; fault codes feed predictive-maintenance risk scoring</td><td>MQTT → webhook · device → Odoo</td><td><span class="tag">Could</span></td></tr>
+        </table>
+      </section>
+
+      <div class="pagenav">
+        <a href="odoo-platform.html">← Prev: Odoo Platform</a>
+        <a href="quotation.html">Next: Quotation →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+</body>
+</html>
