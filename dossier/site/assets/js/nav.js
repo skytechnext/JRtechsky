@@ -82,6 +82,12 @@
       { t: "ROI / TCO Model", href: "tools/roi-tco.html", slug: "roi-tco", e: "🧮" },
       { t: "Project Gantt", href: "tools/gantt.html", slug: "gantt", e: "🗓" },
     ]},
+    { group: "JR-Tech Properties", items: [
+      { t: "Kitchen Estimator", href: "../../estimator/index.html", slug: "ext-estimator", e: "🍳", x: true },
+      { t: "Marketing Website", href: "../../marketing/index.html", slug: "ext-marketing", e: "📣", x: true },
+      { t: "Current Website", href: "../../website/index.html", slug: "ext-website", e: "🌐", x: true },
+      { t: "Portal — all properties", href: "../../index.html", slug: "ext-portal", e: "🧭", x: true },
+    ]},
   ];
 
   var active = document.body.getAttribute("data-page") || "";
@@ -95,7 +101,8 @@
       var href = ROOT + it.href;
       var cls = "sb-link" + (it.slug === active ? " active" : "");
       var emoji = it.e ? '<span class="emoji">' + it.e + "</span>" : "";
-      html += '<a class="' + cls + '" href="' + href + '" data-label="' + it.t.toLowerCase()
+      var ext = it.x ? ' target="_blank" rel="noopener"' : "";
+      html += '<a class="' + cls + '" href="' + href + '"' + ext + ' data-label="' + it.t.toLowerCase()
         + '">' + emoji + it.t + "</a>";
     });
     html += "</div>";
