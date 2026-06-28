@@ -86,6 +86,7 @@
       { t: "Kitchen Estimator", href: "../../estimator/index.html", slug: "ext-estimator", e: "🍳", x: true },
       { t: "Marketing Website", href: "../../marketing/index.html", slug: "ext-marketing", e: "📣", x: true },
       { t: "Current Website", href: "../../website/index.html", slug: "ext-website", e: "🌐", x: true },
+      { t: "Sales Kit", href: "../../sales/index.html", slug: "ext-sales", e: "🎤", x: true },
       { t: "Portal — all properties", href: "../../index.html", slug: "ext-portal", e: "🧭", x: true },
     ]},
   ];
