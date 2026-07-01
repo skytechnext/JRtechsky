@@ -1,0 +1,4 @@
+xml_id,name,plate_number,driver_1_xml_id,driver_2_xml_id
+lorry_l1,L1,PPP 1201,emp_dr1,emp_dr2
+lorry_l2,L2,PPP 1202,emp_dr3,emp_dr4
+lorry_l3,L3,PPP 1203,emp_dr5,emp_dr6

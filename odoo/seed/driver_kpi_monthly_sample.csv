@@ -1,0 +1,2 @@
+xml_id,driver_xml_id,period_month,period_year,late_count,unpaid_absent_days,mc_days,el_days,chem_arrange,chem_achieve,equip_arrange,equip_achieve,do_issued,do_returned,daily_in_sent,daily_out_sent,delivery_days,monthly_rm_pool,note
+kpi_drf_2601,emp_dr6,1,2026,1,0,0,0,20,13,0,0,22,20,18,17,24,50,"Spec worked example (Driver F, Jan-2026): att=90 (1 late), job=65.0, do_return=90.9, sending=72.9 -> total KPI approx 76.7pct -> below 80pct qualify gate -> Not Qualified -> RM0. Validates the compute; pool RM50."

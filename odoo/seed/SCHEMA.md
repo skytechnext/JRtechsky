@@ -135,3 +135,17 @@ same date/label into one balanced journal entry (debits = credits).
 - Invoices reference confirmed SOs only; payments reference paid invoices only.
 - `account_code`/`tax_account_code` reference `accounts.csv` codes.
 - Opening entries balance (total debit = total credit = RM 875,000).
+
+---
+
+## Driver Incentive Scheme files (module `jrtech_driver_incentive`)
+See `odoo/plan/driver-incentive-module.md` and the site page `dossier/site/pages/operations/driver-incentive.html`.
+
+| file | target model | key columns |
+|---|---|---|
+| `drivers.csv` | `hr.employee` | xml_id, name, department_xml_id, wa_number (WhatsApp match), lorry_default |
+| `lorries.csv` | `jrtech.lorry` | xml_id, name, plate_number, driver_1/2_xml_id |
+| `trip_log_sample.csv` | `jrtech.trip.log` | trip_date, lorry, driver_1/2, customer, do_number, pails_delivered, trip_completed, source |
+| `driver_kpi_monthly_sample.csv` | `jrtech.driver.kpi.monthly` | driver, period, attendance/job/do/sending inputs, monthly_rm_pool (Driver F Jan-2026 = 76.7% → Not Qualified) |
+
+Load order: drivers → lorries → trip_log → driver_kpi_monthly (after core master data). Idempotent on xml_id.

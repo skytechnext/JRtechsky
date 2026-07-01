@@ -1,0 +1,6 @@
+xml_id,trip_date,lorry_xml_id,driver_1_xml_id,driver_2_xml_id,customer_xml_id,do_number,pails_delivered,trip_completed,source
+trip_0001,2026-01-05,lorry_l3,emp_dr6,,cust_01,DO-2601-0001,10,yes,whatsapp
+trip_0002,2026-01-06,lorry_l3,emp_dr6,emp_dr5,cust_02,DO-2601-0002,10,yes,whatsapp
+trip_0003,2026-01-07,lorry_l3,emp_dr6,,cust_03,DO-2601-0003,8,yes,whatsapp
+trip_0004,2026-01-08,lorry_l3,emp_dr6,emp_dr5,cust_04,DO-2601-0004,12,yes,manual
+trip_0005,2026-01-09,lorry_l1,emp_dr1,emp_dr2,cust_05,DO-2601-0005,14,yes,whatsapp

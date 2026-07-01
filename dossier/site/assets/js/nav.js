@@ -36,6 +36,7 @@
       { t: "Pain → Solution Matrix", href: "pages/operations/pain-solution.html", slug: "pain-solution" },
       { t: "BPMN · Blueprint · UML", href: "pages/operations/bpmn-uml.html", slug: "bpmn-uml" },
       { t: "Value Chain & Capability Map", href: "pages/operations/value-chain.html", slug: "value-chain" },
+      { t: "Driver Incentive Scheme", href: "pages/operations/driver-incentive.html", slug: "driver-incentive", e: "🚛" },
     ]},
     { group: "Technology", items: [
       { t: "AI & Automation Catalog", href: "pages/technology/ai-catalog.html", slug: "ai-catalog" },
