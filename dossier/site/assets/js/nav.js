@@ -81,6 +81,7 @@
       { t: "Discovery Questions", href: "tools/discovery-questions.html", slug: "discovery-questions", e: "📋" },
       { t: "ROI / TCO Model", href: "tools/roi-tco.html", slug: "roi-tco", e: "🧮" },
       { t: "Project Gantt", href: "tools/gantt.html", slug: "gantt", e: "🗓" },
+      { t: "Driver Incentive Scheme", href: "tools/driver-incentive.html", slug: "driver-incentive", e: "🚛" },
     ]},
     { group: "JR-Tech Properties", items: [
       { t: "Kitchen Estimator", href: "../../estimator/index.html", slug: "ext-estimator", e: "🍳", x: true },
