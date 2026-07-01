@@ -38,6 +38,7 @@
       { t: "Value Chain & Capability Map", href: "pages/operations/value-chain.html", slug: "value-chain" },
     ]},
     { group: "Technology", items: [
+      { t: "Current Systems (SQL Account)", href: "pages/technology/current-systems.html", slug: "current-systems" },
       { t: "AI & Automation Catalog", href: "pages/technology/ai-catalog.html", slug: "ai-catalog" },
       { t: "AI in Action — Peer Story", href: "pages/technology/ai-peer-story.html", slug: "ai-peer-story" },
       { t: "Odoo 19 Architecture", href: "pages/technology/odoo-architecture.html", slug: "odoo-architecture" },

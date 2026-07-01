@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current Systems (SQL Account) — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="current-systems">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Technology</b> · Current Systems</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Technology · Current state</span>
+      <h1>Current systems — what JR-Tech runs today.</h1>
+      <p>Before designing the future, we document the present. JR-Tech's financial system of record is
+      <b>SQL Account (ERP edition)</b>, surrounded by spreadsheets, WhatsApp and paper for everything
+      accounting doesn't cover. This page inventories that stack, what each part does well, and where it
+      stops — the gap the Odoo 19 programme is built to close.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">SQL Account</div><div class="lbl">system of record — ERP edition (accounting &amp; inventory)</div></div>
+          <div class="kpi"><div class="num">Finance-led</div><div class="lbl">strong on statutory; light on operations</div></div>
+          <div class="kpi"><div class="num">MyInvois</div><div class="lbl">e-invoice &amp; SST handled in SQL today</div></div>
+          <div class="kpi"><div class="num">4+</div><div class="lbl">side systems fill the operational gaps</div></div>
+        </div>
+      </section>
+
+      <!-- SYSTEM OF RECORD -->
+      <section class="section">
+        <span class="eyebrow">System of record</span>
+        <h2 style="margin:2px 0 6px;">SQL Account — ERP edition</h2>
+        <div class="grid g2">
+          <div class="card">
+            <h3>What it is</h3>
+            <p style="font-size:13.5px;color:var(--jr-slate);">A widely-adopted Malaysian accounting &amp;
+            inventory system (by eStream Software / "SQL"), LHDN-approved and <b>SST- and MyInvois-ready</b>.
+            The ERP edition adds stock, sales, purchasing and multi-location on top of the ledger. It is
+            JR-Tech's official book of record and the source of the sales/DO data feeding the
+            <a href="../../tools/driver-incentive.html">driver incentive</a> KPIs.</p>
+          </div>
+          <div class="card">
+            <h3>What JR-Tech uses it for</h3>
+            <ul style="font-size:13.5px;color:var(--jr-slate);line-height:1.7;margin:0;padding-left:18px;">
+              <li>Sales documents, Delivery Orders (DO) &amp; invoicing</li>
+              <li>Inventory / stock &amp; purchasing</li>
+              <li>General ledger, AR/AP, statutory reporting</li>
+              <li>SST and <b>MyInvois</b> e-invoice submission</li>
+              <li>Exports (e.g. <em>Print Sales Document Listing</em>) that feed downstream spreadsheets &amp; KPIs</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- INVENTORY -->
+      <section class="section">
+        <span class="eyebrow">Inventory</span>
+        <h2 style="margin:2px 0 6px;">Current tool landscape</h2>
+        <table class="tbl">
+          <tr><th>System</th><th>Category</th><th>Used for</th><th>Coverage gap</th></tr>
+          <tr><td><b>SQL Account (ERP edition)</b></td><td>Accounting &amp; inventory</td><td>Ledger, sales, DO, invoicing, stock, SST/MyInvois</td><td><span class="tag warn">No CRM, fabrication, rental or field service</span></td></tr>
+          <tr><td>WhatsApp Business</td><td>Messaging</td><td>Driver delivery logging &amp; proof (photo + location) — interim</td><td><span class="tag red">Unstructured; manual re-entry</span></td></tr>
+          <tr><td>Excel / Google Sheets</td><td>Spreadsheets</td><td>KPI files, price lists, quotes, rental &amp; trip logs</td><td><span class="tag red">Siloed; version drift; no audit trail</span></td></tr>
+          <tr><td>Paper</td><td>Manual</td><td>Job sheets, signed &amp; chopped DOs</td><td><span class="tag red">Not searchable; slow returns</span></td></tr>
+          <tr><td>—</td><td>CRM / pipeline</td><td>New-customer prospects, quotations follow-up</td><td><span class="tag red">No dedicated system</span></td></tr>
+        </table>
+        <div class="callout"><b>The pattern.</b> SQL Account is doing its job well — as an accounting and
+        inventory system. Everything <em>operational</em> around it (quoting, fabrication, rental, service
+        dispatch, driver KPIs) has fallen to spreadsheets, chat and paper, with numbers re-keyed between them.</div>
+      </section>
+
+      <!-- STRENGTHS vs GAPS -->
+      <section class="section">
+        <span class="eyebrow">Fit assessment</span>
+        <h2 style="margin:2px 0 6px;">What SQL Account does well — and where it stops</h2>
+        <div class="grid g2">
+          <div class="card">
+            <h3>Keep leaning on it for</h3>
+            <ul class="steps">
+              <li><b>Malaysian statutory compliance</b> — SST, LHDN, MyInvois e-invoicing already working.</li>
+              <li><b>Core bookkeeping</b> — GL, AR/AP, tax — mature and familiar to the finance team.</li>
+              <li><b>Stock &amp; invoicing</b> — item masters, DO and invoice documents.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Where it can't reach</h3>
+            <ul class="steps">
+              <li><b>No CRM / quoting pipeline</b> — prospects &amp; follow-ups live in memory and chat.</li>
+              <li><b>No manufacturing</b> — stainless-steel fabrication has no BOMs or job costing.</li>
+              <li><b>No rental lifecycle</b> — equipment on hire, returns and recurring billing are manual.</li>
+              <li><b>No field service</b> — dishwasher/grease-trap dispatch &amp; maintenance aren't scheduled.</li>
+              <li><b>No connected view</b> — one order can't flow enquiry → build → deliver → invoice without re-typing.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMPLICATION -->
+      <section class="section">
+        <span class="eyebrow">Implication for the Odoo programme</span>
+        <h2 style="margin:2px 0 6px;">Consolidate operations, protect compliance</h2>
+        <p class="lead">The goal isn't to rip out a working compliance engine on day one — it's to end the
+        re-keying and give every department one connected system.</p>
+        <div class="grid g2">
+          <div class="card"><h3>Recommended path</h3>
+            <ul style="font-size:13.5px;color:var(--jr-slate);line-height:1.7;margin:0;padding-left:18px;">
+              <li><b>Phase 1</b> — stand up Odoo for the <em>operational</em> gaps (CRM/quoting, fabrication, rental, field service) and migrate master data from SQL Account.</li>
+              <li><b>Phase 2</b> — move accounting into Odoo (with SST/MyInvois), run <b>parallel</b> with SQL Account for one cycle, reconcile to the cent, then retire the duplicate.</li>
+              <li><b>Alternative</b> — if finance prefers, keep SQL Account as the statutory ledger and integrate it with Odoo via export/API until confidence is built.</li>
+            </ul>
+          </div>
+          <div class="card"><h3>Migration &amp; continuity</h3>
+            <ul style="font-size:13.5px;color:var(--jr-slate);line-height:1.7;margin:0;padding-left:18px;">
+              <li>Export customers, suppliers, item masters, price lists, opening balances and historical DO/invoices from SQL Account.</li>
+              <li>Load via Odoo's import wizard (interim) or a scripted API load — see the <a href="data-migration.html">Data Migration</a> plan.</li>
+              <li>Preserve MyInvois continuity — no gap in e-invoice submission across cutover (see <a href="security-myinvois.html">Security, Compliance &amp; MyInvois</a>).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout warn"><b>Guiding rule.</b> Compliance never goes dark. SQL Account stays live
+        until Odoo has passed a full-cycle reconciliation and a clean MyInvois submission in parallel.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../executive/due-diligence.html">← Due Diligence</a>
+        <a href="data-migration.html">Data Migration →</a>
+      </div>
+
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+</body>
+</html>
