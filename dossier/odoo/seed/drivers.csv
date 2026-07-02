@@ -1,0 +1,7 @@
+xml_id,name,job_title,department_xml_id,work_phone,wa_number,wage_myr,lorry_default
+emp_dr1,Ahmad Bin Ismail,Delivery Driver,dept_wh,+6012-4110001,60124110001,2200,lorry_l1
+emp_dr2,Suresh A/L Kumar,Delivery Driver,dept_wh,+6012-4110002,60124110002,2200,lorry_l1
+emp_dr3,Tan Ah Kow,Delivery Driver,dept_wh,+6012-4110003,60124110003,2200,lorry_l2
+emp_dr4,Mohd Faizal Bin Rahman,Delivery Driver,dept_wh,+6012-4110004,60124110004,2200,lorry_l2
+emp_dr5,Lim Boon Huat,Delivery Driver,dept_wh,+6012-4110005,60124110005,2200,lorry_l3
+emp_dr6,Rajesh A/L Muthu,Delivery Driver,dept_wh,+6012-4110006,60124110006,2200,lorry_l3

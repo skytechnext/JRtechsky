@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Driver Incentive Scheme — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+<style>
+  /* page-scoped: interactive calculator + band styling (no global additions) */
+  .calc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+  @media(max-width:900px){.calc-grid{grid-template-columns:1fr}}
+  .field{margin:10px 0}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--jr-slate);margin-bottom:4px}
+  .field input[type=number]{width:100%;padding:8px 10px;border:1px solid var(--jr-line);border-radius:8px;font-size:14px}
+  .field input[type=range]{width:100%}
+  .field .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
+  .seg button{border:1px solid var(--jr-line);background:#fff;border-radius:8px;padding:6px 12px;font-size:12.5px;
+    cursor:pointer;font-weight:600;color:var(--jr-slate)}
+  .seg button.on{background:var(--jr-navy);color:#fff;border-color:var(--jr-navy)}
+  .result-num{font-size:40px;font-weight:800;line-height:1}
+  .band-pill{display:inline-block;padding:6px 14px;border-radius:999px;font-weight:800;font-size:14px;margin-top:6px}
+  .b-fail{background:#FDE7E5;color:#C13B33}.b-good{background:#FEF3D8;color:#B5781A}.b-exc{background:#E4F8F0;color:#0E8E6E}
+  .code{background:#0D1117;color:#7EE787;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
+    padding:16px;border-radius:10px;white-space:pre;overflow:auto;line-height:1.7;border:1px solid #1f2630}
+  .code .c{color:#6E7681}.code .k{color:#FF7B72}.code .f{color:#FFA657}.code .v{color:#79C0FF}
+  .cfg{font-size:12px;color:var(--tn-accent);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+  .wt-row{display:flex;align-items:center;gap:12px;margin:8px 0}
+  .wt-lbl{min-width:190px;font-size:13px;font-weight:600}
+  .wt-track{flex:1;background:#EDF2F9;border-radius:20px;height:24px;overflow:hidden}
+  .wt-fill{height:100%;border-radius:20px;color:#fff;font-size:11.5px;font-weight:800;display:flex;align-items:center;
+    justify-content:flex-end;padding-right:8px}
+</style>
+</head>
+<body data-page="driver-incentive">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Operations</b> · Driver Incentive Scheme</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Operations · Pay-for-Performance · Odoo-Configurable</span>
+      <h1>Driver Incentive Scheme — chemical pail delivery, engineered for Odoo.</h1>
+      <p>A performance-based monthly incentive for JR-Tech's 6 drivers across 3 lorries, built directly on the
+      owner's v3 framework — pail-credit pools, a weighted KPI scorecard, leave and compliance gates — then
+      hardened by TechNext into a fair, gameable-proof, fully parameterised model that a supervisor configures and
+      runs inside Odoo 19.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <!-- SNAPSHOT -->
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">6</div><div class="lbl">drivers · 2 per lorry across L1/L2/L3, each scored individually</div></div>
+          <div class="kpi"><div class="num">RM1</div><div class="lbl">per pail delivered (configurable rate) — builds the monthly pool</div></div>
+          <div class="kpi"><div class="num">80%</div><div class="lbl">minimum KPI to qualify for any payout</div></div>
+          <div class="kpi"><div class="num">3</div><div class="lbl">rating bands: Not Qualified · Good · Excellent</div></div>
+        </div>
+        <div class="callout tn"><b>What's the owner's, what's TechNext's.</b> The pail-credit pool, the 40/50/5/5 KPI
+        weights, the MC/EL leave gates, the 80% qualifier and the 3-band shape are all <b>the owner's v3 design,
+        kept intact</b>. TechNext adds three <span class="cfg">configurable</span> refinements — an achievable,
+        genuinely-rewarded Excellent band; a humane leave-prorate option; and anti-gaming controls — each a switch
+        the owner can turn on or off in Odoo settings without a developer.</div>
+      </section>
+
+      <!-- END TO END FLOW -->
+      <section class="section">
+        <h2>How a month runs</h2>
+        <p class="lead">Delivery evidence flows in daily (WhatsApp today, the Odoo mobile app later); the supervisor
+        verifies two fields; Odoo computes everything else and posts the payout to the payslip.</p>
+        <div class="mermaid">
+flowchart LR
+  A[Driver delivers pails] --> B[WhatsApp structured msg<br/>LORRY-1 AHMAD CUSTOMER PAILS-10]
+  B --> C[Automation logs Trip to Odoo]
+  C --> D[Supervisor verifies<br/>partner driver + completed]
+  D --> E[Odoo computes pail credit,<br/>KPI, gates, rating]
+  E --> F[Monthly payout posted<br/>to payslip Other Input]
+  classDef i fill:#7FA9DE,stroke:#3F6FB0,color:#fff;
+  classDef c fill:#16C098,stroke:#0E8E6E,color:#fff;
+  classDef o fill:#0B1F3A,stroke:#0B1F3A,color:#fff;
+  class A,B i; class C,D,E c; class F o;
+        </div>
+      </section>
+
+      <!-- 1. POOL -->
+      <section class="section">
+        <h2>1 · The pail-credit pool — what a driver can earn</h2>
+        <p class="lead">Each driver has their <b>own</b> pool — no shared team pot, so one driver's weak month never
+        dilutes another's. The pool is the <em>maximum</em>; the KPI score decides how much of it is actually paid.</p>
+        <div class="grid g2">
+          <table class="tbl">
+            <tr><th>Scenario</th><th>Field</th><th>Driver's pail credit</th><th>RM value</th></tr>
+            <tr><td>Both drivers on the lorry</td><td><code>partner_present = 1</code></td><td>Pails ÷ 2</td><td>credit × RM rate</td></tr>
+            <tr><td>Solo run (partner absent)</td><td><code>partner_present = 0</code></td><td>Full pails</td><td>credit × RM rate</td></tr>
+          </table>
+          <div class="card">
+            <h3 style="margin-top:0">Monthly pool</h3>
+            <div class="code"><span class="c">// per trip</span>
+credit = <span class="k">IF</span>(partner_present, pails/<span class="v">2</span>, pails)
+rm     = credit * <span class="f">pail_rm_rate</span>   <span class="c">// RM1 default</span>
+
+<span class="c">// monthly pool for the driver</span>
+pool = <span class="k">SUM</span>(rm) <span class="k">WHERE</span> driver=me <span class="k">AND</span> month=this_month</div>
+            <div class="callout warn" style="margin-bottom:0"><b>Expert note — pool quantum.</b> Real months land
+            around RM50–RM200. That may be too small to shift behaviour. The RM rate is a single Odoo parameter, and
+            an optional <span class="cfg">excellence bonus</span> (below) adds real upside without rewriting the model.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. KPI SCORECARD -->
+      <section class="section">
+        <h2>2 · The KPI scorecard — how much of the pool is unlocked</h2>
+        <p class="lead">Four components, two groups, weighted to 100%. Operations &amp; compliance is half; hitting the
+        actual delivery target is the other half — the single heaviest lever.</p>
+        <div class="grid g2">
+          <div class="card">
+            <h3 style="margin-top:0">Weights (owner's v3)</h3>
+            <div class="wt-row"><div class="wt-lbl">Attendance</div><div class="wt-track"><div class="wt-fill" style="width:40%;background:#7FA9DE">40%</div></div></div>
+            <div class="wt-row"><div class="wt-lbl">Job Completion</div><div class="wt-track"><div class="wt-fill" style="width:50%;background:#16C098">50%</div></div></div>
+            <div class="wt-row"><div class="wt-lbl">D.O. Return (chop &amp; sign)</div><div class="wt-track"><div class="wt-fill" style="width:5%;background:#E8A13A;min-width:34px">5%</div></div></div>
+            <div class="wt-row"><div class="wt-lbl">Sending Daily (WhatsApp)</div><div class="wt-track"><div class="wt-fill" style="width:5%;background:#7030A0;min-width:34px">5%</div></div></div>
+            <p style="font-size:12.5px;color:var(--jr-slate);margin-bottom:0">Weights are stored as Odoo parameters — the
+            owner can re-balance (e.g. lift D.O. Return) without code.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">Master formula</h3>
+            <div class="code">Total_KPI =
+   att_score  * <span class="v">0.40</span>
+ + job_pct    * <span class="v">0.50</span>
+ + do_ret_pct * <span class="v">0.05</span>
+ + send_pct   * <span class="v">0.05</span>
+<span class="c">// each component on a 0–100 scale → result 0–100</span></div>
+            <table class="tbl" style="margin-top:12px">
+              <tr><th>Component</th><th>How it's scored</th></tr>
+              <tr><td>Attendance</td><td><code>MAX(0, 100 − late×10 − absent×20)</code>. MC/EL never deduct.</td></tr>
+              <tr><td>Job Completion</td><td>(chem+equip achieved) ÷ (chem+equip arranged) × 100</td></tr>
+              <tr><td>D.O. Return</td><td>DOs returned signed ÷ DOs issued × 100</td></tr>
+              <tr><td>Sending Daily</td><td>MIN(100, (IN+OUT msgs) ÷ (days×2) × 100)</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="callout"><b>Anti-gaming (TechNext).</b> "Arranged" delivery counts must be set by the planner/route
+        sheet, never by the driver being scored — otherwise a driver can lower their own target to inflate Job
+        Completion. In Odoo this is enforced with record rules: drivers have read-only access to their KPI record.</div>
+      </section>
+
+      <!-- 3. GATES + BANDS -->
+      <section class="section">
+        <h2>3 · Gates &amp; the 3-band payout</h2>
+        <p class="lead">Gates are checked <b>before</b> the pool is paid, in a fixed order. This is the exact
+        decision logic Odoo executes each month.</p>
+        <div class="grid g3">
+          <div class="card" style="border-top:4px solid var(--danger)">
+            <span class="band-pill b-fail">❌ Not Qualified</span>
+            <p style="margin:10px 0 0"><b>KPI &lt; 80%</b>, or leave gate tripped. <br>Payout = <b>RM0</b>.</p>
+          </div>
+          <div class="card" style="border-top:4px solid var(--warn)">
+            <span class="band-pill b-good">🟡 Good</span>
+            <p style="margin:10px 0 0"><b>80% – &lt;95%</b>.<br>Payout = <b>pool × KPI%</b> (proportional).</p>
+          </div>
+          <div class="card" style="border-top:4px solid var(--tn-accent)">
+            <span class="band-pill b-exc">🟢 Excellent</span>
+            <p style="margin:10px 0 0"><b>KPI ≥ 95%</b> <i>and</i> D.O. Return ≥ 90% <i>and</i> Sending ≥ 80%.<br>
+            Payout = <b>full pool + bonus</b>.</p>
+          </div>
+        </div>
+
+        <div class="grid g2" style="margin-top:6px">
+          <div class="callout warn"><b>Flaw fixed — the Excellent band was empty.</b> Under the raw v3 rules, Excellent
+          required <em>exactly</em> 100% KPI, yet a 100% score already pays the full pool in the Good formula — so
+          Excellent rewarded nothing and was near-impossible to reach. TechNext makes it reachable at a
+          <span class="cfg">configurable 95%</span> and attaches a real <span class="cfg">excellence bonus</span>
+          (default 10%) so top performance actually pays more.</div>
+          <div class="callout"><b>Leave gate — two modes, you choose.</b> <b>Strict</b> (owner default): MC &gt; 2 days
+          or EL &gt; 1 day cancels the whole incentive. <b>Prorate</b> (TechNext-recommended for medical): the pool is
+          scaled by attended working days instead of zeroed — fairer, lower morale/legal risk, still discourages
+          abuse. A single <span class="cfg">leave_gate_mode</span> setting switches between them.</div>
+        </div>
+
+        <h3>Decision order (as coded in Odoo)</h3>
+        <div class="mermaid">
+flowchart TD
+  S[Start month-end compute] --> G1{Leave gate<br/>mode = strict?}
+  G1 -- yes --> L{MC&gt;2 or EL&gt;1?}
+  L -- yes --> Z[Payout = RM0]
+  L -- no --> K
+  G1 -- no / prorate --> K{KPI &lt; 80%?}
+  K -- yes --> Z
+  K -- no --> X{KPI ≥ 95%<br/>AND DO≥90 AND Send≥80?}
+  X -- yes --> E[Full pool × 1+bonus<br/>× prorate factor]
+  X -- no --> Gd[pool × KPI%<br/>× prorate factor]
+  classDef bad fill:#FDE7E5,stroke:#C13B33,color:#8f2b25;
+  classDef good fill:#E4F8F0,stroke:#0E8E6E,color:#0b5f49;
+  classDef mid fill:#FEF3D8,stroke:#B5781A,color:#7a520f;
+  class Z bad; class E good; class Gd mid;
+        </div>
+      </section>
+
+      <!-- INTERACTIVE CALCULATOR -->
+      <section class="section">
+        <h2>4 · Interactive payout calculator</h2>
+        <p class="lead">The live model. Adjust a driver's month on the left and the parameters (exactly the ones that
+        become Odoo settings) — the payout, band and KPI breakdown update instantly. This mirrors the computed fields
+        on <code>jrtech.driver.kpi.monthly</code>.</p>
+        <div class="card pad-lg">
+          <div class="calc-grid">
+            <div>
+              <h3 style="margin-top:0">Driver's month</h3>
+              <div class="field"><div class="row"><label>Monthly pail credits (pool basis)</label><b><span id="poolCredits">50</span></b></div>
+                <input type="range" id="credits" min="0" max="400" value="50"></div>
+              <div class="grid g2">
+                <div class="field"><label>Late arrivals</label><input type="number" id="late" value="0" min="0"></div>
+                <div class="field"><label>Unpaid absent days</label><input type="number" id="absent" value="0" min="0"></div>
+                <div class="field"><label>MC days</label><input type="number" id="mc" value="0" min="0"></div>
+                <div class="field"><label>Emergency-leave days</label><input type="number" id="el" value="0" min="0"></div>
+                <div class="field"><label>Deliveries arranged</label><input type="number" id="arr" value="55" min="0"></div>
+                <div class="field"><label>Deliveries achieved</label><input type="number" id="ach" value="50" min="0"></div>
+                <div class="field"><label>D.O. Return %</label><input type="number" id="do" value="91" min="0" max="100"></div>
+                <div class="field"><label>Sending Daily %</label><input type="number" id="send" value="85" min="0" max="100"></div>
+                <div class="field"><label>Working days (for prorate)</label><input type="number" id="wdays" value="24" min="1"></div>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin-top:0">Parameters <span class="cfg">→ Odoo settings</span></h3>
+              <div class="grid g2">
+                <div class="field"><label>RM per pail</label><input type="number" id="rate" value="1" min="0" step="0.5"></div>
+                <div class="field"><label>Qualify threshold %</label><input type="number" id="thr" value="80" min="0" max="100"></div>
+                <div class="field"><label>Excellent threshold %</label><input type="number" id="exthr" value="95" min="0" max="100"></div>
+                <div class="field"><label>Excellence bonus %</label><input type="number" id="bonus" value="10" min="0"></div>
+              </div>
+              <div class="field"><label>Leave gate mode</label>
+                <div class="seg" id="modeSeg">
+                  <button data-m="strict" class="on">Strict (cancel)</button>
+                  <button data-m="prorate">Prorate</button>
+                  <button data-m="off">Off</button>
+                </div>
+              </div>
+              <div class="card" style="background:var(--jr-mist);text-align:center;margin-top:8px">
+                <div style="font-size:12px;color:var(--jr-slate);font-weight:700;text-transform:uppercase;letter-spacing:.05em">Monthly payout</div>
+                <div class="result-num" id="payout" style="color:var(--jr-navy);margin-top:6px">RM0</div>
+                <div id="bandOut"><span class="band-pill b-fail">—</span></div>
+                <div style="font-size:12.5px;color:var(--jr-slate);margin-top:8px">
+                  Pool <b id="poolOut">RM50</b> · KPI <b id="kpiOut">0%</b> · <span id="whyOut"></span></div>
+              </div>
+              <div class="chartbox" style="margin-top:12px"><canvas id="kpiChart" height="150"></canvas></div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--jr-slate)">Attendance component = MAX(0, 100 − late×10 − absent×20). Job
+        Completion = achieved ÷ arranged. All figures illustrative; the logic is the production logic.</p>
+      </section>
+
+      <!-- ODOO CONFIG -->
+      <section class="section">
+        <h2>5 · Configuring it in Odoo 19</h2>
+        <p class="lead">The scheme is a small custom module, <code>jrtech_driver_incentive</code>, riding on standard
+        HR / Inventory / Payroll. Every number above is a setting, not a code change — see the full build spec in
+        <a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a> and the module doc in the repo
+        (<code>odoo/plan/driver-incentive-module.md</code>).</p>
+
+        <div class="grid g3">
+          <div class="card"><h3 style="margin-top:0">Stands on</h3>
+            <p style="font-size:13px">Employees (<code>hr.employee</code>), Attendance/Time Off (<code>hr.attendance</code>,
+            <code>hr.leave</code> — custom MC &amp; EL types), Inventory (<code>stock.picking</code> = Delivery Orders),
+            Payroll (<code>hr.payslip</code> Other Input).</p></div>
+          <div class="card"><h3 style="margin-top:0">Custom models</h3>
+            <p style="font-size:13px"><code>jrtech.lorry</code> · <code>jrtech.trip.log</code> ·
+            <code>jrtech.attendance.daily</code> · <code>jrtech.driver.kpi.monthly</code> (the core record, one per
+            driver per month, all fields computed).</p></div>
+          <div class="card"><h3 style="margin-top:0">Runs itself</h3>
+            <p style="font-size:13px">A monthly cron auto-creates KPI records; a WhatsApp webhook controller
+            (<code>/api/jrtech/trip_log</code>) ingests trips; computed fields do the maths; payout posts to the payslip.</p></div>
+        </div>
+
+        <h3>Every parameter is an Odoo setting</h3>
+        <p style="font-size:13.5px">Stored via <code>res.config.settings</code> → <code>ir.config_parameter</code>, so
+        Settings → JR-Tech Incentive edits them with no developer:</p>
+        <table class="tbl">
+          <tr><th>Setting</th><th>Default</th><th>Config key</th><th>Owner's or TechNext</th></tr>
+          <tr><td>RM per pail</td><td>RM1.00</td><td><code>pail_rm_rate</code></td><td>Owner</td></tr>
+          <tr><td>Qualify threshold</td><td>80%</td><td><code>kpi_min_threshold</code></td><td>Owner</td></tr>
+          <tr><td>KPI weights (att/job/do/send)</td><td>40/50/5/5</td><td><code>weight_*</code></td><td>Owner</td></tr>
+          <tr><td>Late / absent deduction</td><td>10 / 20 pts</td><td><code>late_pts</code> · <code>absent_pts</code></td><td>Owner</td></tr>
+          <tr><td>MC / EL monthly limit</td><td>2 / 1 days</td><td><code>mc_limit</code> · <code>el_limit</code></td><td>Owner</td></tr>
+          <tr><td>D.O. Return gate</td><td>90%</td><td><code>do_return_gate</code></td><td>Owner</td></tr>
+          <tr><td>Sending Daily gate</td><td>80%</td><td><code>sending_gate</code></td><td>Owner</td></tr>
+          <tr><td>Excellent threshold</td><td>95% <span class="tag green">refined</span></td><td><code>excellent_kpi_threshold</code></td><td>TechNext</td></tr>
+          <tr><td>Excellence bonus</td><td>10% <span class="tag green">refined</span></td><td><code>excellent_bonus_pct</code></td><td>TechNext</td></tr>
+          <tr><td>Leave gate mode</td><td>strict <span class="tag green">refined</span></td><td><code>leave_gate_mode</code> (strict/prorate/off)</td><td>TechNext</td></tr>
+          <tr><td>Complaint / safety deduction</td><td>off <span class="tag green">refined</span></td><td><code>enable_quality_penalty</code></td><td>TechNext</td></tr>
+        </table>
+
+        <h3>The payout as an Odoo computed field</h3>
+        <div class="code"><span class="k">def</span> <span class="f">_compute_monthly_payout</span>(self):
+  <span class="k">for</span> r <span class="k">in</span> self:
+    P = float(r.<span class="f">get_param</span>)   <span class="c"># settings cached</span>
+    <span class="c"># 1 · leave gate</span>
+    prorate = <span class="v">1.0</span>
+    <span class="k">if</span> r.leave_gate_mode == <span class="v">'strict'</span> <span class="k">and</span> (r.mc_days &gt; P.mc_limit <span class="k">or</span> r.el_days &gt; P.el_limit):
+        r.monthly_payout = <span class="v">0.0</span>; <span class="k">continue</span>
+    <span class="k">if</span> r.leave_gate_mode == <span class="v">'prorate'</span>:
+        prorate = max(<span class="v">0.0</span>, (r.working_days - r.mc_days - r.el_days) / r.working_days)
+    <span class="c"># 2 · qualify threshold</span>
+    <span class="k">if</span> r.total_kpi_pct &lt; P.kpi_min_threshold:
+        r.monthly_payout = <span class="v">0.0</span>; <span class="k">continue</span>
+    <span class="c"># 3 · band + payout</span>
+    pool = r.monthly_rm_pool
+    <span class="k">if</span> (r.total_kpi_pct &gt;= P.excellent_kpi_threshold
+        <span class="k">and</span> r.do_return_pct &gt;= P.do_return_gate
+        <span class="k">and</span> r.sending_pct   &gt;= P.sending_gate):
+        r.rating = <span class="v">'excellent'</span>
+        r.monthly_payout = pool * (<span class="v">1</span> + P.excellent_bonus_pct/<span class="v">100</span>) * prorate
+    <span class="k">else</span>:
+        r.rating = <span class="v">'good'</span>
+        r.monthly_payout = pool * (r.total_kpi_pct/<span class="v">100</span>) * prorate</div>
+        <div class="callout tn"><b>Payroll posting.</b> <code>monthly_payout</code> feeds the payslip as a separate
+        <b>Other Input</b> line (rule code <code>DRV_INC</code>), keeping incentive visible and distinct from base
+        salary, EPF/SOCSO handled per JR-Tech's payroll config.</div>
+      </section>
+
+      <!-- ROLES + ROLLOUT -->
+      <section class="section">
+        <h2>6 · Roles, views &amp; rollout</h2>
+        <div class="grid g2">
+          <table class="tbl">
+            <tr><th>Role</th><th>Odoo group</th><th>Can do</th></tr>
+            <tr><td>Driver</td><td>Incentive / Driver</td><td>Read-only self dashboard: own KPI % + payout</td></tr>
+            <tr><td>Supervisor</td><td>Incentive / Supervisor</td><td>Verify trips (partner + completed), mark D.O. returns, enter manual KPI fields</td></tr>
+            <tr><td>Manager / Owner</td><td>Incentive / Manager</td><td>All 6 drivers side-by-side, edit settings, approve payout → payroll</td></tr>
+          </table>
+          <div class="card">
+            <h3 style="margin-top:0">Phased rollout</h3>
+            <ol class="steps">
+              <li><b>Month 0 — parallel run.</b> Configure module + settings; run Odoo alongside the current Excel for one month; reconcile to the cent.</li>
+              <li><b>Month 1 — WhatsApp capture.</b> Turn on the webhook; supervisor verifies 2 fields; payout still owner-approved.</li>
+              <li><b>Month 2 — go live.</b> Payout posts to payslip; driver self-dashboard enabled.</li>
+              <li><b>Later — mobile app.</b> Replace WhatsApp parsing with the Odoo mobile/PWA delivery log (same models).</li>
+            </ol>
+          </div>
+        </div>
+        <div class="callout warn"><b>Fairness &amp; governance.</b> Publish the rules to drivers up front; show the KPI
+        breakdown on their dashboard so payout is never a black box; keep an audit trail on every KPI record; and
+        review weights quarterly. A transparent scheme is what turns an incentive into behaviour change.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="value-chain.html">← Value Chain &amp; Capability Map</a>
+        <a href="../technology/ai-catalog.html">AI &amp; Automation Catalog →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Driver Incentive Scheme for JR-Tech Solution Sdn Bhd. Built on the
+      owner's v3 framework; refinements marked are configurable in Odoo. Figures illustrative.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+(function(){
+  var mode='strict';
+  var seg=document.getElementById('modeSeg');
+  seg.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    mode=b.getAttribute('data-m');
+    seg.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});
+    calc();
+  });
+  var ids=['credits','late','absent','mc','el','arr','ach','do','send','wdays','rate','thr','exthr','bonus'];
+  ids.forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
+  var val=function(id){return parseFloat(document.getElementById(id).value)||0;};
+
+  var chart=new Chart(document.getElementById('kpiChart'),{
+    type:'bar',
+    data:{labels:['Attendance','Job','D.O.','Sending'],
+      datasets:[{label:'Weighted contribution (pts)',data:[0,0,0,0],
+        backgroundColor:['#7FA9DE','#16C098','#E8A13A','#7030A0']}]},
+    options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100,title:{display:true,text:'KPI points'}}}}
+  });
+
+  function calc(){
+    var credits=val('credits'), rate=val('rate');
+    document.getElementById('poolCredits').textContent=credits;
+    var pool=credits*rate;
+    // components (0-100)
+    var att=Math.max(0,100-val('late')*10-val('absent')*20);
+    var arr=val('arr'), ach=val('ach');
+    var job=arr>0?Math.min(100,(ach/arr)*100):0;
+    var doret=val('do'), send=val('send');
+    var wAtt=0.40,wJob=0.50,wDo=0.05,wSend=0.05;
+    var cAtt=att*wAtt, cJob=job*wJob, cDo=doret*wDo, cSend=send*wSend;
+    var kpi=cAtt+cJob+cDo+cSend;
+    chart.data.datasets[0].data=[cAtt,cJob,cDo,cSend]; chart.update();
+
+    var thr=val('thr'), exthr=val('exthr'), bonus=val('bonus');
+    var mc=val('mc'), el=val('el'), wdays=val('wdays')||1;
+    var prorate=1, why='', band, cls, payout;
+
+    // leave gate
+    var cancelled=false;
+    if(mode==='strict' && (mc>2 || el>1)) cancelled=true;
+    if(mode==='prorate') prorate=Math.max(0,(wdays-mc-el)/wdays);
+
+    if(cancelled){ payout=0; band='❌ Not Qualified'; cls='b-fail'; why='leave gate (strict) tripped'; }
+    else if(kpi<thr){ payout=0; band='❌ Not Qualified'; cls='b-fail'; why='KPI '+kpi.toFixed(1)+'% below '+thr+'%'; }
+    else if(kpi>=exthr && doret>=90 && send>=80){
+      payout=pool*(1+bonus/100)*prorate; band='🟢 Excellent'; cls='b-exc';
+      why='full pool +'+bonus+'% bonus'+(prorate<1?' · prorated':''); }
+    else{
+      payout=pool*(kpi/100)*prorate; band='🟡 Good'; cls='b-good';
+      why='pool × '+kpi.toFixed(1)+'%'+(prorate<1?' · prorated':'');
+      if(kpi>=exthr) why+=' (missed a compliance gate)';
+    }
+    document.getElementById('payout').textContent='RM'+payout.toFixed(2);
+    document.getElementById('poolOut').textContent='RM'+pool.toFixed(2);
+    document.getElementById('kpiOut').textContent=kpi.toFixed(1)+'%';
+    document.getElementById('whyOut').textContent=why;
+    document.getElementById('bandOut').innerHTML='<span class="band-pill '+cls+'">'+band+'</span>';
+  }
+  calc();
+})();
+</script>
+</body>
+</html>
