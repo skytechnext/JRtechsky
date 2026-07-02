@@ -1,0 +1,45 @@
+# Deploys the entire repository to GitHub Pages with GitHub's first-party
+# Pages actions — the portal index.html plus every site folder
+# (estimator/, marketing/, dossier/, website/) served as-is.
+name: Deploy combined site to GitHub Pages
+
+on:
+  # Auto-deploy when the consolidated work lands on the default branch.
+  push:
+    branches: [main, master]
+  # Or run on demand from the Actions tab ("Run workflow") on any branch.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One Pages deploy at a time; let an in-progress publish finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true # auto-enables Pages when the token is allowed to
+
+      - name: Upload whole repository
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "." # portal + estimator/ + marketing/ + dossier/ + website/
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

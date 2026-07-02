@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Odoo 19 Implementation — Sales Prep Playbook · TechNext</title>
+  <meta name="description" content="Internal sales-prep playbook for selling Odoo 19 implementation: ideal client profile, qualification, discovery questions, objection handling, competitive positioning, pricing and the call plan." />
+  <meta name="color-scheme" content="dark" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1020'/%3E%3Ccircle cx='32' cy='32' r='14' fill='none' stroke='%238B5CF6' stroke-width='3'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/sales.css" />
+</head>
+<body class="t-odoo">
+  <header class="nt-head">
+    <div class="wrap nt-head__in">
+      <a class="nt-brand" href="../index.html"><span class="nt-brand__dot">TN</span> TechNext <small>· Odoo 19</small></a>
+      <span class="nt-tag">Sales prep · internal</span>
+      <nav class="nt-head__nav">
+        <a href="pitch.html">Pitch</a>
+        <a href="prep.html" class="is-active">Prep</a>
+        <a href="presentation.html">Present</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap section">
+    <div class="sec-head">
+      <p class="eyebrow">Rep playbook</p>
+      <h2>Before you walk into the Odoo conversation</h2>
+      <p class="lead">Everything to qualify the prospect, run discovery, handle pushback and price with confidence. Internal use — don't send this one.</p>
+    </div>
+
+    <div class="prep">
+      <nav class="prep__nav" id="prepnav">
+        <span class="grp">Know</span>
+        <a href="#icp">Ideal client</a>
+        <a href="#qualify">Qualify / disqualify</a>
+        <span class="grp">Run</span>
+        <a href="#discovery">Discovery questions</a>
+        <a href="#objections">Objection handling</a>
+        <a href="#compete">Competitive landscape</a>
+        <span class="grp">Close</span>
+        <a href="#pricing">Pricing &amp; packages</a>
+        <a href="#plan">Call plan</a>
+      </nav>
+
+      <div>
+        <section class="doc-sec" id="icp">
+          <span class="eyebrow">Know</span>
+          <h2>Ideal client profile</h2>
+          <p class="muted">We're a strong fit when most of these are true. The closer the match, the shorter the sales cycle.</p>
+          <ul class="checks" style="margin-top:16px;">
+            <li><span><b>Segment —</b> Malaysian F&amp;B / commercial-kitchen business: fabrication, equipment sales &amp; rental, maintenance, and/or cleaning chemicals.</span></li>
+            <li><span><b>Size —</b> roughly 10–100 staff, multi-line operations, growth-stage and feeling the seams.</span></li>
+            <li><span><b>Symptoms —</b> quotes in chat, stock in spreadsheets, paper job-sheets, accounts re-keyed, no single source of truth.</span></li>
+            <li><span><b>Trigger —</b> MyInvois / SST pressure, a botched audit, a missed rental return, or an owner who "can't see the numbers."</span></li>
+            <li><span><b>Authority —</b> owner-operator or GM involved; they feel the pain personally.</span></li>
+          </ul>
+        </section>
+
+        <section class="doc-sec" id="qualify">
+          <span class="eyebrow">Know</span>
+          <h2>Qualify &amp; disqualify fast</h2>
+          <div class="grid cols-2">
+            <div class="card"><h3>Lean in 🟢</h3><ul class="checks" style="margin-top:12px;"><li><span>Multiple disconnected tools today</span></li><li><span>Owner wants real-time margin / cash visibility</span></li><li><span>Compliance deadline creating urgency</span></li><li><span>Budget conversation isn't taboo</span></li></ul></div>
+            <div class="card"><h3>Walk away 🔴</h3><ul class="checks" style="margin-top:12px;"><li><span>Shopping purely on lowest licence price</span></li><li><span>No internal owner for the project</span></li><li><span>Wants a custom build, not a configured platform</span></li><li><span>"Just send a proposal" with no discovery</span></li></ul></div>
+          </div>
+        </section>
+
+        <section class="doc-sec" id="discovery">
+          <span class="eyebrow">Run</span>
+          <h2>Discovery questions</h2>
+          <p class="muted">Open with process, not product. Let them describe the pain in their words.</p>
+          <div class="qa" style="margin-top:16px;">
+            <details open><summary>Current state</summary><div class="a">Walk me through a quote from enquiry to invoice — which tools, who touches it, how long? Where does a number get typed twice?</div></details>
+            <details><summary>The cost of the gap</summary><div class="a">When did you last lose a job to slow quoting, or eat margin you didn't see coming? How do you know which rentals are out right now?</div></details>
+            <details><summary>Compliance</summary><div class="a">How are you handling SST and MyInvois today? What happens at audit time?</div></details>
+            <details><summary>Decision &amp; timing</summary><div class="a">Who else weighs in on a system like this? What would make this a "this year" project versus "someday"?</div></details>
+          </div>
+        </section>
+
+        <section class="doc-sec" id="objections">
+          <span class="eyebrow">Run</span>
+          <h2>Objection handling</h2>
+          <div class="table-wrap">
+            <table class="nt-table">
+              <thead><tr><th>They say</th><th>You say</th></tr></thead>
+              <tbody>
+                <tr><td>"Odoo looks expensive."</td><td>Price the <b>status quo</b>: hours re-keying, lost jobs, audit risk. We deliver in phases so value lands before the full spend — and the licence is the small part.</td></tr>
+                <tr><td>"We'll just keep using Excel."</td><td>Excel scales until it doesn't. The day a rental goes missing or an audit lands, the spreadsheet costs more than the system. We <b>migrate</b> your sheets, not bin them.</td></tr>
+                <tr><td>"Implementations always overrun."</td><td>That's why we start with <b>fixed-scope discovery</b> and a phased go-live with rollback — not a big-bang. You see a runnable demo before cutover.</td></tr>
+                <tr><td>"My staff won't adopt it."</td><td>Role-based training, staff guides and weeks of hypercare. We configure to <b>their</b> workflow, so it's less typing than today, not more.</td></tr>
+                <tr><td>"Can't we just buy Odoo and DIY?"</td><td>You can — and most stall on MyInvois, costing and migration. We get you to value faster and stay for hypercare.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-sec" id="compete">
+          <span class="eyebrow">Run</span>
+          <h2>Competitive landscape</h2>
+          <div class="table-wrap">
+            <table class="nt-table">
+              <thead><tr><th>Alternative</th><th>Where it falls short</th><th>Our line</th></tr></thead>
+              <tbody>
+                <tr><td>Status quo (Excel + chat)</td><td>No single source of truth; breaks with scale &amp; audit</td><td>"One system, real-time, audit-ready."</td></tr>
+                <tr><td>Local accounting suites (AutoCount, SQL)</td><td>Finance-only; no fabrication, rental or field service</td><td>"Great ledgers, blind operations — Odoo runs the whole business."</td></tr>
+                <tr><td>Tier-1 ERP (SAP, MS Dynamics)</td><td>Cost &amp; complexity overkill for an SME</td><td>"Enterprise capability without the enterprise bill or timeline."</td></tr>
+                <tr><td>DIY Odoo / freelancer</td><td>Stalls on localization, costing, migration, support</td><td>"We finish what a freelancer starts — and stay for hypercare."</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-sec" id="pricing">
+          <span class="eyebrow">Close</span>
+          <h2>Pricing &amp; packages</h2>
+          <p class="muted">Indicative planning figures for an SME engagement — always confirm against scope. Lead with phases, not licence count.</p>
+          <div class="grid cols-3" style="margin-top:16px;">
+            <div class="card"><h3>Discovery</h3><p>Fixed-scope workshop → requirements blueprint (BRD) + fixed implementation quote. Credited back on go-ahead.</p><span class="tag">1–2 weeks</span></div>
+            <div class="card"><h3>Core implementation</h3><p>Configure, migrate, localize (SST/MyInvois), train, go-live. Phased by module priority.</p><span class="tag">phased</span></div>
+            <div class="card"><h3>Hypercare retainer</h3><p>Post go-live support, optimisation and the next-module roadmap. Monthly.</p><span class="tag">ongoing</span></div>
+          </div>
+          <p class="muted" style="margin-top:14px;">Anchor on the <a href="../../dossier/site/tools/roi-tco.html" style="color:var(--accent-2);">ROI / TCO model</a> in the dossier — show payback, not sticker price.</p>
+        </section>
+
+        <section class="doc-sec" id="plan">
+          <span class="eyebrow">Close</span>
+          <h2>The call plan</h2>
+          <ul class="checks">
+            <li><span><b>Before —</b> review their website &amp; product lines; pick one workflow to map live; open the dossier tabs you'll show.</span></li>
+            <li><span><b>Open —</b> 2-min framing, then discovery questions. Listen 70%.</span></li>
+            <li><span><b>Show —</b> mirror their worst workflow in Odoo; pull up the ROI/TCO and roadmap from the dossier.</span></li>
+            <li><span><b>Close —</b> propose the fixed-scope discovery as the next concrete step; agree a date before you leave.</span></li>
+            <li><span><b>After —</b> recap email same day with the discovery scope and a link to the presentation.</span></li>
+          </ul>
+          <div class="btn-row" style="margin-top:22px;"><a class="btn btn--accent" href="presentation.html">Open the presentation</a><a class="btn btn--ghost" href="pitch.html">Re-read the pitch</a></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="nt-foot">
+    <div class="wrap nt-foot__in">
+      <span>TechNext · internal sales enablement · technext.asia</span>
+      <span><a href="../index.html">← All sales materials</a></span>
+    </div>
+  </footer>
+
+  <script>
+    /* scroll-spy for the section nav */
+    (function(){
+      var links = Array.prototype.slice.call(document.querySelectorAll('.prep__nav a'));
+      var map = {}; links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+      var secs = Array.prototype.slice.call(document.querySelectorAll('.doc-sec'));
+      var obs = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(l){l.classList.remove('is-active');}); if(map[e.target.id]) map[e.target.id].classList.add('is-active'); }});
+      }, { rootMargin: "-20% 0px -70% 0px" });
+      secs.forEach(function(s){ obs.observe(s); });
+    })();
+  </script>
+</body>
+</html>

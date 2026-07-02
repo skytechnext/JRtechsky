@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Driver Incentive Scheme — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>window.SITE_ROOT="../";</script>
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  .di-bands{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:16px 0;}
+  .di-band{border:1px solid var(--jr-line);border-top:4px solid var(--jr-slate);border-radius:12px;padding:18px;background:#fff;}
+  .di-band.fail{border-top-color:#C13B33;} .di-band.dev{border-top-color:#B5781A;}
+  .di-band.good{border-top-color:var(--jr-blue);} .di-band.exc{border-top-color:#0E8E6E;}
+  .di-band h4{font-size:14px;margin:0 0 2px;font-weight:800;} .di-band .rng{font-size:22px;font-weight:800;color:var(--jr-navy);margin:6px 0;}
+  .di-band .rule{font-size:13px;font-weight:600;color:var(--jr-slate);} .di-band .eg{font-size:12px;color:var(--jr-slate);margin-top:8px;}
+  .di-w{margin:6px 0;} .di-w .row{display:flex;align-items:center;gap:12px;margin:7px 0;}
+  .di-w .lab{min-width:200px;font-size:13px;font-weight:600;} .di-w .track{flex:1;height:24px;background:var(--jr-mist);border-radius:999px;overflow:hidden;}
+  .di-w .fill{height:100%;border-radius:999px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-size:11.5px;font-weight:800;}
+  .di-w .pct{min-width:42px;text-align:right;font-weight:800;font-size:13px;color:var(--jr-navy);}
+  .di-code{background:#0D1117;color:#7EE787;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.75;
+    padding:16px 18px;border-radius:10px;white-space:pre-wrap;overflow-x:auto;border-left:4px solid #7EE787;margin:12px 0;}
+  .di-code .c{color:#8B949E;} .di-code .k{color:#FF7B72;} .di-code .n{color:#79C0FF;} .di-code .f{color:#FFA657;} .di-code .s{color:#A5D6FF;}
+  .di-gate{border:1px solid var(--jr-line);border-left:4px solid #C13B33;border-radius:10px;padding:14px 16px;background:#FDF2F1;margin:10px 0;font-size:13.5px;}
+  .di-flow{list-style:none;padding:0;margin:16px 0;display:grid;gap:8px;counter-reset:g;}
+  .di-flow li{background:#fff;border:1px solid var(--jr-line);border-radius:10px;padding:12px 14px 12px 46px;font-size:13.5px;position:relative;}
+  .di-flow li::before{counter-increment:g;content:counter(g);position:absolute;left:12px;top:11px;width:24px;height:24px;border-radius:6px;
+    background:var(--jr-navy);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .di-flow li b{color:var(--jr-navy);}
+  .di-cfg td:first-child{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--jr-blue-700);white-space:nowrap;}
+  .pillrow .tag{margin:2px 4px 2px 0;}
+</style>
+</head>
+<body data-page="driver-incentive">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Driver Incentive Scheme</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Tools &amp; Documents · Compensation design</span>
+      <h1>Driver Incentive Scheme — a fair, gameable-proof<br>model that configures cleanly in Odoo.</h1>
+      <p>Built from the owner's v3 handover spec and refined with compensation-design judgment. It keeps
+      what works — per-driver pail-credit pools, a weighted KPI scorecard, monthly payout into payroll —
+      and fixes the parts that quietly kill motivation: an unreachable "exactly 100%" top tier, a hard
+      RM0 cliff, no safety dimension, and illness that zeroes a whole month. Every threshold, weight and
+      gate is a Settings value in Odoo, so management tunes the scheme without a developer.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <!-- SNAPSHOT -->
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">6</div><div class="lbl">drivers · 3 lorries, scored individually</div></div>
+          <div class="kpi"><div class="num">RM1</div><div class="lbl">per pail delivered — the pool, split ÷2 with a partner</div></div>
+          <div class="kpi"><div class="num">5</div><div class="lbl">KPI components across 2 balanced halves</div></div>
+          <div class="kpi"><div class="num">100%</div><div class="lbl">of thresholds live in Odoo Settings — no code to retune</div></div>
+        </div>
+        <div class="callout tn"><b>Design intent.</b> Pay for <b>output</b> (pails moved), gate on
+        <b>quality &amp; conduct</b> (deliveries completed, DO signed, driving safe, showing up), keep the
+        <b>top tier reachable</b>, protect <b>genuine illness</b>, and make every rule a knob — not a
+        hard-coded constant. Volume sets the size of the reward; the KPI decides how much of it is earned.</div>
+      </section>
+
+      <!-- WHAT CHANGED -->
+      <section class="section" id="refinements">
+        <span class="eyebrow">Expert refinements</span>
+        <h2 style="margin:2px 0 4px;">What we kept, and what we improved</h2>
+        <p class="lead">The architecture is the owner's. These five changes are where a compensation lens
+        earns its keep — each is optional and reversible via Settings, so you can run the exact v3 rules
+        if you prefer.</p>
+        <table class="tbl">
+          <tr><th>Owner's v3 rule</th><th>Why it hurts motivation</th><th>Refined v4</th></tr>
+          <tr><td><b>EXCELLENT needs KPI = exactly 100%</b></td>
+            <td>Practically unreachable (needs perfect attendance <em>and</em> 100% job completion <em>and</em> both gates). An unwinnable top prize is ignored.</td>
+            <td>EXCELLENT at <b>KPI ≥ 95%</b> + gates. A real, earnable tier. Optional <b>stretch bonus</b> for a genuine clean 100% month. <span class="tag warn">configurable</span></td></tr>
+          <tr><td><b>Hard cliff: KPI &lt; 80% → RM0</b></td>
+            <td>A driver at 79% who moved hundreds of pails gets nothing → "give-up zone" and turnover risk. One rough month erases all effort.</td>
+            <td>Keep the <b>80% full-scheme bar</b>, but add an optional <b>Developing band (60–79% → half-rate)</b> so effort still pays while under-performance is still penalised. <span class="tag warn">configurable · off = strict v3</span></td></tr>
+          <tr><td><b>No safety or conduct measure</b></td>
+            <td>A driver incentive that ignores accidents, summonses, damage and complaints rewards speed over safety — the most expensive risk in the business.</td>
+            <td>New <b>Safety &amp; Conduct</b> component (10%) plus a <b>serious-incident gate</b>. <span class="tag green">new</span></td></tr>
+          <tr><td><b>MC &gt; 2 or EL &gt; 1 → whole incentive RM0</b></td>
+            <td>Genuine, documented illness shouldn't wipe out a month's earned pool — it reads as punishing sickness and invites presenteeism.</td>
+            <td>Gate retained by default, but a <b>"reduce, don't zero"</b> option pro-rates for approved MC while still capping abuse. <span class="tag warn">configurable</span></td></tr>
+          <tr><td><b>Attendance = 40% weight</b></td>
+            <td>Showing up is table-stakes; at 40% it can outweigh actually completing deliveries.</td>
+            <td>Rebalanced to <b>35%</b>; the freed weight funds Safety. Delivery vs reliability stays a clean <b>50 / 50</b>. <span class="tag warn">configurable</span></td></tr>
+        </table>
+      </section>
+
+      <!-- SCORECARD -->
+      <section class="section" id="scorecard">
+        <span class="eyebrow">The scorecard</span>
+        <h2 style="margin:2px 0 4px;">KPI weights — two balanced halves</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Delivery &amp; output — 50%</h3>
+            <div class="di-w">
+              <div class="row"><div class="lab">Job Completion (achieved ÷ arranged)</div>
+                <div class="track"><div class="fill" style="width:90%;background:var(--jr-blue-700)">45%</div></div><div class="pct">45%</div></div>
+              <div class="row"><div class="lab">D.O. Return (chop &amp; sign)</div>
+                <div class="track"><div class="fill" style="width:10%;background:var(--jr-blue)">5%</div></div><div class="pct">5%</div></div>
+            </div>
+            <h3 style="margin-top:16px;">Reliability &amp; conduct — 50%</h3>
+            <div class="di-w">
+              <div class="row"><div class="lab">Attendance &amp; punctuality</div>
+                <div class="track"><div class="fill" style="width:70%;background:var(--jr-navy)">35%</div></div><div class="pct">35%</div></div>
+              <div class="row"><div class="lab">Safety &amp; Conduct <span class="tag green">new</span></div>
+                <div class="track"><div class="fill" style="width:20%;background:#0E8E6E">10%</div></div><div class="pct">10%</div></div>
+              <div class="row"><div class="lab">Daily reporting (photo + pin)</div>
+                <div class="track"><div class="fill" style="width:10%;background:#7030A0">5%</div></div><div class="pct">5%</div></div>
+            </div>
+          </div>
+          <div class="card pad-lg">
+            <h3>Total KPI formula</h3>
+            <div class="di-code"><span class="c"># Each raw score is 0–100; weights are Settings values (must sum to 100)</span>
+total_kpi = (
+    job_pct     * <span class="n">0.45</span>
+  + do_pct      * <span class="n">0.05</span>
+  + att_score   * <span class="n">0.35</span>
+  + safety_pct  * <span class="n">0.10</span>
+  + report_pct  * <span class="n">0.05</span>
+)  <span class="c"># → 0–100</span></div>
+            <div class="callout"><b>To run the owner's exact v3:</b> set weights to Job 50 · Att 40 ·
+            DO 5 · Report 5 · Safety 0, and turn the Safety gate off. One Settings change, no redeploy.</div>
+            <h3 style="margin-top:14px;">Component definitions</h3>
+            <ul style="font-size:13.5px;color:var(--jr-slate);margin:0;padding-left:18px;line-height:1.7;">
+              <li><b>Job Completion</b> = (chem + equip achieved) ÷ (chem + equip <em>arranged</em>). "Arranged" is locked by dispatch, never the driver.</li>
+              <li><b>Attendance</b> = 100 − (late×10) − (unpaid-absent×20), floored at 0. MC/EL don't deduct (see gates).</li>
+              <li><b>Safety &amp; Conduct</b> = 100 − (minor events × penalty); a serious event trips the gate.</li>
+              <li><b>D.O. Return</b> = signed-&amp;-returned ÷ issued. <b>Reporting</b> = messages sent ÷ (delivery-days × 2), capped 100.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAIL POOL -->
+      <section class="section" id="pool">
+        <span class="eyebrow">The reward pool</span>
+        <h2 style="margin:2px 0 4px;">Pail credit — the size of the prize</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <p style="font-size:13.5px;color:var(--jr-slate);margin-top:0;">Unchanged from the owner's design — it's sound. Each driver earns their own pool from their own trips; there is <b>no shared team pool</b>.</p>
+            <table class="tbl">
+              <tr><th>Scenario</th><th>Credit to this driver</th><th>RM</th></tr>
+              <tr><td>Two drivers on the lorry</td><td>pails ÷ 2</td><td>credit × rate</td></tr>
+              <tr><td>Solo (partner absent)</td><td>full pails</td><td>credit × rate</td></tr>
+            </table>
+            <div class="di-code"><span class="c"># per trip</span>
+pail_credit = pails / <span class="n">2</span> <span class="k">if</span> partner_present <span class="k">else</span> pails
+rm_value    = pail_credit * pail_rm_rate   <span class="c"># rate = Settings (default RM1)</span>
+<span class="c"># monthly pool</span>
+monthly_pool = SUM(rm_value) <span class="k">where</span> driver = self <span class="k">and</span> month = period</div>
+          </div>
+          <div class="card pad-lg">
+            <h3>Two optional upgrades</h3>
+            <ul style="font-size:13.5px;color:var(--jr-slate);line-height:1.7;padding-left:18px;">
+              <li><b>Per-product rate</b> — a heavier or hazardous chemical can carry a higher RM/pail than a light one, via a rate on the product. Defaults to the flat RM1 for everyone.</li>
+              <li><b>Distance / zone factor</b> — an optional multiplier for long-haul rural drops so remote routes aren't penalised for lower pail counts. Off by default.</li>
+            </ul>
+            <div class="callout warn"><b>Anti-gaming guardrails.</b> "Arranged" is set by dispatch and locked;
+            the supervisor must tick <b>Verified</b> on each trip before its credit counts; and a monthly
+            <b>reasonableness cap</b> flags any pool &gt; a configurable ceiling for review.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAYOUT TIERS -->
+      <section class="section" id="payout">
+        <span class="eyebrow">Payout</span>
+        <h2 style="margin:2px 0 4px;">Four tiers, no cliff</h2>
+        <div class="di-bands">
+          <div class="di-band fail"><h4>❌ NOT QUALIFIED</h4><div class="rng">&lt; 60%</div><div class="rule">Payout = RM0</div><div class="eg">Or any hard gate failed (leave / serious safety / unverified).</div></div>
+          <div class="di-band dev"><h4>🟠 DEVELOPING <span class="tag warn">optional</span></h4><div class="rng">60–79%</div><div class="rule">Pool × KPI% × 0.5</div><div class="eg">Off by default (= strict v3, where &lt;80% is RM0). On = effort still pays, at half rate.</div></div>
+          <div class="di-band good"><h4>🟡 QUALIFIED</h4><div class="rng">80–94%</div><div class="rule">Pool × KPI%</div><div class="eg">e.g. 88% KPI on an RM200 pool → RM176.</div></div>
+          <div class="di-band exc"><h4>🟢 EXCELLENT</h4><div class="rng">≥ 95%</div><div class="rule">Full pool (100%)</div><div class="eg">Needs DO ≥ 90%, Reporting ≥ 80%, no safety incident. Optional stretch bonus at a clean 100%.</div></div>
+        </div>
+
+        <h3 style="margin-top:18px;">Decision order (implement exactly like this)</h3>
+        <ol class="di-flow">
+          <li><b>Verify &amp; gate — leave.</b> If MC &gt; limit or EL &gt; limit → default RM0 <em>(or pro-rate if "reduce, don't zero" is on)</em>.</li>
+          <li><b>Gate — safety.</b> A serious incident this month (at-fault accident, major summons, verified serious complaint) → RM0, routed to management review.</li>
+          <li><b>Compute KPI</b> from the five weighted components.</li>
+          <li><b>Below qualifying floor?</b> KPI &lt; 60% → RM0. Between the floor and 80% → Developing band (if enabled), else RM0.</li>
+          <li><b>Qualified?</b> 80–94% → Pool × KPI%.</li>
+          <li><b>Excellent?</b> KPI ≥ 95% AND DO ≥ 90% AND Reporting ≥ 80% AND no incident → full pool (+ optional stretch).</li>
+        </ol>
+
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Payout function (Odoo computed field)</h3>
+            <div class="di-code"><span class="k">def</span> <span class="f">_compute_payout</span>(self):
+  p = self.monthly_pool
+  <span class="c"># 1 · leave gate</span>
+  <span class="k">if</span> self.mc_days &gt; self.cfg_mc_limit <span class="k">or</span> self.el_days &gt; self.cfg_el_limit:
+      self.payout = p * self.leave_prorata <span class="k">if</span> self.cfg_leave_reduce <span class="k">else</span> <span class="n">0</span>; <span class="k">return</span>
+  <span class="c"># 2 · safety gate</span>
+  <span class="k">if</span> self.serious_incident:
+      self.payout = <span class="n">0</span>; <span class="k">return</span>
+  k = self.total_kpi   <span class="c"># 0–100</span>
+  <span class="c"># 3 · floors &amp; bands</span>
+  <span class="k">if</span> k &lt; self.cfg_dev_floor:                      self.payout = <span class="n">0</span>
+  <span class="k">elif</span> k &lt; self.cfg_qualify:
+      self.payout = p * (k/<span class="n">100</span>) * self.cfg_dev_rate <span class="k">if</span> self.cfg_dev_on <span class="k">else</span> <span class="n">0</span>
+  <span class="k">elif</span> k &lt; self.cfg_excellent:                    self.payout = p * (k/<span class="n">100</span>)
+  <span class="k">elif</span> self.do_pct &gt;= self.cfg_do_gate <span class="k">and</span> self.report_pct &gt;= self.cfg_report_gate:
+      bonus = self.cfg_stretch <span class="k">if</span> k &gt;= <span class="n">100</span> <span class="k">else</span> <span class="n">0</span>
+      self.payout = p * (<span class="n">1</span> + bonus)               <span class="c"># EXCELLENT (+ stretch)</span>
+  <span class="k">else</span>:                                            self.payout = p * (k/<span class="n">100</span>)</div>
+          </div>
+          <div class="card pad-lg">
+            <h3>Worked examples</h3>
+            <p style="font-size:13px;color:var(--jr-slate);margin:0 0 6px;"><b>Driver F — Jan 2026</b> (owner's real data): Att 90, Job 65, Safety 100, DO 90.9, Reporting 73.3; pool RM50.</p>
+            <table class="tbl">
+              <tr><th>Model</th><th>KPI</th><th>Payout</th></tr>
+              <tr><td>Owner v3 (needs ≥80%)</td><td>76.7%</td><td><span class="tag red">RM0</span></td></tr>
+              <tr><td>v4 strict (Developing off)</td><td>79.0%</td><td><span class="tag red">RM0</span></td></tr>
+              <tr><td>v4 + Developing band</td><td>79.0%</td><td><span class="tag warn">RM19.75</span></td></tr>
+            </table>
+            <p style="font-size:12px;color:var(--jr-slate);margin:8px 0 0;">Same signal either way — Job Completion at 65% is dragging the score, so the driver knows exactly what to fix. The band just means effort isn't wasted while they get there.</p>
+            <hr style="border:none;border-top:1px solid var(--jr-line);margin:14px 0;">
+            <p style="font-size:13px;color:var(--jr-slate);margin:0 0 6px;"><b>Driver A — strong month:</b> Att 100, Job 98, Safety 100, DO 95, Reporting 90; pool RM120.</p>
+            <table class="tbl">
+              <tr><th>Model</th><th>KPI</th><th>Payout</th></tr>
+              <tr><td>Owner v3 (needs =100%)</td><td>98.4%</td><td><span class="tag warn">RM118 (GOOD)</span></td></tr>
+              <tr><td>v4 (Excellent ≥95%)</td><td>98.4%</td><td><span class="tag green">RM120 (full)</span></td></tr>
+            </table>
+            <p style="font-size:12px;color:var(--jr-slate);margin:8px 0 0;">v4 actually rewards the excellent month; v3's "exactly 100%" quietly withheld the top tier from a near-perfect driver.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ODOO BLUEPRINT -->
+      <section class="section" id="odoo">
+        <span class="eyebrow">Odoo blueprint</span>
+        <h2 style="margin:2px 0 4px;">Configure it in Odoo — standard modules first, thin custom on top</h2>
+        <p class="lead">Reuse what Odoo already does well (employees, attendance, time off, deliveries, fleet,
+        payroll) and add one small module for the incentive maths. Nothing operational is hard-coded — the
+        numbers all live on a Settings page.</p>
+
+        <div class="grid g4">
+          <div class="kpi"><div class="num">hr</div><div class="lbl">Employees, Attendance, Time Off — drivers, lates, MC/EL</div></div>
+          <div class="kpi"><div class="num">stock</div><div class="lbl">Delivery Orders = pickings; DO signed-return flag</div></div>
+          <div class="kpi"><div class="num">fleet</div><div class="lbl">Lorries as fleet.vehicle; safety events per vehicle/driver</div></div>
+          <div class="kpi"><div class="num">payroll</div><div class="lbl">Payout as a payslip "Other Input" line</div></div>
+        </div>
+
+        <h3 style="margin-top:12px;">Custom module <code>jrtech_driver_incentive</code></h3>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h4 class="sub" style="margin-top:0;">Models</h4>
+            <ul style="font-size:13px;color:var(--jr-slate);line-height:1.7;padding-left:18px;">
+              <li><code>jrtech.trip.log</code> — one row per delivery trip: date, <code>vehicle_id</code> (fleet), <code>driver_1_id</code>/<code>driver_2_id</code> (hr.employee), <code>customer_id</code>, <code>pails</code>, <code>verified</code>; computes pail credit &amp; RM per driver.</li>
+              <li><code>jrtech.safety.event</code> — date, driver, <code>severity</code> (minor / serious), type (accident / summons / damage / complaint), notes. Feeds the Safety score &amp; gate.</li>
+              <li><code>jrtech.driver.kpi.monthly</code> — the core object: one per driver per month, all computed scores, rating &amp; <code>payout</code>. Auto-created by cron on the 1st.</li>
+            </ul>
+            <h4 class="sub">Standard-Odoo mappings</h4>
+            <ul style="font-size:13px;color:var(--jr-slate);line-height:1.7;padding-left:18px;">
+              <li>DOs → <code>stock.picking</code> + boolean <code>x_do_signed_returned</code>; monthly counts via read_group.</li>
+              <li>Lates → <code>hr.attendance</code> check-in vs shift start; MC/EL → two <code>hr.leave.type</code>s, counted from <code>hr.leave</code>.</li>
+              <li>Payout → salary rule reading the KPI record's <code>payout</code> as an Other Input on the payslip.</li>
+            </ul>
+          </div>
+          <div class="card pad-lg">
+            <h4 class="sub" style="margin-top:0;">Everything configurable — <code>res.config.settings</code></h4>
+            <table class="tbl di-cfg">
+              <tr><th>Setting</th><th>Default</th></tr>
+              <tr><td>pail_rm_rate</td><td>RM 1.00</td></tr>
+              <tr><td>weight_job / att / safety / do / report</td><td>45 / 35 / 10 / 5 / 5</td></tr>
+              <tr><td>qualify_threshold</td><td>80</td></tr>
+              <tr><td>excellent_threshold</td><td>95</td></tr>
+              <tr><td>developing_band_enable</td><td>false</td></tr>
+              <tr><td>developing_floor / rate</td><td>60 / 0.5</td></tr>
+              <tr><td>do_return_gate / report_gate</td><td>90 / 80</td></tr>
+              <tr><td>mc_limit / el_limit</td><td>2 / 1</td></tr>
+              <tr><td>leave_over_limit</td><td>zero | reduce</td></tr>
+              <tr><td>late_pts / absent_pts</td><td>10 / 20</td></tr>
+              <tr><td>stretch_bonus_pct</td><td>0</td></tr>
+            </table>
+            <div class="callout tn" style="margin-top:12px;"><b>Config-first.</b> A manager changes the RM rate,
+            reweights the scorecard, or turns the Developing band on — all from <b>Settings → JR-Tech
+            Incentive</b>. No developer, no downtime.</div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:14px;">Build order</h3>
+        <ol class="steps">
+          <li><b>Master data</b> — drivers in Employees, lorries in Fleet, custom MC/EL leave types, shift start time.</li>
+          <li><b>Trip &amp; safety capture</b> — Trip Log (WhatsApp webhook <code>/api/jrtech/trip</code> interim → later the app) and Safety Event models + supervisor "Verified" step.</li>
+          <li><b>Settings page</b> — expose every parameter above; seed the defaults.</li>
+          <li><b>Monthly KPI object</b> — computed scores, gates, rating and payout; cron auto-creates records on the 1st.</li>
+          <li><b>Payroll link</b> — salary rule maps <code>payout</code> to a payslip Other Input.</li>
+          <li><b>Views &amp; access</b> — supervisor entry, manager pivot (6 drivers × 12 months), and a read-only <b>driver self-service</b> view so each driver sees their own KPI and payout — transparency drives the behaviour.</li>
+        </ol>
+        <div class="callout warn"><b>Rollout.</b> Run one month in <b>parallel</b> with the current Excel to
+        validate the numbers against the worked examples, brief the drivers on the rules and the
+        self-service view, then switch over and review the thresholds after three months.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="roi-tco.html">← ROI / TCO Model</a>
+        <a href="ai-build-playbook.html">AI Build Playbook →</a>
+      </div>
+
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

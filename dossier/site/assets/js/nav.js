@@ -36,9 +36,9 @@
       { t: "Pain → Solution Matrix", href: "pages/operations/pain-solution.html", slug: "pain-solution" },
       { t: "BPMN · Blueprint · UML", href: "pages/operations/bpmn-uml.html", slug: "bpmn-uml" },
       { t: "Value Chain & Capability Map", href: "pages/operations/value-chain.html", slug: "value-chain" },
-      { t: "Driver Incentive Scheme", href: "pages/operations/driver-incentive.html", slug: "driver-incentive", e: "🚛" },
     ]},
     { group: "Technology", items: [
+      { t: "Current Systems (SQL Account)", href: "pages/technology/current-systems.html", slug: "current-systems" },
       { t: "AI & Automation Catalog", href: "pages/technology/ai-catalog.html", slug: "ai-catalog" },
       { t: "AI in Action — Peer Story", href: "pages/technology/ai-peer-story.html", slug: "ai-peer-story" },
       { t: "Odoo 19 Architecture", href: "pages/technology/odoo-architecture.html", slug: "odoo-architecture" },
@@ -83,6 +83,14 @@
       { t: "Discovery Questions", href: "tools/discovery-questions.html", slug: "discovery-questions", e: "📋" },
       { t: "ROI / TCO Model", href: "tools/roi-tco.html", slug: "roi-tco", e: "🧮" },
       { t: "Project Gantt", href: "tools/gantt.html", slug: "gantt", e: "🗓" },
+      { t: "Driver Incentive Scheme", href: "tools/driver-incentive.html", slug: "driver-incentive", e: "🚛" },
+    ]},
+    { group: "JR-Tech Properties", items: [
+      { t: "Kitchen Estimator", href: "../../estimator/index.html", slug: "ext-estimator", e: "🍳", x: true },
+      { t: "Marketing Website", href: "../../marketing/index.html", slug: "ext-marketing", e: "📣", x: true },
+      { t: "Current Website", href: "../../website/index.html", slug: "ext-website", e: "🌐", x: true },
+      { t: "Sales Kit", href: "../../sales/index.html", slug: "ext-sales", e: "🎤", x: true },
+      { t: "Portal — all properties", href: "../../index.html", slug: "ext-portal", e: "🧭", x: true },
     ]},
   ];
 
@@ -97,7 +105,8 @@
       var href = ROOT + it.href;
       var cls = "sb-link" + (it.slug === active ? " active" : "");
       var emoji = it.e ? '<span class="emoji">' + it.e + "</span>" : "";
-      html += '<a class="' + cls + '" href="' + href + '" data-label="' + it.t.toLowerCase()
+      var ext = it.x ? ' target="_blank" rel="noopener"' : "";
+      html += '<a class="' + cls + '" href="' + href + '"' + ext + ' data-label="' + it.t.toLowerCase()
         + '">' + emoji + it.t + "</a>";
     });
     html += "</div>";

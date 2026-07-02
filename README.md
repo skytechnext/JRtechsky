@@ -1,29 +1,57 @@
-# JR-Tech × TechNext — Odoo 19 ERP Engagement Dossier
+# JR-Tech Solution — Consolidated Digital Portfolio
 
-A comprehensive due-diligence, strategy and **Odoo 19 ERP implementation** dossier for
-**JR-Tech Solution Sdn Bhd** (SSM 200901013633), prepared by **TechNext**. Plus a ready-to-run
-Odoo 19 demo-data blueprint a future AI agent can load via MCP / XML-RPC.
+Everything built for **JR-Tech Solution Sdn Bhd** (SSM 200901013633) — Malaysia's
+one-stop commercial kitchen partner in Gelugor, Penang — gathered into a single,
+zero-build static site. A portal at the root routes to four properties, and the whole
+repository deploys together to GitHub Pages.
 
-## ▶ 1-click website preview (no setup)
+## 🔗 Preview (one click)
 
-Live preview of the current branch via raw.githack.com (reflects the latest push):
+- **Instant preview — works now, no setup:**
+  **https://raw.githack.com/skytechnext/JRtechsky/claude/pensive-einstein-dlerlg/index.html**
+- **Permanent home (GitHub Pages):** https://skytechnext.github.io/JRtechsky/
+  — enable once at **Settings → Pages → Deploy from a branch → `claude/pensive-einstein-dlerlg` → `/ (root)`**,
+  or set **Source: GitHub Actions** to use [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+- **Locally:** open `index.html` — no build step.
 
-**👉 https://raw.githack.com/skytechnext/JRtechsky/claude/wizardly-mayer-ocjx0y/dossier/site/index.html**
+## What's inside
 
-> Tip: githack serves the whole branch tree with correct content-types, so all sidebar links,
-> CSS, charts and Mermaid diagrams work. It updates a few minutes after each push.
+| # | Property | Folder | What it is |
+|---|----------|--------|------------|
+| 01 | **Marketing Website** | [`marketing/`](marketing/) | Bespoke, conversion-focused site (home, services, projects, contact) with full SEO + a marketing plan. *(from the `gallant-noether` build)* |
+| 02 | **Kitchen Estimator** | [`estimator/`](estimator/) | Live kitchen-economics tool — KPIs, consumables, equipment life plan, depreciation, and dual profit estimators (F&B operator + JR Tech). |
+| 03 | **Odoo 19 ERP Dossier** | [`dossier/`](dossier/) | Due-diligence, strategy & Odoo 19 implementation dossier (50+ pages, interactive tools) + a `odoo/` demo-data build kit. *(from the `wizardly-mayer` build)* |
+| 04 | **Current Website (archive)** | [`website/`](website/) | WordPress-free static capture of the live `jrtech.com.my` — full product catalog, projects, about, contact. *(from the `lucid-mendel` build)* |
 
-### Optional: permanent GitHub Pages URL
-Settings → Pages → Build from branch → `claude/wizardly-mayer-ocjx0y` → `/ (root)` → Save.
-The root `index.html` redirects to `dossier/site/index.html`. Your URL will be
-`https://skytechnext.github.io/JRtechsky/dossier/site/index.html`.
+The portal page is [`index.html`](index.html) at the root.
 
-## Structure
-- `dossier/site/` — the static dossier (no build step): `index.html`, `assets/` (design system + shared
-  sidebar `nav.js`), `pages/<group>/` (43 section pages), `tools/` (12 interactive tools & docs).
-- `odoo/` — Odoo 19 build kit: `plan/` (implementation plan), `seed/` (30+ CSV/JSON demo-data
-  files + `SCHEMA.md`), `playbook/load-order.md` (MCP/XML-RPC load sequence).
+## How the branches were combined
 
-## View locally
-Open `dossier/site/index.html` in a browser, or `cd dossier/site && python3 -m http.server` then visit
-`http://localhost:8000`.
+Five Claude working branches each produced a separate deliverable for the same client.
+This branch consolidates them so they serve as **one site under one URL**:
+
+- The four built deliverables were moved into their own top-level folders (above), each
+  self-contained with relative paths, so links and assets keep working in place.
+- A new **portal** (`index.html`) introduces JR-Tech and links to all four.
+- `lucid-mendel` is used as the canonical site archive (the most complete mirror, 225
+  catalog pages); `peaceful-goodall` was an earlier, partial mirror whose *portal idea* is
+  carried forward and upgraded here, so nothing of value is lost.
+- A single [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) publishes the
+  whole repo; `.nojekyll` keeps every path (including `_research/`) served verbatim.
+
+## Layout
+
+```
+index.html              ← portal / front door
+.nojekyll               ← serve every path as-is on Pages
+.github/workflows/      ← deploy whole repo to Pages
+estimator/              ← 02 · kitchen estimator (index.html, styles.css, app.js)
+marketing/              ← 01 · bespoke marketing site + MARKETING-PLAN.md
+dossier/                ← 03 · Odoo 19 dossier (site/) + demo-data kit (odoo/)
+website/                ← 04 · static archive of jrtech.com.my
+```
+
+---
+
+*Static, zero-build. Assembled by JR Tech / TechNext (technext.asia). Estimates and
+projections are illustrative, not financial advice.*
