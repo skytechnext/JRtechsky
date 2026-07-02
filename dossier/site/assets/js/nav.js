@@ -42,6 +42,7 @@
       { t: "AI & Automation Catalog", href: "pages/technology/ai-catalog.html", slug: "ai-catalog" },
       { t: "AI in Action — Peer Story", href: "pages/technology/ai-peer-story.html", slug: "ai-peer-story" },
       { t: "Odoo 19 Architecture", href: "pages/technology/odoo-architecture.html", slug: "odoo-architecture" },
+      { t: "The Pitch — Owner to Owner", href: "pages/technology/why-odoo.html", slug: "why-odoo", e: "🤝" },
       { t: "Data Migration", href: "pages/technology/data-migration.html", slug: "data-migration" },
       { t: "Integration & API Map", href: "pages/technology/integration-map.html", slug: "integration-map" },
       { t: "Security, Compliance & MyInvois", href: "pages/technology/security-myinvois.html", slug: "security-myinvois" },

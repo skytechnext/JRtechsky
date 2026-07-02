@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pitch — Owner to Owner · JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+<style>
+  /* Page-scoped: an owner-to-owner sales letter. Warm, personal, confident. */
+  .pt{--pt-ink:#151329;--pt-mut:#5b5670;--pt-line:#eae7f0;--pt-accent:#0B1F3A;--pt-teal:#00A09D;
+      font-family:Inter,system-ui,sans-serif;color:var(--pt-ink);background:#fff}
+  .pt .ptwrap{max-width:880px;margin:0 auto;padding:0 26px}
+  .pt section{padding:56px 0;border-bottom:1px solid var(--pt-line)}
+  .pt .secno{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pt-teal);margin-bottom:10px}
+  .pt h2.pth{font-size:30px;font-weight:900;letter-spacing:-.02em;margin:0 0 16px;line-height:1.15}
+  .pt p{font-size:16px;line-height:1.75;color:#2c2841;margin:0 0 16px}
+  .pt p.mut{color:var(--pt-mut)}
+  .pt .lead-line{font-size:18.5px;font-weight:600}
+
+  /* hero — a letter, not a brochure */
+  .pt .pthero{background:linear-gradient(150deg,#0B1F3A 0%,#14304F 55%,#1c4266 100%);color:#fff;
+      padding:72px 0 64px;border:none}
+  .pt .pthero .to{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7FA9DE;font-weight:800;margin-bottom:18px}
+  .pt .pthero h1{font-size:clamp(30px,4.6vw,46px);font-weight:900;letter-spacing:-.03em;line-height:1.12;margin:0 0 18px}
+  .pt .pthero p{color:#C7D6EE;font-size:18px;max-width:640px}
+
+  .pt .credgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0}
+  @media(max-width:760px){.pt .credgrid{grid-template-columns:1fr 1fr}}
+  .pt .cred{background:#F7F8FC;border:1px solid var(--pt-line);border-radius:12px;padding:16px 18px}
+  .pt .cred .n{font-size:26px;font-weight:900;color:var(--pt-accent);line-height:1.1}
+  .pt .cred .l{font-size:12.5px;color:var(--pt-mut);margin-top:5px;line-height:1.45}
+
+  .pt .names{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+  .pt .name{font-size:13px;font-weight:700;background:#EEF3FB;color:#2a4a75;border-radius:999px;padding:7px 15px}
+  .pt .name.local{background:#E9F8F4;color:#0d6e5c}
+
+  .pt .vs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+  @media(max-width:760px){.pt .vs{grid-template-columns:1fr}}
+  .pt .vcol{border-radius:14px;padding:22px}
+  .pt .vcol h3{font-size:15px;font-weight:800;margin:0 0 12px}
+  .pt .vcol ul{list-style:none;margin:0;padding:0}
+  .pt .vcol li{font-size:14px;line-height:1.6;padding:7px 0 7px 26px;position:relative}
+  .pt .vbad{background:#FBF3F2;border:1px solid #EFD5D2}
+  .pt .vbad h3{color:#A23B32}
+  .pt .vbad li::before{content:"✕";position:absolute;left:0;color:#C4564B;font-weight:900}
+  .pt .vgood{background:#F0FAF7;border:1px solid #CBEADF}
+  .pt .vgood h3{color:#0B6B57}
+  .pt .vgood li::before{content:"✓";position:absolute;left:0;color:#0FA07E;font-weight:900}
+
+  .pt blockquote{margin:26px 0;padding:20px 26px;border-left:4px solid var(--pt-teal);background:#F6FBFA;
+      border-radius:0 12px 12px 0;font-size:17.5px;font-weight:600;line-height:1.6;color:#1d3a35}
+  .pt blockquote small{display:block;font-weight:600;font-size:13px;color:var(--pt-mut);margin-top:8px}
+
+  .pt .vid{position:relative;width:100%;padding-top:56.25%;border-radius:14px;overflow:hidden;
+      box-shadow:0 18px 46px -22px rgba(10,20,40,.55);background:#000}
+  .pt .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .pt .vid-cap{font-size:12.5px;color:var(--pt-mut);margin-top:9px;text-align:center}
+  .pt .vid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+  @media(max-width:760px){.pt .vid2{grid-template-columns:1fr}}
+
+  .pt .horiz{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+  @media(max-width:760px){.pt .horiz{grid-template-columns:1fr}}
+  .pt .hz{border:1px solid var(--pt-line);border-radius:14px;padding:20px;background:#fff}
+  .pt .hz .yr{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pt-teal)}
+  .pt .hz h3{font-size:16px;font-weight:800;margin:8px 0 8px}
+  .pt .hz p{font-size:13.5px;color:var(--pt-mut);margin:0;line-height:1.6}
+
+  .pt .cta{background:linear-gradient(150deg,#0B1F3A,#14304F);border-radius:18px;color:#fff;
+      padding:38px 36px;margin-top:8px}
+  .pt .cta h3{font-size:24px;font-weight:900;margin:0 0 10px;letter-spacing:-.01em}
+  .pt .cta p{color:#C7D6EE;font-size:15.5px}
+  .pt .ctabtn{display:inline-block;background:var(--pt-teal);color:#fff;font-weight:800;padding:13px 26px;
+      border-radius:9px;text-decoration:none;font-size:15px;margin:6px 10px 0 0}
+  .pt .ctabtn.alt{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3)}
+</style>
+</head>
+<body data-page="why-odoo">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Technology</b> · The Pitch — Owner to Owner</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <div class="pt">
+
+      <!-- HERO — addressed to the owner -->
+      <section class="pthero">
+        <div class="ptwrap">
+          <div class="to">To: Mr. Tan Gim Boon · JR-Tech Solution Sdn Bhd</div>
+          <h1>You built JR-Tech kitchen by kitchen.<br>Let's build its next 10 years, owner to owner.</h1>
+          <p>This isn't a vendor brochure. It's how I — SKY, a business owner like you — would run
+          JR-Tech's systems if it were my own company: less paperwork for your staff, AI doing the
+          repetitive work, and one platform that grows with you instead of against you.</p>
+        </div>
+      </section>
+
+      <!-- 1 · ABOUT SKY -->
+      <section>
+        <div class="ptwrap">
+          <div class="secno">01 · Who you'd be working with</div>
+          <h2 class="pth">About SKY</h2>
+          <p class="lead-line">MSc Marketing. Business transformation. AI. Software programmer.
+          IoT, embedded devices and live dashboards — I build the systems I recommend.</p>
+          <p>Over the past 5 years, my teams have sent technicians into <b>over 5,000 homes and
+          offices</b>. I've studied <b>thousands of floorplans in great detail</b> — I'm an expert in
+          electrical and WiFi, the physical layer most software people never touch. That matters for
+          JR-Tech: your business is also physical — lorries, workshops, kitchens, chemical pails —
+          and your system has to work on the floor, not just in the boardroom.</p>
+          <div class="credgrid">
+            <div class="cred"><div class="n">5,000+</div><div class="l">homes &amp; offices served by technicians we dispatched</div></div>
+            <div class="cred"><div class="n">1,000s</div><div class="l">of floorplans studied in detail — electrical &amp; WiFi expert</div></div>
+            <div class="cred"><div class="n">5 yrs</div><div class="l">running field-service operations at scale</div></div>
+          </div>
+          <p>I've consulted on projects most consultants only read about:</p>
+          <div class="names">
+            <span class="name">WeWork</span>
+            <span class="name">Singapore Prime Minister's Office</span>
+            <span class="name">Facebook founder's office</span>
+            <span class="name">Alibaba founder's home</span>
+          </div>
+          <p>And right here in Penang, I'm working hands-on with F&amp;B owners you may know:</p>
+          <div class="names">
+            <span class="name local">Auntie Gaik Lean restaurant</span>
+            <span class="name local">SuShan Gelato</span>
+            <span class="name local">Delexcious</span>
+          </div>
+          <p class="mut">Same streets, same customers, same suppliers as JR-Tech. When I talk about
+          Penang F&amp;B, it's from inside the kitchen — not from a slide deck.</p>
+        </div>
+      </section>
+
+      <!-- 2 · TECHNEXT + AI/ODOO -->
+      <section>
+        <div class="ptwrap">
+          <div class="secno">02 · The team &amp; the tools</div>
+          <h2 class="pth">TechNext — AI, automations, and Odoo</h2>
+          <p><b>TechNext</b> is my implementation team: consultants, developers and automation
+          engineers who turn business decisions into working systems. We build on three layers:</p>
+          <p><b>AI</b> reads, drafts and predicts — it reads supplier bills so nobody types them,
+          drafts quotations from a site photo and a floorplan, and forecasts which customer's
+          chemicals run out next week. <b>Automations</b> connect the dots — a WhatsApp message from
+          your driver becomes a delivery record; a signed D.O. becomes an invoice; an invoice becomes
+          a MyInvois e-invoice to LHDN, untouched by human hands. <b>Odoo</b> is the platform
+          underneath — one database where sales, fabrication, rental, service, chemicals, and
+          accounting are the same system, so a quote flows to workshop to lorry to invoice without
+          re-keying.</p>
+          <p class="mut">Why Odoo and not something else? It's open source (you own your data, in
+          standard PostgreSQL), it's one fair per-user price for all apps, it's fast, and it has
+          Malaysia built in — MYR, SST, MyInvois, EPF/SOCSO. Watch it in Odoo's own words:</p>
+          <div class="vid2">
+            <div>
+              <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/OZLP-SCHW7A"
+                title="Odoo — Meet Odoo 19's best features" loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+              <div class="vid-cap">Meet Odoo 19 — one platform for the whole company.</div>
+            </div>
+            <div>
+              <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/X-7oCHinLNA"
+                title="Discover the new Odoo AI features" loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+              <div class="vid-cap">The new Odoo AI features — built in, not bolted on.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 · WHY NOT ANOTHER ERP TEAM -->
+      <section>
+        <div class="ptwrap">
+          <div class="secno">03 · The uncomfortable truth</div>
+          <h2 class="pth">Why another ERP team won't be good for JR-Tech</h2>
+          <p class="lead-line">Here's how a typical ERP sale works — and why it hurts companies
+          like yours.</p>
+          <p>The salesperson sitting across from you is paid on deal size. So they design for
+          <b>complexity</b>: <i>"the more items, modules and codes I can put in, the higher my sales
+          KPI."</i> Every extra module is commission for them — and paperwork for your staff. Six
+          months later, your team is fighting the system: more screens, more codes, more steps to do
+          the same job they used to do on paper. The famous names are the worst offenders — SAP is
+          known for being slow and difficult to use, built for corporate armies with IT departments,
+          not for a Penang SME where the boss still walks the workshop floor.</p>
+          <div class="vs">
+            <div class="vcol vbad">
+              <h3>The typical ERP vendor designs for THEIR KPI</h3>
+              <ul>
+                <li>Paid on deal size → sells you complexity</li>
+                <li>More modules, more codes, more screens = bigger invoice</li>
+                <li>Your staff inherit the paperwork and the headaches</li>
+                <li>Slow, rigid systems (SAP's reputation exists for a reason)</li>
+                <li>After go-live, the salesperson disappears — support becomes a ticket queue</li>
+              </ul>
+            </div>
+            <div class="vcol vgood">
+              <h3>SKY designs for YOUR P&amp;L</h3>
+              <ul>
+                <li>Fewer clicks, fewer codes — simplicity is the KPI</li>
+                <li>Only the apps JR-Tech actually needs, phased in</li>
+                <li>AI and automations remove paperwork instead of adding it</li>
+                <li>Fast platform your drivers and welders will actually use</li>
+                <li>I stay accountable — my name and my other Penang clients are on this</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vid" style="max-width:680px;margin:6px auto 0">
+            <iframe src="https://www.youtube-nocookie.com/embed/gPLbWzgJVSo"
+              title="Odoo — Sorry SAP, again! (#SorrySAP)" loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <div class="vid-cap">Don't take my word on speed — Odoo's own head-to-head with SAP.</div>
+        </div>
+      </section>
+
+      <!-- 4 · OWNER TO OWNER -->
+      <section>
+        <div class="ptwrap">
+          <div class="secno">04 · Why this works</div>
+          <h2 class="pth">When a business owner talks to a business owner</h2>
+          <p class="lead-line">I'm not an ERP salesperson. I own and run multiple businesses —
+          the same payroll pressures, the same cash-flow maths, the same 2am worries you have.</p>
+          <p>When an owner talks to an owner, the conversation is different. A salesperson asks
+          <i>"which modules do you want?"</i> An owner asks <i>"where are you losing margin, and
+          what's the cheapest way to stop it?"</i> A salesperson optimises for the contract; an owner
+          optimises for the decision — because we both know a wrong system costs far more than its
+          price tag: it costs staff morale, customer trust, and years.</p>
+          <blockquote>
+            The level of thinking is different. You and I make decisions with our own money.
+            That alignment — not any feature list — is why this project will succeed.
+            <small>— SKY</small>
+          </blockquote>
+          <p class="mut">Practically, that means: I'll tell you when <b>not</b> to buy something.
+          I'll phase the rollout so cash flow stays comfortable. And every recommendation in this
+          dossier is one I'd sign off for my own companies.</p>
+        </div>
+      </section>
+
+      <!-- 5 · AI + 10 YEARS -->
+      <section style="border-bottom:none">
+        <div class="ptwrap">
+          <div class="secno">05 · The horizon</div>
+          <h2 class="pth">AI first — and a 10-year plan for JR-Tech</h2>
+          <p>Most ERP projects plan to go-live. I plan to <b>compounding advantage</b>. My emphasis
+          on AI and automations isn't fashion — it's because the repetitive work in JR-Tech (quotes,
+          delivery logs, bills, resupply reminders, service scheduling) is exactly what AI is now
+          brilliant at. Every hour it takes over is an hour your team spends with customers.</p>
+          <div class="horiz">
+            <div class="hz"><div class="yr">Years 0–1 · Foundation</div>
+              <h3>One platform, zero re-keying</h3>
+              <p>Odoo 19 live across sales, fabrication, rental, service, chemicals and accounting.
+              MyInvois compliant. Driver incentive scheme running. AI reading bills and drafting quotes.</p></div>
+            <div class="hz"><div class="yr">Years 2–4 · Intelligence</div>
+              <h3>The business predicts</h3>
+              <p>Chemical demand forecasting and auto-replenishment. Predictive maintenance sold as a
+              subscription. IoT sensors on installed kitchens feeding dashboards — my embedded-devices
+              specialty. Data becomes a product.</p></div>
+            <div class="hz"><div class="yr">Years 5–10 · Scale</div>
+              <h3>Expand without chaos</h3>
+              <p>Klang Valley and beyond on the same system — new branch, new warehouse, same day.
+              Equipment-as-a-Service recurring revenue. JR-Tech becomes the AI-enabled kitchen
+              partner its 2024 brand book already promises.</p></div>
+          </div>
+          <p class="mut">Your brand book says <i>"Experience the Future of Kitchens."</i> This is the
+          operating system behind that promise.</p>
+
+          <div class="cta">
+            <h3>The next step costs you one hour.</h3>
+            <p>Sit with me over the demo — your products, your customers, your workflows already
+            loaded. If it doesn't feel simpler than what you do today, we shake hands and part as
+            friends.</p>
+            <a class="ctabtn" href="../../tools/demo-walkthrough.html">Walk through the demo →</a>
+            <a class="ctabtn alt" href="../../tools/quotation.html">See the investment</a>
+            <a class="ctabtn alt" href="../../tools/roi-tco.html">Run the ROI numbers</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <main class="wrap">
+      <div class="pagenav">
+        <a href="odoo-architecture.html">← Odoo 19 Architecture</a>
+        <a href="data-migration.html">Data Migration →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Owner-to-owner pitch for JR-Tech Solution Sdn Bhd,
+      prepared by SKY. Videos are Odoo's official YouTube content, embedded for evaluation.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+</body>
+</html>
