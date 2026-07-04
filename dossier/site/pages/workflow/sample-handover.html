@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JR-Tech Pack &amp; Handover — Sample: Auntie Gaik Lean — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+<style>
+/* ---- Paper-document aesthetic (page-scoped) ---- */
+.docstack{max-width:900px;margin:0 auto;}
+.sheet{position:relative;background:#fff;border:1px solid #E3E9F2;border-radius:14px;
+  box-shadow:0 10px 30px rgba(11,31,58,.08),0 2px 6px rgba(11,31,58,.05);
+  padding:56px 60px 44px;margin:0 0 34px;overflow:hidden;}
+.sheet h2.docsec{display:flex;align-items:baseline;gap:12px;font-size:1.15rem;color:#0B1F3A;
+  margin:0 0 6px;padding-bottom:10px;border-bottom:2px solid #0B1F3A;}
+.sheet h2.docsec .no{font-size:.8rem;font-weight:800;color:#7FA9DE;letter-spacing:.08em;}
+.sheet h3{color:#0B1F3A;margin:26px 0 8px;font-size:.98rem;}
+.wordmark{display:flex;justify-content:space-between;align-items:center;background:#0B1F3A;
+  color:#fff;border-radius:8px;padding:14px 20px;margin-bottom:28px;}
+.wordmark .wm{font-weight:800;letter-spacing:.18em;font-size:1.05rem;}
+.wordmark .wm span{color:#16C098;}
+.wordmark .co{font-size:.72rem;color:#AFC6E4;letter-spacing:.06em;text-align:right;}
+.doctitle{font-size:1.9rem;line-height:1.2;font-weight:800;color:#0B1F3A;margin:6px 0 4px;}
+.docsub{color:#5A6B84;font-size:.95rem;margin-bottom:22px;}
+.metagrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid #E3E9F2;
+  border-radius:10px;overflow:hidden;margin:18px 0 8px;}
+.metagrid div{padding:12px 16px;border-bottom:1px solid #E3E9F2;border-right:1px solid #E3E9F2;background:#FAFCFF;}
+.metagrid div:nth-child(3n){border-right:0;}
+.metagrid div:nth-last-child(-n+3){border-bottom:0;}
+.metagrid .k{display:block;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:#7FA9DE;font-weight:700;margin-bottom:2px;}
+.metagrid .v{font-size:.85rem;color:#0B1F3A;font-weight:600;}
+.ribbon{position:absolute;top:26px;right:-44px;transform:rotate(38deg);background:#E2544B;
+  color:#fff;font-weight:800;letter-spacing:.3em;font-size:.72rem;padding:7px 60px;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);z-index:2;}
+.sheetfoot{margin-top:36px;padding-top:12px;border-top:1px solid #E3E9F2;display:flex;
+  justify-content:space-between;font-size:.68rem;color:#8DA0B9;letter-spacing:.04em;}
+.toc{list-style:none;padding:0;margin:10px 0 0;counter-reset:toc;}
+.toc li{counter-increment:toc;display:flex;align-items:baseline;gap:10px;padding:9px 2px;border-bottom:1px dashed #E3E9F2;font-size:.92rem;color:#22314A;}
+.toc li::before{content:counter(toc,decimal-leading-zero);font-weight:800;color:#7FA9DE;font-size:.78rem;}
+.toc li .pg{margin-left:auto;color:#8DA0B9;font-size:.78rem;}
+.basis{background:#F4F8FD;border-left:4px solid #7FA9DE;border-radius:0 8px 8px 0;padding:14px 18px;font-size:.86rem;color:#3A4A64;margin-top:22px;}
+.sig{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:14px;}
+.sig .box{border:1px solid #E3E9F2;border-radius:10px;padding:18px;}
+.sig .line{border-bottom:1.5px solid #0B1F3A;height:46px;margin-bottom:8px;}
+.sig .who{font-size:.78rem;color:#5A6B84;}
+.sheet table.tbl{font-size:.86rem;}
+.tick{color:#16C098;font-weight:800;}
+@media (max-width:760px){.sheet{padding:30px 22px;}.metagrid{grid-template-columns:1fr 1fr;}
+ .metagrid div:nth-child(3n){border-right:1px solid #E3E9F2;}.metagrid div:nth-child(2n){border-right:0;}}
+@media print{
+  #sidebar,.topbar,.sb-toggle,.hero,.pagenav,footer.site{display:none!important;}
+  .content{margin:0!important;}
+  .sheet{box-shadow:none;border:none;border-radius:0;page-break-after:always;margin:0;}
+  body{background:#fff;}
+}
+</style>
+</head>
+<body data-page="smp-handover">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Kitchen Workflow</b> · Sample Deliverable</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Kitchen Workflow — JR-Tech Method · Sample Deliverable 4 of 4</span>
+      <h1>JR-Tech Pack &amp; Handover — Sample: Auntie Gaik Lean</h1>
+      <p>The fourth and final pack of the proposal binder for <b>Auntie Gaik Lean's Old School
+      Eatery</b>: how the 55&nbsp;m² kitchen gets delivered through a 1.1&nbsp;m heritage back
+      lane in 7 weeks, how it is maintained for the next 7 years, what the RM185,000 investment
+      buys, and how Odoo turns the signature into execution the same day. Illustrative sample —
+      method described in the <a href="wf-jrtech.html">JR-Tech Pack chapter</a>.</p>
+    </div></header>
+
+    <main class="wrap">
+      <div class="docstack">
+
+      <!-- ================= SHEET 1 · COVER ================= -->
+      <section class="sheet">
+        <div class="ribbon">SAMPLE</div>
+        <div class="wordmark">
+          <div class="wm">JR-<span>TECH</span> SOLUTION</div>
+          <div class="co">Commercial Kitchen Specialists · Penang<br>with TechNext · Odoo 19</div>
+        </div>
+        <div class="doctitle">JR-Tech Pack &amp; Handover</div>
+        <div class="docsub">Delivery &amp; installation plan, maintenance programme, investment
+        summary, binder contents and day-0 automation — the execution half of the proposal.</div>
+        <div class="metagrid">
+          <div><span class="k">Project Ref</span><span class="v">JRT-2026-AGL-01</span></div>
+          <div><span class="k">Prepared for</span><span class="v">Auntie Gaik Lean's Old School Eatery, Bishop Street, George Town</span></div>
+          <div><span class="k">Prepared by</span><span class="v">JR-Tech Solution Sdn Bhd × TechNext</span></div>
+          <div><span class="k">Date</span><span class="v">4 July 2026</span></div>
+          <div><span class="k">Revision</span><span class="v">R1</span></div>
+          <div><span class="k">Status</span><span class="v">SAMPLE — illustrative figures</span></div>
+        </div>
+
+        <h3>Contents</h3>
+        <ol class="toc">
+          <li>Delivery &amp; installation plan — 5 phases, 7 weeks <span class="pg">Sheet 2</span></li>
+          <li>Maintenance programme — PM schedule, consumables, SLA <span class="pg">Sheet 3</span></li>
+          <li>Investment &amp; quotation summary — RM185,000 + RM2,980/mo <span class="pg">Sheet 4</span></li>
+          <li>Proposal binder contents — all 20 documents, 4 packs <span class="pg">Sheet 5</span></li>
+          <li>Day-0 automation — signature to execution in Odoo <span class="pg">Sheet 6</span></li>
+          <li>Acceptance &amp; signatures <span class="pg">Sheet 7</span></li>
+        </ol>
+
+        <div class="basis"><b>Basis of preparation.</b> A 55&nbsp;m² kitchen inside a category-II
+        heritage shophouse on Bishop Street: no street-front crane access, a 1.1&nbsp;m back-lane
+        door, timber upper floor, and a 7-week window from signing to opening night. Every
+        constraint below was surveyed in the first meeting and is reflected in the fabrication
+        drawings of the Blueprint Pack. Figures are modelled for demonstration.</div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · JR-Tech Pack &amp; Handover</span><span>Page 1 of 7</span></div>
+      </section>
+
+      <!-- ================= SHEET 2 · DELIVERY & INSTALLATION ================= -->
+      <section class="sheet">
+        <h2 class="docsec"><span class="no">SECTION 1</span> Delivery &amp; installation plan — 5 phases, 7 weeks</h2>
+        <p>Fabrication runs in parallel at the JR-Tech workshop while the site is prepared, so the
+        heritage building is only disrupted for the weeks that genuinely need it. The restaurant
+        continues trading until the end of week 2.</p>
+
+        <table class="tbl">
+          <tr><th>Phase</th><th>Scope</th><th>Duration</th><th>Crew</th><th>Owner dependency</th></tr>
+          <tr><td><b>1 · M&amp;E first fix</b></td><td>3-phase supply upgrade (38&nbsp;kW connected load), sub-meter, new DB, water/drainage runs, hood ducting route agreed with heritage consultant</td><td>Wk 1–2</td><td>2 M&amp;E + 1 electrician (licensed)</td><td>TNB application signed; landlord consent letter</td></tr>
+          <tr><td><b>2 · Delivery via back lane</b></td><td>All equipment through the 1.1&nbsp;m back-lane door: oversized items (cold room panels, wok range chassis, dishwasher) <b>split at the workshop</b> into ≤1.0&nbsp;m sections, moved on skates and stair-rollers, re-assembled in place; no façade or street closure needed</td><td>Wk 3 (2 nights, 22:00–06:00)</td><td>4 riggers + supervisor</td><td>Back-lane access notice to neighbours (JR-Tech drafts)</td></tr>
+          <tr><td><b>3 · Fabrication install</b></td><td>Custom stainless benching, wall cladding, shelving and pass — pre-fabricated at JR-Tech workshop weeks 1–2, site-fitted and sealed</td><td>Wk 3–4</td><td>3 fabricators</td><td>Final finish choice (confirmed at signing)</td></tr>
+          <tr><td><b>4 · Connection &amp; test</b></td><td>Gas (residual LPG line) and electrical termination, pressure and earth-leakage tests, hood balancing, dishwasher heat-recovery commissioning</td><td>Wk 5</td><td>2 technicians + certifying engineer</td><td>—</td></tr>
+          <tr><td><b>5 · Commissioning &amp; training</b></td><td>Full-load cook tests on the actual menu (Curry Kapitan wok test, Perut Ikan simmer hold, Otak-otak steam batch), staff training, 2 rehearsal services, snag list closed, handover file issued</td><td>Wk 6–7</td><td>JR-Tech chef-trainer + PM</td><td>Kitchen team available for 3 training days</td></tr>
+        </table>
+
+        <h3>Programme — signing to opening night</h3>
+        <div class="mermaid">
+gantt
+  title 7-week programme — Auntie Gaik Lean kitchen (JRT-2026-AGL-01)
+  dateFormat  YYYY-MM-DD
+  axisFormat  Wk %W
+  section Workshop
+  Custom fabrication build        :fab, 2026-07-13, 14d
+  Equipment split for lane access :split, 2026-07-20, 5d
+  section Site
+  M and E first fix, 3-phase upgrade :me, 2026-07-13, 12d
+  Night delivery via back lane     :del, 2026-07-27, 3d
+  Fabrication install and cladding :inst, 2026-07-29, 10d
+  Gas and electrical connection, tests :test, 2026-08-10, 5d
+  section Handover
+  Commissioning and cook tests     :comm, 2026-08-17, 5d
+  Staff training and rehearsals    :train, 2026-08-20, 5d
+  Opening night                    :milestone, open, 2026-08-28, 0d
+        </div>
+        <div class="callout tn"><b>Why 7 weeks holds:</b> the two slowest items — fabrication and
+        the TNB 3-phase upgrade — start on day 1 in parallel. The night-delivery plan for the
+        1.1&nbsp;m door was rehearsed on the workshop floor before quotation, so week 3 carries no
+        discovery risk.</div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · JR-Tech Pack &amp; Handover</span><span>Page 2 of 7</span></div>
+      </section>
+
+      <!-- ================= SHEET 3 · MAINTENANCE ================= -->
+      <section class="sheet">
+        <h2 class="docsec"><span class="no">SECTION 2</span> Maintenance programme</h2>
+        <p>Every visit below is a scheduled <b>Odoo Field Service work order</b> created
+        automatically from the maintenance contract on day 0 — with the equipment register,
+        checklist and sub-meter reading step attached. The programme is what the RM1,180/month
+        maintenance line buys.</p>
+
+        <h3>Preventive maintenance by equipment class</h3>
+        <table class="tbl">
+          <tr><th>Equipment class</th><th>Daily (operator)</th><th>Monthly (JR-Tech visit)</th><th>Quarterly</th><th>Annual</th></tr>
+          <tr><td>Induction wok line</td><td>Wipe-down, glass check</td><td>Coil fan filters, thermal scan</td><td>Board diagnostics, calibration</td><td>Full strip and service</td></tr>
+          <tr><td>Simmer / stockpot station</td><td>Surface clean</td><td>Element and probe check</td><td>Valve service</td><td>Pressure certification</td></tr>
+          <tr><td>Hood &amp; demand-control fans</td><td>Baffle rinse</td><td>Belt/VSD check, grease cup</td><td>Duct inspection</td><td>Full duct degrease (fire cert)</td></tr>
+          <tr><td>Dishwasher (heat-recovery)</td><td>Strainer, wash arms</td><td>Descale check, dosing pump calibrate</td><td>Heat-exchanger service</td><td>Element and seal overhaul</td></tr>
+          <tr><td>Refrigeration &amp; chiller</td><td>Door seals, temps log</td><td>Condenser clean, gas pressure</td><td>Compressor health check</td><td>Refrigerant certification</td></tr>
+          <tr><td>Steamer / grill</td><td>Drain and wipe</td><td>Gasket and burner check</td><td>Descale</td><td>Overhaul</td></tr>
+        </table>
+
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Consumables &amp; spares held for this kitchen</h3>
+            <table class="tbl">
+              <tr><th>Item</th><th>Where held</th></tr>
+              <tr><td>Dishwasher dosing tubes, wash arms, curtains</td><td>On-site spares box</td></tr>
+              <tr><td>Hood grease filters (spare set)</td><td>On-site spares box</td></tr>
+              <tr><td>Induction wok control board + glass</td><td>JR-Tech Penang store (4h)</td></tr>
+              <tr><td>Fridge door gaskets, thermostat probes</td><td>JR-Tech Penang store (4h)</td></tr>
+              <tr><td>Detergent / rinse / sanitiser stock</td><td>Auto-resupply, min-level trigger</td></tr>
+            </table>
+            <div class="callout tn"><b>Chemical auto-resupply:</b> the RM1,800/mo JR-Chemical
+            subscription ships on consumption, not on a fixed calendar — dosing-pump counters are
+            read at each monthly visit and Odoo raises the resupply delivery automatically.</div>
+          </div>
+          <div class="card pad-lg">
+            <h3>Response SLA</h3>
+            <table class="tbl">
+              <tr><th>Tier</th><th>Covers</th><th>Response</th></tr>
+              <tr><td><span class="tag red">P1</span></td><td>Wok line or dishwasher down</td><td><b>4 hours, same-day fix target</b></td></tr>
+              <tr><td><span class="tag warn">P2</span></td><td>Any other equipment fault</td><td>Next working day</td></tr>
+              <tr><td><span class="tag">P3</span></td><td>Cosmetic / non-blocking</td><td>Scheduled with next PM visit</td></tr>
+            </table>
+            <p>P1 is defined by the Financial Pack: the wok line is the constraint station and the
+            dishwasher is the only single point of failure — one lost service is ≈ RM5,000–7,300
+            of revenue. Every callout, response time and part used is logged on the Odoo work
+            order, so SLA performance is a report, not a promise.</p>
+          </div>
+        </div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · JR-Tech Pack &amp; Handover</span><span>Page 3 of 7</span></div>
+      </section>
+
+      <!-- ================= SHEET 4 · INVESTMENT ================= -->
+      <section class="sheet">
+        <h2 class="docsec"><span class="no">SECTION 3</span> Investment &amp; quotation summary</h2>
+        <p>One number, fully itemised in the referenced schedules — no provisional sums, no
+        "subject to site" lines. The equipment schedule referenced below is the priced blueprint
+        schedule in the Blueprint Pack (doc 04).</p>
+
+        <h3>One-time investment</h3>
+        <table class="tbl">
+          <tr><th>Line</th><th>Reference</th><th>RM</th></tr>
+          <tr><td>Equipment — cooking, wash, refrigeration (brand items)</td><td>Blueprint schedule §E1–E14</td><td>102,400</td></tr>
+          <tr><td>Custom stainless fabrication — benching, cladding, pass, shelving</td><td>Fabrication drawings F1–F6</td><td>46,200</td></tr>
+          <tr><td>Installation, M&amp;E &amp; 3-phase upgrade, delivery &amp; rigging (back-lane plan)</td><td>Section 1 of this pack</td><td>28,400</td></tr>
+          <tr><td>Commissioning, cook tests &amp; staff training</td><td>Phase 5</td><td>8,000</td></tr>
+          <tr><td><b>Total investment</b></td><td>—</td><td><b>185,000</b></td></tr>
+        </table>
+
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="smpHndMixChart" height="250"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Payment milestones — 40 / 30 / 20 / 10</h3>
+            <table class="tbl">
+              <tr><th>Milestone</th><th>%</th><th>RM</th></tr>
+              <tr><td>On signing (fabrication + brand POs released)</td><td>40%</td><td>74,000</td></tr>
+              <tr><td>On delivery to site (end week 3)</td><td>30%</td><td>55,500</td></tr>
+              <tr><td>On connection &amp; test complete (week 5)</td><td>20%</td><td>37,000</td></tr>
+              <tr><td>On handover acceptance (opening week)</td><td>10%</td><td>18,500</td></tr>
+            </table>
+            <p>Each milestone is an Odoo invoice raised automatically when the project stage
+            closes — the owner never chases paperwork, and neither do we.</p>
+          </div>
+        </div>
+
+        <h3>Recurring services — RM 2,980 / month</h3>
+        <table class="tbl">
+          <tr><th>Service</th><th>What it includes</th><th>RM / month</th></tr>
+          <tr><td>JR-Tech maintenance contract</td><td>Monthly PM visit, quarterly &amp; annual programme (Section 2), P1 4-hour SLA, sub-meter reading &amp; report</td><td>1,180</td></tr>
+          <tr><td>JR-Chemical subscription</td><td>Dishwasher detergent &amp; rinse, degreaser, sanitiser — auto-resupply on consumption</td><td>1,800</td></tr>
+          <tr><td><b>Total recurring</b></td><td>Single monthly Odoo subscription invoice</td><td><b>2,980</b></td></tr>
+        </table>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · JR-Tech Pack &amp; Handover</span><span>Page 4 of 7</span></div>
+      </section>
+
+      <!-- ================= SHEET 5 · BINDER CONTENTS ================= -->
+      <section class="sheet">
+        <h2 class="docsec"><span class="no">SECTION 4</span> Proposal binder contents</h2>
+        <p>Everything the owner holds before signing — 20 documents across the four packs. Ticked
+        items are rendered in this sample dossier; the remainder are produced in full on a live
+        engagement.</p>
+        <table class="tbl">
+          <tr><th>#</th><th>Pack</th><th>Document</th><th>Format</th><th>In this sample</th></tr>
+          <tr><td>01</td><td rowspan="5">Blueprint</td><td>Kitchen layout plan — 55 m², zones &amp; flows</td><td>PDF / DWG</td><td class="tick">✓</td></tr>
+          <tr><td>02</td><td>M&amp;E drawing — power, water, drainage, hood ducting</td><td>DWG</td><td>—</td></tr>
+          <tr><td>03</td><td>3D walkthrough renders</td><td>PDF</td><td class="tick">✓</td></tr>
+          <tr><td>04</td><td>Priced equipment schedule (brand + fabrication)</td><td>PDF / Odoo</td><td class="tick">✓</td></tr>
+          <tr><td>05</td><td>Heritage compliance notes (MBPP / George Town WHS)</td><td>PDF</td><td>—</td></tr>
+          <tr><td>06</td><td rowspan="5">Operations</td><td>Station map &amp; staff positioning</td><td>PDF</td><td class="tick">✓</td></tr>
+          <tr><td>07</td><td>Prep &amp; service workflow (menu-anchored)</td><td>PDF</td><td class="tick">✓</td></tr>
+          <tr><td>08</td><td>Roster model — 7 kitchen heads, 2 services</td><td>PDF / Odoo</td><td class="tick">✓</td></tr>
+          <tr><td>09</td><td>Food-safety &amp; cleaning schedules</td><td>PDF</td><td>—</td></tr>
+          <tr><td>10</td><td>Opening / closing checklists</td><td>PDF / Odoo</td><td>—</td></tr>
+          <tr><td>11</td><td rowspan="4">Financial</td><td>Normal-day output model — 130 covers, RM12,350</td><td>PDF / Odoo</td><td class="tick">✓</td></tr>
+          <tr><td>12</td><td>Monthly P&amp;L projection, ramp &amp; break-even</td><td>PDF / Odoo</td><td class="tick">✓</td></tr>
+          <tr><td>13</td><td>Savings case vs typical kitchen</td><td>PDF</td><td class="tick">✓</td></tr>
+          <tr><td>14</td><td>Sensitivity &amp; assumptions register</td><td>PDF</td><td class="tick">✓</td></tr>
+          <tr><td>15</td><td rowspan="6">JR-Tech &amp; Handover</td><td>Delivery &amp; installation plan (7-week gantt)</td><td>PDF / Odoo</td><td class="tick">✓</td></tr>
+          <tr><td>16</td><td>Maintenance programme &amp; SLA</td><td>PDF / Odoo</td><td class="tick">✓</td></tr>
+          <tr><td>17</td><td>Quotation — RM185,000 + RM2,980/mo, milestone terms</td><td>PDF / Odoo</td><td class="tick">✓</td></tr>
+          <tr><td>18</td><td>Draft maintenance &amp; chemical subscription agreements</td><td>PDF</td><td>—</td></tr>
+          <tr><td>19</td><td>Warranty register (per-equipment terms)</td><td>Odoo</td><td>—</td></tr>
+          <tr><td>20</td><td>Handover file — test certs, as-builts, training records (issued at week 7)</td><td>PDF / Odoo</td><td>—</td></tr>
+        </table>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · JR-Tech Pack &amp; Handover</span><span>Page 5 of 7</span></div>
+      </section>
+
+      <!-- ================= SHEET 6 · DAY-0 AUTOMATION ================= -->
+      <section class="sheet">
+        <h2 class="docsec"><span class="no">SECTION 5</span> Day-0 automation — signature to execution</h2>
+        <p>Because the four packs were modelled in Odoo before signing, the signature is not the
+        start of planning — it is the start of execution. The moment Auntie Gaik Lean's agreement
+        completes in Odoo Sign, the following chain fires without anyone re-keying a number.</p>
+        <div class="mermaid">
+flowchart TD
+  A["Agreement signed in Odoo Sign"] --> B["Sales order JRT-2026-AGL-01 confirmed"]
+  B --> C["Project created with 7-week plan and 5 phases"]
+  B --> D["Fabrication manufacturing orders released to workshop"]
+  B --> E["Purchase orders issued to brand suppliers"]
+  C --> F["Delivery schedule booked - night back-lane slots, week 3"]
+  B --> G["Maintenance contract activated - RM1,180/mo"]
+  B --> H["Chemical subscription activated - RM1,800/mo"]
+  G --> I["12 months of Field Service PM work orders generated"]
+  B --> J["Milestone invoice 1 issued - 40 percent, RM74,000"]
+  C --> K["P and L budget lines loaded to Accounting for variance tracking"]
+        </div>
+        <div class="callout tn"><b>The punchline of the method:</b> planning is done <i>before</i>
+        signing, so execution starts the <i>same day</i>. On the afternoon of signature the
+        workshop is cutting stainless, the brand POs are out, the week-3 delivery nights are
+        booked, and the first milestone invoice is in the owner's inbox — with the 7-week clock
+        already running.</div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · JR-Tech Pack &amp; Handover</span><span>Page 6 of 7</span></div>
+      </section>
+
+      <!-- ================= SHEET 7 · ACCEPTANCE ================= -->
+      <section class="sheet">
+        <h2 class="docsec"><span class="no">SECTION 6</span> Acceptance &amp; signatures</h2>
+        <p>Acceptance of this pack confirms the delivery plan (Section 1), maintenance programme
+        and SLA (Section 2), investment and payment terms (Section 3), and authorises the day-0
+        automation chain (Section 5) upon execution of the main agreement.</p>
+        <div class="sig">
+          <div class="box"><div class="line"></div><div class="who"><b>For the Owner</b><br>Auntie Gaik Lean's Old School Eatery<br>Name · NRIC · Date</div></div>
+          <div class="box"><div class="line"></div><div class="who"><b>For JR-Tech Solution Sdn Bhd</b><br>Name · Designation · Date</div></div>
+          <div class="box"><div class="line"></div><div class="who"><b>Witness</b><br>Name · NRIC · Date</div></div>
+          <div class="box"><div class="line"></div><div class="who"><b>Date of execution</b><br>DD / MM / YYYY · George Town, Penang</div></div>
+        </div>
+
+        <h3>Next steps</h3>
+        <ol class="steps">
+          <li><b>Sign via Odoo Sign</b> — the link in the covering email opens this binder for e-signature; day-0 automation fires on completion.</li>
+          <li><b>Confirm landlord consent &amp; TNB application</b> — the only two owner dependencies on the critical path (week 1).</li>
+          <li><b>Nominate the kitchen team</b> for the three training days in weeks 6–7.</li>
+          <li><b>Week-3 access notice</b> — JR-Tech drafts the back-lane notice to neighbouring lots; owner countersigns.</li>
+          <li><b>Opening night, end of week 7</b> — with the Odoo dashboard live against the Financial Pack baseline from day one.</li>
+        </ol>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · JR-Tech Pack &amp; Handover</span><span>Page 7 of 7</span></div>
+      </section>
+
+      </div><!-- /docstack -->
+
+      <div class="pagenav">
+        <a href="sample-financials.html">&larr; Sample — Financials (AGL)</a>
+        <a href="../company/company-profile.html">Company Profile &rarr;</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+// Sheet 4 — investment mix doughnut (total RM 185,000)
+new Chart(document.getElementById('smpHndMixChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Brand equipment — RM 102,400','Custom fabrication — RM 46,200','Installation, M&E, rigging — RM 28,400','Commissioning & training — RM 8,000'],
+    datasets: [{ data: [102400,46200,28400,8000],
+      backgroundColor:['#0B1F3A','#16C098','#7FA9DE','#F2B84B'], borderWidth:2, borderColor:'#fff' }]
+  },
+  options: {
+    plugins: {
+      legend:{ position:'bottom' },
+      title:{ display:true, text:'RM 185,000 investment mix' },
+      tooltip:{ callbacks:{ label:(c)=> c.label.split(' — ')[0]+': RM '+c.parsed.toLocaleString() } }
+    },
+    cutout:'58%'
+  }
+});
+</script>
+</body>
+</html>
