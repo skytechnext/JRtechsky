@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The First Meeting — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="wf-first-meeting">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Kitchen Workflow</b> · The First Meeting</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Kitchen Workflow — JR-Tech Method</span>
+      <h1>The First Meeting: 90 minutes that replace six weeks</h1>
+      <p>Everything downstream — the blueprint, the SOPs, the projections, the quotation — is generated
+      from what this one meeting captures. So the meeting is engineered like an instrument: four inputs,
+      each with a defined checklist, recorded straight into Odoo before JR-Tech leaves the site. If the
+      capture is complete, the engine can run. If it isn't, the scorecard says so before anyone promises
+      a proposal date.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">4</div><div class="lbl">structured inputs captured on site</div></div>
+          <div class="kpi"><div class="num">90</div><div class="lbl">minutes — agenda-driven, owner present throughout</div></div>
+          <div class="kpi"><div class="num">45+</div><div class="lbl">data points on the capture checklists</div></div>
+          <div class="kpi"><div class="num">72</div><div class="lbl">hours later: draft packs ready for internal review</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The four inputs — and exactly what we capture</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <span class="tag">Input 1</span>
+            <h3>Kitchen floor plans</h3>
+            <p>Architect's drawings, landlord's as-built plans, or — if none exist — JR-Tech measures and
+            sketches on site. These become the canvas for the entire Blueprint Pack.</p>
+            <table class="tbl">
+              <tr><th>What we capture</th><th>Why the engine needs it</th></tr>
+              <tr><td>Overall dimensions &amp; ceiling height</td><td>Layout envelope, hood clearances</td></tr>
+              <tr><td>Structural columns &amp; load-bearing walls</td><td>Immovable constraints on equipment lines</td></tr>
+              <tr><td>Ventilation shafts &amp; riser locations</td><td>Exhaust routing, smokeless-cooking feasibility</td></tr>
+              <tr><td>Existing gas lines &amp; meter position</td><td>Gas vs. induction decision per station</td></tr>
+              <tr><td>Existing M&amp;E (DB boards, plumbing, floor traps)</td><td>Reuse vs. new electrical &amp; drainage points</td></tr>
+              <tr><td>Doors, corridors &amp; lift dimensions</td><td>Fabrication panel sizes, delivery path</td></tr>
+            </table>
+          </div>
+          <div class="card pad-lg">
+            <span class="tag">Input 2</span>
+            <h3>Menu</h3>
+            <p>The owner's draft menu — even a rough one — drives menu engineering, station design and
+            the revenue model. No menu, no meaningful kitchen.</p>
+            <table class="tbl">
+              <tr><th>What we capture</th><th>Why the engine needs it</th></tr>
+              <tr><td>Full dish list &amp; cuisine type</td><td>Cooking methods → equipment classes</td></tr>
+              <tr><td>Expected peak covers per service</td><td>Throughput sizing, projected daily output</td></tr>
+              <tr><td>Prep complexity per dish (mise en place depth)</td><td>Prep-area sizing, staffing &amp; SOPs</td></tr>
+              <tr><td>Target price points &amp; average ticket</td><td>Revenue projection, food-cost targets</td></tr>
+              <tr><td>Hero dishes &amp; batch-cook candidates</td><td>Cook-and-chill opportunity, hold equipment</td></tr>
+            </table>
+          </div>
+          <div class="card pad-lg">
+            <span class="tag">Input 3</span>
+            <h3>Restaurant owner's requests</h3>
+            <p>The commercial and brand constraints. Captured verbatim in the owner's words, then
+            structured into fields the engine can optimise against.</p>
+            <table class="tbl">
+              <tr><th>What we capture</th><th>Why the engine needs it</th></tr>
+              <tr><td>Total budget &amp; CAPEX vs. rental preference</td><td>Equipment schedule tiering, rental scenarios</td></tr>
+              <tr><td>Seating capacity &amp; service style</td><td>Kitchen-to-front ratio, pass design</td></tr>
+              <tr><td>Target opening date</td><td>Fabrication &amp; delivery timeline feasibility</td></tr>
+              <tr><td>Brand vision &amp; guest experience goals</td><td>Open vs. closed kitchen, show elements</td></tr>
+              <tr><td>Dietary focus (halal, vegetarian, allergens)</td><td>Segregated prep areas, compliance layout</td></tr>
+            </table>
+          </div>
+          <div class="card pad-lg">
+            <span class="tag green">Input 4</span>
+            <h3>JR-Tech site inspection notes</h3>
+            <p>The input only JR-Tech can produce: an engineer's structured survey of what the premises
+            can physically support. This is where sixteen years of M&amp;E judgement enters the data.</p>
+            <table class="tbl">
+              <tr><th>What we capture</th><th>Why the engine needs it</th></tr>
+              <tr><td>Electrical supply: single/three-phase, available amperage</td><td>Induction line feasibility, load calculations</td></tr>
+              <tr><td>Water pressure &amp; incoming pipe size</td><td>Dishwasher &amp; combi-oven specification</td></tr>
+              <tr><td>Drainage falls &amp; grease-trap position</td><td>Drainage points plan, bio-treatment sizing</td></tr>
+              <tr><td>Floor loading &amp; finish condition</td><td>Heavy equipment placement (cold rooms, combis)</td></tr>
+              <tr><td>Exhaust routes &amp; makeup-air options</td><td>Hood design, smokeless-tech alternatives</td></tr>
+              <tr><td>Access for equipment delivery (stairs, lifts, timing)</td><td>Installation instructions in the JR-Tech Pack</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="callout tn"><b>Capture discipline:</b> each checklist row is a required field on the
+        Odoo site-survey form (a Studio model on the CRM lead). The tablet form will not submit with
+        blanks — which is precisely what makes the 72-hour turnaround promise safe. The master question
+        bank lives in <a href="../../tools/discovery-questions.html">Discovery Questions</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>The 90-minute agenda</h2>
+        <p class="lead">Attendees: the restaurant owner (and chef, if appointed), JR-Tech consultant
+        (meeting lead), and a JR-Tech M&amp;E technician who runs the physical survey in parallel.</p>
+        <table class="tbl">
+          <tr><th>Time</th><th>Segment</th><th>Led by</th><th>What happens</th></tr>
+          <tr><td>0:00–0:10</td><td>Framing &amp; promise</td><td>Consultant</td><td>Walk through the four packs the owner will receive; set the 72-hour clock; confirm decision-makers.</td></tr>
+          <tr><td>0:10–0:25</td><td>Floor plans review</td><td>Consultant + technician</td><td>Overlay drawings against the actual space; mark columns, shafts, gas lines and existing M&amp;E on the tablet plan.</td></tr>
+          <tr><td>0:25–0:45</td><td>Menu deep-dive</td><td>Consultant + owner/chef</td><td>Dish-by-dish walkthrough: cooking method, prep depth, peak covers, price points; flag batch-cook and hero dishes.</td></tr>
+          <tr><td>0:45–1:00</td><td>Owner's requests</td><td>Owner</td><td>Budget, capacity, opening date, brand vision, dietary focus — captured verbatim, then structured into fields together.</td></tr>
+          <tr><td>1:00–1:20</td><td>Site inspection</td><td>Technician</td><td>Measured survey: DB board amperage and phases, water pressure test, drainage falls, floor condition, exhaust routes, delivery access. Photos geotagged to the lead.</td></tr>
+          <tr><td>1:20–1:30</td><td>Completeness check &amp; close</td><td>Consultant</td><td>Run the data-completeness scorecard live; agree any follow-up items; confirm the proposal presentation date.</td></tr>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>From conversation to Odoo record — in the room</h2>
+        <div class="mermaid">
+sequenceDiagram
+  autonumber
+  participant O as Restaurant owner
+  participant C as JR-Tech consultant
+  participant T as M and E technician
+  participant D as Odoo CRM plus Documents
+  participant E as AI engine
+  O->>C: Shares floor plans and draft menu
+  C->>D: Uploads plans and menu to CRM lead
+  C->>O: Structured questions on budget capacity date vision
+  C->>D: Records owner requests on lead form
+  T->>T: Physical survey of electrical water drainage access
+  T->>D: Submits site survey form with photos
+  D->>D: Lead converts to project with document folders
+  D->>E: Complete input set triggers pack generation
+  E-->>C: Draft packs ready within 72 hours
+  C-->>O: Proposal presentation booked
+        </div>
+        <p>The lead-to-project conversion and document structure follow the pipeline defined in
+        <a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a>; the owner-level
+        rationale for running discovery this way is on
+        <a href="../technology/why-odoo.html">The Pitch — Owner to Owner</a>.</p>
+      </section>
+
+      <section class="section">
+        <h2>The 72 hours after the meeting</h2>
+        <div class="steps"><ol>
+          <li><b>Hour 0–2 — Data lands.</b> All four inputs are attached to the Odoo lead before the team
+          leaves site; the completeness scorecard is stamped on the record.</li>
+          <li><b>Hour 2–24 — Engine run.</b> AI actions perform floorplan analysis, menu engineering and
+          electrical/water load calculations; draft equipment schedule and annotated floorplan are
+          generated against JR-Tech's live catalog and price lists.</li>
+          <li><b>Hour 24–48 — Engineering review.</b> JR-Tech consultants validate clearances, loads,
+          drainage falls and fabrication feasibility; the operations and financial drafts are tuned
+          (staffing, SOPs, projections — same models as the
+          <a href="../../tools/profit-estimator.html">Profit Estimator</a>).</li>
+          <li><b>Hour 48–72 — Pack assembly.</b> The four packs and the
+          <a href="../../tools/quotation.html">quotation</a> are compiled into the full proposal;
+          the presentation meeting is confirmed with the owner.</li>
+        </ol></div>
+      </section>
+
+      <section class="section">
+        <h2>Data-completeness scorecard</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="scorecardChart" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Green means go</h3>
+            <p>The scorecard is reviewed live in the last ten minutes of the meeting. Each input area is
+            scored by required-field coverage on the Odoo forms. The engine only runs automatically at
+            <b>90%+ overall</b>; below that, the consultant books a specific follow-up (usually a missing
+            drawing or an unconfirmed budget) rather than letting the 72-hour clock start on bad data.</p>
+            <table class="tbl">
+              <tr><th>Input area</th><th>Typical first-pass score</th><th>Common gap</th></tr>
+              <tr><td>Floor plans</td><td><span class="tag green">92%</span></td><td>Missing ceiling-void detail for exhaust</td></tr>
+              <tr><td>Menu</td><td><span class="tag warn">78%</span></td><td>Peak covers not yet decided</td></tr>
+              <tr><td>Owner requests</td><td><span class="tag green">95%</span></td><td>Budget range instead of ceiling</td></tr>
+              <tr><td>Site inspection</td><td><span class="tag green">98%</span></td><td>Landlord confirmation of amperage upgrade</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="callout"><b>So what for the Odoo build:</b> the scorecard is a computed field on the
+        CRM lead — one Studio model, four form views, one automated action gating the AI pipeline.
+        Scoped in the <a href="../../tools/brd.html">Requirements (BRD)</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="wf-overview.html">← The Reimagined Workflow</a>
+        <a href="wf-blueprint.html">Next: Kitchen Blueprint Pack →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('scorecardChart'), {
+  type: 'radar',
+  data: {
+    labels: ['Floor plans','Menu','Owner requests','Site inspection'],
+    datasets: [
+      { label: 'Typical first-pass capture', data: [92,78,95,98], borderColor:'#7FA9DE', backgroundColor:'rgba(127,169,222,.2)' },
+      { label: 'Engine auto-run threshold', data: [90,90,90,90], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.08)', borderDash:[6,4], pointRadius:0 }
+    ]
+  },
+  options: {
+    scales: { r: { min: 0, max: 100, ticks: { stepSize: 20 } } },
+    plugins: { legend: { position: 'bottom' }, title: { display: true, text: 'Required-field coverage by input area (%)' } }
+  }
+});
+</script>
+</body>
+</html>

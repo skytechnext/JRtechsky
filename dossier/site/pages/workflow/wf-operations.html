@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operations Pack — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="wf-operations">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Kitchen Workflow</b> · Operations Pack</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Kitchen Workflow — JR-Tech Method · Output Pack 2 of 4</span>
+      <h1>Operations Pack — menu, people, SOPs &amp; schedules</h1>
+      <p>The blueprint tells the owner what to build; this pack tells them how to run it. A menu
+      engineered to the equipment, a staffing model with station-by-station duties, a 17-document SOP
+      library, HACCP-aligned safety policies, and daily-to-monthly schedules — all kept live in Odoo,
+      not in a binder that gathers grease. Worked example: <b>Restoran Selat 88</b>, 120 seats,
+      RM45 average check.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">32</div><div class="lbl">dishes on the engineered opening menu (vs 68 on owner's draft)</div></div>
+          <div class="kpi"><div class="num">31%</div><div class="lbl">blended food cost target across the menu mix</div></div>
+          <div class="kpi"><div class="num">11</div><div class="lbl">kitchen headcount for a 120-seat dinner service</div></div>
+          <div class="kpi"><div class="num">17</div><div class="lbl">SOPs, each with an owner, a frequency and an Odoo record</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>1 · Recommended menu engineering</h2>
+        <p class="lead">The founding rule of the JR-Tech method: <b>the menu drives the equipment —
+        never the other way round.</b> Selat 88's owner arrived with 68 dish ideas; the engine scored
+        each for margin, prep load and equipment dependency, and returned a 32-dish opening menu every
+        station can execute at full house without a bottleneck. A dish that needs a salamander the
+        blueprint doesn't include simply doesn't make the cut — or the blueprint is revised first.</p>
+        <div style="overflow-x:auto">
+        <table class="tbl">
+          <tr><th>Category</th><th>Example dish</th><th>Menu price (RM)</th><th>Food cost %</th><th>Gross margin (RM)</th><th>Prep station</th><th>Equipment dependency</th><th>Class</th></tr>
+          <tr><td>Signature live seafood</td><td>Steamed live grouper, Teochew style (per 100g)</td><td>18.00</td><td>42%</td><td>10.44</td><td>Seafood prep → steam</td><td>Live tanks (E01), 3-deck steamer (E12)</td><td><span class="tag green">Star</span></td></tr>
+          <tr><td>Signature wok</td><td>Chilli crab w/ fried mantou</td><td>88.00</td><td>38%</td><td>54.56</td><td>Seafood prep → wok</td><td>Wok range (E10), fryer (E11)</td><td><span class="tag green">Star</span></td></tr>
+          <tr><td>Wok classics</td><td>Butter prawns</td><td>48.00</td><td>34%</td><td>31.68</td><td>Seafood prep → wok</td><td>Wok range (E10)</td><td><span class="tag green">Star</span></td></tr>
+          <tr><td>Rice / noodle</td><td>Seafood fried rice</td><td>16.00</td><td>26%</td><td>11.84</td><td>Veg prep → wok</td><td>Wok range (E10)</td><td><span class="tag">Plowhorse</span></td></tr>
+          <tr><td>Vegetables</td><td>Sambal kangkung</td><td>14.00</td><td>22%</td><td>10.92</td><td>Veg prep → wok</td><td>Wok range (E10)</td><td><span class="tag">Plowhorse</span></td></tr>
+          <tr><td>Grill</td><td>Grilled tiger prawns, garlic butter</td><td>58.00</td><td>36%</td><td>37.12</td><td>Seafood prep → grill</td><td>Chargrill (E13)</td><td><span class="tag warn">Puzzle</span></td></tr>
+          <tr><td>Soup</td><td>Fish-head noodle soup</td><td>22.00</td><td>29%</td><td>15.62</td><td>Stock station</td><td>Induction stock stove (E14)</td><td><span class="tag warn">Puzzle</span></td></tr>
+          <tr><td>Fried</td><td>Salted-egg squid</td><td>28.00</td><td>30%</td><td>19.60</td><td>Seafood prep → fryer</td><td>Fryer (E11)</td><td><span class="tag green">Star</span></td></tr>
+          <tr><td>Sharks-fin-free banquet item</td><td>Braised abalone claypot</td><td>68.00</td><td>47%</td><td>36.04</td><td>Stock station</td><td>Induction stove (E14)</td><td><span class="tag red">Dog — banquet only</span></td></tr>
+          <tr><td>Dessert</td><td>Or-nee (yam paste)</td><td>12.00</td><td>24%</td><td>9.12</td><td>Veg prep, batch AM</td><td>Steamer (E12), cold hold (E09)</td><td><span class="tag">Plowhorse</span></td></tr>
+        </table>
+        </div>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="menuMatrixChart" height="280"></canvas></div>
+          <div class="card pad-lg"><h3>How the engine reads the matrix</h3>
+            <ul>
+              <li><b>Stars</b> (high margin, high popularity) — anchor the menu, guarantee their equipment (wok, steamer, live tanks) has zero single-point queue at peak.</li>
+              <li><b>Plowhorses</b> (popular, thinner margin) — re-cost portions and prep batching; fried rice moved to a dedicated second wok burner at peak.</li>
+              <li><b>Puzzles</b> (profitable, unpopular) — reposition on the menu page and train servers to suggest; grilled prawns become a set-menu feature.</li>
+              <li><b>Dogs</b> — cut or restrict. The abalone claypot survives only as a pre-order banquet item, so its slow-braise never blocks the stock stove on a Friday night.</li>
+            </ul>
+            <p>The scoring re-runs monthly from Odoo POS sales data, so the menu keeps earning its
+            equipment. Menu changes feed back into the <a href="wf-blueprint.html">Blueprint Pack</a>
+            revision loop before any new appliance is bought.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2 · Kitchen staff workflows</h2>
+        <p class="lead">An 11-person brigade sized for 120 seats at 1.6 covers/seat on a peak Saturday
+        (~190 covers). Roles map one-to-one to the blueprint's stations, so the org chart and the
+        floorplan are the same drawing.</p>
+        <div class="grid g2">
+          <div class="card"><h3>Org — Selat 88 kitchen (peak roster)</h3>
+            <table class="tbl">
+              <tr><th>Role</th><th>Count</th><th>Station</th><th>Reports to</th></tr>
+              <tr><td>Head chef</td><td>1</td><td>Pass / expedite</td><td>Owner / GM</td></tr>
+              <tr><td>Sous chef</td><td>1</td><td>Wok 1 + line cover</td><td>Head chef</td></tr>
+              <tr><td>Wok cook</td><td>2</td><td>Wok 2, Wok 3</td><td>Sous chef</td></tr>
+              <tr><td>Steam / grill cook</td><td>1</td><td>Steamer + chargrill</td><td>Sous chef</td></tr>
+              <tr><td>Fry / appetiser cook</td><td>1</td><td>Fryer + cold apps</td><td>Sous chef</td></tr>
+              <tr><td>Prep cook (seafood)</td><td>1</td><td>Seafood prep, live tanks</td><td>Sous chef</td></tr>
+              <tr><td>Prep cook (veg / dessert)</td><td>1</td><td>Veg prep</td><td>Sous chef</td></tr>
+              <tr><td>Kitchen helper</td><td>1</td><td>Runner, restock, waste</td><td>Head chef</td></tr>
+              <tr><td>Steward (dishwash)</td><td>2</td><td>Dishwash loop</td><td>Head chef</td></tr>
+            </table></div>
+          <div class="card"><h3>Station-by-station duties (dinner)</h3>
+            <table class="tbl">
+              <tr><th>Station</th><th>Pre-service (15:00–17:30)</th><th>Service (17:30–22:00)</th></tr>
+              <tr><td>Pass</td><td>Ticket rail check, gantry on, taste sauces</td><td>Call tickets, QC every plate, log 86'd items in POS</td></tr>
+              <tr><td>Wok line</td><td>Mise en place per par sheet, burner test</td><td>Fire mains ≤ 12 min ticket time</td></tr>
+              <tr><td>Steam / grill</td><td>Steamer water, fish portioning w/ seafood prep</td><td>Live-fish orders ≤ 18 min, grill marks to spec</td></tr>
+              <tr><td>Fryer</td><td>Oil TPM test, batter station set</td><td>Apps ≤ 8 min, oil skim hourly</td></tr>
+              <tr><td>Prep</td><td>Butchery, sauces, dessert batch</td><td>Refill line pars, next-day thaw pulls to chiller</td></tr>
+              <tr><td>Dishwash</td><td>Machine temp check (wash 60°C / rinse 82°C)</td><td>Rack flow, chemical dosing check, pot rotation</td></tr>
+            </table></div>
+        </div>
+        <div class="card pad-lg">
+          <h3>Dinner-service cycle — who does what, in order</h3>
+          <div class="mermaid">
+flowchart LR
+  subgraph FOH["Front of house"]
+    O1["Order taken on POS tablet"] --> O2["Ticket prints at pass<br/>plus KDS at each station"]
+  end
+  subgraph PASSLANE["Head chef — pass"]
+    O2 --> C1["Call ticket, sequence courses"]
+    C5["QC plate, wipe rim, ring bell"] --> C6["Server collects ≤ 60s"]
+  end
+  subgraph LINE["Line cooks"]
+    C1 --> L1["Wok: fire mains"]
+    C1 --> L2["Steamer: live fish from tank,<br/>weight logged on ticket"]
+    C1 --> L3["Fryer: appetisers first"]
+    L1 --> C5
+    L2 --> C5
+    L3 --> C5
+  end
+  subgraph SUPPORT["Helper and stewards"]
+    L1 -. "restock pars" .- S1["Helper runs stock<br/>from prep and stores"]
+    C6 -. "soiled ware" .-> S2["Steward: scrape, rack, wash<br/>clean ware back to pass"]
+  end
+  style C5 fill:#e8f8f3,stroke:#16C098
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>3 · SOP library — 17 documents, each with an owner and a record</h2>
+        <p class="lead">Every SOP lives in Odoo Knowledge with its checklist as a recurring Odoo
+        activity — so "record kept" means a timestamped digital log, not a clipboard page that
+        vanishes. JR-Chemical products are specified by name and dilution inside the relevant SOPs.</p>
+        <div style="overflow-x:auto">
+        <table class="tbl">
+          <tr><th>#</th><th>SOP</th><th>Owner</th><th>Frequency</th><th>Record kept in Odoo</th></tr>
+          <tr><td>01</td><td>Opening checks (power, gas, temps, hand-wash stock)</td><td>Sous chef</td><td>Daily, 09:30</td><td>Opening checklist activity</td></tr>
+          <tr><td>02</td><td>Closing checks (gas off, hood off after cool-down, locks)</td><td>Head chef</td><td>Daily, 22:45</td><td>Closing checklist activity</td></tr>
+          <tr><td>03</td><td>Receiving &amp; goods inspection (temp, packaging, weight vs DO)</td><td>Prep cook (seafood)</td><td>Per delivery</td><td>Inventory receipt + photo attachment</td></tr>
+          <tr><td>04</td><td>FIFO storage &amp; date-labelling</td><td>Prep cooks</td><td>Daily</td><td>Lot/expiry tracking on products</td></tr>
+          <tr><td>05</td><td>Thawing (chiller thaw only, drip-tray, 24h max)</td><td>Prep cook (seafood)</td><td>Per pull</td><td>Thaw log activity</td></tr>
+          <tr><td>06</td><td>Blanch, cool &amp; hold (batch items, 2h/4h rule)</td><td>Sous chef</td><td>Per batch</td><td>Batch log w/ times</td></tr>
+          <tr><td>07</td><td>Fryer oil management (TPM test, filter, change threshold)</td><td>Fry cook</td><td>Daily test / change on reading</td><td>Oil log w/ TPM value</td></tr>
+          <tr><td>08</td><td>Hood filter cleaning (baffles through dishwasher)</td><td>Steward</td><td>Weekly</td><td>Maintenance activity</td></tr>
+          <tr><td>09</td><td>Grease-trap check &amp; desludge coordination</td><td>Head chef</td><td>Weekly check / desludge per contract</td><td>JR-Equipment service ticket</td></tr>
+          <tr><td>10</td><td>Chemical dilution &amp; dosing (JR-Chemical range, colour-coded)</td><td>Steward</td><td>Daily verify</td><td>Dosing check activity</td></tr>
+          <tr><td>11</td><td>Dishwash rack flow &amp; machine temps (60°C / 82°C)</td><td>Steward</td><td>Each service</td><td>Temp log activity</td></tr>
+          <tr><td>12</td><td>Waste segregation &amp; waste log</td><td>Kitchen helper</td><td>Daily</td><td>Waste log (kg by category)</td></tr>
+          <tr><td>13</td><td>Temperature log — chillers, freezer, live tanks</td><td>Sous chef</td><td>2× daily</td><td>Temp log w/ alert thresholds</td></tr>
+          <tr><td>14</td><td>Live-tank water quality (salinity, aeration, filter rinse)</td><td>Prep cook (seafood)</td><td>Daily</td><td>Tank log activity</td></tr>
+          <tr><td>15</td><td>Knife &amp; board colour-code discipline</td><td>Sous chef</td><td>Daily spot-check</td><td>Hygiene audit checklist</td></tr>
+          <tr><td>16</td><td>Pest sighting &amp; reporting</td><td>Anyone → head chef</td><td>As occurs</td><td>Incident record → pest contractor task</td></tr>
+          <tr><td>17</td><td>Equipment fault reporting &amp; JR-Tech service call</td><td>Head chef</td><td>As occurs</td><td>Helpdesk ticket → JR-Tech Field Service</td></tr>
+        </table>
+        </div>
+        <div class="callout tn"><b>Why this matters commercially:</b> SOPs 09, 10 and 17 are also
+        JR-Tech's recurring-revenue hooks — grease-trap desludge, JR-Chemical resupply and equipment
+        service all fire as Odoo subscriptions and tickets from day one. The owner gets discipline;
+        JR-Tech gets a wired-in aftermarket. See <a href="../operations/dept-workflows.html">Department
+        Workflows</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>4 · Policies, safety &amp; hygiene</h2>
+        <div class="grid g2">
+          <div class="card"><h3>HACCP-aligned critical control points</h3>
+            <table class="tbl">
+              <tr><th>CCP</th><th>Limit</th><th>Monitoring</th><th>Corrective action</th></tr>
+              <tr><td>Receiving temp (chilled seafood)</td><td>≤ 4°C</td><td>Probe every delivery</td><td>Reject &amp; log; supplier scored in Odoo</td></tr>
+              <tr><td>Cold holding</td><td>≤ 4°C (chiller), ≤ −18°C (freezer)</td><td>2× daily log + door alarm</td><td>Move stock, call SOP 17, discard if &gt; 2h excursion</td></tr>
+              <tr><td>Cooking core temp</td><td>≥ 75°C (fish ≥ 63°C, held 15s)</td><td>Probe spot-checks per service</td><td>Continue cooking; retrain if repeated</td></tr>
+              <tr><td>Hot holding (pass gantry)</td><td>≥ 60°C</td><td>Gantry gauge each service</td><td>Re-fire dish; discard after 2h</td></tr>
+              <tr><td>Cooling (batch items)</td><td>60°C → 21°C in 2h, → 4°C in 4h more</td><td>Batch log times</td><td>Discard if missed; shallow-pan retrain</td></tr>
+            </table></div>
+          <div class="card"><h3>People policies (Malaysia requirements built in)</h3>
+            <ul>
+              <li><b>Food-handler certification:</b> every kitchen employee completes the KKM-recognised Latihan Pengendali Makanan (LPM) course before first shift; certificate stored on the employee record in Odoo HR.</li>
+              <li><b>Typhoid vaccination (injeksi tifoid):</b> valid TY2 vaccination is mandatory for all food handlers; expiry dates tracked in Odoo with 60-day renewal alerts — an expired jab blocks the roster.</li>
+              <li><b>Personal hygiene policy:</b> clean uniform daily, hair restraint, no jewellery on line, hand-wash on entry and every task change, cuts covered with blue plasters, unwell staff (vomiting/diarrhoea) excluded 48h symptom-free.</li>
+              <li><b>Incident reporting:</b> injuries, customer complaints and suspected food-poisoning reports logged within 2h as Odoo incidents; anything notifiable escalated to the owner and, where required, MBPP health office same day.</li>
+              <li><b>Visitor &amp; contractor rule:</b> no entry past the staff line without a hygiene briefing; JR-Tech technicians follow the same rule on service visits.</li>
+            </ul></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>5 · Daily / weekly / monthly schedule</h2>
+        <div style="overflow-x:auto">
+        <table class="tbl">
+          <tr><th>Cadence</th><th>Task</th><th>Who</th><th>When</th><th>Verified by</th></tr>
+          <tr><td rowspan="4">Daily</td><td>Opening &amp; closing checklists, temp logs (2×), tank log</td><td>Sous chef / prep</td><td>09:30 &amp; 16:00 / 22:45</td><td>Head chef</td></tr>
+          <tr><td>Prep par production per forecast</td><td>Prep cooks</td><td>10:00–15:00</td><td>Sous chef</td></tr>
+          <tr><td>Line clean-down, floors, waste out, dosing check</td><td>All stations / steward</td><td>Post-service</td><td>Head chef</td></tr>
+          <tr><td>Fryer oil TPM test &amp; skim</td><td>Fry cook</td><td>10:30</td><td>Sous chef</td></tr>
+          <tr><td rowspan="4">Weekly</td><td>Deep-clean one zone on rotation (stores → prep → line → dishwash)</td><td>Whole brigade</td><td>Mon (closed lunch)</td><td>Head chef</td></tr>
+          <tr><td>Hood baffle filters through dishwasher</td><td>Steward</td><td>Mon</td><td>Sous chef</td></tr>
+          <tr><td>Grease-trap check; desludge per JR-Equipment contract</td><td>Head chef / JR-Tech tanker</td><td>Tue AM</td><td>Odoo service ticket</td></tr>
+          <tr><td>Chemical stock count → JR-Chemical auto-reorder</td><td>Steward</td><td>Sun close</td><td>Odoo reorder rule</td></tr>
+          <tr><td rowspan="4">Monthly</td><td>Hood &amp; duct deep clean (access doors, fan)</td><td>JR-Tech service crew</td><td>1st Mon</td><td>Field Service report</td></tr>
+          <tr><td>Preventive maintenance visit — all JR-Tech equipment</td><td>JR-Tech technician</td><td>1st Mon</td><td>Maintenance checklist per asset</td></tr>
+          <tr><td>Pest-control treatment &amp; bait-station audit</td><td>Licensed contractor</td><td>2nd Tue</td><td>Contractor report filed in Odoo</td></tr>
+          <tr><td>Full stock take + menu-engineering re-score from POS data</td><td>Head chef + owner</td><td>Month-end</td><td>Odoo inventory adjustment</td></tr>
+        </table>
+        </div>
+        <div class="card pad-lg">
+          <h3>A typical week at Selat 88</h3>
+          <div class="mermaid">
+gantt
+  title Selat 88 — typical operating week
+  dateFormat YYYY-MM-DD
+  axisFormat %a
+  section Daily rhythm
+  Prep and par production (daily)      :a1, 2026-07-06, 6d
+  Lunch and dinner service (Tue-Sun)   :a2, 2026-07-07, 5d
+  Closing clean-down and logs (daily)  :a3, 2026-07-06, 6d
+  section Weekly tasks
+  Zone deep-clean (Mon, closed lunch)  :b1, 2026-07-06, 1d
+  Hood baffle filter wash              :b2, 2026-07-06, 1d
+  Grease-trap check and desludge       :b3, 2026-07-07, 1d
+  Chemical stock count and reorder     :b4, 2026-07-11, 1d
+  section Monthly (this week)
+  JR-Tech preventive maintenance visit :c1, 2026-07-06, 1d
+  Pest control treatment               :c2, 2026-07-07, 1d
+          </div>
+        </div>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="laborCoverChart" height="240"></canvas></div>
+          <div class="card pad-lg"><h3>Roster logic</h3>
+            <p>Kitchen labour is rostered to forecast covers, not habit. Odoo POS history drives a
+            day-by-day cover forecast; the chart shows the peak-week pattern the roster is built
+            against — a lean 8-person Tuesday line rising to the full 11-person brigade Friday to
+            Sunday. Monday is the deep-clean and maintenance day precisely because it is the trough.
+            Payroll target: kitchen labour ≤ 13% of revenue.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>6 · Training plan — opening crew</h2>
+        <table class="tbl">
+          <tr><th>Week</th><th>Focus</th><th>Delivered by</th><th>Pass gate</th></tr>
+          <tr><td>W-3 (pre-opening)</td><td>Food-handler course (LPM) + typhoid vaccination completed; hygiene policy signed</td><td>KKM-accredited trainer / clinic</td><td>Certificates on Odoo HR record</td></tr>
+          <tr><td>W-2</td><td>Equipment induction: wok range, steamer, fryer, dishwasher, induction stove — safe start-up, shutdown, cleaning, fault reporting</td><td>JR-Tech trainers (JR-Consulting training service)</td><td>Per-equipment sign-off checklist</td></tr>
+          <tr><td>W-2</td><td>SOP walk-through: all 17 SOPs on station, chemical dilution hands-on with JR-Chemical rep</td><td>Head chef + JR-Tech</td><td>Written quiz ≥ 80%</td></tr>
+          <tr><td>W-1</td><td>Menu boot camp: every cook plates every dish to spec photo; ticket-time drills</td><td>Head chef</td><td>Blind plate check by owner</td></tr>
+          <tr><td>W-1</td><td>Dry-run services: 2 friends-and-family nights at 60 then 100 covers</td><td>Whole team</td><td>Ticket times within target; debrief actions closed in Odoo</td></tr>
+          <tr><td>W+4</td><td>Refresher + first menu-engineering review from live POS data</td><td>JR-Tech + head chef</td><td>Menu re-score published</td></tr>
+        </table>
+        <p>Staff-facing quick guides for POS, KDS and the log screens are packaged separately — see
+        <a href="../../tools/staff-guides.html">Staff Guides</a>.</p>
+      </section>
+
+      <section class="section">
+        <h2>So what for the Odoo build</h2>
+        <p>The Operations Pack is the reason the Odoo build has substance on day one: the menu becomes
+        <b>POS products with recipes and food-cost BoMs</b>; the roster becomes <b>Planning shifts</b>;
+        the 17 SOPs become <b>Knowledge articles with recurring activities</b>; CCP and temperature
+        logs become <b>auditable records</b> an MBPP inspector can be shown on a tablet; and every
+        JR-Tech touchpoint — maintenance, desludge, chemicals — is a live subscription. The
+        <a href="wf-financials.html">Financial Pack</a> then prices exactly this operating model.</p>
+      </section>
+
+      <div class="pagenav">
+        <a href="wf-blueprint.html">← Prev: Kitchen Blueprint Pack</a>
+        <a href="wf-financials.html">Next: Financial Pack →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Restoran Selat 88 is an illustrative worked example.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('menuMatrixChart'), {
+  type: 'bubble',
+  data: { datasets: [
+    { label: 'Stars', backgroundColor: 'rgba(22,192,152,.65)', data: [
+      {x: 74, y: 58, r: 14, d: 'Steamed grouper'},
+      {x: 62, y: 62, r: 12, d: 'Chilli crab'},
+      {x: 70, y: 66, r: 11, d: 'Butter prawns'},
+      {x: 66, y: 70, r: 10, d: 'Salted-egg squid'} ]},
+    { label: 'Plowhorses', backgroundColor: 'rgba(127,169,222,.65)', data: [
+      {x: 88, y: 74, r: 13, d: 'Seafood fried rice'},
+      {x: 82, y: 78, r: 11, d: 'Sambal kangkung'},
+      {x: 76, y: 76, r: 8, d: 'Or-nee dessert'} ]},
+    { label: 'Puzzles', backgroundColor: 'rgba(240,180,60,.7)', data: [
+      {x: 34, y: 64, r: 10, d: 'Grilled tiger prawns'},
+      {x: 30, y: 71, r: 8, d: 'Fish-head noodle soup'} ]},
+    { label: 'Dogs', backgroundColor: 'rgba(226,84,75,.65)', data: [
+      {x: 18, y: 53, r: 9, d: 'Abalone claypot'} ]}
+  ]},
+  options: {
+    plugins: {
+      legend: { position: 'bottom' },
+      title: { display: true, text: 'Menu-engineering matrix — popularity vs contribution margin' },
+      tooltip: { callbacks: { label: function(c){ return c.raw.d + ' — popularity ' + c.raw.x + ', margin index ' + c.raw.y; } } }
+    },
+    scales: {
+      x: { min: 0, max: 100, title: { display: true, text: 'Popularity index (forecast order share)' } },
+      y: { min: 40, max: 90, title: { display: true, text: 'Contribution margin index' } }
+    }
+  }
+});
+
+new Chart(document.getElementById('laborCoverChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Mon (closed lunch)','Tue','Wed','Thu','Fri','Sat','Sun'],
+    datasets: [
+      { label: 'Forecast covers', data: [60, 130, 140, 160, 210, 245, 205], backgroundColor: '#7FA9DE', yAxisID: 'y' },
+      { label: 'Kitchen headcount rostered', data: [6, 8, 8, 9, 11, 11, 10], type: 'line', borderColor: '#0B1F3A', backgroundColor: '#0B1F3A', yAxisID: 'y2', tension: .3 }
+    ]
+  },
+  options: {
+    plugins: { legend: { position: 'bottom' }, title: { display: true, text: 'Peak-week covers vs kitchen roster' } },
+    scales: {
+      y: { beginAtZero: true, title: { display: true, text: 'Covers' } },
+      y2: { beginAtZero: true, max: 14, position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: 'Headcount' } }
+    }
+  }
+});
+</script>
+</body>
+</html>

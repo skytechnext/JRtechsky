@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Reimagined Workflow — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="wf-overview">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Kitchen Workflow</b> · The Reimagined Workflow</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Kitchen Workflow — JR-Tech Method</span>
+      <h1>One meeting in. A complete kitchen &amp; restaurant business plan out.</h1>
+      <p>This is the operating promise the AI + Odoo engine makes possible: after a single structured
+      first meeting, JR-Tech hands the restaurant owner a full planning &amp; projection pack — blueprint,
+      operations, financials and JR-Tech's own delivery plan. By the moment the owner signs the agreement,
+      every planning output already exists. Nothing left to "come back to you on".</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">1</div><div class="lbl">structured meeting to capture all four inputs</div><div class="delta up">vs. 5–8 site visits today</div></div>
+          <div class="kpi"><div class="num">~20</div><div class="lbl">deliverables produced across 4 packs</div><div class="delta up">every one owner-ready</div></div>
+          <div class="kpi"><div class="num">5–7</div><div class="lbl">days from meeting to signed proposal</div><div class="delta up">vs. 6–8 weeks traditional</div></div>
+          <div class="kpi"><div class="num">0</div><div class="lbl">external consultants the owner must hire</div><div class="delta up">one-stop, one accountable party</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The old way vs. the JR-Tech Method</h2>
+        <p class="lead">For sixteen years JR-Tech has planned, fabricated and equipped commercial kitchens
+        across Penang. The bottleneck was never capability — it was the workflow. The traditional
+        kitchen-fit-out cycle forces the owner to be the general contractor of their own planning.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <span class="tag red">The old way</span>
+            <h3>Weeks of back-and-forth, quote covers equipment only</h3>
+            <ul>
+              <li>Owner sends a floor plan; JR-Tech replies with an equipment list and price.</li>
+              <li>Every layout revision means another site visit and another week of email.</li>
+              <li>The quote is <b>equipment only</b> — no menu engineering, no SOPs, no staffing plan, no revenue projection.</li>
+              <li>The owner separately assembles an interior designer, an M&amp;E contractor, a food-safety consultant and an accountant — each working from different drawings.</li>
+              <li>Decisions stall because nobody can answer "what will this kitchen actually earn?"</li>
+            </ul>
+          </div>
+          <div class="card pad-lg">
+            <span class="tag green">The new way</span>
+            <h3>One meeting → the full kitchen + restaurant business plan</h3>
+            <ul>
+              <li>One 90-minute structured meeting captures <b>four inputs</b>: floor plans, menu, owner's requests, and JR-Tech's own site-inspection notes.</li>
+              <li>The AI + Odoo engine converts those inputs into <b>~20 deliverables in four packs</b> within days.</li>
+              <li>The proposal the owner signs already contains the equipment schedule, the annotated floorplan, the SOPs, the financial projections and JR-Tech's delivery timeline.</li>
+              <li>Signing the agreement = instant handover to execution. Fabrication, procurement and installation start from documents that already exist in Odoo.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout tn"><b>The reframe:</b> JR-Tech stops selling equipment quotes and starts
+        selling a <b>de-risked restaurant launch</b>. The equipment is still in the deal — but it arrives
+        wrapped in the plan that proves it will pay for itself. See the commercial logic in the
+        <a href="../operations/value-chain.html">Value Chain &amp; Capability Map</a> and the
+        <a href="../operations/pain-solution.html">Pain → Solution Matrix</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>End-to-end flow: four inputs, one engine, four packs</h2>
+        <div class="mermaid">
+flowchart LR
+  subgraph IN[First meeting inputs]
+    A1[Kitchen floor plans]
+    A2[Menu]
+    A3[Owner requests]
+    A4[Site inspection notes]
+  end
+  subgraph ENG[AI plus Odoo engine]
+    B1[Floorplan analysis]
+    B2[Menu engineering]
+    B3[Electrical and water load calculations]
+    B4[Costing and projections]
+  end
+  subgraph OUT[Output packs]
+    C1[Kitchen Blueprint Pack]
+    C2[Operations Pack]
+    C3[Financial Pack]
+    C4[JR-Tech Pack]
+  end
+  A1 --> B1
+  A2 --> B2
+  A3 --> B4
+  A4 --> B3
+  B1 --> C1
+  B2 --> C2
+  B3 --> C1
+  B2 --> C3
+  B4 --> C3
+  B4 --> C4
+  C1 --> D[Full proposal and agreement signing]
+  C2 --> D
+  C3 --> D
+  C4 --> D
+  D --> E[Instant execution handover to fabrication delivery and installation]
+        </div>
+        <p>Every arrow above is an Odoo object, not a hand-off email: inputs land as CRM lead
+        attachments, the engine runs as AI actions over Documents and Studio models, and each pack is a
+        generated report set attached to the quotation. The full platform picture is on
+        <a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a> and the owner-level
+        argument on <a href="../technology/why-odoo.html">The Pitch — Owner to Owner</a>.</p>
+      </section>
+
+      <section class="section">
+        <h2>What the owner walks away with</h2>
+        <p class="lead">All ~20 deliverables, grouped by pack. Each pack has its own deep-dive page.</p>
+        <table class="tbl">
+          <tr><th>Pack</th><th>Deliverables</th><th>Deep dive</th></tr>
+          <tr>
+            <td><b>Kitchen Blueprint Pack</b><br><span class="tag">design</span></td>
+            <td>1. Equipment schedule (make/model/qty/price) · 2. Floorplan with equipment locations ·
+            3. Electrical points plan (single/three-phase, amperage per station) · 4. Drainage &amp; water
+            points plan · 5. Ventilation &amp; exhaust routing overlay · 6. Stainless-steel fabrication
+            drawings (custom counters, hoods, tables)</td>
+            <td><a href="wf-blueprint.html">Blueprint Pack →</a></td>
+          </tr>
+          <tr>
+            <td><b>Operations Pack</b><br><span class="tag">run the kitchen</span></td>
+            <td>7. Recommended menu (engineered from the owner's draft) · 8. Staff workflows &amp; station
+            assignments · 9. SOPs per station · 10. Kitchen policies (opening/closing, receiving, waste) ·
+            11. Safety &amp; hygiene plan (food-premises compliance, segregated prep, hand-wash points) ·
+            12. Daily / weekly / monthly schedules (cleaning, maintenance, chemical dosing)</td>
+            <td><a href="wf-operations.html">Operations Pack →</a></td>
+          </tr>
+          <tr>
+            <td><b>Financial Pack</b><br><span class="tag">prove the numbers</span></td>
+            <td>13. Projected kitchen output &amp; revenue for a normal work day (covers × ticket) ·
+            14. Kitchen financial projection (P&amp;L, payback, utilities) · 15. Competitor-kitchen
+            comparison — electricity &amp; labour savings vs. a conventional gas-heavy build ·
+            16. Equipment CAPEX vs. rental scenarios</td>
+            <td><a href="wf-financials.html">Financial Pack →</a></td>
+          </tr>
+          <tr>
+            <td><b>JR-Tech Pack</b><br><span class="tag green">delivery</span></td>
+            <td>17. Delivery, installation &amp; commissioning instructions · 18. Maintenance plan &amp;
+            service schedule · 19. JR-Tech projected revenue on the engagement · 20. Quotation, full
+            proposal &amp; project timeline (Gantt)</td>
+            <td><a href="wf-jrtech.html">JR-Tech Pack →</a></td>
+          </tr>
+        </table>
+        <div class="callout"><b>Note:</b> deliverables 13–16 reuse the same models behind the interactive
+        <a href="../../tools/profit-estimator.html">Profit Estimator</a>, and deliverable 20 is generated
+        by the same pipeline documented in the <a href="../../tools/quotation.html">Quotation</a> tool.</div>
+      </section>
+
+      <section class="section">
+        <h2>Time compression: 6–8 weeks becomes 5–7 days</h2>
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="timeChart" height="260"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Where the weeks go — and where they don't</h3>
+            <p>In the traditional cycle, elapsed time is dominated by waiting: waiting for revised
+            drawings, waiting for third-party consultants, waiting for a re-quote after every scope
+            change. The JR-Tech Method removes the waiting, not the thinking — capture is compressed
+            into one meeting, and analysis runs in parallel inside the engine instead of sequentially
+            across firms.</p>
+            <table class="tbl">
+              <tr><th>Stage</th><th>Traditional</th><th>JR-Tech Method</th></tr>
+              <tr><td>Requirements capture</td><td>10 days (multiple visits)</td><td>1 day (one meeting)</td></tr>
+              <tr><td>Layout &amp; M&amp;E design</td><td>14 days</td><td>2 days</td></tr>
+              <tr><td>Operations planning</td><td>10 days (external consultant)</td><td>1 day</td></tr>
+              <tr><td>Financial projections</td><td>7 days (owner's accountant)</td><td>1 day</td></tr>
+              <tr><td>Quotation &amp; proposal</td><td>7 days</td><td>1 day</td></tr>
+              <tr><td><b>Total to signature</b></td><td><b>~48 days</b></td><td><b>5–7 days</b></td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Why it works</h2>
+        <div class="grid g3">
+          <div class="card">
+            <span class="tag">Expertise</span>
+            <h3>Sixteen years of floorplan &amp; M&amp;E judgement</h3>
+            <p>JR-Tech's consulting team — space planning, in-house stainless fabrication, electrical and
+            drainage layout experience since 2009 — is what trains and constrains the engine. The AI
+            proposes; JR-Tech's engineers validate every load calculation and clearance before anything
+            reaches the owner.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Data</span>
+            <h3>Odoo as the single source of truth</h3>
+            <p>Product catalog, price lists, supplier lead times, fabrication BoMs and past project
+            actuals all live in Odoo 19. The engine doesn't guess equipment prices or install durations —
+            it reads them. That is why the quotation and the projection agree with each other.</p>
+          </div>
+          <div class="card">
+            <span class="tag green">AI</span>
+            <h3>AI does the assembly, not the judgement</h3>
+            <p>Floorplan analysis, menu engineering, load calculations and document generation are
+            pattern work at machine speed. The <a href="../technology/ai-catalog.html">AI &amp;
+            Automation Catalog</a> maps each step to a concrete Odoo automation; the
+            <a href="../overview/why-ai.html">Why AI</a> page makes the strategic case.</p>
+          </div>
+        </div>
+        <div class="callout tn"><b>So what for the Odoo build:</b> this workflow is the flagship use-case
+        of the implementation. It requires CRM (lead intake), Documents (input capture), Studio models
+        (site-survey data), Sales (quotation), Project (execution handover) and the AI action layer —
+        all scoped in the <a href="../../tools/brd.html">Requirements (BRD)</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../operations/value-chain.html">← Value Chain &amp; Capability Map</a>
+        <a href="wf-first-meeting.html">Next: The First Meeting →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('timeChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Requirements capture','Layout & M&E design','Operations planning','Financial projections','Quotation & proposal'],
+    datasets: [
+      { label: 'Traditional (days)', data: [10,14,10,7,7], backgroundColor: 'rgba(226,84,75,.7)' },
+      { label: 'JR-Tech Method (days)', data: [1,2,1,1,1], backgroundColor: 'rgba(22,192,152,.8)' }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: { legend: { position: 'bottom' }, title: { display: true, text: 'Elapsed days per stage — meeting to signature' } },
+    scales: { x: { beginAtZero: true, title: { display: true, text: 'days' } } }
+  }
+});
+</script>
+</body>
+</html>
