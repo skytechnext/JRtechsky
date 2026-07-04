@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JR-Tech Pack &amp; Handover — from signature to service — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="wf-jrtech">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Kitchen Workflow</b> · JR-Tech Pack &amp; Handover</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Kitchen Workflow — JR-Tech Method · Output Pack 4 of 4</span>
+      <h1>JR-Tech Pack &amp; Handover — from signature to service</h1>
+      <p>The final pack closes the loop: exactly how <b>Restoran Selat 88</b>'s kitchen gets
+      delivered, installed, maintained and paid for — plus JR-Tech's own account economics, the
+      quotation and payment structure, the full proposal binder, and the Day-0 Odoo automation that
+      fires the moment the owner signs. Because everything was planned before signing, execution
+      starts the same day, with zero re-work.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <!-- ============ A. DELIVERY & INSTALLATION ============ -->
+      <section class="section">
+        <h2>A · Delivery &amp; installation instructions</h2>
+        <p class="lead">A phased install plan, sequenced against the floor-plan access route
+        captured in the <a href="wf-first-meeting.html">first meeting</a> site inspection: the
+        3.2&nbsp;m rear service corridor off Gat Lebuh Macallum is the only route wide enough for
+        the 2-door upright chillers and the 3-deck steamers, so heavy delivery is a single
+        choreographed morning before fabrication closes the corridor.</p>
+
+        <table class="tbl">
+          <tr><th>#</th><th>Phase</th><th>Duration</th><th>Crew</th><th>Prerequisites</th><th>Owner-side dependencies</th></tr>
+          <tr><td>1</td><td><b>Site prep &amp; M&amp;E first fix</b> — floor screed &amp; falls, drainage runs, grease-trap pit, power points per M&amp;E drawing, gas line stub</td><td>2 weeks</td><td>Owner's contractor + JR-Tech M&amp;E supervisor (2 site checks)</td><td>Signed blueprint pack; hoarding up</td><td>Contractor appointed; TNB supply upgrade to 100&nbsp;A 3-phase confirmed</td></tr>
+          <tr><td>2</td><td><b>Heavy equipment delivery</b> — chillers, steamers, induction ranges, dishwasher via rear corridor; staged per delivery order</td><td>2 days</td><td>4 JR-Tech riggers + 3-tonne lorry with tailgate</td><td>Phase 1 floor cured (7 days); corridor cleared</td><td>Building management delivery permit; lift/loading-bay booking</td></tr>
+          <tr><td>3</td><td><b>Fabrication install</b> — stainless benches, sinks, shelving, hood, wall cladding from JR-Tech's in-house fabrication shop</td><td>2 weeks</td><td>3 fabricators + 1 welder</td><td>Phase 2 heavy items in final position</td><td>Ceiling works by owner's contractor completed</td></tr>
+          <tr><td>4</td><td><b>Gas &amp; electrical connection, testing</b> — terminate all points, pressure-test gas line, earth-leakage tests, hood airflow balancing</td><td>4 days</td><td>Licensed chargeman + gas contractor + JR-Tech engineer</td><td>Phases 2–3 complete</td><td>Suruhanjaya Tenaga / gas certificate appointments</td></tr>
+          <tr><td>5</td><td><b>Commissioning &amp; training</b> — run every unit at load, calibrate blast chiller, dishwasher chemical dosing, 2-day staff training per <a href="wf-operations.html">Operations Pack</a> SOPs</td><td>1 week</td><td>JR-Tech commissioning engineer + chef trainer</td><td>Phase 4 certificates issued</td><td>Kitchen team hired and on site for training days</td></tr>
+        </table>
+
+        <h3>Timeline — signing to opening (9-week example)</h3>
+        <div class="card pad-lg">
+          <pre class="mermaid">
+gantt
+  title Selat 88 - signing to opening
+  dateFormat  YYYY-MM-DD
+  axisFormat  Wk %W
+  section Contract
+  Signing and Day-0 automation      :milestone, m1, 2026-08-03, 0d
+  section Site
+  Site prep and M-E first fix       :a1, 2026-08-03, 14d
+  Floor curing                      :a2, after a1, 7d
+  section JR-Tech
+  Fabrication in JR-Tech workshop   :b1, 2026-08-03, 21d
+  Heavy equipment delivery          :b2, after a2, 2d
+  Fabrication install on site       :b3, after b2, 14d
+  Gas and electrical testing        :b4, after b3, 4d
+  Commissioning and staff training  :b5, after b4, 7d
+  section Handover
+  Handover and defects list         :milestone, m2, after b5, 0d
+  Soft launch                       :c1, after b5, 7d
+  Grand opening                     :milestone, m3, after c1, 0d
+          </pre>
+        </div>
+        <div class="callout tn"><b>Why 9 weeks is credible:</b> workshop fabrication runs in
+        parallel with site prep from Day 0 — possible only because the blueprint pack was final
+        <i>before</i> signing. On a conventional flow, fabrication drawings start after deposit,
+        adding 3–4 weeks.</div>
+      </section>
+
+      <!-- ============ B. MAINTENANCE ============ -->
+      <section class="section">
+        <h2>B · Maintenance instructions</h2>
+        <p class="lead">Every planned visit below is a recurring <b>Field Service work order</b> in
+        Odoo, generated automatically from the maintenance contract created at signing. Technicians
+        close checklists on a tablet; readings (sub-meter kWh, dishwasher chemical dosing, grease-trap
+        level) flow straight into the account dashboards described in the
+        <a href="wf-financials.html">Financial Pack</a>.</p>
+
+        <h3>Preventive maintenance schedule by equipment class</h3>
+        <table class="tbl">
+          <tr><th>Equipment class</th><th>Daily (operator care)</th><th>Monthly (JR-Tech visit)</th><th>Quarterly</th><th>Annual</th></tr>
+          <tr><td>Induction ranges &amp; woks</td><td>Wipe glass, check fan intake filters</td><td>Coil resistance check, fan clean, firmware log</td><td>Thermal-camera scan of boards</td><td>Full strip-down service</td></tr>
+          <tr><td>Steamers</td><td>Drain &amp; rinse, door-gasket wipe</td><td>Descale, gasket inspection, safety-valve test</td><td>Element/burner efficiency test</td><td>Pressure-vessel certification</td></tr>
+          <tr><td>Refrigeration &amp; blast chiller</td><td>Temperature log (auto via probe), condenser dust check</td><td>Refrigerant pressure, condenser coil wash, door seals</td><td>Compressor amp draw trend</td><td>Refrigerant top-up + controls calibration</td></tr>
+          <tr><td>Heat-recovery dishwasher</td><td>De-lime arms, empty strainers</td><td>Chemical-dosing calibration, heat-exchanger flush</td><td>Pump seals, rinse-pressure test</td><td>Boiler descale, full service</td></tr>
+          <tr><td>Hood &amp; exhaust</td><td>Baffle filter soak (closing shift)</td><td>Fan belt/bearing check, duct access inspection</td><td>Duct degrease (certified)</td><td>Fire-suppression system recertification</td></tr>
+          <tr><td>Grease trap &amp; drainage</td><td>Visual scum check</td><td>—</td><td>Pump-out &amp; bio-dosing (JR-Tech tanker service)</td><td>Pit condition survey</td></tr>
+        </table>
+
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Spare-parts stocking list (held at JR-Tech Gelugor store)</h3>
+            <table class="tbl">
+              <tr><th>Part</th><th>Qty</th><th>Covers</th></tr>
+              <tr><td>Induction power board (15&nbsp;kW)</td><td>2</td><td>Wok line — the throughput constraint</td></tr>
+              <tr><td>Steamer door gaskets &amp; safety valves</td><td>4 / 2</td><td>Both steamers</td></tr>
+              <tr><td>Dishwasher rinse pump + dosing tubes</td><td>1 set</td><td>Heat-recovery dishwasher</td></tr>
+              <tr><td>Refrigeration fan motors + probes</td><td>2 / 6</td><td>All cold rooms &amp; uprights</td></tr>
+              <tr><td>Hood fan belt set</td><td>2</td><td>Exhaust + makeup air</td></tr>
+              <tr><td>Baffle filters (spare rotation set)</td><td>1 set</td><td>Swap while soaking</td></tr>
+            </table>
+          </div>
+          <div class="card pad-lg">
+            <h3>Response-time SLA tiers</h3>
+            <table class="tbl">
+              <tr><th>Tier</th><th>Trigger</th><th>Response</th><th>Resolution target</th></tr>
+              <tr><td><span class="tag red">P1 — service down</span></td><td>Wok line, dishwasher or main cold room out during service hours</td><td>Phone triage &lt; 30 min, tech on site &lt; 4 hrs</td><td>Same day (parts held in stock)</td></tr>
+              <tr><td><span class="tag warn">P2 — degraded</span></td><td>One unit of a multi-unit station down</td><td>Tech on site next business day</td><td>48 hrs</td></tr>
+              <tr><td><span class="tag">P3 — routine</span></td><td>Non-blocking defects, cosmetic, requests</td><td>Bundled into next monthly visit</td><td>Next visit</td></tr>
+            </table>
+            <p>Every ticket, response and resolution timestamp is logged in Odoo Helpdesk + Field
+            Service, so SLA performance is reportable to the owner — and to JR-Tech management.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ C. JR-TECH PROJECTED REVENUE ============ -->
+      <section class="section">
+        <h2>C · JR-Tech projected revenue from this account</h2>
+        <p class="lead">The internal business case: why the one-meeting method wins for JR-Tech,
+        not just the client. One well-planned kitchen becomes a 5-year annuity across all four
+        business lines — equipment, fabrication, chemicals and services.</p>
+
+        <table class="tbl">
+          <tr><th>Revenue stream</th><th>Type</th><th>Value</th><th>Year 1</th><th>5-year value</th></tr>
+          <tr><td>Equipment sale (induction, refrigeration, dishwasher, steamers)</td><td>One-off</td><td>RM 310,000</td><td>RM 310,000</td><td>RM 310,000</td></tr>
+          <tr><td>Stainless fabrication (in-house workshop)</td><td>One-off</td><td>RM 86,000</td><td>RM 86,000</td><td>RM 86,000</td></tr>
+          <tr><td>Installation &amp; commissioning</td><td>One-off</td><td>RM 30,000</td><td>RM 30,000</td><td>RM 30,000</td></tr>
+          <tr><td>Maintenance contract (SLA above)</td><td>Recurring</td><td>RM 2,400 / mo</td><td>RM 28,800</td><td>RM 144,000</td></tr>
+          <tr><td>Chemical subscription (JR-Chemical)</td><td>Recurring</td><td>RM 1,850 / mo</td><td>RM 22,200</td><td>RM 111,000</td></tr>
+          <tr><td>Rental items (backup dishwasher, ice machine)</td><td>Recurring</td><td>RM 950 / mo</td><td>RM 11,400</td><td>RM 57,000</td></tr>
+          <tr><td>Grease-trap / tanker service (quarterly)</td><td>Recurring</td><td>RM 480 / mo equiv.</td><td>RM 5,760</td><td>RM 28,800</td></tr>
+          <tr><td><b>Total account value</b></td><td>—</td><td>—</td><td><b>RM 494,160</b></td><td><b>RM 766,800</b></td></tr>
+        </table>
+
+        <div class="grid g2">
+          <div class="chartbox"><canvas id="wfJrRevenueChart" height="250"></canvas></div>
+          <div class="chartbox"><canvas id="wfJrMixChart" height="250"></canvas></div>
+        </div>
+        <div class="callout tn"><b>The strategic point:</b> recurring streams are <b>RM 5,680/month
+        at ~45% blended margin</b> — and they only exist because the maintenance contract, chemical
+        subscription and rental lines were designed into the proposal from Day 0, not sold as an
+        afterthought. Over 5 years, recurring revenue (RM 340,800) approaches 80% of the original
+        equipment sale — a second kitchen, earned without a second tender.</div>
+      </section>
+
+      <!-- ============ D. QUOTATION ============ -->
+      <section class="section">
+        <h2>D · Quotation structure &amp; payment milestones</h2>
+        <p class="lead">The line-item summary below mirrors the full quotation format — see the
+        <a href="../../tools/quotation.html">Quotation document</a> for the complete template with
+        SST treatment and MyInvois e-invoice fields.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>Quote summary — Selat 88</h3>
+            <table class="tbl">
+              <tr><th>Section</th><th>Lines</th><th>Amount</th></tr>
+              <tr><td>1 · Cooking equipment (induction series)</td><td>14</td><td>RM 168,000</td></tr>
+              <tr><td>2 · Refrigeration &amp; cook-chill</td><td>8</td><td>RM 94,000</td></tr>
+              <tr><td>3 · Warewashing (heat-recovery)</td><td>3</td><td>RM 48,000</td></tr>
+              <tr><td>4 · Stainless fabrication (custom)</td><td>19</td><td>RM 86,000</td></tr>
+              <tr><td>5 · Installation, testing, commissioning</td><td>5</td><td>RM 30,000</td></tr>
+              <tr><td>6 · Recurring contracts (maintenance, chemicals, rental, grease-trap)</td><td>4</td><td>RM 5,680 / mo</td></tr>
+              <tr><td><b>Capex total (excl. SST)</b></td><td><b>49</b></td><td><b>RM 426,000</b></td></tr>
+            </table>
+          </div>
+          <div class="card pad-lg">
+            <h3>Payment milestones</h3>
+            <table class="tbl">
+              <tr><th>Milestone</th><th>%</th><th>Amount</th><th>Odoo trigger</th></tr>
+              <tr><td>On signing (deposit)</td><td>30%</td><td>RM 127,800</td><td>Invoice auto-issued by Sign workflow</td></tr>
+              <tr><td>On heavy equipment delivery</td><td>30%</td><td>RM 127,800</td><td>Delivery order validation</td></tr>
+              <tr><td>On testing &amp; commissioning complete</td><td>30%</td><td>RM 127,800</td><td>Commissioning task done</td></tr>
+              <tr><td>On handover sign-off (defects cleared)</td><td>10%</td><td>RM 42,600</td><td>Handover milestone in project</td></tr>
+            </table>
+            <p>Recurring contracts bill monthly from opening day via Odoo Subscriptions —
+            the savings they protect are quantified in the
+            <a href="../../tools/roi-tco.html">ROI / TCO model</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ E. PROPOSAL BINDER ============ -->
+      <section class="section">
+        <h2>E · Full proposal — contents page</h2>
+        <p class="lead">Everything the owner receives at the signing meeting, one binder (and one
+        Odoo portal login), generated from the single first meeting. Twenty numbered deliverables
+        across the four packs.</p>
+        <table class="tbl">
+          <tr><th>#</th><th>Document</th><th>Pack</th><th>Format</th></tr>
+          <tr><td>1</td><td>Concept brief &amp; owner requirements record</td><td><a href="wf-first-meeting.html">First Meeting</a></td><td>PDF</td></tr>
+          <tr><td>2</td><td>Site inspection report (measurements, photos, services)</td><td>First Meeting</td><td>PDF</td></tr>
+          <tr><td>3</td><td>Kitchen layout plan — zoned, food-flow compliant</td><td><a href="wf-blueprint.html">Blueprint</a></td><td>DWG + PDF</td></tr>
+          <tr><td>4</td><td>Equipment schedule with connected loads</td><td>Blueprint</td><td>PDF + Odoo</td></tr>
+          <tr><td>5</td><td>M&amp;E drawings (power, water, drainage, gas points)</td><td>Blueprint</td><td>DWG + PDF</td></tr>
+          <tr><td>6</td><td>Hood &amp; ventilation sizing calculation</td><td>Blueprint</td><td>PDF</td></tr>
+          <tr><td>7</td><td>Fabrication shop drawings (stainless items)</td><td>Blueprint</td><td>DWG</td></tr>
+          <tr><td>8</td><td>Regulatory compliance checklist (food premises regs)</td><td>Blueprint</td><td>PDF</td></tr>
+          <tr><td>9</td><td>Station-by-station workflow &amp; staffing plan</td><td><a href="wf-operations.html">Operations</a></td><td>PDF</td></tr>
+          <tr><td>10</td><td>Prep &amp; service SOPs incl. cook-and-chill programme</td><td>Operations</td><td>PDF + Odoo</td></tr>
+          <tr><td>11</td><td>Daily/weekly cleaning &amp; food-safety schedules</td><td>Operations</td><td>PDF</td></tr>
+          <tr><td>12</td><td>Staff training curriculum (commissioning week)</td><td>Operations</td><td>PDF</td></tr>
+          <tr><td>13</td><td>Projected kitchen output — covers &amp; throughput model</td><td><a href="wf-financials.html">Financial</a></td><td>PDF + Odoo</td></tr>
+          <tr><td>14</td><td>12-month P&amp;L projection, break-even &amp; scenarios</td><td>Financial</td><td>PDF + Odoo</td></tr>
+          <tr><td>15</td><td>Competitor kitchen comparison &amp; savings case</td><td>Financial</td><td>PDF</td></tr>
+          <tr><td>16</td><td>Sensitivity analysis</td><td>Financial</td><td>PDF</td></tr>
+          <tr><td>17</td><td>Delivery &amp; installation plan with timeline</td><td>JR-Tech Pack</td><td>PDF + Odoo</td></tr>
+          <tr><td>18</td><td>Preventive maintenance schedule &amp; SLA terms</td><td>JR-Tech Pack</td><td>PDF + Odoo</td></tr>
+          <tr><td>19</td><td>Quotation with payment milestones</td><td>JR-Tech Pack</td><td>PDF + Odoo (Sign)</td></tr>
+          <tr><td>20</td><td>Risk &amp; assumptions register</td><td>JR-Tech Pack</td><td>PDF</td></tr>
+        </table>
+      </section>
+
+      <!-- ============ F. DAY 0 AUTOMATION ============ -->
+      <section class="section">
+        <h2>F · Upon signing — the Day-0 automation</h2>
+        <p class="lead">The punchline of the whole method. The moment Tan Gim Boon's team gets the
+        owner's e-signature in Odoo Sign, one automation chain converts the entire pre-planned
+        proposal into live execution — no re-keying, no kickoff lag, zero re-work.</p>
+        <div class="card pad-lg">
+          <pre class="mermaid">
+flowchart TD
+  SIGN[Odoo Sign - agreement e-signed] --> SO[Sales order confirmed - all 49 quote lines]
+  SO --> PRJ[Project created - Selat 88 install<br>5 phases, tasks and dependencies preloaded]
+  SO --> MO[Manufacturing orders - 19 fabrication items<br>BoMs from shop drawings]
+  SO --> PO[Purchase orders to equipment brands<br>induction, refrigeration, dishwasher]
+  SO --> INV1[Milestone invoice 1 - 30 percent deposit<br>MyInvois e-invoice issued]
+  PRJ --> SCHED[Delivery schedule - rigging crew and lorry<br>booked to heavy-delivery date]
+  SO --> MAINT[Maintenance contract activated<br>recurring Field Service work orders]
+  SO --> CHEM[Chemical subscription created<br>first delivery set to opening week]
+  MO --> WS[Workshop queue - fabrication starts Day 0]
+  PO --> ETA[Supplier ETAs tracked against gantt]
+  SCHED --> GO[Execution running - same day as signature]
+  WS --> GO
+  ETA --> GO
+  INV1 --> GO
+  MAINT --> GO
+  CHEM --> GO
+          </pre>
+        </div>
+        <div class="callout tn"><b>Because everything was planned before signing</b> — layout,
+        loads, BoMs, roster, P&amp;L, install plan — the signature is not the start of planning;
+        it is the start of <i>building</i>. That compression (3–4 weeks saved, zero re-work) is the
+        competitive moat the <a href="wf-overview.html">Reimagined Workflow</a> promised.</div>
+      </section>
+
+      <!-- ============ G. RISK REGISTER ============ -->
+      <section class="section">
+        <h2>G · Risk &amp; assumptions register</h2>
+        <table class="tbl">
+          <tr><th>#</th><th>Risk / assumption</th><th>Likelihood</th><th>Impact</th><th>Mitigation / owner</th></tr>
+          <tr><td>1</td><td>TNB supply upgrade (100&nbsp;A 3-phase) delayed</td><td><span class="tag warn">Medium</span></td><td>High — blocks Phase 4</td><td>Application filed at signing; JR-Tech tracks in project; genset contingency for commissioning</td></tr>
+          <tr><td>2</td><td>Owner's contractor misses first-fix tolerances</td><td><span class="tag warn">Medium</span></td><td>Medium</td><td>Two JR-Tech M&amp;E site checks in Phase 1; setting-out drawings issued Day 0</td></tr>
+          <tr><td>3</td><td>Imported equipment lead time slips (dishwasher)</td><td><span class="tag warn">Medium</span></td><td>Medium</td><td>POs fired Day 0; rental backup unit from JR-Equipment if late</td></tr>
+          <tr><td>4</td><td>Rear-corridor access blocked on delivery day</td><td><span class="tag">Low</span></td><td>High</td><td>Building permit + crane-less route surveyed at first meeting; backup date reserved</td></tr>
+          <tr><td>5</td><td>Seafood price spike pushes food cost above 38%</td><td><span class="tag warn">Medium</span></td><td>Medium — owner P&amp;L</td><td>Sensitivity modelled; menu-engineering review clause in maintenance visits</td></tr>
+          <tr><td>6</td><td>Covers ramp slower than conservative case</td><td><span class="tag">Low</span></td><td>Medium</td><td>Break-even holds to month 7 conservative; marketing launch plan owner-side</td></tr>
+          <tr><td>7</td><td>TNB tariff rises above RM 0.55/kWh</td><td><span class="tag warn">Medium</span></td><td>Low — strengthens savings case</td><td>Energy-efficient design widens gap vs competitor build</td></tr>
+          <tr><td>8</td><td>Kitchen staff hired late, training week slips</td><td><span class="tag warn">Medium</span></td><td>Medium</td><td>Hiring checklist issued at signing; condensed 2-day training fallback</td></tr>
+          <tr><td>9</td><td>Fire-suppression certification appointment delay</td><td><span class="tag">Low</span></td><td>Medium</td><td>Booked in Phase 1; certified subcontractor on JR-Tech panel</td></tr>
+          <tr><td>10</td><td>Assumption: savings figures are modelled estimates validated against the equipment schedule, not guarantees</td><td>—</td><td>—</td><td>Disclosed in Financial Pack; replaced by metered actuals in Odoo post-opening</td></tr>
+        </table>
+      </section>
+
+      <div class="pagenav">
+        <a href="wf-financials.html">← Prev: Financial Pack</a>
+        <a href="../technology/current-systems.html">Next: Current Systems (SQL Account) →</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+// C1. Account value by year — one-off vs recurring
+new Chart(document.getElementById('wfJrRevenueChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Year 1','Year 2','Year 3','Year 4','Year 5'],
+    datasets: [
+      { label: 'One-off (equipment, fabrication, install)', data: [426.0,0,0,0,0], backgroundColor:'#0B1F3A', stack:'v' },
+      { label: 'Recurring (maintenance, chemicals, rental, grease-trap)', data: [68.16,68.16,68.16,68.16,68.16], backgroundColor:'#16C098', stack:'v' },
+      { label: 'Cumulative account value', data: [494.2,562.3,630.5,698.6,766.8], type:'line',
+        borderColor:'#7FA9DE', borderWidth:3, tension:.25, yAxisID:'y' }
+    ]},
+  options: {
+    plugins: { legend:{ position:'bottom' }, title:{ display:true, text:'Selat 88 account value (RM k) — one-off vs recurring, cumulative to RM 766.8k' } },
+    scales: { x:{ stacked:true }, y:{ stacked:true, ticks:{ callback:v=>'RM '+v+'k' } } }
+  }
+});
+
+// C2. 5-year revenue mix
+new Chart(document.getElementById('wfJrMixChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Equipment sale','Fabrication','Installation','Maintenance contract','Chemical subscription','Rental items','Grease-trap service'],
+    datasets: [{ data: [310,86,30,144,111,57,28.8],
+      backgroundColor: ['#0B1F3A','#274A73','#7FA9DE','#16C098','#4ED3AE','#9FE3CF','#F2B84B'] }]
+  },
+  options: {
+    plugins: { legend:{ position:'bottom' },
+      title:{ display:true, text:'5-year revenue mix (RM k) — recurring streams are 44% of the account' } }
+  }
+});
+</script>
+</body>
+</html>
