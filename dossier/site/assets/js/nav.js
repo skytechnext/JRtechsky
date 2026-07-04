@@ -37,6 +37,14 @@
       { t: "BPMN · Blueprint · UML", href: "pages/operations/bpmn-uml.html", slug: "bpmn-uml" },
       { t: "Value Chain & Capability Map", href: "pages/operations/value-chain.html", slug: "value-chain" },
     ]},
+    { group: "Kitchen Workflow — JR-Tech Method", items: [
+      { t: "Reimagined Workflow", href: "pages/workflow/wf-overview.html", slug: "wf-overview", e: "🔄" },
+      { t: "The First Meeting", href: "pages/workflow/wf-first-meeting.html", slug: "wf-first-meeting", e: "🤝" },
+      { t: "Kitchen Blueprint Pack", href: "pages/workflow/wf-blueprint.html", slug: "wf-blueprint", e: "📐" },
+      { t: "Operations Pack", href: "pages/workflow/wf-operations.html", slug: "wf-operations", e: "👨‍🍳" },
+      { t: "Financial Pack", href: "pages/workflow/wf-financials.html", slug: "wf-financials", e: "💹" },
+      { t: "JR-Tech Pack & Handover", href: "pages/workflow/wf-jrtech.html", slug: "wf-jrtech", e: "📦" },
+    ]},
     { group: "Technology", items: [
       { t: "Current Systems (SQL Account)", href: "pages/technology/current-systems.html", slug: "current-systems" },
       { t: "AI & Automation Catalog", href: "pages/technology/ai-catalog.html", slug: "ai-catalog" },
