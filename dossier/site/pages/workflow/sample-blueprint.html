@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen Blueprint Pack — Sample: Auntie Gaik Lean — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+<style>
+/* ---------- Sample deliverable: paper-document design language ---------- */
+.docwrap{max-width:940px;margin:0 auto;padding:28px 16px 8px;}
+.sheet{position:relative;background:#fff;max-width:900px;margin:0 auto 34px;border-radius:14px;
+  box-shadow:0 2px 6px rgba(11,31,58,.08),0 14px 34px rgba(11,31,58,.10);
+  padding:52px 56px 74px;overflow:hidden;}
+.sheet h2.docsec{font-size:1.22rem;font-weight:800;color:#0B1F3A;margin:0 0 6px;letter-spacing:.01em;}
+.sheet h2.docsec small{font-weight:700;color:#7FA9DE;margin-right:10px;}
+.docrule{height:2px;background:#0B1F3A;margin:8px 0 20px;border:0;}
+.docrule.thin{height:1px;background:#c9d6e8;margin:16px 0;}
+.sheet p, .sheet li{color:#33415a;font-size:.93rem;line-height:1.62;}
+.sheet h3{color:#0B1F3A;font-size:1rem;margin:20px 0 8px;}
+.sheetfoot{position:absolute;left:0;right:0;bottom:0;padding:12px 56px;display:flex;justify-content:space-between;
+  font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#7b8aa3;border-top:1px solid #e3eaf4;background:#fbfcfe;}
+/* masthead */
+.wordmark{display:flex;align-items:center;gap:12px;background:#0B1F3A;color:#fff;margin:-52px -56px 34px;padding:20px 56px;}
+.wordmark .sq{width:18px;height:18px;background:#7FA9DE;border-radius:3px;flex:0 0 auto;}
+.wordmark .wm{font-weight:800;letter-spacing:.28em;font-size:.95rem;}
+.wordmark .div{opacity:.5;font-weight:400;}
+.doctitle{font-size:2rem;font-weight:800;color:#0B1F3A;line-height:1.2;margin:6px 0 4px;}
+.docsub{color:#5a6b85;font-size:1rem;margin-bottom:26px;}
+.metagrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #d7e1ef;border-radius:10px;overflow:hidden;margin:22px 0;}
+.metagrid div{padding:12px 16px;border-bottom:1px solid #e5ecf6;font-size:.86rem;color:#0B1F3A;}
+.metagrid div:nth-child(odd){border-right:1px solid #e5ecf6;}
+.metagrid div:nth-last-child(-n+2){border-bottom:0;}
+.metagrid b{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.09em;color:#7b8aa3;margin-bottom:3px;}
+.ribbon{position:absolute;top:24px;right:-44px;transform:rotate(38deg);background:#c0392b;color:#fff;
+  font-weight:800;font-size:.78rem;letter-spacing:.3em;padding:7px 60px;box-shadow:0 2px 8px rgba(0,0,0,.18);z-index:5;}
+/* document tables */
+table.doct{width:100%;border-collapse:collapse;font-size:.83rem;margin:12px 0;}
+table.doct th{background:#0B1F3A;color:#fff;text-align:left;padding:8px 10px;font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.05em;font-weight:700;}
+table.doct td{padding:7px 10px;border-bottom:1px solid #e6edf6;color:#33415a;vertical-align:top;}
+table.doct tr:nth-child(even) td{background:#f7fafd;}
+table.doct tr.total td{background:#eef4fb;font-weight:800;color:#0B1F3A;border-top:2px solid #0B1F3A;}
+table.doct td.r, table.doct th.r{text-align:right;font-variant-numeric:tabular-nums;}
+.tblscroll{overflow-x:auto;}
+.doctag{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:.03em;}
+.doctag.ok{background:#e2f7ef;color:#0c7a56;}
+.doctag.pend{background:#fdf3dd;color:#8a6410;}
+.doctag.action{background:#fdeaea;color:#a33030;}
+.notebox{background:#f2f7fd;border-left:4px solid #7FA9DE;border-radius:0 10px 10px 0;padding:14px 18px;font-size:.88rem;color:#33415a;margin:16px 0;}
+.notebox.warn{background:#fdf6ec;border-left-color:#d9a13b;}
+.loadcard{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.loadcard .cell{background:#0B1F3A;color:#fff;border-radius:10px;padding:16px 18px;text-align:center;}
+.loadcard .cell .v{font-size:1.5rem;font-weight:800;color:#7FA9DE;}
+.loadcard .cell .l{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;opacity:.85;margin-top:4px;}
+/* signature block */
+.sigrow{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;}
+.sig{border-top:2px solid #0B1F3A;padding-top:10px;font-size:.85rem;color:#33415a;}
+.sig b{display:block;color:#0B1F3A;}
+.sig .line{margin-top:34px;border-bottom:1px solid #9fb0c8;height:1px;}
+.sig .lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:#7b8aa3;margin-top:4px;}
+.contents td.pg{text-align:right;color:#7b8aa3;}
+@media (max-width:720px){
+  .sheet{padding:34px 22px 70px;}
+  .wordmark{margin:-34px -22px 26px;padding:16px 22px;}
+  .sheetfoot{padding:10px 22px;}
+  .metagrid,.sigrow,.loadcard{grid-template-columns:1fr;}
+  .metagrid div:nth-child(odd){border-right:0;}
+}
+@media print{
+  #sidebar,.topbar,.hero,.pagenav,footer.site{display:none !important;}
+  body{background:#fff;}
+  .content{margin:0;}
+  .docwrap{padding:0;max-width:none;}
+  .sheet{box-shadow:none;border-radius:0;margin:0;max-width:none;page-break-after:always;}
+  .ribbon{display:block;}
+}
+</style>
+</head>
+<body data-page="smp-blueprint">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Kitchen Workflow</b> · Sample Deliverable</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Kitchen Workflow — JR-Tech Method · Sample Deliverable</span>
+      <h1>Kitchen Blueprint Pack — Sample: Auntie Gaik Lean</h1>
+      <p>This is the actual document a client receives at the end of the blueprint phase — reproduced
+      here in full as an illustrative sample for <b>Auntie Gaik Lean's Old School Eatery</b>, a
+      Michelin-recognised Nyonya restaurant in a George Town heritage shophouse. All figures are
+      modelled for demonstration.</p>
+    </div></header>
+
+    <main>
+    <div class="docwrap">
+
+      <!-- ============ SHEET 1 — COVER ============ -->
+      <div class="sheet">
+        <div class="ribbon">SAMPLE</div>
+        <div class="wordmark"><span class="sq"></span><span class="wm">JR-TECH</span>
+          <span class="div">|</span><span style="font-size:.8rem;opacity:.85;">Solution Sdn Bhd · Commercial Kitchen Consulting</span></div>
+        <div class="doctitle">Kitchen Blueprint Pack</div>
+        <div class="docsub">Full kitchen planning, equipment schedule &amp; services design —
+          heritage shophouse conversion, Bishop Street, George Town, Penang</div>
+        <div class="metagrid">
+          <div><b>Project Ref</b>JRT-2026-AGL-01</div>
+          <div><b>Prepared for</b>Auntie Gaik Lean's Old School Eatery</div>
+          <div><b>Prepared by</b>JR-Tech Solution Sdn Bhd × TechNext</div>
+          <div><b>Date</b>4 July 2026</div>
+          <div><b>Revision</b>R1</div>
+          <div><b>Status</b>SAMPLE — illustrative deliverable</div>
+        </div>
+
+        <h3>Document contents</h3>
+        <table class="doct contents">
+          <tr><th>Section</th><th>Title</th><th class="r">Sheet</th></tr>
+          <tr><td>1.0</td><td>Scope of this pack</td><td class="pg">1</td></tr>
+          <tr><td>2.0</td><td>Site &amp; constraints — heritage shophouse survey</td><td class="pg">2</td></tr>
+          <tr><td>3.0</td><td>Zoned layout &amp; one-way food-safety flow</td><td class="pg">3</td></tr>
+          <tr><td>4.0</td><td>Equipment schedule (costed, RM 185,000)</td><td class="pg">4</td></tr>
+          <tr><td>5.0</td><td>Electrical &amp; drainage point schedules, load summary</td><td class="pg">5</td></tr>
+          <tr><td>6.0</td><td>Ventilation &amp; statutory compliance</td><td class="pg">6</td></tr>
+          <tr><td>7.0</td><td>Revisions &amp; acceptance</td><td class="pg">7</td></tr>
+        </table>
+
+        <h3>1.0 Scope of this pack</h3>
+        <hr class="docrule">
+        <p>This Blueprint Pack converts one site inspection and one menu workshop into a buildable
+        kitchen design for a <b>48-seat Nyonya restaurant</b> trading lunch and dinner (closed Mondays)
+        at an average check of RM95 — a normal day of 55 lunch plus 75 dinner covers, roughly
+        <b>130 covers ≈ RM12,350/day</b>. The kitchen occupies <b>~55 m²</b> at the rear of a narrow
+        heritage shophouse, with exhaust and deliveries routed to the back lane.</p>
+        <p>The design is anchored to the menu the kitchen must serve every day: Curry Kapitan,
+        Perut Ikan, Gulai Tumis, Jiu Hu Char, Nyonya Chap Chye, Otak-otak, Kerabu Bee Hoon and Cendol.
+        These dishes define six stations — a two-wok line, simmer/stock, steam, cold prep/kerabu,
+        dessert/plating, and a dishwash return — and every schedule in this document flows from them.
+        The pack covers an equipment investment of <b>RM185,000</b>, a <b>7-week</b> build timeline,
+        and JR-Tech recurring care at <b>RM2,980/month</b> (maintenance + chemicals). Excluded:
+        civil/structural works, front-of-house fit-out, and licence fees payable to authorities.</p>
+        <div class="notebox">This document is an illustrative <b>sample</b> prepared by JR-Tech ×
+        TechNext to demonstrate the standard blueprint deliverable. All figures are modelled for
+        demonstration and do not constitute a quotation.</div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · Kitchen Blueprint Pack</span><span>Page 1 of 7</span></div>
+      </div>
+
+      <!-- ============ SHEET 2 — SITE & CONSTRAINTS ============ -->
+      <div class="sheet">
+        <div class="ribbon">SAMPLE</div>
+        <h2 class="docsec"><small>2.0</small>Site &amp; Constraints</h2>
+        <hr class="docrule">
+        <p>The premises is a pre-war shophouse within the George Town UNESCO buffer zone. The building
+        itself is the brand — so the design works entirely within the envelope: nothing penetrates the
+        street facade, all heavy services route to the rear lane, and equipment is sized to pass a
+        <b>1.1 m</b> rear door.</p>
+
+        <h3>2.1 Shophouse constraint register</h3>
+        <table class="doct">
+          <tr><th>Constraint</th><th>Condition on site</th><th>Design response</th></tr>
+          <tr><td>Internal width</td><td>Narrow plan, ~4.6 m clear at kitchen bay</td><td>Single-corridor galley layout; equipment max 750 mm deep on the wok wall, 700 mm opposite</td></tr>
+          <tr><td>Rear-lane access</td><td>Delivery and waste via back lane; door opening 1.1 m</td><td>All equipment specified ≤1,050 mm crated width or knock-down; SS fabrication site-assembled</td></tr>
+          <tr><td>Heritage facade rules</td><td>No new openings, ducts or plant visible from Bishop Street</td><td>Exhaust discharges to rear lane only; no roof plant on street slope; signage untouched</td></tr>
+          <tr><td>Exhaust route</td><td>Rear wall to lane, ~9 m duct run from wok line</td><td>Smokeless hood with ESP filter so lane discharge is low-smoke, low-odour (Section 6)</td></tr>
+          <tr><td>Structure</td><td>Timber upper floor; no heavy loads on suspended slab</td><td>All heavy items (stock pot, dish machine, wok range) on ground-bearing slab at rear</td></tr>
+          <tr><td>Party walls</td><td>Shared masonry both sides</td><td>No chasing of party walls; services run in surface SS trunking and floor screed</td></tr>
+        </table>
+
+        <h3>2.2 Site-inspection summary (services)</h3>
+        <table class="doct">
+          <tr><th>Item</th><th>Finding</th><th>Status</th></tr>
+          <tr><td>Electrical supply</td><td>Existing <b>single-phase 60A</b>. Connected kitchen load requires <b>3-phase 60A</b>; TNB upgrade application to run in parallel with fit-out (Section 5.4)</td><td><span class="doctag action">Upgrade required</span></td></tr>
+          <tr><td>Water pressure</td><td>1.4 bar at rear tap — adequate for sinks; booster set specified ahead of the hood dishwasher and filtration train</td><td><span class="doctag pend">Booster specified</span></td></tr>
+          <tr><td>Drainage</td><td>Existing fall to rear lane confirmed by dye test; new trapped floor gullies to be laid to the same fall</td><td><span class="doctag ok">Adequate</span></td></tr>
+          <tr><td>Floor loading</td><td>Ground-bearing slab at kitchen bay; localised screed repair at old wet-kitchen area</td><td><span class="doctag ok">Adequate</span></td></tr>
+          <tr><td>Gas</td><td>No piped gas; LPG cylinder bank at rear lane cage with solenoid interlock to hood (Section 6)</td><td><span class="doctag pend">LPG design incl.</span></td></tr>
+        </table>
+
+        <h3>2.3 Site context</h3>
+        <div class="mermaid">
+flowchart LR
+  ST["Bishop Street<br/>heritage facade — no works"] --- FOH["Front of house<br/>48 seats, air-well"]
+  FOH --- KIT["Kitchen bay<br/>~55 m², rear of shophouse"]
+  KIT --- RL["Rear lane<br/>1.1 m door"]
+  RL --> DEL["Deliveries<br/>morning window 7–10 am"]
+  RL --> EXH["Exhaust discharge<br/>ESP-filtered, low level"]
+  RL --> LPG["LPG cylinder cage<br/>interlocked"]
+  RL --> WST["Waste + MBPP collection<br/>grease-trap service access"]
+  style ST fill:#f3f3f3,stroke:#777
+  style KIT fill:#eef4fb,stroke:#0B1F3A
+  style RL fill:#e8f8f3,stroke:#16C098
+        </div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · Kitchen Blueprint Pack</span><span>Page 2 of 7</span></div>
+      </div>
+
+      <!-- ============ SHEET 3 — ZONED LAYOUT ============ -->
+      <div class="sheet">
+        <div class="ribbon">SAMPLE</div>
+        <h2 class="docsec"><small>3.0</small>Zoned Layout &amp; One-Way Flow</h2>
+        <hr class="docrule">
+        <p>The 55 m² galley enforces a strict one-way food-safety flow — raw goods only ever move
+        forward, from the rear-lane receiving point toward the pass — while soiled ware returns on a
+        separate dishwash loop and waste exits straight to the rear lane without crossing prep or the
+        line. This is the layout logic MBPP food-premises inspectors expect to see.</p>
+
+        <h3>3.1 Zoned floorplan concept</h3>
+        <div class="mermaid">
+flowchart LR
+  RCV["Receiving<br/>rear-lane door 1.1 m"] --> DRY["Dry + cold store<br/>upright freezer, shelving"]
+  DRY --> CP["Cold prep + kerabu<br/>salad-top counters"]
+  CP --> WOK["Wok line<br/>2 woks, smokeless hood"]
+  CP --> STM["Steam + simmer<br/>steamer, stock, induction"]
+  WOK --> PASS["Plating + pass<br/>dessert station"]
+  STM --> PASS
+  PASS --> SVC["Service / dining<br/>48 seats"]
+  SVC -. "soiled ware only" .-> DW["Dishwash return<br/>hood washer + heat recovery"]
+  DW -. "clean ware" .-> PASS
+  DW -. "clean pots" .-> CP
+  CP -. "covered bins" .-> WR["Waste route<br/>direct to rear lane"]
+  DW -.-> WR
+  WR -.-> RLN["Rear lane<br/>MBPP collection"]
+  style RCV fill:#eef4fb,stroke:#0B1F3A
+  style CP fill:#eef4fb,stroke:#0B1F3A
+  style WOK fill:#fdeeee,stroke:#a33
+  style STM fill:#fdeeee,stroke:#a33
+  style PASS fill:#e8f8f3,stroke:#16C098
+  style DW fill:#fff8e6,stroke:#b8860b
+  style WR fill:#f3f3f3,stroke:#777
+        </div>
+
+        <h3>3.2 Zone areas (of 55 m²)</h3>
+        <table class="doct">
+          <tr><th>Zone</th><th>Key stations</th><th class="r">Area</th><th class="r">Share</th></tr>
+          <tr><td>Receiving + dry/cold store</td><td>Rear door, shelving, upright freezer</td><td class="r">9.0 m²</td><td class="r">16%</td></tr>
+          <tr><td>Cold prep / kerabu</td><td>Salad-top counters, prep sink, rempah bench</td><td class="r">8.0 m²</td><td class="r">15%</td></tr>
+          <tr><td>Wok line</td><td>Double-wok range, smokeless hood, undercounter chiller</td><td class="r">10.0 m²</td><td class="r">18%</td></tr>
+          <tr><td>Steam / simmer / stock</td><td>Steamer, RN stock pot, induction simmer</td><td class="r">7.0 m²</td><td class="r">13%</td></tr>
+          <tr><td>Plating / pass + dessert</td><td>Pass counter, rice/dessert station, cendol chiller</td><td class="r">7.0 m²</td><td class="r">13%</td></tr>
+          <tr><td>Dishwash return</td><td>Inlet/outlet tables, hood dishwasher</td><td class="r">7.0 m²</td><td class="r">13%</td></tr>
+          <tr><td>Waste route + circulation</td><td>Bin dock, grease-trap access, corridor</td><td class="r">7.0 m²</td><td class="r">13%</td></tr>
+          <tr class="total"><td>Total kitchen</td><td></td><td class="r">55.0 m²</td><td class="r">100%</td></tr>
+        </table>
+        <div class="notebox">The kerabu/cold-prep zone is deliberately placed at the cool front end
+        of the galley, away from the wok line — kerabu bee hoon and cendol assembly are the two most
+        temperature-sensitive items on the menu, and the layout keeps them out of the hood's heat plume.</div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · Kitchen Blueprint Pack</span><span>Page 3 of 7</span></div>
+      </div>
+
+      <!-- ============ SHEET 4 — EQUIPMENT SCHEDULE ============ -->
+      <div class="sheet">
+        <div class="ribbon">SAMPLE</div>
+        <h2 class="docsec"><small>4.0</small>Equipment Schedule</h2>
+        <hr class="docrule">
+        <p>Eighteen line items, sized to the menu and the 1.1 m rear door. Point references map to the
+        electrical (P) and drainage (D) schedules on Sheet 5. Indicative pricing totals
+        <b>RM185,000</b>; JR-Tech in-house stainless fabrication covers all worktables, sinks,
+        shelving and the dishwash tabling.</p>
+        <div class="tblscroll">
+        <table class="doct">
+          <tr><th>ID</th><th>Item</th><th class="r">Qty</th><th>Zone</th><th>Dims (mm)</th><th>kW / Gas</th><th>Elec pt</th><th>Water</th><th>Drain</th><th>Supplied by</th><th class="r">Indicative RM</th></tr>
+          <tr><td>E-01</td><td>Double-wok range, duplex burners, water-cooled top</td><td class="r">1</td><td>Wok line</td><td>1500×750×800</td><td>LPG 2×36 kW</td><td>P-01</td><td>CW</td><td>D-01</td><td>Brand (Berjaya)</td><td class="r">26,500</td></tr>
+          <tr><td>E-02</td><td>Smokeless hood with ESP filter + fan, 3.2 m run</td><td class="r">1</td><td>Wok line</td><td>3200×1000×550</td><td>3.0</td><td>P-02</td><td>—</td><td>—</td><td>Brand (Dong Po)</td><td class="r">32,000</td></tr>
+          <tr><td>E-03</td><td>Induction simmer range, 2-zone (curries, gulai)</td><td class="r">1</td><td>Steam/simmer</td><td>800×750×800</td><td>7.0</td><td>P-03</td><td>—</td><td>—</td><td>Brand (Fabar)</td><td class="r">9,500</td></tr>
+          <tr><td>E-04</td><td>3-tier gas steamer cabinet (otak-otak, chap chye)</td><td class="r">1</td><td>Steam/simmer</td><td>900×850×1750</td><td>LPG 24 kW</td><td>—</td><td>CW</td><td>D-02</td><td>Brand (Berjaya)</td><td class="r">11,000</td></tr>
+          <tr><td>E-05</td><td>RN stock-pot burner, low pedestal (stock, perut ikan)</td><td class="r">1</td><td>Steam/simmer</td><td>600×600×450</td><td>LPG 18 kW</td><td>—</td><td>CW</td><td>D-03</td><td>Brand (Waldorf RN)</td><td class="r">3,800</td></tr>
+          <tr><td>E-06</td><td>Undercounter chiller, 2-door GN (wok line mise)</td><td class="r">1</td><td>Wok line</td><td>1360×700×850</td><td>0.45</td><td>P-04</td><td>—</td><td>—</td><td>Brand (Turbo Air)</td><td class="r">6,500</td></tr>
+          <tr><td>E-07</td><td>Undercounter chiller, 2-door GN (cold prep)</td><td class="r">1</td><td>Cold prep</td><td>1360×700×850</td><td>0.45</td><td>P-05</td><td>—</td><td>—</td><td>Brand (Turbo Air)</td><td class="r">6,500</td></tr>
+          <tr><td>E-08</td><td>Upright freezer, 2-door, knock-down delivery</td><td class="r">1</td><td>Store</td><td>1050×800×2000</td><td>0.75</td><td>P-06</td><td>—</td><td>—</td><td>Brand (Turbo Air)</td><td class="r">8,200</td></tr>
+          <tr><td>E-09</td><td>Cold-prep counter with refrigerated salad top (kerabu)</td><td class="r">1</td><td>Cold prep</td><td>1500×700×850</td><td>0.50</td><td>P-07</td><td>—</td><td>—</td><td>Brand (Turbo Air)</td><td class="r">9,800</td></tr>
+          <tr><td>E-10</td><td>Rice/dessert station counter with warmer + gantry</td><td class="r">1</td><td>Plating/pass</td><td>1400×700×850</td><td>1.20</td><td>P-08</td><td>—</td><td>—</td><td>JR-Tech fab + Buffalo</td><td class="r">7,200</td></tr>
+          <tr><td>E-11</td><td>Hood-type dishwasher with heat-recovery condenser</td><td class="r">1</td><td>Dishwash</td><td>650×740×1520</td><td>12.60</td><td>P-09</td><td>CW+HW</td><td>D-04</td><td>Brand (Winterhalter PT-M)</td><td class="r">24,000</td></tr>
+          <tr><td>E-12</td><td>SS worktables, 1.2 mm 304, undershelf (4 units)</td><td class="r">4</td><td>Various</td><td>1200/1500×700×850</td><td>—</td><td>—</td><td>—</td><td>—</td><td>JR-Tech fabrication</td><td class="r">8,800</td></tr>
+          <tr><td>E-13</td><td>SS wall shelving + 4-tier storage racks, site-assembled</td><td class="r">1 set</td><td>Store / walls</td><td>various</td><td>—</td><td>—</td><td>—</td><td>—</td><td>JR-Tech fabrication</td><td class="r">5,400</td></tr>
+          <tr><td>E-14</td><td>Double-bowl prep sink + 3 hand-wash basins, knee-op</td><td class="r">1 set</td><td>Cold prep / entries</td><td>1500×700×850 + 400 sq</td><td>—</td><td>CW×4</td><td>D-05, D-06</td><td>JR-Tech fabrication</td><td class="r">6,900</td></tr>
+          <tr><td>E-15</td><td>Grease trap, 100 L SS undermount, lane-side access</td><td class="r">1</td><td>Waste route</td><td>900×500×450</td><td>—</td><td>—</td><td>—</td><td>GT-01</td><td>JR-Tech fabrication</td><td class="r">4,600</td></tr>
+          <tr><td>E-16</td><td>Water filtration + softener train (dishwasher, steamer, drinks)</td><td class="r">1</td><td>Dishwash</td><td>wall-mount</td><td>0.20</td><td>P-10</td><td>CW in</td><td>D-07</td><td>Brand (3M/BWT)</td><td class="r">5,300</td></tr>
+          <tr><td>E-17</td><td>Dishwash inlet/outlet tables + pre-rinse spray unit</td><td class="r">1 set</td><td>Dishwash</td><td>1200 + 1000×700</td><td>—</td><td>—</td><td>CW</td><td>D-08</td><td>JR-Tech fabrication</td><td class="r">4,900</td></tr>
+          <tr><td>E-18</td><td>Dessert display chiller (cendol toppings, gula melaka)</td><td class="r">1</td><td>Plating/pass</td><td>900×570×680</td><td>0.35</td><td>P-11</td><td>—</td><td>—</td><td>Brand (Berjaya)</td><td class="r">4,100</td></tr>
+          <tr class="total"><td colspan="10">Total equipment &amp; fabrication investment (± 8%, pre-SST)</td><td class="r">RM 185,000</td></tr>
+        </table>
+        </div>
+        <div class="notebox">Every powered item above 1 kW carries a dedicated point reference; the
+        remaining spare way <b>P-12</b> is reserved at the DB for future cold-room or a-la-minute
+        induction capacity. Recurring care (planned maintenance + warewash chemicals) runs at
+        <b>RM2,980/month</b> under the JR-Tech service agreement — detailed in the Handover sample.</div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · Kitchen Blueprint Pack</span><span>Page 4 of 7</span></div>
+      </div>
+
+      <!-- ============ SHEET 5 — ELECTRICAL & DRAINAGE ============ -->
+      <div class="sheet">
+        <div class="ribbon">SAMPLE</div>
+        <h2 class="docsec"><small>5.0</small>Electrical &amp; Drainage Point Schedules</h2>
+        <hr class="docrule">
+
+        <h3>5.1 Electrical point schedule (P-01 … P-12)</h3>
+        <div class="tblscroll">
+        <table class="doct">
+          <tr><th>Ref</th><th>Type</th><th>Grid</th><th>Serves</th><th class="r">Load (kW)</th><th>Circuit</th></tr>
+          <tr><td>P-01</td><td>SSO 13A + ignition feed</td><td>B2</td><td>E-01 wok range controls/ignition</td><td class="r">0.30</td><td>1P 20A RCBO</td></tr>
+          <tr><td>P-02</td><td>Isolator 20A</td><td>B1</td><td>E-02 ESP hood + extract fan</td><td class="r">3.00</td><td>1P 20A RCBO</td></tr>
+          <tr><td>P-03</td><td>Isolator 32A, 3-phase</td><td>C2</td><td>E-03 induction simmer range</td><td class="r">7.00</td><td>3P 16A MCB</td></tr>
+          <tr><td>P-04</td><td>SSO 13A</td><td>B3</td><td>E-06 undercounter chiller (wok)</td><td class="r">0.45</td><td>1P 13A ring</td></tr>
+          <tr><td>P-05</td><td>SSO 13A</td><td>A3</td><td>E-07 undercounter chiller (prep)</td><td class="r">0.45</td><td>1P 13A ring</td></tr>
+          <tr><td>P-06</td><td>SSO 13A</td><td>A1</td><td>E-08 upright freezer</td><td class="r">0.75</td><td>1P 13A dedicated</td></tr>
+          <tr><td>P-07</td><td>SSO 13A</td><td>A2</td><td>E-09 salad-top prep counter</td><td class="r">0.50</td><td>1P 13A ring</td></tr>
+          <tr><td>P-08</td><td>SSO 13A ×2</td><td>D2</td><td>E-10 rice/dessert warmer + gantry</td><td class="r">1.20</td><td>1P 16A RCBO</td></tr>
+          <tr><td>P-09</td><td>Isolator 32A, 3-phase</td><td>D3</td><td>E-11 hood dishwasher + heat recovery</td><td class="r">12.60</td><td>3P 25A MCB</td></tr>
+          <tr><td>P-10</td><td>SSO 13A</td><td>D3</td><td>E-16 filtration/softener + booster pump</td><td class="r">0.55</td><td>1P 13A ring</td></tr>
+          <tr><td>P-11</td><td>SSO 13A</td><td>D1</td><td>E-18 dessert display chiller</td><td class="r">0.35</td><td>1P 13A ring</td></tr>
+          <tr><td>P-12</td><td>Spare way at DB</td><td>—</td><td>Future cold room / induction</td><td class="r">—</td><td>3P spare</td></tr>
+          <tr class="total"><td colspan="4">Connected electrical load (excl. lighting/small power allowance 2.6 kW)</td><td class="r">27.15 + 2.60 = 29.75</td><td></td></tr>
+        </table>
+        </div>
+
+        <h3>5.2 Drainage point schedule (D-01 … D-08, GT-01)</h3>
+        <div class="tblscroll">
+        <table class="doct">
+          <tr><th>Ref</th><th>Type</th><th>Grid</th><th>Serves</th><th>Route</th></tr>
+          <tr><td>D-01</td><td>Trapped floor gully, SS grate</td><td>B2</td><td>Wok range water-cooled top</td><td>Via GT-01 to rear lane</td></tr>
+          <tr><td>D-02</td><td>Trapped floor gully</td><td>C1</td><td>Steamer condensate + blowdown</td><td>Via GT-01</td></tr>
+          <tr><td>D-03</td><td>Trapped floor gully</td><td>C2</td><td>Stock-pot station washdown</td><td>Via GT-01</td></tr>
+          <tr><td>D-04</td><td>Tundish, 50 mm standpipe</td><td>D3</td><td>Dishwasher discharge (60–65 °C rated)</td><td>Via GT-01</td></tr>
+          <tr><td>D-05</td><td>Waste to trap, 40 mm</td><td>A2</td><td>Double-bowl prep sink</td><td>Via GT-01</td></tr>
+          <tr><td>D-06</td><td>Waste to trap, 32 mm ×3</td><td>A2/B1/D3</td><td>Hand-wash basins (soap water only)</td><td>Direct to foul</td></tr>
+          <tr><td>D-07</td><td>Tundish</td><td>D3</td><td>Filtration backwash / RO reject</td><td>Direct to foul</td></tr>
+          <tr><td>D-08</td><td>Trapped floor gully</td><td>D3</td><td>Dishwash area washdown</td><td>Via GT-01</td></tr>
+          <tr><td>GT-01</td><td>Grease trap 100 L (E-15)</td><td>E1 (lane side)</td><td>All greasy waste lines</td><td>To rear-lane foul; weekly service access from lane</td></tr>
+        </table>
+        </div>
+
+        <h3>5.3 Connected load by zone</h3>
+        <div class="chartbox"><canvas id="loadByZone" height="150"></canvas></div>
+
+        <h3>5.4 Load summary &amp; supply upgrade</h3>
+        <div class="loadcard">
+          <div class="cell"><div class="v">29.75 kW</div><div class="l">Connected load (incl. lighting allowance)</div></div>
+          <div class="cell"><div class="v">0.65</div><div class="l">Diversity factor applied → 19.3 kW demand</div></div>
+          <div class="cell"><div class="v">3φ 60A</div><div class="l">Recommended supply (≈ 41 kVA headroom)</div></div>
+        </div>
+        <div class="notebox warn"><b>Supply upgrade required.</b> The existing <b>single-phase 60A</b>
+        supply (~13.8 kW) cannot carry the dishwasher and induction range together. A <b>TNB upgrade
+        to 3-phase 60A</b> with a new DB and RCBO board is included in the 7-week programme; the
+        application is lodged in week 1 so the meter change lands before commissioning in week 6.
+        The two heaviest cooking loads (woks, steamer, stock pot) run on LPG, deliberately keeping
+        electrical demand well inside the upgraded supply.</div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · Kitchen Blueprint Pack</span><span>Page 5 of 7</span></div>
+      </div>
+
+      <!-- ============ SHEET 6 — VENTILATION & COMPLIANCE ============ -->
+      <div class="sheet">
+        <div class="ribbon">SAMPLE</div>
+        <h2 class="docsec"><small>6.0</small>Ventilation &amp; Statutory Compliance</h2>
+        <hr class="docrule">
+
+        <h3>6.1 Exhaust &amp; hood specification — wok cooking in a heritage shophouse</h3>
+        <p>Two high-output woks in a UNESCO buffer-zone shophouse are the hardest ventilation case in
+        Penang F&amp;B: heavy smoke and oil aerosol, no facade penetrations allowed, and neighbours
+        across a narrow lane. The specification answers all three:</p>
+        <ul>
+          <li><b>Smokeless hood (E-02)</b> — 3.2 m stainless canopy over the wok line and steam/simmer
+          bank, with integral <b>electrostatic precipitator (ESP)</b> removing ≥95% of oil mist and
+          smoke particles, plus an activated-carbon odour stage before discharge.</li>
+          <li><b>Discharge to rear lane</b> — low-level louvre on the rear wall, angled away from the
+          neighbouring shophouse; because the air is ESP-cleaned, no unsightly external stack is
+          needed and the heritage facade is untouched.</li>
+          <li><b>Make-up air</b> — passive intake via the existing air-well path, keeping the kitchen
+          at slight negative pressure so cooking smells never drift into the 48-seat dining room.</li>
+          <li><b>Fire safety at the hood</b> — grease-rated filters, hood fire-suppression drop, and
+          duct access panels at 3 m centres for cleaning contracts under the maintenance agreement.</li>
+        </ul>
+
+        <h3>6.2 Gas (LPG) installation</h3>
+        <p>Cylinder bank in a ventilated lockable cage on the rear lane, manifolded and piped in
+        copper to the wok range, steamer and stock pot. A <b>solenoid gas interlock</b> shuts the
+        supply if the exhaust fan stops, with an emergency knock-off button at the kitchen exit —
+        installed and certified by a Suruhanjaya Tenaga-registered gas contractor.</p>
+
+        <h3>6.3 Compliance checklist</h3>
+        <table class="doct">
+          <tr><th>Requirement</th><th>Authority</th><th>Action in this project</th><th>Status</th></tr>
+          <tr><td>Food premises licence (new kitchen layout)</td><td>MBPP</td><td>Layout drawings from Sheet 3 submitted with licence application; inspection at week 7</td><td><span class="doctag pend">Submit wk 1</span></td></tr>
+          <tr><td>Fire certificate / plans approval</td><td>BOMBA</td><td>Hood suppression, extinguishers, LPG cage and escape route shown on plan set</td><td><span class="doctag pend">Submit wk 1</span></td></tr>
+          <tr><td>LPG piping &amp; interlock certification</td><td>Suruhanjaya Tenaga (registered contractor)</td><td>Installation + pressure test certificate before commissioning</td><td><span class="doctag pend">Week 5–6</span></td></tr>
+          <tr><td>Electrical supply upgrade to 3-phase 60A</td><td>TNB</td><td>Application week 1; new DB by licensed electrical contractor</td><td><span class="doctag action">Upgrade required</span></td></tr>
+          <tr><td>Typhoid vaccination (TY2) for all food handlers</td><td>KKM / clinic</td><td>All 9 kitchen staff certified before opening; register kept on site</td><td><span class="doctag pend">Before opening</span></td></tr>
+          <tr><td>Food-handler training (SLPM)</td><td>KKM-accredited trainer</td><td>Scheduled during week 6 alongside equipment training</td><td><span class="doctag pend">Week 6</span></td></tr>
+          <tr><td>Grease trap &amp; waste management</td><td>MBPP / IWK</td><td>GT-01 sized and positioned for lane-side servicing; service contract in maintenance plan</td><td><span class="doctag ok">Designed in</span></td></tr>
+          <tr><td>Heritage / facade conformity</td><td>George Town World Heritage guidelines</td><td>No street-facing works; all plant and discharge at rear lane</td><td><span class="doctag ok">Compliant by design</span></td></tr>
+          <tr><td>Halal-ready provision (optional, future)</td><td>JAKIM</td><td>Layout supports segregated storage and colour-coded utensils; no pork/lard on current menu — certification is the owner's future option, not part of this scope</td><td><span class="doctag ok">Ready</span></td></tr>
+        </table>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · Kitchen Blueprint Pack</span><span>Page 6 of 7</span></div>
+      </div>
+
+      <!-- ============ SHEET 7 — REVISIONS & ACCEPTANCE ============ -->
+      <div class="sheet">
+        <div class="ribbon">SAMPLE</div>
+        <h2 class="docsec"><small>7.0</small>Revisions &amp; Acceptance</h2>
+        <hr class="docrule">
+
+        <h3>7.1 Revision workflow</h3>
+        <p>This pack is issued as <b>Revision R1</b>. Markups from the owner or her architect are
+        returned to JR-Tech through the shared project workspace; because the menu, equipment
+        schedule, layout and services points live in one model, any change re-flows automatically
+        through every schedule and the budget. A revised pack is re-issued within <b>48 hours</b> of
+        receiving consolidated comments. The pack proceeds to fabrication and M&amp;E first-fix only
+        after signature below.</p>
+        <table class="doct">
+          <tr><th>Rev</th><th>Date</th><th>Description</th><th>Issued by</th></tr>
+          <tr><td>R1</td><td>4 July 2026</td><td>First issue for owner review — full blueprint pack</td><td>JR-Tech design office</td></tr>
+          <tr><td>R2</td><td>—</td><td>Reserved: owner/architect markups incorporated (48 h re-issue)</td><td>—</td></tr>
+          <tr><td>R3</td><td>—</td><td>Reserved: construction issue (signed)</td><td>—</td></tr>
+        </table>
+
+        <h3>7.2 Acceptance</h3>
+        <p>Signature below confirms acceptance of the zoned layout (Sheet 3), the equipment schedule
+        and RM185,000 indicative budget (Sheet 4), the services design and 3-phase 60A upgrade
+        (Sheet 5), and the compliance pathway (Sheet 6), and authorises JR-Tech to proceed with the
+        7-week programme.</p>
+        <div class="sigrow">
+          <div class="sig">
+            <b>For the Owner</b>
+            Auntie Gaik Lean's Old School Eatery
+            <div class="line"></div><div class="lbl">Name &amp; signature</div>
+            <div class="line"></div><div class="lbl">Date</div>
+          </div>
+          <div class="sig">
+            <b>For JR-Tech Solution Sdn Bhd</b>
+            Project Director, JRT-2026-AGL-01
+            <div class="line"></div><div class="lbl">Name &amp; signature</div>
+            <div class="line"></div><div class="lbl">Date</div>
+          </div>
+        </div>
+        <div class="notebox" style="margin-top:30px;">Companion samples in this series:
+        <a href="sample-operations.html">Operations Pack</a> ·
+        <a href="sample-financials.html">Financial Pack</a> ·
+        <a href="sample-handover.html">Handover Pack</a> — all for the same illustrative engagement.</div>
+        <div class="sheetfoot"><span>JRT-2026-AGL-01 · Kitchen Blueprint Pack</span><span>Page 7 of 7</span></div>
+      </div>
+
+    </div>
+
+    <div class="wrap">
+      <div class="pagenav">
+        <a href="wf-jrtech.html">&larr; JR-Tech Pack & Handover</a>
+        <a href="sample-operations.html">Sample — Operations (AGL) &rarr;</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </div>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('loadByZone'), {
+  type: 'bar',
+  data: {
+    labels: ['Wok line', 'Steam / simmer', 'Cold prep', 'Store', 'Plating / dessert', 'Dishwash', 'Lighting / small power'],
+    datasets: [{
+      label: 'Connected load (kW)',
+      data: [3.75, 7.0, 0.95, 0.75, 1.55, 13.15, 2.6],
+      backgroundColor: ['#0B1F3A','#0B1F3A','#7FA9DE','#7FA9DE','#7FA9DE','#16C098','#c9d6e8'],
+      borderRadius: 5
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false },
+      title: { display: true, text: 'Electrical connected load by zone — total 29.75 kW (woks, steamer and stock pot on LPG)' } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: 'kW' } } }
+  }
+});
+</script>
+</body>
+</html>

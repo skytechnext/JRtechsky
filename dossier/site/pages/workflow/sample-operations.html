@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Operations Pack — Auntie Gaik Lean — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+<style>
+/* ————— paper-document design language, scoped to this page ————— */
+.doc{max-width:900px;margin:0 auto}
+.sheet{position:relative;background:#fff;border:1px solid #E4E9F1;border-radius:14px;
+  box-shadow:0 10px 30px rgba(11,31,58,.08);padding:56px 60px;margin:0 0 34px;overflow:hidden}
+@media(max-width:720px){.sheet{padding:32px 22px}}
+.sheet .sfoot{margin-top:44px;padding-top:14px;border-top:1px solid #E4E9F1;
+  display:flex;justify-content:space-between;font-size:11px;color:#8A94A6;letter-spacing:.04em}
+.ribbon{position:absolute;top:22px;right:-42px;transform:rotate(38deg);background:#C0392B;color:#fff;
+  font-weight:800;font-size:12px;letter-spacing:.28em;padding:6px 52px;box-shadow:0 3px 8px rgba(0,0,0,.18)}
+.wordbar{background:#0B1F3A;color:#fff;border-radius:8px;padding:14px 20px;display:flex;
+  align-items:center;justify-content:space-between;margin-bottom:30px}
+.wordbar .wm{font-weight:800;letter-spacing:.16em;font-size:15px}
+.wordbar .wm span{color:#16C098}
+.wordbar .tag2{font-size:11px;color:#AFC4E4;letter-spacing:.12em}
+.doct{font-size:34px;font-weight:800;color:#0B1F3A;line-height:1.15;margin:6px 0 4px}
+.docsub{color:#5B6B84;font-size:15px;margin-bottom:26px}
+.metagrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #E4E9F1;border-radius:10px;overflow:hidden}
+.metagrid div{padding:11px 16px;border-bottom:1px solid #E4E9F1;font-size:13px}
+.metagrid div:nth-child(odd){border-right:1px solid #E4E9F1}
+.metagrid div:nth-last-child(-n+2){border-bottom:0}
+.metagrid b{display:block;font-size:10px;letter-spacing:.14em;color:#8A94A6;text-transform:uppercase;margin-bottom:2px}
+.secno{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid #0B1F3A;
+  padding-bottom:10px;margin:0 0 20px}
+.secno .n{font-weight:800;color:#7FA9DE;font-size:20px}
+.secno h2{margin:0;font-size:21px;color:#0B1F3A;border:0;padding:0}
+.doc table.tbl{font-size:13px}
+.doc .lead{color:#3D4C63;font-size:14.5px;line-height:1.65}
+.toc{list-style:none;padding:0;margin:0;counter-reset:toc}
+.toc li{display:flex;justify-content:space-between;padding:9px 2px;border-bottom:1px dashed #DCE3EE;font-size:14px}
+.toc li b{color:#0B1F3A}
+.sopcard{border:1.5px solid #0B1F3A;border-radius:10px;overflow:hidden;margin-top:20px}
+.sopcard .sophead{background:#0B1F3A;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;font-size:13px}
+.sopcard .sophead b{letter-spacing:.06em}
+.sopcard ol{margin:14px 18px 6px;padding-left:20px;font-size:13.5px;line-height:1.7}
+.sopcard .crit{background:#FDF3F2;border-top:1px solid #F1D2CE;padding:12px 18px;font-size:13px;color:#8C3128}
+.sig{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:26px}
+.sig .box{border-top:1.5px solid #0B1F3A;padding-top:8px;font-size:12.5px;color:#5B6B84}
+.sig .box b{display:block;color:#0B1F3A;font-size:13.5px}
+@media print{
+  .topbar,#sidebar,.sb-toggle,.pagenav,footer.site,.hero{display:none!important}
+  .content{margin:0!important}
+  .sheet{box-shadow:none;border:0;border-radius:0;page-break-after:always;margin:0}
+  .ribbon{display:block}
+}
+</style>
+</head>
+<body data-page="smp-operations">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Kitchen Workflow</b> · Sample Deliverable</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Sample Client Deliverable · Pack 2 of 4</span>
+      <h1>Operations Pack — Sample: Auntie Gaik Lean</h1>
+      <p>What the client actually receives after the <a href="sample-blueprint.html" style="color:#BFD6F2">Blueprint Pack</a>:
+      an engineered menu, a 7-person crew with station duties, a 14-document SOP library, HACCP-aligned
+      safety policies and daily-to-monthly schedules — modelled here for Auntie Gaik Lean's Old School
+      Eatery, Bishop Street, George Town. Illustrative sample; all figures modelled for demonstration.</p>
+    </div></header>
+
+    <main class="wrap">
+    <div class="doc">
+
+    <!-- ═══════════ SHEET 1 · COVER ═══════════ -->
+    <div class="sheet">
+      <div class="ribbon">SAMPLE</div>
+      <div class="wordbar"><div class="wm">JR-TECH <span>×</span> TECHNEXT</div>
+        <div class="tag2">COMMERCIAL KITCHEN · OPERATIONS PACK</div></div>
+      <div class="doct">Operations Pack</div>
+      <div class="docsub">Menu engineering · staffing · SOP library · safety &amp; hygiene · schedules · training —
+        for a 48-seat heritage Nyonya restaurant, ~55 m² kitchen, lunch + dinner, closed Mondays.</div>
+      <div class="metagrid">
+        <div><b>Project Ref</b>JRT-2026-AGL-01</div>
+        <div><b>Prepared for</b>Auntie Gaik Lean's Old School Eatery — Bishop Street, George Town, Penang</div>
+        <div><b>Prepared by</b>JR-Tech Solution Sdn Bhd × TechNext</div>
+        <div><b>Date</b>4 July 2026</div>
+        <div><b>Revision</b>R1</div>
+        <div><b>Status</b>SAMPLE — illustrative deliverable, figures modelled for demonstration</div>
+      </div>
+
+      <div class="secno" style="margin-top:36px"><span class="n">—</span><h2>Contents</h2></div>
+      <ul class="toc">
+        <li><span><b>1.0</b> Scope of this pack</span><span>Sheet 1</span></li>
+        <li><span><b>2.0</b> Recommended menu — engineering &amp; costing</span><span>Sheet 2</span></li>
+        <li><span><b>3.0</b> Staff &amp; workflows — crew, duties, service cycle</span><span>Sheet 3</span></li>
+        <li><span><b>4.0</b> SOP library — 14 procedures + worked sample</span><span>Sheet 4</span></li>
+        <li><span><b>5.0</b> Safety, hygiene &amp; policies — HACCP, LPM, TY2, chemicals</span><span>Sheet 5</span></li>
+        <li><span><b>6.0</b> Schedules — daily, weekly, monthly · roster vs covers</span><span>Sheet 6</span></li>
+        <li><span><b>7.0</b> Training plan &amp; acceptance sign-off</span><span>Sheet 7</span></li>
+      </ul>
+
+      <div class="secno" style="margin-top:36px"><span class="n">1.0</span><h2>Scope of this pack</h2></div>
+      <p class="lead">This pack operationalises the approved Kitchen Blueprint (ref. JRT-2026-AGL-01,
+      Blueprint Pack R1: RM185,000 equipment schedule, 7-week build). It assumes the six-station layout
+      as installed — wok line (2 woks under the smokeless hood), simmer/stock, steam, cold prep/kerabu,
+      dessert/plating, dishwash return — and a normal trading day of <b>130 covers ≈ RM12,350</b> at an
+      average check of RM95. Every SOP, policy and schedule below is delivered as a live record in the
+      client's Odoo workspace under the JR-Tech recurring service (RM2,980/mo), so the document you are
+      reading is a snapshot, not the system.</p>
+      <div class="sfoot"><span>JRT-2026-AGL-01 · Operations Pack</span><span>Page 1 of 7</span></div>
+    </div>
+
+    <!-- ═══════════ SHEET 2 · MENU ═══════════ -->
+    <div class="sheet">
+      <div class="ribbon">SAMPLE</div>
+      <div class="secno"><span class="n">2.0</span><h2>Recommended menu — engineering &amp; costing</h2></div>
+      <p class="lead">Twelve items carry the opening menu: the eight heritage anchors Auntie Gaik Lean is
+      known for, plus four supporting items that fill station idle time. Each dish is costed against the
+      installed equipment schedule (E-xx references per the Blueprint Pack) so the menu never asks the
+      kitchen for capacity it does not have.</p>
+      <div style="overflow-x:auto">
+      <table class="tbl">
+        <tr><th>Dish</th><th>Category</th><th>Price RM</th><th>Food cost RM</th><th>FC&nbsp;%</th><th>Margin RM</th><th>Station</th><th>Key equipment</th></tr>
+        <tr><td><b>Curry Kapitan</b></td><td>Anchor — main</td><td>38.00</td><td>12.90</td><td>34%</td><td>25.10</td><td>Simmer → wok finish</td><td>E-04 stock stove, E-01 wok</td></tr>
+        <tr><td><b>Perut Ikan</b></td><td>Anchor — main</td><td>36.00</td><td>13.30</td><td>37%</td><td>22.70</td><td>Simmer/stock</td><td>E-04 stock stove</td></tr>
+        <tr><td><b>Gulai Tumis</b></td><td>Anchor — main</td><td>42.00</td><td>15.50</td><td>37%</td><td>26.50</td><td>Simmer/stock</td><td>E-04 stock stove</td></tr>
+        <tr><td><b>Jiu Hu Char</b></td><td>Anchor — main</td><td>28.00</td><td>8.10</td><td>29%</td><td>19.90</td><td>Wok line</td><td>E-02 wok, E-03 smokeless hood</td></tr>
+        <tr><td><b>Nyonya Chap Chye</b></td><td>Anchor — vegetable</td><td>24.00</td><td>6.20</td><td>26%</td><td>17.80</td><td>Wok line</td><td>E-02 wok</td></tr>
+        <tr><td><b>Otak-otak</b></td><td>Anchor — starter</td><td>26.00</td><td>8.60</td><td>33%</td><td>17.40</td><td>Steam</td><td>E-05 3-tier steamer</td></tr>
+        <tr><td><b>Kerabu Bee Hoon</b></td><td>Anchor — salad</td><td>26.00</td><td>7.00</td><td>27%</td><td>19.00</td><td>Cold prep/kerabu</td><td>E-06 prep counter chiller</td></tr>
+        <tr><td><b>Cendol</b></td><td>Anchor — dessert</td><td>14.00</td><td>2.80</td><td>20%</td><td>11.20</td><td>Dessert/plating</td><td>E-11 cendol/ice station</td></tr>
+        <tr><td>Inchi Kabin</td><td>Support — starter</td><td>32.00</td><td>10.20</td><td>32%</td><td>21.80</td><td>Wok line (fry)</td><td>E-01 wok, E-03 hood</td></tr>
+        <tr><td>Hong Bak</td><td>Support — main</td><td>34.00</td><td>11.90</td><td>35%</td><td>22.10</td><td>Simmer/stock</td><td>E-04 stock stove</td></tr>
+        <tr><td>Acar Awak</td><td>Support — side</td><td>12.00</td><td>3.00</td><td>25%</td><td>9.00</td><td>Cold prep (batch)</td><td>E-07 upright chiller</td></tr>
+        <tr><td>Pengat Pisang</td><td>Support — dessert</td><td>13.00</td><td>3.10</td><td>24%</td><td>9.90</td><td>Dessert/plating</td><td>E-04 stove, E-11 station</td></tr>
+      </table>
+      </div>
+      <p class="lead" style="margin-top:14px">Blended food cost at the modelled sales mix: <b>30.4%</b> —
+      inside the 28–32% band the Financial Pack assumes. The matrix below plots each dish by popularity
+      (share of a 130-cover day) against gross margin; bubble size is daily revenue contribution.</p>
+      <div class="chartbox"><canvas id="menuBubbleChart" height="300"></canvas></div>
+      <div class="grid g3" style="margin-top:18px">
+        <div class="card"><h3>R-1 · Pre-batch Kapitan rempah</h3><p style="font-size:13px">Curry Kapitan and
+          Gulai Tumis share a rempah base. Batch it twice weekly at the simmer station (SOP-04) and hold
+          chilled in E-07; wok finish drops from 14 min to 6 min per order at peak.</p></div>
+        <div class="card"><h3>R-2 · Push Cendol as the star</h3><p style="font-size:13px">20% food cost and
+          near-universal uptake make Cendol the highest-velocity margin item. Print it on every table
+          tent and train servers to offer it by default; the E-11 station runs it with zero wok-line load.</p></div>
+        <div class="card"><h3>R-3 · Prep-ahead kerabu</h3><p style="font-size:13px">Kerabu Bee Hoon components
+          (toasted coconut, herbs, dressing) prep fully by 10:00 and assemble to order in under 3 minutes
+          at E-06 — it becomes the pressure-relief dish when the wok line queues.</p></div>
+      </div>
+      <div class="sfoot"><span>JRT-2026-AGL-01 · Operations Pack</span><span>Page 2 of 7</span></div>
+    </div>
+
+    <!-- ═══════════ SHEET 3 · STAFF & WORKFLOWS ═══════════ -->
+    <div class="sheet">
+      <div class="ribbon">SAMPLE</div>
+      <div class="secno"><span class="n">3.0</span><h2>Staff &amp; workflows</h2></div>
+      <p class="lead">A 7-person crew is right-sized for 48 seats turning ~130 covers across lunch and
+      dinner. Roles map one-to-one to the blueprint's six stations, with the head chef (Auntie's lead)
+      on the pass. Closed Mondays gives the roster a natural deep-clean and rest anchor.</p>
+      <div class="card pad-lg"><h3>Kitchen organisation</h3>
+        <div class="mermaid">
+flowchart TD
+  HC["Head Chef — Auntie's lead<br/>Pass and expedite"] --> W1["Wok Cook 1<br/>E-01 wok"]
+  HC --> W2["Wok Cook 2<br/>E-02 wok"]
+  HC --> SS["Steam plus Simmer Cook<br/>E-04, E-05"]
+  HC --> CP["Cold Prep / Kerabu Cook<br/>E-06"]
+  HC --> DE["Dessert plus Expo<br/>E-11, pass support"]
+  HC --> ST["Steward<br/>Dishwash return E-09"]
+        </div></div>
+      <div style="overflow-x:auto">
+      <table class="tbl">
+        <tr><th>Role</th><th>Station</th><th>Pre-service duties</th><th>Service duties</th></tr>
+        <tr><td>Head chef (lead)</td><td>Pass</td><td>Menu count check, taste every base sauce, brief crew</td><td>Call and sequence tickets, QC every plate, log 86'd items</td></tr>
+        <tr><td>Wok cook 1</td><td>Wok E-01</td><td>Mise en place per par sheet, hood E-03 filter check</td><td>Fire Kapitan finish, Inchi Kabin; ticket time ≤ 10 min</td></tr>
+        <tr><td>Wok cook 2</td><td>Wok E-02</td><td>Veg cuts staged, wok seasoned</td><td>Jiu Hu Char, Chap Chye, stir-fry orders ≤ 8 min</td></tr>
+        <tr><td>Steam/simmer cook</td><td>E-04 + E-05</td><td>Stocks on by 09:00, rempah batches, otak-otak wrapped</td><td>Perut Ikan, Gulai Tumis, Hong Bak service; steam otak-otak to order</td></tr>
+        <tr><td>Cold prep/kerabu</td><td>E-06</td><td>Kerabu components done by 10:00, acar topped up</td><td>Assemble kerabu and acar to order; refill line pars</td></tr>
+        <tr><td>Dessert + expo</td><td>E-11 + pass</td><td>Cendol jelly, gula melaka syrup, pengat batch</td><td>Desserts to order; run plates when pass stacks</td></tr>
+        <tr><td>Steward</td><td>E-09 return</td><td>Machine temp check (wash 60°C / rinse 82°C), chemical dosing</td><td>Rack flow, pot rotation, waste log, floor safety</td></tr>
+      </table>
+      </div>
+      <div class="card pad-lg" style="margin-top:18px"><h3>Dinner-service cycle</h3>
+        <div class="mermaid">
+flowchart LR
+  subgraph FOH["Front of house"]
+    A1["Order on POS tablet"] --> A2["Ticket to pass and station KDS"]
+    A6["Server collects within 60s"] --> A7["Dish return to steward"]
+  end
+  subgraph PASS["Pass — head chef"]
+    A2 --> B1["Call ticket, fire courses"]
+    B2["QC plate, ring bell"] --> A6
+  end
+  subgraph LINE["Hot and cold line"]
+    B1 --> C1["Wok fire E-01 / E-02"]
+    B1 --> C2["Steam or simmer E-04 / E-05"]
+    B1 --> C3["Cold assembly E-06 / E-11"]
+    C1 --> B2
+    C2 --> B2
+    C3 --> B2
+  end
+  subgraph WASH["Dishwash loop"]
+    A7 --> D1["Scrape and pre-rinse"] --> D2["Machine wash E-09"] --> D3["Rack, air-dry, return to line"]
+  end
+        </div></div>
+      <div class="sfoot"><span>JRT-2026-AGL-01 · Operations Pack</span><span>Page 3 of 7</span></div>
+    </div>
+
+    <!-- ═══════════ SHEET 4 · SOP LIBRARY ═══════════ -->
+    <div class="sheet">
+      <div class="ribbon">SAMPLE</div>
+      <div class="secno"><span class="n">4.0</span><h2>SOP library</h2></div>
+      <p class="lead">Fourteen standard operating procedures, each owned by a named role, scheduled at a
+      fixed frequency, and stored as a live record in Odoo (Knowledge article + recurring activity), so
+      completion is logged, not assumed.</p>
+      <div style="overflow-x:auto">
+      <table class="tbl">
+        <tr><th>Ref</th><th>SOP</th><th>Owner</th><th>Frequency</th><th>Odoo record</th></tr>
+        <tr><td>SOP-01</td><td>Opening checks (gas, hood, chillers, water)</td><td>Head chef</td><td>Daily 08:30</td><td>Checklist activity, Maintenance app</td></tr>
+        <tr><td>SOP-02</td><td>Closing &amp; shutdown sequence</td><td>Head chef</td><td>Daily 22:30</td><td>Checklist activity</td></tr>
+        <tr><td>SOP-03</td><td>Receiving &amp; FIFO storage</td><td>Cold prep cook</td><td>Daily 08:30–09:30</td><td>Inventory receipt + quality check</td></tr>
+        <tr><td>SOP-04</td><td>Sambal / rempah batch prep</td><td>Steam-simmer cook</td><td>Tue &amp; Fri</td><td>Manufacturing order (batch recipe)</td></tr>
+        <tr><td>SOP-05</td><td>Wok seasoning &amp; smokeless-hood operation</td><td>Wok cook 1</td><td>Daily / hood weekly</td><td>Maintenance checklist E-01/E-03</td></tr>
+        <tr><td>SOP-06</td><td>Steamer descale</td><td>Steam-simmer cook</td><td>Fortnightly</td><td>Maintenance request E-05</td></tr>
+        <tr><td>SOP-07</td><td>Chiller temperature log</td><td>Steward</td><td>3× daily</td><td>Quality check E-06/E-07/E-08</td></tr>
+        <tr><td>SOP-08</td><td>Thaw protocol (chiller thaw only)</td><td>Cold prep cook</td><td>Daily PM pull</td><td>Inventory internal transfer</td></tr>
+        <tr><td>SOP-09</td><td>Dishwash chemical dosing (JR-Chemical)</td><td>Steward</td><td>Daily + refill</td><td>Consumable reorder rule</td></tr>
+        <tr><td>SOP-10</td><td>Grease-trap weekly service</td><td>Steward</td><td>Thu, weekly</td><td>Maintenance request E-10</td></tr>
+        <tr><td>SOP-11</td><td>Waste log (food + oil)</td><td>Steward</td><td>Daily close</td><td>Waste record, Inventory scrap</td></tr>
+        <tr><td>SOP-12</td><td>Pest-prevention routine</td><td>Head chef</td><td>Weekly + monthly contractor</td><td>Recurring activity + vendor PO</td></tr>
+        <tr><td>SOP-13</td><td>Gas leak response</td><td>All staff</td><td>Drill quarterly</td><td>Knowledge article + drill log</td></tr>
+        <tr><td>SOP-14</td><td>Incident report</td><td>Head chef</td><td>As required, ≤ 24 h</td><td>Helpdesk ticket to JR-Tech</td></tr>
+      </table>
+      </div>
+
+      <div class="sopcard">
+        <div class="sophead"><b>SOP-03 · RECEIVING &amp; FIFO STORAGE</b><span>Owner: Cold prep cook · Daily 08:30–09:30 · Rev R1</span></div>
+        <ol>
+          <li><b>Stage &amp; verify.</b> Receive at the back-lane door only. Check every line against the Odoo purchase order — quantity, grade, and supplier seal intact.</li>
+          <li><b>Temperature check.</b> Probe chilled goods on arrival: reject anything above <b>5°C</b> (fish, poultry, coconut milk). Frozen goods must show no thaw drip. Record readings in the Odoo quality check.</li>
+          <li><b>Sensory check.</b> Fish: clear eyes, firm flesh, sea smell only. Fresh herbs (daun kesum, bunga kantan) crisp and unbruised — kerabu quality dies here, not at the plate.</li>
+          <li><b>Label.</b> Date-label every item on receipt: received date + use-by. No unlabelled container enters E-06/E-07/E-08.</li>
+          <li><b>FIFO placement.</b> New stock behind or below old stock, never in front. Raw proteins on the lowest shelf; ready-to-eat above.</li>
+          <li><b>Put away within 20 minutes.</b> Chilled goods must be inside a chiller within 20 minutes of arrival; log the put-away time.</li>
+          <li><b>Close the loop.</b> Validate the receipt in Odoo; rejected lines trigger an automatic supplier credit-note request.</li>
+        </ol>
+        <div class="crit"><b>Critical limits:</b> receive chilled ≤ 5°C · frozen fully frozen · put-away ≤ 20 min ·
+        any rejection photographed and logged before the driver leaves. Two rejections from one supplier in
+        30 days escalates to a JR-Tech sourcing review.</div>
+      </div>
+      <div class="sfoot"><span>JRT-2026-AGL-01 · Operations Pack</span><span>Page 4 of 7</span></div>
+    </div>
+
+    <!-- ═══════════ SHEET 5 · SAFETY & HYGIENE ═══════════ -->
+    <div class="sheet">
+      <div class="ribbon">SAMPLE</div>
+      <div class="secno"><span class="n">5.0</span><h2>Safety, hygiene &amp; policies</h2></div>
+      <p class="lead">The pack adopts HACCP critical control points scaled to a single-kitchen operation,
+      plus the Malaysian statutory requirements that inspectors actually check in George Town.</p>
+      <h3 style="color:#0B1F3A">5.1 HACCP critical control points</h3>
+      <div style="overflow-x:auto">
+      <table class="tbl">
+        <tr><th>CCP</th><th>Critical limit</th><th>Monitored by</th><th>Corrective action</th></tr>
+        <tr><td>Receiving (chilled)</td><td>≤ 5°C at delivery</td><td>Cold prep cook, probe + Odoo QC</td><td>Reject line, supplier credit note</td></tr>
+        <tr><td>Cold holding</td><td>≤ 4°C in E-06/E-07</td><td>Steward, 3× daily log</td><td>Move stock, raise maintenance request, discard if &gt; 2 h exposed</td></tr>
+        <tr><td>Cooking</td><td>≥ 75°C core (fish, chicken, otak-otak)</td><td>Station cook, probe spot-checks</td><td>Continue cooking, re-probe before pass</td></tr>
+        <tr><td>Hot holding</td><td>≥ 60°C (gulai, kapitan pots)</td><td>Steam-simmer cook</td><td>Reheat to 75°C once, else discard</td></tr>
+        <tr><td>Cooling</td><td>60°C → 21°C within 2 h</td><td>Steam-simmer cook, blast-portion in shallow pans</td><td>Discard if limit missed; log incident</td></tr>
+      </table>
+      </div>
+      <div class="grid g2" style="margin-top:18px">
+        <div class="card"><h3>5.2 Personal hygiene policy</h3>
+          <ul style="font-size:13.5px;line-height:1.7">
+            <li>Clean uniform and apron daily; aprons off before toilet or waste runs.</li>
+            <li>Hand wash on entry, after raw protein handling, every 30 minutes on the cold line.</li>
+            <li>No jewellery below the elbow; hair fully covered; nails short and unpolished.</li>
+            <li>Cuts covered with blue detectable plasters plus a glove.</li>
+            <li>Staff with vomiting or diarrhoea excluded 48 h symptom-free before return.</li>
+          </ul></div>
+        <div class="card"><h3>5.3 Malaysia statutory requirements</h3>
+          <ul style="font-size:13.5px;line-height:1.7">
+            <li><b>Food-handler training (LPM):</b> every crew member completes the KKM-recognised Latihan Pengendali Makanan course; certificates stored in Odoo HR with expiry alerts.</li>
+            <li><b>TY2 typhoid vaccination:</b> valid for all food handlers; injection dates and 3-year renewals tracked in Odoo HR.</li>
+            <li>MBPP premises licence and grease-trap discharge compliance (SOP-10) kept current; inspection folder exportable from Odoo in one click.</li>
+          </ul></div>
+      </div>
+      <h3 style="color:#0B1F3A;margin-top:20px">5.4 Cleaning-chemical safety — JR-Chemical dilution chart</h3>
+      <div style="overflow-x:auto">
+      <table class="tbl">
+        <tr><th>Product</th><th>Use</th><th>Dilution</th><th>Contact time</th><th>PPE</th></tr>
+        <tr><td>JR-Chemical Machine Detergent</td><td>Dishwasher E-09 auto-dose</td><td>Auto pump, 2 ml/L</td><td>Machine cycle</td><td>Gloves when changing drum</td></tr>
+        <tr><td>JR-Chemical Rinse Aid</td><td>Dishwasher final rinse</td><td>Auto pump, 0.5 ml/L</td><td>Machine cycle</td><td>Gloves</td></tr>
+        <tr><td>JR-Chemical Degreaser HD</td><td>Hood E-03, wok surrounds</td><td>1:10 hot water</td><td>10 min, then rinse</td><td>Gloves + goggles</td></tr>
+        <tr><td>JR-Chemical Surface Sanitiser</td><td>Food-contact surfaces</td><td>1:100</td><td>60 s, air dry</td><td>None (food-safe)</td></tr>
+        <tr><td>JR-Chemical Floor Cleaner</td><td>Floors, grease-trap area</td><td>1:40</td><td>Mop and dry</td><td>Gloves, wet-floor sign</td></tr>
+      </table>
+      </div>
+      <div class="callout warn" style="margin-top:14px">Never mix chlorine sanitiser with acidic descaler
+      (SOP-06). Chemicals live in the labelled lockup below the dish table — never above or beside food.</div>
+      <div class="sfoot"><span>JRT-2026-AGL-01 · Operations Pack</span><span>Page 5 of 7</span></div>
+    </div>
+
+    <!-- ═══════════ SHEET 6 · SCHEDULES ═══════════ -->
+    <div class="sheet">
+      <div class="ribbon">SAMPLE</div>
+      <div class="secno"><span class="n">6.0</span><h2>Schedules</h2></div>
+      <h3 style="color:#0B1F3A">6.1 Daily timeline (Tue–Sun)</h3>
+      <div style="overflow-x:auto">
+      <table class="tbl">
+        <tr><th>Time</th><th>Activity</th><th>Lead</th></tr>
+        <tr><td>08:30</td><td>Opening checks (SOP-01); receiving &amp; FIFO (SOP-03)</td><td>Head chef / cold prep</td></tr>
+        <tr><td>09:00</td><td>Stocks and gulai bases on E-04; rempah days: batch prep (SOP-04)</td><td>Steam-simmer cook</td></tr>
+        <tr><td>10:00</td><td>Prep done: kerabu components, otak-otak wrapped, cendol set</td><td>All stations</td></tr>
+        <tr><td>11:00</td><td>Line check, crew meal, service brief at the pass</td><td>Head chef</td></tr>
+        <tr><td>11:30–14:30</td><td>Lunch service (~55 covers)</td><td>Full crew</td></tr>
+        <tr><td>14:30–17:00</td><td>Break / split; PM prep, thaw pulls (SOP-08), chiller log</td><td>Rotating pair</td></tr>
+        <tr><td>17:30–21:30</td><td>Dinner service (~75 covers)</td><td>Full crew</td></tr>
+        <tr><td>21:30</td><td>Last orders; waste log (SOP-11); breakdown starts</td><td>Steward</td></tr>
+        <tr><td>22:30</td><td>Closing &amp; shutdown (SOP-02); close-down complete</td><td>Head chef</td></tr>
+      </table>
+      </div>
+      <div class="grid g2" style="margin-top:18px">
+        <div class="card"><h3>6.2 Weekly grid</h3>
+          <table class="tbl">
+            <tr><th>Day</th><th>Fixed task</th></tr>
+            <tr><td>Mon</td><td><b>Closed</b> — deep-clean rotation A (wok line + hood filters if due)</td></tr>
+            <tr><td>Tue</td><td>Rempah batch (SOP-04); dry-store tidy</td></tr>
+            <tr><td>Wed</td><td>Deep-clean rotation B — chillers E-06/E-07 interior</td></tr>
+            <tr><td>Thu</td><td><b>Grease-trap service (SOP-10)</b></td></tr>
+            <tr><td>Fri</td><td>Rempah batch (SOP-04); weekend par build</td></tr>
+            <tr><td>Sat</td><td>Peak trade — no scheduled maintenance</td></tr>
+            <tr><td>Sun</td><td><b>Hood E-03 filter wash</b>; steamer descale fortnightly (SOP-06)</td></tr>
+          </table></div>
+        <div class="card"><h3>6.3 Monthly cadence</h3>
+          <ul style="font-size:13.5px;line-height:1.75">
+            <li><b>JR-Tech preventive-maintenance visit</b> — full equipment schedule E-01 → E-11 serviced under the RM2,980/mo agreement; findings logged as Odoo maintenance requests.</li>
+            <li><b>Pest-control contractor</b> visit + bait-station report (SOP-12).</li>
+            <li><b>Full stock take</b> — first Monday (closed day); Odoo inventory adjustment and food-cost variance review against the 30.4% target.</li>
+            <li><b>Gas-leak drill</b> quarterly (SOP-13) — logged with attendance.</li>
+          </ul></div>
+      </div>
+      <div class="card pad-lg" style="margin-top:18px"><h3>6.4 A typical operating week</h3>
+        <div class="mermaid">
+gantt
+  title Week plan — Auntie Gaik Lean kitchen
+  dateFormat YYYY-MM-DD
+  axisFormat %a
+  section Trading
+  Lunch and dinner service :svc, 2026-07-07, 6d
+  section Prep and clean
+  Deep-clean A (closed day) :dca, 2026-07-06, 1d
+  Rempah batch Tue :rb1, 2026-07-07, 1d
+  Deep-clean B chillers :dcb, 2026-07-08, 1d
+  Grease-trap service :gt, 2026-07-09, 1d
+  Rempah batch Fri :rb2, 2026-07-10, 1d
+  Hood filter wash :hf, 2026-07-12, 1d
+        </div></div>
+      <h3 style="color:#0B1F3A;margin-top:20px">6.5 Roster vs expected covers — normal day</h3>
+      <p class="lead">Staff on shift tracks demand: full 7-person crew through both services, a 2-person
+      spine through the afternoon lull. Splits keep labour honest without starving the prep window.</p>
+      <div class="chartbox"><canvas id="rosterCoversChart" height="280"></canvas></div>
+      <div class="sfoot"><span>JRT-2026-AGL-01 · Operations Pack</span><span>Page 6 of 7</span></div>
+    </div>
+
+    <!-- ═══════════ SHEET 7 · TRAINING & SIGN-OFF ═══════════ -->
+    <div class="sheet">
+      <div class="ribbon">SAMPLE</div>
+      <div class="secno"><span class="n">7.0</span><h2>Training plan &amp; acceptance</h2></div>
+      <p class="lead">A four-week opening-crew training plan runs in parallel with weeks 4–7 of the
+      equipment installation timeline, so the crew is service-ready the day the kitchen is handed over.</p>
+      <div style="overflow-x:auto">
+      <table class="tbl">
+        <tr><th>Week</th><th>Theme</th><th>Content</th><th>Sign-off gate</th></tr>
+        <tr><td>W1</td><td>Foundations &amp; compliance</td><td>LPM course completion check, TY2 verification, hygiene policy, chemical safety and dilution chart, SOP-13 gas drill</td><td>Certificates on file in Odoo HR</td></tr>
+        <tr><td>W2</td><td>Stations &amp; equipment</td><td>Per-station equipment induction E-01 → E-11 with JR-Tech engineer; SOP-05/06/07/09/10 walkthroughs</td><td>Station competency checklist per person</td></tr>
+        <tr><td>W3</td><td>Menu &amp; recipes</td><td>All 12 dishes cooked to spec cards under head chef; rempah batching; portioning to costed yields</td><td>Blind taste + portion audit passed</td></tr>
+        <tr><td>W4</td><td>Service simulation</td><td>Two dry-run services (friends &amp; family, 40 then 60 covers), full ticket flow, dish-return loop, close-down</td><td>Ticket times inside targets; go / no-go review</td></tr>
+      </table>
+      </div>
+      <div class="callout tn" style="margin-top:16px">On acceptance, all SOPs, logs and schedules go live
+      in the client's Odoo workspace and enter the JR-Tech monthly service cycle. The next deliverable in
+      the sequence is the <a href="sample-financials.html">Financial Pack</a>.</div>
+      <div class="secno" style="margin-top:30px"><span class="n">—</span><h2>Acceptance sign-off</h2></div>
+      <div class="sig">
+        <div class="box"><b>Client — Auntie Gaik Lean's Old School Eatery</b>
+          Name / NRIC: _______________________<br>Signature: _________________ Date: __________</div>
+        <div class="box"><b>JR-Tech Solution Sdn Bhd × TechNext</b>
+          Name / Role: _______________________<br>Signature: _________________ Date: __________</div>
+      </div>
+      <div class="sfoot"><span>JRT-2026-AGL-01 · Operations Pack</span><span>Page 7 of 7</span></div>
+    </div>
+
+    </div><!-- /doc -->
+
+      <div class="pagenav">
+        <a href="sample-blueprint.html">&larr; Sample — Blueprint (AGL)</a>
+        <a href="sample-financials.html">Sample — Financials (AGL) &rarr;</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+(function(){
+  var navy="#0B1F3A", blue="#7FA9DE", green="#16C098", warn="#E0A400", red="#C0392B";
+  // ——— Menu-engineering bubble chart ———
+  // x = popularity (% of daily covers ordering the dish), y = margin RM, r ~ daily revenue
+  var dishes=[
+    {n:"Cendol",x:62,y:11.2,rev:1129,c:green},
+    {n:"Curry Kapitan",x:48,y:25.1,rev:2371,c:green},
+    {n:"Jiu Hu Char",x:41,y:19.9,rev:1492,c:green},
+    {n:"Kerabu Bee Hoon",x:36,y:19.0,rev:1217,c:green},
+    {n:"Nyonya Chap Chye",x:38,y:17.8,rev:1186,c:blue},
+    {n:"Otak-otak",x:33,y:17.4,rev:1115,c:blue},
+    {n:"Gulai Tumis",x:22,y:26.5,rev:1201,c:warn},
+    {n:"Perut Ikan",x:18,y:22.7,rev:842,c:warn},
+    {n:"Hong Bak",x:15,y:22.1,rev:663,c:warn},
+    {n:"Inchi Kabin",x:26,y:21.8,rev:1082,c:blue},
+    {n:"Acar Awak",x:20,y:9.0,rev:312,c:red},
+    {n:"Pengat Pisang",x:12,y:9.9,rev:203,c:red}
+  ];
+  new Chart(document.getElementById("menuBubbleChart"),{
+    type:"bubble",
+    data:{datasets:dishes.map(function(d){return{
+      label:d.n,
+      data:[{x:d.x,y:d.y,r:Math.sqrt(d.rev)/3.2}],
+      backgroundColor:d.c+"55",borderColor:d.c,borderWidth:1.5
+    };})},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        title:{display:true,text:"Menu engineering — popularity vs margin (bubble = daily revenue RM)",color:navy,font:{weight:"700"}},
+        tooltip:{callbacks:{label:function(ctx){var d=dishes[ctx.datasetIndex];
+          return d.n+" · "+d.x+"% of covers · RM"+d.y.toFixed(2)+" margin · ~RM"+d.rev+"/day";}}}
+      },
+      scales:{
+        x:{title:{display:true,text:"Popularity — % of 130 daily covers"},min:0,max:70,grid:{color:"#EDF1F7"}},
+        y:{title:{display:true,text:"Gross margin per dish (RM)"},min:5,max:30,grid:{color:"#EDF1F7"}}
+      }
+    }
+  });
+  // quadrant hint via plugin-free annotation: draw after render using afterDraw
+  // ——— Roster vs covers chart ———
+  var hrs=["08","09","10","11","12","13","14","15","16","17","18","19","20","21","22"];
+  var covers=[0,0,0,4,22,20,9,2,1,6,18,26,20,11,0];
+  var staff =[3,5,7,7,7,7,7,2,2,7,7,7,7,7,4];
+  new Chart(document.getElementById("rosterCoversChart"),{
+    data:{labels:hrs.map(function(h){return h+":00";}),
+      datasets:[
+        {type:"bar",label:"Staff on shift",data:staff,backgroundColor:navy+"33",borderColor:navy,borderWidth:1,yAxisID:"y1",order:2},
+        {type:"line",label:"Expected covers per hour",data:covers,borderColor:green,backgroundColor:green,tension:.35,pointRadius:3,yAxisID:"y",order:1}
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{title:{display:true,text:"Normal day — 130 covers vs 7-person roster (closed Mondays)",color:navy,font:{weight:"700"}},
+        legend:{position:"bottom"}},
+      scales:{
+        y:{position:"left",title:{display:true,text:"Covers / hour"},min:0,max:30,grid:{color:"#EDF1F7"}},
+        y1:{position:"right",title:{display:true,text:"Staff on shift"},min:0,max:8,grid:{drawOnChartArea:false}},
+        x:{grid:{display:false}}
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
