@@ -4,13 +4,22 @@
 (function () {
   var ROOT = window.SITE_ROOT || "";
   var MENU = [
-    { group: "Overview", items: [
+    { group: "Start Here", items: [
       { t: "Overview", href: "index.html", slug: "overview", root: true },
+      { t: "The Pitch — Owner to Owner", href: "pages/technology/why-odoo.html", slug: "why-odoo", e: "🤝" },
       { t: "Why AI is Important", href: "pages/overview/why-ai.html", slug: "why-ai" },
     ]},
     { group: "Executive", items: [
       { t: "Executive Summary", href: "pages/executive/executive-summary.html", slug: "executive-summary" },
       { t: "Due Diligence", href: "pages/executive/due-diligence.html", slug: "due-diligence" },
+    ]},
+    { group: "Kitchen Workflow — JR-Tech Method", items: [
+      { t: "Reimagined Workflow", href: "pages/workflow/wf-overview.html", slug: "wf-overview", e: "🔄" },
+      { t: "The First Meeting", href: "pages/workflow/wf-first-meeting.html", slug: "wf-first-meeting", e: "🤝" },
+      { t: "Kitchen Blueprint Pack", href: "pages/workflow/wf-blueprint.html", slug: "wf-blueprint", e: "📐" },
+      { t: "Operations Pack", href: "pages/workflow/wf-operations.html", slug: "wf-operations", e: "👨‍🍳" },
+      { t: "Financial Pack", href: "pages/workflow/wf-financials.html", slug: "wf-financials", e: "💹" },
+      { t: "JR-Tech Pack & Handover", href: "pages/workflow/wf-jrtech.html", slug: "wf-jrtech", e: "📦" },
     ]},
     { group: "Company Profile", items: [
       { t: "Company Profile", href: "pages/company/company-profile.html", slug: "company-profile" },
@@ -21,11 +30,12 @@
       { t: "Reviews & Reputation", href: "pages/company/reviews-reputation.html", slug: "reviews-reputation" },
     ]},
     { group: "Strategic Analysis", items: [
+      { t: "Market & Industry", href: "pages/strategy/market-industry.html", slug: "market-industry" },
       { t: "PESTLE Analysis", href: "pages/strategy/pestle.html", slug: "pestle" },
       { t: "SWOT & TOWS", href: "pages/strategy/swot-tows.html", slug: "swot-tows" },
       { t: "Porter's Five Forces", href: "pages/strategy/porters.html", slug: "porters" },
       { t: "Competitor Deep-Dive", href: "pages/strategy/competitor-deepdive.html", slug: "competitor-deepdive" },
-      { t: "Market & Industry", href: "pages/strategy/market-industry.html", slug: "market-industry" },
+      { t: "Top-3 Competitor Battlecards", href: "pages/intel/top3-competitors.html", slug: "top3-competitors" },
       { t: "Customer Personas", href: "pages/strategy/personas.html", slug: "personas" },
       { t: "Financial Snapshot & Valuation", href: "pages/strategy/financials.html", slug: "financials" },
       { t: "ESG & Sustainability", href: "pages/strategy/esg.html", slug: "esg" },
@@ -36,21 +46,13 @@
       { t: "Pain → Solution Matrix", href: "pages/operations/pain-solution.html", slug: "pain-solution" },
       { t: "BPMN · Blueprint · UML", href: "pages/operations/bpmn-uml.html", slug: "bpmn-uml" },
       { t: "Value Chain & Capability Map", href: "pages/operations/value-chain.html", slug: "value-chain" },
+      { t: "Driver Incentive Scheme", href: "pages/operations/driver-incentive.html", slug: "driver-incentive", e: "🚛" },
     ]},
-    { group: "Kitchen Workflow — JR-Tech Method", items: [
-      { t: "Reimagined Workflow", href: "pages/workflow/wf-overview.html", slug: "wf-overview", e: "🔄" },
-      { t: "The First Meeting", href: "pages/workflow/wf-first-meeting.html", slug: "wf-first-meeting", e: "🤝" },
-      { t: "Kitchen Blueprint Pack", href: "pages/workflow/wf-blueprint.html", slug: "wf-blueprint", e: "📐" },
-      { t: "Operations Pack", href: "pages/workflow/wf-operations.html", slug: "wf-operations", e: "👨‍🍳" },
-      { t: "Financial Pack", href: "pages/workflow/wf-financials.html", slug: "wf-financials", e: "💹" },
-      { t: "JR-Tech Pack & Handover", href: "pages/workflow/wf-jrtech.html", slug: "wf-jrtech", e: "📦" },
-    ]},
-    { group: "Technology", items: [
+    { group: "Technology — The Odoo Solution", items: [
       { t: "Current Systems (SQL Account)", href: "pages/technology/current-systems.html", slug: "current-systems" },
+      { t: "Odoo 19 Architecture", href: "pages/technology/odoo-architecture.html", slug: "odoo-architecture" },
       { t: "AI & Automation Catalog", href: "pages/technology/ai-catalog.html", slug: "ai-catalog" },
       { t: "AI in Action — Peer Story", href: "pages/technology/ai-peer-story.html", slug: "ai-peer-story" },
-      { t: "Odoo 19 Architecture", href: "pages/technology/odoo-architecture.html", slug: "odoo-architecture" },
-      { t: "The Pitch — Owner to Owner", href: "pages/technology/why-odoo.html", slug: "why-odoo", e: "🤝" },
       { t: "Data Migration", href: "pages/technology/data-migration.html", slug: "data-migration" },
       { t: "Integration & API Map", href: "pages/technology/integration-map.html", slug: "integration-map" },
       { t: "Security, Compliance & MyInvois", href: "pages/technology/security-myinvois.html", slug: "security-myinvois" },
@@ -62,9 +64,6 @@
       { t: "Risk Register & RACI", href: "pages/delivery/risk-raci.html", slug: "risk-raci" },
       { t: "KPIs & Benefits", href: "pages/delivery/kpis-benefits.html", slug: "kpis-benefits" },
       { t: "Training & Enablement", href: "pages/delivery/training.html", slug: "training" },
-    ]},
-    { group: "Competitive Intel", items: [
-      { t: "Top-3 Competitor Deep-Dive", href: "pages/intel/top3-competitors.html", slug: "top3-competitors" },
     ]},
     { group: "Growth & Strategy", items: [
       { t: "Pricing Strategy", href: "pages/growth/pricing.html", slug: "pricing" },
@@ -79,19 +78,18 @@
       { t: "Glossary", href: "pages/advisory/glossary.html", slug: "glossary" },
     ]},
     { group: "Tools & Documents", items: [
-      { t: "AI Build Playbook", href: "tools/ai-build-playbook.html", slug: "ai-build-playbook", e: "📘" },
       { t: "Profit Estimator", href: "tools/profit-estimator.html", slug: "profit-estimator", e: "📊" },
-      { t: "Owner FAQ", href: "tools/owner-faq.html", slug: "owner-faq", e: "💬" },
-      { t: "Odoo Platform", href: "tools/odoo-platform.html", slug: "odoo-platform", e: "⚓" },
-      { t: "Requirements (BRD)", href: "tools/brd.html", slug: "brd", e: "📑" },
+      { t: "ROI / TCO Model", href: "tools/roi-tco.html", slug: "roi-tco", e: "🧮" },
       { t: "Quotation", href: "tools/quotation.html", slug: "quotation", e: "🧾" },
-      { t: "Accounting Overhaul", href: "tools/accounting-overhaul.html", slug: "accounting-overhaul", e: "📒" },
+      { t: "Requirements (BRD)", href: "tools/brd.html", slug: "brd", e: "📑" },
+      { t: "Discovery Questions", href: "tools/discovery-questions.html", slug: "discovery-questions", e: "📋" },
+      { t: "Owner FAQ", href: "tools/owner-faq.html", slug: "owner-faq", e: "💬" },
       { t: "Demo Walkthrough", href: "tools/demo-walkthrough.html", slug: "demo-walkthrough", e: "🧭" },
       { t: "Staff Guides", href: "tools/staff-guides.html", slug: "staff-guides", e: "🛎" },
-      { t: "Discovery Questions", href: "tools/discovery-questions.html", slug: "discovery-questions", e: "📋" },
-      { t: "ROI / TCO Model", href: "tools/roi-tco.html", slug: "roi-tco", e: "🧮" },
+      { t: "Accounting Overhaul", href: "tools/accounting-overhaul.html", slug: "accounting-overhaul", e: "📒" },
       { t: "Project Gantt", href: "tools/gantt.html", slug: "gantt", e: "🗓" },
-      { t: "Driver Incentive Scheme", href: "tools/driver-incentive.html", slug: "driver-incentive", e: "🚛" },
+      { t: "Odoo Platform", href: "tools/odoo-platform.html", slug: "odoo-platform", e: "⚓" },
+      { t: "AI Build Playbook", href: "tools/ai-build-playbook.html", slug: "ai-build-playbook", e: "📘" },
     ]},
     { group: "JR-Tech Properties", items: [
       { t: "Kitchen Estimator", href: "../../estimator/index.html", slug: "ext-estimator", e: "🍳", x: true },

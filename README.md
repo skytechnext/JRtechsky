@@ -18,10 +18,11 @@ repository deploys together to GitHub Pages.
 
 | # | Property | Folder | What it is |
 |---|----------|--------|------------|
-| 01 | **Marketing Website** | [`marketing/`](marketing/) | Bespoke, conversion-focused site (home, services, projects, contact) with full SEO + a marketing plan. *(from the `gallant-noether` build)* |
-| 02 | **Kitchen Estimator** | [`estimator/`](estimator/) | Live kitchen-economics tool — KPIs, consumables, equipment life plan, depreciation, and dual profit estimators (F&B operator + JR Tech). |
-| 03 | **Odoo 19 ERP Dossier** | [`dossier/`](dossier/) | Due-diligence, strategy & Odoo 19 implementation dossier (50+ pages, interactive tools) + a `odoo/` demo-data build kit. *(from the `wizardly-mayer` build)* |
-| 04 | **Current Website (archive)** | [`website/`](website/) | WordPress-free static capture of the live `jrtech.com.my` — full product catalog, projects, about, contact. *(from the `lucid-mendel` build)* |
+| 01 | **JR Tech Analysis (dossier)** | [`dossier/`](dossier/) | The flagship: 65-page analysis + Odoo 19 plan — Start Here/Pitch, Kitchen Workflow (JR-Tech Method), strategy, operations, technology, delivery, tools, plus the `dossier/odoo/` demo-data build kit. |
+| 02 | **Kitchen Estimator** | [`estimator/`](estimator/) | Live kitchen-economics tool — KPIs, consumables, equipment life plan, depreciation, dual profit estimators. |
+| 03 | **Sales Kit** | [`sales/`](sales/) | Presentation-ready sales material for owner meetings. |
+| 04 | **Marketing Website** | [`marketing/`](marketing/) | Bespoke, conversion-focused site with full SEO + marketing plan. |
+| 05 | **Current Website (archive)** | [`website/`](website/) | Static capture of the live `jrtech.com.my` — catalog, projects, about, contact. |
 
 The portal page is [`index.html`](index.html) at the root.
 

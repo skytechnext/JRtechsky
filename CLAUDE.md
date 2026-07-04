@@ -20,9 +20,11 @@ links to four self-contained properties, all deployed together to GitHub Pages v
 `.github/workflows/deploy.yml` (`.nojekyll` keeps every path served as-is).
 
 - Live site: https://skytechnext.github.io/JRtechsky/
-- Folders: `estimator/` (kitchen estimator tool — defaults in the `DEFAULTS` object
-  at the top of `estimator/app.js`), `marketing/` (bespoke marketing site),
-  `dossier/` (Odoo 19 ERP dossier + `odoo/` data kit), `website/` (static archive of
-  jrtech.com.my). Each property is self-contained with relative paths.
+- Folders: `dossier/` (flagship JR Tech Analysis: 65-page dossier + `dossier/odoo/` data
+  kit; sidebar order = narrative arc defined in `dossier/site/assets/js/nav.js`, which also
+  drives every page's prev/next pagenav — regenerate pagenavs after reordering the menu),
+  `estimator/` (kitchen estimator tool), `sales/` (sales kit), `marketing/` (bespoke
+  marketing site), `website/` (static archive of jrtech.com.my). Each property is
+  self-contained with relative paths.
 - When combining work from sibling `claude/*` branches, import each into its own
   top-level folder and route to it from the portal — keep the pieces self-contained.
