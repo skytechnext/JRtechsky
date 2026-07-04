@@ -20,6 +20,10 @@
       { t: "Operations Pack", href: "pages/workflow/wf-operations.html", slug: "wf-operations", e: "👨‍🍳" },
       { t: "Financial Pack", href: "pages/workflow/wf-financials.html", slug: "wf-financials", e: "💹" },
       { t: "JR-Tech Pack & Handover", href: "pages/workflow/wf-jrtech.html", slug: "wf-jrtech", e: "📦" },
+      { t: "Sample — Blueprint (AGL)", href: "pages/workflow/sample-blueprint.html", slug: "smp-blueprint", e: "📄" },
+      { t: "Sample — Operations (AGL)", href: "pages/workflow/sample-operations.html", slug: "smp-operations", e: "📄" },
+      { t: "Sample — Financials (AGL)", href: "pages/workflow/sample-financials.html", slug: "smp-financials", e: "📄" },
+      { t: "Sample — Handover (AGL)", href: "pages/workflow/sample-handover.html", slug: "smp-handover", e: "📄" },
     ]},
     { group: "Company Profile", items: [
       { t: "Company Profile", href: "pages/company/company-profile.html", slug: "company-profile" },
