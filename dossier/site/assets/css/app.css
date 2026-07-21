@@ -185,3 +185,49 @@ body.nav-collapsed .content { margin-left: 0; }
     background:var(--jr-navy); color:#fff; border:none; border-radius:10px; padding:10px 12px;
     font-size:18px; box-shadow:var(--shadow-md); cursor:pointer; }
 }
+
+/* ============ VISUAL UPGRADE (site-wide) ============ */
+/* Hero: blueprint-grid texture + glow */
+.hero { position: relative; overflow: hidden; }
+.hero::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.55;
+  background-image:
+    linear-gradient(rgba(127,169,222,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127,169,222,.07) 1px, transparent 1px);
+  background-size: 34px 34px; }
+.hero::after { content:""; position:absolute; right:-120px; top:-120px; width:380px; height:380px;
+  border-radius:50%; background:radial-gradient(circle, rgba(22,192,152,.22), transparent 65%); pointer-events:none; }
+.hero .wrap { position: relative; z-index: 1; }
+
+/* Section headings: accent underline */
+main h2 { position: relative; padding-bottom: 10px; }
+main h2::after { content:""; position:absolute; left:0; bottom:0; width:46px; height:4px;
+  border-radius:4px; background:linear-gradient(90deg, var(--jr-blue), var(--tn-accent)); }
+
+/* KPI cards: gradient numbers + accent edge */
+.kpi { border-top: 3px solid transparent; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.kpi:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-top-color: var(--jr-blue); }
+.kpi .num { background: linear-gradient(120deg, var(--jr-navy) 30%, var(--jr-blue-700)); 
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Cards & chart boxes: lift on hover */
+.card, .chartbox, .mermaid { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.card:hover, .chartbox:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: #CBD9EC; }
+
+/* Tables: header accent + softer zebra */
+table.tbl th { border-bottom: 2px solid var(--jr-blue); }
+table.tbl tr:hover td { background: #EEF4FF; }
+
+/* Tags pop a little */
+.tag { box-shadow: inset 0 0 0 1px rgba(63,111,176,.12); }
+
+/* Scroll-reveal (JS adds .rv, then .in) */
+@media screen { .rv { opacity: 0; transform: translateY(16px); }
+  .rv.in { opacity: 1; transform: none; transition: opacity .55s ease, transform .55s ease; } }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1 !important; transform: none !important; transition: none !important; } }
+@media print { .rv { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .card, .kpi, .chartbox, .mermaid { transition: none !important; } }
+
+/* Reading progress bar */
+#readbar { position: fixed; top: 0; left: 0; height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--jr-blue), var(--tn-accent)); z-index: 90; transition: width .1s linear; }
+@media print { #readbar { display:none; } }
