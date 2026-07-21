@@ -164,6 +164,40 @@
     });
   });
 
+
+  // ---- visual enhancements: reading progress + scroll reveal ----
+  var bar = document.createElement("div"); bar.id = "readbar"; document.body.appendChild(bar);
+  var onScroll = function () {
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    bar.style.width = (max > 0 ? (d.scrollTop / max) * 100 : 0) + "%";
+  };
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    var sel = ".content .card, .content .kpi, .content .chartbox, .content .mermaid, .content table.tbl, .content .callout";
+    document.querySelectorAll(sel).forEach(function (el, i) {
+      el.classList.add("rv");
+      el.style.transitionDelay = Math.min(i % 4, 3) * 60 + "ms";
+      io.observe(el);
+      // safety: reveal anything already in view after load
+    });
+    setTimeout(function () {
+      document.querySelectorAll(".rv:not(.in)").forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("in");
+      });
+    }, 600);
+    // final safety net: never leave content invisible
+    setTimeout(function () {
+      document.querySelectorAll(".rv:not(.in)").forEach(function (el) { el.classList.add("in"); });
+    }, 4000);
+  }
+
   // scroll active link into view
   var act = document.querySelector("#sidebar .sb-link.active");
   if (act) act.scrollIntoView({ block: "center" });
