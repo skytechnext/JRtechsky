@@ -44,3 +44,9 @@ food courts, catering & cloud kitchens, factories with canteens, condominiums (p
 ## Implementer
 **TechNext** — Odoo ERP implementation company (technext.asia). Role: lead the Odoo 19
 implementation; this dossier is TechNext's discovery + proposal artifact.
+
+## Vision & Mission (owner-provided, July 2026)
+- Vision: "To become the preferred one-stop F&B Solutions provider, leading the industry toward
+  sustainable Go-Green Kitchen concepts & AI Technology advancements."
+- Mission: "To develop an innovative kitchen solution that integrates manual expertise, AI
+  technology, and sustainable Go-Green practices."
