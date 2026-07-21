@@ -127,11 +127,28 @@
   var sb = document.getElementById("sidebar");
   if (sb) { sb.innerHTML = html; }
 
-  // mobile toggle
+  // show/hide toggle (mobile: slide-over; desktop: collapse, remembered)
+  var isDesk = function () { return window.innerWidth > 1024; };
   var btn = document.createElement("button");
-  btn.className = "sb-toggle"; btn.innerHTML = "☰";
-  btn.onclick = function () { document.body.classList.toggle("nav-open"); };
+  btn.className = "sb-toggle"; btn.innerHTML = "\u2630";
+  btn.setAttribute("aria-label", "Show menu");
+  btn.onclick = function () {
+    if (isDesk()) { document.body.classList.remove("nav-collapsed"); try{localStorage.setItem("jrNavHidden","0");}catch(e){} }
+    else { document.body.classList.toggle("nav-open"); }
+  };
   document.body.appendChild(btn);
+  var brand = document.querySelector("#sidebar .sb-brand");
+  if (brand) {
+    var hide = document.createElement("button");
+    hide.className = "sb-hide"; hide.innerHTML = "\u276E";
+    hide.title = "Hide sidebar"; hide.setAttribute("aria-label", "Hide sidebar");
+    hide.onclick = function () {
+      if (isDesk()) { document.body.classList.add("nav-collapsed"); try{localStorage.setItem("jrNavHidden","1");}catch(e){} }
+      else { document.body.classList.remove("nav-open"); }
+    };
+    brand.appendChild(hide);
+  }
+  try { if (localStorage.getItem("jrNavHidden") === "1" && isDesk()) document.body.classList.add("nav-collapsed"); } catch(e){}
 
   // filter
   var s = document.getElementById("sbSearch");
