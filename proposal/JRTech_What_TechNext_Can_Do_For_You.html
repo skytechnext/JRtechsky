@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Odoo Can Do For JR-Tech — TechNext</title>
+<style>
+  /* ============================================================
+     TechNext × JR-Tech — Executive Summary (owner-facing, plain)
+     Self-contained. No external fonts, scripts, or images.
+     Works offline · projects in a lit room · prints to PDF clean.
+     Palette from the JR-Tech 2024 Brand Book. Light theme, committed.
+     ============================================================ */
+  :root {
+    --navy:      #0B1F3A;
+    --navy-2:    #122E54;
+    --ink:       #16213A;
+    --slate-c:   #52627B;
+    --mist:      #F4F7FC;
+    --line:      #E2E9F3;
+    --line-2:    #D3DEEE;
+    --white:     #FFFFFF;
+    --blue:      #7FA9DE;
+    --blue-700:  #3F6FB0;
+    --green:     #16C098;
+    --green-700: #0E8E6E;
+    --green-800: #0A6E54;   /* dark enough for white text (>=4.5:1) */
+    --green-050: #EAFBF5;
+    --danger:    #E2544B;
+    --radius:    14px;
+    --radius-lg: 18px;
+    --shadow-sm: 0 1px 2px rgba(11,31,58,.06), 0 1px 3px rgba(11,31,58,.07);
+    --shadow-md: 0 8px 30px rgba(11,31,58,.10);
+    --maxw:      940px;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--mist);
+    line-height: 1.62;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 30px; }
+
+  /* ---------------- Hero ---------------- */
+  .hero {
+    background:
+      radial-gradient(1100px 380px at 82% -12%, rgba(127,169,222,.40), transparent 60%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff;
+    padding: 30px 0 46px;
+  }
+  .cobrand {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: #B9CCE8; padding: 16px 0 30px;
+  }
+  .cobrand .mark { width: 13px; height: 13px; border-radius: 3px; background: var(--blue); display: inline-block; }
+  .cobrand .x { color: var(--blue); margin: 0 2px; font-weight: 400; }
+  .cobrand .green { color: var(--green); }
+  .eyebrow {
+    display: inline-block; font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: #d5e3f7; background: rgba(127,169,222,.18); padding: 6px 13px; border-radius: 999px;
+    font-weight: 700; margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 42px; line-height: 1.1; margin: 0 0 16px; font-weight: 800; letter-spacing: -.02em;
+    text-wrap: balance; max-width: 16ch;
+  }
+  .hero .big-idea {
+    font-size: 20px; line-height: 1.5; color: #EAF1FB; margin: 0; max-width: 60ch; font-weight: 400;
+  }
+  .hero .big-idea b { color: #fff; font-weight: 700; }
+  .hero .prepared {
+    margin-top: 26px; font-size: 14px; color: #9FB5D6; letter-spacing: .01em;
+    border-top: 1px solid rgba(255,255,255,.12); padding-top: 16px;
+  }
+
+  /* ---------------- Sections ---------------- */
+  main { padding-bottom: 40px; }
+  section { padding: 40px 0 4px; }
+  h2 {
+    font-size: 27px; font-weight: 800; letter-spacing: -.015em; margin: 0 0 6px; color: var(--navy);
+    text-wrap: balance;
+  }
+  h2 .lead-rule {
+    display: block; width: 46px; height: 4px; border-radius: 3px; background: var(--green); margin: 14px 0 20px;
+  }
+  p { margin: 0 0 14px; }
+  .muted { color: var(--slate-c); }
+  strong, b { color: var(--ink); }
+
+  /* Consequence list ("problem too late") */
+  .cue { color: var(--slate-c); font-weight: 600; margin: 4px 0 12px; }
+  .conseq { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 10px; }
+  .conseq li {
+    background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--danger);
+    border-radius: 0 10px 10px 0; padding: 12px 16px; box-shadow: var(--shadow-sm); font-weight: 500;
+  }
+
+  /* Status timeline ("where we are now") */
+  .timeline { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 10px; }
+  .timeline li {
+    background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--blue-700);
+    border-radius: 0 10px 10px 0; padding: 12px 16px; box-shadow: var(--shadow-sm);
+  }
+  .timeline li b { color: var(--navy); }
+  .timeline li.next { border-left-color: var(--green); background: var(--green-050); }
+
+  blockquote {
+    margin: 22px 0 6px; padding: 20px 24px; background: var(--navy);
+    color: #fff; border-radius: var(--radius); font-size: 20px; font-weight: 600; line-height: 1.4;
+    box-shadow: var(--shadow-md);
+  }
+  blockquote span { color: var(--blue); }
+
+  /* ---------------- Hub diagram (pure CSS) ---------------- */
+  .diagram {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: 26px; box-shadow: var(--shadow-sm); margin: 8px 0 16px;
+  }
+  .hub {
+    display: flex; align-items: center; gap: 22px;
+  }
+  .hub-sources { display: grid; gap: 10px; flex: 1 1 auto; min-width: 0; }
+  .chip {
+    background: var(--mist); border: 1px solid var(--line-2); border-radius: 10px;
+    padding: 11px 15px; font-weight: 600; font-size: 15.5px; color: var(--ink);
+  }
+  .chip small { display: block; font-weight: 500; color: var(--slate-c); font-size: 13px; margin-top: 1px; }
+  .hub-arrow { flex: 0 0 auto; color: var(--blue-700); font-size: 30px; line-height: 1; font-weight: 700; }
+  .hub-core {
+    flex: 0 0 240px;
+    background: var(--green-800);
+    color: #fff; border-radius: var(--radius); padding: 26px 22px; text-align: center;
+    box-shadow: 0 10px 26px rgba(11,110,84,.34);
+  }
+  .hub-core .t { font-size: 21px; font-weight: 800; line-height: 1.2; }
+  .hub-core .s { font-size: 14px; margin-top: 8px; color: #E7FBF4; line-height: 1.4; }
+  .after-line { font-size: 19px; font-weight: 700; color: var(--green-700); margin: 4px 0 0; }
+
+  /* ---------------- Tables ---------------- */
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse; background: #fff; font-size: 16px;
+    border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  }
+  thead th {
+    text-align: left; background: var(--navy); color: #fff; font-weight: 700;
+    padding: 13px 16px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em;
+  }
+  th.odoo-col, td.odoo-col { background: var(--green-050); }
+  thead th.odoo-col { background: var(--green-800); color: #fff; }
+  tbody td { padding: 13px 16px; border-top: 1px solid var(--line); vertical-align: top; }
+  tbody tr:first-child td { border-top: none; }
+  td.job { font-weight: 700; color: var(--navy); white-space: nowrap; }
+  .rowlabel { font-weight: 700; color: var(--navy); }
+
+  /* ---------------- SAP banner ---------------- */
+  .banner {
+    margin: 20px 0 6px; padding: 18px 24px; border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff;
+    font-size: 22px; font-weight: 800; letter-spacing: -.01em; text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .banner .g { color: var(--green); }
+
+  /* ---------------- "See it live" — demo bridge ---------------- */
+  .showtime {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff;
+    border-radius: var(--radius-lg); padding: 32px 30px 30px; margin: 10px 0 6px; box-shadow: var(--shadow-md);
+  }
+  .showtime h2 { color: #fff; }
+  .showtime .intro { color: #DCE7F6; font-size: 18px; max-width: 62ch; margin: 0 0 22px; }
+  .showtime .intro b { color: #fff; }
+  .demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0 0 22px; }
+  .demo-card {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--radius); padding: 16px 17px;
+  }
+  .demo-card h4 { margin: 0 0 7px; font-size: 16px; font-weight: 800; color: #fff; line-height: 1.25; }
+  .demo-card p { margin: 0; font-size: 14px; color: #C5D4EA; line-height: 1.5; }
+  .live-line { font-size: 16.5px; color: #EAF1FB; margin: 0 0 20px; }
+  .live-line b { color: var(--green); }
+  .cta {
+    display: inline-block; background: var(--green); color: var(--navy); font-weight: 800;
+    font-size: 16px; text-decoration: none; padding: 13px 22px; border-radius: 999px;
+  }
+  .cta:hover { background: #13d6a9; }
+  .showtime .note { margin: 16px 0 0; font-size: 13.5px; color: #9FB5D6; line-height: 1.5; }
+
+  /* ---------------- Steps (pure CSS) ---------------- */
+  .steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 10px 0 16px;
+  }
+  .step {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 18px 16px; box-shadow: var(--shadow-sm); position: relative;
+  }
+  .step .n {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px;
+    margin-bottom: 12px;
+  }
+  .step h4 { margin: 0 0 6px; font-size: 16.5px; font-weight: 800; color: var(--navy); line-height: 1.25; }
+  .step p { margin: 0; font-size: 14px; color: var(--slate-c); line-height: 1.45; }
+  .step.win { border-color: var(--green); box-shadow: 0 8px 24px rgba(22,192,152,.18); }
+  .step.win .n { background: linear-gradient(140deg, var(--green-700) 0%, var(--green-800) 100%); }
+  .step.win .flag {
+    position: absolute; top: -11px; right: 12px; background: var(--green-800); color: #fff;
+    font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 999px;
+  }
+  .steps-note { font-size: 16px; font-weight: 600; color: var(--navy); margin: 6px 0 0; }
+
+  /* ---------------- Callout ---------------- */
+  .callout {
+    border-left: 5px solid var(--green); background: var(--green-050);
+    padding: 18px 22px; border-radius: 0 var(--radius) var(--radius) 0; margin: 6px 0;
+    font-size: 18px; line-height: 1.5;
+  }
+  .callout b { color: var(--green-800); }
+
+  /* ---------------- Asks ---------------- */
+  .asks { display: grid; gap: 12px; margin: 8px 0 0; }
+  .ask {
+    display: flex; gap: 16px; align-items: flex-start; background: var(--white);
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow-sm);
+  }
+  .ask .n {
+    flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; background: var(--blue-700); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; margin-top: 1px;
+  }
+  .ask .txt { font-size: 16.5px; }
+  .ask .txt b { color: var(--navy); }
+  .closer { font-size: 17px; font-weight: 700; color: var(--navy); margin: 16px 0 0; }
+
+  /* ---------------- Footer ---------------- */
+  footer {
+    margin-top: 44px; border-top: 1px solid var(--line); background: var(--white);
+  }
+  footer .wrap { padding-top: 24px; padding-bottom: 30px; }
+  footer .note { color: var(--slate-c); font-size: 14px; max-width: 74ch; }
+  footer .conf {
+    margin-top: 16px; font-size: 12.5px; color: var(--slate-c); letter-spacing: .02em;
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+
+  /* ---------------- Print / Save-PDF button ---------------- */
+  .printbtn {
+    position: fixed; right: 22px; bottom: 22px; z-index: 40;
+    background: var(--navy); color: #fff; border: none; border-radius: 999px;
+    padding: 13px 20px; font-size: 14px; font-weight: 700; cursor: pointer;
+    box-shadow: var(--shadow-md); font-family: inherit;
+  }
+  .printbtn:hover { background: var(--navy-2); }
+  .printbtn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  a { color: var(--blue-700); }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  /* ---------------- Responsive ---------------- */
+  @media (max-width: 760px) {
+    body { font-size: 16px; }
+    .hero h1 { font-size: 32px; }
+    .hero .big-idea { font-size: 18px; }
+    h2 { font-size: 23px; }
+    .hub { flex-direction: column; align-items: stretch; }
+    .hub-arrow { transform: rotate(90deg); align-self: center; }
+    .hub-core { flex-basis: auto; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .demo-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 460px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+
+  /* ---------------- Print ---------------- */
+  @media print {
+    :root { --mist: #fff; }
+    body { background: #fff; font-size: 12pt; line-height: 1.5; }
+    .printbtn { display: none !important; }
+    .wrap { max-width: 100%; padding: 0 8mm; }
+    .hero { padding: 12px 0 22px; }
+    .hero h1 { font-size: 26pt; }
+    .hero .big-idea { font-size: 13pt; }
+    section { padding: 16px 0 2px; }
+    h2 { font-size: 16pt; }
+    .hero, .hub-core, blockquote, thead th, thead th.odoo-col, td.odoo-col, .callout,
+    .banner, .showtime, .demo-card, .cta, .step .n, .ask .n, .step.win .flag {
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .table-scroll { overflow: visible; }
+    .diagram, table, .steps, blockquote, .banner, .showtime, .demo-card, .callout, .ask, .conseq { break-inside: avoid; }
+    h2 { break-after: avoid; }
+    footer { break-before: avoid; }
+    a { color: var(--ink); text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="cobrand"><span class="mark"></span>TechNext <span class="x">×</span> <span class="green">JR-Tech</span></div>
+      <span class="eyebrow">For the JR-Tech owner &amp; team</span>
+      <h1>What Odoo can do for JR-Tech</h1>
+      <p class="big-idea">Put your whole business into one simple system: <b>Odoo</b>. Then everyone
+      can see the same information right away. And you pay much less than a big system like <b>SAP</b>.</p>
+      <p class="prepared">Prepared for Mr. Tan Gim Boon (Ah Boon) and the JR-Tech team · by TechNext · updated 31 July 2026, after our meeting of 22 July</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <h2>Your business today<span class="lead-rule"></span></h2>
+      <p>You built JR-Tech over 15 years into a real "one-stop" kitchen company. Out on the job, the
+      work runs well. But the office runs on many small, separate tools — phone, Excel, paper,
+      Facebook, WhatsApp, and two email inboxes. These tools are not connected to each other.</p>
+      <p class="cue">So you often find out about a problem too late:</p>
+      <ul class="conseq">
+        <li>An enquiry nobody called back.</li>
+        <li>A part that was not really in stock.</li>
+        <li>A job that lost money without you knowing.</li>
+      </ul>
+      <p>You only understand everything at the end of the year.</p>
+      <blockquote>Your work is connected in real life. <span>Your information is not connected.</span></blockquote>
+    </section>
+
+    <section>
+      <h2>Everything in one place<span class="lead-rule"></span></h2>
+      <p>Odoo puts all of this in <b>one place</b>. Sales, the parts store, technicians, and
+      accounts all see the <b>same information at the same time</b>.</p>
+      <div class="diagram">
+        <div class="hub">
+          <div class="hub-sources">
+            <div class="chip">Enquiries<small>phone · web · Facebook</small></div>
+            <div class="chip">Quotes for kitchen projects</div>
+            <div class="chip">Spare parts and equipment</div>
+            <div class="chip">Service and repair jobs</div>
+            <div class="chip">Cleaning contracts</div>
+          </div>
+          <div class="hub-arrow" aria-hidden="true">&rarr;</div>
+          <div class="hub-core">
+            <div class="t">ONE Odoo system</div>
+            <div class="s">everyone sees the same information</div>
+          </div>
+        </div>
+      </div>
+      <p class="after-line">Now nothing is lost or forgotten.</p>
+    </section>
+
+    <section>
+      <h2>Before and after<span class="lead-rule"></span></h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>The job</th><th>Today</th><th class="odoo-col">With Odoo</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="job">A new enquiry</td>
+              <td>Sits in an inbox, sometimes missed</td>
+              <td class="odoo-col">Goes into one list. One person takes care of it. A reminder if it waits too long.</td>
+            </tr>
+            <tr>
+              <td class="job">A kitchen quote</td>
+              <td>Days of work in Excel</td>
+              <td class="odoo-col">Built quickly from your price list — <b>profit shown before you send it</b></td>
+            </tr>
+            <tr>
+              <td class="job">A spare part</td>
+              <td>"I think we have it"</td>
+              <td class="odoo-col">Up-to-date stock count, in the warehouse <b>and</b> the van; orders more when it runs low</td>
+            </tr>
+            <tr>
+              <td class="job">A broken-oven call</td>
+              <td>Phone calls and paper job sheets</td>
+              <td class="odoo-col">Job on the technician's phone, parts written down on site, invoice out the same day</td>
+            </tr>
+            <tr>
+              <td class="job">A cleaning contract</td>
+              <td>Billed from memory</td>
+              <td class="odoo-col">Renews and bills by itself — no lost income</td>
+            </tr>
+            <tr>
+              <td class="job">Month-end</td>
+              <td>Slow, by hand, many unexpected problems</td>
+              <td class="odoo-col">See the profit on <b>each job</b> right away</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why Odoo, and not SAP?<span class="lead-rule"></span></h2>
+      <p>SAP is the big system that huge companies buy. It is powerful — but for a business your size
+      it is <b>more system, and more cost, than you need</b>. Changing it often means paying
+      consultants and waiting.</p>
+      <p>Odoo does the same main work for a business like yours — for a <b>small part of the price</b>.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th></th><th>SAP</th><th class="odoo-col">Odoo (with TechNext)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="rowlabel">Cost</td><td>Very high fees</td><td class="odoo-col">Low — pay as you grow</td></tr>
+            <tr><td class="rowlabel">Setup</td><td>One big change, many months</td><td class="odoo-col">Small steps, results early</td></tr>
+            <tr><td class="rowlabel">Using it</td><td>Hard to use, needs a lot of training</td><td class="odoo-col">Simple, made for teams like yours</td></tr>
+            <tr><td class="rowlabel">Changing it</td><td>Pay consultants and wait</td><td class="odoo-col">Quick and low cost</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="banner">Same job. <span class="g">Much less money. Much faster.</span></div>
+    </section>
+
+    <section class="showtime">
+      <h2>See it live<span class="lead-rule"></span></h2>
+      <p class="intro">You do not have to imagine it. We already built a small version of your business
+      inside Odoo — with the kind of jobs you do every day. Let us show you, live:</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h4>From enquiry to invoice — in one click</h4>
+          <p>We win a kitchen job. One click makes the technician's job at the customer's site and sends
+          out the equipment — nothing typed twice. The monthly cleaning contract then bills by itself.</p>
+        </div>
+        <div class="demo-card">
+          <h4>A website that brings in jobs</h4>
+          <p>Your own web page shows your products. A customer taps "Ask for a price" and it arrives
+          inside Odoo as a new job, ready to quote — working for you even at night.</p>
+        </div>
+        <div class="demo-card">
+          <h4>Every technician has clear targets</h4>
+          <p>Each installer has simple targets — jobs done, fixed on the first visit — all in one
+          place, easy to see.</p>
+        </div>
+      </div>
+      <p class="live-line">We will not only show you pictures. We will do it <b>live</b> — watch a new
+      job appear the moment we press one button.</p>
+      <a class="cta" href="https://jr-tech.odoo.com/kitchen-fabrication">Open your live demo &rarr;</a>
+      <p class="note">This demo uses example kitchen jobs, live now at jr-tech.odoo.com/kitchen-fabrication.
+      Share your real ones (below) and we make it truly yours.</p>
+    </section>
+
+    <section>
+      <h2>Where we are now<span class="lead-rule"></span></h2>
+      <ul class="timeline">
+        <li><b>22 July</b> — We met and listened. You told us the service side — technicians,
+        dispatch, repairs — is where you need help first. We heard you.</li>
+        <li><b>26 July</b> — We sent you the full agreement (the SLA): the plan, the prices, and
+        our support promises, all in writing.</li>
+        <li><b>29 July</b> — Deep-dive session: we went through your numbers and your daily work together.</li>
+        <li class="next"><b>First week of August</b> — We meet in person, agree the details, and pick the start date.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How we do it — step by step<span class="lead-rule"></span></h2>
+      <p>We do <b>not</b> change everything at once. We move in <b>three phases over about 12
+      months</b>, and you say yes to <b>one phase at a time</b> — never to everything at once.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <h4>Phase 1 · Months 0–3</h4>
+          <p>Sales and money: quotes made fast (with AI help), accounting, Malaysia SST, LHDN e-invoicing (MyInvois).</p>
+        </div>
+        <div class="step win">
+          <span class="flag">Your priority</span>
+          <div class="n">2</div>
+          <h4>Phase 2 · Months 3–7</h4>
+          <p>Stock, buying, and your technicians: parts tracking, purchasing, jobs sent to phones, maintenance, rental contracts.</p>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <h4>Phase 3 · Months 7–12</h4>
+          <p>Manufacturing and dashboards: work orders, AI quality checks, simple screens that show profit and targets.</p>
+        </div>
+        <div class="step">
+          <div class="n">✓</div>
+          <h4>After go-live</h4>
+          <p>3-month warranty, training for your team, and full handover — files, accounts, and passwords are yours.</p>
+        </div>
+      </div>
+      <p class="steps-note">After each phase we stop, you check it works, and only then do we move on. You stay in control the whole way.</p>
+    </section>
+
+    <section>
+      <h2>What it costs<span class="lead-rule"></span></h2>
+      <p>The full agreement we sent you on 26 July has the exact numbers. Here they are, simply:</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Phase</th><th>What you get</th><th class="odoo-col">Price (USD, before tax)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="job">Phase 1</td><td>Sales &amp; quotes, accounting, SST, e-invoicing</td><td class="odoo-col"><b>13,872</b></td></tr>
+            <tr><td class="job">Phase 2</td><td>Stock, buying, technicians, maintenance, rentals</td><td class="odoo-col"><b>12,138</b></td></tr>
+            <tr><td class="job">Phase 3</td><td>Manufacturing, dashboards, AI helpers</td><td class="odoo-col"><b>8,670</b></td></tr>
+            <tr><td class="job">Total</td><td>All three phases · about 12 months</td><td class="odoo-col"><b>34,680</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>For each phase you pay <b>80% when it starts</b>, and the last <b>20% only after you check
+      and approve the work</b>. Extra work outside the plan is USD 35 per man-hour — always agreed
+      in writing before we start it.</p>
+      <div class="callout">Our goal is for Odoo to <b>save you more money than it costs</b>, and then
+      keep saving you money every year after that. And you decide <b>phase by phase</b> — you are
+      never locked into the whole plan.</div>
+    </section>
+
+    <section>
+      <h2>If something breaks<span class="lead-rule"></span></h2>
+      <p>For 3 months after go-live, the warranty covers bug fixes and support — and our promises
+      are written into the agreement:</p>
+      <ul class="timeline">
+        <li><b>System down?</b> We answer within 1 hour and fix it within 8 hours.</li>
+        <li><b>A big problem with no way around it?</b> Answered within 2 hours, fixed within 24 hours.</li>
+        <li><b>The system stays up 99.9% of the time</b> — at most 45 minutes of unplanned downtime a month.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What we need from you<span class="lead-rule"></span></h2>
+      <div class="asks">
+        <div class="ask"><div class="n">1</div><div class="txt"><b>Meet us in the first week of August</b> — we agree the details and pick the start date together.</div></div>
+        <div class="ask"><div class="n">2</div><div class="txt"><b>Choose one person to work with us</b> — someone who knows the daily work well and can answer our questions quickly.</div></div>
+        <div class="ask"><div class="n">3</div><div class="txt"><b>Share a few real examples</b> — some quotes, a parts list, a cleaning contract — in a clean, ready-to-use form. Then we can build the system to fit JR-Tech only — not the same one given to every company.</div></div>
+      </div>
+      <p class="closer">That is all. We take care of the rest.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="note">This is the short version. The full agreement — the Service Level Agreement
+      sent on 26 July 2026 — has every detail: the phase plan, the prices and payment schedule, the
+      support promises, and the warranty. If anything here differs from that document, the signed
+      agreement wins.</p>
+      <div class="conf">
+        <span>Confidential — JR-Tech Solution Sdn Bhd</span>
+        <span>Prepared by TechNext · Odoo Implementation Partner</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+
+</body>
+</html>
