@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JR-Tech × TechNext — Engagement Dossier</title>
+<style>
+  /* JR-Tech × TechNext dossier — shared palette (JR-Tech 2024 Brand Book) */
+  :root {
+    --navy:      #0B1F3A;
+    --navy-2:    #122E54;
+    --ink:       #16213A;
+    --slate-c:   #52627B;
+    --mist:      #F4F7FC;
+    --line:      #E2E9F3;
+    --blue:      #7FA9DE;
+    --blue-700:  #3F6FB0;
+    --green:     #16C098;
+    --green-800: #0A6E54;
+    --green-050: #EAFBF5;
+    --radius:    14px;
+    --shadow-sm: 0 1px 2px rgba(11,31,58,.06), 0 1px 3px rgba(11,31,58,.07);
+    --maxw:      880px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink); background: var(--mist); line-height: 1.6; font-size: 16.5px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+  .hero {
+    background:
+      radial-gradient(1000px 340px at 82% -12%, rgba(127,169,222,.40), transparent 60%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff; padding: 26px 0 38px;
+  }
+  .cobrand {
+    display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase; color: #B9CCE8; padding: 14px 0 26px;
+  }
+  .cobrand .mark { width: 13px; height: 13px; border-radius: 3px; background: var(--blue); display: inline-block; }
+  .cobrand .x { color: var(--blue); margin: 0 2px; font-weight: 400; }
+  .cobrand .green { color: var(--green); }
+  .hero h1 { font-size: 34px; line-height: 1.12; margin: 0 0 10px; font-weight: 800; letter-spacing: -.02em; }
+  .hero p { font-size: 17px; color: #DCE7F6; margin: 0; max-width: 58ch; }
+
+  main { padding: 8px 0 48px; }
+  section { padding: 32px 0 2px; }
+  h2 { font-size: 22px; font-weight: 800; letter-spacing: -.015em; margin: 0 0 4px; color: var(--navy); }
+  h2 .lead-rule { display: block; width: 46px; height: 4px; border-radius: 3px; background: var(--green); margin: 12px 0 18px; }
+
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 4px 0 0; }
+  .fact { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow-sm); }
+  .fact .k { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--slate-c); font-weight: 700; }
+  .fact .v { font-size: 16.5px; font-weight: 700; color: var(--navy); margin-top: 3px; line-height: 1.35; }
+
+  .docs { display: grid; gap: 12px; margin: 4px 0 0; }
+  .doc {
+    display: block; background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; box-shadow: var(--shadow-sm); text-decoration: none; color: var(--ink);
+  }
+  a.doc:hover { border-color: var(--blue-700); }
+  .doc .row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+  .doc h3 { margin: 0; font-size: 17.5px; font-weight: 800; color: var(--navy); }
+  .doc .date { font-size: 13px; color: var(--slate-c); font-weight: 600; white-space: nowrap; }
+  .doc p { margin: 6px 0 0; font-size: 14.5px; color: var(--slate-c); }
+  .doc .tag {
+    display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    border-radius: 999px; padding: 2px 10px; margin-right: 8px; vertical-align: 1px;
+  }
+  .tag.here { background: var(--green-050); color: var(--green-800); }
+  .tag.ext  { background: #EDF3FB; color: var(--blue-700); }
+
+  footer { margin-top: 40px; border-top: 1px solid var(--line); background: #fff; }
+  footer .wrap { padding-top: 20px; padding-bottom: 26px; }
+  footer .conf {
+    font-size: 12.5px; color: var(--slate-c); letter-spacing: .02em;
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+  @media (max-width: 640px) { .facts { grid-template-columns: 1fr; } .hero h1 { font-size: 27px; } }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="cobrand"><span class="mark"></span>TechNext <span class="x">×</span> <span class="green">JR-Tech</span></div>
+      <h1>Engagement Dossier</h1>
+      <p>One place for every document in the JR-Tech × TechNext Odoo ERP engagement —
+      minutes, proposals, and agreements, in date order.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <h2>At a glance<span class="lead-rule"></span></h2>
+      <div class="facts">
+        <div class="fact"><div class="k">Client</div><div class="v">JR-Tech Solution Sdn Bhd</div></div>
+        <div class="fact"><div class="k">Project</div><div class="v">Odoo ERP, 3 phases · ~12 months</div></div>
+        <div class="fact"><div class="k">Status</div><div class="v">In-person meeting — first week of August</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documents<span class="lead-rule"></span></h2>
+      <div class="docs">
+        <a class="doc" href="meeting-minutes-2026-07-22.html">
+          <div class="row"><h3><span class="tag here">In dossier</span>Discovery Meeting Minutes</h3><span class="date">22 Jul 2026</span></div>
+          <p>Attendees, decisions (field-service priority, August in-person meeting, combi-oven
+          content revision), and the full action-item list.</p>
+        </a>
+        <a class="doc" href="../proposal/JRTech_What_TechNext_Can_Do_For_You.html">
+          <div class="row"><h3><span class="tag here">In dossier</span>What Odoo Can Do for JR-Tech — Executive Summary</h3><span class="date">updated 31 Jul 2026</span></div>
+          <p>Owner-facing summary: the problem, the before/after, the 3-phase plan, pricing, and
+          support promises. Updated after the 22 July meeting and the SLA.</p>
+        </a>
+        <div class="doc">
+          <div class="row"><h3><span class="tag ext">Held separately</span>Service Level Agreement — Rev 2.0</h3><span class="date">26 Jul 2026</span></div>
+          <p>The full agreement: scope of work by phase, timeline, development cost
+          (USD 34,680 all phases, VAT-exclusive), warranty, support tiers, and change control.
+          Confidential PDF — circulated by email, not stored in this repository.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="conf">
+        <span>Confidential — JR-Tech Solution Sdn Bhd × TechNext</span>
+        <span>JR-Tech engagement dossier</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

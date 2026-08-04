@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Minutes — JR Tech × TechNext Discovery Meeting · 22 Jul 2026</title>
+<style>
+  /* JR-Tech × TechNext dossier — shared palette (JR-Tech 2024 Brand Book) */
+  :root {
+    --navy:      #0B1F3A;
+    --navy-2:    #122E54;
+    --ink:       #16213A;
+    --slate-c:   #52627B;
+    --mist:      #F4F7FC;
+    --line:      #E2E9F3;
+    --line-2:    #D3DEEE;
+    --blue:      #7FA9DE;
+    --blue-700:  #3F6FB0;
+    --green:     #16C098;
+    --green-700: #0E8E6E;
+    --green-800: #0A6E54;
+    --green-050: #EAFBF5;
+    --radius:    14px;
+    --shadow-sm: 0 1px 2px rgba(11,31,58,.06), 0 1px 3px rgba(11,31,58,.07);
+    --shadow-md: 0 8px 30px rgba(11,31,58,.10);
+    --maxw:      880px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink); background: var(--mist); line-height: 1.6; font-size: 16.5px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+  .hero {
+    background:
+      radial-gradient(1000px 340px at 82% -12%, rgba(127,169,222,.40), transparent 60%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff; padding: 26px 0 38px;
+  }
+  .cobrand {
+    display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase; color: #B9CCE8; padding: 14px 0 26px;
+  }
+  .cobrand .mark { width: 13px; height: 13px; border-radius: 3px; background: var(--blue); display: inline-block; }
+  .cobrand .x { color: var(--blue); margin: 0 2px; font-weight: 400; }
+  .cobrand .green { color: var(--green); }
+  .cobrand a { color: #B9CCE8; text-decoration: none; margin-left: auto; font-weight: 600; letter-spacing: .02em; text-transform: none; }
+  .cobrand a:hover { color: #fff; }
+  .eyebrow {
+    display: inline-block; font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: #d5e3f7; background: rgba(127,169,222,.18); padding: 6px 13px; border-radius: 999px;
+    font-weight: 700; margin-bottom: 16px;
+  }
+  .hero h1 { font-size: 32px; line-height: 1.15; margin: 0 0 10px; font-weight: 800; letter-spacing: -.02em; }
+  .hero .meta { font-size: 15px; color: #B9CCE8; margin: 0; }
+
+  main { padding-bottom: 44px; }
+  section { padding: 34px 0 2px; }
+  h2 { font-size: 23px; font-weight: 800; letter-spacing: -.015em; margin: 0 0 4px; color: var(--navy); }
+  h2 .lead-rule { display: block; width: 46px; height: 4px; border-radius: 3px; background: var(--green); margin: 12px 0 18px; }
+  p { margin: 0 0 14px; }
+
+  .attendees { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 4px 0 8px; padding: 0; list-style: none; }
+  .attendees li {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 11px 15px;
+    box-shadow: var(--shadow-sm); font-weight: 600; font-size: 15.5px;
+  }
+  .attendees li small { display: block; font-weight: 500; color: var(--slate-c); font-size: 13px; margin-top: 1px; }
+  .attendees li.client { border-left: 4px solid var(--green); }
+
+  .decisions { list-style: none; margin: 4px 0 8px; padding: 0; display: grid; gap: 10px; }
+  .decisions li {
+    background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--green);
+    border-radius: 0 10px 10px 0; padding: 13px 16px; box-shadow: var(--shadow-sm);
+  }
+  .decisions li b { color: var(--navy); }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse; background: #fff; font-size: 15.5px;
+    border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  }
+  thead th {
+    text-align: left; background: var(--navy); color: #fff; font-weight: 700;
+    padding: 12px 15px; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em;
+  }
+  tbody td { padding: 12px 15px; border-top: 1px solid var(--line); vertical-align: top; }
+  tbody tr:first-child td { border-top: none; }
+  td.owner { font-weight: 700; color: var(--navy); white-space: nowrap; }
+  td.item { font-weight: 600; }
+
+  footer { margin-top: 40px; border-top: 1px solid var(--line); background: #fff; }
+  footer .wrap { padding-top: 20px; padding-bottom: 26px; }
+  footer .conf {
+    font-size: 12.5px; color: var(--slate-c); letter-spacing: .02em;
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  a { color: var(--blue-700); }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  @media (max-width: 620px) {
+    .attendees { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+  }
+  @media print {
+    :root { --mist: #fff; }
+    body { background: #fff; font-size: 11.5pt; }
+    .hero, thead th, .decisions li, .attendees li { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    table, .decisions, .attendees { break-inside: avoid; }
+    a { color: var(--ink); text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="cobrand"><span class="mark"></span>TechNext <span class="x">×</span> <span class="green">JR-Tech</span><a href="index.html">&larr; Back to dossier</a></div>
+      <span class="eyebrow">Meeting minutes</span>
+      <h1>Discovery Meeting — JR Tech × TechNext</h1>
+      <p class="meta">Wednesday, 22 July 2026 · Odoo ERP discovery &amp; marketing alignment</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <h2>Attendees<span class="lead-rule"></span></h2>
+      <ul class="attendees">
+        <li class="client">GB Tan / Ah Boon<small>JR Tech (Client)</small></li>
+        <li>Sky Nex<small>TechNext</small></li>
+        <li>RJ<small>TechNext · Project Manager</small></li>
+        <li>Jett<small>TechNext · Functional Lead</small></li>
+        <li>Phillip<small>TechNext · Technical Lead Consultant</small></li>
+        <li>Rico<small>TechNext · Marketing Lead</small></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Summary<span class="lead-rule"></span></h2>
+      <p>The team aligned on project priorities and marketing strategy while demonstrating the Odoo
+      ERP platform for operational integration. Discussions centered on a modular ERP system to
+      centralize inventory, manufacturing, and real-time technician tracking, replacing fragmented
+      manual processes with automated, data-driven workflows. Leadership identified the technical
+      department (field service and technician dispatch) as the immediate priority, with a phased
+      implementation plan to follow.</p>
+    </section>
+
+    <section>
+      <h2>Decisions<span class="lead-rule"></span></h2>
+      <ul class="decisions">
+        <li><b>In-person meeting scheduled:</b> TechNext and GB Tan agreed to meet in person,
+        tentatively in the first week of August (date subject to adjustment).</li>
+        <li><b>Technical department prioritized:</b> Field service operations and technician
+        management are designated as the primary focus for the initial ERP implementation.</li>
+        <li><b>Combi oven content revision:</b> Marketing content referencing the combi oven will
+        be revised to address sensitivity concerns raised by the client.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Action items &amp; next steps<span class="lead-rule"></span></h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Owner</th><th>Action item</th><th>Details</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="owner">Sky Nex</td>
+              <td class="item">Schedule in-person meeting</td>
+              <td>Select a tentative date in the first week of August for the in-person meeting with
+              GB Tan (Ah Boon); update the calendar so the date can be adjusted as needed.</td>
+            </tr>
+            <tr>
+              <td class="owner">Rico</td>
+              <td class="item">Send marketing showcase</td>
+              <td>Email the marketing showcase presentation to GB Tan, including the detailed view
+              of proposed marketing strategies.</td>
+            </tr>
+            <tr>
+              <td class="owner">Rico</td>
+              <td class="item">Update website content</td>
+              <td>Revise the sensitive combi oven-related comment currently shown on the draft
+              website, per GB Tan's feedback.</td>
+            </tr>
+            <tr>
+              <td class="owner">Rico</td>
+              <td class="item">Showcase combi oven</td>
+              <td>Prepare and demonstrate the combi oven capabilities to the client.</td>
+            </tr>
+            <tr>
+              <td class="owner">RJ</td>
+              <td class="item">Draft project phases</td>
+              <td>Create a multi-phase project plan (Phase 1, 2, 3) and distribute it via the group chat.</td>
+            </tr>
+            <tr>
+              <td class="owner">RJ</td>
+              <td class="item">Send deep-dive meeting invite</td>
+              <td>Schedule a calendar invite for the deep-dive session on Wednesday, 29 July 2026 at 4:00 PM.</td>
+            </tr>
+            <tr>
+              <td class="owner">Sky Nex</td>
+              <td class="item">Conduct KPI deep dive</td>
+              <td>Review the client's data and latest work to align on key performance indicators.</td>
+            </tr>
+            <tr>
+              <td class="owner">GB Tan</td>
+              <td class="item">Discuss project costing</td>
+              <td>Review the pricing structure and quotations with the project team in the upcoming meeting.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="conf">
+        <span>Confidential — JR-Tech Solution Sdn Bhd × TechNext</span>
+        <span>Minutes of 22 July 2026 · Part of the JR-Tech engagement dossier</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
