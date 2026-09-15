@@ -12,6 +12,14 @@
     Once Pages is on, the permanent URL is https://skytechnext.github.io/JRtechsky/
   Keep the links clickable so the site can be previewed in one click.
 
+## Git workflow — standing instruction from the owner
+
+- **Always merge and push.** When work on a `claude/*` branch is done and verified, push it,
+  open the pull request against the deployed dossier branch (`claude/pensive-einstein-dlerlg`)
+  and **merge it immediately** — do not leave PRs as drafts waiting for approval. Use a merge
+  commit (not squash or rebase) to match the branch history, then confirm the change is live
+  on the githack preview / GitHub Pages and report the live links.
+
 ## Project
 
 This repo is the **consolidated digital portfolio of JR-Tech Solution Sdn Bhd**
