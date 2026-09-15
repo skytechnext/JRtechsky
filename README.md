@@ -20,7 +20,7 @@ repository deploys together to GitHub Pages.
 |---|----------|--------|------------|
 | 01 | **JR Tech Analysis (dossier)** | [`dossier/`](dossier/) | The flagship: 65-page analysis + Odoo 19 plan — Start Here/Pitch, Kitchen Workflow (JR-Tech Method), strategy, operations, technology, delivery, tools, plus the `dossier/odoo/` demo-data build kit. |
 | 02 | **Kitchen Estimator** | [`estimator/`](estimator/) | Live kitchen-economics tool — KPIs, consumables, equipment life plan, depreciation, dual profit estimators. |
-| 03 | **Sales Kit** | [`sales/`](sales/) | Presentation-ready sales material for owner meetings. |
+| 03 | **Sales Kit** | [`sales/`](sales/) | Presentation-ready sales material for owner meetings, plus the sales script & WhatsApp message library (`sales/script.html`). |
 | 04 | **Marketing Website** | [`marketing/`](marketing/) | Bespoke, conversion-focused site with full SEO + marketing plan. |
 | 05 | **Current Website (archive)** | [`website/`](website/) | Static capture of the live `jrtech.com.my` — catalog, projects, about, contact. |
 

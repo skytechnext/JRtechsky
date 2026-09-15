@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sales Script &amp; WhatsApp Playbook · TechNext</title>
+  <meta name="description" content="TechNext's end-to-end sales script and WhatsApp message library: first contact, discovery, proposal, BRD, e-signature, invoicing and collections, delivery touchpoints, upsell, renewal and referrals — with copy-and-send templates." />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1020'/%3E%3Cpath d='M18 40h20a10 10 0 0 0 0-20H26a8 8 0 0 0-8 8v22z' fill='none' stroke='%2325D366' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/sales.css" />
+</head>
+<body class="t-odoo">
+  <header class="nt-head">
+    <div class="wrap nt-head__in">
+      <a class="nt-brand" href="index.html"><span class="nt-brand__dot">TN</span> TechNext <small>Sales Kit</small></a>
+      <span class="nt-tag">Sales script · WhatsApp playbook</span>
+      <nav class="nt-head__nav">
+        <a href="index.html">‹ Sales kit</a>
+        <a href="#rules">Rules</a>
+        <a href="#cadence">Cadence</a>
+        <a href="#stages">Stages</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap" style="padding-bottom:24px;">
+      <p class="eyebrow">Sales script · shared across both tracks</p>
+      <h1>From first hello to renewal — <span class="hl">the words for every step.</span></h1>
+      <p class="lead">Word-for-word call scripts for each stage of the sale, and a library of WhatsApp messages you can personalise, copy and send in one tap: first contact, discovery, proposal, BRD, e-signature, invoices and collections, delivery touchpoints, upsell, renewal and referrals. Internal use — the messages are for sending, this page is not.</p>
+      <div class="btn-row" style="align-items:center;">
+        <div class="seg" role="tablist" aria-label="Offering">
+          <button type="button" data-track="odoo" class="is-active" role="tab">Odoo 19 track</button>
+          <button type="button" data-track="mktg" role="tab">Marketing track</button>
+        </div>
+        <span class="muted" style="font-size:.9rem;">Switch the track to re-word every message for the offering you're selling.</span>
+      </div>
+    </section>
+
+    <section class="section--tight wrap" id="personalise">
+      <div class="fields" id="fields">
+        <label>Your name<input data-f="rep" placeholder="Sky" /></label>
+        <label>Client (with salutation)<input data-f="client" placeholder="Mr Tan" /></label>
+        <label>Client company<input data-f="company" placeholder="JR-Tech Solution Sdn Bhd" /></label>
+        <label>Client WhatsApp no. (digits, with country code)<input data-f="phone" placeholder="60124567890" inputmode="numeric" /></label>
+        <label>Referrer / where you met<input data-f="referrer" placeholder="Mr Lim (Penang F&B Association)" /></label>
+        <label>Their main pain (their words)<input data-f="pain" placeholder="quotes stuck in WhatsApp and re-keyed into SQL Account" /></label>
+        <label>Proposed meeting / slot<input data-f="meeting" placeholder="Thursday 10:30am at your office" /></label>
+        <label>Due / valid-until date<input data-f="due" placeholder="Fri 26 Sep" /></label>
+        <label>Amount (RM, digits)<input data-f="amount" placeholder="12,500" /></label>
+        <label>Invoice number<input data-f="invoice_no" placeholder="TN-2026-0147" /></label>
+        <label>Next module / add-on<input data-f="module" placeholder="Helpdesk" /></label>
+        <label>Proposal / document link<input data-f="link_proposal" placeholder="https://…/quotation.html" /></label>
+        <label>BRD / plan link<input data-f="link_brd" placeholder="https://…/brd.html" /></label>
+        <label>E-signature link (Odoo Sign)<input data-f="link_sign" placeholder="https://…/sign/…" /></label>
+        <label>E-invoice PDF link<input data-f="link_invoice" placeholder="https://…/invoice.pdf" /></label>
+        <label>Client's timezone-friendly hours<input data-f="hours" placeholder="8am–8pm, incl. Saturdays" /></label>
+        <div class="fields__foot">
+          <span>Fields are saved in this browser only. Unfilled fields show as <span class="ph">{{yellow}}</span> in the preview; <span class="ph">[square brackets]</span> are prompts you type over before sending.</span>
+          <button type="button" class="mbtn" id="resetFields">Reset to JR-Tech example</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section--tight wrap" id="stages">
+      <div class="funnel" id="funnel">
+        <a href="#s-prospect"><b>01</b>Prospect</a>
+        <a href="#s-discover"><b>02</b>Discover</a>
+        <a href="#s-propose"><b>03</b>Propose</a>
+        <a href="#s-agree"><b>04</b>BRD &amp; sign</a>
+        <a href="#s-invoice"><b>05</b>Invoice &amp; collect</a>
+        <a href="#s-deliver"><b>06</b>Deliver</a>
+        <a href="#s-grow"><b>07</b>Upsell &amp; renew</a>
+        <a href="#s-refer"><b>08</b>Refer &amp; keep warm</a>
+      </div>
+    </section>
+
+    <section class="section wrap" id="rules">
+      <div class="sec-head">
+        <p class="eyebrow">Ground rules</p>
+        <h2>How we use WhatsApp with owners</h2>
+        <p class="lead">Malaysian F&amp;B owners live on WhatsApp — it is where the deal actually moves. Treat it like a handshake, not a mailing list.</p>
+      </div>
+      <div class="grid cols-2">
+        <ul class="checks">
+          <li><span><b>One message, one ask.</b> A greeting, the point, the link, the question. Never five bubbles in a row.</span></li>
+          <li><span><b>Link + three-line summary.</b> Nobody opens a 20-page PDF on a phone. Say what is in it and what you want them to do.</span></li>
+          <li><span><b>Office hours only</b> (9am–7pm, Mon–Sat) unless they message first. Owners work nights; we do not chase at night.</span></li>
+          <li><span><b>Match their register.</b> If they write "boss", you can be warm; if they write full sentences, so do you. Emoji: one, at most two.</span></li>
+          <li><span><b>Three chases, then a call.</b> After the third unanswered message, pick up the phone. The fourth message is a break-up, not a nudge.</span></li>
+        </ul>
+        <ul class="checks">
+          <li><span><b>Voice notes only if they do.</b> Mirror the medium; never send a two-minute voice note to someone who types.</span></li>
+          <li><span><b>Every commercial message points to a record.</b> Proposal, BRD, e-sign and invoice links come from Odoo, so the paper trail is the system's, not the chat's.</span></li>
+          <li><span><b>Confirm in writing what was agreed by voice.</b> After every call, the recap message is the contract of intent.</span></li>
+          <li><span><b>Money messages are always polite and always specific.</b> Invoice number, amount, due date, link — and a way out (call me).</span></li>
+          <li><span><b>Log it.</b> Paste the sent message into the CRM lead's chatter, or use the WhatsApp integration. If it is not in Odoo, it did not happen.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section--tight wrap" id="cadence">
+      <div class="sec-head">
+        <p class="eyebrow">Cadence</p>
+        <h2>When each message goes out</h2>
+        <p class="lead">Day counts are working days from the previous touch. Every chase sequence ends in a call, then a graceful close — never silence.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="nt-table">
+          <thead><tr><th>Sequence</th><th>Touch 1</th><th>Touch 2</th><th>Touch 3</th><th>Then</th></tr></thead>
+          <tbody>
+            <tr><td><b>New lead</b></td><td>Day 0 — intro message</td><td>Day 3 — value follow-up (one-pager)</td><td>Day 7 — call, then "last try" message</td><td>Day 21 — re-engage with proof piece</td></tr>
+            <tr><td><b>Discovery booked</b></td><td>Same day — confirmation + agenda</td><td>Day before — reminder</td><td>1 hour before — "on my way / link"</td><td>Same evening — recap message</td></tr>
+            <tr><td><b>Proposal sent</b></td><td>Day 2 — "reached you okay?" + offer walk-through</td><td>Day 5 — value add (ROI model / plan)</td><td>Day 10 — call; "is this still a priority?"</td><td>Day 21 — break-up, proposal validity stated</td></tr>
+            <tr><td><b>BRD / plan for review</b></td><td>Day 0 — send with 3 things to check</td><td>Day 3 — nudge, offer voice-note route</td><td>Walk-through meeting</td><td>Sign-off request within 24h of walk-through</td></tr>
+            <tr><td><b>E-signature</b></td><td>Day 0 — link + 3 steps</td><td>Day 3 — reminder, offer printed copy / stay on call</td><td>Day 6 — call (link expires day 7)</td><td>Signed → thank-you + what happens next, same hour</td></tr>
+            <tr><td><b>Invoice</b></td><td>Day -3 — courtesy note</td><td>Due day +3 — polite check</td><td>Day +14 — firm, schedule at stake</td><td>Day +30 — final notice + call; pause work per terms</td></tr>
+            <tr><td><b>After go-live</b></td><td>Day 3 — hypercare check-in</td><td>Week 2 — check-in + quick win</td><td>Day 30 — review + retainer</td><td>Quarterly review; renewal 60 days early</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========================= 01 PROSPECT ========================= -->
+    <section class="section wrap stage" id="s-prospect">
+      <div class="stage__head">
+        <div><p class="eyebrow">Stage 01</p><h2>Prospect — first contact</h2></div>
+        <p class="muted" style="max-width:46ch;">Goal: earn a 15-minute conversation. Not a sale, not a demo — a conversation about their workflow.</p>
+      </div>
+      <div class="grid cols-2" style="align-items:start;">
+        <div class="say">
+          <h3>Cold call — 30 seconds</h3>
+          <p><span class="who">You</span>"Hi {{client}}, {{rep}} from TechNext — I'll be quick, I know you're mid-service. We work with kitchen-equipment and F&amp;B businesses in Penang. <span data-track-text="odoo">Since MyInvois became mandatory, most of the owners I speak to are re-keying every quote into their accounting system by hand.</span><span data-track-text="mktg">Most of the owners I speak to are winning on referrals and losing on Google — buyers search, and find a competitor.</span> Is that true for you, or have you got it sorted?"</p>
+          <p class="if"><span class="who">If "sorted"</span>"Good to hear — what are you using? … If it ever creaks, I'm one message away. Can I send you a one-pager so you have my number?"</p>
+          <p class="if"><span class="who">If "true"</span>"Then it's worth 15 minutes. I'll map that one workflow with you and show you what it looks like <span data-track-text="odoo">in Odoo</span><span data-track-text="mktg">when the funnel is wired up</span>. If it isn't obviously better, I'll tell you. {{meeting}}, or is another day easier?"</p>
+          <p class="if"><span class="who">If "send me something"</span>"Happy to. I'll WhatsApp the one-pager now — and I'll message on Thursday to see what you made of it. Fair?"</p>
+        </div>
+        <div class="say">
+          <h3>Referral intro — on the phone</h3>
+          <p><span class="who">You</span>"Hi {{client}}, {{rep}} from TechNext. {{referrer}} suggested I call — we did <span data-track-text="odoo">the Odoo implementation plan</span><span data-track-text="mktg">the marketing site and plan</span> for JR-Tech and they thought it might be relevant to {{company}}. Did they mention it?"</p>
+          <p class="if"><span class="who">Then</span>"What {{referrer}} saw was one thing: <span data-track-text="odoo">a quote that becomes a job that becomes an e-invoice without anyone re-typing it.</span><span data-track-text="mktg">a website that turns a search into a quote request and logs it to the CRM with its source.</span> Would 15 minutes to look at your version of that be useful?"</p>
+          <p class="if"><span class="who">Close</span>"Great — {{meeting}} works for me. I'll send a confirmation on WhatsApp with what to have on hand. Thank you, {{client}}."</p>
+        </div>
+      </div>
+      <div class="msgs" data-stage="prospect"></div>
+    </section>
+
+    <!-- ========================= 02 DISCOVER ========================= -->
+    <section class="section wrap stage" id="s-discover">
+      <div class="stage__head">
+        <div><p class="eyebrow">Stage 02</p><h2>Discover — book it, run it, recap it</h2></div>
+        <p class="muted" style="max-width:46ch;">Goal: leave with the pain in their words, a number attached to it, and a date for the next step. Listen 70%.</p>
+      </div>
+      <div class="say">
+        <h3>Discovery call — 30 minutes</h3>
+        <p><span class="who">Open (2 min)</span>"Thanks for the time, {{client}}. Here's how I'd like to use it: 20 minutes on how {{company}} works today — I'll ask questions and mostly listen — then 10 minutes where I show you <span data-track-text="odoo">your worst workflow running in Odoo</span><span data-track-text="mktg">where you sit against three competitors online</span>. At the end I'll tell you honestly whether we're a fit. Sound okay?"</p>
+        <p><span class="who">Current state</span><span data-track-text="odoo">"Walk me through a quote — from the customer's first message to the invoice. Which tools does it touch? Who touches it? How long does it take? … Where does a number get typed twice?"</span><span data-track-text="mktg">"If I asked where your last ten customers came from, what would you say? … When a buyer Googles what you sell, what do they find — you, or someone else? When was the site last updated?"</span></p>
+        <p><span class="who">Cost of the gap</span><span data-track-text="odoo">"When did you last lose a job to slow quoting, or find margin gone at month-end? … Right now, which rentals are out, and when are they due back — could you tell me without calling someone?"</span><span data-track-text="mktg">"What's a new customer worth to you over a year? How many more a month would change the business? … What did last quiet quarter cost?"</span></p>
+        <p><span class="who">Compliance / history</span><span data-track-text="odoo">"How are SST and MyInvois handled today? What happens at audit time?"</span><span data-track-text="mktg">"Have you tried marketing before — an agency, a freelancer, Facebook yourselves? What happened?"</span></p>
+        <p><span class="who">Decision &amp; timing</span>"Who else weighs in on something like this? … What would make it a this-quarter project rather than a someday one?"</p>
+        <p><span class="who">Show (10 min)</span><span data-track-text="odoo">Mirror the workflow they just described in Odoo: enquiry → quote → work order → e-invoice. Then open the dossier's ROI / TCO model with their numbers.</span><span data-track-text="mktg">Screen-share the search result for their core term with a competitor above them; then the JR-Tech marketing site and the plan as method.</span></p>
+        <p><span class="who">Close</span>"So — I heard {{pain}}, and it's costing you roughly [their number]. The next concrete step is a <span data-track-text="odoo">fixed-scope discovery: one to two weeks, we map your real workflows and you get a requirements blueprint and a fixed quote — credited back if you go ahead.</span><span data-track-text="mktg">growth audit: we review your site, search and three competitors and hand you the three highest-leverage moves — yours to keep either way.</span> Shall I send the proposal for that today, and we walk through it {{meeting}}?"</p>
+        <p class="if"><span class="who">If they hesitate</span>"What would need to be true for this to be a yes? … If it's [X], let me address that now rather than in a proposal."</p>
+      </div>
+      <div class="msgs" data-stage="discover"></div>
+    </section>
+
+    <!-- ========================= 03 PROPOSE ========================= -->
+    <section class="section wrap stage" id="s-propose">
+      <div class="stage__head">
+        <div><p class="eyebrow">Stage 03</p><h2>Propose — send, walk through, follow up, close</h2></div>
+        <p class="muted" style="max-width:46ch;">Goal: never let a proposal be read alone. Sell payback, not price. Every follow-up adds value or asks a real question.</p>
+      </div>
+      <div class="grid cols-2" style="align-items:start;">
+        <div class="say">
+          <h3>Proposal walk-through — 20 minutes</h3>
+          <p><span class="who">Open</span>"Before the numbers — did I capture the problem right? Page 1 says {{pain}}. Anything to add?"</p>
+          <p><span class="who">Structure</span>"Three parts: what we'll do, in what order, and what it costs against what the problem costs. <span data-track-text="odoo">We go in phases — sales and quoting first, because that's where your cash starts; fabrication, rental and service next; finance and MyInvois last so nothing breaks at month-end. You approve each phase before the next starts.</span><span data-track-text="mktg">We fix the foundation first — a site that converts, tracking, lead capture into your CRM — then we generate demand with SEO, content and targeted campaigns, and we report against leads and revenue every month.</span>"</p>
+          <p><span class="who">Investment</span>"The number is RM {{amount}} before SST. Against that: [their cost of the gap] a year. Payback is [n] months on the ROI model — here it is with your numbers, not ours."</p>
+          <p><span class="who">Close</span>"On a scale of one to ten, how close is this to something you'd sign? … What would get it to a ten?"</p>
+          <p class="if"><span class="who">If 7–9</span>"So it's [the gap]. If we solve that, we go ahead? … Good — I'll revise today and send the agreement for e-signature with it."</p>
+          <p class="if"><span class="who">If &lt;7</span>"Thank you for being straight. What's the main thing? … Let me take that away rather than argue it — I'll come back with a proper answer by {{due}}."</p>
+        </div>
+        <div class="say">
+          <h3>Objections — the spoken versions</h3>
+          <p><span class="who">"Too expensive"</span>"Compared with what, {{client}}? If it's compared with zero, agreed. If it's compared with {{pain}} for another year, the model says otherwise — let me show you the line." <span data-track-text="odoo">"And you only commit to the first phase."</span><span data-track-text="mktg">"And the audit is yours to keep even if you stop there."</span></p>
+          <p><span class="who">"Need to think about it"</span>"Of course. What specifically will you be weighing up? … Then let's put that on the table now — I'd rather you decide with the answer than without it."</p>
+          <p><span class="who">"Partner must agree"</span>"Absolutely — they'll live with it too. Shall I run the same 20 minutes for both of you {{meeting}}, so you don't have to re-explain it?"</p>
+          <p><span class="who">"We tried before and it failed"</span>"What went wrong? … <span data-track-text="odoo">That's exactly why we start with a fixed-scope discovery and a runnable demo before anyone cuts over.</span><span data-track-text="mktg">That's why we report on leads and revenue, not activity, and cut any channel that doesn't convert.</span>"</p>
+          <p><span class="who">"Send me a cheaper version"</span>"I can phase it differently, yes — but I won't take out the parts that make it work. Which outcome matters least to you this year? We'll move that one to phase two."</p>
+        </div>
+      </div>
+      <div class="msgs" data-stage="propose"></div>
+    </section>
+
+    <!-- ========================= 04 BRD & SIGN ========================= -->
+    <section class="section wrap stage" id="s-agree">
+      <div class="stage__head">
+        <div><p class="eyebrow">Stage 04</p><h2>Agree — <span data-track-text="odoo">BRD</span><span data-track-text="mktg">plan &amp; scope</span> sign-off and e-signature</h2></div>
+        <p class="muted" style="max-width:46ch;">Goal: a signed scope and a signed agreement, both in Odoo. Changes after sign-off are change requests — say so kindly and early.</p>
+      </div>
+      <div class="grid cols-2" style="align-items:start;">
+        <div class="say">
+          <h3><span data-track-text="odoo">BRD</span><span data-track-text="mktg">Plan</span> walk-through &amp; sign-off ask</h3>
+          <p><span class="who">Open</span>"This document is the contract for what 'done' means. I'd rather spend an hour on it now than a month arguing later. We'll go section by section and I'll mark changes live."</p>
+          <p><span class="who">Per section</span>"Stakeholders — anyone missing? … Scope — anything here you don't need, or anything you assumed was in and isn't? … Acceptance criteria — if we deliver exactly this, are you happy?"</p>
+          <p><span class="who">Sign-off</span>"With those changes in, can you approve this version by {{due}}? A reply saying 'Approved' in WhatsApp is enough, and I'll attach it to the record. From that point, new requirements go through a short change request so the price and timeline stay honest."</p>
+        </div>
+        <div class="say">
+          <h3>E-signature — on the phone together</h3>
+          <p><span class="who">You</span>"I've sent the Odoo Sign link to this chat. Open it on your phone — it's the same proposal we walked through, with the agreement in front. Scroll down; the yellow fields are yours."</p>
+          <p><span class="who">Guide</span>"Tap the first one — choose Draw or Type your name — Adopt. Now the initials on each page … and the date field fills itself. When every field is done, tap Complete at the top."</p>
+          <p><span class="who">Confirm</span>"You'll get the signed PDF by email in a minute, and so will I. Thank you, {{client}} — welcome aboard. The deposit e-invoice follows today, and kickoff is {{meeting}}."</p>
+          <p class="if"><span class="who">If it asks to log in</span>"Close it and tap the link from the chat again — no account is needed, that screen only appears if a browser tab was already logged in somewhere."</p>
+        </div>
+      </div>
+      <div class="msgs" data-stage="agree"></div>
+    </section>
+
+    <!-- ========================= 05 INVOICE & COLLECT ========================= -->
+    <section class="section wrap stage" id="s-invoice">
+      <div class="stage__head">
+        <div><p class="eyebrow">Stage 05</p><h2>Invoice &amp; collect</h2></div>
+        <p class="muted" style="max-width:46ch;">Goal: get paid on time without spending the relationship. Every invoice message has number, amount, due date, link — and a human way out.</p>
+      </div>
+      <div class="say">
+        <h3>Collections call — relationship first</h3>
+        <p><span class="who">Open</span>"{{client}}, {{rep}} here — not a sales call. I'm calling about invoice {{invoice_no}}, which is [n] days past due, and I'd rather talk than keep messaging."</p>
+        <p><span class="who">Listen</span>"Is there a problem with the invoice itself, or is it cash timing? … Okay — thank you for telling me."</p>
+        <p class="if"><span class="who">If cash timing</span>"Let's not let it drag. Can you do half by {{due}} and the balance thirty days later? I'll re-issue the e-invoices to match, so your books stay clean."</p>
+        <p class="if"><span class="who">If a dispute</span>"Tell me exactly what doesn't match — I'll fix the invoice today if we got it wrong, and if the work is the issue, let's get the right people on a call tomorrow."</p>
+        <p><span class="who">Close</span>"So: [amount] by [date], and I'll confirm by message now. Thank you, {{client}} — I appreciate you picking up."</p>
+      </div>
+      <div class="msgs" data-stage="invoice"></div>
+    </section>
+
+    <!-- ========================= 06 DELIVER ========================= -->
+    <section class="section wrap stage" id="s-deliver">
+      <div class="stage__head">
+        <div><p class="eyebrow">Stage 06</p><h2>Deliver — keep the client warm while you build</h2></div>
+        <p class="muted" style="max-width:46ch;">Goal: no surprises. The client hears from you before they wonder, and every "need from you" has a date.</p>
+      </div>
+      <div class="msgs" data-stage="deliver"></div>
+    </section>
+
+    <!-- ========================= 07 UPSELL & RENEW ========================= -->
+    <section class="section wrap stage" id="s-grow">
+      <div class="stage__head">
+        <div><p class="eyebrow">Stage 07</p><h2>Upsell, cross-sell &amp; renew</h2></div>
+        <p class="muted" style="max-width:46ch;">Goal: every upsell starts with something you noticed in their data. Never "we also sell" — always "I saw this, here is what it means".</p>
+      </div>
+      <div class="say">
+        <h3>Quarterly review — the upsell conversation</h3>
+        <p><span class="who">Scorecard</span>"Here's what we promised, and here's what happened: <span data-track-text="odoo">quote turnaround [before → after], margin visible per job, zero MyInvois rejections.</span><span data-track-text="mktg">enquiries per month [before → after], cost per lead, and which channel each came from.</span> Where do you feel it most?"</p>
+        <p><span class="who">Observation</span>"One thing I noticed: [the data point]. That usually means [the implication]."</p>
+        <p><span class="who">Offer</span>"The natural next step is {{module}} — [one-line benefit]. It's [n] weeks on top of what you have, RM {{amount}}. Want me to scope it properly, or is there something more urgent I'm not seeing?"</p>
+        <p class="if"><span class="who">If "not now"</span>"Fair. Shall I park it and raise it again at the next review, or is it a never?"</p>
+        <p><span class="who">Cross-sell line</span><span data-track-text="odoo">"Your system can now handle three times the enquiries your website sends it. That's a marketing problem, not a system one — it's the other half of what we do, and the audit is free."</span><span data-track-text="mktg">"Enquiries are up — and half of them are landing in WhatsApp with no follow-up trail. That's a CRM problem, and we can wire the site straight into Odoo."</span></p>
+      </div>
+      <div class="msgs" data-stage="grow"></div>
+    </section>
+
+    <!-- ========================= 08 REFER & KEEP WARM ========================= -->
+    <section class="section wrap stage" id="s-refer">
+      <div class="stage__head">
+        <div><p class="eyebrow">Stage 08</p><h2>Refer, review &amp; keep warm</h2></div>
+        <p class="muted" style="max-width:46ch;">Goal: turn a happy client into the next lead. Ask at the moment of delight, not at renewal.</p>
+      </div>
+      <div class="msgs" data-stage="refer"></div>
+    </section>
+
+    <section class="section wrap">
+      <div class="cta">
+        <h2>Before you send anything</h2>
+        <p class="lead" style="margin-inline:auto;">Read it aloud once. If it sounds like a template, it is one — change the first line. Then log it in the CRM.</p>
+        <div class="btn-row">
+          <a class="btn btn--accent" href="#personalise">Personalise the fields</a>
+          <a class="btn btn--ghost" href="index.html">Back to the sales kit</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="nt-foot">
+    <div class="wrap nt-foot__in">
+      <span>TechNext · internal sales enablement · technext.asia</span>
+      <span><a href="index.html">← All sales materials</a></span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Copied</div>
+
+  <script>
+  (function () {
+    var LIVE = "https://skytechnext.github.io/JRtechsky/";
+    /* ---- track dictionary: words that change with the offering ---- */
+    var TRACK = {
+      odoo: {
+        offer: "Odoo 19 implementation",
+        entry: "fixed-scope discovery",
+        scope_doc: "BRD",
+        scope_doc_long: "Business Requirements Document (BRD)",
+        retainer: "Application Management retainer",
+        proof_link: LIVE + "dossier/site/index.html",
+        value_link: LIVE + "dossier/site/tools/roi-tco.html",
+        value_link_name: "ROI / TCO model",
+        guides_link: LIVE + "dossier/site/tools/staff-guides.html"
+      },
+      mktg: {
+        offer: "growth marketing programme",
+        entry: "growth audit",
+        scope_doc: "growth plan",
+        scope_doc_long: "growth plan and scope document",
+        retainer: "growth retainer",
+        proof_link: LIVE + "marketing/index.html",
+        value_link: LIVE + "marketing/MARKETING-PLAN.md",
+        value_link_name: "marketing plan we wrote for a Penang kitchen company",
+        guides_link: LIVE + "marketing/index.html"
+      }
+    };
+    var DEFAULTS = {
+      rep: "Sky", client: "Mr Tan", company: "JR-Tech Solution Sdn Bhd", phone: "",
+      referrer: "Mr Lim (Penang F&B Association)", pain: "quotes stuck in WhatsApp and re-keyed into SQL Account",
+      meeting: "Thursday 10:30am at your office", due: "Fri 26 Sep", amount: "12,500", invoice_no: "TN-2026-0147",
+      module: "Helpdesk", link_proposal: LIVE + "dossier/site/tools/quotation.html", link_brd: LIVE + "dossier/site/tools/brd.html",
+      link_sign: "", link_invoice: "", hours: "8am–8pm, incl. Saturdays"
+    };
+
+    /* ---- the message library: text is a string (both tracks) or {odoo, mktg} ---- */
+    var M = [
+      /* 01 PROSPECT */
+      { s: "prospect", t: "Intro via referral", w: "Day 0 · new lead", tip: "Name the referrer in the first line — it is the only reason they read line two.",
+        x: "Hi {{client}}, {{rep}} here from TechNext 👋\n{{referrer}} suggested I get in touch. We help F&B and commercial-kitchen businesses like {{company}} {{value_line}}.\nWould a 15-minute call this week make sense? I'm free {{meeting}} — or tell me a better time." },
+      { s: "prospect", t: "Cold intro (no referral)", w: "Day 0 · new lead", tip: "Lead with a trigger they already feel, not with TechNext.",
+        x: { odoo: "Hi {{client}}, this is {{rep}} from TechNext. Quick one — with MyInvois e-invoicing now mandatory, many kitchen-equipment suppliers are re-keying every quote into their accounting system by hand.\nWe implement Odoo 19 so the quote, the job and the e-invoice are one record. Happy to show you one workflow in 15 minutes — {{meeting}} any good?",
+             mktg: "Hi {{client}}, {{rep}} from TechNext here. I searched \"commercial kitchen equipment Penang\" this morning — {{company}} isn't on page 1, but two of your competitors are.\nWe fix exactly that: a site that converts, search presence, and leads tracked to revenue. 15 minutes to show you what I found? {{meeting}} works on my side." } },
+      { s: "prospect", t: "After meeting in person", w: "Same day · event or site visit", tip: "Quote back the thing they said. Proves you listened.",
+        x: "Hi {{client}}, good to meet you at {{referrer}} earlier. You mentioned {{pain}} — that is exactly what we help with.\nAs promised, here's the one-pager: {{link_proposal}}\nShall we pick it up properly over a call? I can do {{meeting}}." },
+      { s: "prospect", t: "Value follow-up", w: "Day 3 · no reply", tip: "Give something, ask nothing heavy.",
+        x: { odoo: "Hi {{client}}, {{rep}} again. In case it's useful, this is the public write-up of the Odoo plan we did for a Penang kitchen-solutions company — four business lines, quoting through MyInvois: {{proof_link}}\nIf any of it looks like {{company}}, 15 minutes is all I'd ask.",
+             mktg: "Hi {{client}}, {{rep}} again. In case it's useful, here's the marketing site and full plan we built for a Penang kitchen-solutions company: {{proof_link}}\nIf you'd like the same lens on {{company}}, the audit takes a week and it's free." } },
+      { s: "prospect", t: "Last try before parking", w: "Day 7 · after a call attempt", tip: "Give them an easy 'no'. A clean no beats a slow silence.",
+        x: "Hi {{client}}, I tried calling earlier — no luck. I'll take the hint if the timing's wrong 🙂\nIf {{pain}} is still on your list, reply with a day that suits and I'll book it. If not, tell me when to check back and I'll leave you in peace until then." },
+      { s: "prospect", t: "Re-engage a dormant lead", w: "Day 21+ · or when you have new proof", tip: "New proof, not a new plea.",
+        x: "Hi {{client}}, {{rep}} from TechNext. We spoke a while back about {{pain}} and the timing wasn't right.\nSince then we've completed a full {{offer}} for a Penang kitchen-solutions company — the write-up is public: {{proof_link}}\nIf it's still on your list, I'd be glad to pick up where we left off. No pressure either way 🙏" },
+
+      /* 02 DISCOVER */
+      { s: "discover", t: "Book the discovery session", w: "When they say yes", tip: "Offer two slots; never 'when are you free?'.",
+        x: { odoo: "Thanks {{client}} 🙏 Let's do a proper discovery session — 30 minutes, at your office or on Google Meet.\nI'll map your busiest workflow live and show you the same thing running in Odoo.\nTwo options: {{meeting}}, or a slot of your choice. Which works?",
+             mktg: "Thanks {{client}} 🙏 Let's do a proper growth discovery — 30 minutes, at your office or on Google Meet.\nI'll walk through your site and Google presence against three competitors and show you the three highest-leverage moves.\nTwo options: {{meeting}}, or a slot of your choice. Which works?" } },
+      { s: "discover", t: "Confirmation + agenda", w: "Same day as booking", tip: "The 'have on hand' list is what makes the meeting productive.",
+        x: { odoo: "Confirmed: *{{meeting}}* — discovery session with {{company}} ✅\nAgenda (30 min):\n1. How a quote travels today, from enquiry to invoice\n2. Stock, rentals and service jobs — where the blind spots are\n3. SST / MyInvois today\n4. What \"good\" looks like in 90 days\nHelpful to have on hand: one recent quotation, your stock sheet, and your last SST return. See you then!",
+             mktg: "Confirmed: *{{meeting}}* — growth discovery with {{company}} ✅\nAgenda (30 min):\n1. Where your last 10 customers came from\n2. Your website and Google presence vs 3 competitors\n3. What a new customer is worth to you\n4. The 3 highest-leverage moves\nHelpful to have: website admin access (or the person who has it), and any past marketing spend. See you then!" } },
+      { s: "discover", t: "Reminder", w: "Day before · and 1 hour before", tip: "Short. Give them an easy way to move it.",
+        x: "Hi {{client}}, quick reminder — we're on for *{{meeting}}*. If anything has come up, just say and we'll shift it. See you soon 👍" },
+      { s: "discover", t: "No-show, no blame", w: "15 minutes after the slot", tip: "Kitchens run late. Make rebooking effortless.",
+        x: "Hi {{client}}, looks like today didn't work out — no problem at all, I know how kitchens run 😅\nShall we try {{meeting}}? I'll hold the slot until I hear from you." },
+      { s: "discover", t: "Same-day recap", w: "Within 3 hours of the meeting", tip: "This message is the contract of intent. Get the pain in their words.",
+        x: { odoo: "Thanks for your time today, {{client}} 🙏 My notes, so we're aligned:\n• What's hurting most: {{pain}}\n• What \"good\" looks like: one screen you can trust for cash, stock and pipeline\n• Next step: I'll send the {{entry}} proposal by {{due}}, and we walk through it {{meeting}}\nAnything I missed or got wrong?",
+             mktg: "Thanks for your time today, {{client}} 🙏 My notes, so we're aligned:\n• What's hurting most: {{pain}}\n• What \"good\" looks like: a steady flow of enquiries you can trace to their source\n• Next step: I'll send the {{entry}} findings and proposal by {{due}}, and we walk through them {{meeting}}\nAnything I missed or got wrong?" } },
+
+      /* 03 PROPOSE */
+      { s: "propose", t: "Send the proposal", w: "Day 0 · as promised in the recap", tip: "Three bullets and a walk-through ask. Never just a link.",
+        x: { odoo: "Hi {{client}}, as promised, here's the proposal for {{company}}: {{link_proposal}}\nThe short version:\n• Step 1 — {{entry}} (1–2 weeks): we map your real workflows and you get a requirements blueprint (BRD) plus a fixed implementation quote — credited back if you go ahead\n• Then — phased implementation: sales & quoting first, then fabrication, rental, service, and finance with MyInvois\n• Investment for step 1: RM {{amount}} (before SST)\nDon't read it alone 🙂 — give me 20 minutes to walk you through it? {{meeting}}?",
+             mktg: "Hi {{client}}, your growth audit and proposal: {{link_proposal}}\nWhat I found:\n• 3 quick wins on the site that cost almost nothing\n• Where two competitors outrank you — and why\n• The plan: a fixed website & brand sprint, then a growth retainer measured on leads, not likes\nInvestment: RM {{amount}} (before SST). 20 minutes to walk you through it {{meeting}}?" } },
+      { s: "propose", t: "Send the implementation quotation", w: "After BRD sign-off", tr: "odoo", tip: "Tie every line to the signed BRD; that is what makes it 'fixed'.",
+        x: "Hi {{client}}, the implementation quotation is ready, built line by line from the signed BRD: {{link_proposal}}\nHeadlines:\n• Fixed price: RM {{amount}} (before SST), delivered in phases — you approve each phase before the next starts\n• Discovery fee credited, as agreed\n• Payment by milestone: deposit on signing, then on go-live of each phase\n• Hypercare included after go-live\nWalk-through {{meeting}}? I'll bring the ROI model so we look at payback, not just price." },
+      { s: "propose", t: "Follow-up 1 — reached you?", w: "Day 2", tip: "Ask for a reaction, not a decision.",
+        x: "Hi {{client}}, just checking the proposal reached you okay 🙂 Any first reactions?\nIf it's easier, 20 minutes on a call {{meeting}} and I'll walk you through the numbers — proposals read very differently when someone explains the why." },
+      { s: "propose", t: "Follow-up 2 — add value", w: "Day 5", tip: "Send the thing that answers the question they haven't asked yet.",
+        x: { odoo: "Hi {{client}}, one thing that usually helps at this stage — the {{value_link_name}} behind the proposal: {{value_link}}\nPlug in your own quote volume and see the payback in months rather than our fee in ringgit. Happy to do it together on a call.",
+             mktg: "Hi {{client}}, one thing that usually helps at this stage — the {{value_link_name}}: {{value_link}}\nIt shows exactly how we work: personas, positioning, channels, budget and a 12-month roadmap. Yours would follow the same method." } },
+      { s: "propose", t: "Follow-up 3 — is this still a priority?", w: "Day 10 · after a call attempt", tip: "Permission to say no. It unblocks the yes.",
+        x: "Hi {{client}}, I don't want to be the person who chases 🙈 — but I'd rather hear a \"not now\" than nothing.\nIs this still a priority this quarter? If yes, let's book 20 minutes. If not, tell me when to check back and I'll leave you in peace until then." },
+      { s: "propose", t: "Break-up (proposal validity)", w: "Day 21", tip: "Close it warmly and state the validity date. Half of these come back.",
+        x: "Hi {{client}}, I'll assume the timing isn't right and close this on my side for now — no hard feelings at all.\nThe proposal stays valid until {{due}}, and the door's open whenever {{pain}} climbs back up the list. Thank you for the conversations 🙏" },
+      { s: "propose", t: "Reply to 'too expensive'", w: "When it lands in chat", tip: "Reframe to payback and phasing; offer 15 minutes, not a discount.",
+        x: { odoo: "Totally fair, {{client}}. Two things worth knowing:\n1. It's phased — you only commit to the first step, and each phase pays for itself before the next starts\n2. The real comparison isn't our fee vs zero — it's our fee vs {{pain}} continuing for another year\nCan I show you that number with your figures in 15 minutes?",
+             mktg: "Totally fair, {{client}}. Two things worth knowing:\n1. The audit and the quick wins are yours to keep whatever you decide next\n2. The real comparison isn't our fee vs zero — it's our fee vs another year of competitors taking the buyers who search for you\nCan I show you that number with your figures in 15 minutes?" } },
+      { s: "propose", t: "Reply to 'need to discuss with my partner'", w: "When it lands in chat", tip: "Offer to present to the partner. Saves them re-explaining, and you keep control of the story.",
+        x: "Makes sense, {{client}} — a decision like this should involve the people who'll live with it.\nShall I run the same 20-minute walk-through for your partner or team? I can do {{meeting}}. Easier than you having to re-explain it." },
+      { s: "propose", t: "Send the revised proposal", w: "Within 24 hours of the negotiation", tip: "State exactly what changed and nothing else. Then move to signature.",
+        x: "Hi {{client}}, revised proposal as discussed: {{link_proposal}}\nWhat changed: {{module}} moves to phase 2, so the first-phase investment is now RM {{amount}} (before SST). Everything else is as we agreed.\nIf this works for you, I'll send the agreement for e-signature today." },
+
+      /* 04 BRD & SIGN */
+      { s: "agree", t: "Send the {{scope_doc}} for review", w: "Day 0 · end of discovery", tip: "Three things to check, a date, and the change-request rule stated kindly.",
+        x: { odoo: "Hi {{client}}, the {{scope_doc_long}} from our discovery is ready for your review: {{link_brd}}\nThis is the document the fixed quote is built on, so please check three things:\n1. Stakeholders — is everyone listed?\n2. In-scope vs out-of-scope — anything missing, or anything you don't need?\n3. Acceptance criteria — is this what \"done\" looks like to you?\nComments by {{due}}, then a 60-minute walk-through with your team leads {{meeting}}. After sign-off, changes become change requests — so 30 minutes now saves a month later.",
+             mktg: "Hi {{client}}, the {{scope_doc_long}} is ready for your review: {{link_brd}}\nIt's the basis for the fixed sprint price and the retainer, so please check three things:\n1. Personas and positioning — does this sound like your best customers?\n2. In-scope vs out-of-scope — anything missing, or anything you don't need?\n3. Success measures — leads and revenue, and the numbers we're aiming at\nComments by {{due}}, then a 45-minute walk-through {{meeting}}. After sign-off, changes become change requests — so 30 minutes now saves a month later." } },
+      { s: "agree", t: "Walk-through confirmed — who to bring", w: "Same day as booking", tip: "The right people in the room is the whole game.",
+        x: { odoo: "Confirmed: BRD walk-through *{{meeting}}* ✅\nPlease bring: your sales lead, your workshop/fabrication lead, and whoever does the accounts. 60 minutes — we go section by section and mark changes live, so you leave with a final version.",
+             mktg: "Confirmed: growth plan walk-through *{{meeting}}* ✅\nPlease bring: whoever owns the website today, your sales lead, and anyone who signs off on the brand. 45 minutes — we go section by section and mark changes live, so you leave with a final version." } },
+      { s: "agree", t: "{{scope_doc}} reminder", w: "Day 3 · no comments yet", tip: "Offer the voice-note route. Owners talk faster than they type.",
+        x: "Hi {{client}}, gentle nudge on the {{scope_doc}} 🙂 — comments due {{due}} so we can lock the fixed quote.\nIf it's easier, send me a voice note with your thoughts and I'll update the document myself, then you just check the result." },
+      { s: "agree", t: "{{scope_doc}} sign-off request", w: "Within 24h of the walk-through", tip: "A written 'Approved' is enough; attach it to the Odoo record.",
+        x: "Hi {{client}}, the {{scope_doc}} now includes every comment from the walk-through: {{link_brd}}\nCould you confirm sign-off by replying *Approved* here (or signing the last page)? Once approved, it becomes the baseline for the fixed quote and the acceptance tests — and anything new goes through a short change request so price and timeline stay honest. Thank you 🙏" },
+      { s: "agree", t: "Send for e-signature", w: "Day 0 · same hour as the yes", tip: "Three steps and a validity date. Offer to stay on the phone.",
+        x: "Hi {{client}}, the agreement and quotation are ready for e-signature: {{link_sign}}\nIt takes about 2 minutes on your phone:\n1. Open the link and read through — it's the proposal we walked through, with the agreement in front\n2. Tap each highlighted field to sign or initial\n3. Tap *Complete* — the signed PDF arrives in your email automatically\nThe link is valid until {{due}}. Shout if anything is unclear — I'm happy to stay on the phone while you do it." },
+      { s: "agree", t: "E-signature reminder", w: "Day 3 · unsigned", tip: "Offer the analogue route. Some owners want paper; give it to them.",
+        x: "Hi {{client}}, quick reminder — the agreement is waiting for your e-signature: {{link_sign}} (valid until {{due}}).\nIf it's more convenient, I can bring a printed copy {{meeting}}, or stay on a call while you sign. Whichever is easier for you." },
+      { s: "agree", t: "E-signature help", w: "When they say 'it's not working'", tip: "Assume the login-screen problem first; it is nearly always that.",
+        x: "No problem at all, {{client}}. Open the link on your phone → scroll to the yellow field → tap it → choose *Draw* or *Type* your name → tap *Adopt* → then *Complete* at the top.\nIf it asks you to log in, just close it and tap the link again from this chat — no account is needed." },
+      { s: "agree", t: "Signed — thank you + what happens next", w: "Same hour as the signature", tip: "Momentum. Kickoff date and invoice timing in the same message.",
+        x: { odoo: "Signed and received — thank you, {{client}} 🎉 Welcome aboard.\nWhat happens now:\n• Today: signed copy in your inbox; the deposit e-invoice follows (MyInvois validated)\n• {{meeting}}: kickoff with your team — agenda tomorrow\n• Week 1: we set up your Odoo instance and start with sales & quoting\nYou have my direct number throughout, {{hours}}. Let's build this properly.",
+             mktg: "Signed and received — thank you, {{client}} 🎉 Welcome aboard.\nWhat happens now:\n• Today: signed copy in your inbox; the deposit e-invoice follows (MyInvois validated)\n• {{meeting}}: kickoff with your team — agenda tomorrow\n• Week 1: analytics and tracking go in, and the site sprint plan is locked\nYou have my direct number throughout, {{hours}}. Let's make them find you." } },
+
+      /* 05 INVOICE & COLLECT */
+      { s: "invoice", t: "Send the deposit e-invoice", w: "Day 0 · same day as signature", tip: "Number, amount, due date, link, and what payment unlocks.",
+        x: "Hi {{client}}, the deposit e-invoice for the {{offer}}, as per the agreement:\n*Invoice {{invoice_no}}* — RM {{amount}} (incl. SST) — due {{due}}\nPDF (MyInvois validated, with QR): {{link_invoice}}\nBank details are on the invoice. Please share the payment slip here once made so I can confirm the kickoff date. Thank you 🙏" },
+      { s: "invoice", t: "Send a milestone invoice", w: "On go-live of a phase / delivery", tip: "Lead with the milestone achieved, then the invoice.",
+        x: "Hi {{client}}, with {{module}} live, here's the milestone invoice as agreed:\n*Invoice {{invoice_no}}* — RM {{amount}} (incl. SST) — due {{due}}\nPDF: {{link_invoice}}\nCongratulations on the go-live — your team did great this week." },
+      { s: "invoice", t: "Courtesy note before due", w: "Day -3", tip: "No ask. Just information. Stops most late payments before they start.",
+        x: "Hi {{client}}, a courtesy note — invoice {{invoice_no}} (RM {{amount}}) falls due on {{due}}. No action needed if it's already scheduled 👍" },
+      { s: "invoice", t: "Polite check after due", w: "Due day +3", tip: "Blame the system, not the person: 'could you check with accounts'.",
+        x: "Hi {{client}}, invoice {{invoice_no}} for RM {{amount}} was due {{due}} — could you check with your accounts team?\nIf it's already been paid, just send me the slip and I'll match it on our side. Thank you 🙏" },
+      { s: "invoice", t: "Firm reminder — schedule at stake", w: "Day +14", tip: "Consequence stated as a scheduling fact, plus an open door.",
+        x: "Hi {{client}}, following up on invoice {{invoice_no}} (RM {{amount}}), now 14 days past due.\nI'd like to keep the project on schedule — the next phase is booked to start {{meeting}}, and I can only hold the team's dates with payment cleared. Could you let me know a payment date today?\nIf there's an issue on your side, tell me — we can work something out." },
+      { s: "invoice", t: "Final notice — call me", w: "Day +30", tip: "Clear, calm, and asks for a call. Then pause work per the agreement.",
+        x: "Hi {{client}}, invoice {{invoice_no}} (RM {{amount}}) is now 30 days overdue and I haven't heard back.\nI'd much rather sort this with a call than a letter — can we speak today or tomorrow? Until it's settled I have to pause further work under the agreement's payment terms, which I'd genuinely like to avoid.\nPlease call me on this number any time." },
+      { s: "invoice", t: "Offer a payment plan", w: "When they say cash is tight", tip: "Two instalments, re-issued e-invoices. Protects the relationship and the books.",
+        x: "Understood, {{client}} — cash flow in F&B is lumpy, I get it.\nRather than let it drag, shall we split invoice {{invoice_no}} into two: 50% by {{due}} and the balance 30 days later? I'll re-issue the e-invoices to match so your books stay clean. Just confirm and I'll set it up." },
+      { s: "invoice", t: "Payment received", w: "Same day as the credit", tip: "Thank, confirm, attach receipt, restate the next date.",
+        x: "Received with thanks, {{client}} 🙏 Invoice {{invoice_no}} — RM {{amount}} — is settled and the official receipt is attached.\nKickoff stands for {{meeting}} — see you then." },
+
+      /* 06 DELIVER */
+      { s: "deliver", t: "Kickoff invite + agenda", w: "Within 24h of signing", tip: "Who to invite is the important line.",
+        x: { odoo: "Hi {{client}}, kickoff agenda for *{{meeting}}* (60 min):\n1. Goals & success measures — what we signed up for\n2. Team & roles — who decides, who tests, who trains\n3. Timeline and the first two weeks\n4. What we need from you — data exports, access, decisions\nPlease invite your sales lead, workshop lead and accounts. Homework: none 🙂 — just bring the questions.",
+             mktg: "Hi {{client}}, kickoff agenda for *{{meeting}}* (60 min):\n1. Goals & success measures — leads, cost per lead, revenue\n2. Team & roles — who approves copy and design, who owns the domain\n3. Timeline for the sprint and the first campaign\n4. What we need from you — logo files, photos, access to the domain and Google Business Profile\nPlease invite whoever owns the website, sales and the brand. Homework: none 🙂 — just bring the questions." } },
+      { s: "deliver", t: "Weekly update", w: "Every Friday · same time", tip: "Done / next / need-from-you / status. Never skip a week, even a quiet one.",
+        x: "Weekly update — {{company}} × TechNext\n✅ Done this week: [what we finished]\n🔜 Next week: [what we start]\n🙏 Need from you: [item] by {{due}}\n🚦 Status: on track\nFull log is in the shared project. Any questions, just reply here." },
+      { s: "deliver", t: "Need-from-you nudge", w: "When a dependency slips", tip: "One item, one date, one shortcut.",
+        x: "Hi {{client}}, a small blocker on our side — we're waiting on [item] to keep this week on track.\nCould someone on your team send it by {{due}}? If it helps, I can jump on a 10-minute call and we grab it together." },
+      { s: "deliver", t: "Test session / review invite", w: "End of build", tip: "Ask for the real users, and tell them to break it.",
+        x: { odoo: "Hi {{client}}, your system is ready for you to click through 🎉\nTest session *{{meeting}}* (90 min) — we'll run your real scenarios: a quote from enquiry to e-invoice, a fabrication job, a rental return, a service call.\nPlease have the people who'll actually use it in the room. The more they break, the better.",
+             mktg: "Hi {{client}}, the new {{company}} website is ready for your review 🎉 Staging link: [staging link]\nPlease click through on your phone first — that's how most of your buyers will see it. Review call *{{meeting}}* (45 min) to collect changes in one round." } },
+      { s: "deliver", t: "Go-live announcement", w: "Go-live morning", tip: "Support hours and the staff guides link — nothing else.",
+        x: { odoo: "We're live 🚀 From this morning, {{company}} runs on Odoo — quotes, jobs and e-invoices in one place.\nSupport during hypercare: reply here or call me directly, {{hours}}. Nothing is too small.\nQuick guides for your team: {{guides_link}}",
+             mktg: "We're live 🚀 The new {{company}} website is up, with analytics and lead capture wired to your CRM.\nEvery enquiry now lands in your inbox and CRM with its source attached. First results report in 30 days; until then, reply here with anything you'd like changed." } },
+      { s: "deliver", t: "Hypercare check-in", w: "Day 3 · week 2 · day 30", tip: "Ask for the annoying thing and the good thing.",
+        x: "Hi {{client}}, day-3 check-in 🙂 How is the team finding it?\nAnything slow, confusing or annoying — tell me now while we're in hypercare and I'll fix it this week.\nAnd what's one thing that already feels better than before?" },
+      { s: "deliver", t: "Issue acknowledgement", w: "Within 15 minutes of a complaint", tip: "Own it, give a time for the next update, offer a workaround.",
+        x: "Hi {{client}}, received — thank you for flagging straight away. We're on it now.\nI'll confirm the cause within the hour and the fix time right after. In the meantime your team can [workaround].\nI'll update you here, not by email." },
+
+      /* 07 UPSELL & RENEW */
+      { s: "grow", t: "Upsell the {{retainer}}", w: "Day 30 · before hypercare ends", tip: "Count their requests during hypercare; that number sells the retainer.",
+        x: { odoo: "Hi {{client}}, hypercare ends on {{due}} — the team has done brilliantly.\nA quick thought: in the last 4 weeks you raised [n] small requests (a report, a new field, a price rule). That's normal — a live system keeps evolving.\nThe {{retainer}} covers exactly this: RM {{amount}}/month for support, minor changes and version upkeep, with a response SLA. Shall I start it from {{due}} so there's no gap?",
+             mktg: "Hi {{client}}, the sprint wraps on {{due}} — the new site is doing its job.\nA quick thought: a website is the foundation, not the engine. The {{retainer}} — SEO, content, targeted campaigns and a monthly report against leads — is what compounds it. RM {{amount}}/month, reviewed quarterly. Shall I start it from {{due}} so momentum isn't lost?" } },
+      { s: "grow", t: "Upsell the next module / add-on", w: "When the data shows it", tip: "Observation → implication → offer. Odoo ideas: Helpdesk, Planning, eCommerce, Documents & Sign, AI quoting agents, the Kitchen Workflow engine, the driver-incentive module.",
+        x: { odoo: "Hi {{client}}, something I noticed in your data this month: [observation, e.g. 38% of service calls are repeat visits to the same asset].\nThat's exactly what {{module}} is for — [one-line benefit]. It's a 2-week add-on on top of what you already have, RM {{amount}}.\nWant me to scope it into a short proposal?",
+             mktg: "Hi {{client}}, quick observation from this month's report: [e.g. 60% of enquiries came from three blog posts].\nDoubling down there is the cheapest growth you'll get — {{module}} on top of the retainer: [one-line benefit], RM {{amount}}/month.\nTry it for a quarter and judge it on leads?" } },
+      { s: "grow", t: "Cross-sell the other track", w: "Quarterly review", tip: "The Odoo client's ceiling is leads; the marketing client's leak is follow-up.",
+        x: { odoo: "Hi {{client}}, now that every lead lands in your CRM, the funnel has a visible ceiling: [n] web enquiries last month vs a sales team that could handle three times that.\nThat's a marketing problem, not a system one — and it's the other half of what we do. A free growth audit (site, search, three competitors) takes a week and is yours to keep. Want it?",
+             mktg: "Hi {{client}}, the good news: enquiries are up [n]% since the new site. The catch: they're landing in WhatsApp and email with no follow-up trail — [n] of last month's leads never got a quote.\nOdoo CRM and quoting close that gap, and we can wire the site straight into it. 30 minutes to show you? {{meeting}}?" } },
+      { s: "grow", t: "Training top-up", w: "New hires / 90 days after go-live", tr: "odoo", tip: "Tie it to an event they told you about.",
+        x: "Hi {{client}}, with the new hires starting, a refresher usually pays for itself in a week — a half-day on-site session (quoting and field service on the tablet) at RM {{amount}}.\nI can do {{meeting}}. Shall I lock it in?" },
+      { s: "grow", t: "Renewal — 60 days early", w: "60 days before term end", tip: "Three options, and a fact from their usage. Never let it auto-renew silently.",
+        x: { odoo: "Hi {{client}}, a heads-up 60 days early: your Odoo licences renew on {{due}} (RM {{amount}} before SST).\nThree options:\n1. Renew as-is\n2. Renew and add {{module}} at the bundled rate\n3. Review user count first — I can see [n] users haven't logged in for 90 days\nShall we do a 20-minute review before it renews?",
+             mktg: "Hi {{client}}, the retainer's 12-month term ends on {{due}}.\nResults to date: [leads/month before → after, cost per lead].\nThree options:\n1. Continue as-is\n2. Step up to the growth-plus plan with paid media\n3. Step down to maintenance\n30-minute review {{meeting}}? I'll send the one-page scorecard the day before." } },
+      { s: "grow", t: "Quarterly review invite", w: "Every quarter", tip: "Scorecard the day before; the upsell comes from the scorecard.",
+        x: "Hi {{client}}, time for our quarterly review — 45 minutes to look at what we promised vs what happened, what's next, and anything that's annoying you.\n{{meeting}}? I'll send a one-page scorecard the day before so nobody's surprised." },
+
+      /* 08 REFER & KEEP WARM */
+      { s: "refer", t: "Ask for a Google review", w: "At the moment of delight", tip: "Ask right after a 'this is great' message. Two lines is all you need from them.",
+        x: "Hi {{client}}, a small favour — would you mind leaving a short Google review for TechNext? Two lines about what changed for {{company}} is perfect: [review link]\nIt genuinely helps other owners take the leap. Thank you 🙏" },
+      { s: "refer", t: "Ask for a referral", w: "After the review, or at a review meeting", tip: "Name the reward and make the intro effortless.",
+        x: "Hi {{client}}, you know other owners drowning in {{pain}}.\nIf you introduce us and it turns into a project, we credit RM {{amount}} against your next invoice — or send the same to a charity you pick.\nA simple WhatsApp intro is all it takes; I'll take it from there." },
+      { s: "refer", t: "Case-study permission", w: "Day 90 · results in hand", tip: "Offer to write it; they approve. Zero effort for them.",
+        x: "Hi {{client}}, your numbers since go-live are worth telling: [before → after].\nMay we write a one-page case study on {{company}}? I'll draft it, you approve every word, and we only publish what you're comfortable with. It also makes a nice piece for your own marketing." },
+      { s: "refer", t: "Festive greeting — no ask", w: "CNY · Hari Raya · Deepavali · Christmas", tip: "No link, no ask, no pitch. Ever.",
+        x: "Hi {{client}}, wishing you and the whole {{company}} team a very [Happy Chinese New Year / Selamat Hari Raya / Happy Deepavali / Merry Christmas] 🧧\nThank you for a great year working together — enjoy the break, and see you on the other side." },
+      { s: "refer", t: "Share something useful", w: "Every 4–6 weeks · between projects", tip: "One link they'd actually read. Keeps the thread alive without selling.",
+        x: "Hi {{client}}, saw this and thought of {{company}}: [link + one line on why it matters to them].\nNo action needed — just thought it was worth two minutes of your time." }
+    ];
+
+    /* ---------------- engine ---------------- */
+    var track = "odoo";
+    var F = {};
+    var KEY_F = "tn-script-fields", KEY_T = "tn-script-track";
+    function load() {
+      try { F = Object.assign({}, DEFAULTS, JSON.parse(localStorage.getItem(KEY_F) || "{}")); } catch (e) { F = Object.assign({}, DEFAULTS); }
+      var q = new URLSearchParams(location.search).get("track");
+      try { track = q || localStorage.getItem(KEY_T) || "odoo"; } catch (e) { track = q || "odoo"; }
+      if (!TRACK[track]) track = "odoo";
+    }
+    function save() { try { localStorage.setItem(KEY_F, JSON.stringify(F)); localStorage.setItem(KEY_T, track); } catch (e) {} }
+    function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+    function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+    function pick(x) { return typeof x === "string" ? x : (x[track] || x.odoo); }
+    function fill(text) {
+      var d = TRACK[track];
+      var out = text.replace(/\{\{(\w+)\}\}/g, function (m, k) {
+        if (k === "value_line") return track === "odoo"
+          ? "run sales, fabrication, rental, service and finance on one system (Odoo 19), with MyInvois built in"
+          : "get found by buyers who are searching right now, and turn a quiet website into a steady pipeline";
+        if (d[k] !== undefined) return d[k];
+        if (F[k] !== undefined && String(F[k]).trim() !== "") return F[k];
+        return m; // leave unfilled placeholder visible
+      });
+      return out;
+    }
+    function preview(text) {
+      var h = esc(text)
+        .replace(/\{\{\w+\}\}/g, function (m) { return '<span class="ph">' + m + "</span>"; })
+        .replace(/\[[^\]\n]{1,80}\]/g, function (m) { return '<span class="ph">' + m + "</span>"; })
+        .replace(/\*([^*\n]{1,80})\*/g, "<b>$1</b>");
+      return h;
+    }
+    function waLink(text) {
+      var digits = String(F.phone || "").replace(/\D/g, "");
+      return "https://wa.me/" + digits + "?text=" + encodeURIComponent(text);
+    }
+    function render() {
+      document.body.className = track === "mktg" ? "t-mktg" : "t-odoo";
+      document.querySelectorAll(".seg button").forEach(function (b) { b.classList.toggle("is-active", b.getAttribute("data-track") === track); });
+      document.querySelectorAll("[data-track-text]").forEach(function (el) { el.style.display = el.getAttribute("data-track-text") === track ? "" : "none"; });
+      document.querySelectorAll(".msgs").forEach(function (box) {
+        var stage = box.getAttribute("data-stage");
+        box.innerHTML = "";
+        M.filter(function (m) { return m.s === stage && (!m.tr || m.tr === track); }).forEach(function (m) {
+          var text = fill(pick(m.x));
+          var card = document.createElement("article"); card.className = "msg";
+          card.innerHTML =
+            '<div class="msg__top"><div><h3>' + esc(cap(fill(m.t))) + '</h3><div class="msg__when">' + esc(m.w) + "</div></div></div>" +
+            '<div class="bubble">' + preview(text) + "</div>" +
+            '<div class="msg__foot"><span class="msg__tip">' + esc(m.tip || "") + "</span>" +
+            '<span style="display:flex;gap:8px;flex-wrap:wrap;"><button type="button" class="mbtn js-copy">⧉ Copy</button>' +
+            '<a class="mbtn mbtn--wa" target="_blank" rel="noopener" href="' + waLink(text).replace(/"/g, "&quot;") + '">Open in WhatsApp</a></span></div>';
+          card.querySelector(".js-copy").addEventListener("click", function () { copy(text, this); });
+          box.appendChild(card);
+        });
+      });
+      // fill spoken-script placeholders
+      document.querySelectorAll(".say").forEach(function (blk) {
+        if (!blk.dataset.raw) blk.dataset.raw = blk.innerHTML;
+        blk.innerHTML = blk.dataset.raw.replace(/\{\{(\w+)\}\}/g, function (m, k) {
+          var v = (F[k] !== undefined && String(F[k]).trim() !== "") ? F[k] : m;
+          return '<span class="ph2">' + esc(v) + "</span>";
+        });
+        blk.querySelectorAll("[data-track-text]").forEach(function (el) { el.style.display = el.getAttribute("data-track-text") === track ? "" : "none"; });
+      });
+      save();
+    }
+    var toastT;
+    function toast(msg) {
+      var t = document.getElementById("toast"); t.textContent = msg; t.classList.add("is-on");
+      clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove("is-on"); }, 1400);
+    }
+    function copy(text, btn) {
+      var done = function () { toast("Copied — paste into WhatsApp"); if (btn) { btn.textContent = "✓ Copied"; setTimeout(function () { btn.textContent = "⧉ Copy"; }, 1400); } };
+      if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done, function () { legacy(text); done(); }); }
+      else { legacy(text); done(); }
+    }
+    function legacy(text) {
+      var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(ta);
+    }
+    /* wire up */
+    load();
+    var inputs = document.querySelectorAll("#fields input[data-f]");
+    inputs.forEach(function (i) {
+      var k = i.getAttribute("data-f"); i.value = F[k] || "";
+      i.addEventListener("input", function () { F[k] = i.value; render(); });
+    });
+    document.getElementById("resetFields").addEventListener("click", function () {
+      F = Object.assign({}, DEFAULTS); inputs.forEach(function (i) { i.value = F[i.getAttribute("data-f")] || ""; }); render(); toast("Reset to example values");
+    });
+    document.querySelectorAll(".seg button").forEach(function (b) {
+      b.addEventListener("click", function () { track = b.getAttribute("data-track"); render(); });
+    });
+    render();
+  })();
+  </script>
+</body>
+</html>
