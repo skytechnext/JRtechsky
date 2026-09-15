@@ -51,6 +51,7 @@ table.doct td.r, table.doct th.r{text-align:right;font-variant-numeric:tabular-n
 .doctag.ok{background:#e2f7ef;color:#0c7a56;}
 .doctag.pend{background:#fdf3dd;color:#8a6410;}
 .doctag.action{background:#fdeaea;color:#a33030;}
+.doctag.rev{background:#e8f0fb;color:#3F6FB0;}
 .notebox{background:#f2f7fd;border-left:4px solid #7FA9DE;border-radius:0 10px 10px 0;padding:14px 18px;font-size:.88rem;color:#33415a;margin:16px 0;}
 .notebox.warn{background:#fdf6ec;border-left-color:#d9a13b;}
 .loadcard{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
@@ -72,12 +73,13 @@ table.doct td.r, table.doct th.r{text-align:right;font-variant-numeric:tabular-n
   .metagrid div:nth-child(odd){border-right:0;}
 }
 @media print{
-  #sidebar,.topbar,.hero,.pagenav,footer.site{display:none !important;}
+  #sidebar,.topbar,.hero,.pagenav,footer.site,main > .wrap{display:none !important;}
   body{background:#fff;}
   .content{margin:0;}
   .docwrap{padding:0;max-width:none;}
   .sheet{box-shadow:none;border-radius:0;margin:0;max-width:none;page-break-after:always;}
   .ribbon{display:block;}
+  .keep{break-inside:avoid;page-break-inside:avoid;}
 }
 </style>
 </head>
@@ -117,6 +119,8 @@ table.doct td.r, table.doct th.r{text-align:right;font-variant-numeric:tabular-n
           <div><b>Date</b>4 July 2026</div>
           <div><b>Revision</b>R1</div>
           <div><b>Status</b>SAMPLE — illustrative deliverable</div>
+          <div><b>Approvals required</b>Owner · Head Chef · JR-Tech &amp; appointed contractors</div>
+          <div><b>Fabrication release</b>On construction issue (R3) — all four signature blocks complete</div>
         </div>
 
         <h3>Document contents</h3>
@@ -128,7 +132,7 @@ table.doct td.r, table.doct th.r{text-align:right;font-variant-numeric:tabular-n
           <tr><td>4.0</td><td>Equipment schedule (costed, RM 185,000)</td><td class="pg">4</td></tr>
           <tr><td>5.0</td><td>Electrical &amp; drainage point schedules, load summary</td><td class="pg">5</td></tr>
           <tr><td>6.0</td><td>Ventilation &amp; statutory compliance</td><td class="pg">6</td></tr>
-          <tr><td>7.0</td><td>Revisions &amp; acceptance</td><td class="pg">7</td></tr>
+          <tr><td>7.0</td><td>Revisions, approvals &amp; acceptance</td><td class="pg">7</td></tr>
         </table>
 
         <h3>1.0 Scope of this pack</h3>
@@ -361,44 +365,76 @@ table.doct td.r, table.doct th.r{text-align:right;font-variant-numeric:tabular-n
         <div class="sheetfoot"><span>JRT-2026-AGL-01 · Kitchen Blueprint Pack</span><span>Page 6 of 7</span></div>
       </div>
 
-      <!-- ============ SHEET 7 — REVISIONS & ACCEPTANCE ============ -->
-      <div class="sheet">
+      <!-- ============ SHEET 7 — REVISIONS, APPROVALS & ACCEPTANCE ============ -->
+      <div class="sheet" id="acceptance">
         <div class="ribbon">SAMPLE</div>
-        <h2 class="docsec"><small>7.0</small>Revisions &amp; Acceptance</h2>
+        <h2 class="docsec"><small>7.0</small>Revisions, Approvals &amp; Acceptance</h2>
         <hr class="docrule">
 
         <h3>7.1 Revision workflow</h3>
-        <p>This pack is issued as <b>Revision R1</b>. Markups from the owner or her architect are
-        returned to JR-Tech through the shared project workspace; because the menu, equipment
+        <p>This pack is issued as <b>Revision R1</b>. Markups from the owner, her head chef, and her architect and
+        appointed contractors are returned to JR-Tech through the shared project workspace; because the menu, equipment
         schedule, layout and services points live in one model, any change re-flows automatically
         through every schedule and the budget. A revised pack is re-issued within <b>48 hours</b> of
         receiving consolidated comments. The pack proceeds to fabrication and M&amp;E first-fix only
-        after signature below.</p>
+        after all three decision-making parties have signed in 7.3 below.</p>
         <table class="doct">
           <tr><th>Rev</th><th>Date</th><th>Description</th><th>Issued by</th></tr>
           <tr><td>R1</td><td>4 July 2026</td><td>First issue for owner review — full blueprint pack</td><td>JR-Tech design office</td></tr>
-          <tr><td>R2</td><td>—</td><td>Reserved: owner/architect markups incorporated (48 h re-issue)</td><td>—</td></tr>
-          <tr><td>R3</td><td>—</td><td>Reserved: construction issue (signed)</td><td>—</td></tr>
+          <tr><td>R2</td><td>—</td><td>Reserved: consolidated markups from owner, head chef &amp; contractors incorporated (48 h re-issue)</td><td>—</td></tr>
+          <tr><td>R3</td><td>—</td><td>Reserved: construction issue — signed by owner, head chef, JR-Tech &amp; contractors</td><td>—</td></tr>
         </table>
 
-        <h3>7.2 Acceptance</h3>
-        <p>Signature below confirms acceptance of the zoned layout (Sheet 3), the equipment schedule
-        and RM185,000 indicative budget (Sheet 4), the services design and 3-phase 60A upgrade
-        (Sheet 5), and the compliance pathway (Sheet 6), and authorises JR-Tech to proceed with the
-        7-week programme.</p>
+        <div class="keep">
+        <h3>7.2 Approval matrix — who signs for which sheet</h3>
+        <p>The blueprint is approved by three decision-making parties: the <b>owner</b>, the
+        <b>head chef</b>, and <b>JR-Tech together with the appointed contractors</b>. Each approves the
+        sheets inside their expertise (A), reviews and marks up the rest (R), or is informed (I). No
+        sheet is frozen until every A on its row is signed; two signatures is a draft.</p>
+        <table class="doct matrix">
+          <tr><th>Sheet</th><th>Owner</th><th>Head chef</th><th>JR-Tech</th><th>Contractors</th><th>Frozen on approval</th></tr>
+          <tr><td>3 · Zoned layout &amp; one-way flow</td><td><span class="doctag ok">A</span></td><td><span class="doctag ok">A</span></td><td><span class="doctag ok">A</span></td><td><span class="doctag rev">R</span></td><td>Zones, galley circulation, pass and rear-lane door positions</td></tr>
+          <tr><td>4 · Equipment schedule &amp; RM185,000 budget</td><td><span class="doctag ok">A</span></td><td><span class="doctag ok">A</span></td><td><span class="doctag ok">A</span></td><td>I</td><td>E-01 … E-18 classes, quantities, positions and pricing basis</td></tr>
+          <tr><td>5 · Electrical &amp; drainage schedules, 3-phase 60A upgrade</td><td><span class="doctag rev">R</span></td><td>I</td><td><span class="doctag ok">A</span></td><td><span class="doctag ok">A</span></td><td>P-01 … P-12, D-01 … D-08, GT-01 and the incoming supply</td></tr>
+          <tr><td>6 · Ventilation, LPG &amp; statutory compliance</td><td><span class="doctag ok">A</span></td><td><span class="doctag rev">R</span></td><td><span class="doctag ok">A</span></td><td><span class="doctag ok">A</span></td><td>ESP hood and lane duct, LPG cage and interlock, licence pathway</td></tr>
+          <tr><td>7 · Construction issue (R3)</td><td><span class="doctag ok">A</span></td><td><span class="doctag ok">A</span></td><td><span class="doctag ok">A</span></td><td><span class="doctag ok">A</span></td><td>The whole pack — later changes are a new revision through the same gate</td></tr>
+        </table>
+        <p style="font-size:.78rem;color:#7b8aa3;">A — approves and signs &nbsp;·&nbsp; R — reviews and marks up before signature &nbsp;·&nbsp; I — informed, receives the sheet</p>
+        </div>
+
+        <div class="keep">
+        <h3>7.3 Acceptance — three-party sign-off</h3>
+        <p>The signatures below — owner, head chef, and JR-Tech with the appointed contractors — confirm
+        acceptance of the zoned layout (Sheet 3), the equipment schedule and RM185,000 indicative budget
+        (Sheet 4), the services design and 3-phase 60A upgrade (Sheet 5), and the compliance pathway
+        (Sheet 6), and authorise JR-Tech to proceed with the 7-week programme. The pack is not accepted,
+        and no fabrication order is released, until all four blocks are complete.</p>
         <div class="sigrow">
           <div class="sig">
             <b>For the Owner</b>
-            Auntie Gaik Lean's Old School Eatery
+            Auntie Gaik Lean's Old School Eatery — proprietor
+            <div class="line"></div><div class="lbl">Name &amp; signature</div>
+            <div class="line"></div><div class="lbl">Date</div>
+          </div>
+          <div class="sig">
+            <b>For the Head Chef</b>
+            Auntie Gaik Lean's Old School Eatery — kitchen lead
             <div class="line"></div><div class="lbl">Name &amp; signature</div>
             <div class="line"></div><div class="lbl">Date</div>
           </div>
           <div class="sig">
             <b>For JR-Tech Solution Sdn Bhd</b>
-            Project Director, JRT-2026-AGL-01
+            Project Director &amp; M&amp;E Supervisor, JRT-2026-AGL-01
             <div class="line"></div><div class="lbl">Name &amp; signature</div>
             <div class="line"></div><div class="lbl">Date</div>
           </div>
+          <div class="sig">
+            <b>For the Appointed Contractors</b>
+            Renovation · M&amp;E · LPG (Suruhanjaya Tenaga-registered)
+            <div class="line"></div><div class="lbl">Company, name &amp; signature</div>
+            <div class="line"></div><div class="lbl">Date</div>
+          </div>
+        </div>
         </div>
         <div class="notebox" style="margin-top:30px;">Companion samples in this series:
         <a href="sample-operations.html">Operations Pack</a> ·

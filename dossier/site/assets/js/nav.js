@@ -17,6 +17,7 @@
       { t: "Reimagined Workflow", href: "pages/workflow/wf-overview.html", slug: "wf-overview", e: "🔄" },
       { t: "The First Meeting", href: "pages/workflow/wf-first-meeting.html", slug: "wf-first-meeting", e: "🤝" },
       { t: "Kitchen Blueprint Pack", href: "pages/workflow/wf-blueprint.html", slug: "wf-blueprint", e: "📐" },
+      { t: "Blueprint Approval", href: "pages/workflow/wf-approval.html", slug: "wf-approval", e: "✅" },
       { t: "Operations Pack", href: "pages/workflow/wf-operations.html", slug: "wf-operations", e: "👨‍🍳" },
       { t: "Financial Pack", href: "pages/workflow/wf-financials.html", slug: "wf-financials", e: "💹" },
       { t: "JR-Tech Pack & Handover", href: "pages/workflow/wf-jrtech.html", slug: "wf-jrtech", e: "📦" },

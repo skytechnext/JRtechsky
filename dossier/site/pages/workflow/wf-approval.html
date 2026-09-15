@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Approval — three decision-makers sign before anything is built — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+<style>
+/* approval-page specifics */
+.approver { border-top: 4px solid var(--jr-blue); }
+.approver.chef { border-top-color: var(--warn); }
+.approver.jrt { border-top-color: var(--tn-accent); }
+.approver .who { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--jr-slate); font-weight: 700; margin-bottom: 4px; }
+.approver ul { padding-left: 18px; margin: 8px 0 12px; }
+.approver li { margin-bottom: 5px; font-size: 14px; }
+.means { background: var(--jr-mist); border-radius: 10px; padding: 10px 14px; font-size: 13.5px; }
+.means b { color: var(--jr-navy); }
+table.tbl td .tag { min-width: 26px; text-align: center; }
+.legend { font-size: 12.5px; color: var(--jr-slate); margin-top: 10px; }
+.legend .tag { margin-right: 4px; }
+.sigmini { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 18px; }
+@media (max-width: 820px) { .sigmini { grid-template-columns: 1fr 1fr; } }
+.sigmini .blk { border-top: 2px solid var(--jr-navy); padding-top: 8px; font-size: 12.5px; color: var(--jr-slate); }
+.sigmini .blk b { display: block; color: var(--jr-navy); font-size: 13px; }
+.sigmini .blk .line { margin-top: 30px; border-bottom: 1px solid #9FB0C8; }
+.sigmini .blk .lbl { font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; }
+</style>
+</head>
+<body data-page="wf-approval">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Kitchen Workflow</b> · Blueprint Approval</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Kitchen Workflow — JR-Tech Method · Approval Gate</span>
+      <h1>Blueprint Approval — three decision-makers sign before anything is built</h1>
+      <p>No sheet of stainless is cut and no first-fix point is drilled until the Kitchen Blueprint
+      Pack carries three approvals: the <b>restaurant owner</b>, the <b>head chef</b>, and
+      <b>JR-Tech's staff together with the appointed contractors</b>. Each signs for what only they
+      can judge — the commercial decision, the cooking workflow, and buildability — and the fully
+      signed revision becomes the construction issue that releases fabrication. Worked example
+      continues with <b>Restoran Selat 88</b>, 120 seats, 82 m² kitchen.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="grid g4">
+          <div class="kpi"><div class="num">3</div><div class="lbl">approving parties on every blueprint revision — owner · head chef · JR-Tech &amp; contractors</div></div>
+          <div class="kpi"><div class="num">5</div><div class="lbl">working days, maximum, from Rev A issue to the joint walkthrough</div></div>
+          <div class="kpi"><div class="num">48 h</div><div class="lbl">to re-issue the revised pack after one consolidated markup set</div></div>
+          <div class="kpi"><div class="num">0</div><div class="lbl">fabrication work orders released before all three signatures are in Odoo</div></div>
+        </div>
+      </section>
+
+      <section class="section" id="who">
+        <h2>1 · Who signs — and what each signature means</h2>
+        <p class="lead">An owner can sign for the money. But a kitchen the head chef cannot run gets
+        re-drawn after opening at ten times the cost, and a layout the contractor cannot set out
+        turns into hacked tiles and stale drawings. Three signatures move those arguments onto paper,
+        where a revision costs 48 hours instead of a closure week.</p>
+        <div class="grid g3">
+          <div class="card approver">
+            <div class="who">Approver 1</div>
+            <h3>Restaurant owner</h3>
+            <p>Signs for the <b>commercial decision</b>.</p>
+            <ul>
+              <li>Total budget, and the CAPEX-versus-rental split on each schedule line</li>
+              <li>Seating capacity and service style the layout actually delivers</li>
+              <li>Brand and guest experience — open kitchen, show elements, dining-room sightlines</li>
+              <li>Target opening date against the programme</li>
+              <li>Licence obligations and owner actions on the compliance checklist</li>
+            </ul>
+            <div class="means"><b>Signature means:</b> "Build this kitchen, at this budget, for this
+            opening date." Final say on budget, brand and scope. Cannot override a safety or statutory
+            item flagged by JR-Tech.</div>
+          </div>
+          <div class="card approver chef">
+            <div class="who">Approver 2</div>
+            <h3>Head chef</h3>
+            <p>Signs for the <b>cooking workflow</b> — the person who will run the line at 216
+            dishes an hour.</p>
+            <ul>
+              <li>Station sequence and one-way flow against the real menu: mise → fire → pass</li>
+              <li>Reach, clearance and working heights at every station; pass and expedite sightlines</li>
+              <li>Equipment class per dish — wok, steamer, fryer, grill, induction — and burner count at peak</li>
+              <li>Cold, dry and live storage volumes against par levels and delivery days</li>
+              <li>Dishwash loop, hand-wash and prep-sink positions for how the brigade actually moves</li>
+            </ul>
+            <div class="means"><b>Signature means:</b> "My brigade can cook this menu on this line
+            at full house." Final say on station workflow and equipment mix within the approved
+            budget. If no head chef is appointed yet, the owner names a chef designate at the first
+            meeting; JR-Tech's consulting chef reviews as stand-in and the appointed head chef
+            re-confirms before construction issue.</div>
+          </div>
+          <div class="card approver jrt">
+            <div class="who">Approver 3</div>
+            <h3>JR-Tech staff &amp; contractors</h3>
+            <p>Sign for <b>buildability, safety and compliance</b> — JR-Tech's design engineer and
+            M&amp;E supervisor, with the owner's appointed renovation, M&amp;E and licensed gas
+            contractors.</p>
+            <ul>
+              <li>Clearances, hood capture and make-up air, connected loads and diversity, drainage falls</li>
+              <li>Point schedule matches the site survey — DB capacity, supply upgrade, cable and pipe routes</li>
+              <li>Fabrication feasibility — panel sizes through the delivery route, site assembly, finishes</li>
+              <li>Setting-out on the real slab; floor falls, grease-trap position, LPG cage and interlock</li>
+              <li>MBPP, BOMBA, DOSH and Suruhanjaya Tenaga requirements met on the drawings</li>
+            </ul>
+            <div class="means"><b>Signature means:</b> "First-fix and fabrication can proceed from
+            this drawing set without site improvisation." Final say on safety, statutory compliance and
+            buildability — a JR-Tech safety veto is never overridden by budget or preference.</div>
+          </div>
+        </div>
+        <div class="callout tn"><b>The rule of the gate:</b> all three, every revision. A pack with
+        two signatures is a draft. Partial approvals are not accepted either — the equipment schedule
+        is not frozen while the layout is still open, because a moved fryer changes the hood length,
+        the gas run and the budget together.</div>
+      </section>
+
+      <section class="section" id="matrix">
+        <h2>2 · Approval matrix — who approves each sheet of the pack</h2>
+        <p class="lead">Each party approves what sits inside their expertise and reviews the rest.
+        Nobody is asked to certify another's judgement: the owner does not sign for gas interlocks,
+        the contractor does not sign for menu fit. Sheet numbers follow the
+        <a href="sample-blueprint.html">AGL sample pack</a>.</p>
+        <div style="overflow-x:auto">
+        <table class="tbl">
+          <tr><th>Blueprint component</th><th>Restaurant owner</th><th>Head chef</th><th>JR-Tech staff</th><th>Contractors</th><th>What is frozen on approval</th></tr>
+          <tr><td><b>Zoned floorplan &amp; one-way flow</b> (Sheet 3)</td><td><span class="tag green">A</span></td><td><span class="tag green">A</span></td><td><span class="tag green">A</span></td><td><span class="tag">R</span></td><td>Zone boundaries, circulation, door and pass positions</td></tr>
+          <tr><td><b>Equipment schedule &amp; indicative budget</b> (Sheet 4)</td><td><span class="tag green">A</span></td><td><span class="tag green">A</span></td><td><span class="tag green">A</span></td><td>I</td><td>Make/model class, quantities, grid positions, CAPEX-vs-rental lines</td></tr>
+          <tr><td><b>Electrical &amp; drainage point schedule, load summary</b> (Sheet 5)</td><td><span class="tag">R</span></td><td>I</td><td><span class="tag green">A</span></td><td><span class="tag green">A</span></td><td>Point IDs, ratings, circuits, falls, grease-trap position, incoming supply</td></tr>
+          <tr><td><b>Ventilation, exhaust &amp; LPG design</b> (Sheet 6)</td><td>I</td><td><span class="tag">R</span></td><td><span class="tag green">A</span></td><td><span class="tag green">A</span></td><td>Hood size and duct route, make-up air, cylinder bank, gas–fan interlock</td></tr>
+          <tr><td><b>Compliance checklist &amp; licence pathway</b> (Sheet 6)</td><td><span class="tag green">A</span></td><td><span class="tag">R</span></td><td><span class="tag green">A</span></td><td>I</td><td>Authority submissions, owner actions, evidence set per licence</td></tr>
+          <tr><td><b>Fabrication shop drawings</b> (stainless items)</td><td>I</td><td><span class="tag">R</span></td><td><span class="tag green">A</span></td><td>I</td><td>Bench heights, sink bowls, shelf positions, finishes, panel sizes</td></tr>
+          <tr><td><b>Construction issue</b> (Sheet 7 — the frozen set)</td><td><span class="tag green">A</span></td><td><span class="tag green">A</span></td><td><span class="tag green">A</span></td><td><span class="tag green">A</span></td><td>The whole pack; any later change is a new revision through the same gate</td></tr>
+        </table>
+        </div>
+        <div class="legend"><span class="tag green">A</span> approves and signs &nbsp;·&nbsp;
+          <span class="tag">R</span> reviews and marks up before the set is signed &nbsp;·&nbsp;
+          <b>I</b> informed — receives the sheet, no signature required</div>
+      </section>
+
+      <section class="section" id="sequence">
+        <h2>3 · The approval sequence — parallel reviews, one walkthrough, one markup set</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <ol class="steps">
+              <li><b>Day 0 — Rev A issued.</b> PDF, DWG and XLSX land in the shared Odoo project;
+              each approver receives a portal invitation and a review checklist written for their lens.</li>
+              <li><b>Days 1–3 — Parallel reviews.</b> The owner reviews with the
+              <a href="wf-financials.html">Financial Pack</a> open. The head chef walks the plan station
+              by station — taped out on the actual floor where the premises is accessible. JR-Tech runs
+              the engineering check; the contractors confirm setting-out, DB capacity and drainage runs
+              against the site they will build on.</li>
+              <li><b>Day 4 — Joint walkthrough, 60 minutes.</b> All three parties in one room or one
+              call, producing one consolidated markup set. No parallel WhatsApp threads. Disagreements
+              are settled by the decision rules in section 4 and recorded with the markup.</li>
+              <li><b>Within 48 hours — Rev B.</b> The engine re-flows layout, schedules, loads and
+              budget from the single model; the change log lists every markup and how it was resolved.</li>
+              <li><b>Signatures.</b> Owner, head chef, and JR-Tech with the contractors sign Rev B in
+              Odoo Sign. The signed revision is the construction issue; fabrication work orders and the
+              first-fix checklist release the same day. A second markup round, if needed, repeats steps
+              3–5 and is included in the pack price.</li>
+            </ol>
+          </div>
+          <div class="card pad-lg">
+            <div class="mermaid">
+flowchart TD
+  A["Rev A issued<br/>PDF + DWG + XLSX in the Odoo portal"] --> R1["Owner review<br/>budget · brand · date"]
+  A --> R2["Head chef walk-through<br/>menu → stations → pass"]
+  A --> R3["JR-Tech engineering check<br/>loads · clearances · fabrication"]
+  A --> R4["Contractor buildability check<br/>setting-out · DB · drainage · LPG"]
+  R1 --> W["Joint walkthrough, 60 min<br/>one consolidated markup set"]
+  R2 --> W
+  R3 --> W
+  R4 --> W
+  W -- "markups" --> B["Rev B re-issued<br/>within 48 hours"]
+  B --> S{"Three signatures<br/>in Odoo Sign?"}
+  S -- "any missing" --> W
+  S -- "all signed" --> C["Construction issue<br/>frozen drawing set"]
+  C --> F["Fabrication work orders + first-fix checklist<br/>released in Odoo"]
+  style S fill:#fff8e6,stroke:#b8860b
+  style C fill:#e8f8f3,stroke:#16C098
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="rules">
+        <h2>4 · Decision rules when approvers disagree</h2>
+        <p class="lead">Three approvers will not always agree — that is the point of having three.
+        The rules below decide quickly and leave a record, so the walkthrough ends with a markup set,
+        not a stalemate.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <table class="tbl">
+              <tr><th>Typical conflict</th><th>Who decides</th><th>How it is recorded</th></tr>
+              <tr><td>Head chef wants a second steamer; owner wants the budget held</td><td><b>Owner</b> decides on money</td><td>Chef's request logged as Alternative B with its cost delta; the spare point stays on the drawing so it can be added later</td></tr>
+              <tr><td>Head chef wants the fryer beside the pass; JR-Tech says the hood run and gas run become non-compliant</td><td><b>JR-Tech</b> on safety or code; <b>owner</b> if it is only cost</td><td>Load and hood consequence written against the markup; compliant alternative offered in Rev B</td></tr>
+              <tr><td>Contractor reports the drainage fall cannot be achieved in the existing slab</td><td><b>Contractor's site fact</b> stands</td><td>JR-Tech re-flows drainage and grease-trap position; owner informed of any cost change before signing</td></tr>
+              <tr><td>Owner wants an open kitchen; head chef is concerned about heat and noise on the line</td><td><b>Owner</b> decides brand</td><td>JR-Tech prices the glass screen and hood options for the choice; chef's mitigation noted in the Operations Pack</td></tr>
+              <tr><td>Any MBPP, BOMBA, DOSH or Suruhanjaya Tenaga requirement</td><td><b>Non-negotiable</b></td><td>Nobody signs a set that fails the compliance checklist; the item is fixed in Rev B</td></tr>
+            </table>
+          </div>
+          <div class="card pad-lg">
+            <h3>Three principles behind the rules</h3>
+            <ol class="steps">
+              <li><b>Sign for your lens.</b> Each party signs for what they can judge — the owner for
+              the commercial decision, the head chef for the cooking workflow, JR-Tech and the
+              contractors for what can be built, certified and serviced.</li>
+              <li><b>One markup set, one revision.</b> Comments are consolidated at the walkthrough,
+              so the engine re-flows once and the change log is readable.</li>
+              <li><b>The signed set is frozen.</b> A change after construction issue is a new revision
+              through the same three-party gate, priced transparently — never a verbal instruction on
+              site.</li>
+            </ol>
+            <div class="chartbox" style="margin-top:14px"><canvas id="changeCostChart" height="220"></canvas></div>
+            <p style="font-size:12.5px;color:var(--jr-slate);margin-top:8px">Illustrative: moving the twin-tank
+            fryer (E11) 1.2 m along Selat 88's hot line. At the review stage it is a re-generation inside
+            the 48-hour re-issue; after opening it is two closure days at a normal-day revenue of about
+            RM 14k plus the works.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="odoo">
+        <h2>5 · How the gate runs in Odoo</h2>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <table class="tbl">
+              <tr><th>Step</th><th>Odoo mechanism</th></tr>
+              <tr><td>Approver register</td><td>Contacts on the CRM lead tagged by role — Owner, Head chef, JR-Tech design lead, JR-Tech M&amp;E supervisor, Contractor (renovation / M&amp;E / LPG). Captured at the <a href="wf-first-meeting.html">first meeting</a>; the engine will not issue Rev A without all three groups named.</td></tr>
+              <tr><td>Review tasks</td><td>Issuing Rev A creates one review task per approver in the shared project, each with its lens-specific checklist and a due date that sets the 5-day clock.</td></tr>
+              <tr><td>Markups</td><td>Logged as tasks on the revision, consolidated at the walkthrough; each carries its decision-rule outcome.</td></tr>
+              <tr><td>Approval</td><td>An Approvals request "Blueprint Rev x — construction issue" requiring <i>every</i> approver group; one rejection re-opens the revision.</td></tr>
+              <tr><td>Signatures</td><td>Odoo Sign template with four signature roles — owner, head chef, JR-Tech, contractors — timestamped on completion.</td></tr>
+              <tr><td>Release gate</td><td>An automated action keeps manufacturing orders and the Field Service first-fix checklist blocked until the Approvals record is approved and the Sign request is complete. The signed DWG/PDF set is locked in Documents; superseded revisions are archived, never deleted.</td></tr>
+            </table>
+          </div>
+          <div class="card pad-lg">
+            <h3>What the signature block looks like</h3>
+            <p>Sheet 7 of every blueprint pack ends with four signature blocks — one per decision-maker,
+            with the contractors countersigning as one party. The full block appears on the
+            <a href="sample-blueprint.html#acceptance">AGL sample — Sheet 7</a>.</p>
+            <div class="sigmini">
+              <div class="blk"><b>For the Owner</b>Proprietor / director<div class="line"></div><div class="lbl">Name &amp; signature · date</div></div>
+              <div class="blk"><b>For the Head Chef</b>Kitchen lead or chef designate<div class="line"></div><div class="lbl">Name &amp; signature · date</div></div>
+              <div class="blk"><b>For JR-Tech Solution Sdn Bhd</b>Project director &amp; M&amp;E supervisor<div class="line"></div><div class="lbl">Name &amp; signature · date</div></div>
+              <div class="blk"><b>For the appointed contractors</b>Renovation · M&amp;E · LPG<div class="line"></div><div class="lbl">Company, name &amp; signature · date</div></div>
+            </div>
+            <div class="callout" style="margin-top:18px"><b>Evidence set:</b> the timestamped approvals
+            and signatures are the record MBPP and BOMBA submissions cite, and the record JR-Tech
+            points to if a site instruction later contradicts the drawings.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>So what for the Odoo build</h2>
+        <p>The approval gate is three standard apps wired together — <b>Approvals</b> for the
+        multi-party decision, <b>Sign</b> for the construction-issue signatures, and a
+        <b>Project</b> automation that holds manufacturing orders and the first-fix checklist until
+        both are complete. It costs nothing in bespoke development and removes the most expensive
+        failure in kitchen fit-out: building from a drawing somebody never agreed to. Scoped in the
+        <a href="../../tools/brd.html">Requirements (BRD)</a>; the fabrication and installation flow
+        it releases is in <a href="../operations/dept-workflows.html">Department Workflows</a>.</p>
+      </section>
+
+      <div class="pagenav">
+        <a href="wf-blueprint.html">&larr; Kitchen Blueprint Pack</a>
+        <a href="wf-operations.html">Operations Pack &rarr;</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd. Restoran Selat 88 is an illustrative worked example.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('changeCostChart'), {
+  type: 'bar',
+  data: {
+    labels: ['At blueprint review', 'After fabrication release', 'After M&E first-fix', 'After opening'],
+    datasets: [{ label: 'Cost of the same change (RM)', data: [0, 4800, 12500, 38000],
+      backgroundColor: ['#16C098', '#7FA9DE', '#E8A13A', '#E2544B'], borderRadius: 6 }]
+  },
+  options: {
+    plugins: { legend: { display: false }, title: { display: true, text: 'Illustrative: moving one fryer 1.2 m — cost by the stage it is decided at (RM)' } },
+    scales: { y: { beginAtZero: true, ticks: { callback: v => 'RM ' + v.toLocaleString() } } }
+  }
+});
+</script>
+</body>
+</html>
