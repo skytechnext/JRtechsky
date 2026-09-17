@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Harness — Run the JR-Tech Method · JR-Tech × TechNext</title>
+<script>window.SITE_ROOT="../";</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  /* page-scoped: harness graph + stage cards + per-client loop tracker */
+  .hgraph{border:1px solid var(--jr-line);border-radius:14px;background:#fff;padding:14px;box-shadow:var(--shadow-sm)}
+  .hgraph svg{width:100%;height:auto;display:block}
+  .hnode{cursor:pointer}
+  .hnode rect{transition:filter .2s ease}
+  .hnode:hover rect{filter:brightness(1.12)}
+  .stage{border:1px solid var(--jr-line);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm);
+    margin:18px 0;overflow:hidden}
+  .stage>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px}
+  .stage>summary::-webkit-details-marker{display:none}
+  .stage .no{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    font-weight:900;color:#fff;flex:none;font-size:15px}
+  .stage .ttl{font-weight:800;font-size:16.5px}
+  .stage .who{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--jr-slate);text-align:right;line-height:1.4}
+  .stage .body{padding:0 20px 20px;border-top:1px solid var(--jr-line)}
+  .io{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  @media(max-width:800px){.io{grid-template-columns:1fr}}
+  .iobox{background:var(--jr-mist);border:1px solid var(--jr-line);border-radius:10px;padding:12px 14px;font-size:13px}
+  .iobox b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--jr-slate);margin-bottom:6px}
+  .iobox ul{margin:0;padding-left:16px}
+  .prompt{position:relative;background:#0D1117;border:1px solid #263041;border-radius:10px;margin:12px 0}
+  .prompt pre{margin:0;color:#B9E3C6;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;
+    line-height:1.65;padding:14px 16px;white-space:pre-wrap;max-height:280px;overflow:auto}
+  .copybtn{position:absolute;top:8px;right:8px;background:#1E2A3D;color:#9FB4D0;border:1px solid #33445E;
+    border-radius:7px;padding:5px 12px;font-size:11.5px;font-weight:700;cursor:pointer}
+  .copybtn:hover{background:var(--jr-blue-700);color:#fff}
+  .done ul{list-style:none;margin:6px 0 0;padding:0}
+  .done li{padding:4px 0 4px 24px;position:relative;font-size:13px}
+  .done li::before{content:"☑";position:absolute;left:0;color:var(--tn-accent);font-weight:900}
+  .sla{font-size:11.5px;font-weight:800;color:#0E8E6E;background:#E4F8F0;border-radius:999px;padding:4px 11px}
+  /* loop tracker */
+  .tracker{border:1px solid var(--jr-line);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm);padding:22px}
+  .tracker input[type=text]{padding:9px 12px;border:1px solid var(--jr-line);border-radius:9px;font-size:14px;min-width:240px}
+  .tracker .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+  .tracker button{background:var(--jr-navy);color:#fff;border:none;border-radius:9px;padding:9px 16px;
+    font-weight:800;font-size:13px;cursor:pointer}
+  .tracker button.ghost{background:#fff;color:var(--jr-slate);border:1px solid var(--jr-line)}
+  .tk-stage{margin:10px 0;border:1px solid var(--jr-line);border-radius:10px;padding:12px 14px}
+  .tk-stage h4{margin:0 0 8px;font-size:13.5px}
+  .tk-stage label{display:flex;gap:9px;align-items:flex-start;font-size:13px;padding:3px 0;cursor:pointer}
+  .tk-stage input{margin-top:3px}
+  .tk-stage label.on{color:#8a97a8;text-decoration:line-through}
+  #progressWrap{background:#EDF2F9;border-radius:20px;height:22px;overflow:hidden;margin:10px 0 4px}
+  #progressFill{height:100%;background:linear-gradient(90deg,var(--jr-blue),var(--tn-accent));width:0;
+    color:#fff;font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:flex-end;
+    padding-right:9px;transition:width .3s ease;border-radius:20px}
+  @media print{.copybtn,.tracker button{display:none}}
+</style>
+</head>
+<body data-page="team-harness">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Team Harness</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Internal · Team Operating System · v1.0</span>
+      <h1>The JR-Tech Method as a harness — a graph your team can run.</h1>
+      <p>Everything proven on Auntie Gaik Lean, turned into a repeatable machine: eight stages, each one a
+      <b>skill</b> with an owner, inputs, outputs, done-criteria and a copy-paste AI prompt. Run a new client
+      through the loop, tick the tracker, and the flywheel feeds the next client.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <!-- THE GRAPH -->
+      <section class="section">
+        <h2>1 · The graph — one client, end to end</h2>
+        <p class="lead">Click any node to jump to its skill card. Solid arrows are the main path; the dashed
+        return edge is the flywheel — a maintained kitchen generates referrals, resupply and the next lead.</p>
+        <div class="hgraph">
+          <svg viewBox="0 0 1040 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif">
+            <defs>
+              <marker id="ga" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" fill="#5A6B82"/></marker>
+              <marker id="gt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" fill="#16C098"/></marker>
+            </defs>
+            <!-- top row S1-S4 -->
+            <g class="hnode" onclick="jump('s1')"><rect x="15"  y="60" width="150" height="64" rx="12" fill="#7FA9DE"/>
+              <text x="90" y="86" text-anchor="middle" font-size="13" font-weight="800" fill="#0B1F3A">S1 · LEAD INTAKE</text>
+              <text x="90" y="104" text-anchor="middle" font-size="10" fill="#0B1F3A">CRM · qualify · book</text></g>
+            <g class="hnode" onclick="jump('s2')"><rect x="205" y="60" width="150" height="64" rx="12" fill="#3F6FB0"/>
+              <text x="280" y="86" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">S2 · FIRST MEETING</text>
+              <text x="280" y="104" text-anchor="middle" font-size="10" fill="#DCE8F7">4 inputs captured</text></g>
+            <g class="hnode" onclick="jump('s3')"><rect x="395" y="60" width="150" height="64" rx="12" fill="#0B1F3A"/>
+              <text x="470" y="86" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">S3 · AI ENGINE</text>
+              <text x="470" y="104" text-anchor="middle" font-size="10" fill="#9FB4D0">4 packs generated</text></g>
+            <g class="hnode" onclick="jump('s4')"><rect x="585" y="60" width="150" height="64" rx="12" fill="#E8A13A"/>
+              <text x="660" y="86" text-anchor="middle" font-size="13" font-weight="800" fill="#3a2a05">S4 · HUMAN QA</text>
+              <text x="660" y="104" text-anchor="middle" font-size="10" fill="#3a2a05">reconcile · site-check</text></g>
+            <g class="hnode" onclick="jump('s5')"><rect x="775" y="60" width="150" height="64" rx="12" fill="#7030A0"/>
+              <text x="850" y="86" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">S5 · PROPOSAL</text>
+              <text x="850" y="104" text-anchor="middle" font-size="10" fill="#E4CCFF">binder + quote + pitch</text></g>
+            <!-- bottom row S6-S8 -->
+            <g class="hnode" onclick="jump('s6')"><rect x="775" y="190" width="150" height="64" rx="12" fill="#16C098"/>
+              <text x="850" y="216" text-anchor="middle" font-size="13" font-weight="800" fill="#053a2e">S6 · SIGN + DAY-0</text>
+              <text x="850" y="234" text-anchor="middle" font-size="10" fill="#053a2e">Odoo auto-kickoff</text></g>
+            <g class="hnode" onclick="jump('s7')"><rect x="585" y="190" width="150" height="64" rx="12" fill="#0E8E6E"/>
+              <text x="660" y="216" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">S7 · DELIVER</text>
+              <text x="660" y="234" text-anchor="middle" font-size="10" fill="#D9F6EC">fabricate · install</text></g>
+            <g class="hnode" onclick="jump('s8')"><rect x="395" y="190" width="150" height="64" rx="12" fill="#145A43"/>
+              <text x="470" y="216" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">S8 · MAINTAIN LOOP</text>
+              <text x="470" y="234" text-anchor="middle" font-size="10" fill="#BCE9DA">PM · chemicals · IoT</text></g>
+            <!-- edges -->
+            <line x1="165" y1="92" x2="203" y2="92" stroke="#5A6B82" stroke-width="2.4" marker-end="url(#ga)"/>
+            <line x1="355" y1="92" x2="393" y2="92" stroke="#5A6B82" stroke-width="2.4" marker-end="url(#ga)"/>
+            <line x1="545" y1="92" x2="583" y2="92" stroke="#5A6B82" stroke-width="2.4" marker-end="url(#ga)"/>
+            <line x1="735" y1="92" x2="773" y2="92" stroke="#5A6B82" stroke-width="2.4" marker-end="url(#ga)"/>
+            <line x1="850" y1="124" x2="850" y2="188" stroke="#5A6B82" stroke-width="2.4" marker-end="url(#ga)"/>
+            <line x1="773" y1="222" x2="737" y2="222" stroke="#5A6B82" stroke-width="2.4" marker-end="url(#ga)"/>
+            <line x1="583" y1="222" x2="547" y2="222" stroke="#5A6B82" stroke-width="2.4" marker-end="url(#ga)"/>
+            <!-- QA revision loop back to engine -->
+            <path d="M 660 60 C 660 28 470 28 470 58" fill="none" stroke="#E8A13A" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ga)"/>
+            <text x="565" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#B5781A">revise (≤48 h re-issue)</text>
+            <!-- flywheel back to intake -->
+            <path d="M 395 222 C 200 222 90 210 90 126" fill="none" stroke="#16C098" stroke-width="2.6" stroke-dasharray="7 5" marker-end="url(#gt)"/>
+            <text x="205" y="200" text-anchor="middle" font-size="10.5" font-weight="800" fill="#0E8E6E">FLYWHEEL: referrals · resupply · upgrades → next lead</text>
+          </svg>
+        </div>
+        <div class="grid g4" style="margin-top:16px">
+          <div class="kpi"><div class="num">8</div><div class="lbl">stages, each a self-contained skill with an owner</div></div>
+          <div class="kpi"><div class="num">72 h</div><div class="lbl">meeting → full 4-pack draft (S2→S3 SLA)</div></div>
+          <div class="kpi"><div class="num">Day 0</div><div class="lbl">signature triggers execution automatically in Odoo</div></div>
+          <div class="kpi"><div class="num">∞</div><div class="lbl">the maintain-loop feeds the next client — that's the moat</div></div>
+        </div>
+      </section>
+
+      <!-- SKILL CARDS -->
+      <section class="section">
+        <h2>2 · The skills — how each node runs</h2>
+        <p class="lead">Each card is the full recipe: who owns it, what goes in, what must come out, the AI prompt
+        to run it (copy → paste into Claude with the client's files), and the done-criteria that gate the next
+        stage. Templates live in the dossier; every artifact is filed in the client's Odoo project.</p>
+
+        <details class="stage" id="s1" open><summary><span class="no" style="background:#7FA9DE">S1</span>
+          <span class="ttl">Lead Intake &amp; Qualification</span><span class="sla">SLA · same day</span>
+          <span class="who">Owner: Sales<br>Tool: Odoo CRM</span></summary>
+          <div class="body">
+            <div class="io">
+              <div class="iobox"><b>Inputs</b><ul><li>Enquiry (call / WhatsApp / referral / site form)</li><li>Basic facts: venue, seats, cuisine, budget band, opening date</li></ul></div>
+              <div class="iobox"><b>Outputs</b><ul><li>Odoo CRM opportunity with qualification score</li><li>First Meeting booked with checklist sent to client</li></ul></div>
+            </div>
+            <div class="prompt"><button class="copybtn" onclick="cp(this)">Copy prompt</button><pre>You are JR-Tech's sales qualifier. From this enquiry, draft:
+1) A CRM summary: venue, seats, cuisine, location, budget band, timeline, decision-maker.
+2) A qualification score (A/B/C) with reasoning: A = &gt;RM100k potential + owner engaged.
+3) A WhatsApp reply (warm, Malaysian-English tone) booking a 90-minute First Meeting and
+   listing what to prepare: floor plans, menu, their wish list. Mention the site inspection
+   we will do on the same visit.
+Enquiry: [PASTE ENQUIRY]</pre></div>
+            <div class="done"><b style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--jr-slate)">Done when</b>
+              <ul><li>Opportunity in Odoo CRM with score + expected revenue</li><li>Meeting date confirmed; client told what to bring</li></ul></div>
+          </div>
+        </details>
+
+        <details class="stage" id="s2"><summary><span class="no" style="background:#3F6FB0">S2</span>
+          <span class="ttl">The First Meeting — capture the 4 inputs</span><span class="sla">SLA · 90 min + same-day upload</span>
+          <span class="who">Owner: Consultant + Technician<br>Guide: <a href="../pages/workflow/wf-first-meeting.html">First Meeting page</a></span></summary>
+          <div class="body">
+            <div class="io">
+              <div class="iobox"><b>Inputs (capture all 4)</b><ul><li>Kitchen floor plans (photo/PDF/DWG)</li><li>Menu (or intended menu)</li><li>Owner's requests: budget, capacity, date, vision</li><li>Site-inspection notes: supply phase &amp; amperage, water pressure, drainage falls, exhaust route, floor loading, delivery access</li></ul></div>
+              <div class="iobox"><b>Outputs</b><ul><li>All 4 inputs uploaded to the Odoo project (Documents)</li><li>Completeness scorecard ≥ 90% (else schedule re-visit)</li></ul></div>
+            </div>
+            <div class="prompt"><button class="copybtn" onclick="cp(this)">Copy prompt</button><pre>You are JR-Tech's meeting scribe. From my rough notes + photos, produce:
+1) A structured capture document with the 4 input sections (floor plan facts, menu list,
+   owner requests, site-inspection readings) — flag anything missing or ambiguous.
+2) A completeness score /100 per section against the First Meeting checklist.
+3) Three clarification questions to WhatsApp the owner today.
+Notes and files: [ATTACH PHOTOS + NOTES]</pre></div>
+            <div class="done"><b style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--jr-slate)">Done when</b>
+              <ul><li>4 inputs filed in Odoo, completeness ≥90%</li><li>Open questions sent to owner</li></ul></div>
+          </div>
+        </details>
+
+        <details class="stage" id="s3"><summary><span class="no" style="background:#0B1F3A">S3</span>
+          <span class="ttl">AI Engine — generate the 4 packs</span><span class="sla">SLA · 72 h from meeting</span>
+          <span class="who">Owner: SKY / TechNext operator<br>Templates: AGL samples</span></summary>
+          <div class="body">
+            <p style="font-size:13.5px">Run four sub-skills in order — each mirrors an AGL sample document
+            (<a href="../pages/workflow/sample-blueprint.html">Blueprint</a> ·
+             <a href="../pages/workflow/sample-operations.html">Operations</a> ·
+             <a href="../pages/workflow/sample-financials.html">Financials</a> ·
+             <a href="../pages/workflow/sample-handover.html">Handover</a>). Numbers must reconcile across all four.</p>
+            <div class="prompt"><button class="copybtn" onclick="cp(this)">Copy prompt</button><pre>You are JR-Tech's kitchen-planning engine. Using the attached 4 inputs and following the
+structure of our AGL sample documents exactly (same sheets, same tables, same plan types):
+
+PACK A — Kitchen Blueprint: zoned floorplan with one-way food-safety flow; costed
+equipment schedule with per-item kW, electrical / water / drainage points; electrical +
+drainage point schedules and load summary with supply recommendation; ventilation and
+LPG design; MBPP / BOMBA compliance checklist.
+PACK B — Operations: menu engineering (dish costing + stars matrix); crew org and
+station duties sized to the seat count; SOP library; HACCP CCPs + Malaysian requirements
+(LPM food-handler, TY2); daily / weekly / monthly schedules; opening-crew training plan.
+PACK C — Financials: normal-day output model (covers x check, throughput vs the
+constraint station); monthly P&amp;L with electricity derived from the equipment loads;
+12-month ramp + break-even, 3 scenarios; savings vs a typical kitchen (electricity +
+labour) with a 5-year view; sensitivity + assumptions register.
+PACK D — JR-Tech Handover: phased delivery/installation plan + timeline gantt;
+maintenance programme with SLAs; JR-Tech account revenue (one-off + recurring);
+quotation with milestones; proposal binder contents; Day-0 signing automation map.
+
+Rules: one reconciled number set across all packs; every figure marked as modelled;
+Malaysian context (RM, SST, TNB tariff, MBPP). Ask before assuming anything material.
+Inputs: [ATTACH THE 4 CAPTURE DOCS]</pre></div>
+            <div class="done"><b style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--jr-slate)">Done when</b>
+              <ul><li>4 packs drafted in the client's folder</li><li>Cross-pack numbers reconcile (investment, recurring, covers, kW)</li></ul></div>
+          </div>
+        </details>
+
+        <details class="stage" id="s4"><summary><span class="no" style="background:#E8A13A">S4</span>
+          <span class="ttl">Human QA &amp; site-truth check</span><span class="sla">SLA · 24 h</span>
+          <span class="who">Owner: Senior engineer + SKY<br>Loop: revise ≤48 h</span></summary>
+          <div class="body">
+            <div class="io">
+              <div class="iobox"><b>Check</b><ul><li>Loads vs actual supply; drainage falls physically possible</li><li>Equipment fits through the delivery access</li><li>Menu ↔ equipment dependency sanity</li><li>Pricing vs current supplier quotes; margin floor respected</li></ul></div>
+              <div class="iobox"><b>Outputs</b><ul><li>Red-line comments → engine re-run (dashed loop on the graph)</li><li>QA sign-off recorded in Odoo activity</li></ul></div>
+            </div>
+            <div class="done"><b style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--jr-slate)">Done when</b>
+              <ul><li>Engineer initials each pack</li><li>No open red-lines</li></ul></div>
+          </div>
+        </details>
+
+        <details class="stage" id="s5"><summary><span class="no" style="background:#7030A0">S5</span>
+          <span class="ttl">Proposal assembly &amp; the owner pitch</span><span class="sla">SLA · 24 h</span>
+          <span class="who">Owner: Sales + SKY<br>Assets: <a href="quotation.html">Quotation</a> · <a href="../pages/technology/why-odoo.html">Pitch</a></span></summary>
+          <div class="body">
+            <div class="prompt"><button class="copybtn" onclick="cp(this)">Copy prompt</button><pre>Assemble the client proposal binder from the 4 QA-approved packs:
+1) Cover letter in the owner-to-owner voice (see The Pitch) — 1 page, their numbers.
+2) Binder contents page (numbered, PDF/DWG/Odoo formats).
+3) Export all packs to PDF with the SAMPLE ribbon replaced by the client's project ref.
+4) A 10-slide walkthrough for the pitch meeting: their kitchen, their savings,
+   their timeline, the quote, and the one-hour demo offer.
+Client: [NAME] · Project ref: [JRT-YYYY-XXX-01]</pre></div>
+            <div class="done"><b style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--jr-slate)">Done when</b>
+              <ul><li>Binder PDFs issued under the client's ref</li><li>Pitch meeting booked; quotation in Odoo awaiting signature</li></ul></div>
+          </div>
+        </details>
+
+        <details class="stage" id="s6"><summary><span class="no" style="background:#16C098">S6</span>
+          <span class="ttl">Signature → Day-0 automation</span><span class="sla">Same day</span>
+          <span class="who">Owner: Odoo (automatic)<br>Spec: <a href="../pages/workflow/wf-jrtech.html">Handover pack §6</a></span></summary>
+          <div class="body">
+            <p style="font-size:13.5px">Odoo Sign confirms the order and fires the kickoff chain automatically:
+            project + task plan, fabrication MOs to the workshop, brand POs, delivery schedule, maintenance
+            contract + chemical subscription activated, milestone invoice issued. Because all planning happened
+            before signing, <b>execution starts the same day — zero re-work</b>.</p>
+            <div class="done"><b style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--jr-slate)">Done when</b>
+              <ul><li>All Day-0 records exist in Odoo</li><li>Deposit invoice sent; workshop clock started</li></ul></div>
+          </div>
+        </details>
+
+        <details class="stage" id="s7"><summary><span class="no" style="background:#0E8E6E">S7</span>
+          <span class="ttl">Deliver — fabricate, install, commission, train</span><span class="sla">Per gantt (typ. 7–9 wks)</span>
+          <span class="who">Owner: Project lead + workshop + field crew</span></summary>
+          <div class="body">
+            <div class="io">
+              <div class="iobox"><b>Run</b><ul><li>M&amp;E first fix per point schedules</li><li>Workshop fabrication in parallel</li><li>Delivery per access plan; install; gas/electrical test</li><li>Commissioning + staff training week</li></ul></div>
+              <div class="iobox"><b>Outputs</b><ul><li>Handover certificate signed</li><li>As-built drawings filed; warranty clocks started in Odoo</li></ul></div>
+            </div>
+            <div class="done"><b style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--jr-slate)">Done when</b>
+              <ul><li>Owner signs handover; kitchen serving</li><li>Final milestone invoiced</li></ul></div>
+          </div>
+        </details>
+
+        <details class="stage" id="s8"><summary><span class="no" style="background:#145A43">S8</span>
+          <span class="ttl">Maintain-loop — the flywheel</span><span class="sla">Forever</span>
+          <span class="who">Owner: Service team + drivers<br>Linked: <a href="../pages/operations/driver-incentive.html">Driver incentive</a></span></summary>
+          <div class="body">
+            <p style="font-size:13.5px">Monthly PM visits (Field Service work orders), chemical auto-resupply
+            (Subscriptions + the pail-credit driver scheme), grease-trap service, and — later — IoT telemetry.
+            Every visit is a touchpoint: log condition photos, capture upgrade opportunities and referrals
+            straight into CRM. <b>The dashed green edge on the graph is the business model:</b> a maintained
+            kitchen produces the next lead.</p>
+            <div class="prompt"><button class="copybtn" onclick="cp(this)">Copy prompt</button><pre>Monthly account review for [CLIENT]: from the Odoo service history and subscription
+data, summarise: equipment health flags, chemical usage trend vs plan, any SLA misses,
+one upsell opportunity (with RM estimate), and whether the owner is referral-ready.
+Draft the WhatsApp check-in message to the owner.</pre></div>
+            <div class="done"><b style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--jr-slate)">Done when (monthly)</b>
+              <ul><li>PM visit closed; resupply on schedule</li><li>Account review logged; any lead pushed to S1</li></ul></div>
+          </div>
+        </details>
+      </section>
+
+      <!-- LOOP TRACKER -->
+      <section class="section">
+        <h2>3 · The loop tracker — run a client through it</h2>
+        <p class="lead">Type a client name and work the checklist. Progress is saved in this browser per client,
+        so each teammate can track the runs they own. (Team-wide state lives in Odoo — this is your personal
+        cockpit.)</p>
+        <div class="tracker">
+          <div class="row">
+            <input type="text" id="clientName" placeholder="Client name — e.g. Restoran Selat 88" list="clientList">
+            <datalist id="clientList"></datalist>
+            <button onclick="loadClient()">Load / start</button>
+            <button class="ghost" onclick="resetClient()">Reset this client</button>
+            <span id="tkStatus" style="font-size:12.5px;color:var(--jr-slate)"></span>
+          </div>
+          <div id="progressWrap"><div id="progressFill">0%</div></div>
+          <div id="tkStages"></div>
+        </div>
+      </section>
+
+      <div class="pagenav">
+        <a href="ai-build-playbook.html">&larr; AI Build Playbook</a>
+        <span></span>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Internal team harness for JR-Tech Solution Sdn Bhd. v1.0 —
+      proven on the AGL engagement; refine after every run.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>
+function jump(id){var el=document.getElementById(id); if(el){el.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}}
+function cp(btn){
+  var pre=btn.parentElement.querySelector('pre');
+  var t=pre.textContent;
+  var done=function(){btn.textContent='Copied ✓'; setTimeout(function(){btn.textContent='Copy prompt';},1600);};
+  if(navigator.clipboard && navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback();});}
+  else fallback();
+  function fallback(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+}
+/* ---- per-client loop tracker ---- */
+var STAGES=[
+ ["S1 · Lead intake",["Opportunity in CRM with A/B/C score","First Meeting booked; prep list sent"]],
+ ["S2 · First Meeting",["Floor plans captured","Menu captured","Owner requests captured","Site inspection recorded (phase/amps, water, drainage, exhaust, access)","Completeness ≥ 90%"]],
+ ["S3 · AI Engine",["Pack A Blueprint drafted","Pack B Operations drafted","Pack C Financials drafted","Pack D Handover drafted","Cross-pack numbers reconcile"]],
+ ["S4 · Human QA",["Engineer red-line review done","Revisions re-issued (≤48 h)","QA sign-off logged in Odoo"]],
+ ["S5 · Proposal",["Binder PDFs issued under client ref","Cover letter + pitch deck ready","Quotation in Odoo; pitch meeting booked"]],
+ ["S6 · Sign + Day-0",["Agreement signed in Odoo Sign","Day-0 chain fired (project, MOs, POs, contracts)","Deposit invoice sent"]],
+ ["S7 · Deliver",["M&E first fix done","Fabrication complete","Installed + tested","Commissioned; staff trained; handover signed"]],
+ ["S8 · Maintain loop",["Maintenance contract live","Chemical subscription live","First monthly review logged","Referral / upsell pushed to S1"]]
+];
+var KEY="jrHarness", cur=null;
+function store(){try{return JSON.parse(localStorage.getItem(KEY)||"{}");}catch(e){return {};}}
+function save(s){try{localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}}
+function slug(n){return n.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");}
+function refreshList(){var dl=document.getElementById('clientList');dl.innerHTML="";
+  Object.values(store()).forEach(function(c){var o=document.createElement('option');o.value=c.name;dl.appendChild(o);});}
+function loadClient(){
+  var name=document.getElementById('clientName').value.trim(); if(!name){return;}
+  cur=slug(name); var s=store();
+  if(!s[cur]) { s[cur]={name:name,ticks:{}}; save(s); }
+  render();
+}
+function resetClient(){ if(!cur) return; var s=store(); if(s[cur]){s[cur].ticks={};save(s);render();} }
+function tick(i,j,el){ if(!cur)return; var s=store(); s[cur].ticks[i+"-"+j]=el.checked; save(s);
+  el.parentElement.classList.toggle('on',el.checked); bar(); }
+function bar(){ var s=store(); var t=s[cur]?s[cur].ticks:{}; var total=0,on=0;
+  STAGES.forEach(function(st,i){st[1].forEach(function(_,j){total++;if(t[i+"-"+j])on++;});});
+  var pct=total?Math.round(on/total*100):0;
+  var f=document.getElementById('progressFill'); f.style.width=Math.max(pct,6)+"%"; f.textContent=pct+"%";
+  document.getElementById('tkStatus').textContent=s[cur]?("Tracking: "+s[cur].name+" · "+on+"/"+total+" done"):"";
+}
+function render(){
+  var s=store(); var t=s[cur]?s[cur].ticks:{};
+  var host=document.getElementById('tkStages'); host.innerHTML="";
+  STAGES.forEach(function(st,i){
+    var d=document.createElement('div'); d.className='tk-stage';
+    var h=document.createElement('h4'); h.textContent=st[0]; d.appendChild(h);
+    st[1].forEach(function(item,j){
+      var lab=document.createElement('label'); var cb=document.createElement('input'); cb.type='checkbox';
+      cb.checked=!!t[i+"-"+j]; if(cb.checked)lab.classList.add('on');
+      cb.onchange=function(){tick(i,j,cb);};
+      lab.appendChild(cb); lab.appendChild(document.createTextNode(item)); d.appendChild(lab);
+    });
+    host.appendChild(d);
+  });
+  bar(); refreshList();
+}
+refreshList();
+</script>
+</body>
+</html>

@@ -95,6 +95,7 @@
       { t: "Project Gantt", href: "tools/gantt.html", slug: "gantt", e: "🗓" },
       { t: "Odoo Platform", href: "tools/odoo-platform.html", slug: "odoo-platform", e: "⚓" },
       { t: "AI Build Playbook", href: "tools/ai-build-playbook.html", slug: "ai-build-playbook", e: "📘" },
+      { t: "Team Harness — Run the Method", href: "tools/team-harness.html", slug: "team-harness", e: "🧠" },
     ]},
     { group: "JR-Tech Properties", items: [
       { t: "Kitchen Estimator", href: "../../estimator/index.html", slug: "ext-estimator", e: "🍳", x: true },
