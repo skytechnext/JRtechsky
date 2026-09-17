@@ -43,7 +43,7 @@
 
         <table class="tbl">
           <tr><th>#</th><th>Phase</th><th>Duration</th><th>Crew</th><th>Prerequisites</th><th>Owner-side dependencies</th></tr>
-          <tr><td>1</td><td><b>Site prep &amp; M&amp;E first fix</b> — floor screed &amp; falls, drainage runs, grease-trap pit, power points per M&amp;E drawing, gas line stub</td><td>2 weeks</td><td>Owner's contractor + JR-Tech M&amp;E supervisor (2 site checks)</td><td>Signed blueprint pack; hoarding up</td><td>Contractor appointed; TNB supply upgrade to 100&nbsp;A 3-phase confirmed</td></tr>
+          <tr><td>1</td><td><b>Site prep &amp; M&amp;E first fix</b> — floor screed &amp; falls, drainage runs, grease-trap pit, power points per M&amp;E drawing, gas line stub</td><td>2 weeks</td><td>Owner's contractor + JR-Tech M&amp;E supervisor (2 site checks)</td><td>Blueprint pack at construction issue — signed by owner, head chef, JR-Tech &amp; contractors; hoarding up</td><td>Contractor appointed; TNB supply upgrade to 100&nbsp;A 3-phase confirmed</td></tr>
           <tr><td>2</td><td><b>Heavy equipment delivery</b> — chillers, steamers, induction ranges, dishwasher via rear corridor; staged per delivery order</td><td>2 days</td><td>4 JR-Tech riggers + 3-tonne lorry with tailgate</td><td>Phase 1 floor cured (7 days); corridor cleared</td><td>Building management delivery permit; lift/loading-bay booking</td></tr>
           <tr><td>3</td><td><b>Fabrication install</b> — stainless benches, sinks, shelving, hood, wall cladding from JR-Tech's in-house fabrication shop</td><td>2 weeks</td><td>3 fabricators + 1 welder</td><td>Phase 2 heavy items in final position</td><td>Ceiling works by owner's contractor completed</td></tr>
           <tr><td>4</td><td><b>Gas &amp; electrical connection, testing</b> — terminate all points, pressure-test gas line, earth-leakage tests, hood airflow balancing</td><td>4 days</td><td>Licensed chargeman + gas contractor + JR-Tech engineer</td><td>Phases 2–3 complete</td><td>Suruhanjaya Tenaga / gas certificate appointments</td></tr>
@@ -75,8 +75,9 @@ gantt
           </pre>
         </div>
         <div class="callout tn"><b>Why 9 weeks is credible:</b> workshop fabrication runs in
-        parallel with site prep from Day 0 — possible only because the blueprint pack was final
-        <i>before</i> signing. On a conventional flow, fabrication drawings start after deposit,
+        parallel with site prep from Day 0 — possible only because the blueprint pack was final — and
+        signed by all three decision-makers, <a href="wf-approval.html">owner, head chef, JR-Tech &amp;
+        contractors</a> — <i>before</i> signing. On a conventional flow, fabrication drawings start after deposit,
         adding 3–4 weeks.</div>
       </section>
 
@@ -236,6 +237,8 @@ flowchart TD
   SIGN[Odoo Sign - agreement e-signed] --> SO[Sales order confirmed - all 49 quote lines]
   SO --> PRJ[Project created - Selat 88 install<br>5 phases, tasks and dependencies preloaded]
   SO --> MO[Manufacturing orders - 19 fabrication items<br>BoMs from shop drawings]
+  BP[Blueprint construction issue<br>signed by owner, head chef, JR-Tech and contractors] --> MO
+  BP --> PRJ
   SO --> PO[Purchase orders to equipment brands<br>induction, refrigeration, dishwasher]
   SO --> INV1[Milestone invoice 1 - 30 percent deposit<br>MyInvois e-invoice issued]
   PRJ --> SCHED[Delivery schedule - rigging crew and lorry<br>booked to heavy-delivery date]
@@ -271,7 +274,8 @@ flowchart TD
           <tr><td>7</td><td>TNB tariff rises above RM 0.55/kWh</td><td><span class="tag warn">Medium</span></td><td>Low — strengthens savings case</td><td>Energy-efficient design widens gap vs competitor build</td></tr>
           <tr><td>8</td><td>Kitchen staff hired late, training week slips</td><td><span class="tag warn">Medium</span></td><td>Medium</td><td>Hiring checklist issued at signing; condensed 2-day training fallback</td></tr>
           <tr><td>9</td><td>Fire-suppression certification appointment delay</td><td><span class="tag">Low</span></td><td>Medium</td><td>Booked in Phase 1; certified subcontractor on JR-Tech panel</td></tr>
-          <tr><td>10</td><td>Assumption: savings figures are modelled estimates validated against the equipment schedule, not guarantees</td><td>—</td><td>—</td><td>Disclosed in Financial Pack; replaced by metered actuals in Odoo post-opening</td></tr>
+          <tr><td>10</td><td>Head chef not yet appointed when Rev A of the blueprint is issued — three-party sign-off stalls</td><td><span class="tag warn">Medium</span></td><td>Medium — delays construction issue and Day-0 fabrication</td><td>Chef designate named at the first meeting; JR-Tech consulting chef reviews as stand-in; appointed head chef re-confirms before construction issue (<a href="wf-approval.html">Blueprint Approval</a>)</td></tr>
+          <tr><td>11</td><td>Assumption: savings figures are modelled estimates validated against the equipment schedule, not guarantees</td><td>—</td><td>—</td><td>Disclosed in Financial Pack; replaced by metered actuals in Odoo post-opening</td></tr>
         </table>
       </section>
 

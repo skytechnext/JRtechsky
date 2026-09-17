@@ -64,6 +64,7 @@
               <li>One 90-minute structured meeting captures <b>four inputs</b>: floor plans, menu, owner's requests, and JR-Tech's own site-inspection notes.</li>
               <li>The AI + Odoo engine converts those inputs into <b>~20 deliverables in four packs</b> within days.</li>
               <li>The proposal the owner signs already contains the equipment schedule, the annotated floorplan, the SOPs, the financial projections and JR-Tech's delivery timeline.</li>
+              <li>The blueprint inside that proposal is already approved by the three people who have to live with it — the <b>restaurant owner</b>, the <b>head chef</b>, and <b>JR-Tech's staff &amp; contractors</b> — so nothing is redrawn after signing.</li>
               <li>Signing the agreement = instant handover to execution. Fabrication, procurement and installation start from documents that already exist in Odoo.</li>
             </ul>
           </div>
@@ -107,7 +108,8 @@ flowchart LR
   B2 --> C3
   B4 --> C3
   B4 --> C4
-  C1 --> D[Full proposal and agreement signing]
+  C1 --> G{"Blueprint approval gate<br/>owner · head chef · JR-Tech and contractors"}
+  G --> D[Full proposal and agreement signing]
   C2 --> D
   C3 --> D
   C4 --> D
@@ -121,6 +123,24 @@ flowchart LR
       </section>
 
       <section class="section">
+        <h2>The approval gate — three decision-makers</h2>
+        <p class="lead">Between the Blueprint Pack and the agreement sits one deliberate gate: the
+        blueprint is approved only when all three decision-makers have signed it. Each signs for the
+        judgement only they can make.</p>
+        <div class="grid g3">
+          <div class="card"><span class="tag">Approver 1</span><h3>Restaurant owner</h3>
+            <p>Budget, CAPEX-versus-rental, capacity, brand and opening date. Final say on money and scope.</p></div>
+          <div class="card"><span class="tag warn">Approver 2</span><h3>Head chef</h3>
+            <p>Station flow, reach and clearances, equipment class per dish, storage against par levels. Final say on how the line works within the approved budget.</p></div>
+          <div class="card"><span class="tag green">Approver 3</span><h3>JR-Tech staff &amp; contractors</h3>
+            <p>Loads, hood capture, drainage falls, fabrication feasibility, setting-out and statutory compliance. Final say on safety and buildability.</p></div>
+        </div>
+        <div class="callout tn"><b>All three, every revision.</b> A pack with two signatures is a draft;
+        fabrication work orders release only against a fully signed construction issue. Matrix,
+        sequence and decision rules: <a href="wf-approval.html">Blueprint Approval →</a></div>
+      </section>
+
+      <section class="section">
         <h2>What the owner walks away with</h2>
         <p class="lead">All ~20 deliverables, grouped by pack. Each pack has its own deep-dive page.</p>
         <table class="tbl">
@@ -130,7 +150,7 @@ flowchart LR
             <td>1. Equipment schedule (make/model/qty/price) · 2. Floorplan with equipment locations ·
             3. Electrical points plan (single/three-phase, amperage per station) · 4. Drainage &amp; water
             points plan · 5. Ventilation &amp; exhaust routing overlay · 6. Stainless-steel fabrication
-            drawings (custom counters, hoods, tables)</td>
+            drawings (custom counters, hoods, tables)<br><span class="tag green">Sign-off</span> owner · head chef · JR-Tech &amp; contractors — <a href="wf-approval.html">Blueprint Approval</a></td>
             <td><a href="wf-blueprint.html">Blueprint Pack →</a></td>
           </tr>
           <tr>
