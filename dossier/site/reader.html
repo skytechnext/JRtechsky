@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read Everything — Scroll Mode · JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<link rel="stylesheet" href="assets/css/app.css">
+<style>
+  .rd-group{margin:56px 0 10px;padding:18px 24px;border-radius:14px;color:#fff;
+    background:linear-gradient(135deg,var(--jr-navy),#14304F);font-size:22px;font-weight:800}
+  .rd-page{border-top:3px solid var(--jr-blue);margin-top:34px;padding-top:8px}
+  .rd-page .rd-title{font-size:26px;font-weight:800;margin:10px 0 2px}
+  .rd-src{font-size:12px;color:var(--jr-slate);margin-bottom:10px}
+  .rd-note{font-size:12px;background:#FEF6E9;border:1px solid #F0E2B6;color:#7a5e12;
+    border-radius:8px;padding:8px 12px;margin:10px 0}
+  #rdStatus{position:sticky;top:0;z-index:40;background:#0B1F3A;color:#C7D6EE;font-size:12.5px;
+    padding:8px 16px;border-radius:0 0 12px 12px;display:flex;gap:14px;align-items:center}
+  #rdBar{flex:1;height:6px;background:rgba(255,255,255,.15);border-radius:6px;overflow:hidden}
+  #rdFill{height:100%;width:0;background:linear-gradient(90deg,var(--jr-blue),var(--tn-accent))}
+  .rd-toc{columns:3;gap:18px;font-size:12.5px}
+  @media(max-width:800px){.rd-toc{columns:1}}
+  .rd-toc a{display:block;padding:2px 0;text-decoration:none}
+  @media print{#rdStatus{display:none}}
+</style>
+</head>
+<body data-page="reader">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Start Here</b> · Read Everything — Scroll Mode</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Scroll Mode · the whole dossier on one page</span>
+      <h1>Read everything, top to bottom.</h1>
+      <p>Every section of the dossier stitched into one continuously scrollable page — perfect for
+      focused reading, long flights (works offline once cached) and printing the complete dossier.
+      Interactive charts stay on their original pages; diagrams, floorplans and tables render here.</p>
+    </div></header>
+
+    <main class="wrap">
+      <div id="rdStatus">
+        <span id="rdLabel">Loading sections…</span>
+        <div id="rdBar"><div id="rdFill"></div></div>
+        <span id="rdCount">0 / 0</span>
+      </div>
+      <section class="section">
+        <h2>Contents</h2>
+        <div class="rd-toc" id="rdToc"></div>
+      </section>
+      <div id="rdBody"></div>
+      <footer class="site"><div>© 2026 TechNext · Full-dossier scroll mode. Interactive calculators and
+      live charts open on their original pages.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="assets/js/nav.js"></script>
+<script>
+(async function(){
+  var SKIP = { reader:1, offline:1 };
+  var items = [];
+  (window.JR_MENU||[]).forEach(function(g){
+    g.items.forEach(function(it){ if(!it.x && !SKIP[it.slug]) items.push({group:g.group, t:it.t, href:it.href, slug:it.slug}); });
+  });
+  var toc = document.getElementById('rdToc');
+  items.forEach(function(it,i){ var a=document.createElement('a'); a.href='#rd-'+it.slug; a.textContent=(i+1)+'. '+it.t; toc.appendChild(a); });
+  var body = document.getElementById('rdBody');
+  var fill = document.getElementById('rdFill'), count = document.getElementById('rdCount'), label = document.getElementById('rdLabel');
+  var lastGroup = null, done = 0;
+  count.textContent = '0 / ' + items.length;
+  for (var i=0;i<items.length;i++){
+    var it = items[i];
+    label.textContent = 'Loading: ' + it.t;
+    try {
+      var res = await fetch(it.href, {cache:'no-cache'});
+      var html = await res.text();
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var main = doc.querySelector('.content main') || doc.querySelector('main') || doc.querySelector('.content');
+      if (main) {
+        // strip page chrome + scripts
+        main.querySelectorAll('script, .pagenav, footer.site, #sidebar, .sb-toggle').forEach(function(n){n.remove();});
+        // charts can't run here — replace canvases with a pointer to the live page
+        main.querySelectorAll('canvas').forEach(function(cv){
+          var d = doc.createElement('div');
+          d.className = 'rd-note';
+          d.innerHTML = '📊 Interactive chart — view it live on <a href="'+it.href+'">'+it.t+'</a>.';
+          cv.parentNode.replaceChild(d, cv);
+        });
+        // resolve relative hrefs/srcs against the source page location
+        var base = new URL(it.href, location.href);
+        main.querySelectorAll('[href]').forEach(function(el){
+          var h = el.getAttribute('href');
+          if (h && !/^(https?:|mailto:|#|data:)/.test(h)) el.setAttribute('href', new URL(h, base).href);
+        });
+        main.querySelectorAll('[src]').forEach(function(el){
+          var s = el.getAttribute('src');
+          if (s && !/^(https?:|data:)/.test(s)) el.setAttribute('src', new URL(s, base).href);
+        });
+        if (it.group !== lastGroup) {
+          var gh = document.createElement('div'); gh.className='rd-group'; gh.textContent = it.group;
+          body.appendChild(gh); lastGroup = it.group;
+        }
+        var sec = document.createElement('section');
+        sec.className = 'rd-page'; sec.id = 'rd-' + it.slug;
+        var hero = doc.querySelector('.hero .wrap');
+        var heroP = hero ? hero.querySelector('p') : null;
+        sec.innerHTML = '<div class="rd-title">' + it.t + '</div>' +
+          '<div class="rd-src"><a href="' + it.href + '">open original page ↗</a>' +
+          (heroP ? ' — ' + heroP.textContent.slice(0,180) : '') + '</div>';
+        while (main.firstChild) sec.appendChild(main.firstChild);
+        body.appendChild(sec);
+      }
+    } catch(e) {
+      var err = document.createElement('div'); err.className='rd-note';
+      err.textContent = 'Could not load ' + it.t + ' (' + it.href + ')';
+      body.appendChild(err);
+    }
+    done++; count.textContent = done + ' / ' + items.length;
+    fill.style.width = (done/items.length*100) + '%';
+  }
+  label.textContent = 'All ' + items.length + ' sections loaded — scroll away ✈';
+  // render all mermaid diagrams that came in with the content
+  try {
+    mermaid.initialize({ startOnLoad:false, theme:'neutral' });
+    await mermaid.run({ querySelector: '#rdBody .mermaid' });
+  } catch(e) {}
+})();
+</script>
+</body>
+</html>

@@ -8,6 +8,8 @@
       { t: "Overview", href: "index.html", slug: "overview", root: true },
       { t: "The Pitch — Owner to Owner", href: "pages/technology/why-odoo.html", slug: "why-odoo", e: "🤝" },
       { t: "Why AI is Important", href: "pages/overview/why-ai.html", slug: "why-ai" },
+      { t: "TechNext Services & Roadmap", href: "pages/overview/technext-services.html", slug: "technext-services", e: "🛠" },
+      { t: "Read Everything — Scroll Mode", href: "reader.html", slug: "reader", e: "📜" },
     ]},
     { group: "Executive", items: [
       { t: "Executive Summary", href: "pages/executive/executive-summary.html", slug: "executive-summary" },
@@ -48,6 +50,7 @@
     { group: "Operations", items: [
       { t: "Stakeholder Perspectives", href: "pages/operations/stakeholders.html", slug: "stakeholders" },
       { t: "Department Workflows", href: "pages/operations/dept-workflows.html", slug: "dept-workflows" },
+      { t: "Department & Workflow Atlas", href: "pages/operations/department-atlas.html", slug: "department-atlas", e: "🗺" },
       { t: "Pain → Solution Matrix", href: "pages/operations/pain-solution.html", slug: "pain-solution" },
       { t: "BPMN · Blueprint · UML", href: "pages/operations/bpmn-uml.html", slug: "bpmn-uml" },
       { t: "Value Chain & Capability Map", href: "pages/operations/value-chain.html", slug: "value-chain" },
@@ -78,6 +81,7 @@
       { t: "Go-to-Market & Marketing", href: "pages/growth/gtm.html", slug: "gtm" },
     ]},
     { group: "Advisory", items: [
+      { t: "Meeting Minutes — 7 Nov 2026", href: "pages/advisory/meeting-minutes.html", slug: "meeting-minutes", e: "📝" },
       { t: "Appendix & Sources", href: "pages/advisory/appendix.html", slug: "appendix" },
       { t: "Methodology & Assumptions", href: "pages/advisory/methodology.html", slug: "methodology" },
       { t: "Glossary", href: "pages/advisory/glossary.html", slug: "glossary" },
@@ -96,16 +100,17 @@
       { t: "Odoo Platform", href: "tools/odoo-platform.html", slug: "odoo-platform", e: "⚓" },
       { t: "AI Build Playbook", href: "tools/ai-build-playbook.html", slug: "ai-build-playbook", e: "📘" },
       { t: "Team Harness — Run the Method", href: "tools/team-harness.html", slug: "team-harness", e: "🧠" },
+      { t: "Offline & Install", href: "tools/offline.html", slug: "offline", e: "📥" },
     ]},
     { group: "JR-Tech Properties", items: [
       { t: "Kitchen Estimator", href: "../../estimator/index.html", slug: "ext-estimator", e: "🍳", x: true },
-      { t: "Marketing Website", href: "../../marketing/index.html", slug: "ext-marketing", e: "📣", x: true },
       { t: "Current Website", href: "../../website/index.html", slug: "ext-website", e: "🌐", x: true },
-      { t: "Sales Kit", href: "../../sales/index.html", slug: "ext-sales", e: "🎤", x: true },
       { t: "Portal — all properties", href: "../../index.html", slug: "ext-portal", e: "🧭", x: true },
     ]},
   ];
 
+  window.JR_MENU = MENU; window.JR_ROOT = ROOT;
+  var l=document.createElement("link"); l.rel="manifest"; l.href=ROOT+"manifest.json"; document.head.appendChild(l);
   var active = document.body.getAttribute("data-page") || "";
   var html = '<div class="sb-brand"><div class="sb-logo"><span class="mark"></span>JR-TECH</div>'
     + '<div class="sb-sub">× TechNext · Odoo 19 Dossier</div></div>'
@@ -198,6 +203,149 @@
     setTimeout(function () {
       document.querySelectorAll(".rv:not(.in)").forEach(function (el) { el.classList.add("in"); });
     }, 4000);
+  }
+
+
+  // ================= PROVENANCE BADGES =================
+  // Every page declares where its content comes from, per the owner's requirement
+  // to distinguish human / document / website / AI-modelled information.
+  var PROV_DEFS = {
+    human: ["🧑", "Human source", "Owner meetings, SKY first-party input, owner-provided specs"],
+    doc:   ["📘", "Client documents", "JR-Tech 2024 brand book & business card"],
+    web:   ["🌐", "Website", "jrtech.com.my and public web"],
+    ai:    ["🤖", "AI-modelled", "AI analysis / estimates — validate in discovery"]
+  };
+  function provFor(slug, href) {
+    var o = {
+      "meeting-minutes": ["human", "ai"], "technext-services": ["human"],
+      "why-odoo": ["human"], "driver-incentive": ["human", "ai"],
+      "department-atlas": ["human", "ai"], "overview": ["doc", "ai"],
+      "company-profile": ["doc", "web", "ai"], "product-catalog": ["doc", "web", "ai"],
+      "founders-leadership": ["doc", "ai"], "staff-org": ["human", "ai"],
+      "digital-presence": ["web", "ai"], "reviews-reputation": ["web", "ai"],
+      "current-systems": ["human", "ai"], "reader": [], "offline": [],
+      "team-harness": ["human", "ai"], "appendix": ["human", "doc", "web", "ai"],
+      "methodology": ["human", "doc", "web", "ai"]
+    };
+    if (o[slug]) return o[slug];
+    if (href.indexOf("pages/workflow/sample-") === 0) return ["ai", "doc"];
+    if (href.indexOf("pages/workflow/") === 0) return ["human", "ai"];
+    if (href.indexOf("tools/") === 0) return ["ai"];
+    if (href.indexOf("pages/executive/") === 0 || href.indexOf("pages/strategy/") === 0 ||
+        href.indexOf("pages/intel/") === 0 || href.indexOf("pages/growth/") === 0) return ["doc", "ai"];
+    return ["doc", "ai"];
+  }
+  (function () {
+    var me = null;
+    MENU.forEach(function (g) { g.items.forEach(function (it) { if (it.slug === active) me = it; }); });
+    if (!me) return;
+    var codes = provFor(me.slug, me.href);
+    if (!codes.length) return;
+    var tb = document.querySelector(".content .topbar");
+    if (!tb) return;
+    var chips = codes.map(function (c) {
+      var d = PROV_DEFS[c];
+      return '<span title="' + d[2] + '" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;' +
+        'font-weight:700;color:#3F5A7E;background:#EEF4FC;border:1px solid #D9E5F4;border-radius:999px;' +
+        'padding:3px 10px;cursor:help">' + d[0] + " " + d[1] + "</span>";
+    }).join(" ");
+    var bar = document.createElement("div");
+    bar.className = "provbar";
+    bar.innerHTML = '<div class="wrap" style="display:flex;gap:7px;align-items:center;padding:7px 28px;flex-wrap:wrap">' +
+      '<span style="font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:#8295AC;font-weight:800">Sources</span>' +
+      chips + '<a href="' + ROOT + 'pages/advisory/methodology.html" style="font-size:11px;margin-left:auto">How to read sources →</a></div>';
+    bar.style.cssText = "background:#FAFCFF;border-bottom:1px solid #E2E9F3";
+    tb.parentNode.insertBefore(bar, tb.nextSibling);
+  })();
+
+  // ================= FEEDBACK / COMMENTS =================
+  // Team members leave comments on any page; export them for the AI to read & improve,
+  // or file straight to GitHub Issues (which the AI monitors).
+  (function () {
+    var FKEY = "jrFeedback";
+    function fload() { try { return JSON.parse(localStorage.getItem(FKEY) || "[]"); } catch (e) { return []; } }
+    function fsave(a) { try { localStorage.setItem(FKEY, JSON.stringify(a)); } catch (e) {} }
+    var pageTitle = document.title.split("·")[0].trim();
+    var btn = document.createElement("button");
+    btn.id = "fbBtn"; btn.title = "Comment on this page";
+    btn.innerHTML = "💬";
+    btn.style.cssText = "position:fixed;right:18px;bottom:18px;z-index:70;width:52px;height:52px;border-radius:50%;" +
+      "border:none;background:#0B1F3A;color:#fff;font-size:22px;cursor:pointer;box-shadow:0 10px 26px -10px rgba(11,31,58,.65)";
+    var panel = document.createElement("div");
+    panel.style.cssText = "position:fixed;right:18px;bottom:80px;z-index:70;width:min(380px,92vw);display:none;" +
+      "background:#fff;border:1px solid #E2E9F3;border-radius:16px;box-shadow:0 24px 60px -20px rgba(11,31,58,.45);" +
+      "font-family:Inter,system-ui,sans-serif;overflow:hidden";
+    panel.innerHTML =
+      '<div style="background:#0B1F3A;color:#fff;padding:12px 16px;font-weight:800;font-size:14px">💬 Page feedback' +
+      '<span style="float:right;cursor:pointer" id="fbClose">✕</span>' +
+      '<div style="font-weight:500;font-size:11px;color:#9FB4D0;margin-top:2px">Comments feed the AI improvement loop</div></div>' +
+      '<div style="padding:14px 16px">' +
+      '<div id="fbQuote" style="display:none;font-size:11.5px;background:#FEF6E9;border:1px solid #F0E2B6;border-radius:8px;padding:7px 10px;margin-bottom:8px;color:#7a5e12"></div>' +
+      '<textarea id="fbText" rows="3" placeholder="What should be fixed, added or improved on this page?" style="width:100%;box-sizing:border-box;border:1px solid #E2E9F3;border-radius:9px;padding:9px 11px;font-size:13px;font-family:inherit"></textarea>' +
+      '<div style="display:flex;gap:7px;margin-top:8px;flex-wrap:wrap">' +
+      '<button id="fbSave" style="background:#16C098;color:#fff;border:none;border-radius:8px;padding:8px 14px;font-weight:800;font-size:12.5px;cursor:pointer">Save comment</button>' +
+      '<button id="fbGrab" style="background:#fff;color:#5A6B82;border:1px solid #E2E9F3;border-radius:8px;padding:8px 12px;font-size:12px;cursor:pointer" title="Select text on the page first">+ Quote selection</button>' +
+      '</div>' +
+      '<div id="fbList" style="margin-top:12px;max-height:180px;overflow:auto"></div>' +
+      '<div style="border-top:1px solid #E2E9F3;margin-top:12px;padding-top:10px;display:flex;gap:7px;flex-wrap:wrap">' +
+      '<button id="fbCopy" style="background:#0B1F3A;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;cursor:pointer">Copy ALL for AI</button>' +
+      '<a id="fbIssue" target="_blank" rel="noopener" style="background:#fff;color:#3F6FB0;border:1px solid #CBD9EC;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;text-decoration:none">File to GitHub →</a>' +
+      '</div>' +
+      '<div style="font-size:10.5px;color:#8295AC;margin-top:8px">Saved in this browser. "Copy ALL" → paste to Claude to action; GitHub issues are read by the AI on the next improvement pass.</div>' +
+      '</div>';
+    document.body.appendChild(btn); document.body.appendChild(panel);
+    var curQuote = "";
+    function mdAll() {
+      var a = fload(); if (!a.length) return "No feedback recorded.";
+      var out = "# Dossier feedback (" + a.length + " comments)\n";
+      a.forEach(function (c) {
+        out += "\n## " + c.title + "\n- page: " + c.page + "\n- when: " + c.ts + "\n";
+        if (c.quote) out += "- quoted text: \"" + c.quote + "\"\n";
+        out += "- comment: " + c.text + "\n";
+      });
+      return out;
+    }
+    function renderList() {
+      var host = panel.querySelector("#fbList"); var a = fload();
+      var mine = a.filter(function (c) { return c.slug === active; });
+      host.innerHTML = mine.length ? "" : '<div style="font-size:12px;color:#8295AC">No comments on this page yet. ' + (a.length ? "(" + a.length + " site-wide)" : "") + "</div>";
+      mine.forEach(function (c) {
+        var d = document.createElement("div");
+        d.style.cssText = "border:1px solid #E2E9F3;border-radius:9px;padding:8px 10px;margin-bottom:7px;font-size:12.5px";
+        d.innerHTML = (c.quote ? '<div style="color:#B5781A;font-size:11px">❝' + c.quote.slice(0, 90) + '❞</div>' : "") +
+          '<div>' + c.text + '</div><div style="color:#8295AC;font-size:10.5px;margin-top:3px">' + c.ts +
+          ' · <span style="cursor:pointer;color:#C13B33" data-del="' + c.ts + '">delete</span></div>';
+        host.appendChild(d);
+      });
+      host.querySelectorAll("[data-del]").forEach(function (el) {
+        el.onclick = function () { fsave(fload().filter(function (c) { return c.ts !== el.getAttribute("data-del"); })); renderList(); };
+      });
+      var issueBody = "Page: " + location.pathname + "\n\n" + mdAll();
+      panel.querySelector("#fbIssue").href = "https://github.com/skytechnext/JRtechsky/issues/new?title=" +
+        encodeURIComponent("Dossier feedback: " + pageTitle) + "&body=" + encodeURIComponent(issueBody.slice(0, 5500));
+    }
+    btn.onclick = function () { panel.style.display = panel.style.display === "none" ? "block" : "none"; renderList(); };
+    panel.querySelector("#fbClose").onclick = function () { panel.style.display = "none"; };
+    panel.querySelector("#fbGrab").onclick = function () {
+      var s = String(window.getSelection() || "").trim();
+      if (s) { curQuote = s.slice(0, 300); var q = panel.querySelector("#fbQuote"); q.style.display = "block"; q.textContent = "❝" + curQuote + "❞"; }
+    };
+    panel.querySelector("#fbSave").onclick = function () {
+      var t = panel.querySelector("#fbText").value.trim(); if (!t) return;
+      var a = fload();
+      a.push({ slug: active, page: location.pathname, title: pageTitle, text: t, quote: curQuote, ts: new Date().toISOString() });
+      fsave(a); panel.querySelector("#fbText").value = ""; curQuote = ""; panel.querySelector("#fbQuote").style.display = "none";
+      renderList();
+    };
+    panel.querySelector("#fbCopy").onclick = function () {
+      var t = mdAll(); var done = function () { panel.querySelector("#fbCopy").textContent = "Copied ✓"; setTimeout(function(){panel.querySelector("#fbCopy").textContent = "Copy ALL for AI";},1500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){});
+    };
+  })();
+
+  // ================= OFFLINE (service worker) =================
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "127.0.0.1" || location.hostname === "localhost")) {
+    navigator.serviceWorker.register(ROOT + "sw.js").catch(function () {});
   }
 
   // scroll active link into view

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechNext Services &amp; Roadmap — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+<style>
+  .provenance{display:flex;align-items:center;gap:10px;background:#EAFBF5;border:1px solid rgba(22,192,152,.35);
+    border-radius:10px;padding:12px 16px;font-size:13.5px;font-weight:600;color:#0E8E6E;margin:18px 0 0}
+  .svc-no{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;
+    background:#0B1F3A;color:#fff;font-weight:800;font-size:14px;margin-right:10px;flex:0 0 auto}
+  .svc-head{display:flex;align-items:center;margin-bottom:8px}
+  .okr-ex{background:#F7F9FD;border:1px solid #DCE6F3;border-radius:10px;padding:14px 16px;margin-top:12px}
+  .okr-ex .o{font-weight:800;color:#0B1F3A;font-size:14.5px}
+  .okr-ex ul{margin:8px 0 0;padding-left:18px;font-size:13.5px;line-height:1.65}
+</style>
+</head>
+<body data-page="technext-services">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Start Here</b> · TechNext Services &amp; Roadmap</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Start Here</span>
+      <h1>TechNext Services &amp; Roadmap — what SKY delivers over the next few years</h1>
+      <p>Five services, one direction. This page is the plain-language catalog of what I actually do
+      for JR-Tech — not a menu of everything a consultancy could sell, but the specific work that
+      takes a Penang kitchen-engineering business from paper and SQL Account to an AI-assisted,
+      instrumented operation. Each service is already mapped to a chapter of this dossier.</p>
+      <div class="provenance">🧑 Source: SKY / TechNext — first-party service definition.</div>
+    </div></header>
+
+    <main class="wrap">
+
+      <!-- THE CATALOG AT A GLANCE -->
+      <section class="section">
+        <h2>The five services, in one view</h2>
+        <p>When we sat down on 7 November (<a href="../advisory/meeting-minutes.html">meeting minutes</a>),
+        you said it directly: before software, before gadgets, you want <b>organisational planning —
+        OKRs, KPIs, phases and timelines</b>. So that is where we lead. Everything else slots in
+        behind it, in the order a business actually absorbs change.</p>
+        <div class="grid g3">
+          <div class="kpi"><div class="num">5</div><div class="lbl">services in the TechNext catalog — all five applied to JR-Tech in this dossier</div></div>
+          <div class="kpi"><div class="num">#1</div><div class="lbl">your stated top priority: organisational planning — OKRs, KPIs, phases, timelines</div></div>
+          <div class="kpi"><div class="num">3+ yrs</div><div class="lbl">the horizon this roadmap covers, from process work to OEM IoT enablement</div></div>
+        </div>
+        <div class="callout tn" style="margin-top:16px"><b>How to read this page.</b> Services 1–3 are
+        the engagement we are proposing now. Service 4 is the future phase we design for from day one,
+        so nothing has to be rebuilt later. Service 5 is not a service — it is how the first four
+        compound into something none of them delivers alone.</div>
+      </section>
+
+      <!-- SERVICE: ORGANISATIONAL PLANNING (owner's top priority — lead) -->
+      <section class="section">
+        <div class="svc-head"><span class="svc-no">1</span><h2 style="margin:0">Organisational Planning — OKRs, KPIs, phases &amp; timelines</h2></div>
+        <p class="lead"><b>Your stated top priority — so it comes first.</b> A plan a 30-person company
+        can actually run: one company objective tree, a KPI dictionary per department, a quarterly
+        rhythm, and gantt-level phases so every initiative has a date and an owner.</p>
+        <div class="grid g2">
+          <div class="card pad-lg">
+            <h3>What you get</h3>
+            <ul>
+              <li><b>Company OKR tree</b> — your vision ("preferred one-stop F&amp;B solutions provider,
+              Go-Green and AI advancements") decomposed into 3–4 annual objectives with measurable key results.</li>
+              <li><b>Department KPI dictionaries</b> — for sales, fabrication, service, chemicals and
+              accounts: each KPI defined once, with formula, source system and owner, so two managers
+              can never argue about what "on-time delivery" means.</li>
+              <li><b>Quarterly rhythm</b> — a set cadence: quarterly OKR review, monthly department
+              scorecard, weekly operations stand-up. The meetings exist to move the numbers, not to report them.</li>
+              <li><b>Phase &amp; timeline gantts</b> — every workstream on this page sequenced with
+              dates, dependencies and owners (see <a href="../delivery/roadmap.html">Implementation Roadmap</a>).</li>
+            </ul>
+          </div>
+          <div class="card pad-lg">
+            <h3>A worked example for JR-Tech</h3>
+            <div class="okr-ex">
+              <div class="o">O — "Zero-surprise inventory": we always know what we have, where it is, and what it cost.</div>
+              <ul>
+                <li><b>KR1</b> — Stock record accuracy ≥ 98% on monthly cycle counts (baseline: unknown today).</li>
+                <li><b>KR2</b> — Shrinkage and write-offs ≤ 1% of stock value per quarter.</li>
+                <li><b>KR3</b> — 100% of equipment and chemical SKUs barcoded and scanned at receipt, transfer and delivery.</li>
+              </ul>
+            </div>
+            <p style="margin-top:12px;font-size:13.5px">Each KR then cascades to department KPIs:
+            KR3 becomes the warehouse team's daily "scans vs. movements" ratio and the drivers'
+            "signed D.O. with scan" rate — numbers Odoo produces automatically, so nobody compiles
+            a report by hand.</p>
+          </div>
+        </div>
+        <div class="mermaid">
+flowchart TD
+  V["Vision: preferred one-stop F+B solutions provider - Go-Green + AI"] --> O1["Objective: Zero-surprise inventory"]
+  V --> O2["Objective: Every job quoted, costed, invoiced in one system"]
+  O1 --> KR1["KR: stock record accuracy at least 98 percent"]
+  O1 --> KR2["KR: shrinkage at most 1 percent of stock value per quarter"]
+  O1 --> KR3["KR: 100 percent barcode coverage on SKUs"]
+  KR1 --> K1["Warehouse KPI: cycle-count variance"]
+  KR3 --> K2["Warehouse KPI: scans vs movements daily"]
+  KR3 --> K3["Driver KPI: signed DO with scan rate"]
+  style V fill:#0B1F3A,color:#fff
+  style O1 fill:#16C098,color:#fff
+  style O2 fill:#16C098,color:#fff
+        </div>
+        <p class="muted" style="font-size:13px">The cascade: one vision, few objectives, measurable key
+        results, and department KPIs that Odoo computes daily. Full KPI set in
+        <a href="../delivery/kpis-benefits.html">KPIs &amp; Benefits</a>.</p>
+      </section>
+
+      <!-- SERVICE: BUSINESS PROCESS IMPROVEMENT -->
+      <section class="section">
+        <div class="svc-head"><span class="svc-no">2</span><h2 style="margin:0">Business Process Improvement — incl. Six Sigma</h2></div>
+        <p>Software applied to a messy process just automates the mess. So before and alongside the
+        Odoo build, we run <b>DMAIC-driven process work</b>: map how work actually flows today,
+        measure it, and remove the waste — then let the system lock in the improved process.</p>
+        <div class="grid g3">
+          <div class="card">
+            <h3>Map</h3>
+            <p>Value-stream maps for each department — quote-to-cash, fabrication, chemical delivery,
+            service calls. We have already started: see the
+            <a href="../operations/department-atlas.html">Department &amp; Workflow Atlas</a>.</p>
+          </div>
+          <div class="card">
+            <h3>Measure</h3>
+            <p>DPMO baselines on the defects that cost you money — mis-picks, unsigned D.O.s, quote
+            errors, missed service dates. You cannot improve a number nobody records.</p>
+          </div>
+          <div class="card">
+            <h3>Improve &amp; control</h3>
+            <p>A kaizen cadence: small, scheduled improvement cycles owned by your staff, not by
+            consultants — so the gains survive after we leave the room.</p>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:16px"><b>First target, agreed on 7 Nov:</b> the
+        <b>warehouse and barcode platform</b> — the "burning platform" where process work and the
+        Odoo build meet. Barcoding is simultaneously a Six Sigma control (it makes the inventory
+        process measurable) and the first visible Odoo win, and it feeds the Zero-surprise-inventory
+        OKR above directly.</div>
+      </section>
+
+      <!-- SERVICE: ODOO -->
+      <section class="section">
+        <div class="svc-head"><span class="svc-no">3</span><h2 style="margin:0">Odoo ERP Improvement / Implementation</h2></div>
+        <p><b>This is the core of this dossier.</b> One Odoo 19 database replaces the patchwork of
+        SQL Account, Excel and WhatsApp: sales, fabrication, rental, field service, chemicals and
+        accounting in the same system, Malaysia-localised (SST, MyInvois e-invoicing to LHDN) and
+        delivered in phases so your team is never asked to swallow everything at once.</p>
+        <div class="grid g2">
+          <div class="card">
+            <h3>What "phased" means</h3>
+            <p>Foundation first (products, contacts, inventory + barcodes, accounting), then
+            quote-to-cash, then field service and rental, then the AI layer. Each phase goes live,
+            stabilises, and pays for the next. Full sequencing in the
+            <a href="../delivery/roadmap.html">Implementation Roadmap</a>.</p>
+          </div>
+          <div class="card">
+            <h3>What "improvement" means</h3>
+            <p>Odoo is not install-and-forget. After go-live we keep tuning: new automations, AI
+            document capture, better dashboards — the system improves on the same kaizen cadence as
+            the processes it runs. Architecture in
+            <a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICE: IOT FUTURE PHASE -->
+      <section class="section">
+        <div class="svc-head"><span class="svc-no">4</span><h2 style="margin:0">Future Phase — OEM IoT Enablement</h2></div>
+        <p>This is where JR-Tech's <i>"AI Technology advancements"</i> vision stops being a slogan.
+        We work with your OEM factories to upgrade equipment electronic chips with <b>WiFi/LAN
+        connectivity</b>. Telemetry from every connected fryer, chiller and dishwasher flows into a
+        custom IoT app — logs and live dashboards — and that app syncs with Odoo, where it drives
+        subscription billing, predictive maintenance, service dispatch and reporting.</p>
+        <div class="mermaid">
+flowchart LR
+  subgraph FLOOR["Customer kitchen"]
+    CHIP["Equipment chip upgraded by OEM factory"]
+  end
+  CHIP -->|"WiFi / LAN"| IOT["Custom IoT app - telemetry logs + live dashboards"]
+  IOT -->|"sync"| ODOO["Odoo 19"]
+  subgraph ODOOAPPS["What Odoo does with it"]
+    SUB["Subscriptions - equipment-as-a-service billing"]
+    MAINT["Maintenance + Field Service - predictive dispatch"]
+    REP["Reporting - uptime, energy, usage per site"]
+  end
+  ODOO --> SUB
+  ODOO --> MAINT
+  ODOO --> REP
+  style CHIP fill:#0B1F3A,color:#fff
+  style IOT fill:#16C098,color:#fff
+  style ODOO fill:#7FA9DE,color:#0B1F3A
+        </div>
+        <div class="grid g2">
+          <div class="card">
+            <h3>Why I can credibly build this</h3>
+            <p>My background is embedded devices and electrical — thousands of floorplans, WiFi and
+            electrical as a specialty, live dashboards as a product (see
+            <a href="../technology/why-odoo.html">the owner-to-owner pitch</a>). This is not a
+            software consultant promising hardware; it is a hardware-literate team extending the
+            ERP to the physical equipment you already sell and service.</p>
+          </div>
+          <div class="card">
+            <h3>Why it matters commercially</h3>
+            <p>A connected fleet turns one-off equipment sales into recurring revenue:
+            Equipment-as-a-Service with subscription billing, maintenance triggered by actual
+            machine condition instead of a calendar, and usage data no competitor in Penang can
+            show a hotel GM. Business model detail in
+            <a href="../growth/modern-services.html">Modern Alternative Services</a>.</p>
+          </div>
+        </div>
+        <div class="callout warn" style="margin-top:16px"><b>Design-for-it-now, build-it-later.</b>
+        We do not spend on IoT in year one. But the Odoo product catalog, serial-number tracking and
+        maintenance records we set up in phase one are built so that when the first connected chip
+        ships, the data has a home waiting for it.</div>
+      </section>
+
+      <!-- HOW THEY COMPOUND -->
+      <section class="section">
+        <div class="svc-head"><span class="svc-no">5</span><h2 style="margin:0">How the services compound</h2></div>
+        <p>Sold separately, each of these is a project. Sequenced, they compound: process work makes
+        the OKRs honest, the OKRs tell Odoo what to measure, Odoo generates the clean operational and
+        financial data, and that data is the foundation the IoT phase stands on. Here is the horizon:</p>
+        <div class="mermaid">
+gantt
+  dateFormat YYYY-MM
+  axisFormat %Y
+  title Three-plus-year horizon
+  section Years 1-2 Foundation
+    Organisational planning - OKRs, KPIs, rhythm :a1, 2026-12, 6M
+    Process improvement - warehouse + barcode first :a2, 2027-01, 12M
+    Odoo 19 phased implementation :a3, 2027-01, 15M
+  section Years 2-3 Scale
+    Odoo improvement + AI automations :b1, 2028-01, 12M
+    KL multi-site rollout on the same database :b2, 2028-04, 12M
+  section Year 3 plus IoT
+    OEM chip enablement pilots :c1, 2029-01, 9M
+    IoT app + Odoo subscriptions at scale :c2, 2029-07, 12M
+        </div>
+        <div class="chartbox">
+          <h3>Where the effort goes, by horizon (illustrative mix)</h3>
+          <canvas id="svcMixChart" height="130"></canvas>
+        </div>
+        <h3 style="margin-top:28px">Services × outcomes matrix</h3>
+        <table class="tbl">
+          <thead><tr><th>TechNext service</th><th>JR-Tech outcome</th><th>Where in this dossier</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Organisational planning</b> — OKRs, KPIs, phases, timelines</td>
+              <td>Everyone from director to driver knows the number they own; quarterly rhythm replaces firefighting</td>
+              <td><a href="../delivery/kpis-benefits.html">KPIs &amp; Benefits</a> · <a href="../delivery/roadmap.html">Roadmap</a></td>
+            </tr>
+            <tr>
+              <td><b>Business process improvement</b> — DMAIC / Six Sigma</td>
+              <td>Warehouse and barcode discipline; measurable defect rates falling quarter on quarter</td>
+              <td><a href="../operations/department-atlas.html">Department &amp; Workflow Atlas</a> · <a href="../operations/pain-solution.html">Pain → Solution Matrix</a></td>
+            </tr>
+            <tr>
+              <td><b>Odoo ERP implementation</b> — Odoo 19, phased, Malaysia-localised</td>
+              <td>One system from quote to MyInvois e-invoice; SQL Account and spreadsheet patchwork retired</td>
+              <td><a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a> · <a href="../technology/security-myinvois.html">Security &amp; MyInvois</a></td>
+            </tr>
+            <tr>
+              <td><b>OEM IoT enablement</b> — connected equipment, future phase</td>
+              <td>Recurring revenue: Equipment-as-a-Service subscriptions, predictive maintenance, usage reporting</td>
+              <td><a href="../growth/modern-services.html">Modern Alternative Services</a> · <a href="../technology/ai-catalog.html">AI &amp; Automation Catalog</a></td>
+            </tr>
+            <tr>
+              <td><b>The compounding sequence</b> — all four, in order</td>
+              <td>A Penang SME that scales to KL multi-site without multiplying back-office headcount</td>
+              <td><a href="../growth/expansion.html">Regional Expansion</a> · <a href="../executive/executive-summary.html">Executive Summary</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tn" style="margin-top:16px"><b>Bottom line, owner to owner.</b> You asked
+        for the plan before the platform — that is exactly how this catalog is built. We start with
+        OKRs and the warehouse, prove it with barcodes and one clean database, and earn the right to
+        the IoT phase with results, not promises. The next page puts numbers on it:
+        <a href="../executive/executive-summary.html">Executive Summary</a>.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="why-ai.html">&larr; Why AI is Important</a>
+        <a href="../../reader.html">Read Everything — Scroll Mode &rarr;</a>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+(function(){
+  var el = document.getElementById('svcMixChart');
+  if (!el || typeof Chart === 'undefined') return;
+  new Chart(el, {
+    type: 'bar',
+    data: {
+      labels: ['Years 1–2 · Foundation', 'Years 2–3 · Scale', 'Year 3+ · IoT phase'],
+      datasets: [
+        { label: 'Organisational planning', data: [30, 15, 10], backgroundColor: '#0B1F3A' },
+        { label: 'Process improvement', data: [30, 20, 15], backgroundColor: '#7FA9DE' },
+        { label: 'Odoo build & improvement', data: [40, 45, 25], backgroundColor: '#16C098' },
+        { label: 'OEM IoT enablement', data: [0, 20, 50], backgroundColor: '#E8A13A' }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: { stacked: true },
+        y: { stacked: true, max: 100, ticks: { callback: function(v){ return v + '%'; } } }
+      },
+      plugins: {
+        legend: { position: 'bottom' },
+        tooltip: { callbacks: { label: function(c){ return c.dataset.label + ': ' + c.parsed.y + '%'; } } }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

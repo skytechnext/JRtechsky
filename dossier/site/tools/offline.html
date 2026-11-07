@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline & Install · JR-Tech × TechNext</title>
+<script>window.SITE_ROOT="../";</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/app.css">
+<style>
+  .big{background:var(--jr-navy);color:#fff;border:none;border-radius:11px;padding:14px 24px;
+    font-weight:800;font-size:15px;cursor:pointer}
+  .big.green{background:var(--tn-accent)}
+  #offBarWrap{background:#EDF2F9;border-radius:20px;height:24px;overflow:hidden;margin:12px 0}
+  #offBar{height:100%;width:0;background:linear-gradient(90deg,var(--jr-blue),var(--tn-accent));
+    color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:flex-end;
+    padding-right:10px;transition:width .2s;border-radius:20px}
+  .okchip{font-size:12.5px;font-weight:800;border-radius:999px;padding:5px 13px}
+  .ok{background:#E4F8F0;color:#0E8E6E}.notok{background:#FDE7E5;color:#C13B33}
+</style>
+</head>
+<body data-page="offline">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Tools &amp; Documents</b> · Offline &amp; Install</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">✈ Plane Mode · PWA · Download</span>
+      <h1>Take the dossier offline.</h1>
+      <p>Cache the entire dossier to this device for reading without internet — on a flight, at a site
+      visit, anywhere. Once cached, every page, diagram, floorplan and PDF opens instantly offline.</p>
+    </div></header>
+
+    <main class="wrap">
+      <section class="section">
+        <h2>1 · One-tap offline cache</h2>
+        <p class="lead">Press the button — this device downloads every dossier page, the stylesheets,
+        the chart/diagram libraries and the four AGL sample PDFs into the browser's offline cache.
+        Then flip to airplane mode and keep reading.</p>
+        <div class="card pad-lg">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+            <button class="big green" id="cacheAll">⤓ Cache entire dossier for offline</button>
+            <button class="big" id="checkCache" style="background:#fff;color:var(--jr-navy);border:1px solid var(--jr-line)">Check cache status</button>
+            <span id="swState" class="okchip notok">checking…</span>
+          </div>
+          <div id="offBarWrap"><div id="offBar">0%</div></div>
+          <div id="offMsg" style="font-size:13px;color:var(--jr-slate)">Offline engine status will appear here.</div>
+        </div>
+        <div class="callout tn"><b>It also happens automatically.</b> Every page you visit while online is
+        cached in the background (and silently refreshed when content updates). The button simply fetches
+        <i>everything at once</i> so nothing is missing mid-flight.</div>
+      </section>
+
+      <section class="section">
+        <h2>2 · Install as an app</h2>
+        <div class="grid g3">
+          <div class="card"><h3>iPhone / iPad</h3><p style="font-size:13.5px">Open this site in Safari →
+            Share button → <b>Add to Home Screen</b>. The dossier opens full-screen like an app and reads
+            offline once cached.</p></div>
+          <div class="card"><h3>Android</h3><p style="font-size:13.5px">Open in Chrome → menu ⋮ →
+            <b>Add to Home screen</b> (or "Install app" when offered).</p></div>
+          <div class="card"><h3>Laptop</h3><p style="font-size:13.5px">Chrome/Edge → install icon in the
+            address bar (or menu → Cast, save &amp; share → Install). A standalone dossier window, offline-ready.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>3 · Download a copy (no browser cache needed)</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Full repository ZIP</h3>
+            <p style="font-size:13.5px">Everything — dossier, estimator, website archive, Odoo data kit.
+            Unzip and open <code>index.html</code>; the whole site works from local files.</p>
+            <a class="big" style="display:inline-block;text-decoration:none"
+               href="https://github.com/skytechnext/JRtechsky/archive/refs/heads/claude/pensive-einstein-dlerlg.zip">⤓ Download ZIP (~65 MB)</a></div>
+          <div class="card"><h3>Sample pack PDFs</h3>
+            <p style="font-size:13.5px">The four AGL client documents as print-ready PDFs.</p>
+            <p style="font-size:13.5px">
+              <a href="../../downloads/AGL-Sample-01-Kitchen-Blueprint-Pack.pdf">Blueprint</a> ·
+              <a href="../../downloads/AGL-Sample-02-Operations-Pack.pdf">Operations</a> ·
+              <a href="../../downloads/AGL-Sample-03-Financial-Pack.pdf">Financials</a> ·
+              <a href="../../downloads/AGL-Sample-04-JRTech-Pack-Handover.pdf">Handover</a></p></div>
+        </div>
+        <div class="callout warn"><b>Tip for the plane:</b> cache (button above) <i>and</i> open
+        <a href="../reader.html">Read Everything — Scroll Mode</a> once before boarding — then the whole
+        dossier scrolls as one page with no network at all.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="team-harness.html">&larr; Team Harness — Run the Method</a>
+        <span></span>
+      </div>
+      <footer class="site"><div>© 2026 TechNext · Offline support via service-worker cache; content
+      refreshes automatically when back online.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/nav.js"></script>
+<script>
+(function(){
+  var msg=document.getElementById('offMsg'), bar=document.getElementById('offBar'), st=document.getElementById('swState');
+  function setState(ok,text){ st.textContent=text; st.className='okchip '+(ok?'ok':'notok'); }
+  if(!('serviceWorker' in navigator)){ setState(false,'offline engine unsupported'); return; }
+  navigator.serviceWorker.ready.then(function(){ setState(true,'offline engine active'); });
+  navigator.serviceWorker.register('../sw.js').catch(function(){ setState(false,'engine blocked'); });
+
+  function allUrls(){
+    var urls=[];
+    (window.JR_MENU||[]).forEach(function(g){ g.items.forEach(function(it){ if(!it.x) urls.push('../'+it.href); }); });
+    urls.push('../assets/css/app.css','../assets/js/nav.js','../reader.html',
+      '../../downloads/AGL-Sample-01-Kitchen-Blueprint-Pack.pdf','../../downloads/AGL-Sample-02-Operations-Pack.pdf',
+      '../../downloads/AGL-Sample-03-Financial-Pack.pdf','../../downloads/AGL-Sample-04-JRTech-Pack-Handover.pdf',
+      'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js',
+      'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js');
+    return urls;
+  }
+  document.getElementById('cacheAll').onclick=async function(){
+    var urls=allUrls(), done=0, fail=0;
+    msg.textContent='Caching '+urls.length+' files…';
+    for(var i=0;i<urls.length;i++){
+      try{ await fetch(urls[i],{cache:'no-cache'}); }catch(e){ fail++; }
+      done++; var pct=Math.round(done/urls.length*100);
+      bar.style.width=pct+'%'; bar.textContent=pct+'%';
+    }
+    msg.innerHTML='<b>Done.</b> '+(done-fail)+' files cached'+(fail?(' ('+fail+' skipped)'):'')+
+      '. You can go offline now — try airplane mode and reload any page.';
+  };
+  document.getElementById('checkCache').onclick=async function(){
+    if(navigator.storage && navigator.storage.estimate){
+      var e=await navigator.storage.estimate();
+      var mb=(e.usage/1048576).toFixed(1);
+      msg.textContent='Browser offline storage in use: '+mb+' MB.';
+    } else msg.textContent='Storage estimate not supported on this browser.';
+  };
+})();
+</script>
+</body>
+</html>
