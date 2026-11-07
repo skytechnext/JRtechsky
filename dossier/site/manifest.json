@@ -1,0 +1,11 @@
+{
+  "name": "JR-Tech Analysis — Odoo 19 Dossier",
+  "short_name": "JR Dossier",
+  "description": "JR-Tech x TechNext engagement dossier — readable offline.",
+  "start_url": "index.html",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#0B1F3A",
+  "theme_color": "#0B1F3A",
+  "icons": [{ "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

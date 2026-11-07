@@ -50,3 +50,25 @@ implementation; this dossier is TechNext's discovery + proposal artifact.
   sustainable Go-Green Kitchen concepts & AI Technology advancements."
 - Mission: "To develop an innovative kitchen solution that integrates manual expertise, AI
   technology, and sustainable Go-Green practices."
+
+## HUMAN-SOURCE FACTS — 7 Nov 2026 meeting minutes (authoritative; supersede earlier models)
+- 3 warehouses; one suffered a fire; no stock visibility or barcode system (burning platform).
+- Vehicle fleet: Toyota Hilux / Hiace.
+- Owner's TOP priority: OKRs and KPIs planning.
+- ~300 active customer accounts (restaurants, kitchens, etc.).
+- Owner intends to open a KL office AND buy over a factory in KL.
+- Stainless-steel workshop fabricates 304 stainless products.
+- Total staff ~60 (supersedes the earlier ~45 analyst model).
+
+## TechNext / SKY service lines (first-party, next few years)
+1. Business process improvement incl. Six Sigma (DMAIC, value streams, DPMO baselines).
+2. Odoo ERP improvement / implementation.
+3. Organisational planning: OKRs, KPIs, phases & timelines (leads this engagement — owner priority).
+4. Future phase: OEM factory partnerships — upgrade equipment electronic chips with WiFi/LAN; data
+   flows to a custom IoT app (logs + dashboards) that syncs with Odoo (subscriptions, maintenance,
+   reporting).
+
+## Provenance convention (site-wide)
+Every page shows source chips: 🧑 Human (owner/SKY) · 📘 Brand book/card · 🌐 jrtech.com.my/web ·
+🤖 AI-modelled. Human-source facts always beat AI models; corrections are registered on the
+Meeting Minutes page.

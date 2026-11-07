@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Minutes — 7 Nov 2026 — JR-Tech × TechNext</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>window.SITE_ROOT="../../";</script>
+<link rel="stylesheet" href="../../assets/css/app.css">
+</head>
+<body data-page="meeting-minutes">
+<div class="app">
+  <aside id="sidebar"></aside>
+  <div class="content">
+    <div class="topbar"><div class="wrap">
+      <div class="crumb"><b>Advisory</b> · Meeting Minutes</div>
+      <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
+    </div></div>
+
+    <header class="hero"><div class="wrap">
+      <span class="eyebrow">Advisory</span>
+      <h1>Meeting Minutes — 7 Nov 2026<br>SKY's recall of previous meetings with the owner</h1>
+      <p>A formal record of first-hand facts recalled by SKY from prior meetings with JR-Tech's owner,
+      followed by TechNext's analysis of what each fact changes in the engagement. Human source and AI
+      analysis are kept strictly separate — the minutes are the record; the matrix is our read of it.</p>
+    </div></header>
+
+    <main class="wrap">
+
+      <section class="section">
+        <div class="callout tn">
+          <p style="margin:0 0 8px"><b>Provenance of this page.</b> Two kinds of content sit side by side
+          below, and the distinction matters for how each should be weighed:</p>
+          <p style="margin:0 0 6px"><span class="tag green">🧑 Source: Owner / SKY meeting — verbatim record</span>
+          &nbsp;Section 1 (Minutes) and the facts in Sections 3–4 are human-sourced — recorded as recalled,
+          not edited for narrative. Where this record contradicts earlier analyst modelling, <b>this record wins</b>.</p>
+          <p style="margin:0"><span class="tag warn">🤖 AI analysis of the human record</span>
+          &nbsp;Section 2 (Implications Matrix), the fact-to-impact map, the urgency chart and all
+          "so-what" commentary are TechNext's interpretation layered on top of the human record.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>1 · Minutes of record <span class="tag green">🧑 Source: Owner / SKY meeting — verbatim record</span></h2>
+        <div class="card pad-lg">
+          <table class="tbl">
+            <tr><th style="width:180px">Record date</th><td>Friday, 7 November 2026</td></tr>
+            <tr><th>Recorded by</th><td>SKY (TechNext), recalling prior face-to-face meetings with the owner</td></tr>
+            <tr><th>Primary source</th><td>Tan Gim Boon, Director — JR-Tech Solution Sdn Bhd (SSM 200901013633)</td></tr>
+            <tr><th>Nature of record</th><td>Recall of statements made by the owner in previous meetings; captured verbatim as remembered, unverified against documents</td></tr>
+            <tr><th>Distribution</th><td>TechNext engagement team · Confidential</td></tr>
+          </table>
+        </div>
+        <div class="card pad-lg" style="margin-top:14px">
+          <h3>Minuted items</h3>
+          <table class="tbl">
+            <tr><th style="width:60px">Item</th><th>Statement as recalled</th></tr>
+            <tr><td><b>M-1</b></td><td>JR-Tech operates <b>3 warehouses</b>; <b>1 caught fire</b>. There is <b>no visibility and no barcode system</b> across warehouse stock.</td></tr>
+            <tr><td><b>M-2</b></td><td>The vehicle fleet consists of <b>Toyota Hilux and Hiace</b> units.</td></tr>
+            <tr><td><b>M-3</b></td><td>The owner's <b>high priority is OKRs and KPIs planning</b> for the business.</td></tr>
+            <tr><td><b>M-4</b></td><td>JR-Tech serves <b>approximately 300 accounts</b> — restaurants, kitchens and similar F&amp;B operations.</td></tr>
+            <tr><td><b>M-5</b></td><td>The owner <b>wants to open an office in Kuala Lumpur</b>.</td></tr>
+            <tr><td><b>M-6</b></td><td>The owner <b>wants to buy over a factory in Kuala Lumpur</b>.</td></tr>
+            <tr><td><b>M-7</b></td><td>The <b>stainless-steel fabrication workshop produces 304 stainless-steel products</b>.</td></tr>
+            <tr><td><b>M-8</b></td><td><b>Total staff is approximately 60</b>.</td></tr>
+          </table>
+          <div class="callout"><b>Status of this record:</b> treated as the most authoritative client
+          data currently held — first-hand owner statements relayed by SKY. Each item should still be
+          confirmed in writing during formal discovery (see
+          <a href="../../tools/discovery-questions.html">Discovery Questions</a>), but it supersedes
+          analyst modelling wherever the two conflict (see the Corrections Register below).</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2 · Implications matrix <span class="tag warn">🤖 AI analysis of the human record</span></h2>
+        <p class="lead">What each minuted fact changes in the engagement, where it lands in the dossier
+        and the Odoo build, and how urgently it needs to move. The fire-damaged warehouse with no
+        barcode system is the burning-platform event of this engagement — it converts the Phase 1
+        inventory case from "efficiency gain" to "loss prevention".</p>
+
+        <div class="mermaid">
+flowchart LR
+  subgraph FACTS["Human record — minuted facts"]
+    M1["M-1 · 3 warehouses, 1 fire,<br>no barcode visibility"]
+    M3["M-3 · OKR and KPI planning<br>is the owner priority"]
+    M4["M-4 · about 300 accounts"]
+    M56["M-5 and M-6 · KL office and<br>KL factory buy-over"]
+    M2["M-2 · Hilux and Hiace fleet"]
+    M7["M-7 · 304 stainless-steel workshop"]
+    M8["M-8 · about 60 staff"]
+  end
+  subgraph IMPACT["Engagement impact — AI analysis"]
+    I1["Phase 1 burning platform:<br>Inventory plus Barcode,<br>asset register, insurance docs"]
+    I3["Org-planning workstream<br>leads the narrative"]
+    I4["CRM migration scale:<br>300-account data load"]
+    I5["Multi-company and<br>multi-warehouse architecture"]
+    I2["Odoo Fleet plus<br>driver operations"]
+    I7["MRP and fabrication<br>scope confirmed"]
+    I8["Org model corrected<br>45 to about 60"]
+  end
+  M1 --> I1
+  M3 --> I3
+  M4 --> I4
+  M56 --> I5
+  M2 --> I2
+  M7 --> I7
+  M8 --> I8
+  classDef hum fill:#EEF4FC,stroke:#3F6FB0,color:#0B1F3A;
+  classDef ai fill:#EAFBF5,stroke:#16C098,color:#0B1F3A;
+  class M1,M2,M3,M4,M56,M7,M8 hum
+  class I1,I2,I3,I4,I5,I7,I8 ai
+        </div>
+
+        <table class="tbl">
+          <tr><th>Fact</th><th>What it changes in the engagement</th><th>Dossier page / Odoo module affected</th><th>Urgency</th></tr>
+          <tr>
+            <td><b>M-1</b> · 3 warehouses, 1 fire, no barcode</td>
+            <td>The strongest business case on the table: stock is physically at risk and financially
+            invisible. Pulls <b>Inventory + Barcode</b> forward into Phase 1 as loss prevention, and
+            adds an <b>asset register + insurance documentation</b> workstream so the fire claim and
+            future cover are evidence-backed. Also mandates a 3-location warehouse structure from day one.</td>
+            <td><a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a> ·
+            <a href="../delivery/roadmap.html">Roadmap</a> · Odoo Inventory, Barcode, Assets</td>
+            <td><span class="tag red">Red — act now</span></td>
+          </tr>
+          <tr>
+            <td><b>M-3</b> · OKR / KPI planning is the owner's high priority</td>
+            <td>Reframes the opening of the engagement: lead with the <b>org-planning workstream</b>
+            (OKR tree, KPI dictionary, dashboard cadence), then show Odoo as the measurement engine
+            underneath it. The owner buys the scoreboard first, the system second.</td>
+            <td><a href="../overview/technext-services.html">TechNext Services &amp; Roadmap</a> ·
+            <a href="../delivery/kpis-benefits.html">KPIs &amp; Benefits</a> · Odoo Dashboards / Spreadsheet (BI)</td>
+            <td><span class="tag red">Red — act now</span></td>
+          </tr>
+          <tr>
+            <td><b>M-4</b> · ~300 accounts (restaurants, kitchens)</td>
+            <td>Sets the <b>CRM data-migration scale</b>: ~300 customer records with contacts, sites,
+            equipment history and chemical resupply patterns to deduplicate and load. Big enough to
+            need a cleansing pass; small enough for a single structured migration sprint.</td>
+            <td><a href="../technology/data-migration.html">Data Migration</a> ·
+            <a href="../strategy/personas.html">Customer Personas</a> · Odoo CRM / Contacts</td>
+            <td><span class="tag warn">Amber — Phase 1–2</span></td>
+          </tr>
+          <tr>
+            <td><b>M-5 + M-6</b> · KL office + factory buy-over</td>
+            <td>Confirms the expansion thesis and hardens a design constraint: the Odoo build must be
+            <b>multi-company / multi-warehouse from the architecture stage</b>, with inter-company
+            flows, a KL branch entity path, and a factory acquisition pre-study (costing, capacity,
+            integration into MRP).</td>
+            <td><a href="../growth/expansion.html">Regional Expansion</a> ·
+            <a href="../technology/odoo-architecture.html">Architecture</a> · Odoo multi-company, Inventory, MRP</td>
+            <td><span class="tag warn">Amber — design now, execute later</span></td>
+          </tr>
+          <tr>
+            <td><b>M-8</b> · ~60 total staff</td>
+            <td><b>Corrects the org model</b> — earlier analyst modelling assumed ~45 heads. User-licence
+            counts, training cohorts, change-management load and payroll scope all step up ~33%.
+            Pricing and rollout plans must be re-based on 60.</td>
+            <td><a href="../company/staff-org.html">Staff &amp; Org Analysis</a> ·
+            <a href="../growth/pricing.html">Pricing</a> · Odoo HR / Employees</td>
+            <td><span class="tag warn">Amber — correct before quote</span></td>
+          </tr>
+          <tr>
+            <td><b>M-2</b> · Toyota Hilux / Hiace fleet</td>
+            <td>Confirms a real delivery-and-service fleet behind the driver operation: <b>Odoo Fleet</b>
+            for vehicle records, maintenance and running cost per vehicle, feeding the driver incentive
+            scheme's trip and SLA data.</td>
+            <td><a href="../operations/driver-incentive.html">Driver Incentive Scheme</a> · Odoo Fleet, Field Service</td>
+            <td><span class="tag green">Green — scheduled</span></td>
+          </tr>
+          <tr>
+            <td><b>M-7</b> · Workshop produces 304 stainless-steel products</td>
+            <td><b>Confirms the MRP / fabrication scope</b>: grade-304 stainless output means real BoMs,
+            material traceability by grade, offcut and scrap tracking, and job costing per fabrication
+            order — exactly the Manufacturing-module case the dossier assumed.</td>
+            <td><a href="../operations/bpmn-uml.html">BPMN · Blueprint · UML</a> · Odoo MRP, Quality</td>
+            <td><span class="tag green">Green — validated</span></td>
+          </tr>
+        </table>
+
+        <div class="grid g2" style="margin-top:18px">
+          <div class="chartbox"><canvas id="urgencyChart" height="300"></canvas></div>
+          <div class="card pad-lg">
+            <h3>Reading the urgency profile</h3>
+            <p>Urgency scored 1–5 by TechNext against two tests: <b>is value being destroyed today</b>
+            (the fire-exposed, invisible stock), and <b>does it gate other decisions</b> (OKRs frame the
+            whole engagement; headcount re-bases the quote; KL plans fix the architecture).</p>
+            <p>The two red items move <b>this month</b>: an OKR/KPI workshop because it is the owner's
+            own stated priority, and a barcode/inventory pilot because the next fire — or the next
+            uncounted shrinkage — is uninsurable without records. Everything else sequences behind them
+            without blocking the <a href="../delivery/roadmap.html">implementation roadmap</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>3 · Corrections register <span class="tag green">🧑 Human record</span> <span class="tag warn">🤖 AI-traced impact</span></h2>
+        <p class="lead">Where this human record supersedes assumptions made earlier in the dossier.
+        The superseding facts are human-sourced; the list of pages to update is TechNext's trace.</p>
+        <table class="tbl">
+          <tr><th>#</th><th>Earlier dossier assumption</th><th>Superseded by (human record)</th><th>Pages to update</th></tr>
+          <tr>
+            <td>C-1</td>
+            <td>Headcount modelled at <b>~45 staff</b></td>
+            <td><b>M-8:</b> total staff ~60</td>
+            <td><a href="../company/staff-org.html">Staff &amp; Org Analysis</a>,
+            <a href="../growth/pricing.html">Pricing Strategy</a>,
+            <a href="../delivery/training.html">Training &amp; Enablement</a>,
+            <a href="../strategy/financials.html">Financial Snapshot</a> (payroll line)</td>
+          </tr>
+          <tr>
+            <td>C-2</td>
+            <td><b>Single-site warehouse</b> assumed alongside the Gelugor office</td>
+            <td><b>M-1:</b> 3 warehouses — one fire-damaged, none barcoded</td>
+            <td><a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a> (multi-warehouse),
+            <a href="../operations/dept-workflows.html">Department Workflows</a>,
+            <a href="../delivery/roadmap.html">Roadmap</a> (Phase 1 inventory scope),
+            <a href="../delivery/risk-raci.html">Risk Register</a> (fire / continuity entry)</td>
+          </tr>
+          <tr>
+            <td>C-3</td>
+            <td>Fleet modelled as <b>3 lorries</b></td>
+            <td><b>M-2:</b> Toyota Hilux / Hiace fleet mix — <i>the driver incentive scheme still applies;
+            trip-based incentives port directly onto pickup-and-van operations</i></td>
+            <td><a href="../operations/driver-incentive.html">Driver Incentive Scheme</a> (vehicle table),
+            <a href="../operations/value-chain.html">Value Chain</a> (logistics capability)</td>
+          </tr>
+        </table>
+        <div class="callout warn"><b>Housekeeping rule:</b> corrections are logged here first, then
+        propagated. Until each listed page is revised, this register is the authoritative override —
+        consistent with the single-methodology-note principle in
+        <a href="methodology.html">Methodology &amp; Assumptions</a>.</div>
+      </section>
+
+      <section class="section">
+        <h2>4 · Decisions &amp; next actions <span class="tag warn">🤖 AI-proposed, from the human record</span></h2>
+        <p class="lead">Sequenced owner-priorities-first: the owner named OKRs and KPIs as his high
+        priority, so the engagement opens there, with the warehouse pilot running in parallel as the
+        loss-prevention track.</p>
+        <ol class="steps">
+          <li><b>OKR / KPI planning workshop with the owner (within 2 weeks).</b> Facilitate a half-day
+          session to draft the company OKR tree and a KPI dictionary for all four business lines; wire
+          the result into the <a href="../delivery/kpis-benefits.html">KPIs &amp; Benefits</a> framework
+          and the <a href="../overview/technext-services.html">org-planning workstream</a>. Owner: TechNext (SKY). </li>
+          <li><b>Barcode / inventory pilot at the fire-affected warehouse (start immediately after the
+          workshop).</b> Physical count, location structure, Odoo Inventory + Barcode pilot at the
+          damaged site first — it has the clearest loss story and the strongest staff buy-in — then
+          replicate to the other two warehouses. Deliverables include an asset register usable for the
+          insurance file. Owner: TechNext delivery lead.</li>
+          <li><b>KL expansion pre-study (within 30 days).</b> Scope the KL office entity path and a
+          factory buy-over assessment (capacity, 304-SS capability fit, integration into MRP), and lock
+          the multi-company decision into the <a href="../technology/odoo-architecture.html">architecture</a>
+          before any Phase 1 configuration freezes. Feeds <a href="../growth/expansion.html">Regional Expansion</a>. Owner: TechNext + owner jointly.</li>
+          <li><b>Re-base commercials on 60 staff and 300 accounts.</b> Update licence counts, training
+          cohorts and migration effort in the <a href="../../tools/quotation.html">Quotation</a> and
+          <a href="../../tools/roi-tco.html">ROI / TCO Model</a>. Owner: TechNext commercial.</li>
+          <li><b>Written confirmation of all eight minuted items.</b> Fold M-1 through M-8 into the
+          <a href="../../tools/discovery-questions.html">Discovery Questions</a> pack for sign-off at the
+          next owner meeting, converting recalled statements into documented facts. Owner: SKY.</li>
+        </ol>
+        <div class="callout tn"><b>So what for the Odoo build:</b> this single page of human-sourced
+        facts upgrades the engagement from a well-argued proposal to a grounded one — a burning-platform
+        Phase 1 (inventory + barcode + MyInvois accounting), an owner-led OKR narrative on top, and a
+        multi-company architecture that already knows KL is coming.</div>
+      </section>
+
+      <div class="pagenav">
+        <a href="../growth/gtm.html">&larr; Go-to-Market & Marketing</a>
+        <a href="appendix.html">Appendix & Sources &rarr;</a>
+      </div>
+
+      <footer class="site"><div>© 2026 TechNext · Confidential — JR-Tech Solution Sdn Bhd (SSM 200901013633).
+      Section 1 is a human-sourced minute record (SKY's recall of owner meetings, 7 Nov 2026); Sections 2–4 are TechNext AI analysis of that record.</div></footer>
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/nav.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+<script>
+new Chart(document.getElementById('urgencyChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'M-1 Warehouse fire + no barcode',
+      'M-3 OKR / KPI priority',
+      'M-8 Headcount ~60 (was ~45)',
+      'M-5/6 KL office + factory',
+      'M-4 ~300-account migration',
+      'M-2 Hilux / Hiace fleet',
+      'M-7 304-SS workshop scope'
+    ],
+    datasets: [{
+      label: 'Urgency (1–5)',
+      data: [5, 5, 4, 4, 3, 2, 2],
+      backgroundColor: ['#E2544B','#E2544B','#E8A13A','#E8A13A','#E8A13A','#16C098','#16C098']
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: 'Urgency by minuted fact (TechNext AI assessment)' }
+    },
+    scales: { x: { min: 0, max: 5, ticks: { stepSize: 1 } } }
+  }
+});
+</script>
+</body>
+</html>
