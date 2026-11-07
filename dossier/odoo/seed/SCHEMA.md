@@ -48,7 +48,7 @@ Subset of the `l10n_my` chart — codes follow MY 4-digit convention.
 `can_be_sold`, `can_be_purchased` (yes/no), `rent_ok` (yes/no → enables Rental), `subscription`
 (yes/no), `route` (Buy / Manufacture, MTO / blank for services), `rmin`/`rmax` (reordering min/max,
 blank if none).
-> Note: In Odoo 19 the storable/consumable distinction is `is_storable` boolean on type `consu`;
+> Note: In Odoo 20 the storable/consumable distinction is `is_storable` boolean on type `consu`;
 > map `storable`→ consu+is_storable=True, `consumable`→ consu+is_storable=False, `service`→ service.
 
 ## boms.csv → `mrp.bom`

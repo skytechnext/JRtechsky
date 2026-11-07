@@ -25,7 +25,7 @@
       <p>Having mapped the broken current state, this page designs the target. BPMN-style swimlane
       diagrams show who does what across the redesigned quote-to-cash and field-service flows; a
       service blueprint separates frontstage, backstage and support; and a UML class diagram defines
-      the Odoo 19 data model the whole platform stands on.</p>
+      the Odoo 20 data model the whole platform stands on.</p>
     </div></header>
     <main class="wrap">
 
@@ -193,7 +193,7 @@ flowchart TB
       </section>
 
       <section class="section">
-        <h2>6 · UML class diagram — Odoo 19 data model</h2>
+        <h2>6 · UML class diagram — Odoo 20 data model</h2>
         <p class="lead">The entities and relationships the platform records. A <code>Customer</code>
         anchors everything; an <code>Order</code> fans out into the fulfilment objects per business
         line; all of them resolve to an <code>Invoice</code>.</p>
@@ -332,7 +332,7 @@ classDiagram
         <div class="callout tn"><b>So what for the Odoo build:</b> this class model is the contract
         between the process design and the configuration — every swimlane step writes to one of these
         objects. It maps directly onto the apps detailed in
-        <a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a> and seeds the demo
+        <a href="../technology/odoo-architecture.html">Odoo 20 Architecture</a> and seeds the demo
         data an AI agent loads via MCP.</div>
       </section>
 

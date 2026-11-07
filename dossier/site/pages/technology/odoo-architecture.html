@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Odoo 19 Architecture — JR-Tech × TechNext</title>
+<title>Odoo 20 Architecture — JR-Tech × TechNext</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -16,14 +16,14 @@
   <aside id="sidebar"></aside>
   <div class="content">
     <div class="topbar"><div class="wrap">
-      <div class="crumb"><b>Technology</b> · Odoo 19 Architecture</div>
+      <div class="crumb"><b>Technology</b> · Odoo 20 Architecture</div>
       <div class="cobrand">TechNext <span class="x">×</span> JR-Tech</div>
     </div></div>
     <header class="hero"><div class="wrap">
       <span class="eyebrow">Technology</span>
-      <h1>Odoo 19 Target Architecture</h1>
-      <p>The technical core of the engagement: which Odoo 19 apps run JR-Tech, how data flows
-      between them, which edition and hosting we recommend and why, and where Odoo 19's native AI
+      <h1>Odoo 20 Target Architecture</h1>
+      <p>The technical core of the engagement: which Odoo 20 apps run JR-Tech, how data flows
+      between them, which edition and hosting we recommend and why, and where Odoo 20's native AI
       fits. One unified data model behind four interlocking business lines.</p>
     </div></header>
     <main class="wrap">
@@ -88,7 +88,7 @@
           <div class="card"><span class="tag green">Platform</span><h3>Build &amp; extend</h3>
             <ul>
               <li><b>Studio</b> — low-code customisation of forms, fields, automations</li>
-              <li><b>Odoo 19 AI</b> — AI text, OCR, predictive scoring</li>
+              <li><b>Odoo 20 AI</b> — AI text, OCR, predictive scoring</li>
             </ul>
           </div>
         </div>
@@ -125,7 +125,7 @@ flowchart TD
       DOC["Documents + OCR"]
       SIGN["Sign"]
     end
-    AI(["Odoo 19 AI<br/>text · OCR · scoring"])
+    AI(["Odoo 20 AI<br/>text · OCR · scoring"])
 
     WEB --> CRM --> SAL
     SUB --> SAL
@@ -154,7 +154,7 @@ flowchart TD
       <section class="section">
         <h2>Business line → module mapping</h2>
         <table class="tbl">
-          <tr><th>JR-Tech business line</th><th>Key processes</th><th>Primary Odoo 19 modules</th></tr>
+          <tr><th>JR-Tech business line</th><th>Key processes</th><th>Primary Odoo 20 modules</th></tr>
           <tr><td><b>JR-Consulting Services</b><br>Consultation · space planning · training</td>
             <td>Project-based kitchen design, fit-out, training delivery, deliverable sign-off</td>
             <td>Project · Sales · Documents · Sign · Timesheets</td></tr>
@@ -188,7 +188,7 @@ flowchart TD
             <em>basics</em>. Strong foundation, but several apps JR-Tech depends on are
             <b>Enterprise-only</b>.</p>
             <p><b>Gaps for JR-Tech:</b> no Field Service, no full Subscriptions, no Documents OCR /
-            Invoice Digitisation, no Sign, no Studio, no Helpdesk, no Quality, no Odoo 19 AI text,
+            Invoice Digitisation, no Sign, no Studio, no Helpdesk, no Quality, no Odoo 20 AI text,
             and only a partial Accounting (no advanced reconciliation, follow-ups, or the localised
             MyInvois e-invoicing tooling).</p>
           </div>
@@ -201,11 +201,11 @@ flowchart TD
               reports in the AI catalog.</li>
               <li><b>Studio</b> — low-code fit of JR-Tech's bespoke flows without forking code.</li>
               <li><b>Full Accounting + MY localisation</b> — SST and MyInvois compliance.</li>
-              <li><b>Odoo 19 AI</b> (AI text, predictive scoring) — the native quick wins.</li>
+              <li><b>Odoo 20 AI</b> (AI text, predictive scoring) — the native quick wins.</li>
             </ul>
           </div>
         </div>
-        <div class="callout tn"><b>Recommendation:</b> deploy <b>Odoo 19 Enterprise</b>. The
+        <div class="callout tn"><b>Recommendation:</b> deploy <b>Odoo 20 Enterprise</b>. The
         AI/OCR/Field-Service/Subscriptions capabilities that the JR-Tech business case rests on are
         Enterprise-only; replicating them on Community via third-party OCA modules would cost more
         in integration and maintenance than the per-user Enterprise licence, and forfeit the
@@ -233,7 +233,7 @@ flowchart TD
       </section>
 
       <section class="section">
-        <h2>Odoo 19 native AI features</h2>
+        <h2>Odoo 20 native AI features</h2>
         <div class="grid g3">
           <div class="card"><h3>AI text &amp; assistant</h3>
             <p>In-context generation across Sales, CRM, Documents and email — drafting quotes,
@@ -251,6 +251,41 @@ flowchart TD
         configuration on Enterprise. Bespoke models (demand forecasting, vision QC, predictive
         maintenance) attach to this same data model later via the connectors on the
         <a href="integration-map.html">Integration &amp; API Map</a>.</div>
+      </section>
+
+            <section class="section" id="odoo20">
+        <h2>What's new in Odoo 20 — and what it changes for JR-Tech</h2>
+        <p class="lead">Odoo 20 shipped at Odoo Experience (late 2026). This dossier now targets it.
+        The headline changes below are from the official release notes and partner coverage
+        <span class="tag">🌐 Web-sourced</span>; the "for JR-Tech" column is our read
+        <span class="tag warn">🤖 AI analysis</span>.</p>
+        <table class="tbl">
+          <tr><th>Odoo 20 change</th><th>What it is</th><th>For JR-Tech</th></tr>
+          <tr><td><b>Native MCP support</b></td><td>External AI tools can read/write Odoo data through the
+            Model Context Protocol</td><td>The AI Build Playbook's "connect an AI via MCP" step is now a
+            first-class, supported path — demo-data loading and ongoing AI operations get simpler and safer</td></tr>
+          <tr><td><b>AI agents</b></td><td>Agents can create and update records and run from scheduled
+            actions (AI features consume IAP credits)</td><td>AI quoting, trip-log processing and monthly
+            account reviews can run inside Odoo rather than beside it</td></tr>
+          <tr><td><b>Field Service app discontinued</b></td><td>Its features moved into <b>Planning</b></td>
+            <td>Wherever this dossier says "Field Service", read "Planning (field-service workflows)" —
+            dispatch, work orders and maintenance visits are unchanged functionally</td></tr>
+          <tr><td><b>Offline mode</b></td><td>Create/edit/delete records without a connection</td>
+            <td>Technicians and drivers keep working in basements, lifts and black spots — syncs when back online</td></tr>
+          <tr><td><b>Inventory reorder intelligence</b></td><td>Reordering rules suggest min/max from demand
+            history</td><td>Directly serves the 3-warehouse visibility problem raised in the 7 Nov meeting</td></tr>
+          <tr><td><b>Accounting automation</b></td><td>Bill line prediction (products/accounts/taxes from
+            history); direct vendor-bill payment via bank connections where supported</td>
+            <td>Less AP keying; faster month-end close</td></tr>
+          <tr><td><b>Manufacturing</b></td><td>Continuous production on work orders; splittable MOs</td>
+            <td>More flexible stainless-steel fabrication scheduling in the 304 workshop</td></tr>
+          <tr><td><b>Security model</b></td><td>Record rules replaced by a domain on each access right</td>
+            <td>The custom driver-incentive module's access rules are specified against the new model
+            (see the module doc) — any custom module must follow it</td></tr>
+        </table>
+        <div class="callout warn"><b>Edition note.</b> Studio and several accounting features remain
+        Enterprise-only, and all AI features draw on IAP credits — both consistent with this dossier's
+        Enterprise recommendation and budget lines.</div>
       </section>
 
       <div class="pagenav">

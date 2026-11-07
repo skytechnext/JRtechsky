@@ -26,7 +26,7 @@
       <p>JR-Tech already sells "the future of kitchens." This page makes the case that the same
       future belongs in JR-Tech's <em>own</em> operations: concrete, near-term AI use-cases that turn a
       four-line F&amp;B engineering SME into a faster, higher-margin, more defensible business — and
-      how Odoo 19's native AI lets us deliver them without a science project.</p>
+      how Odoo 20's native AI lets us deliver them without a science project.</p>
     </div></header>
 
     <main class="wrap">
@@ -63,7 +63,7 @@
 
       <section class="section">
         <h2>Five concrete AI use-cases for JR-Tech</h2>
-        <p class="lead">Each maps to an existing JR-Tech business line and to an Odoo 19 module, so
+        <p class="lead">Each maps to an existing JR-Tech business line and to an Odoo 20 module, so
         adoption is incremental — not a moonshot.</p>
         <table class="tbl">
           <tr><th>Use-case</th><th>Business line</th><th>What the AI does</th><th>Outcome</th><th>Horizon</th></tr>
@@ -104,7 +104,7 @@
           </tr>
         </table>
         <div class="callout"><b>So what for the Odoo build:</b> use-cases 1 and 4 ship in Phase 1
-        because they ride Odoo 19's native AI in Sales and Accounting; the rest layer on as data
+        because they ride Odoo 20's native AI in Sales and Accounting; the rest layer on as data
         accumulates. See the <a href="../technology/ai-catalog.html">AI &amp; Automation Catalog</a>
         for the full module mapping.</p></div>
       </section>
@@ -112,7 +112,7 @@
       <section class="section">
         <h2>How an AI-assisted quote actually flows</h2>
         <p class="lead">The highest-frequency, highest-friction process at JR-Tech is quoting across
-        four product lines. Here is the target flow once Odoo 19 + AI is live.</p>
+        four product lines. Here is the target flow once Odoo 20 + AI is live.</p>
         <div class="mermaid">
 flowchart LR
   A[Site visit / enquiry<br/>notes + photos] --> B{Odoo CRM<br/>AI draft}
@@ -162,18 +162,18 @@ flowchart LR
           <div class="card"><span class="tag">Innovators</span><h3>The future-of-kitchens brand</h3>
           <p>JR-Tech already markets AI to customers — internal adoption simply makes the promise real.</p></div>
           <div class="card"><span class="tag green">Early adopters</span><h3>Where we land in 2026</h3>
-          <p>Odoo 19 native AI lets a 16-year SME adopt without a data-science team.</p></div>
+          <p>Odoo 20 native AI lets a 16-year SME adopt without a data-science team.</p></div>
           <div class="card"><span class="tag warn">Late majority</span><h3>The competition</h3>
           <p>Most Penang F&amp;B equipment rivals still quote by hand — a real, time-boxed edge.</p></div>
         </div>
       </section>
 
       <section class="section">
-        <h2>How Odoo 19's AI features plug in</h2>
+        <h2>How Odoo 20's AI features plug in</h2>
         <p class="lead">The reason this is feasible for an SME is that we are not building AI from
-        scratch — Odoo 19 ships AI capabilities natively across the apps JR-Tech already needs.</p>
+        scratch — Odoo 20 ships AI capabilities natively across the apps JR-Tech already needs.</p>
         <table class="tbl">
-          <tr><th>Odoo 19 capability</th><th>JR-Tech use-case it powers</th><th>Module</th></tr>
+          <tr><th>Odoo 20 capability</th><th>JR-Tech use-case it powers</th><th>Module</th></tr>
           <tr><td>AI-assisted content &amp; field suggestions</td><td>Quote drafting, email replies, product descriptions</td><td>CRM · Sales</td></tr>
           <tr><td>Invoice / document data extraction (OCR + AI)</td><td>Supplier invoice &amp; PO digitisation → MyInvois</td><td>Accounting · Documents</td></tr>
           <tr><td>Forecasting &amp; reordering rules</td><td>Chemical resupply demand prediction</td><td>Inventory · Subscriptions</td></tr>
@@ -181,9 +181,9 @@ flowchart LR
           <tr><td>Automation / server actions &amp; AI agents</td><td>Routing approvals, lost-reason capture, alerts</td><td>Studio · Automation</td></tr>
         </table>
         <div class="callout tn"><b>Bottom line:</b> AI is not a separate project bolted on later — it
-        is delivered <em>through</em> the Odoo 19 backbone, phase by phase, alongside the operational
+        is delivered <em>through</em> the Odoo 20 backbone, phase by phase, alongside the operational
         cleanup. See the <a href="../executive/executive-summary.html">Executive Summary</a> for the
-        phased plan and ROI, and <a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a>
+        phased plan and ROI, and <a href="../technology/odoo-architecture.html">Odoo 20 Architecture</a>
         for the technical shape.</p></div>
       </section>
 
@@ -205,7 +205,7 @@ new Chart(document.getElementById('effortChart'), {
   data: { labels: ['Quoting','Invoice handling','Reorder planning','Service scheduling'],
     datasets: [
       { label: 'Hours / week today (manual)', data: [12,9,6,5], backgroundColor:'#E2544B' },
-      { label: 'With Odoo 19 + AI', data: [4,2,2,2], backgroundColor:'#16C098' }
+      { label: 'With Odoo 20 + AI', data: [4,2,2,2], backgroundColor:'#16C098' }
     ]},
   options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Recoverable admin effort (illustrative SME model)' } },
     scales:{ y:{ beginAtZero:true, title:{ display:true, text:'hours / week' } } } }
@@ -216,7 +216,7 @@ new Chart(document.getElementById('inactionChart'), {
   data: { labels: ['2026','2027','2028','2029'],
     datasets: [
       { label: 'Cumulative margin leak — do nothing', data: [0,60,140,240], borderColor:'#E2544B', backgroundColor:'rgba(226,84,75,.12)', fill:true, tension:.3 },
-      { label: 'With AI-enabled Odoo 19', data: [0,15,25,30], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.14)', fill:true, tension:.3 }
+      { label: 'With AI-enabled Odoo 20', data: [0,15,25,30], borderColor:'#16C098', backgroundColor:'rgba(22,192,152,.14)', fill:true, tension:.3 }
     ]},
   options: { plugins:{ legend:{ position:'bottom' }, title:{ display:true, text:'Indexed cost of inaction (relative units)' } },
     scales:{ y:{ beginAtZero:true } } }

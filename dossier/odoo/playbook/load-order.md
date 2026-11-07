@@ -1,6 +1,8 @@
+> **Odoo 20 update:** Odoo 20 ships native MCP support — connect the AI through Odoo's MCP server where available; XML-RPC/JSON-RPC remains the bulk-load fallback. The former Field Service app is now part of **Planning** (install `planning`; field-service workflows unchanged).
+
 # JR-Tech Demo Load Playbook — Ordered Execution for an AI/MCP Agent
 
-> **Audience:** a future AI agent driving an Odoo 19 instance over **XML-RPC / JSON-RPC** (or an
+> **Audience:** a future AI agent driving an Odoo 20 instance over **XML-RPC / JSON-RPC** (or an
 > **Odoo MCP server**). This is the machine-runnable counterpart to the human-facing
 > `site/tools/ai-build-playbook.html`. Data lives in `../seed/`; schema in `../seed/SCHEMA.md`.
 

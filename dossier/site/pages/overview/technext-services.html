@@ -150,7 +150,7 @@ flowchart TD
       <!-- SERVICE: ODOO -->
       <section class="section">
         <div class="svc-head"><span class="svc-no">3</span><h2 style="margin:0">Odoo ERP Improvement / Implementation</h2></div>
-        <p><b>This is the core of this dossier.</b> One Odoo 19 database replaces the patchwork of
+        <p><b>This is the core of this dossier.</b> One Odoo 20 database replaces the patchwork of
         SQL Account, Excel and WhatsApp: sales, fabrication, rental, field service, chemicals and
         accounting in the same system, Malaysia-localised (SST, MyInvois e-invoicing to LHDN) and
         delivered in phases so your team is never asked to swallow everything at once.</p>
@@ -167,7 +167,7 @@ flowchart TD
             <p>Odoo is not install-and-forget. After go-live we keep tuning: new automations, AI
             document capture, better dashboards — the system improves on the same kaizen cadence as
             the processes it runs. Architecture in
-            <a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a>.</p>
+            <a href="../technology/odoo-architecture.html">Odoo 20 Architecture</a>.</p>
           </div>
         </div>
       </section>
@@ -186,7 +186,7 @@ flowchart LR
     CHIP["Equipment chip upgraded by OEM factory"]
   end
   CHIP -->|"WiFi / LAN"| IOT["Custom IoT app - telemetry logs + live dashboards"]
-  IOT -->|"sync"| ODOO["Odoo 19"]
+  IOT -->|"sync"| ODOO["Odoo 20"]
   subgraph ODOOAPPS["What Odoo does with it"]
     SUB["Subscriptions - equipment-as-a-service billing"]
     MAINT["Maintenance + Field Service - predictive dispatch"]
@@ -237,7 +237,7 @@ gantt
   section Years 1-2 Foundation
     Organisational planning - OKRs, KPIs, rhythm :a1, 2026-12, 6M
     Process improvement - warehouse + barcode first :a2, 2027-01, 12M
-    Odoo 19 phased implementation :a3, 2027-01, 15M
+    Odoo 20 phased implementation :a3, 2027-01, 15M
   section Years 2-3 Scale
     Odoo improvement + AI automations :b1, 2028-01, 12M
     KL multi-site rollout on the same database :b2, 2028-04, 12M
@@ -264,9 +264,9 @@ gantt
               <td><a href="../operations/department-atlas.html">Department &amp; Workflow Atlas</a> · <a href="../operations/pain-solution.html">Pain → Solution Matrix</a></td>
             </tr>
             <tr>
-              <td><b>Odoo ERP implementation</b> — Odoo 19, phased, Malaysia-localised</td>
+              <td><b>Odoo ERP implementation</b> — Odoo 20, phased, Malaysia-localised</td>
               <td>One system from quote to MyInvois e-invoice; SQL Account and spreadsheet patchwork retired</td>
-              <td><a href="../technology/odoo-architecture.html">Odoo 19 Architecture</a> · <a href="../technology/security-myinvois.html">Security &amp; MyInvois</a></td>
+              <td><a href="../technology/odoo-architecture.html">Odoo 20 Architecture</a> · <a href="../technology/security-myinvois.html">Security &amp; MyInvois</a></td>
             </tr>
             <tr>
               <td><b>OEM IoT enablement</b> — connected equipment, future phase</td>

@@ -1,7 +1,7 @@
-# JR-Tech Solution Sdn Bhd — Odoo 19 Demo Build Kit
+# JR-Tech Solution Sdn Bhd — Odoo 20 Demo Build Kit
 
 Machine-usable artifacts for a **future AI / MCP agent** to stand up a JR-Tech demo instance on
-Odoo 19 over XML-RPC / JSON-RPC. **Nothing is loaded live by these files** — they are data + plan +
+Odoo 20 over XML-RPC / JSON-RPC. **Nothing is loaded live by these files** — they are data + plan +
 runbook. Prepared by **TechNext** (technext.asia).
 
 ## Folder map
@@ -37,7 +37,7 @@ odoo/
 
 1. **Read first, in order:**
    `plan/implementation-plan.md` → `seed/SCHEMA.md` → `playbook/load-order.md`.
-2. **Stand up Odoo 19 Enterprise** (Odoo.sh dev branch or local). Create DB `jrtech_demo`,
+2. **Stand up Odoo 20 Enterprise** (Odoo.sh dev branch or local). Create DB `jrtech_demo`,
    company country = Malaysia, install modules per the plan §3, load the `l10n_my` chart.
 3. **Connect** via XML-RPC (`/xmlrpc/2/common` + `/xmlrpc/2/object`) or an Odoo MCP server.
    Provide `URL`, `DB`, `USER`, API key.

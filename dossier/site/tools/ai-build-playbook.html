@@ -32,19 +32,25 @@
 
     <header class="hero"><div class="wrap">
       <span class="eyebrow">Tools &amp; Documents · Runbook v1.0</span>
-      <h1>AI Build Playbook — provision the JR-Tech Odoo 19 instance via MCP</h1>
+      <h1>AI Build Playbook — provision the JR-Tech Odoo 20 instance via MCP</h1>
       <p>The deterministic runbook a future AI agent follows to stand up the JR-Tech Solution Sdn Bhd
-      Odoo 19 database end-to-end: connect over MCP / XML-RPC, install modules in dependency order,
+      Odoo 20 database end-to-end: connect over MCP / XML-RPC, install modules in dependency order,
       load master data, generate demo transactions, then validate. Every step is idempotent and
       keyed to the artifacts under <code class="inline">/odoo/seed</code>,
       <code class="inline">/odoo/plan</code> and <code class="inline">/odoo/playbook</code>.</p>
     </div></header>
 
     <main class="wrap">
+      <div class="callout tn"><b>Odoo 20 update — MCP is now native.</b> Odoo 20 ships first-class
+      MCP support, so the AI agent can connect to the instance through Odoo's own MCP server instead of
+      raw XML-RPC. The load order below is unchanged; prefer the MCP connection where available and fall
+      back to XML-RPC/JSON-RPC for bulk loads. Note also: the former Field Service app is now part of
+      <b>Planning</b> — install Planning where this playbook says Field Service.</div>
+
 
       <section class="section">
         <div class="grid g4">
-          <div class="kpi"><div class="num">12</div><div class="lbl">Odoo 19 apps installed in order</div></div>
+          <div class="kpi"><div class="num">12</div><div class="lbl">Odoo 20 apps installed in order</div></div>
           <div class="kpi"><div class="num">7</div><div class="lbl">master-data load stages</div></div>
           <div class="kpi"><div class="num">4</div><div class="lbl">demo transaction scenarios seeded</div></div>
           <div class="kpi"><div class="num">100%</div><div class="lbl">idempotent — safe to re-run</div></div>
@@ -63,7 +69,7 @@
         programmatically and abort with a clear message if any check fails.</p>
         <table class="tbl">
           <tr><th>#</th><th>Prerequisite</th><th>How the agent verifies it</th><th>Blocking?</th></tr>
-          <tr><td>P1</td><td>Odoo 19 instance reachable (Odoo.sh staging or on-prem)</td><td><code class="inline">GET /web/health</code> → 200; <code class="inline">common.version()</code> returns 19.x</td><td><span class="tag red">Yes</span></td></tr>
+          <tr><td>P1</td><td>Odoo 20 instance reachable (Odoo.sh staging or on-prem)</td><td><code class="inline">GET /web/health</code> → 200; <code class="inline">common.version()</code> returns 19.x</td><td><span class="tag red">Yes</span></td></tr>
           <tr><td>P2</td><td>Target database created &amp; empty (no app data)</td><td><code class="inline">list_dbs()</code> contains <code class="inline">jrtech</code>; <code class="inline">ir.module.module</code> count of installed apps = base only</td><td><span class="tag red">Yes</span></td></tr>
           <tr><td>P3</td><td>Admin API credentials / API key</td><td>Successful <code class="inline">authenticate()</code> returns a non-zero <code class="inline">uid</code></td><td><span class="tag red">Yes</span></td></tr>
           <tr><td>P4</td><td>Odoo MCP server connected (tool surface available)</td><td>MCP <code class="inline">odoo.search_read</code> / <code class="inline">odoo.execute_kw</code> tools resolve</td><td><span class="tag red">Yes</span></td></tr>

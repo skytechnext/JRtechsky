@@ -58,7 +58,7 @@
     ]},
     { group: "Technology — The Odoo Solution", items: [
       { t: "Current Systems (SQL Account)", href: "pages/technology/current-systems.html", slug: "current-systems" },
-      { t: "Odoo 19 Architecture", href: "pages/technology/odoo-architecture.html", slug: "odoo-architecture" },
+      { t: "Odoo 20 Architecture", href: "pages/technology/odoo-architecture.html", slug: "odoo-architecture" },
       { t: "AI & Automation Catalog", href: "pages/technology/ai-catalog.html", slug: "ai-catalog" },
       { t: "AI in Action — Peer Story", href: "pages/technology/ai-peer-story.html", slug: "ai-peer-story" },
       { t: "Data Migration", href: "pages/technology/data-migration.html", slug: "data-migration" },
@@ -113,7 +113,7 @@
   var l=document.createElement("link"); l.rel="manifest"; l.href=ROOT+"manifest.json"; document.head.appendChild(l);
   var active = document.body.getAttribute("data-page") || "";
   var html = '<div class="sb-brand"><div class="sb-logo"><span class="mark"></span>JR-TECH</div>'
-    + '<div class="sb-sub">× TechNext · Odoo 19 Dossier</div></div>'
+    + '<div class="sb-sub">× TechNext · Odoo 20 Dossier</div></div>'
     + '<div class="sb-search"><input id="sbSearch" placeholder="Filter sections…" autocomplete="off"></div>';
 
   MENU.forEach(function (g) {

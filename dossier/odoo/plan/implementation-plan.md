@@ -1,6 +1,6 @@
-# JR-Tech Solution Sdn Bhd — Odoo 19 Implementation Plan
+# JR-Tech Solution Sdn Bhd — Odoo 20 Implementation Plan
 
-> **Prepared by:** TechNext (technext.asia) — Odoo 19 implementation lead
+> **Prepared by:** TechNext (technext.asia) — Odoo 20 implementation lead
 > **Client:** JR-Tech Solution Sdn Bhd · SSM 200901013633 · Gelugor, Penang, Malaysia
 > **Purpose:** Functional + technical blueprint for a JR-Tech demo instance loaded by a future
 > AI/MCP agent over XML-RPC/JSON-RPC. See `../seed/` for data and `../playbook/load-order.md` for
@@ -27,7 +27,7 @@ is the reason for the module set below.
 
 ## 2. Edition recommendation
 
-**Recommend Odoo 19 Enterprise (Standard tier, on Odoo Online or Odoo.sh).**
+**Recommend Odoo 20 Enterprise (Standard tier, on Odoo Online or Odoo.sh).**
 
 Rationale — the following are **Enterprise-only** and central to JR-Tech's model:
 - **Subscriptions** (`sale_subscription`) — chemical resupply MRR. No CE equivalent.

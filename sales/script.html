@@ -34,7 +34,7 @@
       <p class="lead">Word-for-word call scripts for each stage of the sale, and a library of WhatsApp messages you can personalise, copy and send in one tap: first contact, discovery, proposal, BRD, e-signature, invoices and collections, delivery touchpoints, upsell, renewal and referrals. Internal use — the messages are for sending, this page is not.</p>
       <div class="btn-row" style="align-items:center;">
         <div class="seg" role="tablist" aria-label="Offering">
-          <button type="button" data-track="odoo" class="is-active" role="tab">Odoo 19 track</button>
+          <button type="button" data-track="odoo" class="is-active" role="tab">Odoo 20 track</button>
           <button type="button" data-track="mktg" role="tab">Marketing track</button>
         </div>
         <span class="muted" style="font-size:.9rem;">Switch the track to re-word every message for the offering you're selling.</span>
@@ -302,7 +302,7 @@
     /* ---- track dictionary: words that change with the offering ---- */
     var TRACK = {
       odoo: {
-        offer: "Odoo 19 implementation",
+        offer: "Odoo 20 implementation",
         entry: "fixed-scope discovery",
         scope_doc: "BRD",
         scope_doc_long: "Business Requirements Document (BRD)",
@@ -338,7 +338,7 @@
       { s: "prospect", t: "Intro via referral", w: "Day 0 · new lead", tip: "Name the referrer in the first line — it is the only reason they read line two.",
         x: "Hi {{client}}, {{rep}} here from TechNext 👋\n{{referrer}} suggested I get in touch. We help F&B and commercial-kitchen businesses like {{company}} {{value_line}}.\nWould a 15-minute call this week make sense? I'm free {{meeting}} — or tell me a better time." },
       { s: "prospect", t: "Cold intro (no referral)", w: "Day 0 · new lead", tip: "Lead with a trigger they already feel, not with TechNext.",
-        x: { odoo: "Hi {{client}}, this is {{rep}} from TechNext. Quick one — with MyInvois e-invoicing now mandatory, many kitchen-equipment suppliers are re-keying every quote into their accounting system by hand.\nWe implement Odoo 19 so the quote, the job and the e-invoice are one record. Happy to show you one workflow in 15 minutes — {{meeting}} any good?",
+        x: { odoo: "Hi {{client}}, this is {{rep}} from TechNext. Quick one — with MyInvois e-invoicing now mandatory, many kitchen-equipment suppliers are re-keying every quote into their accounting system by hand.\nWe implement Odoo 20 so the quote, the job and the e-invoice are one record. Happy to show you one workflow in 15 minutes — {{meeting}} any good?",
              mktg: "Hi {{client}}, {{rep}} from TechNext here. I searched \"commercial kitchen equipment Penang\" this morning — {{company}} isn't on page 1, but two of your competitors are.\nWe fix exactly that: a site that converts, search presence, and leads tracked to revenue. 15 minutes to show you what I found? {{meeting}} works on my side." } },
       { s: "prospect", t: "After meeting in person", w: "Same day · event or site visit", tip: "Quote back the thing they said. Proves you listened.",
         x: "Hi {{client}}, good to meet you at {{referrer}} earlier. You mentioned {{pain}} — that is exactly what we help with.\nAs promised, here's the one-pager: {{link_proposal}}\nShall we pick it up properly over a call? I can do {{meeting}}." },
@@ -495,7 +495,7 @@
       var d = TRACK[track];
       var out = text.replace(/\{\{(\w+)\}\}/g, function (m, k) {
         if (k === "value_line") return track === "odoo"
-          ? "run sales, fabrication, rental, service and finance on one system (Odoo 19), with MyInvois built in"
+          ? "run sales, fabrication, rental, service and finance on one system (Odoo 20), with MyInvois built in"
           : "get found by buyers who are searching right now, and turn a quiet website into a steady pipeline";
         if (d[k] !== undefined) return d[k];
         if (F[k] !== undefined && String(F[k]).trim() !== "") return F[k];

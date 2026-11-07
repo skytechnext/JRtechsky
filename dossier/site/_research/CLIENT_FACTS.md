@@ -42,7 +42,7 @@ Hotels, restaurants & cafés, central kitchens, hospitals & aged care, schools/u
 food courts, catering & cloud kitchens, factories with canteens, condominiums (pool/housekeeping).
 
 ## Implementer
-**TechNext** — Odoo ERP implementation company (technext.asia). Role: lead the Odoo 19
+**TechNext** — Odoo ERP implementation company (technext.asia). Role: lead the Odoo 20
 implementation; this dossier is TechNext's discovery + proposal artifact.
 
 ## Vision & Mission (owner-provided, July 2026)

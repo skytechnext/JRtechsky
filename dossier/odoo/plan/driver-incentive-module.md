@@ -1,4 +1,4 @@
-# Odoo 19 Module — `jrtech_driver_incentive`
+# Odoo 20 Module — `jrtech_driver_incentive`
 
 Custom module implementing JR-Tech's **Driver Incentive Scheme** (chemical pail delivery, 6 drivers / 3 lorries).
 Faithful to the owner's v3 framework, with TechNext refinements exposed as **settings** (no code change to tune).
@@ -77,7 +77,8 @@ Reference implementation is on the site page (Section 5) and mirrored 1:1 by the
 - **Webhook controller** `POST /api/jrtech/trip_log` (JSON from WATI/n8n/Make): parse `LORRY-N | NAME | CUSTOMER | PAILS-N`, fuzzy-match driver by WA number → create `jrtech.trip.log` (`source=whatsapp`). Idempotent on `(do_number, trip_date, lorry_id)`.
 - **Payroll**: salary rule code `DRV_INC`, category *Other Input*, amount = `monthly_payout` of the driver's finalised KPI record; separate line from base pay.
 
-## Security (`ir.model.access` + record rules)
+## Security (`ir.model.access` + access-right domains)
+> Odoo 20 replaced record rules with a domain on each access right — the driver read-own-records restriction below is expressed as an access-right domain (`[('driver_id.user_id','=',user.id)]`), not a legacy `ir.rule`.
 - `group_jrtech_driver` — read-only own KPI record (record rule `driver_id.user_id = uid`); dashboard only.
 - `group_jrtech_supervisor` — CRUD trip/attendance logs; edit manual KPI fields.
 - `group_jrtech_manager` — all records + settings + payout confirm. Anti-gaming: drivers cannot edit `*_arrange` counts.
