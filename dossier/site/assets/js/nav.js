@@ -206,6 +206,66 @@
   }
 
 
+
+  // ================= INLINE KEY-FACT CITATIONS =================
+  // Key information carries its source right where it appears (owner requirement).
+  (function () {
+    var METHOD = ROOT + "pages/advisory/methodology.html#provenance";
+    var FACTS = [
+      ["200901013633", "human", "🧑", "SSM no. — business card (owner-provided)"],
+      ["Tan Gim Boon", "doc", "📘", "Business card, 2024"],
+      ["556-Y, Mukim 13", "doc", "📘", "Business card, 2024"],
+      ["Committed to Your F&B Efficiency", "doc", "📘", "Brand book / business card, 2024"],
+      ["Experience the Future of Kitchens", "doc", "📘", "JR-Tech brand book, 2024"],
+      ["preferred one-stop F&B Solutions provider", "human", "🧑", "Vision — owner, Jul 2026"],
+      ["~60 staff", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["60 staff", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["3 warehouses", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["three warehouses", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["caught fire", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["no visibility or barcode", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["300 accounts", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["300 active customer accounts", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["Hilux", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["Hiace", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["304 stainless", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["buy over a factory", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["office in KL", "human", "🧑", "Meeting notes, 7 Nov 2026"],
+      ["RM1 per pail", "human", "🧑", "Owner incentive spec v3"],
+      ["40/50/5/5", "human", "🧑", "Owner incentive spec v3"],
+      ["MyInvois", "web", "🌐", "LHDN / official Odoo localisation docs"],
+      ["Odoo 20", "web", "🌐", "Odoo 20 release notes, odoo.com (2026)"],
+      ["jrtech.com.my", "web", "🌐", "Company website (archived in this portfolio)"]
+    ];
+    var host = document.querySelector(".content main") || document.querySelector(".content .pt");
+    if (!host) return;
+    var SKIP = { SCRIPT:1, STYLE:1, TEXTAREA:1, INPUT:1, CODE:1, PRE:1, SVG:1, CANVAS:1, SUP:1 };
+    FACTS.forEach(function (fdef) {
+      var pat = fdef[0], cls = fdef[1], icon = fdef[2], label = fdef[3];
+      var tw = document.createTreeWalker(host, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (node) {
+          var p = node.parentNode;
+          while (p && p !== host) {
+            if (SKIP[p.nodeName] || (p.classList && (p.classList.contains("mermaid") || p.classList.contains("cite")))) return NodeFilter.FILTER_REJECT;
+            p = p.parentNode;
+          }
+          return node.nodeValue.indexOf(pat) > -1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+        }
+      });
+      var node = tw.nextNode();
+      if (!node) return;
+      var i = node.nodeValue.indexOf(pat);
+      var after = node.splitText(i + pat.length);
+      var chip = document.createElement("sup");
+      chip.className = "cite c-" + cls;
+      chip.innerHTML = icon + '<span class="cite-t"></span>';
+      chip.querySelector(".cite-t").textContent = label;
+      chip.title = "Source: " + label;
+      chip.onclick = function () { location.href = METHOD; };
+      node.parentNode.insertBefore(chip, after);
+    });
+  })();
+
   // ================= PROVENANCE BADGES =================
   // Every page declares where its content comes from, per the owner's requirement
   // to distinguish human / document / website / AI-modelled information.
